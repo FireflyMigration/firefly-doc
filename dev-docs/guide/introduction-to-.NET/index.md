@@ -11,4 +11,4 @@
 10.	Go Through the main elements in the project.
 11.	Explain about the split.
 12.	Explain about how to find a program.
-  what
+  
