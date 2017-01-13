@@ -10,17 +10,22 @@ What is .NET?
 
 ## Visual Studio and C# Overview
 
-### Program Structure – Hello World
+### Program Structure 
 
 1.	Open the migrated application.
 2.	Review the different parts of Visual Studio:
 	a. **Solution Explorer**, Show the ENV project and the reference to Firefly.Box.dll
 	b. Review **Models** and **Types** in the Base project and all the programs and their Views in the rest of the projects. Keep it simple and notice that it will be covered in detail later.
 	c. Show the different projects that compound the migrated application.
-3.	Open the **ApplicationMdi** in designer (it is in the main project, in the Views folder)
+    4. **Virginie - please add some more information here based on my video - regarding the different components of an application**
+
+## Hello World
+
+## Virginie - please change to match the way I did it in the video ##
+3.	Open the **ApplicationMdi** in designer (it is in the Northwind project, in the Views folder)
 	a. Add a new dropdown menu named “Training”.
 	b. Add a new entry to the Training menu named “Hello World” and double click it to create a handler for its click event.
-	c. Write the following code (without using the mbox snippet):
+	c. Write the following code (use the mbox snippet):
 ```csharp
 private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs e)
 {
@@ -30,10 +35,10 @@ private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs 
 
 3. d. **Note**:  When presenting code in Visual Studio:
 		i. Code is Case Sensitive
-		ii. You can press **ALT+SHIFT+ENTER** to switch to **full screen** view.
-		iii. You can change the **zoom** by **scrolling** with **CTRL** key pressed.
+        2. Each line should end with a semicolon “;”
+		
 	e.	Notice the following:
-		i. Each line should end with a semicolon “;”
+		
 		ii. Intellisense: Notice that there are two options to work with this feature.
 ![intellisence](intellisence.png)
 		 iii. Namespaces, classes and methods on a basic level – Review the first 3 slides in the Power Point Presentation.
