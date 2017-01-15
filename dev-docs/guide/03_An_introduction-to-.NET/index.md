@@ -80,10 +80,13 @@ Similar to Magic Verify option that has several options.
  will display the available variation of the  Show method and the required parameter info. (Displayed in Bold)
 
 ### Using Directives
+Using statements are added to improve on code readability, by adding a namespace in a using statement we don't have to write that namespace again in our code.
+
 
 1.	Add the following line to the beginning of the file:
 `using System.Windows.Forms;`
-2.	Write the following code in the same method after the last message:
+
+2.	##virginie improve based on my video## Write the following code in the same method after the last message:
 ```diff
 private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs e)
 {
