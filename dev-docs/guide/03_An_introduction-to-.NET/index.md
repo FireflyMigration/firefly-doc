@@ -176,7 +176,8 @@ namespace Northwind.Training
     {
        public void Run()
        {
--           MessageBox.Show("Hello World", "Hello World Caption", MessageBoxButton.OK);
+-           System.Windows.Forms.MessageBox.Show("Hello World", "Hello World Caption", System.Windows.Forms.MessageBoxButton.OK);
++           MessageBox.Show("Hello World", "Hello World Caption", MessageBoxButton.OK);
        }     
     }
 }
@@ -188,13 +189,22 @@ namespace Northwind.Training
 ### Snippets 
 1.	Use a snippet to shorten this even more.
 2.	Write the following code, using the “mbox” snippet (write mbox and press Tab twice):
+ 
 ![Snippet](Snippet.png)
 ```diff
-private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs e)
+using System.Windows.Forms;
+namespace Northwind.Training
 {
-	System.Windows.Forms.MessageBox.Show("Hello World");
-     MessageBox.Show("Using directives make the code shorter");
-+    MessageBox.Show("Code snippets allow me to type less");
+    Class HelloWorld
+    {
+       public void Run()
+       {
+          MessageBox.Show("Hello World", "Hello World Caption", MessageBoxButton.OK);
++         MessageBox.Show("Test");
+
+
+       }     
+    }
 }
 ```
 3.	 The full list of C# Snippets can be found in here:
