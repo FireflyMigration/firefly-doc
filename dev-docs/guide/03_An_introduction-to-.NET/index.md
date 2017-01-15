@@ -21,48 +21,63 @@ What is .NET?
 
 ## Hello World
 
-## Virginie - please change to match the way I did it in the video ##
-3.	Open the **ApplicationMdi** in designer (it is in the Northwind project, in the Views folder)
-	a. Add a new dropdown menu named “Training”.
-	b. Add a new entry to the Training menu named “Hello World” and double click it to create a handler for its click event.
-	c. Write the following code (use the mbox snippet):
-```csharp
-private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs e)
-{
-	System.Windows.Forms.MessageBox.Show("Hello World");
-}
-```
+### Virginie - please change to match the way I did it in the video ##
 
-3. d. **Note**:  When presenting code in Visual Studio:
-		i. Code is Case Sensitive
-        2. Each line should end with a semicolon “;”
-		
-	e.	Notice the following:
-		
-		ii. Intellisense: Notice that there are two options to work with this feature.
-![intellisence](intellisence.png)
-		 iii. Namespaces, classes and methods on a basic level – Review the first 3 slides in the Power Point Presentation.
+## review hello world example
+1. C# is case sensitive
+1. Every execution statement ends with a ;
+1. The code is organized in classes
+1. Classes have members (Methods, fields, properties, events etc…)
+1. Classes are organized in namespaces (like folders)
 
+Review the actual code:
+1. namespace definition
+2. class definition
+3. method definition
+4. Curly brakets to control scope.
+* Members can only be added to class
+* Logic can only be added to method
+
+5. Explain the method structure
+6. public is an access modifier - show pp.
+7. return type
+8. name
+9. parameters
+10. code.
+
+Calling the message box:
+1. namespace
+2. class
+3. method.
+4. Arguments.
+
+Go back to the menu
+1. review the way we called our code
+2. Explain that we are creating an instance of the Hello World class and then we are calling it.
+2. highlight the difference between the call on the ui using new and the call in our code not using new.
+3. This is because the show method is static - we'll talk about it more later in the code.
 4.	System.Windows.Forms part is a namespace (help to organize the code).
 5.	MessageBox is a class
 6.	Show is a method
-	a. Add the following comments above the code line, using single line (//) and multi-line (/*…*/):
-```csharp 
-	/* The following line displays
- *  a message box
- *  to the User */
- ```
 b. Run the application using the “Start” button  ![start button](start_button.png)
 
 
-### Method Overloading
+### Method Arguments and Overloading
+Method arguments are sent between curly brackets.
+To see the arguments, type open parenthesis - or click the method parameter button on the toolbox when the cursor is between the parenthesis:
+
+![Show Arguments](../Visual-Studio-Configuration/Show-Arguments.png)
+
+Or press **CTRL-SHIFT-SPACE** between the parentheses.
+
+
 
 Overloading allows Methods to have the same name but with different parameters.
 ![Method Overloading](Method_Overloading.png)
  
 Method can have several options based on the number or type of parameters it receives. – Check the 2rd option (string text, string caption)
 Similar to Magic Verify option that has several options.
-**CTRL-SHIFT-SPACE** between the parentheses will display the available variation of the  Show method and the required parameter info. (Displayed in Bold)
+ will display the available variation of the  Show method and the required parameter info. (Displayed in Bold)
 
 ### Using Directives
 
@@ -95,100 +110,17 @@ private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs 
 
 http://msdn.microsoft.com/en-us/library/z41h7fat.aspx
 
+## Comments
+	a. Add the following comments above the code line, using single line (//) and multi-line (/*…*/):
+```csharp 
+	/* The following line displays
+ *  a message box
+ *  to the User */
+ ```
+
 4.	Exercise: Program Structure
 
-## Solution Overview
 
-Open the migrated application in Visual Studio and review the following:
-1. The solution explorer.
-2. The ENV project – has the common functionality which is used by the rest of the application such as:
-	a. Functions. (DSTR, VAL,STRTOKEN)
-	b. INI and Settings
-	c. Users and Rights management
-	d. Database Connection management
-	e. Logical names
-3. Your tables are located in the Northwind project under a folder called **Models**.
-4. Review only in the Solution explorer without opening the code.
-5. Run the application and open the **Entities** (SHIFT+F2) and “**Controllers** (SHIFT+F3) screens. Notice that these screens are not available to the end users.
-6. In the **“Entities** screen, press Enter on one of the entities. Notice that the data can be edited directly. Check the grid **enhanced features**, by pressing on the column header menu and select “Custom Filter”.
-7. In **Controllers** screen, press Enter on one of the programs. Notice that it can be executed directly (like F7 in Magic).
-8. The start project (In Bold) has the menus – **Application MDI**.
 
-## Simple Data Types
-1. Under the "Training" menu, add a new entry named “Basic Data Types”.
-2. Define the following variables as shown below.
-3. Notice the naming conventions standard – first letter of a variable is a lowercase and the first letter of every word afterwards is an uppercase. (Called CamelCase)
-4. The main types are - int, string, double, char and bool. Let's use them in a message as shown below.
-5. Note that until used, a variable is underlined to show that it seems unnecessary.
-6. Run the application and check the method.
-```csharp
-private void basicDataTypeToolStripMenuItem_Click(object sender, EventArgs e)
-{
-	string name = "Virginie";
-	int numberOfCars = 2;
-	char gender = 'F';
-	double height = 1.55;
-	bool isStudent = false;
 
-	MessageBox.Show("Hello "  + name );
-	MessageBox.Show("Gender " + gender );
-	MessageBox.Show("Number of Cras " +numberOfCars.ToString());
-	MessageBox.Show("Height = " + height.ToString());
-	MessageBox.Show("Is a Student " + isStudent.ToString());
-}
-```
 
-### About Strings and Characters
-
-#### String VS. Char
-
-1.	A char is a single character as opposed to a string which is comprised of many characters. 
-2.	A string is surrounded with double quotes for example: "firefly".
-3.	A char is surrounded with single quotes, for example: 'x'.
-
-####	Strings
-1.	`+` concatenates two strings. For example: `"Hello " + name`
-2.	Other types can be turned into a string, by calling the ToString() method directly afterwards.
-```csharp
-MessageBox.Show("Your height is "+ height.ToString());
-```
-
-#### Escape sequences and @-quoting
-
-1.	Special Characters: Use a Backslash to include special characters in a string.
-2.	This is useful for defining pathnames.
-3.	Add a MessageBox with: David says: "Hello".
-```csharp
-MessageBox.Show("David says \"hello\"");
-```
-4.	Another common example is using the '\' in a string such as file name:
-```csharp
-MessageBox.Show("The system folder is - c:\\windows\\ ");
-```
-Or Alternatively:
-```csharp
-MessageBox.Show(@"The system folder is - c:\windows\ ");
-```
-5.	Below is an example how to display each string in a new line using the character \n. Note that the rest of the options are in the student's workbook under _String and Chars_.
-```diff
-private void basicDataTypeToolStripMenuItem_Click(object sender, EventArgs e)
-{
-	string name = "Virginie";
-	int numberOfCars = 2;
-	char gender = 'F';
-	double height = 1.55;
-	bool isStudent = false;
-
--    MessageBox.Show("Hello "  + name );
--    MessageBox.Show("Gender " + gender );
--    MessageBox.Show("Number of Cras " +numberOfCars.ToString());
--    MessageBox.Show("Height = " + height.ToString());
--    MessageBox.Show("Is a Student " + isStudent.ToString());
-
-+    MessageBox.Show("Hello " + name + "\n"+ 
-+                    "Gender = " +gender + "\n"+
-+                    "Number of Cars " + numberOfCars.ToString() + "\n"+
-+                    "Height "+height.ToString());
-}
-```
-6.	Exercise: Data Types
