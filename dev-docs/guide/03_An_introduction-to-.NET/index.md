@@ -126,33 +126,62 @@ To see the arguments, type open parenthesis - or click the method parameter butt
 Or press **CTRL-SHIFT-SPACE** between the parentheses.
 
 
-
 Overloading allows Methods to have the same name but with different parameters.
 ![Method Overloading](Method_Overloading.png)
  
 Method can have several options based on the number or type of parameters it receives. – Check the 2rd option (string text, string caption)
 Similar to Magic Verify option that has several options.
- will display the available variation of the  Show method and the required parameter info. (Displayed in Bold)
+Will display the available variation of the Show method and the required parameter info. (Displayed in Bold), we can add caption and button 
+
+```diff
+namespace Northwind.Training
+{
+    Class HelloWorld
+    {
+       public void Run()
+       {
+-           System.Windows.Forms.MessageBox.Show("Hello World");
++           System.Windows.Forms.MessageBox.Show("Hello World", "Hello World Caption", System.Windows.Forms.MessageBoxButton.OK);
+       }     
+    }
+}
+
 
  <iframe width="560" height="315" src="https://www.youtube.com/embed/Z97ayKhfYtE" frameborder="0" allowfullscreen></iframe>
 
 ### Using Directives
+
 Using statements are added to improve on code readability, by adding a namespace in a using statement we don't have to write that namespace again in our code.
 
-
 1.	Add the following line to the beginning of the file:
-`using System.Windows.Forms;`
-
-2.	##virginie improve based on my video## Write the following code in the same method after the last message:
 ```diff
-private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs e)
++ using System.Windows.Forms;
+namespace Northwind.Training
 {
-	System.Windows.Forms.MessageBox.Show("Hello World");
-+    MessageBox.Show("Using directives make the code shorter");
+    Class HelloWorld
+    {
+       public void Run()
+       {
+           System.Windows.Forms.MessageBox.Show("Hello World", "Hello World Caption", System.Windows.Forms.MessageBoxButton.OK);
+       }     
+    }
 }
 ```
-3.	Notice that with using you can just write `MessageBox.Show`
-4.	Note: The “using” keyword has more usages and meanings that will be covered later.
+2.	So now we can remove using System.Windows.Forms from the code like :
+```diff
+using System.Windows.Forms;
+namespace Northwind.Training
+{
+    Class HelloWorld
+    {
+       public void Run()
+       {
+-           MessageBox.Show("Hello World", "Hello World Caption", MessageBoxButton.OK);
+       }     
+    }
+}
+```
+3.	Note: The “using” keyword has more usages and meanings that will be covered later.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DuvZV5omiqY" frameborder="0" allowfullscreen></iframe>
 
