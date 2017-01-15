@@ -200,6 +200,7 @@ namespace Northwind.Training
        public void Run()
        {
           MessageBox.Show("Hello World", "Hello World Caption", MessageBoxButton.OK);
++         MessageBox.Show("the message");
 +         MessageBox.Show("Test");
 
 
@@ -215,15 +216,31 @@ http://msdn.microsoft.com/en-us/library/z41h7fat.aspx
 
 ## Comments
 	a. Add the following comments above the code line, using single line (//) and multi-line (/*…*/):
-```csharp 
-	/* The following line displays
- *  a message box
- *  to the User */
- ```
+```diff
+using System.Windows.Forms;
+namespace Northwind.Training
+{
+    Class HelloWorld
+    {
+       public void Run()
+       {
+          MessageBox.Show("Hello World", "Hello World Caption", MessageBoxButton.OK);
+          /* this 
+          is 
+          a 
+          multi line 
+          comment          
+          */  
+          MessageBox.Show("the message");;
+          // one line comment
+          MessageBox.Show("Test");
+       }     
+    }
+}
+```
 
  <iframe width="560" height="315" src="https://www.youtube.com/embed/OdKoPet16bA" frameborder="0" allowfullscreen></iframe>
 
 
 4.	Exercise: Program Structure
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/27AHai9Oygc" frameborder="0" allowfullscreen></iframe>
