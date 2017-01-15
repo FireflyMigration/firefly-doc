@@ -1,5 +1,5 @@
 ﻿## Simple Data Types
-1. Under the "Training" menu, add a new entry named “Basic Data Types”.
+1. ## Adjust to adding a class for it and then calling it from a menu##  Under the "Training" menu, add a new entry named “Basic Data Types”.
 2. Define the following variables as shown below.
 3. Notice the naming conventions standard – first letter of a variable is a lowercase and the first letter of every word afterwards is an uppercase. (Called CamelCase)
 4. The main types are - int, string, double, char and bool. Let's use them in a message as shown below.
