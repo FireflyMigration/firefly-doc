@@ -70,7 +70,6 @@ public class ShowOrders : UIControllerBase
 }
 ```
 
->Do not worry about the syntax right now. It will be explained later.
 
 
   2.	Review the form designer, the visual studio toolbox. 
