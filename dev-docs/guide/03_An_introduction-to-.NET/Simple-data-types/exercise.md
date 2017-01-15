@@ -1,4 +1,4 @@
-﻿# Exercise: Program Structure
+﻿# Exercise: Hello CSharp
 1. In the Solution Explorer, find the main project (Marked in Bold). 
 2. Add a folder called Exercises
 3. Add a class called "HelloCSharp" (don't use the # sign, it's an invalid char in a class name)
@@ -19,7 +19,7 @@ new Exercises.HelloCSharp().Run();
 5. Add comments to describe your code.
 6. Build and run.
 7. In the beginning of the file, add using directive to `System.Windows.Forms` namespace
-8. Add another message box, using shorter syntax, to show the following message: “Learning C# is fun!”
+8. Add another message box, using shorter syntax, to show the following message: “Shoerter is better”
 9. Build and run.
 10. Using the “mbox” snippet, add another message box to show the following message: “Snippets are cool!”
 11. Build and run.
