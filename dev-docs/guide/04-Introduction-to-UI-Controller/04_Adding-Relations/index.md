@@ -27,3 +27,8 @@ public ShowOrders()
 
 1.	Notice that the Relations.Add method has more options to add other kinds of relations such as Join, Insert, and InsertIfNotFound (called write in Magic).
 These relation types will be discussed later and they are also well explained in the documentation and other resources, which mentioned in the student's workbook.
+
+
+### what can go wrong.
+The relation doesn't return the data that we want it to return. 
+In most cases the search was done using the wrong field - and the condition is not well formatted. The  most common mistake is to reverse the left and right fields of the relations. !!Anat please improve this passage!!!!!!!
