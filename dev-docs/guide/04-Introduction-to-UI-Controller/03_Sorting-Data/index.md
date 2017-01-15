@@ -105,6 +105,9 @@ public class ShowOrders : UIControllerBase
         }
     }
 ```
+## ** there is no SortByOrderDate in the entity** !!!!!!!
+Fix the example
+
 10. Modify the program so it will use the OrderDate index.
 11. Run the application and check the results.
 
