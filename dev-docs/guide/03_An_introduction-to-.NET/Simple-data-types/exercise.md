@@ -19,7 +19,7 @@ new Exercises.HelloCSharp().Run();
 5. Add comments to describe your code.
 6. Build and run.
 7. In the beginning of the file, add using directive to `System.Windows.Forms` namespace
-8. Add another message box, using shorter syntax, to show the following message: “Shoerter is better”
+8. Add another message box, using shorter syntax, to show the following message: “Shorter is better”
 9. Build and run.
 10. Using the “mbox” snippet, add another message box to show the following message: “Snippets are cool!”
 11. Build and run.
