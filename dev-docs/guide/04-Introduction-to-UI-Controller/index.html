@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Creating a Simple Screen</title>
+</head>
+<body>
+
+    <h1 id="creating-a-simple-screen">Creating a Simple Screen</h1>
+<ol>
+<li><p>Create folder named “Training” in the main project.</p>
+</li>
+<li><p>Add a new item and select the UIController template from the firefly category, set the name of the UIController to “ShowOrders”.</p>
+</li>
+<li><p>Two classes were created: Controller and View.</p>
+</li>
+</ol>
+<pre><code>public class ShowOrders : UIControllerBase
+{
+
+    public ShowOrders()
+    {
+
+    }
+
+    public void Run()
+    {
+        Execute();
+    }
+
+    protected override void OnLoad()
+    {
++        View = () =&gt; new Views.ShowOrdersView(this);
+    }
+}
+
+</code></pre>
+<ol start="4">
+<li><p>Review the controller class:</p>
+<ol>
+<li>First thing to note is the OnLoad method. In it we are setting the View property with the reference to the actual View of the Controller.</li>
+<li>The View property is the connection to the View</li>
+<li>The Run method is used to execute the program.</li>
+</ol>
+<p>!!!!!!Adjust for the two videos we created!!!!!!</p>
+</li>
+</ol>
+<h3 id="adding-the-controller-to-the-main-menu">Adding the Controller to the Main Menu</h3>
+<ol>
+<li>Open the ApplicationMdi class and add a new entry under the &quot;Training&quot; menu &quot;Show Orders&quot; to call the new program.</li>
+</ol>
+<pre><code>private void showOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+{
+    new Training.ShowOrders().Run();
+}
+</code></pre>
+<ol start="2">
+<li>Do not worry about the syntax right now. It will be explained later.</li>
+</ol>
+<h3 id="setting-the-data-view">Setting the Data View</h3>
+<ol>
+<li>Add the entity definitions and set the From property.</li>
+</ol>
+<pre><code class="language-diff">public class ShowOrders : UIControllerBase
+{
++   public readonly Models.Orders Orders = new Models.Orders();
+    public ShowOrders()
+    {
++       From = Orders;
+    }
+
+    public void Run()
+    {
+        Execute();
+    }
+
+    protected override void OnLoad()
+    {
+        View = () =&gt; new Views.ShowOrdersView(this);
+    }
+}
+</code></pre>
+<blockquote>
+<p>Do not worry about the syntax right now. It will be explained later.</p>
+</blockquote>
+<ol start="2">
+<li>Review the form designer, the visual studio toolbox.</li>
+<li>Show the <code>Setup Toolbox</code> right click option - to setup the toolbox once and have all the project's controls available for you.</li>
+<li>Notice that you need to build before you can design the form. Whenever the controller code is changed, a build is needed for the form to detect the changes in designer.</li>
+</ol>
+<h3 id="designing-the-view">Designing the View</h3>
+<ol>
+<li><p>Add a grid to the form, dock it and use the column wizard to add the following columns.</p>
+</li>
+<li><p>Expand the form width to display the entire grid.
+<img src="Designing-the-screen.png" alt="Designing The Screen" /></p>
+</li>
+<li><p>Run the application and edit some data to screen  (Add, Update, Delete)</p>
+</li>
+</ol>
+<h2 id="things-that-can-go-wrong">things that can go wrong</h2>
+<ol>
+<li><p>I can't see the Orders table under my controller when using the column wizard:</p>
+<ol type="a">
+<li>Did you build the project prior to opening the column wizard?</li>
+<li>Is the build successful?</li>
+<li>Make sure that the access modifier for the Orders field is <code>public</code>?</li>
+<li>Close and open visual studio.</li>
+</ol>
+<ol start="5">
+<li>Close visual studio, buildDebug.bat &amp; open visual studio</li>
+</ol>
+</li>
+</ol>
+
+
+</body>
+</html>
