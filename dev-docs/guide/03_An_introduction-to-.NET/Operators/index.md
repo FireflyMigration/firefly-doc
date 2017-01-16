@@ -21,10 +21,10 @@ namespace Northwind.Training
 ```
 3. add a new entry named “Numeric Operators” in the applicationMdi.
 
-```csharp
+```diff
 private void numericOperatorsToolStripMenuItem_Click(object sender, EventArgs e)
 {
-	new Training.NumericOperators().Run();
++	new Training.NumericOperators().Run();
 }
 ```
 4. Build and run the application
