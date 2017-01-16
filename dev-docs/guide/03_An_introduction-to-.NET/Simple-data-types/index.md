@@ -1,4 +1,4 @@
-﻿## Simple Data Types
+﻿# Simple Data Types
 
 1. So in this folder *Training*, click right again **Add/New Item**, choose Class application template by choosing in the left pane Installed, Visual C# Items, and then choosing Class in the middle pane. Name the class BasicTypes.cs at the bottom of the Name dialog.
 2. Define the following variables as shown below 
@@ -17,7 +17,7 @@ namespace Northwind.Training
 +           double height =1.77;
 
 +           char gender ='M';
-+       }     
+       }     
     }
 }
 ```
@@ -47,7 +47,7 @@ namespace Northwind.Training
 
 +         	MessageBox.Show("Hello "  + personName ); 
 +         	MessageBox.Show("You have "  + numberOfKids.ToString() + " children" ); 
-       }     
++      }     
     }
 }
 ```
@@ -67,55 +67,68 @@ private void basicTypesToolStripMenuItem_Click(object sender, EventArgs e)
 <iframe width="560" height="315" src="https://www.youtube.com/embed/eel6sOTM1hY" frameborder="0" allowfullscreen></iframe>
 ### About Strings and Characters
 
-#### String VS. Char
+## More on Strings
 
-1.	A char is a single character as opposed to a string which is comprised of many characters. 
-2.	A string is surrounded with double quotes for example: "firefly".
-3.	A char is surrounded with single quotes, for example: 'x'.
-
-####	Strings
-1.	`+` concatenates two strings. For example: `"Hello " + name`
-2.	Other types can be turned into a string, by calling the ToString() method directly afterwards.
+1. So in this folder *Training*, click right again **Add/New Item**, choose Class application template by choosing in the left pane Installed, Visual C# Items, and then choosing Class in the middle pane. Name the class MoreOnStrings.cs at the bottom of the Name dialog.
+2. Define the following variables as shown below 
 ```csharp
-MessageBox.Show("Your height is "+ height.ToString());
+namespace Northwind.Training
+{
+    Class MoreOnStrings
+    {
+    }
+}
 ```
 
-#### Escape sequences and @-quoting
+3. add a new entry named “More On Strings” in the applicationMdi.
 
-1.	Special Characters: Use a Backslash to include special characters in a string.
-2.	This is useful for defining pathnames.
-3.	Add a MessageBox with: David says: "Hello".
 ```csharp
-MessageBox.Show("David says \"hello\"");
+private void moreOnStringsToolStripMenuItem_Click(object sender, EventArgs e)
+{
+	new Training.MoreOnStrings().Run();
+}
 ```
-4.	Another common example is using the '\' in a string such as file name:
+4. We create an message with a simple string :
+```diff
++ using System.Windows.Forms;
+namespace Northwind.Training
+{
+    Class MoreOnStrings
+    {
++        MessageBox.Show("I'm a simple string");
+    }
+}
+```
+5. But sometime you use special character in your string. For example the quote characters. So the way your special character in the string is to use back slash sign 
+```diff
+ using System.Windows.Forms;
+namespace Northwind.Training
+{
+    Class MoreOnStrings
+    {
+        MessageBox.Show("I'm a simple string");
++       MessageBox.Show("I'm a quote\"");
++       MessageBox.Show("Line one\r\nLine Two");
+    }
+}
+```
+
+6.	An other common example is using the '\' in a string such as file name:
 ```csharp
-MessageBox.Show("The system folder is - c:\\windows\\ ");
+MessageBox.Show("Windows Path: c:\\windows");
 ```
 Or Alternatively:
 ```csharp
-MessageBox.Show(@"The system folder is - c:\windows\ ");
+MessageBox.Show(@"Windows Path: c:\windows using the @ sign to use quites just say ""double quotes"" ");
 ```
-5.	Below is an example how to display each string in a new line using the character \n. Note that the rest of the options are in the student's workbook under _String and Chars_.
-```diff
-private void basicDataTypeToolStripMenuItem_Click(object sender, EventArgs e)
-{
-	string name = "Virginie";
-	int numberOfCars = 2;
-	char gender = 'F';
-	double height = 1.55;
-	bool isStudent = false;
 
--    MessageBox.Show("Hello "  + name );
--    MessageBox.Show("Gender " + gender );
--    MessageBox.Show("Number of Cras " +numberOfCars.ToString());
--    MessageBox.Show("Height = " + height.ToString());
--    MessageBox.Show("Is a Student " + isStudent.ToString());
-
-+    MessageBox.Show("Hello " + name + "\n"+ 
-+                    "Gender = " +gender + "\n"+
-+                    "Number of Cars " + numberOfCars.ToString() + "\n"+
-+                    "Height "+height.ToString());
-}
+7. You can use `@` for multi line text too:
+```csharp
+MessageBox.Show(@"I'm a multi 
+line 
+text 
+in many 
+line");
 ```
-6.	Exercise: Data Types
+8.	Exercise: Data Types
+    
