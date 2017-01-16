@@ -5,7 +5,7 @@
 ```diff
 namespace Northwind.Training
 {
-    Class BasicTypes
+    class BasicTypes
     {
 +       public void Run()
 +       {
@@ -32,7 +32,7 @@ In this code we define the type `String`, the name `personName` and the value in
 + using System.Windows.Forms;
 namespace Northwind.Training
 {
-    Class BasicTypes
+    class BasicTypes
     {
        public void Run()
        {
@@ -56,18 +56,17 @@ The + operator when it uses on the string concatenate the two string into a sing
 Every object in .net will have `ToString()` method that's transfer anything into a string
 
 7. add a new entry named “Basic Types” in the applicationMdi.
-8. Run the application and check the method.
 ```csharp
 private void basicTypesToolStripMenuItem_Click(object sender, EventArgs e)
 {
 	new Training.BasicTypes().Run();
 }
 ```
-
+8. Run the application and check the method.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/eel6sOTM1hY" frameborder="0" allowfullscreen></iframe>
 ### About Strings and Characters
 
-## More on Strings
+# More on Strings
 
 1. So in this folder *Training*, click right again **Add/New Item**, choose Class application template by choosing in the left pane Installed, Visual C# Items, and then choosing Class in the middle pane. Name the class MoreOnStrings.cs at the bottom of the Name dialog.
 2. Define the following variables as shown below 
@@ -93,7 +92,7 @@ private void moreOnStringsToolStripMenuItem_Click(object sender, EventArgs e)
 + using System.Windows.Forms;
 namespace Northwind.Training
 {
-    Class MoreOnStrings
+    class MoreOnStrings
     {
 +        MessageBox.Show("I'm a simple string");
     }
@@ -104,7 +103,7 @@ namespace Northwind.Training
  using System.Windows.Forms;
 namespace Northwind.Training
 {
-    Class MoreOnStrings
+    class MoreOnStrings
     {
         MessageBox.Show("I'm a simple string");
 +       MessageBox.Show("I'm a quote\"");
