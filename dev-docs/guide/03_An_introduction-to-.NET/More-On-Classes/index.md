@@ -266,5 +266,6 @@ namespace Northwind.Training
 After adding Id object, we need to store somewhere the last used Id it why we will use a static class
 
 Note : some developers can make by mistake something like `c.Id = 9;` but we don't want allow that developer can change the Id. So the way to make variable unchangeable is to define that variable to `public readonly int Id`.
-In this example, the value of the Id cannot be changed in the method, even though it is assigned a value in the class constructor:
+In this example, the value of the Id cannot be changed in the method, even though it is assigned a value in the class constructor.
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/pyuGLDnGk2U?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
