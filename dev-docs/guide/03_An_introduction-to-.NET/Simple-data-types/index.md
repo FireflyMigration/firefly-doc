@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿# Simple Data Types
 
 1. So in this folder *Training*, click right again **Add/New Item**, choose Class application template by choosing in the left pane Installed, Visual C# Items, and then choosing Class in the middle pane. Name the class BasicTypes.cs at the bottom of the Name dialog.
@@ -24,6 +25,11 @@ namespace Northwind.Training
 
 In this code we define the type `String`, the name `personName` and the value init `Noam`...
 
+=======
+﻿## Simple Data Types
+1. ## Adjust to adding a class for it and then calling it from a menu##  Under the "Training" menu, add a new entry named “Basic Data Types”.
+2. Define the following variables as shown below.
+>>>>>>> origin/master
 3. Notice the naming conventions standard – first letter of a variable is a lowercase and the first letter of every word afterwards is an uppercase. (Called CamelCase)
 4. The main types are - int, string, double, char and bool. Let's use them in a message as shown below.
 5. Note that until used, a variable is underlined to show that it seems unnecessary.
