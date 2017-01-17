@@ -62,7 +62,7 @@ namespace Northwind.Training
     }
 }
 ```
-5. The clas is ready to use, let's call it from the menu
+5. The class is ready to use, let's call it from the menu
     5.1  Go to Views Folder and go to ApplicationMdi.cs and double click on it
     5.2  Click on an empty area on the menu bar, type *Training* and under Training type a sub-menu *Hello World*
     5.3  Double click on it and here we will right the code to call the new class as follows
@@ -151,7 +151,7 @@ When we DbClick on the menu item Visual Studio generated a method which is calle
 inside this method we added the code to call the Run method of the HelloWorld class.
 
 new Training.HelloWorld().Run();
-
+ 
 *new* – a keyword to create a new instance of a class
 in this case we create a new instance of HelloWorld class which defined under the Training folder.
 and then we called the Run() method.
@@ -162,130 +162,4 @@ and then we called the Run() method.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/X_8GeOvDMaM" frameborder="0" allowfullscreen></iframe>
 
 
-### Method Arguments and Overloading
-Method arguments are sent between curly brackets.
-To see the arguments, type open parenthesis - or click the method parameter button on the toolbox when the cursor is between the parenthesis:
-
-![Show Arguments](../Visual-Studio-Configuration/Show-Arguments.png)
-
-Or press **CTRL-SHIFT-SPACE** between the parentheses.
-
-
-Overloading allows Methods to have the same name but with different parameters.
-![Method Overloading](Method_Overloading.png)
- 
-Method can have several options based on the number or type of parameters it receives. – Check the 2rd option (string text, string caption)
-Similar to Magic Verify option that has several options.
-Will display the available variation of the Show method and the required parameter info. (Displayed in Bold), we can add caption and button 
-
-```diff
-namespace Northwind.Training
-{
-    Class HelloWorld
-    {
-       public void Run()
-       {
--           System.Windows.Forms.MessageBox.Show("Hello World");
-+           System.Windows.Forms.MessageBox.Show("Hello World", "Hello World Caption", System.Windows.Forms.MessageBoxButton.OK);
-       }     
-    }
-}
-
-
- <iframe width="560" height="315" src="https://www.youtube.com/embed/Z97ayKhfYtE" frameborder="0" allowfullscreen></iframe>
-
-### Using Directives
-
-Using statements are added to improve on code readability, by adding a namespace in a using statement we don't have to write that namespace again in our code.
-
-1.	Add the following line to the beginning of the file:
-```diff
-+ using System.Windows.Forms;
-namespace Northwind.Training
-{
-    Class HelloWorld
-    {
-       public void Run()
-       {
-           System.Windows.Forms.MessageBox.Show("Hello World", "Hello World Caption", System.Windows.Forms.MessageBoxButton.OK);
-       }     
-    }
-}
-```
-2.	So now we can remove using System.Windows.Forms from the code like :
-```diff
-using System.Windows.Forms;
-namespace Northwind.Training
-{
-    Class HelloWorld
-    {
-       public void Run()
-       {
--           System.Windows.Forms.MessageBox.Show("Hello World", "Hello World Caption", System.Windows.Forms.MessageBoxButton.OK);
-+           MessageBox.Show("Hello World", "Hello World Caption", MessageBoxButton.OK);
-       }     
-    }
-}
-```
-3.	Note: The “using” keyword has more usages and meanings that will be covered later.
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/DuvZV5omiqY" frameborder="0" allowfullscreen></iframe>
-
-### Snippets 
-1.	Use a snippet to shorten this even more.
-2.	Write the following code, using the “mbox” snippet (write mbox and press Tab twice):
- 
-![Snippet](Snippet.png)
-```diff
-using System.Windows.Forms;
-namespace Northwind.Training
-{
-    Class HelloWorld
-    {
-       public void Run()
-       {
-          MessageBox.Show("Hello World", "Hello World Caption", MessageBoxButton.OK);
-+         MessageBox.Show("the message");
-+         MessageBox.Show("Test");
-
-
-       }     
-    }
-}
-```
-3.	 The full list of C# Snippets can be found in here:
-
-http://msdn.microsoft.com/en-us/library/z41h7fat.aspx
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/efWaPPyea2U" frameborder="0" allowfullscreen></iframe>
-
-## Comments
-	a. Add the following comments above the code line, using single line (//) and multi-line (/*…*/):
-```diff
-using System.Windows.Forms;
-namespace Northwind.Training
-{
-    Class HelloWorld
-    {
-       public void Run()
-       {
-          MessageBox.Show("Hello World", "Hello World Caption", MessageBoxButton.OK);
-          /* this 
-          is 
-          a 
-          multi line 
-          comment          
-          */  
-          MessageBox.Show("the message");;
-          // one line comment
-          MessageBox.Show("Test");
-       }     
-    }
-}
-```
-
- <iframe width="560" height="315" src="https://www.youtube.com/embed/OdKoPet16bA" frameborder="0" allowfullscreen></iframe>
-
-
-4.	Exercise: Program Structure
 
