@@ -1,12 +1,18 @@
 ﻿# Exercise: Data Types
-1. Create a class DataTypes.cs just like the video
+1. Create a new class called DataTypes
+2. Define a Run() method for that class
+3. Define the following variables:
+    - string carName 
+    - int carYear
+    - int carKm
+    - char carGroup (A, B or C)
+4. Display the values on a message box as below:
+
+5.  
 2. Add a new menu entry named “Data Types”.
-3. Double-click on the new entry:
-4. Define the following variables:
-    i.	string carName 
-    ii. int carYear
-    iii. int carKm
-    iv. char carGroup (A, B or C)
+3. Double-click on the new entry
+
+ 4.
     
 5. Build and test.
 
