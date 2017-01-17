@@ -1,14 +1,36 @@
 ﻿# Simple Data Types
 
-Data types are variable that are based on value type.
-    Notice the naming conventions standard – first letter of a variable is a lowercase and the first letter of every word afterwards is an uppercase.
-    The main types are - int, string, double, char and bool. Let's use them in a message as shown below.
-    Note that until used, a variable is underlined to show that it seems unnecessary.
+
+Data types are  used to define fields , variables.
+
+In C# we have various of data types but let's start with the basic ones: int, string, double, char and bool
+
+When defining a variable we first set its type and then its name
+For example: string CompanyName;
+
+string – is the type of the variable
+
+CompanyName is the variable’s name.
+
+Notice the standard naming conventions: the name of the variable starts with lower case and the first letter of every word afterwards is an uppercase.
+
+We can also initialize the variable in the same line by using the equation sign: 
+
+string CompanyName = "my name";
 
 
-How to do :
-1. So in this folder *Training*, click right again **Add/New Item**, choose Class and name it 'BasicTypes.cs'
-2. We create data types and put them in the message box as shown below
+**let's create data types and display their values in the message box:**
+
+1. Right click on the *Training* folder and select **Add/New Item** 
+2. Choose Class and name it 'BasicTypes.cs'
+3. in the code below 5 different data types are defined and initialized  
+   - string, int, bool, double and char are the data types  
+   - personName, numberOfKids, isStudent, height & gender are the variables names  
+   - personName is initialize when it is defined  
+   - The numberOfKids received it value in the next assignment line of code numberOfKids = 3
+ 
+
+
 ```diff
 namespace Northwind.Training
 {
@@ -29,8 +51,17 @@ namespace Northwind.Training
 }
 ```
 
-For this example `string` is a type, `personName` is the name of the variable and `Noam` is the value init 
-3. Now we want the variables appears in the message box
+
+4. Note:
+   - A variable which is not in used has a green underline  
+
+5. **String VS Char**
+   - A char is a single character as opposed to a string which is comprised of many characters.  
+   - String is surrounded by double quotes while char is surrounded by a single quote.  
+   
+6. In order to use the System.Windows.Form.MessageBox class we will add it to the using section 
+   and we will use the MessageBox.Show() method to display them
+
 ```diff
 + using System.Windows.Forms;
 namespace Northwind.Training
@@ -55,10 +86,16 @@ namespace Northwind.Training
 }
 
 ```
-The + operator when it uses on the string concatenate the two string into a single string.
-Every object in .net will have `ToString()` method that's transfer anything into a string.
 
-4. Add a new entry in the menu named “Basic Types” in the applicationMdi.
+6. The **+ operator** when used on strings concatenates the two string into a single string.
+7. the **ToString()** method is used to convert the value to string.
+   Every object in .net has `ToString()` method that convert itself to string.
+
+8. To call this class from the menu we will add a new entry in the ApplicationMDI menu  
+   DbClick on the menu so Visual Studio generate the code that will be executed when clicking the menu entry
+   and call this class by calling its Run() method
+
+
 
 ```csharp
 private void basicTypesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -66,7 +103,7 @@ private void basicTypesToolStripMenuItem_Click(object sender, EventArgs e)
 	new Training.BasicTypes().Run();
 }
 ```
-5.Build the application and Run 
+9 before running the application remember to build it.  
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/eel6sOTM1hY" frameborder="0" allowfullscreen></iframe>
 
