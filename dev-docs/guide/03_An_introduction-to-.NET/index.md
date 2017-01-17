@@ -69,43 +69,50 @@ private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/CNElgYn_zgA" frameborder="0" allowfullscreen></iframe>
 
 
-## Explaining hello world example
-1. C# is case sensitive
+## Explaining The Hello world example
+1. C# is case sensitive (with upper or lower case)
 2. Every execution statement ends with a `;`
 3. The code is organized in classes
 4. Classes have members (Methods, fields, properties, events etc…)
 5. Classes are organized in namespaces (like folders)
 
 Review the actual code:
-1. Namespace definition : `Northwind.Training` and `System.Windows.Forms`
-2. Class definition : `Class HelloWorld`and `MessageBox`
-3. Method definition `Run` and `Show`
+1. Namespace definition : `Northwind.Training` 
+2. Class definition : `Class HelloWorld`
+3. Method definition `Run`  
 4. Now, in C#, there's a concept calls scopes and scopes are define by curly brackets.
 * Members can only be added to class
 * Logic can only be added to method
 
 5. Explain the method structure
-6. public is an access modifier - Access modifiers are keywords used  to specify the declared accessibility of a 
-7. return type
-8. name
-9. parameters
-10. code.
+6. public is an access modifier - Access modifiers are keywords used  to specify the declared accessibility of a member or a type. It determines which code an use this class or method. There are Four access modifiers :
+  * `private` – only visible to code within this class and it's inner classes
+  * `protected` – also visible to code within class that inherit from this class.
+  * `internal` – visible to any code within my assembly (dll/exe)
+  * `public` – visible to any code.
+By default, classes are `internal` and members are `private`
+
+ 
+7. Methods can return a value to the caller, for this example the return type is `void`
+8. it names `Run`
+9. Method parameters are enclosed in parentheses and are separated by commas
+10. code
 
 Calling the message box:
-1. namespace
-2. class
-3. method.
+1. Namespace : `System.Windows.Forms`
+2. Class : `MessageBox`
+3. Method : `Show`
 4. Arguments.
 
-Go back to the menu
-1. review the way we called our code
-2. Explain that we are creating an instance of the Hello World class and then we are calling it.
-2. highlight the difference between the call on the ui using new and the call in our code not using new.
-3. This is because the show method is static - we'll talk about it more later in the code.
-4.	System.Windows.Forms part is a namespace (help to organize the code).
-5.	MessageBox is a class
-6.	Show is a method
-b. Run the application using the “Start” button  ![start button](start_button.png)
+Go back to the menu and double click on the *Hello World* Menu
+
+1. We are creating an new instance of the Hello World class and then we are calling it with the `Run()` method.
+2. highlight the difference between the call on the UI using new and the call in our code not using new.
+3. This is because the show method is static - we will talk about it more later in the code.
+4. `System.Windows.Forms` part is a namespace (help to organize the code).
+5. `MessageBox` is a class
+6. `Show` is a method
+7. Run the application using the “Start” button  ![start button](start_button.png)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/X_8GeOvDMaM" frameborder="0" allowfullscreen></iframe>
 
@@ -119,46 +126,86 @@ To see the arguments, type open parenthesis - or click the method parameter butt
 Or press **CTRL-SHIFT-SPACE** between the parentheses.
 
 
-
 Overloading allows Methods to have the same name but with different parameters.
 ![Method Overloading](Method_Overloading.png)
  
 Method can have several options based on the number or type of parameters it receives. – Check the 2rd option (string text, string caption)
 Similar to Magic Verify option that has several options.
- will display the available variation of the  Show method and the required parameter info. (Displayed in Bold)
+Will display the available variation of the Show method and the required parameter info. (Displayed in Bold), we can add caption and button 
+
+```diff
+namespace Northwind.Training
+{
+    Class HelloWorld
+    {
+       public void Run()
+       {
+-           System.Windows.Forms.MessageBox.Show("Hello World");
++           System.Windows.Forms.MessageBox.Show("Hello World", "Hello World Caption", System.Windows.Forms.MessageBoxButton.OK);
+       }     
+    }
+}
+
 
  <iframe width="560" height="315" src="https://www.youtube.com/embed/Z97ayKhfYtE" frameborder="0" allowfullscreen></iframe>
 
 ### Using Directives
+
 Using statements are added to improve on code readability, by adding a namespace in a using statement we don't have to write that namespace again in our code.
 
-
 1.	Add the following line to the beginning of the file:
-`using System.Windows.Forms;`
-
-2.	##virginie improve based on my video## Write the following code in the same method after the last message:
 ```diff
-private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs e)
++ using System.Windows.Forms;
+namespace Northwind.Training
 {
-	System.Windows.Forms.MessageBox.Show("Hello World");
-+    MessageBox.Show("Using directives make the code shorter");
+    Class HelloWorld
+    {
+       public void Run()
+       {
+           System.Windows.Forms.MessageBox.Show("Hello World", "Hello World Caption", System.Windows.Forms.MessageBoxButton.OK);
+       }     
+    }
 }
 ```
-3.	Notice that with using you can just write `MessageBox.Show`
-4.	Note: The “using” keyword has more usages and meanings that will be covered later.
+2.	So now we can remove using System.Windows.Forms from the code like :
+```diff
+using System.Windows.Forms;
+namespace Northwind.Training
+{
+    Class HelloWorld
+    {
+       public void Run()
+       {
+-           System.Windows.Forms.MessageBox.Show("Hello World", "Hello World Caption", System.Windows.Forms.MessageBoxButton.OK);
++           MessageBox.Show("Hello World", "Hello World Caption", MessageBoxButton.OK);
+       }     
+    }
+}
+```
+3.	Note: The “using” keyword has more usages and meanings that will be covered later.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DuvZV5omiqY" frameborder="0" allowfullscreen></iframe>
 
 ### Snippets 
 1.	Use a snippet to shorten this even more.
 2.	Write the following code, using the “mbox” snippet (write mbox and press Tab twice):
+ 
 ![Snippet](Snippet.png)
 ```diff
-private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs e)
+using System.Windows.Forms;
+namespace Northwind.Training
 {
-	System.Windows.Forms.MessageBox.Show("Hello World");
-     MessageBox.Show("Using directives make the code shorter");
-+    MessageBox.Show("Code snippets allow me to type less");
+    Class HelloWorld
+    {
+       public void Run()
+       {
+          MessageBox.Show("Hello World", "Hello World Caption", MessageBoxButton.OK);
++         MessageBox.Show("the message");
++         MessageBox.Show("Test");
+
+
+       }     
+    }
 }
 ```
 3.	 The full list of C# Snippets can be found in here:
@@ -169,15 +216,31 @@ http://msdn.microsoft.com/en-us/library/z41h7fat.aspx
 
 ## Comments
 	a. Add the following comments above the code line, using single line (//) and multi-line (/*…*/):
-```csharp 
-	/* The following line displays
- *  a message box
- *  to the User */
- ```
+```diff
+using System.Windows.Forms;
+namespace Northwind.Training
+{
+    Class HelloWorld
+    {
+       public void Run()
+       {
+          MessageBox.Show("Hello World", "Hello World Caption", MessageBoxButton.OK);
+          /* this 
+          is 
+          a 
+          multi line 
+          comment          
+          */  
+          MessageBox.Show("the message");;
+          // one line comment
+          MessageBox.Show("Test");
+       }     
+    }
+}
+```
 
  <iframe width="560" height="315" src="https://www.youtube.com/embed/OdKoPet16bA" frameborder="0" allowfullscreen></iframe>
 
 
 4.	Exercise: Program Structure
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/27AHai9Oygc" frameborder="0" allowfullscreen></iframe>
