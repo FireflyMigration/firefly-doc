@@ -62,7 +62,7 @@ namespace Northwind.Training
     }
 }
 ```
-5. The clas is ready to use, let's call it from the menu
+5. The class is ready to use, let's call it from the menu
     5.1  Go to Views Folder and go to ApplicationMdi.cs and double click on it
     5.2  Click on an empty area on the menu bar, type *Training* and under Training type a sub-menu *Hello World*
     5.3  Double click on it and here we will right the code to call the new class as follows
