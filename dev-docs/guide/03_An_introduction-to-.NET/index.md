@@ -73,56 +73,91 @@ private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs 
 }
 ```
 6. Build - Build menu / Build solution
-7. Run by pressing the Start button and call the program from the menu
+7. Run by pressing the Start button and call the program from the menu ![start button](start_button.png)
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/CNElgYn_zgA" frameborder="0" allowfullscreen></iframe>
 
 
 ## Explaining The Hello world example
-1. C# is case sensitive (with upper or lower case)
-2. Every execution statement ends with a `;`
-3. The code is organized in classes
-4. Classes have members (Methods, fields, properties, events etc…)
-5. Classes are organized in namespaces (like folders)
+
 
 Review the actual code:
-1. Namespace definition : `Northwind.Training` 
-2. Class definition : `Class HelloWorld`
-3. Method definition `Run`  
-4. Now, in C#, there's a concept calls scopes and scopes are define by curly brackets.
-* Members can only be added to class
-* Logic can only be added to method
 
-5. Explain the method structure
-6. public is an access modifier - Access modifiers are keywords used  to specify the declared accessibility of a member or a type. It determines which code an use this class or method. There are Four access modifiers :
-  * `private` – only visible to code within this class and it's inner classes
-  * `protected` – also visible to code within class that inherit from this class.
-  * `internal` – visible to any code within my assembly (dll/exe)
-  * `public` – visible to any code.
-By default, classes are `internal` and members are `private`
+The code is organized by Namespace, Class and Method
+Code that is actually executed can only be defined inside a Methods.
 
- 
-7. Methods can return a value to the caller, for this example the return type is `void`
-8. it names `Run`
-9. Method parameters are enclosed in parentheses and are separated by commas
-10. code
+In the HelloWorld sample we created a new class and we defined a method inside this class
+The Run method is part of the HelloWorld class
+The Namespace of the HelloWorld class is Northwind.Training
 
-Calling the message box:
-1. Namespace : `System.Windows.Forms`
-2. Class : `MessageBox`
-3. Method : `Show`
-4. Arguments.
+**Namespaces**
+Namespaces are used to organize the classes.
+They used as the address of the class inside the solution.
+The class HelloWorld is saved at Training folder under the Northwind solution.
 
-Go back to the menu and double click on the *Hello World* Menu
+**Classes** 
+With C#, code can be written only inside classes.
+Class can contains Members such – Methods, properties, fields and more
+The class HelloWorld contains a Method called Run()
+Inside the Method we called another method called Show() 
+and we sent the text to be displayed as parameter to the method.
 
-1. We are creating an new instance of the Hello World class and then we are calling it with the `Run()` method.
-2. highlight the difference between the call on the UI using new and the call in our code not using new.
-3. This is because the show method is static - we will talk about it more later in the code.
-4. `System.Windows.Forms` part is a namespace (help to organize the code).
-5. `MessageBox` is a class
-6. `Show` is a method
-7. Run the application using the “Start” button  ![start button](start_button.png)
+**Method**
+Method contains to code that is executed once the method is called.
+The Run() method executes one line of code – it calls the Show() method 
+
+**The method header definition:**
+
+*Access modifier* - 
+Access modifier is a keyword used  to specify the accessibility level of the method (or a class)
+It defined which code can see or use the method (or class)
+There are Four access modifiers :
+ * private –  visible to members within this class and inner classes
+ * protected – visible to members within this class and those which are inherits from this class 
+ * internal – visible to any code within my assembly (dll/exe)
+ * public – visible to any code.
+The Run() used in the HelloWorld has public access modifier.
+
+
+*Return value* - 
+Method can return a value to the caller
+The return value type should be define in the Method header before the Method name
+void is specify when a method doesn’t return a value
+The Run() used in the HelloWorld has no return value so we specify void.
+
+*Method name*
+You can specify any name for the method as long as it is a valid C# name
+
+*()*
+in side the parentheses we  specify the parameter the method receive
+The Run() used in the HelloWorld receives no parameters so nothing is specify inside the parentheses
+
+
+**Calling a Method**
+
+To call a method we will specify the Method “Address” name space and the method name:
+System.Windows.Forms.MessageBox.Show("Hello World");
+
+System.Windows.Forms – is the namespace
+MessageBox – is the class name
+Show – is the method name
+which receives text as parameters
+
+
+**Calling the Method from the menu**
+
+When we DbClick on the menu item Visual Studio generated a method which is called every time the menu item is being clicked
+inside this method we added the code to call the Run method of the HelloWorld class.
+
+new Training.HelloWorld().Run();
+
+*new* – a keyword to create a new instance of a class
+in this case we create a new instance of HelloWorld class which defined under the Training folder.
+and then we called the Run() method.
+
+
+
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/X_8GeOvDMaM" frameborder="0" allowfullscreen></iframe>
 

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿# Simple Data Types
 
 1. So in this folder *Training*, click right again **Add/New Item**, choose Class application template by choosing in the left pane Installed, Visual C# Items, and then choosing Class in the middle pane. Name the class BasicTypes.cs at the bottom of the Name dialog.
@@ -24,9 +23,9 @@ namespace Northwind.Training
 ```
 
 In this code we define the type `String`, the name `personName` and the value init `Noam`...
+﻿
+## Simple Data Types
 
-=======
-﻿## Simple Data Types
 1. ## Adjust to adding a class for it and then calling it from a menu##  Under the "Training" menu, add a new entry named “Basic Data Types”.
 2. Define the following variables as shown below.
 >>>>>>> origin/master
