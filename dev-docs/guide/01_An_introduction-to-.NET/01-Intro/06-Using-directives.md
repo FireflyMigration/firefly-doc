@@ -1,4 +1,5 @@
-﻿### Using Directives
+﻿
+**Using Directives** 
 
 The Using statements are added to improve the code readability.
 
@@ -10,7 +11,7 @@ Instead of typing -
 System.Windows.Forms.MessageBox.Show("Test");
 
 We can add 
-using System.Windows.Forms; at the top of the file
+`using System.Windows.Forms;` at the top of the file
 and then just to type: MessageBox.Show("Text to be Displayed");
 
 

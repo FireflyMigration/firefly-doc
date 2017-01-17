@@ -6,10 +6,10 @@ How to Do:
 
 1. Go to the northwind project, click right **Add/New Folder** and call it *Training*.  
 2. On this folder, right click again **Add/New Item**  
-    In the left panel choose  Visual C# Items,   
-	From the Middle panel choose Class for example,  
-	Name the class HelloWorld.cs at the bottom  
-	Click the Add button  
+In the left panel choose  Visual C# Items,   
+From the Middle panel choose Class for example,  
+Name the class HelloWorld.cs at the bottom  
+Click the Add button  
 3. The Using section at the top of your code is not necessary. you can remove it.  
 4. Write the below code inside the HellowWorld class as shown below  
  
@@ -25,11 +25,11 @@ namespace Northwind.Training
 	}
 }
 ```
-[](:start="5") 
+
 5. The class is ready to use, let's call it from the menu  
-&nbsp;&nbsp;&nbsp;&nbsp; Go to Views Folder and go to ApplicationMdi.cs and double click on it  
-&nbsp;&nbsp;&nbsp;&nbsp; Click on an empty area on the menu bar, type *Training* and under Training type a sub-menu *Hello World*  
-&nbsp;&nbsp;&nbsp;&nbsp; Double click on it and here we will right the code to call the new class as follows  
+Go to Views Folder and go to ApplicationMdi.cs and double click on it  
+Click on an empty area on the menu bar, type *Training* and under Training type a sub-menu *Hello World*  
+Double click on it and here we will right the code to call the new class as follows  
 ```diff
 private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs e)
 {

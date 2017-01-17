@@ -10,23 +10,23 @@ In the HelloWorld sample we created a new class and we defined a method inside t
 The Run method is part of the HelloWorld class  
 The Namespace of the HelloWorld class is Northwind.Training  
 
-### Namespaces  
+###### Namespaces  
 Namespaces are used to organize the classes.  
 They used as the address of the class inside the solution.  
 The class HelloWorld is saved at Training folder under the Northwind solution.  
 
-### Classes  
+###### Classes  
 With C#, code can be written only inside classes.  
 Class can contains Members such – Methods, properties, fields and more  
 The class HelloWorld contains a Method called Run() 
 Inside the Method we called another method called Show()  
 and we sent the text to be displayed as parameter to the method.
 
-### Method  
+###### Method  
 Method contains to code that is executed once the method is called.  
 The Run() method executes one line of code – it calls the Show() method   
 
-### The method header definition:  
+###### The method header definition:  
 
 *Access modifier* - Access modifier is a keyword used  to specify the accessibility level of the method (or a class)
 It defined which code can see or use the method (or class)  
@@ -49,7 +49,7 @@ The Run() used in the HelloWorld has no return value so we specify void.
 The Run() used in the HelloWorld receives no parameters so nothing is specify inside the parentheses  
 
 
-### Calling a Method
+###### Calling a Method
 
 To call a method we will specify the Method “Address” name space and the method name:
 ```csharp 
@@ -62,7 +62,7 @@ Show – is the method name
 which receives text as parameters
 
 
-### Calling the Method from the menu
+###### Calling the Method from the menu
 
 When we DbClick on the menu item Visual Studio generated a method which is called every time the menu item is being clicked
 inside this method we added the code to call the Run method of the HelloWorld class.

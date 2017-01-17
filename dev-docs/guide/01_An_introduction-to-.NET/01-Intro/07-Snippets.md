@@ -6,7 +6,7 @@
 
 **Snippet for MessageBox.Show():**
 
-Inside the Run() method type 'mbox' and press Tab twice
+Inside the Run() method type 'mbox' and press Tab twice  
 Automatically the full call to the method is inserter to the code and the parameter is "Test" is marked.
 You can change the text or press the Enter key to accept it.
  
