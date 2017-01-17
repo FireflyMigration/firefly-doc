@@ -1,6 +1,12 @@
 ﻿
 ## Comments
-	a. Add the following comments above the code line, using single line (//) and multi-line (/*…*/):
+Comments can be used to document lines in the code 
+
+To add a single line comment use **//** before the comment
+
+To Add Multi line comment add **/\*** before the comment and **\*/** at the end
+
+
 ```diff
 using System.Windows.Forms;
 namespace Northwind.Training

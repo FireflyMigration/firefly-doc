@@ -1,8 +1,16 @@
 ﻿
 ### Snippets 
-1.	Use a snippet to shorten this even more.
-2.	Write the following code, using the “mbox” snippet (write mbox and press Tab twice):
+
+1. Snippet is actually a shortcut to write specific code. 
+2. To use snippet we should type the shortcut and press the Tab key twice
+
+**Sinppet for MessageBox.Show():**
+
+Inside the Run() method type 'mbox' and press Tab twice
+Automatically the full call to the method is inserter to the code and the parameter is "Test" is marked.
+You can change the text or press the Enter key to accept it.
  
+
 ![Snippet](Snippet.png)
 ```diff
 using System.Windows.Forms;
@@ -21,7 +29,8 @@ namespace Northwind.Training
     }
 }
 ```
-3.	 The full list of C# Snippets can be found in here:
+
+The full list of C# Snippets can be found in here:
 
 http://msdn.microsoft.com/en-us/library/z41h7fat.aspx
 

@@ -1,18 +1,28 @@
 ﻿### Method Arguments and Overloading
-Method arguments are sent between curly brackets.
-To see the arguments, type open parenthesis - or click the method parameter button on the toolbox when the cursor is between the parenthesis:
+Method arguments are sent between brackets.
+
+To see the arguments the method receives you can:
+1. Type open parenthesis 
+2. Click the method parameter button on the toolbox when the cursor is between the parenthesis:
 
 ![Show Arguments](../Visual-Studio-Configuration/Show-Arguments.png)
 
-Or press **CTRL-SHIFT-SPACE** between the parentheses.
+3. Press **Ctrl+Shift+Space** when the cursor is between the parentheses.
 
 
-Overloading allows Methods to have the same name but with different parameters.
+**Overloading** allows Methods to have the same name but with different combination of parameters.
 ![Method Overloading](Method_Overloading.png)
  
-Method can have several options based on the number or type of parameters it receives. – Check the 2rd option (string text, string caption)
-Similar to Magic Verify option that has several options.
-Will display the available variation of the Show method and the required parameter info. (Displayed in Bold), we can add caption and button 
+Method can have several options based on the number or type of parameters it receives.
+
+Based on the parameters sent the matches method is be called.
+
+For example the Show() method of System.Window.Forms.MessageBox class can receive the text to be displayed on the message box as parameter.
+It can also receive the Text and the caption.
+The Show() method has 21 overloads meaning it has 21 variant of the method that receive different combination of parameters.
+
+
+
 
 ```diff
 namespace Northwind.Training

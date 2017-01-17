@@ -1,7 +1,7 @@
 ﻿# Exercise: Hello CSharp
 1. In the Solution Explorer, find the main project (Marked in Bold). 
 2. Add a folder called Exercises
-3. Add a class called "HelloCSharp" (don't use the # sign, it's an invalid char in a class name)
+3. Add a class called "HelloCSharp" (don't use the # sign, it's an invalid character in a class name)
 3. Add the run method 
 ```csharp
 public void Run()

@@ -1,6 +1,18 @@
 ﻿### Using Directives
 
-Using statements are added to improve on code readability, by adding a namespace in a using statement we don't have to write that namespace again in our code.
+The Using statements are added to improve the code readability.
+
+Adding the namespace as a using statement saves the developer from writing the namespace in the code before each method.
+
+For example:
+
+Instead of typing - 
+System.Windows.Forms.MessageBox.Show("Test");
+
+We can add 
+using System.Windows.Forms; at the top of the file
+and then just to type: MessageBox.Show("Text to be Displayed");
+
 
 1.	Add the following line to the beginning of the file:
 ```diff
@@ -16,7 +28,7 @@ namespace Northwind.Training
     }
 }
 ```
-2.	So now we can remove using System.Windows.Forms from the code like :
+2.	Remove the System.Windows.Forms from line which calls the Show() method :
 ```diff
 using System.Windows.Forms;
 namespace Northwind.Training
