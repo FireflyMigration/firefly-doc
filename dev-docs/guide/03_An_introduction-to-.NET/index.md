@@ -10,27 +10,27 @@ What is .NET?
 
 ## Visual Studio and C# Overview
 
-### Solution Structure 
+**Solution Structure**
 
 1.  Before open the solution in the solution explorer, make sure to run `BuildDebug.bat` to build the project and make sure that everything is ready.
 2.	Visual Studio is compound from three basic parts :
 	a. **Solution Explorer**, provides you with an organized view of your projects and their files
-    b. **Working area**, edits your code
-    c. **Tool box**, displays icons for controls and other items that you can add to Visual Studio projects
+	b. **Working area**, edits your code
+	c. **Tool box**, displays icons for controls and other items that you can add to Visual Studio projects
 4. In the solution explorer, 
-    a. *ENV* project that represent all the sources code generated
-    b. *Northwind* solution 
-    c. *Northwind.[moduleName]* that compound the migrated application.
-    d. *NorthwindBase*, contains the migrated tables under the Models folder, migrated Models under the Types folder and other objects which are shared by the whole solution.
+	a. *ENV* project that represent all the sources code generated
+	b. *Northwind* solution 
+	c. *Northwind.[moduleName]* that compound the migrated application.
+	d. *NorthwindBase*, contains the migrated tables under the Models folder, migrated Models under the Types folder and other objects which are shared by the whole solution.
 
 5. In Northwind's project we have several parts:
-     a. .ini file, this configuration file use to run the application
-     b. the Views folder, contains all the menus
-     c. ApplicationCore class, is migrated version of the main program
-     d. ApplicationPograms class, is the list of the migrated programs with their numbers, names, public names, and their location inside the solution
-     e. ApplicationEntities class, is the list of the migrated tables with their numbers, names, public names, and their location inside the solution
-     f. program.cs, is the first program that runs when you launch the application
-     
+	 a. .ini file, this configuration file use to run the application
+	 b. the Views folder, contains all the menus
+	 c. ApplicationCore class, is migrated version of the main program
+	 d. ApplicationPograms class, is the list of the migrated programs with their numbers, names, public names, and their location inside the solution
+	 e. ApplicationEntities class, is the list of the migrated tables with their numbers, names, public names, and their location inside the solution
+	 f. program.cs, is the first program that runs when you launch the application
+	 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cqMe4SoLVzY" frameborder="0" allowfullscreen></iframe>
 
@@ -43,8 +43,8 @@ In this section we will create a new class that displays text in a message box
 How to Do:
 1. Go to the northwind project, click right **Add/New Folder** and call it *Training*.
 2. On this folder, right click again **Add/New Item**, 
-   In the left panel choose  Visual C# Items, 
-   From the Middle panel choose Class for example, 
+    In the left panel choose  Visual C# Items, 
+    From the Middle panel choose Class for example, 
    Name the class HelloWorld.cs at the bottom 
    Click the Add button
 3. The Using section at the top of your code is not necessary. you can remove it.
@@ -53,19 +53,19 @@ How to Do:
 ```diff
 namespace Northwind.Training
 {
-    Class HelloWorld
-    {
+	Class HelloWorld
+	{
 +       public void Run()
 +       {
 +           System.Windows.Forms.MessageBox.Show("Hello World");
 +       }     
-    }
+	}
 }
 ```
 5. The class is ready to use, let's call it from the menu
-    5.1  Go to Views Folder and go to ApplicationMdi.cs and double click on it
-    5.2  Click on an empty area on the menu bar, type *Training* and under Training type a sub-menu *Hello World*
-    5.3  Double click on it and here we will right the code to call the new class as follows
+	5.1  Go to Views Folder and go to ApplicationMdi.cs and double click on it
+	5.2  Click on an empty area on the menu bar, type *Training* and under Training type a sub-menu *Hello World*
+	5.3  Double click on it and here we will right the code to call the new class as follows
 ```diff
 private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs e)
 {
