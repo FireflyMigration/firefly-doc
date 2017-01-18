@@ -1,76 +1,50 @@
 ﻿# Operators
 
-1. So in this folder *Training*, click right again **Add/New Item**, choose Class application template by choosing in the left pane Installed, Visual C# Items, and then choosing Class in the middle pane. Name the class NumericOperators.cs at the bottom of the Name dialog.
-2. Define the following variables as shown below 
 
-```diff
-+ using System.Windows.Forms;
-namespace Northwind.Training
-{
-    class NumericOperators
-    {
-+       public void Run()
-+       {
-+        MessageBox.Show("Numeric operators");   
-+        int i = 5;        
-+        i = i + 2;     
-+        MessageBox.Show("i="+ i);   
-+       }     
-    }
-}
-```
-3. add a new entry named “Numeric Operators” in the applicationMdi.
+An operator is a symbol that tells the compiler to perform specific mathematical or logical manipulations
 
-```diff
-private void numericOperatorsToolStripMenuItem_Click(object sender, EventArgs e)
-{
-+	new Training.NumericOperators().Run();
-}
-```
-4. Build and run the application
-5. But there's a way to write shorter
-```diff
- using System.Windows.Forms;
-namespace Northwind.Training
-{
-    class NumericOperators
-    {
-       public void Run()
-       {
-        MessageBox.Show("Numeric operators");   
-        int i = 5;        
-        i = i + 2;     
-        MessageBox.Show("i="+ i);   
-+        i +=3;
-+        MessageBox.Show("i=" + i);   
-       }     
-    }
-}
-```
-6. Build and run the application
-7. You can do with plus (`+`), with minus (`-`), or multiple (`*`)
-```diff
- using System.Windows.Forms;
-namespace Northwind.Training
-{
-    class NumericOperators
-    {
-       public void Run()
-       {
-        MessageBox.Show("Numeric operators");   
-        int i = 5;        
-        i = i + 2;     
-        MessageBox.Show("i="+ i);   
-        i +=3;
-        MessageBox.Show("i=" + i);   
-+       i *=2;
-+       i -=3;
-+       MessageBox.Show("i=" + i);   
-       }     
-    }
-}
-```
-8. Build and run the application
-9. Instead of doing `i += 1;` you can do `i++ ;`. of course if you want decrease your value instead of `i -=1; ` you can write `i--;`
-10. Exercise : Operators
+**+=**  
+used to accumulation 
+int i=5;
+
+If we want to add 6 to i we can write:  
+i = i+6;  
+Or  
+i+=6;
+
+**-=**  
+The same goes for minus  
+if we want to reduce 2 from i we can write:  
+i-=2;  
+
+
+***=**   
+We will use the *= to multiple the number  
+i\*=3
+
+**/=**  
+and this operator to divide the number  
+i/=3;
+
+**++**  
+The ++ operator is used to increase the value by 1  
+int i=5;  
+i++;  
+at this point i will be 6.
+
+**--**  
+The - operator reduces the value by 1  
+int i=5;  
+i--;  
+at this point i will be 4.
+
+
+
+More information about operators can be found at:  
+https://msdn.microsoft.com/en-us/library/6a71f45d.aspx  
+  
+    
+
+
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/L4acMJvm_fE?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe> 
