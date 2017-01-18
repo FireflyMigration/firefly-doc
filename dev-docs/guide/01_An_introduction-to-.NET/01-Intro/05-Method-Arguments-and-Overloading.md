@@ -3,7 +3,7 @@ Method arguments are sent between brackets.
 
 To see the arguments the method receives you can:  
 1. Type open parenthesis  
-2. Click the method parameter button on the toolbox when the cursor is between the parenthesis: ![Show Arguments](../Visual-Studio-Configuration/Show-Arguments.png)  
+2. Click the method parameter button on the toolbox when the cursor is between the parenthesis: ![Show Arguments](Show-Arguments.png)  
 3. Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> when the cursor is between the parentheses.
 
 

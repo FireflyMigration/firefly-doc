@@ -1,13 +1,13 @@
 ﻿
-### Snippets 
+**Snippets** 
 
 1. Snippet is actually a shortcut to write specific code. 
 2. To use snippet we should type the shortcut and press the Tab key twice
 
 **Snippet for MessageBox.Show():**
 
-Inside the Run() method type 'mbox' and press Tab twice  
-Automatically the full call to the method is inserter to the code and the parameter is "Test" is marked.
+Inside the Run() method type 'mbox' and press Tab twice   
+Automatically the full call to the method is inserter to the code and the parameter is "Test" is marked.  
 You can change the text or press the Enter key to accept it.
  
 
