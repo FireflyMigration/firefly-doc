@@ -1,5 +1,6 @@
 ﻿
-## Comments
+**Comments**
+
 Comments can be used to document lines in the code 
 
 To add a single line comment use **//** before the comment
@@ -33,4 +34,4 @@ namespace Northwind.Training
  <iframe width="560" height="315" src="https://www.youtube.com/embed/OdKoPet16bA" frameborder="0" allowfullscreen></iframe>
 
 
-4.	Exercise: Program Structure
+Exercise: [Program Structure](09-Hello-csharp-exercise.md)

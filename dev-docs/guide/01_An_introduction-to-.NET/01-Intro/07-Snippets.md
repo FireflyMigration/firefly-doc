@@ -30,8 +30,9 @@ namespace Northwind.Training
 }
 ```
 
-The full list of C# Snippets can be found in here:
+The full list of C# Snippets can be found in here:  
+[http://msdn.microsoft.com/en-us/library/z41h7fat.aspx](http://msdn.microsoft.com/en-us/library/z41h7fat.aspx)
 
-http://msdn.microsoft.com/en-us/library/z41h7fat.aspx
+---
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/efWaPPyea2U" frameborder="0" allowfullscreen></iframe>
