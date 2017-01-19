@@ -5,9 +5,9 @@
 3\. Add a class called "HelloCSharp" (don't use the # sign, it's an invalid character in a class name)  
 4\. Add the run method   
 ```csharp
-public void Run()
+public void Run() 
 {
-}
+} 
 ```
 5\. Add a call to the `System.Windows.Forms.Show` method  
 6\. In the Views folder find the ApplicationMdi form and open it the Visual Studio’s form designer.  
@@ -16,8 +16,8 @@ public void Run()
 9\. When clicking the menu, call the "HelloCSharp" class we've just created.  
 ```csharp
 new Exercises.HelloCSharp().Run();
-```
-
+```  
+ 
 10\.  Add comments to describe your code.  
 11\. Build and run.  
 12\. In the beginning of the file, add using directive to `System.Windows.Forms` namespace  
