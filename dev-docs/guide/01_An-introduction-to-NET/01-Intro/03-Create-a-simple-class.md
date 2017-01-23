@@ -2,7 +2,7 @@
 
 In this section we will create a new class that displays text in a message box
 
-How to Do:  
+How to:  
 
 1. Go to the northwind project, click right **Add/New Folder** and call it *Training*.  
 2. On this folder, right click again **Add/New Item**  

@@ -2,7 +2,8 @@
 # Operators
 
 
-An operator is a symbol that tells the compiler to perform specific mathematical or logical manipulations
+An operator is a symbol that tells the compiler to perform specific mathematical or logical manipulations  
+For example: 
 
 
 | Operators | Explanation                                                               |
