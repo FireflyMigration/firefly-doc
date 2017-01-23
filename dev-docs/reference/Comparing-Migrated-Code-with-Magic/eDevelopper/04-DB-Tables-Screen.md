@@ -19,11 +19,15 @@ Recall that in Magic you press Ctrl + D and The DB Tables screen appears as show
   //other options
 }
 ```
+---
 
 ## Table Options
 * A Table in .Net is an object of the Entity Class defined in ENV.Data.Entity.cs
 * Note that the Entity Class members include Properties used when defining indexes for tables.
+* For a full list of members of the Entity Class see: [Entity Members](http://www.fireflymigration.com/reference/html/AllMembers_T_Firefly_Box_Data_Entity.htm)
 * The following subsections discuss the equivalent of Magic Table options in the migrated code for the DB Tables (Ctrl-D) screen.
+
+---
 
 ### Access
 
@@ -39,6 +43,10 @@ readonly Model.Orders _orders = new Model.Orders()
    //other code
 };
 ```
+##### See Also :
+* [ReadOnly Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_Entity_ReadOnly.htm) 
+
+---
 
 #### Write
 
@@ -51,14 +59,24 @@ readonly Model.Orders _orders = new Model.Orders
             	AllowRowLocking = true,
                 //other code
             };
-```          
+```     
+
+##### See Also :
+* [AllowRowLocking Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_Entity_AllowRowLocking.htm) 
+
+---
+    
 ### Share
 
 Relevant only for Btrieve
 
+---
+
 ### Open
 
 Relevant only for Btrieve
+
+---
 
 ### Exp
 
@@ -71,6 +89,7 @@ protected override void OnLoad()
   Customers.EntityName = "%PATH%FileName";
 }
 ```
+---
 
 ### Cache
 
@@ -92,3 +111,7 @@ readonly Model.Orders _orders = new Model.Orders
                 //other code
             };
 ```
+
+##### See Also:
+* [Cached Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_Entity_Cached.htm)
+Note: For an article regarding optimization for Relations (linked tables) using cache, see:[Relations In Depth](http://www.fireflymigration.com/doc/doku.php/articles/relations_in_depth)

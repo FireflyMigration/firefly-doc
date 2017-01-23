@@ -27,6 +27,7 @@ The actual output or input device is determined in Magic by the Media property. 
 
 Each section below will list the relevant Methods and Properties for each Media type:
 
+---
 
 ## Graphic Printer
 To work with a graphic printer in migrated code, use the PrinterWriter class. 
@@ -46,6 +47,8 @@ _ioPrint_Order = new ENV.Printing.PrinterWriter()
     //other code
 };
 ```
+##### See Also :
+* [Name property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_Name.htm) 
 
 ### Printer
 
@@ -60,6 +63,8 @@ _ioPrint_Order = new ENV.Printing.PrinterWriter()
     //other code
 };
 ```
+##### See Also :
+* [PrinterName Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_PrinterName.htm) 
 
 ### Exp/Var
 
@@ -72,6 +77,10 @@ _ioPrint_Order = new ENV.Printing.PrinterWriter(vFileName)
     // code
 };
 ```
+
+##### See Also :
+* [FileName Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_FileName.htm) 
+
 
 ### Properties
 
@@ -88,6 +97,10 @@ _ioPrint_Order = new ENV.Printing.PrinterWriter()
 };
 ```
 
+##### See Also :
+* [PrintDialog Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_PrintDialog.htm) 
+
+
 #### Paper Size
 
 Name in Migrated Code: **PaperKind** 
@@ -100,6 +113,9 @@ _ioPrint_Order = new ENV.Printing.PrinterWriter()
     //other code
 };
 ```
+##### See Also :
+* [PaperKind Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_PaperKind.htm)  
+* [PaperKind Enum](http://msdn.microsoft.com/en-us/library/d06f4sht)  
 
 #### Page Header Form
 
@@ -114,6 +130,12 @@ _ioPrint_Order = new ENV.Printing.PrinterWriter()
 };
 ```
 
+##### See Also :
+* [PageHeader Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_PageHeader.htm)  
+
+Note: For more information regarding _layout, see:[ReportLayout Class](http://www.fireflymigration.com/reference/html/T_Firefly_Box_Printing_ReportLayout.htm)
+
+
 #### Page Footer Form
 
 Name in Migrated Code: **PageFooter** 
@@ -126,6 +148,10 @@ _ioPrint_Order = new ENV.Printing.PrinterWriter()
     //other code
 };
 ```
+
+##### See Also :
+* [PageFooter Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_PageFooter.htm)  
+Note: For more information regarding _layout, see:[ReportLayout Class](http://www.fireflymigration.com/reference/html/T_Firefly_Box_Printing_ReportLayout.htm)
 
 
 #### Copies and Copies Expression
@@ -148,6 +174,8 @@ _ioPrint_Order = new ENV.Printing.PrinterWriter()
     //other code
 };
 ```
+##### See Also :
+* [Copies Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_Copies.htm)  
 
 #### Orientation
 
@@ -161,6 +189,9 @@ _ioPrint_Order = new ENV.Printing.PrinterWriter()
     //other code
 };
 ```
+##### See Also :
+* [Landscape Property](http://fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_Landscape.htm)  
+
 
 #### Print Preview
 
@@ -174,6 +205,11 @@ _ioPrint = new ENV.Printing.PrinterWriter()
     //other code
 };
 ```
+
+##### See Also :
+* [PrintPreview Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_PrintPreview.htm)  
+
+
 
 ## Printer
 
@@ -222,6 +258,8 @@ _ioPrint_Order = new ENV.Printing.TextPrinterWriter()
     //other code
 };
 ```
+
+---
 
 ### Exp/Var
 
@@ -508,6 +546,8 @@ _ioXmlFile = new ENV.IO.XML("c:\\temp\\FileName.xml")
 };
 Streams.Add(_ioXmlFile);
 ```
+
+---
 
 ## Blob Variable:Write Access
 

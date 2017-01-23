@@ -207,6 +207,8 @@ Example with Expression:
 
 ```BindAllowExportData(()=> Exp_1());```
 
+---
+
 ## Behavior Tab
 
 A screen shot of eDeveloper's Behavior tab appears below:
@@ -214,6 +216,8 @@ A screen shot of eDeveloper's Behavior tab appears below:
 ![](behavior.jpg)
 
 The following notes explain the equivalent to these properties in the migrated code.
+
+---
 
 ### Close Task Window
 
@@ -238,6 +242,11 @@ Example with Expression:
 ```
 Note: This property works best in conjunction with CachedUIController To maintain the behavior of a window that is open for a task that is closed and the option to revisit the task.
 
+#### See Also :
+* [KeepViewVisibleAfterExit Property](http://fireflymigration/reference/html/P_Firefly_Box_UIController_KeepViewVisibleAfterExit.htm) 
+* [BindKeepViewVisibleAfterExit Method](http://fireflymigration/reference/html/M_Firefly_Box_BusinessProcess_BindKeepViewVisibleAfterExit.htm) 
+
+---
 
 ### Foreground Window
 
@@ -261,6 +270,11 @@ if(NewViewRequired)
             }
 ```
 
+#### See Also :
+* [OnLoadSendToBack Property](http://fireflymigration/reference/html//P_Firefly_Box_UI_Form_OnLoadSendToBack.htm) 
+
+---
+
 ### Refresh Task Window
 
 Name in Migrated Code: **ReloadDataAfterSavingRow** 
@@ -273,6 +287,11 @@ Example with Expression:
 
 ```BindReloadDataAfterSavingRow(()=>Exp_1());```
 
+#### See Also :
+* [ReloadDataAfterSavingRow Property and Example Code](http://fireflymigration/reference/html/P_Firefly_Box_UIController_ReloadDataAfterSavingRow.htm) 
+* [BindReloadDataAfterSavingRow Method](http://fireflymigration/reference/html/M_Firefly_Box_UIController_BindReloadDataAfterSavingRow.htm)
+---
+
 ### Cycle Record Main
 
 Name in Migrated Code: **GoToToNextRowAfterLastControl**
@@ -284,6 +303,11 @@ Example:
 Example with Expression:
 
 ```BindGoToToNextRowAfterLastControl(() =>!(Exp_1());```
+
+#### See Also :
+* [GoToToNextRowAfterLastControl Property and Example Code](http://fireflymigration/reference/html/P_Firefly_Box_UIController_GoToToNextRowAfterLastControl.htm) 
+* [BindFoToToNextRowAfterLastControl Method](http://fireflymigration/reference/html/M_Firefly_Box_UIController_BindGoToToNextRowAfterLastControl.htm)
+---
 
 ### Confirm Update
 
@@ -298,6 +322,8 @@ Example with Expression:
 ```   BindConfirmUpdate(() => !(Exp_1()); ```
 Note: Not many people know that in Magic to disable the Confirm Delete message box, you need to set the Confirm Update property to a false expression (1=0) as opposed to setting the Confirm Update to No, which will only disable the update message box. In the migrated code, the Confirm Delete message box is controlled by the ConfirmDelete Property and BindConfirmDelete Method .
 
+---
+
 ### Confirm Cancel
 
 Name in Migrated Code: **ConfirmCancel**
@@ -309,6 +335,8 @@ Example:
 Example with Expression:
 
 ```BindConfirmCancel(()=>!(Exp_1()); ```
+
+---
 
 ### Force Record Suffix
 
@@ -322,6 +350,11 @@ Example with Expression:
 
 ```BindForceSaveRow(()=>Exp_1());```
 
+#### See Also :
+* [ForceSaveRow Property and Example Code](http://fireflymigration/reference/html/P_Firefly_Box_UIController_ForceSaveRow.htm) 
+* [BindForceSaveRow Method](http://fireflymigration/reference/html/M_Firefly_Box_UIController_BindForceSaveRow.htm)
+---
+
 ### Force Record Delete
 
 Name in Migrated Code: **DeleteRowAfterLeavingIt** method
@@ -333,3 +366,8 @@ Example:
 Example with Expression:
 
 ```DeleteRowAfterLeavingItIf(()=>Exp_1());```
+
+#### See Also :
+* [DeleteRowAfterLeavingIt Method](http://fireflymigration.com/reference/html/M_Firefly_Box_UIController_DeleteRowAfterLeavingItIf.htm) 
+
+---
