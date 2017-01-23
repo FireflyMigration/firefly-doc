@@ -16,7 +16,7 @@ pre[class*="language-"] {
 	word-spacing: normal;
 	word-break: normal;
 	word-wrap: normal;
-	line-height: 1;
+	line-height: 1.42;
 
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
@@ -26,6 +26,13 @@ pre[class*="language-"] {
 	-moz-hyphens: none;
 	-ms-hyphens: none;
 	hyphens: none;
+/*ADD VLE 
+
+  white-space: pre;
+  word-wrap: normal;
+  display: block;
+  font-size: 12px;
+*/	
 }
 
 pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
@@ -212,7 +219,7 @@ pre[data-line] {
 }
 pre.line-numbers {
 	position: relative;
-	padding-left: 3.8em;
+/*	padding-left: 3.8em;*/
 	counter-reset: linenumber;
 }
 

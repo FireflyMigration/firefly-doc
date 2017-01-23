@@ -46,11 +46,11 @@
  * https://github.com/mkdocs/mkdocs/issues/233
  * https://github.com/mkdocs/mkdocs/issues/834
  */
-code {
+/*code {
     white-space: pre-wrap;
     word-wrap: break-word;
     padding: 2px 5px;
-}
+}*/
 
 /**
  * Make code blocks display as blocks and give them the appropriate
@@ -60,13 +60,13 @@ code {
  * https://github.com/mkdocs/mkdocs/issues/834
  * https://github.com/mkdocs/mkdocs/issues/233
  */
-pre code {
+/*pre code {
   white-space: pre;
   word-wrap: normal;
   display: block;
   padding: 12px;
   font-size: 12px;
-}
+}*/
 
 /*
  * Fix link colors when the link text is inline code.
@@ -90,10 +90,10 @@ a:visited code {
  *
  * https://github.com/mkdocs/mkdocs/issues/411
  */
-pre .cs, pre .c {
+/*pre .cs, pre .c {
     font-weight: inherit;
     font-style: inherit;
-}
+}*/
 
 /*
  * Fix some issues with the theme and non-highlighted code

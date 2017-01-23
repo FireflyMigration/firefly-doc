@@ -1,9 +1,12 @@
 .wy-side-nav-search-ff{
-	z-index:200;
 	background-color:white;
-	text-align:center;
+	text-align:left;
 	display:block;
 	color:#fcfcfc;
 	}
+li.toctree-l1.current-page  a{
+    background-color:white
+}
+
 
 

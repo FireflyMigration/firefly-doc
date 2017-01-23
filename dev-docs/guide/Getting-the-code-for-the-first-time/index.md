@@ -1,8 +1,5 @@
 ﻿# Getting the code for the first time
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cqMe4SoLVzY" frameborder="0" allowfullscreen></iframe>
-
-
 1.	Download from the FTP Site
 1.	Open the RAR
 1.	Run Visual Studio
@@ -16,4 +13,4 @@
 1.	Explain about the split.
 1.	Explain about how to find a program.
 
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cqMe4SoLVzY" frameborder="0" allowfullscreen></iframe>
