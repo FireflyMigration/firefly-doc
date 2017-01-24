@@ -1,7 +1,25 @@
 ﻿## The OnSavingRow
 
 1.	In the next section we will focus on the OnSavingRow method. This method, similar to the Record Suffix in magic, is called whenever the user is leaving a row that has been changed.  This makes it a good place for our input validation.
+## Preventing the user from leaving a bad row - and the flow abort exception
 
+1.	Notice that the MessageBox.Show method alone **does not prevent the user from leaving a bad row.**
+2.	Let's change it to use the Message.ShowError method, **which also prevent the user from leaving a row**, similar to the “Verify Error” in Magic. 
+```diff
+protected override void OnSavingRow()
+{
+    if (Orders.ShipName == "")
+    {
+-       //System.Windows.Forms.MessageBox.Show("Please enter a ship name");
++       Message.ShowError("Please entera ship name");
+    }
+
+}
+```
+
+Anat!!!!talk a little about the flow abort exception
+3.	More methods are available in the ENV.Message class, such as ShowWarning, ShowErrorInStatusBar and ShowWarningInStatusBar.
+4.	Exercise: Input Validation Using the Message Class 
 ## The if Statement
 
 1.	Before we start to write input validation code, let’s get to know the "if" statement in C#.
@@ -31,23 +49,7 @@ protected override void OnSavingRow()
 6.	Note that all the operators are in the student's workbooks.
 7.  Exercise: Input Validation Using if Statement
 
-## Input Validation Using the Message class (Preventing the user from leaving a bad row)
 
-1.	Notice that the MessageBox.Show method alone **does not prevent the user from leaving a bad row.**
-2.	Let's change it to use the Message.ShowError method, **which also prevent the user from leaving a row**, similar to the “Verify Error” in Magic. 
-```diff
-protected override void OnSavingRow()
-{
-    if (Orders.ShipName == "")
-    {
--       //System.Windows.Forms.MessageBox.Show("Please enter a ship name");
-+       Message.ShowError("Please entera ship name");
-    }
-
-}
-```
-3.	More methods are available in the ENV.Message class, such as ShowWarning, ShowErrorInStatusBar and ShowWarningInStatusBar.
-4.	Exercise: Input Validation Using the Message Class 
 
 ## Using User Methods (Magic Functions)
 1.	In some cases we may want to do more complex input validation. For instance, we may need to validate that an email address contains the ‘@’ sign.
