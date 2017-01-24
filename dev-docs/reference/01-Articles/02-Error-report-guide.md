@@ -1,4 +1,6 @@
-﻿# Code Cleanup
+﻿# Error Report Guide
+
+## Code Cleanup
 
 This article explains how to use the Error Report to clean the Magic application from errors and unused code, before migrating it to .NET, while keeping the ability to restore programs that have been removed if needed.  
   
@@ -9,7 +11,7 @@ The error report is an XML file which can be displayed in Excel. It includes the
 
 It is recommended to start with removing the unused programs, before dealing with any of the errors. As most of the errors are concentrated in unused programs, this will significantly reduce the number of errors.
 
-The code cleaning work is iterative, as each cycle of removing code might reveal new unused code. In order to produce a new error report after each cycle, you should upload an updated version of your magic code to our automatic migration server and execute a migration process. See Automatic Migration using FTP for more details.
+The code cleaning work is iterative, as each cycle of removing code might reveal new unused code. In order to produce a new error report after each cycle, you should upload an updated version of your magic code to our automatic migration server and execute a migration process. See [Automatic Migration using FTP](Automatic-Migration-Using-FTP.html) for more details.
 
 Notice that most of the cleaning work is optional and you can decide if and when you would like to do it, until you commit the final migration. That said, a few of the errors might prevent the .NET code compilation and need to be fixed sooner rather than later. We will inform you of such errors if exists in your code.
 
@@ -51,4 +53,3 @@ Here are some of the common error types you may find in your report and their ex
 | Parameter Mismatch:Called Task {2}parameter index {0}{1}            | The parameter type is different from the type of the value                                                                                                                                                                                                                                                   |
 | parameter to program {0}                                            | The same as the last error, some might be redundant                                                                                                                                                                                                                                                          |
 | TextPrintingStyles {0} was missing from the TextPrintingStyles file | Unless using a text printer, this error can be disregarded                                                                                                                                                                                                                                                   |
-

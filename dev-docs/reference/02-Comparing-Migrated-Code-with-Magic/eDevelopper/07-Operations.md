@@ -201,7 +201,7 @@ r.BindEnabled( ()= >Exp_1()
 ---
 For further examples of how to use Relations, see also:
 
-[UIController Find Relation and examples](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_Relations.htm)
+[UIController Find Relation and examples](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_Relations.htm)  
 [Business Process Find Relation and examples](http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_Relations.htm)
 
 ---
@@ -395,10 +395,10 @@ v_LineTotal.Value += DeltaOf(OrderDetails.UnitPrice * OrderDetails.Quantity - Or
 
 #### Und
 
-Forgot dusable Undo etc…
+Forgot disable Undo etc…
 
 **UpdateValueWithoutMarkingRowAsChanged**  
-  In magic, in an online task when updating a variable from the record prefix or an handle, that update doesn't constutite a change to the row, which means that it'll not cause the RecordSuffix to run and the row will not be updated to the database unless another more meaningfull change have happened. To better represent this behaviour, these updates in the migrated code look as following:
+  In magic, in an online task when updating a variable from the record prefix or an handle, that update doesn't constitute a change to the row, which means that it'll not cause the RecordSuffix to run and the row will not be updated to the database unless another more meaningfull change have happened. To better represent this behaviour, these updates in the migrated code look as following:
 ```csharp
 v_Total.UpdateRowWithoutMarkingRowAsChanged(a+b-c);
 ```
@@ -410,9 +410,9 @@ Example:
 ```csharp
  _layout.Customer.WriteTo(_ioPrint_Order);
  ```
-For a discussion on working with system files in .Net, see: Working with System Files
+For a discussion on working with system files in .Net
 
-For a discussion on how to print a report in .Net, see: Printing a Report
+For a discussion on how to print a report in .Net
 
 ### I/O
 
@@ -436,7 +436,7 @@ Example:
 
 ### Dlm
 
-For a discussion on working with system files in .Net, see: [Working with System Files](http://www.fireflymigration.com/doc/doku.php/articles/working_with_system_files)
+For a discussion on working with system files in .Net
 
 ---
 

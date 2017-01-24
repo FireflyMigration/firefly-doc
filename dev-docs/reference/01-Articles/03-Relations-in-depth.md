@@ -123,6 +123,8 @@ dblogfile = c:\temp\db.log
 
 For further information regarding using logfiles, see : [Using Log Files](using_log_files.html)
 
+---
+
 ## Analyzing the SQL
 
 Let's review each and every part of the above statements.
@@ -173,6 +175,7 @@ ExecuteReader Duration..: 34.0019
 ```
 As you can see, the program is fetching data from the Categories Relation table, where CategoryID is equal to 5. This is the Category id for the first row, as displayed in the grid screenshot above. This statement is followed by many more similar statements, that fetch Categories for each product row. We will demonstrate the following principle: The select statement for the Relation is executed for each row displayed on the grid and if Cache is applied (as it is in this case), rows that were already fetched are not fetched again.
 
+---
 # Using Cache
 
 ## Introduction
@@ -197,6 +200,7 @@ In the task:
             Cached = true,
         };
 ```
+---
 ## Rules for Working with Cache
 
 Even if you enable Cache, rows from a dB table will only be saved to the Cache if the following specific 3 conditions are met:
@@ -252,6 +256,7 @@ Note that if the “CacheNonUniqueResults” property is set to true, then regar
              CacheNonUniqueResults = true
         };
 ```
+--- 
 ## Applying the Cache Rules
 
 Using our acquired knowledge, let's revisit the detailed SQL log displayed before.
@@ -475,6 +480,7 @@ WHERE CategoryID = 7
 ExecuteReader Duration: 2.0001
 Of course if we were using Cache, and Category 7 existed in the Cache, we would not see the SQL statement, because it'll be fetched from the Cache.
 
+---
 # Left Outer Join
 
 Let's adjust the code to use outer join.
@@ -510,6 +516,7 @@ ExecuteNonQuery Duration...: 53.0031
 
 Looking at the above, we can see that there is initial overhead on the Relation code but this is followed by no further SQL Select statements for rows. Using Outer Join can therefore potentially lead to a significant increase in performance, specifically when working with smaller tables.
 
+---
 ## Recompute
 
 If the CategoryID is updated and a recompute has to occur in order to update the CategoryName, then a RELATION SQL statement will be executed according to the rules of FIND Relations and CACHE. For example, if the CategoryID on a row is updated to 1, then the following SQL can be seen on the output screen.
@@ -523,6 +530,7 @@ ORDER BY CategoryID, CategoryName
 ExecuteReader Duration: 3.0002
 ```
 
+---
 # Inner Join
 
 Now let's change the Relation type to Inner Join as displayed below: (note that Join, by default, implies Inner Join)

@@ -22,8 +22,8 @@ void InitializeDataView()
     OrderBy.Add(Categories.Description);
 ```
 Notes:  
-For an index specified in the Task Properties Screen, see: [Task Properties Screen - Index](http://www.fireflymigration.com/doc/doku.php/comparison_with_migrated_code/task_properties#index)  
-If the 'Unique' radiobutton is selected in Magic, this is reflected in the migrated code in the example below.  
+For an index specified in the Task Properties Screen, see: [Task Properties Screen - Index](Task-Properties.html)  
+If the 'Unique' radio button is selected in Magic, this is reflected in the migrated code in the example below.  
 Example:  
 ```csharp
        void InitializeDataView()
@@ -34,5 +34,4 @@ Example:
             OrderBy.Unique = true;
 ```
 ### See Also:  
-* [UIController OrderBy Property](http://www.fireflymigration.com/doc/doku.php/comparison_with_migrated_code/task_control)  
-* [Business Process OrderBy Property](http://www.fireflymigration.com/doc/doku.php/start?&#comparing_migrated_code_with_magic)
+* [UIController OrderBy Property](Task-Control.html)  

@@ -114,4 +114,4 @@ readonly Model.Orders _orders = new Model.Orders
 
 ##### See Also:
 * [Cached Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_Entity_Cached.htm)
-Note: For an article regarding optimization for Relations (linked tables) using cache, see:[Relations In Depth](http://www.fireflymigration.com/doc/doku.php/articles/relations_in_depth)
+Note: For an article regarding optimization for Relations (linked tables) using cache, see:[Relations In Depth](Relations-in-depth.html)
