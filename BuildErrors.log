@@ -1,0 +1,9 @@
+ERROR: url conflict: 
+OtherFile: Show-Arguments.png => C:\Users\Virginie\Source\Repos\firefly-doc-master\dev-docs\guide\01_An-introduction-to-NET\01-Intro\Show-Arguments.png
+OtherFile: Show-Arguments.png => C:\Users\Virginie\Source\Repos\firefly-doc-master\dev-docs\guide\Visual-Studio-Configuration\Show-Arguments.png'
+ERROR: url conflict: 
+OtherFile: edevadvancedpropertytab.jpg => C:\Users\Virginie\Source\Repos\firefly-doc-master\dev-docs\reference\02-Comparing-Migrated-Code-with-Magic\eDevelopper\edevadvancedpropertytab.jpg
+OtherFile: edevadvancedpropertytab.jpg => C:\Users\Virginie\Source\Repos\firefly-doc-master\dev-docs\reference\02-Comparing-Migrated-Code-with-Magic\Unipaas\edevadvancedpropertytab.jpg'
+ERROR: url conflict: 
+OtherFile: edevenhancedpropertytab.jpg => C:\Users\Virginie\Source\Repos\firefly-doc-master\dev-docs\reference\02-Comparing-Migrated-Code-with-Magic\eDevelopper\edevenhancedpropertytab.jpg
+OtherFile: edevenhancedpropertytab.jpg => C:\Users\Virginie\Source\Repos\firefly-doc-master\dev-docs\reference\02-Comparing-Migrated-Code-with-Magic\Unipaas\edevenhancedpropertytab.jpg'
