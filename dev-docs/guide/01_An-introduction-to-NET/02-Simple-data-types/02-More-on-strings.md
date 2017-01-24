@@ -2,6 +2,7 @@
 
 **Special characters in string**  
 
+Special characters are not displayed as is.  
 To display special characters in string add back slash sign before the characters  
 For example:
 
@@ -25,12 +26,11 @@ namespace Northwind.Training
 
 
 
-- To display the backslash character double it: instead of \ use \\
-- to display a string as is use the @ sign before the string
-
+To display the backslash character double it: instead of \ use \\  
 ```MessageBox.Show("Windows Path: c:\\windows");```
 
-Or Alternatively:
+Or Alternatively: to display a string as is use the @ sign before the string
+
 
 ```MessageBox.Show(@"Windows Path: c:\windows using the @ sign to use quites just say ""double quotes"" ");```
 

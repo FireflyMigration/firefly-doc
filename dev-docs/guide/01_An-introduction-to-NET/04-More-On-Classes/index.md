@@ -5,7 +5,7 @@ The C# code is written inside classes.
 Class is a **collection of operations and Data**.  
 
 The data and the operations are defined between the curly brackets of the class.  
-The curly brackets defined where it starts and where it ends – this is the Class scope.  
+The curly brackets defined where the class starts and where it ends – this is the Class scope.  
 Members defined inside a class are known only in that class.  
 
 The same goes for Method - Variables defined inside a method are only known inside this method.
@@ -16,7 +16,7 @@ Below you can see the code of 2 different classes:
 1. Class called ClassesAndInstances
 2. Class called Animal 
 
-
+**ClassesAndInstances**
 ```diff
 + using System.Windows.Forms;
 namespace Northwind.Training
@@ -31,6 +31,7 @@ namespace Northwind.Training
 ```
 
 
+**Animal**  
 ```diff
 namespace Northwind.Training
 {
@@ -59,11 +60,13 @@ meaning - the ClassesAndInstances class has a member from Animal class.
 To use this member in the ClassesAndInstances class we need to create a new instance of it:  
 Animal a = new Animal();  
 
+**new** keyword  
 By using the **new** keyword a new instance of the class is created  
-This instance is represented by the variable a  
+By using the new keyword a new instance of the object is created in the memory.
+In our example this instance is represented by the variable a  
  
-Since a is an Animal it has a member called Name (as defined in the Animal class).  
-To set a value to the Name of a we use the className.MemberName, and with this sample:  
+Since 'a' is an Animal it has a member called Name (as defined in the Animal class).  
+To set a value to the Name of 'a' we use the className.MemberName, and with this sample:  
 a.Name = "Rexi"
 
 
@@ -97,16 +100,8 @@ Note: to access a member of a class (properties, variables, methods) we use the 
 
 
 
-**new** keyword  
-By using the new keyword a new instance of the object is created in the memory.
 
-
-
-
-
-
-
-Back to the Animal class:
+Back to the Animal class:  
 A new member is added to that animal class: AnimalType
 
 
@@ -125,8 +120,8 @@ namespace Northwind.Training
 ```
 
 
-In the ClassesAndInstances we set a (which is an instance of Animal) to be have AnimalTypa - Dog  
-and b  (which is also an instance of Animal) to have AnimalTypa - Cat.  
+In the ClassesAndInstances we set 'a' (which is an instance of Animal) to be have AnimalTypa = Dog  
+and 'b'  (which is also an instance of Animal) to have AnimalTypa = Cat.  
 The message boxes displays the type and the name of the objects a & b
 
 
@@ -154,10 +149,11 @@ namespace Northwind.Training
 ```
 
 
-Instead of using the message box to display the Name and the Type for a and for b in the in the  
-ClassesAndInstances, we can add a method in the Animal class to do that and call this method. 
+Instead of using the message box to display the Name and the Type for 'a' and for 'b' in the  
+ClassesAndInstances, we can add a method in the Animal class itself to do that and call this method. 
 
-The method DescribeYourSelf() is added to the Animal class and it display the name and the type of the Animal object.   
+The method DescribeYourSelf() is added to the Animal class  
+The method displays the name and the type of the Animal object who used it.
 `this` is a reference to the current instance of the object (Animal class).  
  The code looks like that:  
 
@@ -181,8 +177,8 @@ namespace Northwind.Training
 ```
 
 
-This method DescribeYourSelf() belong to the class so every object representing this class can use it.  
-So now, in the ClassesAndInstances, instead of using the message box a object and b object can call the method to display the information.  
+The method DescribeYourSelf() belong to the Animal class so every object representing this class can use it.  
+Now, in the ClassesAndInstances, instead of using the message box, 'a' and 'b' objects can call the method DescribeYourSelf() method to display the information.  
 
 
 
@@ -209,6 +205,7 @@ namespace Northwind.Training
 }
 ```
 
+To summarize:  
 We Created a class representing an Animal  
 It has 3 members:
 2 fields - Name and Type and a Method that displays the name and the type of the animal  
