@@ -68,6 +68,9 @@ Assume that the ShipName field is not allowed to contain the ‘@’ sign, let�
 
 6.  Exercise: Using User Methods
 
+##Add a remark that if you need to use the UserMethods (u) in classes that don't have u - see XXX article (and video in that article) where we explain how to use the UserMethods in non migrated code 
+
+
 
 ## RowFound validation
 
