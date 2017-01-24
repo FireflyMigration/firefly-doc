@@ -8,7 +8,7 @@
 ```diff
 protected override void OnSavingRow()
 {
-    if (Orders.ShipName == "")
+    if (Orders.ShipName == "") ANAT - MATCh TO YEAR AS I DID IN THE VIDEO
     {
 -       //System.Windows.Forms.MessageBox.Show("Please enter a ship name");
 +       Message.ShowError("Please entera ship name");
@@ -30,7 +30,7 @@ Anat!!!!talk a little about the flow abort exception
 protected override void OnSavingRow()
         {
 -           System.Windows.Forms.MessageBox.Show("The saving row event occurs only if the record has changed");
-+           if (Orders.ShipName == "")
++           if (Orders.ShipName == "")   MATCh TO YEAR AS I DID IN THE VIDEO
 +           {
 +               System.Windows.Forms.MessageBox.Show("Please enter a ship name");
 +           }
