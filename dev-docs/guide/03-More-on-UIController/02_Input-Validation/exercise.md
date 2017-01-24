@@ -19,11 +19,14 @@
 3.	Add an error message if the "UnitsOnOrder" is between 50 and 100.
 4.	Build and test. 
 
-### Using User Methods
+### Input Validation Using User Methods
 1.	In "ShowProducts", add an error message if the "ProductName" has less than 3 characters (using the u.Len method). Use Trim where needed.
+2. Build and test
 2.	Add an error message in status bar if the "ProductName" contains one of the following characters: %, @.
+2. build and test
 3.	Add a warning in status bar if the "ProductName" starts with "T" (using the u.Left method).
 4.	Build and test.
+7.  Use the Debugger (Shift F12) to test different expressions in the watch window
 
 ### Exercise: RowFound Property
 1.	Using the RowFound property, In "ShowProducts", add an error message if the "CategoryID" is not found
