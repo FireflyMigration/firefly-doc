@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>More on Classes</title>
+    <title>Using IssueTracker</title>
     
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
@@ -62,7 +62,7 @@
                         </li>
                         <li class="toctree-l1">
                             <ul class="subnav">
-                                <li  class="toctree-l1 current-page"><a href="More-On-Classes.html">More On Classes</a></li>
+                                <li  class="toctree-l1"><a href="More-On-Classes.html">More On Classes</a></li>
                                 <li  class="toctree-l1"><a href="Constructor-Static_ReadOnly.html">Constructor Static_ReadOnly</a></li>
                             </ul>
                         </li>
@@ -94,7 +94,7 @@
                         <li  class="toctree-l1"><a href="Relations-in-depth.html">Relations in depth</a></li>
                         <li  class="toctree-l1"><a href="shoulddeterminenameaccordingtocallstack.html">shoulddeterminenameaccordingtocallstack</a></li>
                         <li  class="toctree-l1"><a href="Understanding-Error-Message-Details.html">Understanding Error Message Details</a></li>
-                        <li  class="toctree-l1"><a href="Using-issue-tracker.html">Using issue tracker</a></li>
+                        <li  class="toctree-l1 current-page"><a href="Using-issue-tracker.html">Using issue tracker</a></li>
                         <li  class="toctree-l1"><a href="Using-Log-Files.html">Using Log Files</a></li>
                         <li  class="toctree-l1"><a href="View-SQL-Output.html">View SQL Output</a></li>
                     </ul>
@@ -145,180 +145,65 @@
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main">
-                        <a href="Operators-Exercise.html"class="btn btn-neutral float-left">Previous</a> <a href="Constructor-Static_ReadOnly.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="more-on-classes">More on Classes</h1>
-<p>In this chapter, we will discuss more about Classes and instances.</p>
-<p>The C# code is written inside classes.<br />
-Class is a <strong>collection of operations and Data</strong>.</p>
-<p>The data and the operations are defined between the curly brackets of the class.<br />
-The curly brackets defined where the class starts and where it ends – this is the Class scope.<br />
-Members defined inside a class are known only in that class.</p>
-<p>The same goes for Method - Variables defined inside a method are only known inside this method.</p>
-<p>Below you can see the code of 2 different classes:</p>
+                        <a href="Understanding-Error-Message-Details.html"class="btn btn-neutral float-left">Previous</a> <a href="Using-Log-Files.html"class="btn btn-neutral float-right">Next</a><br /><br />
+                        <div class="section"><h1 id="using-issuetracker">Using IssueTracker</h1>
+<p>This article explains how to report issues to Firefly using Firefly's IssueTracker website. The IssueTracker is used to report any issue that was found in the migrated application and that cannot be reproduced in the magic version of the application.</p>
+<h2 id="login-to-issuetracker">Login to IssueTracker</h2>
+<p>Login to <a href="http://www.fireflybox.com/issuetracker/">IssueTracker</a> website, using the account details provided by Firefly.</p>
+<p><img src="issuetrackerlogin.png" alt="" /></p>
+<h2 id="the-main-screen">The Main Screen</h2>
+<p>After logging in successfully, the main screen will be displayed with the following tabs:</p>
+<ul>
+<li><strong>Issues that are waiting for me</strong> - Issues that are waiting for your response.</li>
+<li><strong>Delivered</strong> - Fixed issues that are waiting to be tested and closed by you.</li>
+<li><strong>Open Issues</strong> - All the open issues that are currently in progress at Firefly.</li>
+<li><strong>All Issues</strong> - A complete list of all the issues, including open and closed issues.</li>
+</ul>
+<p>Each list can be easily filtered or sorted, using the headers and textboxes at the beginning of the table.</p>
+<p><img src="issuetrackermainscreen.png" alt="" /></p>
+<h2 id="opening-a-new-issue">Opening a New Issue</h2>
+<p>Once an issue was found in the migrated code, please make sure that the issue does not exist in the magic version.</p>
+<p>Clicking on the “Open New Issue” button will show the “Open Issue” screen. In this screen, you can provide information about the issue, by filling in the following fields:</p>
 <ol>
-<li>Class called ClassesAndInstances</li>
-<li>Class called Animal</li>
+<li>Select the application the issue is related to. (For users who have more than one application).</li>
+<li>Select the Module where the issue was found. (For an application that has modules information).</li>
+<li>Select the Environment the issue was reproduced in. (For an application that has more than one environment).</li>
+<li>Add a description</li>
+<li>Explain how to reproduce the issue, using short and clear instructions, like “Go to this menu”, “click that button” etc. Please include all the steps necessary to replicate the issue and all the data that was entered or selected. Also, make sure that the issue can be replicated on the test environment that was provided to Firefly.</li>
+<li>Enter the number of the version that the issue was found in. This number is shown in the application status bar.</li>
+<li>Select the severity of the issue, according to the following guidelines:
+<ul>
+<li><strong>Critical</strong> - Describe Issues that completely prevent you from continue testing, or crucial issues in production.</li>
+<li><strong>High</strong> - Describers a crash or data compromising issue that has a workaround.</li>
+<li><strong>Medium</strong> - The migrated application behaves different from the original version.</li>
+<li><strong>Low</strong> - Describes minor ui issues.</li>
+</ul>
+</li>
+<li>The Error Details field is used for providing the error details in case of a crash or for providing logs in case of database related issues or other helpful log information. In any other case press CTRL+F12 in the migrated application to get the callstack of the current location. This info should be copied to the Error Details field.</li>
+<li>Additional Customer Info - A free text field that you can use for your own information</li>
+<li>Files - Used for uploading screenshots (Preferred) or videos that emphasizes the issue.</li>
+<li>Click on the save button.</li>
 </ol>
-<p><strong>ClassesAndInstances</strong></p>
-<pre><code class="language-diff">+ using System.Windows.Forms;
-namespace Northwind.Training
-{
-    class ClassesAndInstances
-    {
-+       public void Run()
-+       {
-+       }     
-    }
-}
-</code></pre>
-<p><strong>Animal</strong></p>
-<pre><code class="language-diff">namespace Northwind.Training
-{
-    class Animal
-    {
-        public string Name;
-
-+       public void Run()
-+       {
-+           
-+       }     
-    }
-}
-</code></pre>
-<p>The Animal class has a member defined called Name.<br />
-This member is:<br />
-<strong>public</strong> -  so it is accessible from all our code<br />
-Its <strong>type</strong> is string
-and its name is Name</p>
-<p>In the ClassesAndInstances class we can define an instance of the Animal class.<br />
-meaning - the ClassesAndInstances class has a member from Animal class.</p>
-<p>To use this member in the ClassesAndInstances class we need to create a new instance of it:<br />
-Animal a = new Animal();</p>
-<p><strong>new</strong> keyword<br />
-By using the <strong>new</strong> keyword a new instance of the class is created<br />
-By using the new keyword a new instance of the object is created in the memory.
-In our example this instance is represented by the variable a</p>
-<p>Since 'a' is an Animal it has a member called Name (as defined in the Animal class).<br />
-To set a value to the Name of 'a' we use the className.MemberName, and with this sample:<br />
-a.Name = &quot;Rexi&quot;</p>
-<pre><code class="language-diff">using System.Windows.Forms;
-namespace Northwind.Training
-{
-    class ClassesAndInstances
-    {
-       public void Run()
-       {
-+            Animal a = new Animal();
-+            Animal b = new Animal();
-+            a.Name = &quot;Rex&quot;;
-+            b.Name = &quot;Kitty&quot;;
-+            MessageBox.Show(a.Name); 
-+            MessageBox.Show(b.Name); 
-       }     
-    }
-}
-</code></pre>
-<p>The code above defines two instances of Animal class a &amp; b.<br />
-The Name of 'a' is &quot;Rexi&quot; the name of 'b' is &quot;Kitty&quot;.<br />
-Then we use the MessageBox.Show() method to display the name of each of the Animals.</p>
-<p>Note: to access a member of a class (properties, variables, methods) we use the class instance.member</p>
-<p>Back to the Animal class:<br />
-A new member is added to that animal class: AnimalType</p>
-<pre><code class="language-diff">namespace Northwind.Training
-{
-   class Animal
-   {
-      public void Run()
-      {
-          public string Name;
-+          public string AnimalType;
-      }     
-   }
-}
-</code></pre>
-<p>In the ClassesAndInstances we set 'a' (which is an instance of Animal) to be have AnimalTypa = Dog<br />
-and 'b'  (which is also an instance of Animal) to have AnimalTypa = Cat.<br />
-The message boxes displays the type and the name of the objects a &amp; b</p>
-<pre><code class="language-diff">using System.Windows.Forms;
-namespace Northwind.Training
-{
-    class ClassesAndInstances
-    {
-       public void Run()
-       {
-            Animal a = new Animal();
-            Animal b = new Animal();
-            a.Name = &quot;Rex&quot;;
-+           b.AnimalType = &quot;Dog&quot; ;
-            b.Name = &quot;Kitty&quot;;
-+           b.AnimalType = &quot;Cat&quot; ;
--           MessageBox.Show(a.Name); 
-+           MessageBox.Show(a.Name+&quot; is a &quot;+a.AnimalType); 
--            MessageBox.Show(b.Name); 
-+           MessageBox.Show(b.Name+&quot; is a &quot;+b.AnimalType); 
-       }     
-    }
-}
-</code></pre>
-<p>Instead of using the message box to display the Name and the Type for 'a' and for 'b' in the<br />
-ClassesAndInstances, we can add a method in the Animal class itself to do that and call this method.</p>
-<p>The method DescribeYourSelf() is added to the Animal class<br />
-The method displays the name and the type of the Animal object who used it.
-<code>this</code> is a reference to the current instance of the object (Animal class).<br />
-The code looks like that:</p>
-<pre><code class="language-diff">+ using System.Windows.Forms;
-namespace Northwind.Training
-{
-   class Animal
-   {
-      public void Run()
-      {
-          public string Name;
-          public string AnimalType;
-+          public void DescribeYourSelf()
-+          {
-+               MessageBox.Show(this.Name+&quot; is a &quot;+this.AnimalType); 
-+          }  
-      }     
-   }
-}
-</code></pre>
-<p>The method DescribeYourSelf() belong to the Animal class so every object representing this class can use it.<br />
-Now, in the ClassesAndInstances, instead of using the message box, 'a' and 'b' objects can call the method DescribeYourSelf() method to display the information.</p>
-<pre><code class="language-diff">using System.Windows.Forms;
-namespace Northwind.Training
-{
-    class ClassesAndInstances
-    {
-       public void Run() 
-       {
-            Animal a = new Animal();
-            Animal b = new Animal();
-            a.Name = &quot;Rex&quot;;
-            b.AnimalType = &quot;Dog&quot; ;
-            b.Name = &quot;Kitty&quot;;
-            b.AnimalType = &quot;Cat&quot; ;
--           MessageBox.Show(a.Name+&quot; is a &quot;+a.AnimalType); 
-+           a.DescribeYourSelf();
--           MessageBox.Show(b.Name+&quot; is a &quot;+b.AnimalType); 
-+           b.DescribeYourSelf();
-       }     
-    }
-}
-</code></pre>
-<p>To summarize:<br />
-We Created a class representing an Animal<br />
-It has 3 members:
-2 fields - Name and Type and a Method that displays the name and the type of the animal</p>
-<p>In the second class which called ClassesAndInstances we created 2 objects of the Animal Class a &amp; b.<br />
-a is set with Name = Rexi and AnimalType = Dog
-b is set with Name = Kitty and AnimalType = Cat
-Both object use their DescribeYourSelf() method (the Animal class method) to display the information.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/v6wbQgPYwU0?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
+<p><img src="issuetrackerissue.png" alt="" /></p>
+<h2 id="updating-an-issue">Updating an Issue</h2>
+<p>If the issue report is missing needed information for replicating it, the issue will be on the “Issues that are waiting for me” list, with and appropriate message in the “Status” field. You can update the issue and add the needed information by clicking on the issue line in the list, which will open the following screen:</p>
+<p><img src="issuetrackeriupdateissue.png" alt="" /></p>
+<p>In this screen you can add the information in the “Status Update Info” field and then to change the status of the issue to “Return to Firefly”.</p>
+<p>Here are the possible statuses for issues that are in this list:</p>
+<ul>
+<li><strong>Further Details Required</strong> - The replication procedure is missing steps or other information needed for replicating the issue.</li>
+<li><strong>Couldn't Reproduce</strong> - The Issue could not reproduced in Firefly's environment and the application behaves as the original application.</li>
+<li><strong>Reproduced in Magic</strong> - The issue exists in the magic version as well.</li>
+<li><strong>To be Fixed by Customer</strong> - The issue is a result of something that need to be fixed in the original application.</li>
+<li><strong>Will not be Fixed</strong> - This is an intended difference (usually an improvement behavior or look and feel of the .net version).</li>
+<li><strong>Checked</strong> - The issue was fixed and tested by Firefly and is pending for delivery.</li>
+</ul>
+<h2 id="closing-an-issue">Closing an Issue</h2>
+<p>Once an issue has been fixed and ready to be tested by you, it will be marked with the “Delivered” status and will be listed under the “Delivered” tab. A fixed issue will have the number of the version that it was fixed in updated in the issue ticket. Once the issue is tested and resolved, you should close it by changing its status to “Closed Issue”.</p>
 </div>
                         
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                            <a href="Operators-Exercise.html"class="btn btn-neutral float-left">Previous</a> <a href="Constructor-Static_ReadOnly.html"class="btn btn-neutral float-right">Next</a>
+                            <a href="Understanding-Error-Message-Details.html"class="btn btn-neutral float-left">Previous</a> <a href="Using-Log-Files.html"class="btn btn-neutral float-right">Next</a>
                         </div>
                         
                         

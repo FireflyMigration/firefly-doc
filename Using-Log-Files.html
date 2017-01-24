@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>More on Classes</title>
+    <title>Using Log Files</title>
     
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
@@ -62,7 +62,7 @@
                         </li>
                         <li class="toctree-l1">
                             <ul class="subnav">
-                                <li  class="toctree-l1 current-page"><a href="More-On-Classes.html">More On Classes</a></li>
+                                <li  class="toctree-l1"><a href="More-On-Classes.html">More On Classes</a></li>
                                 <li  class="toctree-l1"><a href="Constructor-Static_ReadOnly.html">Constructor Static_ReadOnly</a></li>
                             </ul>
                         </li>
@@ -95,7 +95,7 @@
                         <li  class="toctree-l1"><a href="shoulddeterminenameaccordingtocallstack.html">shoulddeterminenameaccordingtocallstack</a></li>
                         <li  class="toctree-l1"><a href="Understanding-Error-Message-Details.html">Understanding Error Message Details</a></li>
                         <li  class="toctree-l1"><a href="Using-issue-tracker.html">Using issue tracker</a></li>
-                        <li  class="toctree-l1"><a href="Using-Log-Files.html">Using Log Files</a></li>
+                        <li  class="toctree-l1 current-page"><a href="Using-Log-Files.html">Using Log Files</a></li>
                         <li  class="toctree-l1"><a href="View-SQL-Output.html">View SQL Output</a></li>
                     </ul>
                 </li>
@@ -145,180 +145,47 @@
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main">
-                        <a href="Operators-Exercise.html"class="btn btn-neutral float-left">Previous</a> <a href="Constructor-Static_ReadOnly.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="more-on-classes">More on Classes</h1>
-<p>In this chapter, we will discuss more about Classes and instances.</p>
-<p>The C# code is written inside classes.<br />
-Class is a <strong>collection of operations and Data</strong>.</p>
-<p>The data and the operations are defined between the curly brackets of the class.<br />
-The curly brackets defined where the class starts and where it ends – this is the Class scope.<br />
-Members defined inside a class are known only in that class.</p>
-<p>The same goes for Method - Variables defined inside a method are only known inside this method.</p>
-<p>Below you can see the code of 2 different classes:</p>
-<ol>
-<li>Class called ClassesAndInstances</li>
-<li>Class called Animal</li>
-</ol>
-<p><strong>ClassesAndInstances</strong></p>
-<pre><code class="language-diff">+ using System.Windows.Forms;
-namespace Northwind.Training
-{
-    class ClassesAndInstances
-    {
-+       public void Run()
-+       {
-+       }     
-    }
-}
+                        <a href="Using-issue-tracker.html"class="btn btn-neutral float-left">Previous</a> <a href="View-SQL-Output.html"class="btn btn-neutral float-right">Next</a><br /><br />
+                        <div class="section"><h1 id="using-log-files">Using Log Files</h1>
+<h2 id="introduction">Introduction</h2>
+<p>When users report errors, log files can be useful if not essential in different scenarios of the debug process, adding valuable information for debug analysis. This information may refer to data related issues or a run time crash. The information may also serve as a record of operations executed thus far.</p>
+<p>Windows Form applications use two log files that provide information; the Db log file and the General Error log file. Web applications can use these two log files as a well as the Request log file. This article explains the configuration settings required for using log files. To configure log file settings, use the appropriate INI file or alternatively, use command line arguments. Details of both are discussed below.</p>
+<h2 id="ini-configuration-settings">INI Configuration Settings</h2>
+<p>The following lines can be put in the INI configuration file, in the ENVIRONMENT section:</p>
+<ul>
+<li><strong>GENERALERRORLOG</strong> = <em>filename</em>* - This setting will output all errors that occurs during the application execution to a text file. (Example: GENERALERRORLOG = c:\myDir\error.log)</li>
+<li><strong>DBLOGFILE</strong> = <em>filename</em> - This setting will output all the SQL statements to a text file. (Example: DBLOGFILE = c:\myDir\DB.log)</li>
+<li><strong>DBDEBUG</strong> = Y - This setting will output all the SQL statements to the Output window in Visual Studio.</li>
+<li><strong>DBNOPARAMS</strong> = Y - This will suppress the use of parameters which will make the SQL statement easier to read.</li>
+</ul>
+<p>Note: The above settings should only be used for debug purpose and not be used in production environments.</p>
+<h2 id="command-line-arguments">Command Line Arguments</h2>
+<p>As with any setting from the INI file, the log files settings can be set using a command line arguments.</p>
+<p>In case of using a shortcut to execute the application, the command line arguments should be added at the end of the Target box as displayed below.</p>
+<p>Notice that in this case, a double slash is needed in the file path, as opposed to putting the settin in the INI file. This can be avoided by using a star (*) before the file path, for example: /DBLOGFILE=*c:\logs\db.log</p>
+<p><img src="shortcut-properties.png" alt="" /></p>
+<p>In the Target shortcut, you may add the following arguments at the end of the command:</p>
+<p>/GENERALERRORLOG = filename /DBLOGFILE = filename /DBDEBUG = Y /DBNOPARAMS = Y</p>
+<h1 id="log-files-usage">Log Files Usage</h1>
+<h2 id="db-log-file">Db Log File</h2>
+<p>The DB Log file contains all the data regarding SQL transactions with the Database. This data is identical to the SQL that is displayed in the Output Screen, when running an application. For full details regarding the syntax and layout of the SQL statements, see: <a href="Relations-in-depth">Relations in Depth</a> and <a href="view_sql_output.html">Viewing SQL Output</a>.</p>
+<h2 id="error-log-file">Error Log File</h2>
+<p>The Error log file contains all the data related to run time Error Messages. For more information regarding the syntax,layout and different sections that may appear in Error Messages, see: <a href="Understanding-Error-Message-Details.html">Viewing Error Messages</a>.</p>
+<h2 id="request-log-file">Request Log File</h2>
+<p>For programs that operate through an Internet browser, use the REQUESTLOGFILE setting to record the names of programs executed as well as other statistics about their execution. The Request Log File is a file used by web applications, which records all the programs that are run using a browser. The following shows an example of the request.log containing details for three programs that have so far been executed.</p>
+<pre><code>Request 1(ShowOrders) - Begin Process, class Northwind.WebTraining.ShowOrders
+Request 1(ShowOrders) - Success, Duration.: 97.0056
+Request 2(DisplayOrder) - Begin Process, class Northwind.WebTraining.DisplayOrder
+Request 2(DisplayOrder) - Success, Duration: 46.0027
+Request 3(UpdateOrder) - Begin Process, class Northwind.WebTraining.UpdateOrder
+Request 3(UpdateOrder) - Success, Duration: 43.0024
 </code></pre>
-<p><strong>Animal</strong></p>
-<pre><code class="language-diff">namespace Northwind.Training
-{
-    class Animal
-    {
-        public string Name;
-
-+       public void Run()
-+       {
-+           
-+       }     
-    }
-}
-</code></pre>
-<p>The Animal class has a member defined called Name.<br />
-This member is:<br />
-<strong>public</strong> -  so it is accessible from all our code<br />
-Its <strong>type</strong> is string
-and its name is Name</p>
-<p>In the ClassesAndInstances class we can define an instance of the Animal class.<br />
-meaning - the ClassesAndInstances class has a member from Animal class.</p>
-<p>To use this member in the ClassesAndInstances class we need to create a new instance of it:<br />
-Animal a = new Animal();</p>
-<p><strong>new</strong> keyword<br />
-By using the <strong>new</strong> keyword a new instance of the class is created<br />
-By using the new keyword a new instance of the object is created in the memory.
-In our example this instance is represented by the variable a</p>
-<p>Since 'a' is an Animal it has a member called Name (as defined in the Animal class).<br />
-To set a value to the Name of 'a' we use the className.MemberName, and with this sample:<br />
-a.Name = &quot;Rexi&quot;</p>
-<pre><code class="language-diff">using System.Windows.Forms;
-namespace Northwind.Training
-{
-    class ClassesAndInstances
-    {
-       public void Run()
-       {
-+            Animal a = new Animal();
-+            Animal b = new Animal();
-+            a.Name = &quot;Rex&quot;;
-+            b.Name = &quot;Kitty&quot;;
-+            MessageBox.Show(a.Name); 
-+            MessageBox.Show(b.Name); 
-       }     
-    }
-}
-</code></pre>
-<p>The code above defines two instances of Animal class a &amp; b.<br />
-The Name of 'a' is &quot;Rexi&quot; the name of 'b' is &quot;Kitty&quot;.<br />
-Then we use the MessageBox.Show() method to display the name of each of the Animals.</p>
-<p>Note: to access a member of a class (properties, variables, methods) we use the class instance.member</p>
-<p>Back to the Animal class:<br />
-A new member is added to that animal class: AnimalType</p>
-<pre><code class="language-diff">namespace Northwind.Training
-{
-   class Animal
-   {
-      public void Run()
-      {
-          public string Name;
-+          public string AnimalType;
-      }     
-   }
-}
-</code></pre>
-<p>In the ClassesAndInstances we set 'a' (which is an instance of Animal) to be have AnimalTypa = Dog<br />
-and 'b'  (which is also an instance of Animal) to have AnimalTypa = Cat.<br />
-The message boxes displays the type and the name of the objects a &amp; b</p>
-<pre><code class="language-diff">using System.Windows.Forms;
-namespace Northwind.Training
-{
-    class ClassesAndInstances
-    {
-       public void Run()
-       {
-            Animal a = new Animal();
-            Animal b = new Animal();
-            a.Name = &quot;Rex&quot;;
-+           b.AnimalType = &quot;Dog&quot; ;
-            b.Name = &quot;Kitty&quot;;
-+           b.AnimalType = &quot;Cat&quot; ;
--           MessageBox.Show(a.Name); 
-+           MessageBox.Show(a.Name+&quot; is a &quot;+a.AnimalType); 
--            MessageBox.Show(b.Name); 
-+           MessageBox.Show(b.Name+&quot; is a &quot;+b.AnimalType); 
-       }     
-    }
-}
-</code></pre>
-<p>Instead of using the message box to display the Name and the Type for 'a' and for 'b' in the<br />
-ClassesAndInstances, we can add a method in the Animal class itself to do that and call this method.</p>
-<p>The method DescribeYourSelf() is added to the Animal class<br />
-The method displays the name and the type of the Animal object who used it.
-<code>this</code> is a reference to the current instance of the object (Animal class).<br />
-The code looks like that:</p>
-<pre><code class="language-diff">+ using System.Windows.Forms;
-namespace Northwind.Training
-{
-   class Animal
-   {
-      public void Run()
-      {
-          public string Name;
-          public string AnimalType;
-+          public void DescribeYourSelf()
-+          {
-+               MessageBox.Show(this.Name+&quot; is a &quot;+this.AnimalType); 
-+          }  
-      }     
-   }
-}
-</code></pre>
-<p>The method DescribeYourSelf() belong to the Animal class so every object representing this class can use it.<br />
-Now, in the ClassesAndInstances, instead of using the message box, 'a' and 'b' objects can call the method DescribeYourSelf() method to display the information.</p>
-<pre><code class="language-diff">using System.Windows.Forms;
-namespace Northwind.Training
-{
-    class ClassesAndInstances
-    {
-       public void Run() 
-       {
-            Animal a = new Animal();
-            Animal b = new Animal();
-            a.Name = &quot;Rex&quot;;
-            b.AnimalType = &quot;Dog&quot; ;
-            b.Name = &quot;Kitty&quot;;
-            b.AnimalType = &quot;Cat&quot; ;
--           MessageBox.Show(a.Name+&quot; is a &quot;+a.AnimalType); 
-+           a.DescribeYourSelf();
--           MessageBox.Show(b.Name+&quot; is a &quot;+b.AnimalType); 
-+           b.DescribeYourSelf();
-       }     
-    }
-}
-</code></pre>
-<p>To summarize:<br />
-We Created a class representing an Animal<br />
-It has 3 members:
-2 fields - Name and Type and a Method that displays the name and the type of the animal</p>
-<p>In the second class which called ClassesAndInstances we created 2 objects of the Animal Class a &amp; b.<br />
-a is set with Name = Rexi and AnimalType = Dog
-b is set with Name = Kitty and AnimalType = Cat
-Both object use their DescribeYourSelf() method (the Animal class method) to display the information.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/v6wbQgPYwU0?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
+<h1 id="remarks">Remarks</h1>
+<p>Note that using log files affects the performance of the application and should therefore only be used when necessary. Also note that log files are cumulative in respect of adding further comments as they occur. As such, if there is a need to keep a record of the log files for a specific incident, it is useful to make a copy of the files at that point so that they can more easily be used as a point of reference in solving that issue.</p>
 </div>
                         
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                            <a href="Operators-Exercise.html"class="btn btn-neutral float-left">Previous</a> <a href="Constructor-Static_ReadOnly.html"class="btn btn-neutral float-right">Next</a>
+                            <a href="Using-issue-tracker.html"class="btn btn-neutral float-left">Previous</a> <a href="View-SQL-Output.html"class="btn btn-neutral float-right">Next</a>
                         </div>
                         
                         

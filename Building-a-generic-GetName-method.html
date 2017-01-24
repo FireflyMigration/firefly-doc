@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>More on Classes</title>
+    <title>THIS ARTICLE IS STILL UNDER CONSTRUCTION</title>
     
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
@@ -62,7 +62,7 @@
                         </li>
                         <li class="toctree-l1">
                             <ul class="subnav">
-                                <li  class="toctree-l1 current-page"><a href="More-On-Classes.html">More On Classes</a></li>
+                                <li  class="toctree-l1"><a href="More-On-Classes.html">More On Classes</a></li>
                                 <li  class="toctree-l1"><a href="Constructor-Static_ReadOnly.html">Constructor Static_ReadOnly</a></li>
                             </ul>
                         </li>
@@ -127,7 +127,7 @@
                 <li class="toctree-l1">
                     <ul class="subnav">
                         <li><span>Refactoring</span></li>
-                        <li  class="toctree-l1"><a href="Building-a-generic-GetName-method.html">Building a generic GetName method</a></li>
+                        <li  class="toctree-l1 current-page"><a href="Building-a-generic-GetName-method.html">Building a generic GetName method</a></li>
                         <li  class="toctree-l1"><a href="Obtaining-category-name-based-on-CategoryID.html">Obtaining category name based on CategoryID</a></li>
                     </ul>
                 </li>
@@ -145,180 +145,150 @@
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main">
-                        <a href="Operators-Exercise.html"class="btn btn-neutral float-left">Previous</a> <a href="Constructor-Static_ReadOnly.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="more-on-classes">More on Classes</h1>
-<p>In this chapter, we will discuss more about Classes and instances.</p>
-<p>The C# code is written inside classes.<br />
-Class is a <strong>collection of operations and Data</strong>.</p>
-<p>The data and the operations are defined between the curly brackets of the class.<br />
-The curly brackets defined where the class starts and where it ends – this is the Class scope.<br />
-Members defined inside a class are known only in that class.</p>
-<p>The same goes for Method - Variables defined inside a method are only known inside this method.</p>
-<p>Below you can see the code of 2 different classes:</p>
-<ol>
-<li>Class called ClassesAndInstances</li>
-<li>Class called Animal</li>
-</ol>
-<p><strong>ClassesAndInstances</strong></p>
-<pre><code class="language-diff">+ using System.Windows.Forms;
-namespace Northwind.Training
+                        <a href="task-properties-unipaas.html"class="btn btn-neutral float-left">Previous</a> <a href="Obtaining-category-name-based-on-CategoryID.html"class="btn btn-neutral float-right">Next</a><br /><br />
+                        <div class="section"><h1 id="this-article-is-still-under-construction">THIS ARTICLE IS STILL UNDER CONSTRUCTION</h1>
+<h2 id="building-a-generic-method">Building a Generic Method</h2>
+<h3 id="introduction">Introduction</h3>
+<p>In the previous article, based on Tables from the Northwind Database, we discussed how to improvise our code to obtain a Category Name for different Classes such as ShowProducts and ShowPrices, without having to use a relation each time. We showed how we can build a Method either in the Entity Class or even better, in the Type Class, if one exists. We then can directly reference this Method from any Class that we wish.</p>
+<h3 id="get-supplier-name">Get Supplier Name</h3>
+<p>Let's build a similar BusinessProcess to get the Supplier Name, based on the SupplierID, as follows.</p>
+<pre><code class="language-csharp">class GetSupplierName : BusinessProcessBase
 {
-    class ClassesAndInstances
+    internal readonly Model.Suppliers _suppliers = new Model.Suppliers();
+    TextColumn _result;
+ 
+    public GetSupplierName()
     {
-+       public void Run()
-+       {
-+       }     
+        From = _suppliers;            
+    }
+ 
+    public Text Run(Number pSupplierID)
+    {
+        Where.Add(_suppliers.SupplierID.IsEqualTo(pSupplierID));
+        Execute();
+        return _result;
+    }
+ 
+    protected override void OnLeaveRow()
+    {
+        _result = _suppliers.CompanyName;
     }
 }
 </code></pre>
-<p><strong>Animal</strong></p>
-<pre><code class="language-diff">namespace Northwind.Training
+<p>Now, let's define a Type called Supplier ID and add a Method to it that gets the Supplier Name:</p>
+<pre><code class="language-csharp">class SupplierID : NumberColumn
 {
-    class Animal
+    public SupplierID()
+        : base(&quot;SupplierID&quot;, &quot;N10&quot;)
     {
-        public string Name;
+    }
+ 
+    public Text GetSupplierName()
+    {
+        return new DevDemo.GetSupplierName().Run(this);
+    }
+}
+</code></pre>
+<p>Having defined the Type, let's redefine the SupplierID column in the Supplier Entity to be of type SupplierID:</p>
+<pre><code class="language-csharp">/// &lt;summary&gt;SupplierID&lt;/summary&gt;
+public readonly Types.SupplierID SupplierID = new Types.SupplierID();
+</code></pre>
+<p>Now, as we did with GetCategoryName, let's create a virtual column called _supplierName and use BindValue to attach its value to the return value from GetSupplierName, as follows:</p>
+<pre><code class="language-csharp">class ShowProductsUsingBP : UIControllerBase
+{
+    internal readonly Model.Products _products = new Model.Products();
+ 
+    internal readonly TextColumn _categoryName = new TextColumn();
+    internal readonly TextColumn _supplierName = new TextColumn(); 
+ 
+    public ShowProductsUsingBP()
+    {
+        From = _products;
+ 
+        _categoryName.BindValue(() =&gt; _products.CategoryID.GetCategoryName());
+        _supplierName.BindValue(()=&gt; _products.SupplierID.GetSupplierName());
+ 
+        View = new UI.ShowProductsUsingBPUI(this);
+    }
+ 
+    public void Run()
+    {
+        Execute();
+    }
+}
+</code></pre>
+<ul>
+<li><p>Display the Supplier Name on the Screen by selecting the Virtual _supplierName Column.<br />
+<img src="showproductswithsuppliername.jpg" alt="" /></p>
+</li>
+<li><p>As mentioned in the previous article, the GetSupplierName method is available from the SupplierID column as shown below:<br />
+<img src="columngeneratorgetsuppliername.jpg" alt="" /></p>
+</li>
+</ul>
+<h3 id="refactoring-the-code">Refactoring the code</h3>
+<p>Looking at the code above, we note that we have two very similar Business Process Classes: GetCategoryName and GetSupplierName. Their methodology is exactly the same; they both accept an ID as a parameter and return a Text field containing the corresponding name. In addtion, they both lead to creating a Method on the Type Class of the ID Column that in turn, calls the Method to obtain the Name required.</p>
+<p>Let's now combine the above two Methods into a Generic Method that can potentially accept a Number ID from any Table and return its corresponding Name. This will then allow us to maintain one Generic Business Class instead of a Business Class for every ID/Name pair.</p>
+<h3 id="a-generic-method">A Generic Method</h3>
+<p>To accomplish this task, let's build a Generic Business Process Class called GetNameFrom NumberID, that will accept in its Constructor, three parameters:</p>
+<ul>
+<li>Entity - Table Name</li>
+<li>ID - NumberColumn</li>
+<li>Name - TextColumn</li>
+</ul>
+<p>The code appears as follows:</p>
+<pre><code class="language-csharp">class GetNameFromNumberID : BusinessProcessBase
+{
+    Text _result;
+    TextColumn _name;
+    NumberColumn _id;
+       
+    public GetNameFromNumberID(Entity myTable,NumberColumn numberColumnID,TextColumn resultNameColumn)
+    {
+        From = myTable;
+        _name = resultNameColumn;
+        _id = numberColumnID;
+    }
+        
+    public Text Run(Number pNumberID)
+    {
+        Where.Add(_id.IsEqualTo(pNumberID));
+        Execute();
+        return _result; 
+    }
 
-+       public void Run()
-+       {
-+           
-+       }     
-    }
-}
-</code></pre>
-<p>The Animal class has a member defined called Name.<br />
-This member is:<br />
-<strong>public</strong> -  so it is accessible from all our code<br />
-Its <strong>type</strong> is string
-and its name is Name</p>
-<p>In the ClassesAndInstances class we can define an instance of the Animal class.<br />
-meaning - the ClassesAndInstances class has a member from Animal class.</p>
-<p>To use this member in the ClassesAndInstances class we need to create a new instance of it:<br />
-Animal a = new Animal();</p>
-<p><strong>new</strong> keyword<br />
-By using the <strong>new</strong> keyword a new instance of the class is created<br />
-By using the new keyword a new instance of the object is created in the memory.
-In our example this instance is represented by the variable a</p>
-<p>Since 'a' is an Animal it has a member called Name (as defined in the Animal class).<br />
-To set a value to the Name of 'a' we use the className.MemberName, and with this sample:<br />
-a.Name = &quot;Rexi&quot;</p>
-<pre><code class="language-diff">using System.Windows.Forms;
-namespace Northwind.Training
-{
-    class ClassesAndInstances
+    protected override void OnEnterRow()
     {
-       public void Run()
-       {
-+            Animal a = new Animal();
-+            Animal b = new Animal();
-+            a.Name = &quot;Rex&quot;;
-+            b.Name = &quot;Kitty&quot;;
-+            MessageBox.Show(a.Name); 
-+            MessageBox.Show(b.Name); 
-       }     
+        _result = _name;
     }
 }
 </code></pre>
-<p>The code above defines two instances of Animal class a &amp; b.<br />
-The Name of 'a' is &quot;Rexi&quot; the name of 'b' is &quot;Kitty&quot;.<br />
-Then we use the MessageBox.Show() method to display the name of each of the Animals.</p>
-<p>Note: to access a member of a class (properties, variables, methods) we use the class instance.member</p>
-<p>Back to the Animal class:<br />
-A new member is added to that animal class: AnimalType</p>
-<pre><code class="language-diff">namespace Northwind.Training
+<p>This we have a generic Method which can receive a Numeric ID and return a Text Name.</p>
+<p>The next stage is to call this Method from the Type Class.</p>
+<p>This can be achieved with a code change to the Method in the Type class, as follows:</p>
+<ul>
+<li>Create a new Supplier Entity and pass it as the first parameter.</li>
+<li>Pass the SupplierID and the Supplier Name as parameters 2 and 3, to be displayed on the screen.</li>
+</ul>
+<p>The code appears below:</p>
+<pre><code class="language-csharp">class SupplierID : NumberColumn
 {
-   class Animal
-   {
-      public void Run()
-      {
-          public string Name;
-+          public string AnimalType;
-      }     
-   }
-}
-</code></pre>
-<p>In the ClassesAndInstances we set 'a' (which is an instance of Animal) to be have AnimalTypa = Dog<br />
-and 'b'  (which is also an instance of Animal) to have AnimalTypa = Cat.<br />
-The message boxes displays the type and the name of the objects a &amp; b</p>
-<pre><code class="language-diff">using System.Windows.Forms;
-namespace Northwind.Training
-{
-    class ClassesAndInstances
+    public SupplierID()
+        : base(&quot;SupplierID&quot;, &quot;N10&quot;)
     {
-       public void Run()
-       {
-            Animal a = new Animal();
-            Animal b = new Animal();
-            a.Name = &quot;Rex&quot;;
-+           b.AnimalType = &quot;Dog&quot; ;
-            b.Name = &quot;Kitty&quot;;
-+           b.AnimalType = &quot;Cat&quot; ;
--           MessageBox.Show(a.Name); 
-+           MessageBox.Show(a.Name+&quot; is a &quot;+a.AnimalType); 
--            MessageBox.Show(b.Name); 
-+           MessageBox.Show(b.Name+&quot; is a &quot;+b.AnimalType); 
-       }     
     }
-}
-</code></pre>
-<p>Instead of using the message box to display the Name and the Type for 'a' and for 'b' in the<br />
-ClassesAndInstances, we can add a method in the Animal class itself to do that and call this method.</p>
-<p>The method DescribeYourSelf() is added to the Animal class<br />
-The method displays the name and the type of the Animal object who used it.
-<code>this</code> is a reference to the current instance of the object (Animal class).<br />
-The code looks like that:</p>
-<pre><code class="language-diff">+ using System.Windows.Forms;
-namespace Northwind.Training
-{
-   class Animal
-   {
-      public void Run()
-      {
-          public string Name;
-          public string AnimalType;
-+          public void DescribeYourSelf()
-+          {
-+               MessageBox.Show(this.Name+&quot; is a &quot;+this.AnimalType); 
-+          }  
-      }     
-   }
-}
-</code></pre>
-<p>The method DescribeYourSelf() belong to the Animal class so every object representing this class can use it.<br />
-Now, in the ClassesAndInstances, instead of using the message box, 'a' and 'b' objects can call the method DescribeYourSelf() method to display the information.</p>
-<pre><code class="language-diff">using System.Windows.Forms;
-namespace Northwind.Training
-{
-    class ClassesAndInstances
+        
+    public Text GetSupplierName()
     {
-       public void Run() 
-       {
-            Animal a = new Animal();
-            Animal b = new Animal();
-            a.Name = &quot;Rex&quot;;
-            b.AnimalType = &quot;Dog&quot; ;
-            b.Name = &quot;Kitty&quot;;
-            b.AnimalType = &quot;Cat&quot; ;
--           MessageBox.Show(a.Name+&quot; is a &quot;+a.AnimalType); 
-+           a.DescribeYourSelf();
--           MessageBox.Show(b.Name+&quot; is a &quot;+b.AnimalType); 
-+           b.DescribeYourSelf();
-       }     
+        var s = new Model.Suppliers();
+        return new DevDemo.GetNameFromNumberID(s, s.SupplierID, s.CompanyName).Run(this);
     }
 }
 </code></pre>
-<p>To summarize:<br />
-We Created a class representing an Animal<br />
-It has 3 members:
-2 fields - Name and Type and a Method that displays the name and the type of the animal</p>
-<p>In the second class which called ClassesAndInstances we created 2 objects of the Animal Class a &amp; b.<br />
-a is set with Name = Rexi and AnimalType = Dog
-b is set with Name = Kitty and AnimalType = Cat
-Both object use their DescribeYourSelf() method (the Animal class method) to display the information.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/v6wbQgPYwU0?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
+<p>Having reached this stage, we can now eliminate the 2 Business Processes GetCategoryName and GetSupplierName</p>
 </div>
                         
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                            <a href="Operators-Exercise.html"class="btn btn-neutral float-left">Previous</a> <a href="Constructor-Static_ReadOnly.html"class="btn btn-neutral float-right">Next</a>
+                            <a href="task-properties-unipaas.html"class="btn btn-neutral float-left">Previous</a> <a href="Obtaining-category-name-based-on-CategoryID.html"class="btn btn-neutral float-right">Next</a>
                         </div>
                         
                         

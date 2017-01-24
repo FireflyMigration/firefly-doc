@@ -90,10 +90,13 @@
                     <ul class="subnav">
                         <li><span>Articles</span></li>
                         <li  class="toctree-l1"><a href="Automatic-Migration-Using-FTP.html">Automatic Migration Using FTP</a></li>
-                        <li  class="toctree-l1"><a href="error_report_guide.html">error_report_guide</a></li>
-                        <li  class="toctree-l1"><a href="relations_in_depth.html">relations_in_depth</a></li>
+                        <li  class="toctree-l1"><a href="Error-report-guide.html">Error report guide</a></li>
+                        <li  class="toctree-l1"><a href="Relations-in-depth.html">Relations in depth</a></li>
                         <li  class="toctree-l1"><a href="shoulddeterminenameaccordingtocallstack.html">shoulddeterminenameaccordingtocallstack</a></li>
                         <li  class="toctree-l1"><a href="Understanding-Error-Message-Details.html">Understanding Error Message Details</a></li>
+                        <li  class="toctree-l1"><a href="Using-issue-tracker.html">Using issue tracker</a></li>
+                        <li  class="toctree-l1"><a href="Using-Log-Files.html">Using Log Files</a></li>
+                        <li  class="toctree-l1"><a href="View-SQL-Output.html">View SQL Output</a></li>
                     </ul>
                 </li>
                 <li class="toctree-l1">
@@ -119,6 +122,13 @@
                                 <li  class="toctree-l1"><a href="task-properties-unipaas.html">task properties unipaas</a></li>
                             </ul>
                         </li>
+                    </ul>
+                </li>
+                <li class="toctree-l1">
+                    <ul class="subnav">
+                        <li><span>Refactoring</span></li>
+                        <li  class="toctree-l1"><a href="Building-a-generic-GetName-method.html">Building a generic GetName method</a></li>
+                        <li  class="toctree-l1"><a href="Obtaining-category-name-based-on-CategoryID.html">Obtaining category name based on CategoryID</a></li>
                     </ul>
                 </li>
             </ul>
@@ -283,7 +293,7 @@ r.BindEnabled( ()= &gt;Exp_1()
 </code></pre>
 <hr />
 <p>For further examples of how to use Relations, see also:</p>
-<p><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_Relations.htm">UIController Find Relation and examples</a>
+<p><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_Relations.htm">UIController Find Relation and examples</a><br />
 <a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_Relations.htm">Business Process Find Relation and examples</a></p>
 <hr />
 <h2 id="blockend-block">Block/End Block</h2>
@@ -410,9 +420,9 @@ Location in Migrated Code: Override Methods and Handlers</p>
 <pre><code class="language-csharp">v_LineTotal.Value += DeltaOf(OrderDetails.UnitPrice * OrderDetails.Quantity - OrderDetails.Discount);
 </code></pre>
 <h4 id="und">Und</h4>
-<p>Forgot dusable Undo etc…</p>
+<p>Forgot disable Undo etc…</p>
 <p><strong>UpdateValueWithoutMarkingRowAsChanged</strong><br />
-In magic, in an online task when updating a variable from the record prefix or an handle, that update doesn't constutite a change to the row, which means that it'll not cause the RecordSuffix to run and the row will not be updated to the database unless another more meaningfull change have happened. To better represent this behaviour, these updates in the migrated code look as following:</p>
+In magic, in an online task when updating a variable from the record prefix or an handle, that update doesn't constitute a change to the row, which means that it'll not cause the RecordSuffix to run and the row will not be updated to the database unless another more meaningfull change have happened. To better represent this behaviour, these updates in the migrated code look as following:</p>
 <pre><code class="language-csharp">v_Total.UpdateRowWithoutMarkingRowAsChanged(a+b-c);
 </code></pre>
 <hr />
@@ -421,8 +431,8 @@ In magic, in an online task when updating a variable from the record prefix or a
 Example:</p>
 <pre><code class="language-csharp"> _layout.Customer.WriteTo(_ioPrint_Order);
 </code></pre>
-<p>For a discussion on working with system files in .Net, see: Working with System Files</p>
-<p>For a discussion on how to print a report in .Net, see: Printing a Report</p>
+<p>For a discussion on working with system files in .Net</p>
+<p>For a discussion on how to print a report in .Net</p>
 <h3 id="io">I/O</h3>
 <h3 id="page">Page</h3>
 <h4 id="auto">Auto</h4>
@@ -435,7 +445,7 @@ Example:</p>
 </code></pre>
 <h3 id="io-1">I/O</h3>
 <h3 id="dlm">Dlm</h3>
-<p>For a discussion on working with system files in .Net, see: <a href="http://www.fireflymigration.com/doc/doku.php/articles/working_with_system_files">Working with System Files</a></p>
+<p>For a discussion on working with system files in .Net</p>
 <hr />
 <h2 id="browse">Browse</h2>
 <p>Name in Migrated Code: FileViewer<br />

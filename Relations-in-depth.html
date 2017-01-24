@@ -91,9 +91,12 @@
                         <li><span>Articles</span></li>
                         <li  class="toctree-l1"><a href="Automatic-Migration-Using-FTP.html">Automatic Migration Using FTP</a></li>
                         <li  class="toctree-l1"><a href="Error-report-guide.html">Error report guide</a></li>
-                        <li  class="toctree-l1 current-page"><a href="relations_in_depth.html">relations_in_depth</a></li>
+                        <li  class="toctree-l1 current-page"><a href="Relations-in-depth.html">Relations in depth</a></li>
                         <li  class="toctree-l1"><a href="shoulddeterminenameaccordingtocallstack.html">shoulddeterminenameaccordingtocallstack</a></li>
                         <li  class="toctree-l1"><a href="Understanding-Error-Message-Details.html">Understanding Error Message Details</a></li>
+                        <li  class="toctree-l1"><a href="Using-issue-tracker.html">Using issue tracker</a></li>
+                        <li  class="toctree-l1"><a href="Using-Log-Files.html">Using Log Files</a></li>
+                        <li  class="toctree-l1"><a href="View-SQL-Output.html">View SQL Output</a></li>
                     </ul>
                 </li>
                 <li class="toctree-l1">
@@ -119,6 +122,13 @@
                                 <li  class="toctree-l1"><a href="task-properties-unipaas.html">task properties unipaas</a></li>
                             </ul>
                         </li>
+                    </ul>
+                </li>
+                <li class="toctree-l1">
+                    <ul class="subnav">
+                        <li><span>Refactoring</span></li>
+                        <li  class="toctree-l1"><a href="Building-a-generic-GetName-method.html">Building a generic GetName method</a></li>
+                        <li  class="toctree-l1"><a href="Obtaining-category-name-based-on-CategoryID.html">Obtaining category name based on CategoryID</a></li>
                     </ul>
                 </li>
             </ul>
@@ -247,6 +257,7 @@ ExecuteReader Duration: 0
 <p>Note: It is possible to see the above information within the context of a logfile, by defining the following in the ini file:</p>
 <p>dblogfile = c:\temp\db.log</p>
 <p>For further information regarding using logfiles, see : <a href="using_log_files.html">Using Log Files</a></p>
+<hr />
 <h2 id="analyzing-the-sql">Analyzing the SQL</h2>
 <p>Let's review each and every part of the above statements.</p>
 <h3 id="first-statement">First statement</h3>
@@ -287,6 +298,7 @@ WHERE CategoryID = 5
 ExecuteReader Duration..: 34.0019
 </code></pre>
 <p>As you can see, the program is fetching data from the Categories Relation table, where CategoryID is equal to 5. This is the Category id for the first row, as displayed in the grid screenshot above. This statement is followed by many more similar statements, that fetch Categories for each product row. We will demonstrate the following principle: The select statement for the Relation is executed for each row displayed on the grid and if Cache is applied (as it is in this case), rows that were already fetched are not fetched again.</p>
+<hr />
 <h1 id="using-cache">Using Cache</h1>
 <h2 id="introduction-1">Introduction</h2>
 <p>When working with Relation Selects, you can enable Cache in order to optimize the number of direct queries to the Database. Once enabled, The UIController will try not to refetch rows with Related data directly from the DB that have already been fetched, but rather, will check the Cache first and fetch from there if possible.</p>
@@ -304,6 +316,7 @@ ExecuteReader Duration..: 34.0019
             Cached = true,
         };
 </code></pre>
+<hr />
 <h2 id="rules-for-working-with-cache">Rules for Working with Cache</h2>
 <p>Even if you enable Cache, rows from a dB table will only be saved to the Cache if the following specific 3 conditions are met:</p>
 <h3 id="unique-sort">Unique Sort</h3>
@@ -347,6 +360,7 @@ Note that if the “CacheNonUniqueResults” property is set to true, then regar
              CacheNonUniqueResults = true
         };
 </code></pre>
+<hr />
 <h2 id="applying-the-cache-rules">Applying the Cache Rules</h2>
 <p>Using our acquired knowledge, let's revisit the detailed SQL log displayed before.</p>
 <h3 id="cached-true">Cached = true</h3>
@@ -552,6 +566,7 @@ FROM dbo.Categories
 WHERE CategoryID = 7</p>
 <p>ExecuteReader Duration: 2.0001
 Of course if we were using Cache, and Category 7 existed in the Cache, we would not see the SQL statement, because it'll be fetched from the Cache.</p>
+<hr />
 <h1 id="left-outer-join">Left Outer Join</h1>
 <p>Let's adjust the code to use outer join.</p>
 <pre><code class="language-csharp"> public ShowProducts()
@@ -582,6 +597,7 @@ ORDER BY A.ProductID
 ExecuteNonQuery Duration...: 53.0031
 </code></pre>
 <p>Looking at the above, we can see that there is initial overhead on the Relation code but this is followed by no further SQL Select statements for rows. Using Outer Join can therefore potentially lead to a significant increase in performance, specifically when working with smaller tables.</p>
+<hr />
 <h2 id="recompute-1">Recompute</h2>
 <p>If the CategoryID is updated and a recompute has to occur in order to update the CategoryName, then a RELATION SQL statement will be executed according to the rules of FIND Relations and CACHE. For example, if the CategoryID on a row is updated to 1, then the following SQL can be seen on the output screen.</p>
 <pre><code class="language-csharp">ExecuteReader - 
@@ -592,6 +608,7 @@ ORDER BY CategoryID, CategoryName
  
 ExecuteReader Duration: 3.0002
 </code></pre>
+<hr />
 <h1 id="inner-join">Inner Join</h1>
 <p>Now let's change the Relation type to Inner Join as displayed below: (note that Join, by default, implies Inner Join)</p>
 <pre><code class="language-csharp">        public ShowProducts()
