@@ -143,27 +143,31 @@
 </li>
 <li><p>Visual Studio is compound from three basic parts :</p>
 <ul>
-<li><strong>Solution Explorer</strong>, provides you with an organized view of your projects and their files</li>
-<li><strong>Working area</strong>, edits your code</li>
-<li><strong>Tool box</strong>, displays icons for controls and other items that you can add to Visual Studio projects</li>
+<li><strong>Solution Explorer</strong> - provides an organized view of the solution which includes your projects and their files</li>
+<li><strong>Working area</strong> - where you can edit your code</li>
+<li><strong>Tool box</strong> - displays icons for controls and other items that you can add to Visual Studio projects</li>
 </ul>
 </li>
 <li><p>In the solution explorer,</p>
 <ul>
-<li><em>ENV</em> project that represent all the sources code generated</li>
-<li><em>Northwind</em> solution</li>
-<li><em>Northwind.[moduleName]</em> that compound the migrated application.</li>
-<li><em>NorthwindBase</em>, contains the migrated tables under the Models folder, migrated Models under the Types folder and other objects which are shared by the whole solution.</li>
+<li><em>ENV</em> project - is the generic source code common to all migrated application.<br />
+ENV has a reference to the <strong>Firefly.box.dll</strong> which is also common code supplied by firefly</li>
+<li><em>[Solution name]</em> - solution</li>
+<li><em>[Solution name].[moduleName]</em> - The solution is split to several projects.
+Every module has its controllers, views (screens),</li>
+<li><em>[Solution name]Base</em> - contains the migrated tables under the Models folder, migrated Models under the Types folder and other objects which are shared by the whole solution.</li>
 </ul>
 </li>
-<li><p>In Northwind's project we have several parts:</p>
+<li><p>The startup project is the one in Bold and is the first to run when we runt he application.<br />
+The startup project includes several parts:</p>
 <ul>
-<li>.ini file, this configuration file use to run the application</li>
-<li>the Views folder, contains all the menus</li>
-<li>ApplicationCore class, is migrated version of the main program</li>
-<li>ApplicationPograms class, is the list of the migrated programs with their numbers, names, public names, and their location inside the solution</li>
-<li>ApplicationEntities class, is the list of the migrated tables with their numbers, names, public names, and their location inside the solution</li>
-<li>program.cs, is the first program that runs when you launch the application</li>
+<li>.ini file - the configuration file use to run the application</li>
+<li>The Views folder which contains all the menus</li>
+<li>ApplicationCore class - is migrated version of the main program</li>
+<li>ApplicationPograms class - is the list of the migrated programs with their numbers, names, public names, and their location inside the solution</li>
+<li>ApplicationEntities class - is the list of the migrated tables with their numbers, names, public names, and their location inside the solution</li>
+<li>program.cs - is the first program that runs when you launch the application.<br />
+Main is the program</li>
 </ul>
 </li>
 </ol>

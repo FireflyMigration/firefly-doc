@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>More on Classes constructor static and readonly</title>
+    <title>More on Classes - constructor static and readonly</title>
     
     <link rel="stylesheet" href="../../../../assets/css/prism.css" />
     <link rel="stylesheet" href="../../../../assets/css/prism-csdiff.css" />
@@ -136,11 +136,24 @@
                 <div class="rst-content">
                     <div role="main">
                         <a href="../../../../dev-docs/guide/An-introduction-to-NET/More-On-Classes/index.html"class="btn btn-neutral float-left">Previous</a> <a href="../../../../dev-docs/guide/An-introduction-to-NET/student-notes.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="more-on-classes-constructor-static-and-readonly">More on Classes constructor static and readonly</h1>
-<p>So we saw previously, we created member name <code>a</code> and <code>b</code> of type <code>Animal</code> and assign it with a new instance of <code>Animal()</code>.
-For define a new instance of a class, you are calling a special method called the <strong>Constructor</strong> and if we don't define a constructor then automatically want to get created for us.
-A constructor cannot return a value to the calling code and is name is the same name of the class that you use.
-So, we are define a constructor for Animal and use it, go back to our code Animal.cs:</p>
+                        <div class="section"><h1 id="more-on-classes-constructor-static-and-readonly">More on Classes - constructor static and readonly</h1>
+<p>In previous lesson we created 2 instances of Animal - 'a' &amp; 'b'<br />
+To create them we used the <strong>new</strong> keyword and the class name Animal with the brackets at the end.<br />
+Animal a = new Animal()</p>
+<p>Whenever we see the Brackets - we know we are calling a method.</p>
+<p>A method having the name of the Class is a special method called <strong>Constructor</strong>.</p>
+<p><strong>Constructor</strong><br />
+To create new instance of a class we need to call the constructor of the class.<br />
+If we don't define a constructor, a constructor is automatically created.</p>
+<p>Rules related to Constructor:</p>
+<ol>
+<li>A constructor doesn't have a return type</li>
+<li>Its name is the same name as the Class where it is defined.</li>
+</ol>
+<p>In the constructor we can set default values to the class members
+For example in the code below<br />
+In the Animal class we created a constructor and in the constructor define default values for the 'Name' &amp; 'AnimalType' member.<br />
+If a new instance is created and no value is set to its Name and Type members - they will hold the default values as defined in the constructor</p>
 <pre><code class="language-diff">using System.Windows.Forms;
 namespace Northwind.Training
 {
@@ -163,55 +176,21 @@ namespace Northwind.Training
    }
 }
 </code></pre>
-<p>In the constructor we can set also the default for this class, so if we define a new member <code>c</code> like :</p>
-<pre><code class="language-diff">using System.Windows.Forms;
-namespace Northwind.Training
-{
-    class ClassesAndInstances
-    {
-       public void Run() 
-       {
-            Animal a = new Animal();
-            Animal b = new Animal();
-            a.Name = &quot;Rex&quot;;
-            b.AnimalType = &quot;Dog&quot; ;
-            b.Name = &quot;Kitty&quot;;
-            b.AnimalType = &quot;Cat&quot; ;
-            a.DescribeYourSelf();
-            b.DescribeYourSelf();
-+           Animal c = new Animal();
-+           c.DescribeYourSelf();
-       }     
-    }
-}
-</code></pre>
-<p>As we don't define c.Name and c.AnimalType, it get the default with the method Animal(). Build it and run</p>
-<pre><code class="language-diff">using System.Windows.Forms;
-namespace Northwind.Training
-{
-    class ClassesAndInstances
-    {
-       public void Run() 
-       {
-            Animal a = new Animal();
-            Animal b = new Animal();
-            a.Name = &quot;Rex&quot;;
-            b.AnimalType = &quot;Dog&quot; ;
-            b.Name = &quot;Kitty&quot;;
-            b.AnimalType = &quot;Cat&quot; ;
-            a.DescribeYourSelf();
-            b.DescribeYourSelf();
-            Animal c = new Animal();
-+           c.Name = &quot;Snoopy&quot;;
-+           c.AnimalType = &quot;Dog&quot; ;
-            c.DescribeYourSelf();
-       }     
-    }
-}
-</code></pre>
-<p>Build it and run it.
-You can see that the default are overwritten by the setting that we set.</p>
-<p>For our next test, we want that each animal has an unique identifier, so we change Animal.cs</p>
+<p><strong>Static</strong></p>
+<p>A static member of a class is shared by all the class instances.<br />
+a static member is created once and not for each instance and it can be accessed by the class and not by the instance itself.</p>
+<p>When do we use static members?
+usually to count the number of instances or to share a value between all instances.</p>
+<p>let's see example for that<br />
+In the Animal class a new static member from type int is added:<br />
+static int LastUsedId =0;</p>
+<p>We also added a new member (which is not public) called Id:<br />
+public int Id;</p>
+<p>In the constructor we will increase the value of the static member by 1 -<br />
+so every type a new instance of the Animal class is created the value of the static member is increased by 1.</p>
+<p>Then, we set the value of the LastUsedId (the static member) to the Id.<br />
+That way - every new instance of the class will receive a new and unique id.</p>
+<p>The code below also display the id in the DescribeYouSlef() method:</p>
 <pre><code class="language-diff">using System.Windows.Forms;
 namespace Northwind.Training
 {
@@ -239,9 +218,16 @@ namespace Northwind.Training
    }
 }
 </code></pre>
-<p>After adding Id object, we need to store somewhere the last used Id it why we will use a static class</p>
-<p>Note : some developers can make by mistake something like <code>c.Id = 9;</code> but we don't want allow that developer can change the Id. So the way to make variable unchangeable is to define that variable to <code>public readonly int Id</code>.
-In this example, the value of the Id cannot be changed in the method, even though it is assigned a value in the class constructor.</p>
+<p><strong>readonly</strong></p>
+<p>In some cases you would like to prevent the developer from updating a value of a variable.<br />
+For those cases we have the readonly key word.</p>
+<p>With the example above we don't want to allow the developer to set a value for the Id.
+The Id should be set automatically in the constructor and we don't want to take the chance that it will be updated in any other place in the code.</p>
+<p>readonly means that a variable can only be updated inside the constructor but not anywhere else in the code.</p>
+<p>By setting the Id to readonly:  public readonly int Id;<br />
+we make sure the Id is updated in the constructor and cannot be updated anywhere else.<br />
+That helps us making sure the Id stays unique and cannot be modified.<br />
+If we try to set a value to the Id we will receive a compilation error in Visual studio.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/pyuGLDnGk2U?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
 </div>
                         

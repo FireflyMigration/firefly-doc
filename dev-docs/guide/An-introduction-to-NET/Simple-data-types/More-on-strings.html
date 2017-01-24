@@ -138,7 +138,8 @@
                         <a href="../../../../dev-docs/guide/An-introduction-to-NET/Simple-data-types/index.html"class="btn btn-neutral float-left">Previous</a> <a href="../../../../dev-docs/guide/An-introduction-to-NET/Simple-data-types/Data-Types-Exercise.html"class="btn btn-neutral float-right">Next</a><br /><br />
                         <div class="section"><h1 id="more-on-strings">More on Strings</h1>
 <p><strong>Special characters in string</strong></p>
-<p>To display special characters in string add back slash sign before the characters<br />
+<p>Special characters are not displayed as is.<br />
+To display special characters in string add back slash sign before the characters<br />
 For example:</p>
 <ul>
 <li>To display the quote sign in a message box use &quot; before the quote</li>
@@ -155,12 +156,9 @@ namespace Northwind.Training
     }
 }
 </code></pre>
-<ul>
-<li>To display the backslash character double it: instead of \ use \</li>
-<li>to display a string as is use the @ sign before the string</li>
-</ul>
-<p><code>MessageBox.Show(&quot;Windows Path: c:\\windows&quot;);</code></p>
-<p>Or Alternatively:</p>
+<p>To display the backslash character double it: instead of \ use \<br />
+<code>MessageBox.Show(&quot;Windows Path: c:\\windows&quot;);</code></p>
+<p>Or Alternatively: to display a string as is use the @ sign before the string</p>
 <p><code>MessageBox.Show(@&quot;Windows Path: c:\windows using the @ sign to use quites just say &quot;&quot;double quotes&quot;&quot; &quot;);</code></p>
 <p>The @ sign can be used also to dsiplay multi line text without the need to use \n in the string:</p>
 <pre><code class="language-csharp">MessageBox.Show(@&quot;I'm a multi 

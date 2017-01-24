@@ -137,20 +137,22 @@
                     <div role="main">
                         <a href="../../../../dev-docs/guide/An-introduction-to-NET/Intro/Explaining-The-Hello-world-example.html"class="btn btn-neutral float-left">Previous</a> <a href="../../../../dev-docs/guide/An-introduction-to-NET/Intro/Using-directives.html"class="btn btn-neutral float-right">Next</a><br /><br />
                         <div class="section"><h1 id="method-arguments-and-overloading">Method Arguments and Overloading</h1>
-<p>Method arguments are sent between brackets.</p>
+<p>Methods can receive arguments.<br />
+The arguments are sent between brackets.</p>
 <p>To see the arguments the method receives you can:</p>
 <ol>
 <li>Type open parenthesis</li>
-<li>Click the method parameter button on the toolbox when the cursor is between the parenthesis: <img src="Show-Arguments.png" alt="Show Arguments" /></li>
-<li>Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> when the cursor is between the parentheses.</li>
+<li>Click the method parameter button on the toolbox when the cursor is between the parenthesis:</li>
 </ol>
-<p><strong>Overloading</strong> allows Methods to have the same name but with different combination of parameters.
-<img src="Method_Overloading.png" alt="Method Overloading" /></p>
-<p>Method can have several options based on the number or type of parameters it receives.</p>
-<p>Based on the parameters sent the matches method is be called.</p>
-<p>For example the Show() method of System.Window.Forms.MessageBox class can receive the text to be displayed on the message box as parameter.<br />
-It can also receive the Text and the caption.<br />
-The Show() method has 21 overloads meaning it has 21 variant of the method that receive different combination of parameters.</p>
+<p><img src="Show-Arguments.png" alt="Show Arguments" /><br />
+3. Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> when the cursor is between the parentheses.</p>
+<p><strong>Overloading</strong> allows Methods to have the same name but with different combination of parameters.<br />
+Method can have several definitions having different number or type of parameters.
+Based on the parameters sent the matches method is be called.</p>
+<p>For example the Show() method of System.Window.Forms.MessageBox class can receive the text to be displayed on the message box as parameter.</p>
+<p>It can also receive the Text and the caption.</p>
+<p>The Show() method has 21 overloads meaning it has 21 variant of the method that receive different combination of parameters.</p>
+<p><img src="Method_Overloading.png" alt="Method Overloading" /></p>
 <pre><code class="language-diff">namespace Northwind.Training
 {
     Class HelloWorld
