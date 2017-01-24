@@ -1,9 +1,12 @@
-﻿### Input Validation Using if Statement
+﻿
+##### virginie and anat - tell them what message to write - they'll get confused if not.
+### Input Validation Using if Statement
 
 1.	In "ShowProducts", override the OnSavingRow method.
 2.	Show a warning if the "ProductName" column is empty.
 3.  Build and test
 3.	Show a warning it the "UnitsInStock" is 0 or "UnitsOnOrder" is 0.
+
 4.	Build and test.
 
 
