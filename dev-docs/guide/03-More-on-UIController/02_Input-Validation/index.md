@@ -74,6 +74,9 @@ Assume that the ShipName field is not allowed to contain the ‘@’ sign, let�
 
 ## RowFound validation
 
+
+### rewrite and loose the var r. Instead use the Shift F12 to go into debug and see things.
+
 1.	Another common input validation verify that the user’s input exists in the related table.  For example, we may want to validate that the shipper id of a the order exists in the shippers table.
 2.	The RowFound property of a Relation returns True if a row was found by the relation and False if not. This property is useful when we need to validate that
 3.	In the ShowOrders screen, the ShipVia column must be one of the shipper’s in the Shippers table (i.e. 1, 2 or 3). If the user enters any other value such as 4 or 5, we need show an error message.
