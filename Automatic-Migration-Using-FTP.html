@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>Welcome to our site</title>
+    <title>Automatic Migration Using FTP</title>
     
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
@@ -89,7 +89,7 @@
                 <li class="toctree-l1">
                     <ul class="subnav">
                         <li><span>Articles</span></li>
-                        <li  class="toctree-l1"><a href="Automatic-Migration-Using-FTP.html">Automatic Migration Using FTP</a></li>
+                        <li  class="toctree-l1 current-page"><a href="Automatic-Migration-Using-FTP.html">Automatic Migration Using FTP</a></li>
                         <li  class="toctree-l1"><a href="error_report_guide.html">error_report_guide</a></li>
                         <li  class="toctree-l1"><a href="relations_in_depth.html">relations_in_depth</a></li>
                         <li  class="toctree-l1"><a href="shoulddeterminenameaccordingtocallstack.html">shoulddeterminenameaccordingtocallstack</a></li>
@@ -135,12 +135,22 @@
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main">
-                         <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="welcome-to-our-site">Welcome to our site</h1>
+                        <a href="reference.html"class="btn btn-neutral float-left">Previous</a> <a href="error_report_guide.html"class="btn btn-neutral float-right">Next</a><br /><br />
+                        <div class="section"><h1 id="automatic-migration-using-ftp">Automatic Migration Using FTP</h1>
+<p>This document explains how to run an automatic migration using Firefly’s FTP server. The migration can be invoke at any time, in order to get an updated error report or a test version. Usually, it is used after uploading a new version of the original applications or when Firefly has enhanced its migration engine. In order to run a migration, please do the following steps:</p>
+<ol>
+<li>Log in to the Firefly’s FTP server using your account username and password.</li>
+<li>Upload the exports of your applications and other environment files as needed into the AutomaticMigration folder.</li>
+<li>Create an empty file named “Start” in the AutomaticMigration folder (or delete the extension of the existing “Start.Done” file). This is the trigger of the migration process.</li>
+<li>An email message will be sent to you, informing that the migration process has started.</li>
+<li>Few minutes later, the “start” file name will be changed to “Start.Done” and the content of this file will be the log of the migration process.</li>
+<li>A second email will be sent, informing that the migration process has completed successfully with statistics about the converted application.</li>
+<li>The new version and error report will be found in the AutomaticMigration\MigrationResult folder, on the FTP server.</li>
+</ol>
 </div>
                         
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                             <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a>
+                            <a href="reference.html"class="btn btn-neutral float-left">Previous</a> <a href="error_report_guide.html"class="btn btn-neutral float-right">Next</a>
                         </div>
                         
                         

@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>Welcome to our site</title>
+    <title>Explaining The Hello world example</title>
     
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
@@ -39,7 +39,7 @@
                                 <li  class="toctree-l1"><a href="NET-Framework-Overview.html">NET Framework Overview</a></li>
                                 <li  class="toctree-l1"><a href="Visual-Studio-and-CSharp-Overview.html">Visual Studio and CSharp Overview</a></li>
                                 <li  class="toctree-l1"><a href="Create-a-simple-class.html">Create a simple class</a></li>
-                                <li  class="toctree-l1"><a href="Explaining-The-Hello-world-example.html">Explaining The Hello world example</a></li>
+                                <li  class="toctree-l1 current-page"><a href="Explaining-The-Hello-world-example.html">Explaining The Hello world example</a></li>
                                 <li  class="toctree-l1"><a href="Method-Arguments-and-Overloading.html">Method Arguments and Overloading</a></li>
                                 <li  class="toctree-l1"><a href="Using-directives.html">Using directives</a></li>
                                 <li  class="toctree-l1"><a href="Snippets.html">Snippets</a></li>
@@ -135,12 +135,66 @@
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main">
-                         <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="welcome-to-our-site">Welcome to our site</h1>
+                        <a href="Create-a-simple-class.html"class="btn btn-neutral float-left">Previous</a> <a href="Method-Arguments-and-Overloading.html"class="btn btn-neutral float-right">Next</a><br /><br />
+                        <div class="section"><h1 id="explaining-the-hello-world-example">Explaining The Hello world example</h1>
+<p>Review the actual code:</p>
+<p>The code is organized by Namespace, Class and Method
+Code that is actually executed can only be defined inside Methods.</p>
+<p>In the HelloWorld sample we created a new class and we defined a method inside this class<br />
+The Run method is part of the HelloWorld class<br />
+The Namespace of the HelloWorld class is Northwind.Training</p>
+<h6 id="namespaces">Namespaces</h6>
+<p>Namespaces are used to organize the classes.<br />
+They used as the address of the class inside the solution.<br />
+The class HelloWorld is saved at Training folder under the Northwind solution.</p>
+<h6 id="classes">Classes</h6>
+<p>With C#, code can be written only inside classes.<br />
+Class can contains Members such – Methods, properties, fields and more<br />
+The class HelloWorld contains a Method called Run()
+Inside the Method we called another method called Show()<br />
+and we sent the text to be displayed as parameter to the method.</p>
+<h6 id="method">Method</h6>
+<p>Method contains to code that is executed once the method is called.<br />
+The Run() method executes one line of code – it calls the Show() method</p>
+<h6 id="the-method-header-definition">The method header definition:</h6>
+<p><em>Access modifier</em> - Access modifier is a keyword used  to specify the accessibility level of the method (or a class)
+It defined which code can see or use the method (or class)<br />
+There are Four access modifiers :</p>
+<ul>
+<li><code>private</code> –  visible to members within this class and inner classes</li>
+<li><code>protected</code> – visible to members within this class and those which are inherits from this class</li>
+<li><code>internal</code> – visible to any code within my assembly (dll/exe)</li>
+<li><code>public</code> – visible to any code.<br />
+The Run() used in the HelloWorld has public access modifier.</li>
+</ul>
+<p><em>Return value</em> - Method can return a value to the caller
+The return value type should be define in the Method header before the Method name
+void is specify when a method doesn’t return a value<br />
+The Run() used in the HelloWorld has no return value so we specify void.</p>
+<p><em>Method name</em> - You can specify any name for the method as long as it is a valid C# name</p>
+<p><em>()</em> - in side the parentheses we  specify the parameter the method receive<br />
+The Run() used in the HelloWorld receives no parameters so nothing is specify inside the parentheses</p>
+<h6 id="calling-a-method">Calling a Method</h6>
+<p>To call a method we will specify the Method “Address” name space and the method name:</p>
+<pre><code class="language-csharp">System.Windows.Forms.MessageBox.Show(&quot;Hello World&quot;);
+</code></pre>
+<p>System.Windows.Forms – is the namespace
+MessageBox – is the class name
+Show – is the method name
+which receives text as parameters</p>
+<h6 id="calling-the-method-from-the-menu">Calling the Method from the menu</h6>
+<p>When we DbClick on the menu item Visual Studio generated a method which is called every time the menu item is being clicked
+inside this method we added the code to call the Run method of the HelloWorld class.</p>
+<pre><code class="language-csharp">new Training.HelloWorld().Run();
+</code></pre>
+<p><em>new</em> – a keyword to create a new instance of a class
+in this case we create a new instance of HelloWorld class which defined under the Training folder.
+and then we called the Run() method.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/X_8GeOvDMaM" frameborder="0" allowfullscreen></iframe>
 </div>
                         
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                             <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a>
+                            <a href="Create-a-simple-class.html"class="btn btn-neutral float-left">Previous</a> <a href="Method-Arguments-and-Overloading.html"class="btn btn-neutral float-right">Next</a>
                         </div>
                         
                         

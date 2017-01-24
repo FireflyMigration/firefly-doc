@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>Welcome to our site</title>
+    <title>More on Strings</title>
     
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
@@ -50,7 +50,7 @@
                         <li class="toctree-l1">
                             <ul class="subnav">
                                 <li  class="toctree-l1"><a href="Simple-data-types.html">Simple data types</a></li>
-                                <li  class="toctree-l1"><a href="More-on-strings.html">More on strings</a></li>
+                                <li  class="toctree-l1 current-page"><a href="More-on-strings.html">More on strings</a></li>
                                 <li  class="toctree-l1"><a href="Data-Types-Exercise.html">Data Types Exercise</a></li>
                             </ul>
                         </li>
@@ -135,12 +135,46 @@
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main">
-                         <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="welcome-to-our-site">Welcome to our site</h1>
+                        <a href="Simple-data-types.html"class="btn btn-neutral float-left">Previous</a> <a href="Data-Types-Exercise.html"class="btn btn-neutral float-right">Next</a><br /><br />
+                        <div class="section"><h1 id="more-on-strings">More on Strings</h1>
+<p><strong>Special characters in string</strong></p>
+<p>Special characters are not displayed as is.<br />
+To display special characters in string add back slash sign before the characters<br />
+For example:</p>
+<ul>
+<li>To display the quote sign in a message box use &quot; before the quote</li>
+<li>To display a message with 2 lines use \r\n</li>
+</ul>
+<pre><code class="language-diff"> using System.Windows.Forms;
+namespace Northwind.Training
+{
+    class MoreOnStrings
+    {
+        MessageBox.Show(&quot;I'm a simple string&quot;);
++       MessageBox.Show(&quot;I'm a quote\&quot;&quot;);
++       MessageBox.Show(&quot;Line one\r\nLine Two&quot;);
+    }
+}
+</code></pre>
+<p>To display the backslash character double it: instead of \ use \<br />
+<code>MessageBox.Show(&quot;Windows Path: c:\\windows&quot;);</code></p>
+<p>Or Alternatively: to display a string as is use the @ sign before the string</p>
+<p><code>MessageBox.Show(@&quot;Windows Path: c:\windows using the @ sign to use quites just say &quot;&quot;double quotes&quot;&quot; &quot;);</code></p>
+<p>The @ sign can be used also to dsiplay multi line text without the need to use \n in the string:</p>
+<pre><code class="language-csharp">MessageBox.Show(@&quot;I'm a multi 
+line 
+text 
+in many 
+line&quot;);
+</code></pre>
+<p>Exercise : <a href="Data-Types-Exercise.html">Data types</a></p>
+<hr />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/o1xAgJTEO8k?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
+---
 </div>
                         
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                             <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a>
+                            <a href="Simple-data-types.html"class="btn btn-neutral float-left">Previous</a> <a href="Data-Types-Exercise.html"class="btn btn-neutral float-right">Next</a>
                         </div>
                         
                         

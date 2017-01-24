@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>Welcome to our site</title>
+    <title>Access Modifiers</title>
     
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
@@ -66,7 +66,7 @@
                                 <li  class="toctree-l1"><a href="Constructor-Static_ReadOnly.html">Constructor Static_ReadOnly</a></li>
                             </ul>
                         </li>
-                        <li  class="toctree-l1"><a href="student-notes.html">student notes</a></li>
+                        <li  class="toctree-l1 current-page"><a href="student-notes.html">student notes</a></li>
                     </ul>
                 </li>
                 <li class="toctree-l1">
@@ -135,12 +135,50 @@
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main">
-                         <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="welcome-to-our-site">Welcome to our site</h1>
+                        <a href="Constructor-Static_ReadOnly.html"class="btn btn-neutral float-left">Previous</a> <a href="Getting-the-code-for-the-first-time.html"class="btn btn-neutral float-right">Next</a><br /><br />
+                        <div class="section"><h1 id="access-modifiers">Access Modifiers</h1>
+<p>Access modifiers are keywords used to specify the declared accessibility of a member or a type. It determines which code can use this class or method. There are four access modifiers:</p>
+<ul>
+<li>private – only visible to code within class and inner classes</li>
+</ul>
+<pre><code class="language-csharp">private void Run()
+{
+}
+private int i;
+</code></pre>
+<ul>
+<li>protected – also visible to code within class that inherit from this class</li>
+</ul>
+<pre><code class="language-csharp">protected void Run()
+{
+}
+protected int i;
+</code></pre>
+<ul>
+<li>Internal – visible to any code within my assembly (dll/exe)</li>
+</ul>
+<pre><code class="language-csharp">internal void Run()
+{
+}
+internal int i;
+</code></pre>
+<ul>
+<li>public – visible to any code</li>
+</ul>
+<pre><code class="language-csharp">public void Run()
+{
+}
+public int i;
+</code></pre>
+<p>Defaults:</p>
+<ul>
+<li>Classes are “internal”</li>
+<li>Members (methods, fields etc…) and inner classes are “private”</li>
+</ul>
 </div>
                         
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                             <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a>
+                            <a href="Constructor-Static_ReadOnly.html"class="btn btn-neutral float-left">Previous</a> <a href="Getting-the-code-for-the-first-time.html"class="btn btn-neutral float-right">Next</a>
                         </div>
                         
                         

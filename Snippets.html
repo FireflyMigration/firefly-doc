@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>Welcome to our site</title>
+    <title>Snippets</title>
     
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
@@ -42,7 +42,7 @@
                                 <li  class="toctree-l1"><a href="Explaining-The-Hello-world-example.html">Explaining The Hello world example</a></li>
                                 <li  class="toctree-l1"><a href="Method-Arguments-and-Overloading.html">Method Arguments and Overloading</a></li>
                                 <li  class="toctree-l1"><a href="Using-directives.html">Using directives</a></li>
-                                <li  class="toctree-l1"><a href="Snippets.html">Snippets</a></li>
+                                <li  class="toctree-l1 current-page"><a href="Snippets.html">Snippets</a></li>
                                 <li  class="toctree-l1"><a href="Comments.html">Comments</a></li>
                                 <li  class="toctree-l1"><a href="Hello-csharp-exercise.html">Hello csharp exercise</a></li>
                             </ul>
@@ -135,12 +135,41 @@
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main">
-                         <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="welcome-to-our-site">Welcome to our site</h1>
+                        <a href="Using-directives.html"class="btn btn-neutral float-left">Previous</a> <a href="Comments.html"class="btn btn-neutral float-right">Next</a><br /><br />
+                        <div class="section"><h1 id="snippets">Snippets</h1>
+<ol>
+<li>Snippet is actually a shortcut to write specific code.</li>
+<li>To use snippet we should type the shortcut and press the Tab key twice</li>
+</ol>
+<p><strong>Snippet for MessageBox.Show():</strong></p>
+<p>Inside the Run() method type 'mbox' and press Tab twice<br />
+Automatically the full call to the method is inserter to the code and the parameter is &quot;Test&quot; is marked.<br />
+You can change the text or press the Enter key to accept it.</p>
+<p><img src="Snippet.png" alt="Snippet" /></p>
+<pre><code class="language-csdiff">using System.Windows.Forms;
+namespace Northwind.Training
+{
+    Class HelloWorld
+    {
+       public void Run()
+       {
+          MessageBox.Show(&quot;Hello World&quot;, &quot;Hello World Caption&quot;, MessageBoxButton.OK);
++         MessageBox.Show(&quot;the message&quot;);
++         MessageBox.Show(&quot;Test&quot;);
+
+
+       }     
+    }
+}
+</code></pre>
+<p>The full list of C# Snippets can be found in here:<br />
+<a href="http://msdn.microsoft.com/en-us/library/z41h7fat.aspx">http://msdn.microsoft.com/en-us/library/z41h7fat.aspx</a></p>
+<hr />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/efWaPPyea2U" frameborder="0" allowfullscreen></iframe>
 </div>
                         
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                             <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a>
+                            <a href="Using-directives.html"class="btn btn-neutral float-left">Previous</a> <a href="Comments.html"class="btn btn-neutral float-right">Next</a>
                         </div>
                         
                         

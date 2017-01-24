@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>Welcome to our site</title>
+    <title>Visual Studio and CSharp Overview</title>
     
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
@@ -37,7 +37,7 @@
                             <ul class="subnav">
                                 <li><span>Intro</span></li>
                                 <li  class="toctree-l1"><a href="NET-Framework-Overview.html">NET Framework Overview</a></li>
-                                <li  class="toctree-l1"><a href="Visual-Studio-and-CSharp-Overview.html">Visual Studio and CSharp Overview</a></li>
+                                <li  class="toctree-l1 current-page"><a href="Visual-Studio-and-CSharp-Overview.html">Visual Studio and CSharp Overview</a></li>
                                 <li  class="toctree-l1"><a href="Create-a-simple-class.html">Create a simple class</a></li>
                                 <li  class="toctree-l1"><a href="Explaining-The-Hello-world-example.html">Explaining The Hello world example</a></li>
                                 <li  class="toctree-l1"><a href="Method-Arguments-and-Overloading.html">Method Arguments and Overloading</a></li>
@@ -135,12 +135,47 @@
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main">
-                         <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="welcome-to-our-site">Welcome to our site</h1>
+                        <a href="NET-Framework-Overview.html"class="btn btn-neutral float-left">Previous</a> <a href="Create-a-simple-class.html"class="btn btn-neutral float-right">Next</a><br /><br />
+                        <div class="section"><h1 id="visual-studio-and-csharp-overview">Visual Studio and CSharp Overview</h1>
+<p><strong>Solution Structure</strong></p>
+<ol>
+<li><p>Before opening the solution in the solution explorer, make sure to run <code>BuildDebug.bat</code> to build the project and make sure that everything is ready.</p>
+</li>
+<li><p>Visual Studio is compound from three basic parts :</p>
+<ul>
+<li><strong>Solution Explorer</strong> - provides an organized view of the solution which includes your projects and their files</li>
+<li><strong>Working area</strong> - where you can edit your code</li>
+<li><strong>Tool box</strong> - displays icons for controls and other items that you can add to Visual Studio projects</li>
+</ul>
+</li>
+<li><p>In the solution explorer,</p>
+<ul>
+<li><em>ENV</em> project - is the generic source code common to all migrated application.<br />
+ENV has a reference to the <strong>Firefly.box.dll</strong> which is also common code supplied by firefly</li>
+<li><em>[Solution name]</em> - solution</li>
+<li><em>[Solution name].[moduleName]</em> - The solution is split to several projects.
+Every module has its controllers, views (screens),</li>
+<li><em>[Solution name]Base</em> - contains the migrated tables under the Models folder, migrated Models under the Types folder and other objects which are shared by the whole solution.</li>
+</ul>
+</li>
+<li><p>The startup project is the one in Bold and is the first to run when we runt he application.<br />
+The startup project includes several parts:</p>
+<ul>
+<li>.ini file - the configuration file use to run the application</li>
+<li>The Views folder which contains all the menus</li>
+<li>ApplicationCore class - is migrated version of the main program</li>
+<li>ApplicationPograms class - is the list of the migrated programs with their numbers, names, public names, and their location inside the solution</li>
+<li>ApplicationEntities class - is the list of the migrated tables with their numbers, names, public names, and their location inside the solution</li>
+<li>program.cs - is the first program that runs when you launch the application.<br />
+Main is the program</li>
+</ul>
+</li>
+</ol>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ztHuX9ncvTY" frameborder="0" allowfullscreen></iframe>
 </div>
                         
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                             <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a>
+                            <a href="NET-Framework-Overview.html"class="btn btn-neutral float-left">Previous</a> <a href="Create-a-simple-class.html"class="btn btn-neutral float-right">Next</a>
                         </div>
                         
                         

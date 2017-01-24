@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>Welcome to our site</title>
+    <title>Exercise: Hello CSharp</title>
     
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
@@ -44,7 +44,7 @@
                                 <li  class="toctree-l1"><a href="Using-directives.html">Using directives</a></li>
                                 <li  class="toctree-l1"><a href="Snippets.html">Snippets</a></li>
                                 <li  class="toctree-l1"><a href="Comments.html">Comments</a></li>
-                                <li  class="toctree-l1"><a href="Hello-csharp-exercise.html">Hello csharp exercise</a></li>
+                                <li  class="toctree-l1 current-page"><a href="Hello-csharp-exercise.html">Hello csharp exercise</a></li>
                             </ul>
                         </li>
                         <li class="toctree-l1">
@@ -135,12 +135,37 @@
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main">
-                         <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="welcome-to-our-site">Welcome to our site</h1>
+                        <a href="Comments.html"class="btn btn-neutral float-left">Previous</a> <a href="Simple-data-types.html"class="btn btn-neutral float-right">Next</a><br /><br />
+                        <div class="section"><h1 id="exercise-hello-csharp">Exercise: Hello CSharp</h1>
+<p>1. In the Solution Explorer, find the main project (Marked in Bold).<br />
+2. Add a folder called Exercises<br />
+3. Add a class called &quot;HelloCSharp&quot; (don't use the # sign, it's an invalid character in a class name)<br />
+4. Add the run method</p>
+<pre><code class="language-csharp">public void Run() 
+{
+} 
+</code></pre>
+<p>5. Add a call to the <code>System.Windows.Forms.Show</code> method<br />
+6. In the Views folder find the ApplicationMdi form and open it the Visual Studio’s form designer.<br />
+7. Add a new menu called “Exercises”<br />
+8. Add a new entry called “Hello C#”<br />
+9. When clicking the menu, call the &quot;HelloCSharp&quot; class we've just created.</p>
+<pre><code class="language-csharp">new Exercises.HelloCSharp().Run();
+</code></pre>
+<p>10.  Add comments to describe your code.<br />
+11. Build and run.<br />
+12. In the beginning of the file, add using directive to <code>System.Windows.Forms</code> namespace<br />
+13. Add another message box, using shorter syntax, to show the following message: “Shorter is better”<br />
+14. Build and run.<br />
+15. Using the “mbox” snippet, add another message box to show the following message: “Snippets are cool!”<br />
+16. Build and run.</p>
+<hr />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/27AHai9Oygc" frameborder="0" allowfullscreen></iframe>
+<hr />
 </div>
                         
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                             <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a>
+                            <a href="Comments.html"class="btn btn-neutral float-left">Previous</a> <a href="Simple-data-types.html"class="btn btn-neutral float-right">Next</a>
                         </div>
                         
                         

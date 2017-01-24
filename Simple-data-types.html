@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>Welcome to our site</title>
+    <title>Simple Data Types</title>
     
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
@@ -49,7 +49,7 @@
                         </li>
                         <li class="toctree-l1">
                             <ul class="subnav">
-                                <li  class="toctree-l1"><a href="Simple-data-types.html">Simple data types</a></li>
+                                <li  class="toctree-l1 current-page"><a href="Simple-data-types.html">Simple data types</a></li>
                                 <li  class="toctree-l1"><a href="More-on-strings.html">More on strings</a></li>
                                 <li  class="toctree-l1"><a href="Data-Types-Exercise.html">Data Types Exercise</a></li>
                             </ul>
@@ -135,12 +135,99 @@
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main">
-                         <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="welcome-to-our-site">Welcome to our site</h1>
+                        <a href="Hello-csharp-exercise.html"class="btn btn-neutral float-left">Previous</a> <a href="More-on-strings.html"class="btn btn-neutral float-right">Next</a><br /><br />
+                        <div class="section"><h1 id="simple-data-types">Simple Data Types</h1>
+<p>Data types are  used to define fields , variables.<br />
+In C# we have various of data types but let's start with the basic ones:<br />
+int, string, double, char and bool</p>
+<p>When defining a variable we first need to set its type and then its name
+For example: string CompanyName;<br />
+string – is the type of the variable<br />
+CompanyName is the variable’s name.</p>
+<p>Notice the standard naming conventions: the name of the variable starts with lower case and the first letter of every word afterwards is an uppercase.<br />
+We can also initialize the variable in the same line by using the equation sign:</p>
+<pre><code class="language-diff">string CompanyName = &quot;my name&quot;;
+</code></pre>
+<p><strong>Let's create data types and display their values in the message box:</strong></p>
+<ol>
+<li>Right click on the <em>Training</em> folder and select <strong>Add/New Item</strong></li>
+<li>Choose Class and name it 'BasicTypes.cs'</li>
+<li>in the code below 5 different data types are defined and initialized
+<ul>
+<li>string, int, bool, double and char are the data types</li>
+<li>personName, numberOfKids, isStudent, height &amp; gender are the variables names</li>
+<li>personName is initialize when it is defined</li>
+<li>The numberOfKids received it value in the next assignment line of code <code>numberOfKids = 3</code></li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-diff">namespace Northwind.Training
+{
+    class BasicTypes
+    {
++       public void Run()
++       {
++           string personName =&quot;Noam&quot;;
++           int numberOfKids;             
++           numberOfKids = 3;
+
++           bool isStudent = false;
++           double height =1.77;
+
++           char gender ='M';
+       }     
+    }
+}
+</code></pre>
+<p>4. Note:<br />
+A variable which is not in used has a green underline</p>
+<p>5. <strong>String VS Char</strong><br />
+A char is a single character as opposed to a string which is comprised of many characters.<br />
+String is surrounded by double quotes while char is surrounded by a single quote.</p>
+<p>6. In order to use the System.Windows.Form.MessageBox class we will add it to the using section
+and we will use the MessageBox.Show() method to display them</p>
+<pre><code class="language-diff">+ using System.Windows.Forms;
+namespace Northwind.Training
+{
+    class BasicTypes
+    {
+       public void Run()
+       {
+           string personName =&quot;Noam&quot;;
+           int numberOfKids;             
+           numberOfKids = 3;
+
+           bool isStudent = false;
+           double height =1.77;
+
+           char gender ='M';
+
++         	MessageBox.Show(&quot;Hello &quot;  + personName ); 
++         	MessageBox.Show(&quot;You have &quot;  + numberOfKids.ToString() + &quot; children&quot; ); 
+       }     
+    }
+}
+
+</code></pre>
+<p>7. The <strong>+ operator</strong> when used on strings concatenates the two string into a single string.<br />
+8. The <strong>ToString()</strong> method is used to convert the value to string.<br />
+Every object in .net has <code>ToString()</code> method that convert itself to string.</p>
+<p>9. When concatenating string with number you do not have to use the ToString() method this will be done automatically by C#.</p>
+<p>10. To call this class from the menu we will add a new entry in the ApplicationMDI menu<br />
+DbClick on the menu so Visual Studio generate the code that will be executed when clicking the menu entry
+and call this class by calling its Run() method</p>
+<pre><code class="language-diff">private void basicTypesToolStripMenuItem_Click(object sender, EventArgs e)
+{
++	new Training.BasicTypes().Run();
+}
+</code></pre>
+<p>11. before running the application remember to build it.</p>
+<hr />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eel6sOTM1hY" frameborder="0" allowfullscreen></iframe>
 </div>
                         
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                             <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a>
+                            <a href="Hello-csharp-exercise.html"class="btn btn-neutral float-left">Previous</a> <a href="More-on-strings.html"class="btn btn-neutral float-right">Next</a>
                         </div>
                         
                         

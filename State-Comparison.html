@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>Welcome to our site</title>
+    <title>Introduction</title>
     
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
@@ -109,7 +109,7 @@
                                 <li  class="toctree-l1"><a href="Range-Locate.html">Range Locate</a></li>
                                 <li  class="toctree-l1"><a href="The-Sort.html">The Sort</a></li>
                                 <li  class="toctree-l1"><a href="Operations.html">Operations</a></li>
-                                <li  class="toctree-l1"><a href="State-Comparison.html">State Comparison</a></li>
+                                <li  class="toctree-l1 current-page"><a href="State-Comparison.html">State Comparison</a></li>
                                 <li  class="toctree-l1"><a href="Handlers.html">Handlers</a></li>
                             </ul>
                         </li>
@@ -135,12 +135,253 @@
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main">
-                         <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="welcome-to-our-site">Welcome to our site</h1>
+                        <a href="Operations.html"class="btn btn-neutral float-left">Previous</a> <a href="Handlers.html"class="btn btn-neutral float-right">Next</a><br /><br />
+                        <div class="section"><h1 id="introduction">Introduction</h1>
+<p>This article is one of a series of articles aimed at providing further orientation with the migrated code for Magic programmers. This time we will look at the different States as they appear in eDeveloper (version 9) and show the equivalent representation of each setting in the migrated code.</p>
+<p>We will discuss Online and Batch task types. Both share common states and each also has unique states of its own. The following table shows the syntax in .Net for each magic state.</p>
+<table>
+<thead>
+<tr>
+<th>Magic Name</th>
+<th>Migrated Code Name</th>
+<th>Occurs in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Properties</td>
+<td>OnLoad</td>
+<td>UIController, BusinessProcess</td>
+</tr>
+<tr>
+<td>TaskPrefix</td>
+<td>OnStart</td>
+<td>UIController, BusinessProcess</td>
+</tr>
+<tr>
+<td>TaskSuffix</td>
+<td>OnEnd</td>
+<td>UIController, BusinessProcess</td>
+</tr>
+<tr>
+<td>RecordPrefix</td>
+<td>OnEnterRow</td>
+<td>UIController, BusinessProcess</td>
+</tr>
+<tr>
+<td>RecordSuffix</td>
+<td>OnSavingRow</td>
+<td>UIController, BusinessProcess</td>
+</tr>
+<tr>
+<td></td>
+<td>OnLeaveRow</td>
+<td>BusinessProcess only</td>
+</tr>
+<tr>
+<td>GroupPrefix</td>
+<td>delegate call</td>
+<td>BusinessProcess only</td>
+</tr>
+<tr>
+<td>GroupSuffix</td>
+<td>delegate call</td>
+<td>BusinessProcess only</td>
+</tr>
+<tr>
+<td>Control Prefix</td>
+<td>.Net Event</td>
+<td>UIController only</td>
+</tr>
+<tr>
+<td>Control Suffix</td>
+<td>.Net Event</td>
+<td>UIController only</td>
+</tr>
+<tr>
+<td>Control Verification</td>
+<td>.Net Event</td>
+<td>UIController only</td>
+</tr>
+<tr>
+<td>Control Change</td>
+<td>.Net Event</td>
+<td>UIController only</td>
+</tr>
+<tr>
+<td>Handler</td>
+<td>.Net Method</td>
+<td>UIController, BusinessProcess</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="online-states">Online States</h2>
+<p>Let's first look at an example of a screen displaying different Online states:</p>
+<p><img src="states_online.jpg" alt="Online states" /></p>
+<h3 id="load-properties">Load Properties</h3>
+<p>This refers to all properties that appear in screens such as Ctrl+P (Task Properties), Ctrl+C (Task Control), Ctrl+I (Media Properties), etc.</p>
+<p>Name in Migrated Code: <strong>OnLoad Method</strong><br />
+Example:</p>
+<pre><code class="language-csharp">protected override void OnLoad()
+{
+   AllowSelect = true;
+   Activity = Activities.Browse;  
+}
+</code></pre>
+<h3 id="task-prefix">Task Prefix</h3>
+<p>Name in Migrated Code: <strong>OnStart Method</strong><br />
+Example:</p>
+<pre><code class="language-csharp">protected override void OnStart()
+{
+     v_myNumberColumnField.Value = 0;
+      u.DBDel(typeof(Model.myFileName), &quot;&quot;);
+}
+</code></pre>
+<h3 id="task-suffix">Task Suffix</h3>
+<p>Name in Migrated Code: <strong>OnEnd Method</strong><br />
+Example:</p>
+<pre><code class="language-csharp">protected override void OnEnd()
+{
+     _taskresult = vMyValue;
+     new ClosingMethod().Run();
+}
+</code></pre>
+<h3 id="record-prefix">Record Prefix</h3>
+<p>Name in Migrated Code: <strong>OnEnterRow Method</strong><br />
+Example:</p>
+<pre><code class="language-csharp">protected override void OnEnterRow()
+{
+     new MethodtoRUnBeforeEachEachRow().Run();
+}
+</code></pre>
+<h3 id="record-suffix">Record Suffix</h3>
+<p>Name in Migrated Code: <strong>OnSavingRow Method</strong></p>
+<h3 id="record-main">Record Main</h3>
+<p>Name in Migrated Code: <strong>Constructor and Run Method</strong><br />
+Example:</p>
+<pre><code class="language-csharp">/// &lt;summary&gt;ShowProducts(P#10)&lt;/summary&gt;
+public ShowProducts()
+{
+    Title = &quot;ShowProducts&quot;;
+    InitializeDataViewAndUserFlow();
+}
+void InitializeDataViewAndUserFlow()
+{
+    From = Products;
+    OrderBy.Add(Products.ProductName);
+    OrderBy.Add(Products.UnitPrice, SortDirection.Descending);
+    // parameter for selection task
+    Columns.Add(pi_ProdID);
+    Columns.Add(Products.ProductID);
+    Columns.Add(Products.ProductName);
+    Columns.Add(Products.UnitPrice);
+    Columns.Add(stam);
+    }
+    /// &lt;summary&gt;Run&lt;/summary&gt;
+    /// &lt;param name=&quot;ppi_ProdID&quot;&gt;pi.Prod ID&lt;/param&gt;
+    public void Run(NumberParameter ppi_ProdID)
+    {
+       BindParameter(pi_ProdID, ppi_ProdID);
+       Execute();
+    }
+</code></pre>
+<h3 id="controls">Controls</h3>
+<p>Name in Migrated Code: <strong>User Defined Method</strong><br />
+Location in Migrated code: Controls handlers section, (after the Expressions section)<br />
+Controls obviously appear only in UIController code and can have the following four states:</p>
+<h4 id="control-prefix">Control Prefix</h4>
+<p>Methods of this type in the migrated code have names ending with <strong>_Enter</strong></p>
+<p>Example:</p>
+<pre><code class="language-csharp">#region Controls handlers
+internal void txtCustomers_CustomerID_Enter()
+{
+   //code
+}
+#endregion
+</code></pre>
+<h4 id="control-suffix">Control Suffix</h4>
+<p>Methods of this type in the migrated code have names ending with <strong>_Leave</strong></p>
+<p>Example:</p>
+<pre><code class="language-csharp">#region Controls handlers
+internal void txtCustomers_CustomerID_Leave()
+{
+   //code
+}
+#endregion
+</code></pre>
+<h4 id="control-verification">Control Verification</h4>
+<p>Methods of this type in the migrated code have names ending with <strong>_InputValidation</strong></p>
+<p>Example:</p>
+<pre><code class="language-csharp">#region Controls handlers
+internal void txtCustomers_CustomerID_InputValidation()
+{
+   //code
+}
+#endregion
+</code></pre>
+<h4 id="control-change">Control Change</h4>
+<p>Methods of this type in the migrated code have names ending with <strong>_Change</strong></p>
+<p>Example:</p>
+<pre><code class="language-csharp">#region Controls handlers
+internal void txtCustomers_CustomerID_Change()
+{
+   //code
+}
+#endregion
+</code></pre>
+<hr />
+<h2 id="batch-states">Batch States</h2>
+<p>Now let's look at an example of a screen displaying different Batch states.</p>
+<p><img src="states_batch.jpg" alt="Batch states" /></p>
+<p>Most of these states are the same as the Online ones, with the exception of the following:</p>
+<h3 id="record-suffix-1">Record Suffix</h3>
+<p>Name in Migrated Code: <strong>OnLeaveRow, OnSavingRow Methods</strong></p>
+<p>OnLeaveRow() occurs after leaving every record as opposed to OnSavingRow() which occurs only when data from the record needs to be saved to the Database. Thus, for a record that needs to also be saved to the database, both <strong>OnLeaveRow</strong> and <strong>OnSavingRow</strong> events will occur.</p>
+<p>Example: OnLeaveRow:</p>
+<pre><code class="language-csharp">protected override void OnLeaveRow()
+{
+    _layout.Body.WriteTo(_ioPrint_Order);
+    if(false)
+    {
+       StartRun(&quot;dir&quot;, false, System.Diagnostics.ProcessWindowStyle.Normal);
+    }
+    new ENV.Utilities.FileViewer(&quot;c:\\temp\\test.txt&quot;,new UI.Print_Orders_Browse(this)).Edit();
+}
+</code></pre>
+<h3 id="groups">Groups</h3>
+<p>Name in Migrated Code: <strong>Groups.Add() Method</strong>
+Location in Migrated code: <strong>constructor</strong></p>
+<h4 id="groupprefix">GroupPrefix</h4>
+<p>Groups.Add defines the grouping for the selected variables, while groupname.Enter and groupname.Leave represent the GroupPrefix and the GroupSuffix respectively.<br />
+Example: First lets look at usage of Groups.Add in the Constructor:</p>
+<pre><code class="language-csharp">public Print_Orders()
+{
+   Title = &quot;Print - Orders&quot;;
+   InitializeDataView();
+   _layout = new Printing.Print_Orders_Layout(this);
+   var Orders_CustomerIDGroup = Groups.Add(Orders.CustomerID);
+   Orders_CustomerIDGroup.Enter += Orders_CustomerIDGroup_Enter;
+   Orders_CustomerIDGroup.Leave += Orders_CustomerIDGroup_Enter;
+}
+</code></pre>
+<h4 id="groupsuffix">GroupSuffix</h4>
+<p>Next, lets look at the delegate method call for the Group Prefix, using Group.Enter:</p>
+<pre><code class="language-csharp">void Orders_CustomerIDGroup_Enter()
+{
+   _layout.CustomerGroupHeader.WriteTo(_ioPrint_Order);
+} 
+</code></pre>
+<p>Finally, lets look at the delegate method call for the Group Suffix, using Group.Leave:</p>
+<pre><code class="language-csharp">void Orders_CustomerIDGroup_Leave()
+{
+   _layout.CustomerGroupFooter.WriteTo(_ioPrint_Order);
+} 
+</code></pre>
 </div>
                         
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                             <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a>
+                            <a href="Operations.html"class="btn btn-neutral float-left">Previous</a> <a href="Handlers.html"class="btn btn-neutral float-right">Next</a>
                         </div>
                         
                         

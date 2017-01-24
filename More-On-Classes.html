@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>Welcome to our site</title>
+    <title>More on Classes</title>
     
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
@@ -62,7 +62,7 @@
                         </li>
                         <li class="toctree-l1">
                             <ul class="subnav">
-                                <li  class="toctree-l1"><a href="More-On-Classes.html">More On Classes</a></li>
+                                <li  class="toctree-l1 current-page"><a href="More-On-Classes.html">More On Classes</a></li>
                                 <li  class="toctree-l1"><a href="Constructor-Static_ReadOnly.html">Constructor Static_ReadOnly</a></li>
                             </ul>
                         </li>
@@ -135,12 +135,180 @@
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main">
-                         <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="welcome-to-our-site">Welcome to our site</h1>
+                        <a href="Operators-Exercise.html"class="btn btn-neutral float-left">Previous</a> <a href="Constructor-Static_ReadOnly.html"class="btn btn-neutral float-right">Next</a><br /><br />
+                        <div class="section"><h1 id="more-on-classes">More on Classes</h1>
+<p>In this chapter, we will discuss more about Classes and instances.</p>
+<p>The C# code is written inside classes.<br />
+Class is a <strong>collection of operations and Data</strong>.</p>
+<p>The data and the operations are defined between the curly brackets of the class.<br />
+The curly brackets defined where the class starts and where it ends – this is the Class scope.<br />
+Members defined inside a class are known only in that class.</p>
+<p>The same goes for Method - Variables defined inside a method are only known inside this method.</p>
+<p>Below you can see the code of 2 different classes:</p>
+<ol>
+<li>Class called ClassesAndInstances</li>
+<li>Class called Animal</li>
+</ol>
+<p><strong>ClassesAndInstances</strong></p>
+<pre><code class="language-diff">+ using System.Windows.Forms;
+namespace Northwind.Training
+{
+    class ClassesAndInstances
+    {
++       public void Run()
++       {
++       }     
+    }
+}
+</code></pre>
+<p><strong>Animal</strong></p>
+<pre><code class="language-diff">namespace Northwind.Training
+{
+    class Animal
+    {
+        public string Name;
+
++       public void Run()
++       {
++           
++       }     
+    }
+}
+</code></pre>
+<p>The Animal class has a member defined called Name.<br />
+This member is:<br />
+<strong>public</strong> -  so it is accessible from all our code<br />
+Its <strong>type</strong> is string
+and its name is Name</p>
+<p>In the ClassesAndInstances class we can define an instance of the Animal class.<br />
+meaning - the ClassesAndInstances class has a member from Animal class.</p>
+<p>To use this member in the ClassesAndInstances class we need to create a new instance of it:<br />
+Animal a = new Animal();</p>
+<p><strong>new</strong> keyword<br />
+By using the <strong>new</strong> keyword a new instance of the class is created<br />
+By using the new keyword a new instance of the object is created in the memory.
+In our example this instance is represented by the variable a</p>
+<p>Since 'a' is an Animal it has a member called Name (as defined in the Animal class).<br />
+To set a value to the Name of 'a' we use the className.MemberName, and with this sample:<br />
+a.Name = &quot;Rexi&quot;</p>
+<pre><code class="language-diff">using System.Windows.Forms;
+namespace Northwind.Training
+{
+    class ClassesAndInstances
+    {
+       public void Run()
+       {
++            Animal a = new Animal();
++            Animal b = new Animal();
++            a.Name = &quot;Rex&quot;;
++            b.Name = &quot;Kitty&quot;;
++            MessageBox.Show(a.Name); 
++            MessageBox.Show(b.Name); 
+       }     
+    }
+}
+</code></pre>
+<p>The code above defines two instances of Animal class a &amp; b.<br />
+The Name of 'a' is &quot;Rexi&quot; the name of 'b' is &quot;Kitty&quot;.<br />
+Then we use the MessageBox.Show() method to display the name of each of the Animals.</p>
+<p>Note: to access a member of a class (properties, variables, methods) we use the class instance.member</p>
+<p>Back to the Animal class:<br />
+A new member is added to that animal class: AnimalType</p>
+<pre><code class="language-diff">namespace Northwind.Training
+{
+   class Animal
+   {
+      public void Run()
+      {
+          public string Name;
++          public string AnimalType;
+      }     
+   }
+}
+</code></pre>
+<p>In the ClassesAndInstances we set 'a' (which is an instance of Animal) to be have AnimalTypa = Dog<br />
+and 'b'  (which is also an instance of Animal) to have AnimalTypa = Cat.<br />
+The message boxes displays the type and the name of the objects a &amp; b</p>
+<pre><code class="language-diff">using System.Windows.Forms;
+namespace Northwind.Training
+{
+    class ClassesAndInstances
+    {
+       public void Run()
+       {
+            Animal a = new Animal();
+            Animal b = new Animal();
+            a.Name = &quot;Rex&quot;;
++           b.AnimalType = &quot;Dog&quot; ;
+            b.Name = &quot;Kitty&quot;;
++           b.AnimalType = &quot;Cat&quot; ;
+-           MessageBox.Show(a.Name); 
++           MessageBox.Show(a.Name+&quot; is a &quot;+a.AnimalType); 
+-            MessageBox.Show(b.Name); 
++           MessageBox.Show(b.Name+&quot; is a &quot;+b.AnimalType); 
+       }     
+    }
+}
+</code></pre>
+<p>Instead of using the message box to display the Name and the Type for 'a' and for 'b' in the<br />
+ClassesAndInstances, we can add a method in the Animal class itself to do that and call this method.</p>
+<p>The method DescribeYourSelf() is added to the Animal class<br />
+The method displays the name and the type of the Animal object who used it.
+<code>this</code> is a reference to the current instance of the object (Animal class).<br />
+The code looks like that:</p>
+<pre><code class="language-diff">+ using System.Windows.Forms;
+namespace Northwind.Training
+{
+   class Animal
+   {
+      public void Run()
+      {
+          public string Name;
+          public string AnimalType;
++          public void DescribeYourSelf()
++          {
++               MessageBox.Show(this.Name+&quot; is a &quot;+this.AnimalType); 
++          }  
+      }     
+   }
+}
+</code></pre>
+<p>The method DescribeYourSelf() belong to the Animal class so every object representing this class can use it.<br />
+Now, in the ClassesAndInstances, instead of using the message box, 'a' and 'b' objects can call the method DescribeYourSelf() method to display the information.</p>
+<pre><code class="language-diff">using System.Windows.Forms;
+namespace Northwind.Training
+{
+    class ClassesAndInstances
+    {
+       public void Run() 
+       {
+            Animal a = new Animal();
+            Animal b = new Animal();
+            a.Name = &quot;Rex&quot;;
+            b.AnimalType = &quot;Dog&quot; ;
+            b.Name = &quot;Kitty&quot;;
+            b.AnimalType = &quot;Cat&quot; ;
+-           MessageBox.Show(a.Name+&quot; is a &quot;+a.AnimalType); 
++           a.DescribeYourSelf();
+-           MessageBox.Show(b.Name+&quot; is a &quot;+b.AnimalType); 
++           b.DescribeYourSelf();
+       }     
+    }
+}
+</code></pre>
+<p>To summarize:<br />
+We Created a class representing an Animal<br />
+It has 3 members:
+2 fields - Name and Type and a Method that displays the name and the type of the animal</p>
+<p>In the second class which called ClassesAndInstances we created 2 objects of the Animal Class a &amp; b.<br />
+a is set with Name = Rexi and AnimalType = Dog
+b is set with Name = Kitty and AnimalType = Cat
+Both object use their DescribeYourSelf() method (the Animal class method) to display the information.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/v6wbQgPYwU0?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
 </div>
                         
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                             <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a>
+                            <a href="Operators-Exercise.html"class="btn btn-neutral float-left">Previous</a> <a href="Constructor-Static_ReadOnly.html"class="btn btn-neutral float-right">Next</a>
                         </div>
                         
                         

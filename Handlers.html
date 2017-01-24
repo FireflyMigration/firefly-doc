@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>Welcome to our site</title>
+    <title>Introduction</title>
     
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
@@ -110,7 +110,7 @@
                                 <li  class="toctree-l1"><a href="The-Sort.html">The Sort</a></li>
                                 <li  class="toctree-l1"><a href="Operations.html">Operations</a></li>
                                 <li  class="toctree-l1"><a href="State-Comparison.html">State Comparison</a></li>
-                                <li  class="toctree-l1"><a href="Handlers.html">Handlers</a></li>
+                                <li  class="toctree-l1 current-page"><a href="Handlers.html">Handlers</a></li>
                             </ul>
                         </li>
                         <li class="toctree-l1">
@@ -135,12 +135,63 @@
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main">
-                         <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="welcome-to-our-site">Welcome to our site</h1>
+                        <a href="State-Comparison.html"class="btn btn-neutral float-left">Previous</a> <a href="task-properties-unipaas.html"class="btn btn-neutral float-right">Next</a><br /><br />
+                        <div class="section"><h1 id="introduction">Introduction</h1>
+<p>This article is one of a series of articles aimed at providing further orientation with the migrated code for Magic programmers. This time we will look at Handlers as they appear in eDeveloper (version 9) and show the equivalent representation of each setting in the migrated code.</p>
+<h2 id="defining-an-event">Defining an Event</h2>
+<p>The following displays eDeveloper's ctrl-K or Handlers screen:</p>
+<p><img src="events.jpg" alt="Handlers screen" /></p>
+<p>Name in Migrated Code: <strong>Handlers.Add</strong> and the <strong>Handlers</strong> region of code<br />
+Location in Migrated Code: <strong>Constructor</strong> in the <strong>Event Handlers</strong> section (directly after the constructor<br />
+Example: In the constructor</p>
+<pre><code class="language-csharp">   var PrintHandler = Handlers.Add(Print);
+   PrintHandler.Invokes += PrintHandler_Invokes;
+</code></pre>
+<p>Example: In the Handler Section:</p>
+<pre><code class="language-csharp">  void PrintHandler_Invokes(Firefly.Box.Advanced.HandlerInvokeEventArgs e)
+  {
+     e.Handled = true;
+     // send range of this order
+     v_Printed.Value = new Print_Order().Run(Orders.OrderID, new UI.ShowOrders_UI(this));
+  }
+</code></pre>
+<p>The following sections describe the migrated code equivalent for all the event options.</p>
+<h3 id="description">Description</h3>
+<p>Name in Migrated Code: In the name of the parameter of the <strong>Handlers.Add</strong> method.<br />
+Location in Migrated Code: <strong>Constructor</strong><br />
+Example: In the constructor</p>
+<pre><code class="language-csharp">   var PrintHandler = Handlers.Add(Print);
+   PrintHandler.Invokes += PrintHandler_Invokes;
+</code></pre>
+<h3 id="trigger-type">Trigger Type</h3>
+<p>There are many ways in which a Handler can be triggered and the follwoing sub sections show the equivalent migrated code for each Trigger option.</p>
+<h4 id="system">System</h4>
+<p>Name in Migrated Code: <strong>Keys</strong><br />
+Location in Migrated Code: <strong>Constructor</strong><br />
+This defines a handler triggered by a keyboard shortcut.<br />
+Example:</p>
+<pre><code class="language-csharp">var h = Handlers.Add(Keys.Shift | Keys.F3);
+
+</code></pre>
+<p>####Internal</p>
+<p>Name in Migrated Code: <strong>Command</strong><br />
+Location in Migrated Code: <strong>Constructor</strong><br />
+This defines a handler triggered by an internal event command
+Example:</p>
+<pre><code class="language-csharp">var Expand_vMyField_CopyFromHandler = Handlers.Add(Command.Expand, &quot;Copy From&quot;);
+</code></pre>
+<p>Timer</p>
+<h4 id="expression">Expression</h4>
+<h4 id="none">None</h4>
+<h3 id="trigger">Trigger</h3>
+<h3 id="force-exit">Force Exit</h3>
+<h2 id="defining-a-handler">Defining a Handler</h2>
+<p>The following displays some Handlers as seen in eDeveloper:</p>
+<p><img src="handlers.jpg" alt="Handlers Screen" /></p>
 </div>
                         
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                             <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a>
+                            <a href="State-Comparison.html"class="btn btn-neutral float-left">Previous</a> <a href="task-properties-unipaas.html"class="btn btn-neutral float-right">Next</a>
                         </div>
                         
                         

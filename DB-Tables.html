@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>Welcome to our site</title>
+    <title>Comparison with Magic's DB Tables Dialog Box</title>
     
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
@@ -105,7 +105,7 @@
                                 <li  class="toctree-l1"><a href="Task-Properties.html">Task Properties</a></li>
                                 <li  class="toctree-l1"><a href="Task-Control.html">Task Control</a></li>
                                 <li  class="toctree-l1"><a href="IO-Files.html">IO Files</a></li>
-                                <li  class="toctree-l1"><a href="DB-Tables.html">DB Tables</a></li>
+                                <li  class="toctree-l1 current-page"><a href="DB-Tables.html">DB Tables</a></li>
                                 <li  class="toctree-l1"><a href="Range-Locate.html">Range Locate</a></li>
                                 <li  class="toctree-l1"><a href="The-Sort.html">The Sort</a></li>
                                 <li  class="toctree-l1"><a href="Operations.html">Operations</a></li>
@@ -135,12 +135,107 @@
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main">
-                         <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="welcome-to-our-site">Welcome to our site</h1>
+                        <a href="IO-Files.html"class="btn btn-neutral float-left">Previous</a> <a href="Range-Locate.html"class="btn btn-neutral float-right">Next</a><br /><br />
+                        <div class="section"><h1 id="comparison-with-magics-db-tables-dialog-box">Comparison with Magic's DB Tables Dialog Box</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This article is one of a series of articles aimed at providing further orientation with the migrated code for Magic programmers. This time we will look at the 'DB tables' screen as it appears in eDeveloper (version 9) and show the equivalent representation of each setting in the migrated code.</p>
+<p>Recall that in Magic you press Ctrl + D and The DB Tables screen appears as shown below:</p>
+<p><img src="dbtables2.jpg" alt="" /></p>
+<h2 id="table-declaration">Table Declaration</h2>
+<ul>
+<li>At the beginning of the class,in the 'Model' region, declare an object Property for each table to be used.</li>
+<li>Example: <code>internal readonly Model.Orders Orders = new Model.Orders();</code></li>
+<li>Example of a Table definition with some properties:</li>
+</ul>
+<pre><code class="language-csharp"> internal readonly Model.Orders Orders = new Model.Orders
+{
+  Cached = false,
+  AllowRowLocking = true,
+  //other options
+}
+</code></pre>
+<hr />
+<h2 id="table-options">Table Options</h2>
+<ul>
+<li>A Table in .Net is an object of the Entity Class defined in ENV.Data.Entity.cs</li>
+<li>Note that the Entity Class members include Properties used when defining indexes for tables.</li>
+<li>For a full list of members of the Entity Class see: <a href="http://www.fireflymigration.com/reference/html/AllMembers_T_Firefly_Box_Data_Entity.htm">Entity Members</a></li>
+<li>The following subsections discuss the equivalent of Magic Table options in the migrated code for the DB Tables (Ctrl-D) screen.</li>
+</ul>
+<hr />
+<h3 id="access">Access</h3>
+<h4 id="read">Read</h4>
+<p>Name in Migrated Code: <strong>ReadOnly</strong>
+Location in Migrated Code: <strong>Class</strong> (in Model region)
+Example:</p>
+<pre><code class="language-csharp">readonly Model.Orders _orders = new Model.Orders()
+{
+   ReadOnly = true,
+   //other code
+};
+</code></pre>
+<h5 id="see-also">See Also :</h5>
+<ul>
+<li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_Entity_ReadOnly.htm">ReadOnly Property</a></li>
+</ul>
+<hr />
+<h4 id="write">Write</h4>
+<p>Name in Migrated Code: <strong>AllowRowLocking</strong>
+Location in Migrated Code: <strong>Class</strong> (in Model region)
+Example:</p>
+<pre><code class="language-csharp">readonly Model.Orders _orders = new Model.Orders
+            {
+            	AllowRowLocking = true,
+                //other code
+            };
+</code></pre>
+<h5 id="see-also-1">See Also :</h5>
+<ul>
+<li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_Entity_AllowRowLocking.htm">AllowRowLocking Property</a></li>
+</ul>
+<hr />
+<h3 id="share">Share</h3>
+<p>Relevant only for Btrieve</p>
+<hr />
+<h3 id="open">Open</h3>
+<p>Relevant only for Btrieve</p>
+<hr />
+<h3 id="exp">Exp</h3>
+<p>Name in Migrated Code: <strong>EntityName</strong>
+Location in Migrated Code: <strong>OnLoad Method</strong>
+Example:</p>
+<pre><code class="language-csharp">protected override void OnLoad()
+{
+  Customers.EntityName = &quot;%PATH%FileName&quot;;
+}
+</code></pre>
+<hr />
+<h3 id="cache">Cache</h3>
+<p>Name in Migrated Code: <strong>Cached</strong>
+Location in Migrated Code: <strong>Class</strong> (in Model region)
+Example: Cache = Yes:</p>
+<pre><code class="language-csharp">readonly Model.Orders _orders = new Model.Orders
+            {
+            	Cached = true,
+                //other code
+            };
+</code></pre>
+<p>Example: Cache = No:</p>
+<pre><code class="language-csharp">readonly Model.Orders _orders = new Model.Orders
+            {
+            	Cached = false,
+                //other code
+            };
+</code></pre>
+<h5 id="see-also-2">See Also:</h5>
+<ul>
+<li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_Entity_Cached.htm">Cached Property</a>
+Note: For an article regarding optimization for Relations (linked tables) using cache, see:<a href="http://www.fireflymigration.com/doc/doku.php/articles/relations_in_depth">Relations In Depth</a></li>
+</ul>
 </div>
                         
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                             <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a>
+                            <a href="IO-Files.html"class="btn btn-neutral float-left">Previous</a> <a href="Range-Locate.html"class="btn btn-neutral float-right">Next</a>
                         </div>
                         
                         

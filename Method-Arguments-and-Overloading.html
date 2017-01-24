@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>Welcome to our site</title>
+    <title>Method Arguments and Overloading</title>
     
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
@@ -40,7 +40,7 @@
                                 <li  class="toctree-l1"><a href="Visual-Studio-and-CSharp-Overview.html">Visual Studio and CSharp Overview</a></li>
                                 <li  class="toctree-l1"><a href="Create-a-simple-class.html">Create a simple class</a></li>
                                 <li  class="toctree-l1"><a href="Explaining-The-Hello-world-example.html">Explaining The Hello world example</a></li>
-                                <li  class="toctree-l1"><a href="Method-Arguments-and-Overloading.html">Method Arguments and Overloading</a></li>
+                                <li  class="toctree-l1 current-page"><a href="Method-Arguments-and-Overloading.html">Method Arguments and Overloading</a></li>
                                 <li  class="toctree-l1"><a href="Using-directives.html">Using directives</a></li>
                                 <li  class="toctree-l1"><a href="Snippets.html">Snippets</a></li>
                                 <li  class="toctree-l1"><a href="Comments.html">Comments</a></li>
@@ -135,12 +135,41 @@
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main">
-                         <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="welcome-to-our-site">Welcome to our site</h1>
+                        <a href="Explaining-The-Hello-world-example.html"class="btn btn-neutral float-left">Previous</a> <a href="Using-directives.html"class="btn btn-neutral float-right">Next</a><br /><br />
+                        <div class="section"><h1 id="method-arguments-and-overloading">Method Arguments and Overloading</h1>
+<p>Methods can receive arguments.<br />
+The arguments are sent between brackets.</p>
+<p>To see the arguments the method receives you can:</p>
+<ol>
+<li>Type open parenthesis</li>
+<li>Click the method parameter button on the toolbox when the cursor is between the parenthesis:</li>
+</ol>
+<p><img src="Show-Arguments.png" alt="Show Arguments" /><br />
+3. Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> when the cursor is between the parentheses.</p>
+<p><strong>Overloading</strong> allows Methods to have the same name but with different combination of parameters.<br />
+Method can have several definitions having different number or type of parameters.
+Based on the parameters sent the matches method is be called.</p>
+<p>For example the Show() method of System.Window.Forms.MessageBox class can receive the text to be displayed on the message box as parameter.</p>
+<p>It can also receive the Text and the caption.</p>
+<p>The Show() method has 21 overloads meaning it has 21 variant of the method that receive different combination of parameters.</p>
+<p><img src="Method_Overloading.png" alt="Method Overloading" /></p>
+<pre><code class="language-diff">namespace Northwind.Training
+{
+    Class HelloWorld
+    {
+       public void Run()
+       {
+-           System.Windows.Forms.MessageBox.Show(&quot;Hello World&quot;);
++           System.Windows.Forms.MessageBox.Show(&quot;Hello World&quot;, &quot;Hello World Caption&quot;, System.Windows.Forms.MessageBoxButton.OK);
+       }     
+    }
+}
+</code></pre>
+ <iframe width="560" height="315" src="https://www.youtube.com/embed/Z97ayKhfYtE" frameborder="0" allowfullscreen></iframe>
 </div>
                         
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                             <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a>
+                            <a href="Explaining-The-Hello-world-example.html"class="btn btn-neutral float-left">Previous</a> <a href="Using-directives.html"class="btn btn-neutral float-right">Next</a>
                         </div>
                         
                         

@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>Welcome to our site</title>
+    <title>Using Directives</title>
     
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
@@ -41,7 +41,7 @@
                                 <li  class="toctree-l1"><a href="Create-a-simple-class.html">Create a simple class</a></li>
                                 <li  class="toctree-l1"><a href="Explaining-The-Hello-world-example.html">Explaining The Hello world example</a></li>
                                 <li  class="toctree-l1"><a href="Method-Arguments-and-Overloading.html">Method Arguments and Overloading</a></li>
-                                <li  class="toctree-l1"><a href="Using-directives.html">Using directives</a></li>
+                                <li  class="toctree-l1 current-page"><a href="Using-directives.html">Using directives</a></li>
                                 <li  class="toctree-l1"><a href="Snippets.html">Snippets</a></li>
                                 <li  class="toctree-l1"><a href="Comments.html">Comments</a></li>
                                 <li  class="toctree-l1"><a href="Hello-csharp-exercise.html">Hello csharp exercise</a></li>
@@ -135,12 +135,49 @@
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main">
-                         <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="welcome-to-our-site">Welcome to our site</h1>
+                        <a href="Method-Arguments-and-Overloading.html"class="btn btn-neutral float-left">Previous</a> <a href="Snippets.html"class="btn btn-neutral float-right">Next</a><br /><br />
+                        <div class="section"><h1 id="using-directives">Using Directives</h1>
+<p>The Using statements are added to improve the code readability.</p>
+<p>Adding the namespace as a using statement saves the developer from writing the namespace in the code before each method.</p>
+<p>For example:</p>
+<p>Instead of typing -
+System.Windows.Forms.MessageBox.Show(&quot;Test&quot;);</p>
+<p>We can add
+<code>using System.Windows.Forms;</code> at the top of the file
+and then just to type: MessageBox.Show(&quot;Text to be Displayed&quot;);</p>
+<p>1.	Add the following line to the beginning of the file:</p>
+<pre><code class="language-diff">+ using System.Windows.Forms;
+namespace Northwind.Training
+{
+    Class HelloWorld
+    {
+       public void Run()
+       {
+           System.Windows.Forms.MessageBox.Show(&quot;Hello World&quot;, &quot;Hello World Caption&quot;, System.Windows.Forms.MessageBoxButton.OK);
+       }     
+    }
+}
+</code></pre>
+<p>2.	Remove the System.Windows.Forms from line which calls the Show() method :</p>
+<pre><code class="language-diff">using System.Windows.Forms;
+namespace Northwind.Training
+{
+    Class HelloWorld
+    {
+       public void Run()
+       {
+-           System.Windows.Forms.MessageBox.Show(&quot;Hello World&quot;, &quot;Hello World Caption&quot;, System.Windows.Forms.MessageBoxButton.OK);
++           MessageBox.Show(&quot;Hello World&quot;, &quot;Hello World Caption&quot;, MessageBoxButton.OK);
+       }     
+    }
+}
+</code></pre>
+<p>3.	Note: The “using” keyword has more usages and meanings that will be covered later.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DuvZV5omiqY" frameborder="0" allowfullscreen></iframe>
 </div>
                         
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                             <a href="NET-Framework-Overview.html"class="btn btn-neutral float-right">Next</a>
+                            <a href="Method-Arguments-and-Overloading.html"class="btn btn-neutral float-left">Previous</a> <a href="Snippets.html"class="btn btn-neutral float-right">Next</a>
                         </div>
                         
                         
