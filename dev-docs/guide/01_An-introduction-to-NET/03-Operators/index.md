@@ -8,7 +8,7 @@ For example:
 
 | Operators | Explanation                                                               |
 |:---------:|---------------------------------------------------------------------------|
-| **+=**    | If we want to add 6 to i we can write: <br>i = i+6; <br>Or<br> i+=6;                  |
+| **+=**    | To add a numeric value to the variable. <br>For example to add 6 to i we can write: <br>i = i+6; <br>Or<br> i+=6;                  |
 | **-=**    | The same goes for minus if we want to reduce 2 from i we can write: <br>i-=2; |
 | ***=**    | We will use the \*= to multiple the number<br> i\*=3 |
 | **/=**    | and this operator to divide the number <br> i/=3; |

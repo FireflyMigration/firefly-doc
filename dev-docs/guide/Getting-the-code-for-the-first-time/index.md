@@ -6,15 +6,15 @@
 1.	Download the source code folder (Dotnet) from the FTP Site
 1.	Extract the .rar file 
 1.  Run the buildDebug.bat (buildRelease.bat) file to build the solution.  
-    This batch file builds the solution outside visual studio.  
-1.  The build results are in the bin folder  
-        This folder contains the executable file (.exe), the .dll files and the ini file.  
-        This ini file is used when DbClick on the .exe to run the application
+    * This batch file builds the solution outside visual studio.  
+1.  The build results are in the bin folder
+    * This folder contains the executable file (.exe), the .dll files and the ini file.  
+    * This ini file is used when DbClick on the .exe to run the application
 1.  Running the BuildDebug.bat file should be done when you receiving the code for the first time and when you are doing dramatic changes in the application. You don't need to build the application using this file on a daily basis or with every change.
 1.	After building the project you can open the solution with Visual Studio
 1.  By default the solution is built with reference to dll methodology.  
-    That means you don't need to load the entire solution to be able to work.  
-    You can load only part of the solution.  
+    * That means you don't need to load the entire solution to be able to work.  
+    * You can load only part of the solution.  
 
 
 
