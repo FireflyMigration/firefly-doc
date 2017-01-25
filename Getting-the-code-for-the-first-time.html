@@ -151,24 +151,56 @@
 <ol>
 <li>Download the source code folder (Dotnet) from the FTP Site</li>
 <li>Extract the .rar file</li>
-<li>Run the buildDebug.bat (buildRelease.bat) file to build the solution.<br />
-This batch file builds the solution outside visual studio
-<ol>
-<li>The build results are in the bin folder<br />
-This folder contains the executable file (.exe) the .dll files and the ini file.<br />
-This ini file is used when DbClick on the .exe to run the application</li>
-</ol>
+<li>Run the buildDebug.bat (buildRelease.bat) file to build the solution.
+<ul>
+<li>This batch file builds the solution outside visual studio.</li>
+</ul>
 </li>
-<li>Now you can open the solution with Visual Studio</li>
-<li>By solution is built with reference to dll so you don't need to load the entire solution to be able to work.<br />
-You can load only part of the solution.</li>
-<li>Explain a bit about reference to dlls</li>
-<li>Run the application from Visual Studio</li>
-<li>Explain about the ini</li>
-<li>Go Through the main elements in the project.</li>
-<li>Explain about the split.</li>
-<li>Explain about how to find a program.</li>
+<li>The build results are in the bin folder
+<ul>
+<li>This folder contains the executable file (.exe), the .dll files and the ini file.</li>
+<li>This ini file is used when DbClick on the .exe to run the application</li>
+</ul>
+</li>
+<li>Running the BuildDebug.bat file should be done when you receiving the code for the first time and when you are doing dramatic changes in the application. You don't need to build the application using this file on a daily basis or with every change.</li>
+<li>After building the project you can open the solution with Visual Studio</li>
+<li>By default the solution is built with reference to dll methodology.
+<ul>
+<li>That means you don't need to load the entire solution to be able to work.</li>
+<li>You can load only part of the solution.</li>
+</ul>
+</li>
 </ol>
+<p><strong>Build batch file</strong><br />
+The Build file is a batch file that compiles the solution in the correct order.
+There are 2 build batch files - BuildDebug.bat &amp; buildRelease.bat
+The BuildDebug.bat builds the solution with debug information.
+The BuildRelease.bat builds a release version to be installed on the end customer's site.</p>
+<p><strong>The bin Folder</strong><br />
+When building the project the bin folder is created and in it the compiled code: .exe file, the .dll files and the ini file.</p>
+<p>The ini file is the configuration settings file we use to run the application.<br />
+When running the .exe file the ini file is being read<br />
+The same ini exists in the code and can be modified.
+When we run the application from Visual Studio and build it the ini file is being copied to the bin folder.</p>
+<p>Every project in the solution is being compiled and a .dll file is created for it.<br />
+That .dll file is copied to the bin directory.
+If we built a debug version the debug information files (.pdb) are copied to that bin directory as well.</p>
+<p><strong>The solution is Visual Studio</strong><br />
+Usually the solution is built from several projects.<br />
+The original applications are built from thousands of programs and it doesn't make scene putting them all in a single .dll file,<br />
+so the migrated application is split in to folders - smaller projects.<br />
+This split is done during the migration based on a configuration file the customer can supply.</p>
+<p>Every program in the original application is migrated to a separate class in .Net.<br />
+The subtasks are migrated to inner classes inside the 'parent' class.<br />
+The <strong>Class outline</strong> display the program's tree hierarchic and let you easily navigate between the inner classes and to open their View.</p>
+<p>The View, the window of the class (program) is designed in the designer.</p>
+<p>The <em>Tables</em> defined in the original application are migrated to <strong>Models classes</strong> in the Base project.<br />
+In the solution explorer you can extract the Table to view its fields</p>
+<p><em>Models</em> in the original application are migrated to <strong>Types</strong>.<br />
+Field models are migrated to Types under the 'Types' folder (types namespace).<br />
+Gui Display models become controls and are inside the Controls folder under the Views folder.</p>
+<p><strong>ApplicationPrograms / ApplicationEntities Files</strong><br />
+This files contain the list of the application's programs or Tables with their numbers from the original application, names, public names and their types in .Net</p>
 </div>
                         
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
