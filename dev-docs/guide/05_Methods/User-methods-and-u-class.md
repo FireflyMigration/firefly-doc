@@ -1,4 +1,4 @@
-﻿# Introduction to User Methods and u Member
+﻿# User Methods and u Member
 
 
 

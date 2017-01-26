@@ -1,5 +1,5 @@
 ﻿# Exercise - Simple Method
 
-
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/pLunmO-QBfI?list=PL1DEQjXG2xnK0hrpTQpa2p8ZvEMPsvh7n" frameborder="0" allowfullscreen></iframe>
+1.	In “ShowProducts”, move the input validation code from the OnSavingRow method to a new method named “ValidateUserInput”.
+2.	Call the “ValidateUserInput” from the OnSavingRow method.
+3.	Build and test.
