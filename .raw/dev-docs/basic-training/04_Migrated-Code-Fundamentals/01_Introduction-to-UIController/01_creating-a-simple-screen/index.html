@@ -4,94 +4,110 @@
     <title>Creating a Simple Screen</title>
 </head>
 <body>
-
+    <h1> we are so cool!!!</h1>
     <h1 id="creating-a-simple-screen">Creating a Simple Screen</h1>
+<p>To create a new UI Controller:</p>
 <ol>
-<li><p>Create folder named “Training” in the main project.</p>
-</li>
-<li><p>Add a new item and select the UIController template from the firefly category, set the name of the UIController to “ShowOrders”.</p>
-</li>
-<li><p>Two classes were created: Controller and View.</p>
-</li>
+<li>In the solution explorer right click on the Folder you would like to add the new UI controller to it</li>
+<li>Select ‘Add’ -&gt; ‘New item’</li>
+<li>On the left pane select ‘Templates’</li>
+<li>From the Templates list select UIController</li>
+<li>Give it a name and press the Add button</li>
 </ol>
-<pre><code>public class ShowOrders : UIControllerBase
+<p>Two classes are automatically created:</p>
+<ol>
+<li>The Controller class – where the logic is written</li>
+<li>The View class – the design of the screen (the window of the program)</li>
+</ol>
+<p><strong>The Controller class:</strong></p>
+<pre><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Training.SimpleScreen
 {
-
-    public ShowOrders()
+    public class ShowOrders : UIControllerBase
     {
 
-    }
+        public ShowOrders()
+        {
 
-    public void Run()
-    {
-        Execute();
-    }
+        }
 
-    protected override void OnLoad()
-    {
-+        View = () =&gt; new Views.ShowOrdersView(this);
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () =&gt; new Views.ShowOrdersView(this);
+        }
     }
 }
 
 </code></pre>
-<ol start="4">
-<li>Review the controller class:
 <ol>
-<li>First thing to note is the OnLoad method. In it we are setting the View property with the reference to the actual View of the Controller.</li>
-<li>The View property is the connection to the View</li>
-<li>The Run method is used to execute the program.</li>
+<li>The <strong>using</strong> statements at the top.<br />
+The dll are not being in used yet, you may use them later and that is why they are greyed.</li>
+<li><strong>namespace</strong> definition - <code>namespace Northwind.Training.SimpleScreen</code>
+The name space represents the position of the class in the solution
+In this case the UIController is under 'SimpleScreen' folder which defined under 'Training' folder under the 'Northwind' solution.</li>
+<li><strong>class</strong> definition: <code>public class ShowOrders : UIControllerBase</code><br />
+This is a public class called ShowOrders which inherits from UIControllerBase class,<br />
+meaning the ShowOrders class receives the capabilities of the UIController class.</li>
+<li>The <strong>Constructor</strong> : <code>public ShowOrders()</code></li>
+<li>The <strong>Run</strong> method : <code>public void Run()</code> that calls the <code>Execute()</code> method which actually executes the UIController</li>
+<li>Override <strong>OnLoad</strong> method which overrides the basic implementation of OnLoad method which declared in the UIControllerBase class:</li>
+<li><strong>View</strong> - in the OnLoad() method the view property of the UIController is set</li>
 </ol>
-</li>
-</ol>
-<h3 id="setting-the-data-view">Setting the Data View</h3>
-<ol>
-<li>Add the entity definitions and set the From property.</li>
-</ol>
-<pre><code class="language-diff">public class ShowOrders : UIControllerBase
+<pre><code>    protected override void OnLoad()
+    {
+         View = () =&gt; new Views.ShowOrdersView(this);
+    }
+</code></pre>
+<p><strong>The View class:</strong></p>
+<pre><code>using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using Firefly.Box;
+using Firefly.Box.UI.Advanced;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Training.SimpleScreen.Views
 {
-+   public readonly Models.Orders Orders = new Models.Orders();
-    public ShowOrders()
+    partial class ShowOrdersView : Shared.Theme.Controls.Form
     {
-+       From = Orders;
-    }
-
-    public void Run()
-    {
-        Execute();
-    }
-
-    protected override void OnLoad()
-    {
-        View = () =&gt; new Views.ShowOrdersView(this);
+        ShowOrders _controller;
+        public ShowOrdersView(ShowOrders controller)
+        {
+            _controller = controller;
+            InitializeComponent();
+        }
     }
 }
 </code></pre>
-<blockquote>
-<p>Do not worry about the syntax right now. It will be explained later.</p>
-</blockquote>
-<ol start="2">
-<li>Review the form designer, the visual studio toolbox and the Firefly toolbox.</li>
-<li>Notice that you need to build before you can design the form. Whenever the controller code is changed, a build is needed for the form to detect the changes in designer.</li>
-</ol>
-<h3 id="designing-the-view">Designing the View</h3>
 <ol>
-<li>Add a grid to the form, dock it and use the column wizard to add the following columns.</li>
-<li>Expand the form width to display the entire grid.
-<img src="Designing-the-screen.png" alt="Designing The Screen" /></li>
+<li>The <strong>using</strong> statements at the top.</li>
+<li><strong>namespace</strong> definition - <code>namespace Northwind.Training.SimpleScreen.Views</code><br />
+The view has the .Views at the end as it is defined under the Views folder</li>
+<li><strong>class</strong> definition - <code>partial class ShowOrdersView : Shared.Theme.Controls.Form</code><br />
+This class inherits from <code>Form</code> class. This inheritance sets the visual designer capability to the View of the ShowOrders class.</li>
+<li><strong>Constructor</strong> - <code>public ShowOrdersView(ShowOrders controller)</code></li>
+<li><strong>Controller parameter</strong> - the View class receive the controller as parameter and saves it to a local class variable called '_controller'</li>
+<li>After updating the local variable _controller with the parameter <code>_controller = controller;</code> the constructor calls the <code>InitializeComponent();</code> method</li>
+<li>The InitializeComponent() method defined in the code of the designer which is automatically created by Visual Studio.</li>
 </ol>
-<h3 id="adding-the-controller-to-the-main-menu">Adding the Controller to the Main Menu</h3>
-<ol>
-<li>Open the ApplicationMdi class and add a new entry under the &quot;Training&quot; menu &quot;Show Orders&quot; to call the new program.</li>
-</ol>
-<pre><code>private void showOrdersToolStripMenuItem_Click(object sender, EventArgs e)
-{
-    new Training.ShowOrders().Run();
-}
-</code></pre>
-<ol start="2">
-<li>Do not worry about the syntax right now. It will be explained later.</li>
-<li>Run the application and edit some data to screen  (Add, Update, Delete)</li>
-</ol>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/woyyAU4droA?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
 
 
 </body>

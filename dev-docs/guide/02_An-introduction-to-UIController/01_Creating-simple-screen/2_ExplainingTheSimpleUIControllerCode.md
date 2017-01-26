@@ -110,4 +110,6 @@ namespace Northwind.Training.SimpleScreen.Views
 6. After updating the local variable _controller with the parameter ```` _controller = controller;  ```` the constructor calls the ```` InitializeComponent();```` method
 7. The InitializeComponent() method defined in the code of the designer which is automatically created by Visual Studio.  
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/woyyAU4droA?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DzEjXid8mSc?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
