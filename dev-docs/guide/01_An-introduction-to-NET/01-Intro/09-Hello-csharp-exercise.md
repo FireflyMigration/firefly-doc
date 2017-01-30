@@ -4,7 +4,7 @@
 2\. Add a folder called Exercises  
 3\. Add a class called "HelloCSharp" (don't use the # sign, it's an invalid character in a class name)  
 4\. Add the run method   
-```csharp
+```csdiff
 public void Run() 
 {
 } 
@@ -14,7 +14,7 @@ public void Run()
 7\. Add a new menu called “Exercises”  
 8\. Add a new entry called “Hello C#”  
 9\. When clicking the menu, call the "HelloCSharp" class we've just created.  
-```csharp
+```csdiff
 new Exercises.HelloCSharp().Run();
 ```  
  

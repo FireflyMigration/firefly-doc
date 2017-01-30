@@ -1,6 +1,6 @@
 ﻿# Filtering Data
 1.	Add the following filter: 
-```diff
+```csdiff
 public class ShowOrders : UIControllerBase
 {
 
@@ -26,7 +26,7 @@ public class ShowOrders : UIControllerBase
 2.	Notice that like IsEqualTo, there are more methods for IsGreater, IsLessThan, IsBetween etc.
 3.	Run the application and check the results. 
 4.	Extend the previous example by adding an “Or” part to the Where.Add line, as follows:
-```diff
+```csdiff
 public class ShowOrders : UIControllerBase
 {
 

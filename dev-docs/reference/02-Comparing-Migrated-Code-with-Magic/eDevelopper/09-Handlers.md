@@ -10,12 +10,12 @@ The following displays eDeveloper's ctrl-K or Handlers screen:
 Name in Migrated Code: **Handlers.Add** and the **Handlers** region of code  
 Location in Migrated Code: **Constructor** in the **Event Handlers** section (directly after the constructor  
 Example: In the constructor
-```csharp
+```csdiff
    var PrintHandler = Handlers.Add(Print);
    PrintHandler.Invokes += PrintHandler_Invokes;
 ```
 Example: In the Handler Section:  
-```csharp
+```csdiff
   void PrintHandler_Invokes(Firefly.Box.Advanced.HandlerInvokeEventArgs e)
   {
      e.Handled = true;
@@ -30,7 +30,7 @@ The following sections describe the migrated code equivalent for all the event o
 Name in Migrated Code: In the name of the parameter of the **Handlers.Add** method.  
 Location in Migrated Code: **Constructor**  
 Example: In the constructor  
-```csharp
+```csdiff
    var PrintHandler = Handlers.Add(Print);
    PrintHandler.Invokes += PrintHandler_Invokes;
 ```
@@ -45,7 +45,7 @@ Name in Migrated Code: **Keys**
 Location in Migrated Code: **Constructor**   
 This defines a handler triggered by a keyboard shortcut.  
 Example:
-```csharp
+```csdiff
 var h = Handlers.Add(Keys.Shift | Keys.F3);
 
 ```
@@ -56,7 +56,7 @@ Name in Migrated Code: **Command**
 Location in Migrated Code: **Constructor**   
 This defines a handler triggered by an internal event command
 Example:
-```csharp
+```csdiff
 var Expand_vMyField_CopyFromHandler = Handlers.Add(Command.Expand, "Copy From");
 ```
 Timer

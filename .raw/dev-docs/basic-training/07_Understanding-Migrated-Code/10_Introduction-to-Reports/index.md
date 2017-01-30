@@ -17,7 +17,7 @@ Go over some of the properties you can set in the curly brackets.
           3. `_printer.PrintPreview` - the template’s default is true to save trees…
     iv. The `OnLeaveRow` already contains the code that writes each line to the report layout body section. We will get to that shortly.
 6.	Add the entity definition and set the From as follows:
-```diff
+```csdiff
 public class OrdersReport : BusinessProcessBase
 {
 

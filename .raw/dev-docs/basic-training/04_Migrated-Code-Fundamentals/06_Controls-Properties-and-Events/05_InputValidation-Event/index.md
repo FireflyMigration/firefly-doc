@@ -1,7 +1,7 @@
 ﻿### InputValidation Event
 1.	Select the “txtShipVia” text box control.
 2.	Use the **InputValidation** event (Double-Click) to check if the shipper id exists in the shippers table, as follows:
-```diff
+```csdiff
 private void txtShipVia_InputValidation()
 {
     if (!_controller.IsShipperExist())
@@ -17,7 +17,7 @@ private void txtShipVia_InputValidation()
     
     a.UI Class
 
-```diff
+```csdiff
 private void txtShipVia_InputValidation()
 {
 -            if (!_controller.IsShipperExist())
@@ -29,7 +29,7 @@ private void txtShipVia_InputValidation()
 ```
      b.Controller Class
 
-```diff 
+```csdiff 
 internal void ValidateShipperID()
 {
     if (!IsShipperExist())

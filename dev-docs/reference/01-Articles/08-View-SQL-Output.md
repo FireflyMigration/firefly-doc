@@ -6,12 +6,12 @@ This article deals with how to view SQL statements in the Output Window of the V
 
 To view the generated SQL code in the Output window, add the following line to the Main method in Program.cs:
 
-```csharp
+```csdiff
 ENV.Data.DataProvider.ConnectionManager.DatabaseLogToDebugOutput = true;
 ```
 
 Here we see the line within the context of the code
-```csharp
+```csdiff
 public static void Main(System.String[] args)
 {
         System.Windows.Forms.Application.EnableVisualStyles();
@@ -37,7 +37,7 @@ Now, before running the application, on the View menu, click Output. This opens 
 
 An example of the SQL code generated in the Output window, appears below:
 
-```csharp
+```csdiff
 ExecuteReader Duration: 0
 ExecuteNonQuery - sp_cursorprepexec
  
@@ -59,7 +59,7 @@ ExecuteNonQuery Duration: 0
 ```
 
 An example of the SQL output for a FIND relation (see also: :[relations in depth](Relations-in-depth.html) ) will look as follows:
-```csharp
+```csdiff
 ExecuteReader Duration: 0
 ExecuteReader - 
 SELECT CategoryID, CategoryName, Description 
@@ -73,11 +73,11 @@ Query Parameters:
 Looking at the above SQL notation, we can see that it uses SQLparameters for the CategoryID value. This is more efficient SQL usage, but a bit harder to read.
 
 In order to make the SQL more readable, we'll add the following line of code in the the Main method, immediately after the previously added line:
-```csharp
+```csdiff
 ENV.Data.DataProvider.ConnectionManager.UseDBParameters = false;
 ```
 The generated SQL code for a FIND relation, as shown in the Output window will now look as follows, without the last 2 lines referring to query parameters :
-```csharp
+```csdiff
 ExecuteReader Duration: 0
 ExecuteReader - 
 SELECT top 1 CategoryID, CategoryName, Description 

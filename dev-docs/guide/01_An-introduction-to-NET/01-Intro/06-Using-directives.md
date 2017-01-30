@@ -16,7 +16,7 @@ and then just to type: MessageBox.Show("Text to be Displayed");
 
 
 1\.	Add the following line to the beginning of the file:
-```diff
+```csdiff
 + using System.Windows.Forms;
 namespace Northwind.Training
 {
@@ -30,7 +30,7 @@ namespace Northwind.Training
 }
 ```
 2\.	Remove the System.Windows.Forms from line which calls the Show() method :
-```diff
+```csdiff
 using System.Windows.Forms;
 namespace Northwind.Training
 {

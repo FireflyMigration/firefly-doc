@@ -13,7 +13,7 @@ CompanyName is the variable’s name.
 Notice the standard naming conventions: the name of the variable starts with lower case and the first letter of every word afterwards is an uppercase.  
 We can also initialize the variable in the same line by using the equation sign: 
 
-```diff
+```csdiff
 string CompanyName = "my name";
 ```
 
@@ -28,7 +28,7 @@ string CompanyName = "my name";
     - personName is initialize when it is defined  
     - The numberOfKids received it value in the next assignment line of code `numberOfKids = 3`
 
-```diff
+```csdiff
 namespace Northwind.Training
 {
     class BasicTypes
@@ -59,7 +59,7 @@ namespace Northwind.Training
 6\. In order to use the System.Windows.Form.MessageBox class we will add it to the using section 
    and we will use the MessageBox.Show() method to display them
 
-```diff
+```csdiff
 + using System.Windows.Forms;
 namespace Northwind.Training
 {
@@ -96,7 +96,7 @@ namespace Northwind.Training
 
 
 
-```diff
+```csdiff
 private void basicTypesToolStripMenuItem_Click(object sender, EventArgs e)
 {
 +	new Training.BasicTypes().Run();

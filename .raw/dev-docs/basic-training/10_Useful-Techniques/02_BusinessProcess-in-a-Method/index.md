@@ -1,7 +1,7 @@
 ﻿### BusinessProcess in a Method
 
 1. Add a new menu entry in Application.MDI, Here is the Count Example called from the main menu:
-```diff
+```csdiff
 private void bpInsideAMethodToolStripMenuItem_Click(object sender, EventArgs e)
 {
 +    Models.Orders orders = new Models.Orders();
@@ -14,7 +14,7 @@ private void bpInsideAMethodToolStripMenuItem_Click(object sender, EventArgs e)
 ``` 
 2.	From now on we will use Object Initializer and “var” to make it even shorter.
 3.	Sum Example:
-```diff
+```csdiff
 private void bpInsideAMethodToolStripMenuItem_Click(object sender, EventArgs e)
 {
 +   Number total = 0;
@@ -34,7 +34,7 @@ private void bpInsideAMethodToolStripMenuItem_Click(object sender, EventArgs e)
 }
 ```
 4.	Change the last example to use the `ForEachRow` method.
-```diff
+```csdiff
 private void bpInsideAMethodToolStripMenuItem_Click(object sender, EventArgs e)
 {
     Number total = 0;

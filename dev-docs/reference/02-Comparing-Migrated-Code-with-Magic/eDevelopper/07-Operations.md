@@ -23,25 +23,25 @@ The following examples relate to Select:
 
 ### Virtual Field
 
-```csharp 
+```csdiff 
 Columns.Add(v_Total);
 ```
 
 ### Init Expression
 
-```csharp 
+```csdiff 
 v_RowTotal.BindValue(() => Orders.UnitPrice * Orders.Quantity - Orders.Discount);
 ```
 
 Note: When the same expression in Magic is used for the Range and Init expression, use the BindEqualTo Method instead of the IsEqualTo Method and BindValue Method. Without this, we would have to write the following 2 lines of code:  
 
-```csharp 
+```csdiff 
 Where.Add(Orders.OrderId.IsEqualTo(3));
 Orders.OrderId.BindValue(()=>3); 
 ```
 Instead of the above 2 lines, Write one line using BindEqualTo:
 
-```csharp 
+```csdiff 
 Where.Add(Orders.OrderId.BindEqualTo(3));
 ```
 
@@ -51,19 +51,19 @@ Range is written at the beginning of the **InitializeDataView** Method, using th
 
 Example:
 
-```csharp 
+```csdiff 
 Where.Add(Orders.OrderId.IsBetween(1,3));
 ```
 
 Note: When the same expression in Magic is used for the Range and Init expression, use the BindEqualTo Method instead of the IsEqualTo Method and BindValue Method. Instead of writing the following 2 lines of code:
 
-```csharp 
+```csdiff 
 Where.Add(Orders.OrderId.IsEqualTo(3));
 Orders.OrderId.BindValue(()=>3); 
 ```
 ..write one line using BindEqualTo:
 
-```csharp 
+```csdiff 
 Where.Add(Orders.OrderId.BindEqualTo(3));
 ```
 
@@ -72,7 +72,7 @@ Where.Add(Orders.OrderId.BindEqualTo(3));
 Locate is used in the context of the main table  
 Locate is written at the beginning of the **InitializeDataView** Method using the **StartOnRowWhere.Add** syntax.  
 Example:
-```csharp 
+```csdiff 
 StartOnRowWhere.Add(Orders.OrderId.IsEqualTo(2));
 ```
 
@@ -91,13 +91,13 @@ Verify can be either an Error message or a Warning message:
 For Display = Error, use the **Error** Method.
 Example:
 
-```csharp 
+```csdiff 
 Error("Order exceeds the maximum");
 ```
 For Display = Box, use the **ErrorInStatusBar** method
 Example:
 
-```csharp 
+```csdiff 
 ErrorInStatusBar("Order exceeds the maximum");
 ```
 
@@ -105,13 +105,13 @@ ErrorInStatusBar("Order exceeds the maximum");
 
 For Display = Error, use the **Warning** Method.
 Example:
-```csharp 
+```csdiff 
 Warning("Order exceeds the maximum");
 ```
 For Display = Box, use the **WarningInStatusBar** method
 Example:
 
-```csharp 
+```csdiff 
 WarningInStatusBar("Order exceeds the maximum");
 ```
 
@@ -136,7 +136,7 @@ The following table shows the .Net equivalents for Magic link types.
 
 Example Link Find:
 
-```csharp
+```csdiff
 Relations.Add(Customers, RelationType.Find, Customers.CustomerID.IsEqualTo(Orders.CustomerID);
 ```
 See also: [Relations Enum](http://www.fireflymigration.com/reference/html/T_Firefly_Box_RelationType.htm)
@@ -149,7 +149,7 @@ For InsertIfNotFound (Link Write), use the BindEqualTo method instead of IsEqual
 
 Example Link Write:
 
-```csharp
+```csdiff
 Relations.Add(Customers,Customers.CustomerID.BindEqualTo(Orders.CustomerID);
 ```
 
@@ -158,7 +158,7 @@ Relations.Add(Customers,Customers.CustomerID.BindEqualTo(Orders.CustomerID);
 For each locate value, the migrated code will show an expression. 
 Example:
 
-```csharp
+```csdiff
 Relations.Add(Customers, RelationType.Find, Customers.CustomerID.IsEqualTo(Orders.CustomerID).And
    Customers.City.IsequalTo("Madrid");
 ```
@@ -167,7 +167,7 @@ Relations.Add(Customers, RelationType.Find, Customers.CustomerID.IsEqualTo(Order
 
 Use the appropriate Relations.Add overload which supports an index parameter. 
 Example:
-```csharp
+```csdiff
  Relations.Add(Customers, RelationType.Find, 
   Customers.CustomerID.IsEqualTo(Orders.CustomerID), Customers.SortByCustomerID);
 ```
@@ -177,7 +177,7 @@ Example:
 Name in Migrated Code: **NotifyRowWasFoundTo** 
 Use an object of type var to Return a variable  
 Example:
-```csharp
+```csdiff
  readonly BoolColumn nRowFound = new BoolColumn();
 // other code
 var r = Relations.Add(Customers, RelationType.Find,
@@ -190,7 +190,7 @@ r.NotifyRowWasFoundTo(nRowFound)
 Name in Migrated Code: **BindEnabled**  
 Example:
 
-```csharp
+```csdiff
 var r = Relations.Add(Customers, RelationType.Find, 
       Customers.CustomerID.IsEqualTo(Orders.CustomerID), Customers.SortByCustomerID);
 // other code
@@ -212,7 +212,7 @@ For further examples of how to use Relations, see also:
 
 Name in Migrated Code: **if, else**  
 Example:
-```csharp
+```csdiff
 if(Exp_3())
 {
     new GetTotalForOrderID().Run(vOrderID);
@@ -227,7 +227,7 @@ else
 
 Name in Migrated Code: **u.StartBlockLoop**  
 Example:
-```csharp
+```csdiff
 protected override void OnLeaveRow()
         {
             u.StartBlockLoop();
@@ -246,12 +246,12 @@ protected override void OnLeaveRow()
 
 Examples:  
 Example of calling a Program:  
-```csharp
+```csdiff
 new OrderDetails().Run();
 ```
 In the migrated code, a call to a task will appear as a method call, passing an instance of itself as a parameter.  
 Example of calling a Task:
-```csharp
+```csdiff
 new OrderDetails(this).Run();
 ```
 
@@ -261,11 +261,11 @@ The following properties are available when calling a task or a program:
 
 Arguments are passed in the migrated code in the standard .Net way, for example, the following code passes OrderID as an argument:
 
-```csharp
+```csdiff
 new Print_Order().Run(Orders.OrderID);
 ```
 In the receiving program, the Run method receives the argument/s, for example:
-```csharp
+```csdiff
 /// <summary>Print - Order</summary>
 /// <param name="ppi_OrderID">pi.Order ID</param>
 public void Run(NumberParameter ppi_OrderID)
@@ -280,11 +280,11 @@ Note: For backward compatibility reasons, Migrated code will use parameter types
 
 This property, determining which GUI screen will be displayed, is passed in the migrated code as a parameter, when calling the Method. An example of this implementation is as follows:
 
-```csharp
+```csdiff
  new Print_Order().Run(Orders.OrderID, new UI.ShowOrders_UI(this));
 ```
 In the called Method, the code will look like this:
-```csharp
+```csdiff
 public void Run(NumberParameter ppi_OrderID, Firefly.Box.UI.Form view)
 {
     BindParameter(pi_OrderID, ppi_OrderID);
@@ -299,22 +299,22 @@ The migrated code will define a variable of type Bool, called _taskResult, that 
 
 For example, in the calling Method, a value is returned to v.Done, defined as a Bool:
 
-```csharp
+```csdiff
 v_Printed.Value = new Print_Order().Run(Orders.OrderID, new UI.ShowOrders_UI(this));
 ```
 In the called Method, for example, a Bool variable defined in the Class:
-```csharp
+```csdiff
 Bool _taskResult;
 ```
 The variable is returned, as follows:
-```csharp
+```csdiff
 vDone.Value = true;
 _taskResult = vDone;
 ```
 
 #### Exp
 
-```csharp
+```csdiff
 Application.AllPrograms.RunByIndex(1,asdfds)
 ```
 
@@ -323,7 +323,7 @@ Application.AllPrograms.RunByIndex(1,asdfds)
 This property is equivalent to the Lock property in Magic, seen when pressing ctrl+P as displayed below:
 
 The migrated code supports this option by adding the LockCurrentRow() Method before calling the method, for example:
-```csharp
+```csdiff
 LockCurrentRow();
 new Print_Order().Run(); 
 ```
@@ -336,14 +336,14 @@ See also:[LockCurrentRow Method for UIController](http://www.fireflymigration.co
 ### Call UDP
 
 In .Net, Use the UDF User Method defined in ENV.UserMethods.cs Example:
-```csharp
+```csdiff
 u.UDF("get.get_env", "CLIENTNAME", V_ComputerName);
 ```
 
 ### Call COM
 
 As an example of the usage of COM, in the Class, define a Column as follows:
-```csharp
+```csdiff
 readonly ComColumn<MMSERVVBLib.OutgoingMessage> FAX = new ComColumn<MMSERVVBLib.OutgoingMessage>("FAX")
 {
     CreateInstance = true,
@@ -352,7 +352,7 @@ readonly ComColumn<MMSERVVBLib.OutgoingMessage> FAX = new ComColumn<MMSERVVBLib.
 ```
 
 Then, Call COM as in the following example:
-```csharp
+```csdiff
 FAX.CallCom(comObj => comObj.Connect(u.ToStringForCom("efax")),vReturnCode);
 ```
 
@@ -366,7 +366,7 @@ FAX.CallCom(comObj => comObj.Connect(u.ToStringForCom("efax")),vReturnCode);
 
 Name in Migrated Code: Call a Method
 Example: The following DBDEL Evaluate expression in Magic, appears in the migrated .Net code as:
-```csharp
+```csdiff
 u.DBDel(typeof(Model.Orders), "")
 ```
 
@@ -383,12 +383,12 @@ Location in Migrated Code: Override Methods and Handlers
 #### Normal
 
 Example:
-```csharp
+```csdiff
 v_LineTotal.Value = OrderDetails.UnitPrice * OrderDetails.Quantity - OrderDetails.Discount;
 ```
 #### Incremental
 
-```csharp
+```csdiff
 v_LineTotal.Value += DeltaOf(OrderDetails.UnitPrice * OrderDetails.Quantity - OrderDetails.Discount);
 ```
 
@@ -399,7 +399,7 @@ Forgot disable Undo etc…
 
 **UpdateValueWithoutMarkingRowAsChanged**  
   In magic, in an online task when updating a variable from the record prefix or an handle, that update doesn't constitute a change to the row, which means that it'll not cause the RecordSuffix to run and the row will not be updated to the database unless another more meaningfull change have happened. To better represent this behaviour, these updates in the migrated code look as following:
-```csharp
+```csdiff
 v_Total.UpdateRowWithoutMarkingRowAsChanged(a+b-c);
 ```
 ---
@@ -407,7 +407,7 @@ v_Total.UpdateRowWithoutMarkingRowAsChanged(a+b-c);
 ## Output Form
 Name in Migrated Code: Expression
 Example:
-```csharp
+```csdiff
  _layout.Customer.WriteTo(_ioPrint_Order);
  ```
 For a discussion on working with system files in .Net
@@ -428,7 +428,7 @@ For a discussion on how to print a report in .Net
 ## Input Form
 Name in Migrated Code: **ReadFrom Method**  
 Example:
-```csharp
+```csdiff
  _viewReadLine.ReadFrom(_ioImportFile);
 ```
 
@@ -447,7 +447,7 @@ Browse has the following properties:
 ### Expression
 
 Example: Browse file
-```csharp
+```csdiff
 new ENV.Utilities.FileViewer("c:\\temp\\test.txt",new UI.Print_Orders_UI(this)).View();
 ```
 
@@ -455,14 +455,14 @@ new ENV.Utilities.FileViewer("c:\\temp\\test.txt",new UI.Print_Orders_UI(this)).
 
 For Viewing a file, use the View() Method, as in the above example. For editing, use the Edit method. Example:
 
-```csharp
+```csdiff
 new ENV.Utilities.FileViewer("c:\\temp\\test.txt",new UI.Print_Orders_Browse(this)).Edit();
 ```
 
 ## Exit
 Name in Migrated Code: StartRun  
 Example: dir command
-```csharp
+```csdiff
   StartRun("dir", false, System.Diagnostics.ProcessWindowStyle.Normal);
 ```
 
@@ -470,12 +470,12 @@ Example: dir command
 The Event type can be system, internal, user defined or public
 
 Example:
-```csharp
+```csdiff
 Invoke(myEvent);
 ```
 ## Remark  
 Remarks made in Magic are maintained in migrated code using the .Net syntax for comments  
 Example:
-```csharp
+```csdiff
 // Update the total value for the order
 ```

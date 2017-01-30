@@ -5,7 +5,7 @@ In this article we are going to review different types of Relations in your migr
 # Find Relation
 
 To start with, we'll create a simple UIController, which will display a list of products and it's Categories.
-```csharp
+```csdiff
     class ShowProducts : UIControllerBase
     {
         internal readonly Model.Products _products = new Model.Products();
@@ -42,7 +42,7 @@ Note that there are 15 lines on the grid displaying the first 15 lines from the 
 As a rule, a Relation is used to fetch related data from the database (or from Cache), for each row displayed in the grid. This rule applies whenever we enter a row, or whenever the values that define the Relation are changed (recompute). Now let's look into what goes on behind the scenes in the database, when we open this screen. The SQL code appears in the Output window. (For more details on the settings required to see SQL in the Output window, see: [View SQL Output](View-SQL-Output.html) ).
 
 Let's examine the SQL code in the Output screen. Here is the generated SQL code, as shown in the Output window, for all 15 lines displayed on the grid:
-```csharp
+```csdiff
 ExecuteNonQuery - sp_cursorprepexec
  
 Query Parameters:
@@ -132,7 +132,7 @@ Let's review each and every part of the above statements.
 ### First statement
 
 This statement declares a server side cursor. The cursor contains a select statement for the main table that returns all the rows from the Product entity, as displayed below:
-```csharp
+```csdiff
 ExecuteNonQuery - sp_cursorprepexec
  
 Query Parameters:
@@ -152,7 +152,7 @@ ExecuteReader Duration .. : 81.0046
 ### Second statement:
 
 This statement fetches the data from the cursor that was just declared, as displayed below:
-```csharp
+```csdiff
 ExecuteReader - sp_cursorfetch
  
 Query Parameters:
@@ -165,7 +165,7 @@ Query Parameters:
 ### Third statement
 
 This statement reflects that the program code is fetching data from the database using a Select command. This statement is the first one directly referring to the Relation that we defined.
-```csharp
+```csdiff
 ExecuteReader - 
 SELECT CategoryID, CategoryName, Description 
 FROM dbo.Categories 
@@ -187,14 +187,14 @@ When working with Relation Selects, you can enable Cache in order to optimize th
 To enable Cache either in the Entity or in the Task, Type “Cached = true” either in the Entity or the Task, as displayed below.
 
 In the entity:
-```csharp
+```csdiff
         public Categories() : base("dbo.Categories", "Categories", DataSources.Northwind1)
         {
              Cached = true;
         }
 ```
 In the task:
-```csharp
+```csdiff
         internal readonly Model.Categories _categories = new Model.Categories()
         {
             Cached = true,
@@ -208,7 +208,7 @@ Even if you enable Cache, rows from a dB table will only be saved to the Cache i
 ### Unique Sort
 
 A unique sort was declared for the Relation. For example, here is a unique sort, as defined in the Categories entity:
-```csharp
+```csdiff
         public readonly Sort SortByCategoryID = new Sort
         {
         	Caption = "CategoryID",
@@ -216,7 +216,7 @@ A unique sort was declared for the Relation. For example, here is a unique sort,
         }
 ```
 .. and here is the code that shows how the Relation declares this unique sort:
-```csharp
+```csdiff
            Relations.Add(_categories,RelationType.Find,
                 _categories.CategoryID.IsEqualTo(_products.CategoryID),
                 _categories.SortByCategoryID);
@@ -224,7 +224,7 @@ A unique sort was declared for the Relation. For example, here is a unique sort,
 ### Use all Segments
 
 All the segments of the unique sort must be defined in the Relation's Where clause. For example, the code for this unique sort defines only one segment, CategoryID, as shown below, which the Relation Where clause uses, thus in this example, the Relation is using all segments.
-```csharp
+```csdiff
   void InitializeIndexes()      
   {
  
@@ -236,7 +236,7 @@ If the unique index also included, let's say, the Category Name segment, then Ca
 ### Implicit Use of Primary key or other Unique Index
 
 Even if the Relation does not use a specifically specified unique sort, if the Where criteria for the Relation match any of the unique indexes of the entity or it's primary key, Cache will still be applied. For example, the CategoryID columns is defined as the primary key of the Categories entity:
-```csharp
+```csdiff
 class Categories : Entity 
     {
         [PrimaryKey(Identity = true)]
@@ -250,7 +250,7 @@ Notes:
 
 If the Select statement doesn't return any row, nothing will be saved to the Cache. As a result, any further use of the same Select statement will be directed to the database.  
 Note that if the “CacheNonUniqueResults” property is set to true, then regardless of unique key or primary key definitions, Caching will be enabled. The usage is as follows:
-```csharp
+```csdiff
         internal readonly Model.Categories _categories = new Model.Categories()
         {
              CacheNonUniqueResults = true
@@ -284,14 +284,14 @@ We can see that there are 8 Relation queries that the code generates, which retu
 ### Cached = false
 
 Now let's change the Cache to false, and see the result.
-```csharp
+```csdiff
          internal readonly Model.Categories _categories = new Model.Categories()
         {
             Cached = false
         };
 ```
 After running the UIController, we'll get the following result containing 15 full dB SQL references, which clearly shows that we now access the Database for each row, regardless of whether the CategoryID has already appeared:
-```csharp
+```csdiff
 ExecuteNonQuery Duration: 0
 ExecuteNonQuery - sp_cursorprepexec
  
@@ -418,7 +418,7 @@ Note that we get the cursor for the main table and 15 more queries that are gene
 ### No Primary Key or Unique Sort
 
 Now let's switch Cached back to true, but also change the code in the Category entity so that CategoryID is no longer the primary key. Additionally, lets change the sort key for CategoryID to no longer be unique. (Note that in the code below “Unique = 'true' ” is commented out and the primary key is moved to the CategoryName field).
-```csharp
+```csdiff
         [PrimaryKey(Identity = true)]
         public readonly NumberColumn CategoryID = new NumberColumn("CategoryID", "N10", "CategoryID")
         {
@@ -445,7 +445,7 @@ As expected, when we run the UIController, Cache is no longer applied.
 ### Unique Key using only some of the segments
 
 Now let's redefine the SortByCategoryID to be unique, but let's add another segment, CategoryName, to this key. Note that the last line of code in the code below adds 2 segments to the SortByCategoryID key.
-```csharp
+```csdiff
         public readonly Sort SortByCategoryID = new Sort
         {
         	Caption = "CategoryID",
@@ -484,7 +484,7 @@ Of course if we were using Cache, and Category 7 existed in the Cache, we would 
 # Left Outer Join
 
 Let's adjust the code to use outer join.
-```csharp
+```csdiff
  public ShowProducts()
         {
             From = _products;
@@ -495,7 +495,7 @@ Let's adjust the code to use outer join.
         }
 ```
 Now that we run the program, the following SQL will be generated, as displayed in the output window and shown below:
-```csharp
+```csdiff
 ExecuteNonQuery - sp_cursorprepexec
  
 Query Parameters:
@@ -520,7 +520,7 @@ Looking at the above, we can see that there is initial overhead on the Relation 
 ## Recompute
 
 If the CategoryID is updated and a recompute has to occur in order to update the CategoryName, then a RELATION SQL statement will be executed according to the rules of FIND Relations and CACHE. For example, if the CategoryID on a row is updated to 1, then the following SQL can be seen on the output screen.
-```csharp
+```csdiff
 ExecuteReader - 
 SELECT top 1 CategoryID, CategoryName, Description 
 FROM dbo.Categories 
@@ -534,7 +534,7 @@ ExecuteReader Duration: 3.0002
 # Inner Join
 
 Now let's change the Relation type to Inner Join as displayed below: (note that Join, by default, implies Inner Join)
-```csharp
+```csdiff
         public ShowProducts()
         {
             From = _products;
@@ -545,7 +545,7 @@ Now let's change the Relation type to Inner Join as displayed below: (note that 
         }
 ```
 In this case, in terms of an initial Join followed by no further Select statements, the SQL will be similar to the previous example of Outer Join and looks as follows:
-```csharp
+```csdiff
 ExecuteNonQuery - sp_cursorprepexec
  
 Query Parameters:
@@ -572,7 +572,7 @@ Rows with ProductID 4 and Row 15 have CategoryID = 0 which does not appear in th
 ## Recompute
 
 As is the case with Outer Join, if the CategoryID is updated and a recompute has to occur in order to update the CategoryName, then a RELATION SQL statement will be executed according to the rules of FIND Relations and CACHE. For example, if the CategoryID on a row is updated to 1, then the following SQL can be seen on the output screen.
-```csharp
+```csdiff
 ExecuteReader - 
 SELECT top 1 CategoryID, CategoryName, Description 
 FROM dbo.Categories 

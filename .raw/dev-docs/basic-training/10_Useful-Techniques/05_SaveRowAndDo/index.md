@@ -4,7 +4,7 @@
 2.	Create another UIController named "EditCustomers" with the following columns:
 ![EditCustomers](EditCustomers.png)
 3.	Add a filter to the "EditCustomers" class using the "CustomerID"
-```diff
+```csdiff
 public void Run(Text customerId)
 {
 +   Where.Add(Customers.CustomerID.IsEqualTo(customerId));
@@ -17,7 +17,7 @@ public void Run(Text customerId)
 7. In "SaveRowCustomers" change the value of the customer name and click on the button. You will notice that in the "EditCustomers" screen, the old value name is displayed.
 8. Create a method EditCustomer() in the controller
 9. Use the `SaveRowAndDo()` method to save the data prior to calling "EditCustomers"  program. 
-```diff
+```csdiff
 + internal void EditCustomer()
 + {
 +     SaveRowAndDo(uioptions => new EditCustomers().Run(Customers.CustomerID));

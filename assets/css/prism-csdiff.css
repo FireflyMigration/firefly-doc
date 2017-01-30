@@ -26,13 +26,7 @@ pre[class*="language-"] {
 	-moz-hyphens: none;
 	-ms-hyphens: none;
 	hyphens: none;
-/*ADD VLE 
-
-  white-space: pre;
-  word-wrap: normal;
-  display: block;
-  font-size: 12px;
-*/	
+ 
 }
 
 pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
@@ -173,6 +167,11 @@ code[class*="language-css"]{
 }
 
 
+pre[data-line] {
+	position: relative;
+	padding: 1em 0 1em 3em;
+}
+
 .line-highlight {
 	position: absolute;
 	left: 0;
@@ -181,7 +180,7 @@ code[class*="language-css"]{
 	margin-top: 1em; /* Same as .prism’s padding-top */
 
 	background: hsla(24, 20%, 50%,.08);
-	background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+	background: linear-gradient(to right, hsla(78, 62%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
 
 	pointer-events: none;
 
@@ -212,11 +211,8 @@ code[class*="language-css"]{
 		top: auto;
 		bottom: .4em;
 	}
-pre[data-line] {
-	position: relative;
-	padding: 1em 0 1em 3em;
 	
-}
+	
 pre.line-numbers {
 	position: relative;
 /*	padding-left: 3.8em;*/

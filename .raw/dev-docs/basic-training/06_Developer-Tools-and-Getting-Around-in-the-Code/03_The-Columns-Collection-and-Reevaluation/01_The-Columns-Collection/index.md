@@ -17,7 +17,7 @@
     c. Order By – by using the `OrderBy.Add`
 Now we're going to see how to control the SELECT part of the SQL.
 9.	Add the following columns:
-```diff
+```csdiff
 public ShowOrders()
 {
     From = Orders;

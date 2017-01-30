@@ -8,7 +8,7 @@
 #### 1. Count Rows
 1.	Create the following new **BusinessProcess** called “CalculateOrders”:
 
-```diff
+```csdiff
 public class CalculateOrders : BusinessProcessBase
 {
         
@@ -22,7 +22,7 @@ public class CalculateOrders : BusinessProcessBase
 
 2.	Override the **OnEnd** method and inside the method show a message box with the number of rows using `u.Counter(0)` function.
 
-```diff
+```csdiff
 + protected override void OnEnd()
 + {
 +     MessageBox.Show("Number of rows: " + u.Counter(0));
@@ -33,7 +33,7 @@ public class CalculateOrders : BusinessProcessBase
 4.	Build and run.
 5.	There are other ways to count rows than to iterate them with a BusinessProcess. The purpose of this example is to demonstrate the simplest use of a BusinessProcess.
 6.	Note that the BusinessProcess class exposes a **Counter property**, so `u.Counter(0)` is the same as `Counter`. Change the code and run again.
-```diff
+```csdiff
 protected override void OnEnd()
 {
 -    MessageBox.Show("Number of rows: " + u.Counter(0));
@@ -56,14 +56,14 @@ public class CalculateOrders : BusinessProcessBase
 
 3.	Override the `OnLeaveRow` method and note that in a BusinessProcess there is no OnSavingRow method like in a UIController, because there is no user interaction. The purpose of a business process is iterating **all** the rows that **match** the filter criteria.
 4.	Inside the OnLeaveRow method, add the following code:
-```diff 
+```csdiff 
 + protected override void OnLeaveRow()
 + {
 +    _total += Orders.Freight;
 + }
 ```
 5.	Inside the OnEnd method, show a message box with the total value.
-```diff
+```csdiff
 protected override void OnEnd()
 {
     MessageBox.Show("Number of rows: " + Counter);

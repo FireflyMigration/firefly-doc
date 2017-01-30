@@ -1,6 +1,6 @@
 ﻿### Entity.GetValue 
 1.	The next method replaces the relation to Products table in ShowOrderDetails. To get the product name we can add the following:
-```diff
+```csdiff
 + Models.Products products = new Models.Products();
 
 + public Text GetProductName()
@@ -21,7 +21,7 @@ public Text GetProductName()
 }
 ```
 3. Now we can take this method and move it to the ProdId type, so that it will be available to us in any program that uses the productId column:
-```diff
+```csdiff
 namespace Northwind.Types
 {
     /// <summary>Prod ID(T#3)</summary>

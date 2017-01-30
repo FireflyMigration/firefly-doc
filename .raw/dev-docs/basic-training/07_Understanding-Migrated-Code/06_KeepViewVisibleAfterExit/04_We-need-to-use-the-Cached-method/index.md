@@ -4,7 +4,7 @@
 2. For each row we enter to on the left screen (`ShowOrdersParent`), a new instance of the right screen (`ShowOrderDetailsChild`) is created. 
 3.	This can be easily fixed by using cached when calling the `ShowOrderDetailsChild`. 
 Go to the `OnEnterRow` method of the `ShowOrdersParent` controller and change the code as follows:
-```diff
+```csdiff
 protected override void OnEnterRow()
 {
 -    new Training.ShowOrderDetailsChild().Run(Orders.OrderID);

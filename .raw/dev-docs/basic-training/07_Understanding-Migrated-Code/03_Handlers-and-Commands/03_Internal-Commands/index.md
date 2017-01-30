@@ -2,7 +2,7 @@
 
 1.	Internal Commands are build-in events such as, "Exit" or "Select", which the developer can either handle or raise.
 2.	Add a handler for the `GoToNextRow` command, as follows:
-```diff
+```csdiff
 public ShowOrders()
 {
     From = Orders;
@@ -26,7 +26,7 @@ public ShowOrders()
 ```
 3.	Run the program and notice that a message is displayed when moving to the next row.
 4.	Change the event `Handled` to be `true`, as follows:
-```diff
+```csdiff
 void ShowOrders_NextRow(HandlerInvokeEventArgs e)
 {
 +   e.Handled = true;

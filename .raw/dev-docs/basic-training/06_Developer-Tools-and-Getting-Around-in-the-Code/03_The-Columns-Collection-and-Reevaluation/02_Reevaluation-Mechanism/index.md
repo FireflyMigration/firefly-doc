@@ -5,7 +5,7 @@
 4.	Run the program and notice that now the relation does not reevaluated, as the user change the code - shipVia. Only when the user enters the row again.
 5.	Return the “Shippers.ShipperID” column to the correct location.
 6.	For more information, see the Columns property of the UIController class in the documentation.
-```diff
+```csdiff
 public ShowOrders()
 {
     From = Orders;

@@ -1,7 +1,7 @@
 ﻿### Basic Unit Testing
 
 1. Create a new BusinessProcess named “CustomersCSV” :
-```diff
+```csdiff
 namespace Northwind.Training
 {
     public class CustomersCSV : BusinessProcessBase
@@ -32,7 +32,7 @@ namespace Northwind.Training
 ```
 2. Build it 
 3. For test it, we put it on the Application.cs
-```diff
+```csdiff
 protected override void OnStart()
 {
     new Training.CustomersCSV().Run();
@@ -41,7 +41,7 @@ protected override void OnStart()
 ```
 4.Open the file customer.csv
 5.Add other fields in the .csv:
-```diff
+```csdiff
        protected override void OnLeaveRow()
         {
 -            _fw.WriteLine(Customers.CustomerID.Trim());

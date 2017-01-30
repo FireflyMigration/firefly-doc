@@ -2,7 +2,7 @@
 1.	Sometimes we need a "Group By" query in our application. So far, the only way to do it was using complex SQL queries. Now it can be a much simpler task.
 2.	Create a UIController "GroupByOrders" that displays a list of titles that the sum of the "TotalPayedToDate" for Titles with more than 2 purchases.
 ##### Example 1 – **Simple Select Count(*):**
-```diff
+```csdiff
 public class GroupByOrders : UIControllerBase
 {
 
@@ -22,7 +22,7 @@ public class GroupByOrders : UIControllerBase
 ##### Example 2 – **Adding Column**:
 
 Please add another column to the grid to Group By the OrderID 
-```diff
+```csdiff
 public GroupByOrders()
 {
     var groupBy = new SQLGroupBy(OrderDetails);
@@ -34,7 +34,7 @@ public GroupByOrders()
 ##### Example 3 – **Adding Where Clause:**
 
 Filter the view with UnitPrice > 20
-```diff
+```csdiff
 public GroupByOrders()
 {
     var groupBy = new SQLGroupBy(OrderDetails);
@@ -47,7 +47,7 @@ public GroupByOrders()
 ##### Example 4 – **Adding Having: (Filer for GroupBy aggregate actions)**
 
 Filter the view to display orders with more than two rows.
-```diff
+```csdiff
 public GroupByOrders()
 {
     var groupBy = new SQLGroupBy(OrderDetails);
@@ -59,7 +59,7 @@ public GroupByOrders()
 }
 ```
 ##### Example 5 – **Adding Sort:**
-```diff
+```csdiff
 public GroupByOrders()
 {
     var groupBy = new SQLGroupBy(OrderDetails);

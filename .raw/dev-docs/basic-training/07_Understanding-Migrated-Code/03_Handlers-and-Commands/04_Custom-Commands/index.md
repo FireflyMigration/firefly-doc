@@ -2,7 +2,7 @@
 As oppose to internal events, Customs commands are events that the developer is responsible to create, raise and handle.
 
 1. Create `CustomCommand` named “myCommand”.
-```diff
+```csdiff
 public class ShowOrders : UIControllerBase
     {
         public readonly Models.Orders Orders = new Models.Orders();
@@ -11,7 +11,7 @@ public class ShowOrders : UIControllerBase
 +       public CustomCommand myCommand = new CustomCommand();
 ```
 2. Add handler that shows a message box:
-```diff
+```csdiff
 public ShowOrders()
 {
     From = Orders;
@@ -43,7 +43,7 @@ public ShowOrders()
 + }
 ```
 3. `Raise` the command in the **OnStart**
-```diff 
+```csdiff 
 protected override void OnStart()
 {
     Raise(myCommand);
@@ -51,7 +51,7 @@ protected override void OnStart()
 ```
 4. Build and Run
 5. See below how to use `Raise` method of a new **button** "My Command".
-```diff
+```csdiff
 + private void btnMyCommand_Click(object sender, ButtonClickEventArgs e)
 + {
 +     e.Raise(_controller.myCommand);
@@ -59,7 +59,7 @@ protected override void OnStart()
 ```
 6. Build and Run
 7. Notice the difference between `Raise` and `Invoke`.
-```diff
+```csdiff
 protected override void OnStart()
 {
     Raise(myCommand); //don't wait
@@ -70,7 +70,7 @@ protected override void OnStart()
 `Invoke` – The event will not wait and occur immediately.
 
 8. To better understand the wait/ no wait concept, please add a message box once after the `Raise` command and once after the Invoke command and run.
-```diff
+```csdiff
 protected override void OnStart()
 {
     Raise(myCommand); //don't wait
@@ -82,7 +82,7 @@ protected override void OnStart()
 
 10. To specify a condition for an event, add `BindEnabled`, as follows:
 
-```diff
+```csdiff
 Columns.Add(Orders.OrderID, Orders.OrderDate, Orders.ShipName, Orders.ShipCity, Orders.ShipVia, Shippers.ShipperID, Shippers.CompanyName);
 AddAllColumns();
 - Handlers.Add(myCommand).Invokes += myCommand_Invokes;

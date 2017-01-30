@@ -5,7 +5,7 @@
 4.	In the Types folder, add a new item and select the “Type” template from the “Firefly” category. Set the name of the class to “TerritoryID”.
 5.	Review the template and note that by default the type inherits the NumberColumn type. If you need another type like TextColumn or DateColumn, just change the class inheritance accordingly.
 6.	Set the Name, Format and Caption in the type constructor and note that from now on, we will use the type whenever we need this column. The Name, Format and Caption will be identical for the entire application.  
-```diff
+```csdiff
  public class TerritoryID : NumberColumn
     {
         public TerritoryID(string name, string format, string caption) : base(name, format, caption)
@@ -28,7 +28,7 @@
 
 7.	Now, replace the type of the column in the entity class. Notice that you can remove the Name and Format of the column definition in the entity.
   
-```diff
+```csdiff
 public class Territories : Entity
 {
     [PrimaryKey]

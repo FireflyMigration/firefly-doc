@@ -52,7 +52,7 @@ The Run() used in the HelloWorld receives no parameters so nothing is specify in
 ###### Calling a Method
 
 To call a method we will specify the Method “Address” name space and the method name:
-```csharp 
+```csdiff 
 System.Windows.Forms.MessageBox.Show("Hello World");
 ```
 
@@ -67,7 +67,7 @@ which receives text as parameters
 When we DbClick on the menu item Visual Studio generated a method which is called every time the menu item is being clicked
 inside this method we added the code to call the Run method of the HelloWorld class.
 
-```csharp 
+```csdiff 
 new Training.HelloWorld().Run();
 ```
  

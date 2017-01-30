@@ -2,7 +2,7 @@
 1.	Add a simple relation to another table (See screenshot).
       1. Start by adding the table definition.
       2. Then call to the Relations.Add method after the line that sets the From property
-```diff
+```csdiff
 public readonly Models.Orders Orders = new Models.Orders();
 public readonly Models.Shippers Shippers = new Models.Shippers();
 

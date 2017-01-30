@@ -11,7 +11,7 @@ Recall that in Magic you press Ctrl + D and The DB Tables screen appears as show
 * At the beginning of the class,in the 'Model' region, declare an object Property for each table to be used.
 * Example: ``` internal readonly Model.Orders Orders = new Model.Orders(); ```
 * Example of a Table definition with some properties:
-```csharp
+```csdiff
  internal readonly Model.Orders Orders = new Model.Orders
 {
   Cached = false,
@@ -36,7 +36,7 @@ Recall that in Magic you press Ctrl + D and The DB Tables screen appears as show
 Name in Migrated Code: **ReadOnly**
 Location in Migrated Code: **Class** (in Model region)
 Example:
-```csharp
+```csdiff
 readonly Model.Orders _orders = new Model.Orders()
 {
    ReadOnly = true,
@@ -53,7 +53,7 @@ readonly Model.Orders _orders = new Model.Orders()
 Name in Migrated Code: **AllowRowLocking**
 Location in Migrated Code: **Class** (in Model region)
 Example:
-```csharp
+```csdiff
 readonly Model.Orders _orders = new Model.Orders
             {
             	AllowRowLocking = true,
@@ -83,7 +83,7 @@ Relevant only for Btrieve
 Name in Migrated Code: **EntityName**
 Location in Migrated Code: **OnLoad Method**
 Example:
-```csharp
+```csdiff
 protected override void OnLoad()
 {
   Customers.EntityName = "%PATH%FileName";
@@ -96,7 +96,7 @@ protected override void OnLoad()
 Name in Migrated Code: **Cached**
 Location in Migrated Code: **Class** (in Model region)
 Example: Cache = Yes:
-```csharp
+```csdiff
 readonly Model.Orders _orders = new Model.Orders
             {
             	Cached = true,
@@ -104,7 +104,7 @@ readonly Model.Orders _orders = new Model.Orders
             };
 ```
 Example: Cache = No:
-```csharp
+```csdiff
 readonly Model.Orders _orders = new Model.Orders
             {
             	Cached = false,
