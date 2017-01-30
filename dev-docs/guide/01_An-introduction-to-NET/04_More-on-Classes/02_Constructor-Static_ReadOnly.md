@@ -23,7 +23,7 @@ In the Animal class we created a constructor and in the constructor define defau
 If a new instance is created and no value is set to its Name and Type members - they will hold the default values as defined in the constructor
 
 
- ```diff
+ ```csdiff
  using System.Windows.Forms;
 namespace Northwind.Training
 {
@@ -71,7 +71,7 @@ Then, we set the value of the LastUsedId (the static member) to the Id.
 That way - every new instance of the class will receive a new and unique id.  
  
 The code below also display the id in the DescribeYouSlef() method:  
- ```diff
+ ```csdiff
  using System.Windows.Forms;
 namespace Northwind.Training
 {

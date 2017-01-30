@@ -19,7 +19,7 @@ Below you can see the code of 2 different classes:
 2. Class called Animal 
 
 **ClassesAndInstances**
-```diff
+```csdiff
 + using System.Windows.Forms;
 namespace Northwind.Training
 {
@@ -34,7 +34,7 @@ namespace Northwind.Training
 
 
 **Animal**  
-```diff
+```csdiff
 namespace Northwind.Training
 {
     class Animal
@@ -74,7 +74,7 @@ a.Name = "Rexi"
 
 
 
-```diff
+```csdiff
 using System.Windows.Forms;
 namespace Northwind.Training
 {
@@ -107,7 +107,7 @@ Back to the Animal class:
 A new member is added to that animal class: AnimalType
 
 
- ```diff
+ ```csdiff
 namespace Northwind.Training
 {
     class Animal
@@ -127,7 +127,7 @@ and 'b'  (which is also an instance of Animal) to have AnimalTypa = Cat.
 The message boxes displays the type and the name of the objects a & b
 
 
-```diff
+```csdiff
 using System.Windows.Forms;
 namespace Northwind.Training
 {
@@ -159,7 +159,7 @@ The method displays the name and the type of the Animal object who used it.
 `this` is a reference to the current instance of the object (Animal class).  
  The code looks like that:  
 
- ```diff
+ ```csdiff
 + using System.Windows.Forms;
 namespace Northwind.Training
 {
@@ -184,7 +184,7 @@ Now, in the ClassesAndInstances, instead of using the message box, 'a' and 'b' o
 
 
 
-```diff
+```csdiff
 using System.Windows.Forms;
 namespace Northwind.Training
 {

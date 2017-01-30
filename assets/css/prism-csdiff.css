@@ -7,25 +7,24 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
-	color: black;
-	background: none;
-	text-shadow: 0 1px white;
-	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
-	line-height: 1.42;
+color: #393A34;
+    font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+    direction: ltr;
+    text-align: left; 
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    font-size: 0.95em;
+    line-height: 1.2em;
 
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
 
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
  
 }
 
@@ -92,6 +91,10 @@ pre[class*="language-"] {
     color: #393A34; /* no highlight */
 }
 
+.token.operator {
+    background: hsla(0, 0%, 100%, 0); 
+}
+
 .token.url,
 .token.symbol,
 .token.number,
@@ -145,10 +148,6 @@ code[class*="language-css"]{
     color: grey;
 }
 
-.token.keyword.keyword-plussign{
-		  color:red;
-		  
-}
 .token.tag,
 .token.selector {
     color: #800000;

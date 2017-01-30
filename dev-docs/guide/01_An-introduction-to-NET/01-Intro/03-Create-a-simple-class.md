@@ -48,7 +48,7 @@ private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs 
 +   new Training.HelloWorld().Run();	
 }
 ```
-[](:start="6") 
+
 6. Build - Build menu / Build solution  
 7. Run by pressing the Start button and call the program from the menu ![start button](start_button.png)  
 
