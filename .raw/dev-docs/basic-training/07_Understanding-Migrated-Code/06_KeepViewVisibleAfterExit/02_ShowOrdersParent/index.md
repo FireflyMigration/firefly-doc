@@ -1,6 +1,6 @@
 ﻿### ShowOrdersParent
 1.	Add a second UIController named 'ShowOrdersParent' and call to 'ShowOrderDetailsChild' inside the `OnEnterRow` method:
-```diff
+```csdiff
 namespace Northwind.Training
 {
     public class ShowOrdersParent : UIControllerBase

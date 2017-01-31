@@ -16,15 +16,15 @@ The following sections explain the equivalent of these properties in the migrate
 
 ### Task Name
 
-Name in Migrated Code: **Title** 
-Location in Migrated Code: **Constructor**
+Name in Migrated Code: **Title**  
+Location in Migrated Code: **Constructor**  
 
 #### Notes
 
 The original task name is migrated to a Class Name.In the migrated code, the task name is preserved for backward compatibility reasons in the Title Property (such as supporting the 'prog' function).
 
 #### Example
-```csharp
+```csdiff
   public ShowOrders()
         {   //... other code
             Title = "ShowOrders";
@@ -41,24 +41,26 @@ The original task name is migrated to a Class Name.In the migrated code, the tas
 
 The Task Type in Magic is either Online or Batch. In the migrated code, online tasks convert to classes which inherit from the UIController Class, while Batch tasks convert to classes which inherit from the BusinessProcess class.
 
-Name in Migrated Code: **UIController, BusinessProcess**
-Location in Migrated Code: **Class** 
+Name in Migrated Code: **UIController, BusinessProcess**  
+Location in Migrated Code: **Class**  
 Example: UIController
-```csharp
+```csdiff
 internal class Orders1 :UIControllerBase 
 {
 }
 ```
 Example: BusinessProcess
-```csharp
+```csdiff
 internal class Print_Order : BusinessProcessBase 
 {
 }
 ```
-Note: A further class called the **FlowUIController** class is used for Magic Code from Online tasks that have code in the Record Main. For such code, The migrated code will inherit from the FlowUIController class:
+ 
+Note: A further class called the **FlowUIController** class is used for Magic Code from Online tasks that have code in the Record Main.  
+For such code, The migrated code will inherit from the FlowUIController class:
 
 For example:
-```csharp
+```csdiff
  internal class Orders1 : FlowUIControllerBase 
  {
  }
@@ -73,7 +75,7 @@ For example:
 
 ### Initial Mode
 
-Name in Migrated Code: **Activity**
+Name in Migrated Code: **Activity**  
 Location in Migrated Code: **OnLoad Method**
 Values:
 
@@ -86,20 +88,19 @@ Values:
 | As Parent  	| u.ActivityOfParent      	|
 | By Exp     	| u.TranslateTaskActivity 	|
 
-Examples:
-Browse:
-
-```Activity = Activities.Browse;```
+Examples:  
+Browse:  
+```Activity = Activities.Browse;```  
 By Parent:
-```csharp
+```csdiff
   public ShowOrders()
   {   //... other code
        Activity = u.ActivityOfParent;
        // other code
   }
 ```
-By Expression:
-```csharp
+By Expression:  
+```csdiff
   public ShowOrders()
   {   //... other code
       Activity =  u.TranslateTaskActivity(u.if(1==1,"Q","M")); 
@@ -115,8 +116,8 @@ By Expression:
 
 ### End Task / Condition for End Task
 
-Name in Migrated Code: **Exit**
-Location in Migrated Class: **OnLoad Method** 
+Name in Migrated Code: **Exit**  
+Location in Migrated Class: **OnLoad Method**   
 Values:
 
 | Magic Name                            	| Migrated Code Name 	|
@@ -125,19 +126,18 @@ Values:
 | After Updating Record                 	| AfterRow           	|
 | Immediately when condition is Changed 	| AsSoonAsPossible   	|
 
-Examples:
-Exit:
-
+Examples:  
+Exit:  
 ```Exit();```
-Exit Before Row:
 
-```Exit(ExitTiming.BeforeRow, () = > u.EOF(0, 1));```
-Exit After Row
+Exit Before Row:  
+```Exit(ExitTiming.BeforeRow, () = > u.EOF(0, 1));```  
 
+Exit After Row  
 ```Exit(ExitTiming.AfterRow, () = > Counter == 10);```
 
 Note: As stated, the 'Immediately when condition is changed' option, translates in the migrated code to ExitTiming.AsSoonAsPossible. In this scenario, Magic evaluates the end condition after each operation in the code. To support this behavior, migrated code with this option will place the EvaluateExitCondition() Method between each line of code. Example:
-```csharp
+```csdiff
 protected override void OnLoad()
 {
    Exit(ExitTiming.AsSoonAsPossible,() => numerator==1);
@@ -164,7 +164,7 @@ In the above example, the task will end as soon as numerator's value is equal to
 
 ### Allow Events
 
-Name in Migrated Code: **AllowUserAbort** 
+Name in Migrated Code: **AllowUserAbort**  
 Location in Migrated Code: **OnLoad Method** 
 Examples:
 
@@ -183,10 +183,10 @@ Note: This property allows the user to abort a Business process task by pressing
 
 ### Return Value
 
-Name in Migrated Code: **return _taskresult;** 
+Name in Migrated Code: **return _taskresult;**  
 Location in Migrated Code: **Run Method** 
 Example:
-```csharp
+```csdiff
 class batchToCalculateSum : BusinessProcessBase 
 {
    readonly NumberColumn var1 = new NumberColumn();
@@ -220,7 +220,7 @@ The migrated code will calculate the return expression in the onEnd method and w
 Name in Migrated Code: **From**
 Location in Migrated Class: **InitializeDataView Method**
 Example:
-```csharp
+```csdiff
 class ShowCustomers
 {
 	internal readonly Model.Customers Customers = new Model.Customers();
@@ -245,7 +245,7 @@ class ShowCustomers
 Name in Migrated Code : **OrderBy**
 Location in Migrated Code : **InitializeDataView Method**
 Examples:
-```csharp
+```csdiff
 void InitializeDataView()
 {
         From = Customers;
@@ -265,7 +265,7 @@ Name in Migrated Code : **OrderBy**
 Location in Migrated Code : **OnLoad Method** 
 Note :  If an index expression was used the migrated code will have the OrderBy statement in the OnLoad Method as opposed to the InitializeDataView Method.
 Example : In the following example, the index expression was set to: "if (a=1, '1'Key, '2'Key)".
-```csharp
+```csdiff
 protected override void OnLoad()
 {
     // other code
@@ -291,7 +291,7 @@ The following notes explain the equivalent to these properties in the migrated c
 Name in Migrated Code: **AllowSelect**
 Location in Migrated Code: **OnLoad Method**
 Example:
-```csharp
+```csdiff
       protected override void OnLoad()
         {
             // other code
@@ -322,7 +322,7 @@ This Option determines which screen to display based on a numeric value obtained
 Name in Migrated Code: **See example**
 Location in Migrated Code: **OnLoad Method**
 Example:
-```csharp
+```csdiff
 protected override void OnLoad() {
 
    // other code
@@ -397,7 +397,7 @@ Example: OnRowSaving:
 * [LockingStrategy Enum](http://www.fireflymigration.com/reference/html/T_Firefly_Box_LockingStrategy.htm) 
 
 Note: If the Locking Strategy is “On Modify” in Magic (LockingSTrategy.OnUserEdit) then it may be necessary when calling a task or program to specify that the current record with all its links must be locked. This may be specified in Magic by clicking ctrl+P on the call task or call program line, and specifying the lock as 'Yes' in the dialog that appears. To support this functionality, the LockCurrentRow method is employed. As an example:
-```csharp
+```csdiff
 if(V_counter == 1) {
 
  LockCurrentRow();
@@ -415,7 +415,7 @@ if(V_counter == 1) {
 
 Location in migrated code *: The Cached property of the Entity defined in the From property of the task.
 Example:
-```csharp 
+```csdiff 
 readonly Model.Categories _categories = new Model.Categories {
 
  Cached = true

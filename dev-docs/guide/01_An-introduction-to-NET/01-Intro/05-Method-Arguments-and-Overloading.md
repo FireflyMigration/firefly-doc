@@ -8,8 +8,7 @@ To see the arguments the method receives you can:
 2. Click the method parameter button on the toolbox when the cursor is between the parenthesis:  
  
 ![Show Arguments](Show-Arguments.png)  
-3. Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> when the cursor is between the parentheses.  
-
+3. Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> when the cursor is between the parentheses.
 
   
 **Overloading** allows Methods to have the same name but with different combination of parameters.  
@@ -27,10 +26,10 @@ The Show() method has 21 overloads meaning it has 21 variant of the method that 
 ![Method Overloading](Method_Overloading.png)
 
 
-```diff
+```csdiff
 namespace Northwind.Training
 {
-    Class HelloWorld
+    class HelloWorld
     {
        public void Run()
        {

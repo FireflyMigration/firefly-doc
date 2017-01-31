@@ -8,7 +8,7 @@
    1. Add the entity definitions and set the From property. 
 
 
-```diff
+```csdiff
 public class ShowOrders : UIControllerBase
 {
 +   public readonly Models.Orders Orders = new Models.Orders();

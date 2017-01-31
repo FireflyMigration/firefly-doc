@@ -9,7 +9,7 @@ In the previous article, based on Tables from the Northwind Database, we discuss
 ### Get Supplier Name
 
 Let's build a similar BusinessProcess to get the Supplier Name, based on the SupplierID, as follows.
-```csharp
+```csdiff
 class GetSupplierName : BusinessProcessBase
 {
     internal readonly Model.Suppliers _suppliers = new Model.Suppliers();
@@ -34,7 +34,7 @@ class GetSupplierName : BusinessProcessBase
 }
 ```
 Now, let's define a Type called Supplier ID and add a Method to it that gets the Supplier Name:
-```csharp
+```csdiff
 class SupplierID : NumberColumn
 {
     public SupplierID()
@@ -49,12 +49,12 @@ class SupplierID : NumberColumn
 }
 ```
 Having defined the Type, let's redefine the SupplierID column in the Supplier Entity to be of type SupplierID:
-```csharp
+```csdiff
 /// <summary>SupplierID</summary>
 public readonly Types.SupplierID SupplierID = new Types.SupplierID();
 ```
 Now, as we did with GetCategoryName, let's create a virtual column called _supplierName and use BindValue to attach its value to the return value from GetSupplierName, as follows:
-```csharp
+```csdiff
 class ShowProductsUsingBP : UIControllerBase
 {
     internal readonly Model.Products _products = new Model.Products();
@@ -100,7 +100,7 @@ To accomplish this task, let's build a Generic Business Process Class called Get
 - Name - TextColumn
 
 The code appears as follows:
-```csharp
+```csdiff
 class GetNameFromNumberID : BusinessProcessBase
 {
     Text _result;
@@ -137,7 +137,7 @@ This can be achieved with a code change to the Method in the Type class, as foll
 - Pass the SupplierID and the Supplier Name as parameters 2 and 3, to be displayed on the screen.
 
 The code appears below:
-```csharp
+```csdiff
 class SupplierID : NumberColumn
 {
     public SupplierID()

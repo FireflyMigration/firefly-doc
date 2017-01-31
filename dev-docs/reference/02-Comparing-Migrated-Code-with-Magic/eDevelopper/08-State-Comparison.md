@@ -33,7 +33,7 @@ This refers to all properties that appear in screens such as Ctrl+P (Task Proper
 
 Name in Migrated Code: **OnLoad Method**  
 Example:
-```csharp
+```csdiff
 protected override void OnLoad()
 {
    AllowSelect = true;
@@ -45,7 +45,7 @@ protected override void OnLoad()
 
 Name in Migrated Code: **OnStart Method**  
 Example:
-```csharp
+```csdiff
 protected override void OnStart()
 {
      v_myNumberColumnField.Value = 0;
@@ -57,7 +57,7 @@ protected override void OnStart()
 
 Name in Migrated Code: **OnEnd Method**  
 Example:
-```csharp
+```csdiff
 protected override void OnEnd()
 {
      _taskresult = vMyValue;
@@ -69,7 +69,7 @@ protected override void OnEnd()
 
 Name in Migrated Code: **OnEnterRow Method**  
 Example:
-```csharp
+```csdiff
 protected override void OnEnterRow()
 {
      new MethodtoRUnBeforeEachEachRow().Run();
@@ -84,7 +84,7 @@ Name in Migrated Code: **OnSavingRow Method**
 
 Name in Migrated Code: **Constructor and Run Method**  
 Example:
-```csharp
+```csdiff
 /// <summary>ShowProducts(P#10)</summary>
 public ShowProducts()
 {
@@ -124,7 +124,7 @@ Controls obviously appear only in UIController code and can have the following f
 Methods of this type in the migrated code have names ending with **_Enter**
 
 Example:
-```csharp
+```csdiff
 #region Controls handlers
 internal void txtCustomers_CustomerID_Enter()
 {
@@ -138,7 +138,7 @@ internal void txtCustomers_CustomerID_Enter()
 Methods of this type in the migrated code have names ending with **_Leave**
 
 Example:
-```csharp
+```csdiff
 #region Controls handlers
 internal void txtCustomers_CustomerID_Leave()
 {
@@ -152,7 +152,7 @@ internal void txtCustomers_CustomerID_Leave()
 Methods of this type in the migrated code have names ending with **_InputValidation**
 
 Example:
-```csharp
+```csdiff
 #region Controls handlers
 internal void txtCustomers_CustomerID_InputValidation()
 {
@@ -166,7 +166,7 @@ internal void txtCustomers_CustomerID_InputValidation()
 Methods of this type in the migrated code have names ending with **_Change**
 
 Example:
-```csharp
+```csdiff
 #region Controls handlers
 internal void txtCustomers_CustomerID_Change()
 {
@@ -191,7 +191,7 @@ Name in Migrated Code: **OnLeaveRow, OnSavingRow Methods**
 OnLeaveRow() occurs after leaving every record as opposed to OnSavingRow() which occurs only when data from the record needs to be saved to the Database. Thus, for a record that needs to also be saved to the database, both **OnLeaveRow** and **OnSavingRow** events will occur.
 
 Example: OnLeaveRow:
-```csharp
+```csdiff
 protected override void OnLeaveRow()
 {
     _layout.Body.WriteTo(_ioPrint_Order);
@@ -212,7 +212,7 @@ Location in Migrated code: **constructor**
 
 Groups.Add defines the grouping for the selected variables, while groupname.Enter and groupname.Leave represent the GroupPrefix and the GroupSuffix respectively.  
 Example: First lets look at usage of Groups.Add in the Constructor:
-```csharp
+```csdiff
 public Print_Orders()
 {
    Title = "Print - Orders";
@@ -227,7 +227,7 @@ public Print_Orders()
 #### GroupSuffix
 
 Next, lets look at the delegate method call for the Group Prefix, using Group.Enter:
-```csharp
+```csdiff
 void Orders_CustomerIDGroup_Enter()
 {
    _layout.CustomerGroupHeader.WriteTo(_ioPrint_Order);
@@ -235,7 +235,7 @@ void Orders_CustomerIDGroup_Enter()
 ```
 
 Finally, lets look at the delegate method call for the Group Suffix, using Group.Leave:
-```csharp
+```csdiff
 void Orders_CustomerIDGroup_Leave()
 {
    _layout.CustomerGroupFooter.WriteTo(_ioPrint_Order);

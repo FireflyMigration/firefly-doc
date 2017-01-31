@@ -2,7 +2,7 @@
 
 1.	It is a good idea to check if the order already contains Chai and add it only if not.
 2.	We can use the Contains method of the entity as follows:
-```diff        
+```csdiff        
 private void btnAddChai_Click(object sender, ButtonClickEventArgs e)
 {
     var orderDetails = new Models.OrderDetails();

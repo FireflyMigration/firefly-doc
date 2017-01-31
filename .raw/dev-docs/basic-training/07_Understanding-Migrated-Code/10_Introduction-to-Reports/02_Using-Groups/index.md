@@ -3,7 +3,7 @@
 2.	To achieve this we need to use **Groups** that will let us split the data into groups with a common value in a certain column.
 3.	Let’s see an example. We will add a **subtitle** to my report for each "ShipCity".
 4.	First, we need to **sort** our report by the column with the group shared value.
-```diff
+```csdiff
 public OrdersReport()
 {
     From = Orders;
@@ -22,7 +22,7 @@ Make it look like a subtitle (bold, underlined).
 11. To print the subtitle before each group, we need to add a Group to our BusinessProcess to tell it to monitor a certain column for us and let us do something whenever the value in that column changes (Just like Group prefix/ suffix in Magic).
 12. Notice that the **monitored column** is the column we are **sorting** the report by.
 13. Next, add an event handler to the "Enter" event of the group by pressing Tab twice after typing the += operator.
-```diff
+```csdiff
 public OrdersReport()
 {
     From = Orders;
@@ -40,7 +40,7 @@ public OrdersReport()
 14. Notice that "Enter" is an event in C# and that `+=` is the syntax of subscribing to the event. Pressing Tab twice generates a handler method automatically.
 15. This `WriteTo` method used in the handled is the equivalent of the "Write Output" in Magic. (Output Form)
 16. We still need to print the PageHeader. This is easy. We will just tell the printer which section is the page header and the printer know when a new page is being printed so it will take care of the page header printing for us.
-```diff
+```csdiff
 protected override void OnLoad()
 {
     _layout = new Printing.OrdersReportLayout(this);

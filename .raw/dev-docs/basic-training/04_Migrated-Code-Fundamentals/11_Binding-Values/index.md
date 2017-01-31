@@ -1,7 +1,7 @@
 ﻿### Markdown file
 1.	The **BindValue **method (called Init in Magic) of the Column object allows us to dynamically set the value of the column, by an expression.
 2.	Add the local `NumberColumn` and name it `BindSummary`.
-```diff
+```csdiff
 public class CalculateNumbers : UIControllerBase
     {
         public NumberColumn A = new NumberColumn();
@@ -10,7 +10,7 @@ public class CalculateNumbers : UIControllerBase
 +       public NumberColumn BindSummary = new NumberColumn();
 ```
 3.	Inside the Constructor of the class (CalculateNumbers method)bind the summary value with A+B
-```diff
+```csdiff
 public class CalculateNumbers : UIControllerBase
     {
         public NumberColumn A = new NumberColumn();

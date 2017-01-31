@@ -14,7 +14,7 @@ Name in Migrated Code: **OrderBy**
 Location in Migrated Code: **InitializeDataView method**  
 
 Example:
-```csharp
+```csdiff
 void InitializeDataView()
 {
     From = Categories;
@@ -25,7 +25,7 @@ Notes:
 For an index specified in the Task Properties Screen, see: [Task Properties Screen - Index](Task-Properties.html)  
 If the 'Unique' radio button is selected in Magic, this is reflected in the migrated code in the example below.  
 Example:  
-```csharp
+```csdiff
        void InitializeDataView()
         {
             From = Categories;

@@ -1,7 +1,7 @@
 ﻿# Sorting Data
 1.	Notice that our orders list is sorted by the OrderId, which is the default. 
 2.	Let’s sort the list by the ShipCity, as follows: 
-````diff
+````csdiff
 public class ShowOrders : UIControllerBase
 {
     public readonly Models.Orders Orders = new Models.Orders();
@@ -26,7 +26,7 @@ public class ShowOrders : UIControllerBase
 ````
 3.	Run the application and check the results. 
 4.	Add a second segment to the previous example, as follows:
-```diff
+```csdiff
 public class ShowOrders : UIControllerBase
 {
     public readonly Models.Orders Orders = new Models.Orders();
@@ -53,7 +53,7 @@ public class ShowOrders : UIControllerBase
 
 5.	Run the application and check the results.
 6.	Notice that the default direction is ascending and you can sort in descending order using a second OrderBy line, as follows:
-```Diff  
+```csdiff  
 public class ShowOrders : UIControllerBase
 {
     public readonly Models.Orders Orders = new Models.Orders();
@@ -80,7 +80,7 @@ public class ShowOrders : UIControllerBase
 7.	Notice that the SortDirection has two options to choose from. This parameter type is called enum. enum is used whenever there is a parameter that accepts a close list of options.
 8.	Run the application and check the results.
 9.	A pre-defined index can also be used to sort the data: 
-```diff
+```csdiff
 public class ShowOrders : UIControllerBase
     {
         public readonly Models.Orders Orders = new Models.Orders();

@@ -1,7 +1,7 @@
 ﻿# Using your test for develop your code
 
 1. Let's start to modify the code CustomersCSV.cs
-```diff
+```csdiff
 protected override void OnLoad()
 { 
     _fw = new ENV.IO.FileWriter(@"%OUTPUT%customers.csv");
@@ -19,7 +19,7 @@ protected override void OnLeaveRow()
 ```
 2. Run it and go back to your Output directory
 3. Add some columns in the csv 
-```diff
+```csdiff
 protected override void OnLeaveRow()
 {
     var cw = new CSVWriter();
@@ -33,7 +33,7 @@ protected override void OnLeaveRow()
 4. Build and run it
 5. So far so good, let's says that we want to first of all have it `Trim()`
 6. So we are creating a test, to verify that we are trimming correctly.
-```diff
+```csdiff
 [TestMethod]
 public void BasicTest2()
 {
@@ -46,7 +46,7 @@ public void BasicTest2()
 7. Run it and test again
 8. You can see that it is failed
 9. Add `trim()` method on CSVWriter
-```diff
+```csdiff
 public void Add(string v)
 {
     if (_result.Length > 0)
@@ -60,7 +60,7 @@ public void Add(string v)
 
 #### Testing all types
 
-```diff
+```csdiff
 [TestMethod]
 public void BasicTest_supportForAllTypes()
 {
@@ -72,7 +72,7 @@ public void BasicTest_supportForAllTypes()
 }
 ```
 1. when you tested it, you received a error `Argument 1: cannot convert from 'int' to 'string'.` because the Add() function receive a string as parameter.
-```diff
+```csdiff
 - public void Add(string v)
 + public void Add(object v)
 {
@@ -86,7 +86,7 @@ public void BasicTest_supportForAllTypes()
 2. Run the test, and it passed
 
 #### Testing null value
-```diff
+```csdiff
 [TestMethod]
 public void BasicTest_testNulls()
 {
@@ -99,7 +99,7 @@ public void BasicTest_testNulls()
 ```
 1. when you tested it, you received a error `Object reference not set to an instance of an object.`
 2. we can fix this 
-```diff
+```csdiff
 public void Add(object v)
 {
     if (_result.Length > 0)
@@ -112,7 +112,7 @@ public void Add(object v)
 3. Run the test, and it passed
 
 #### Testing comma in value
-```diff
+```csdiff
 [TestMethod]
 public void TestCommaInValue()
 {
@@ -129,7 +129,7 @@ The actual   - Virginie,Lellouche,Ron
 ```
 
 2. modify CSVwriter
-```diff
+```csdiff
 public void Add(object v)
 {
     if (_result.Length > 0)
@@ -145,7 +145,7 @@ public void Add(object v)
 3. Run the test, and it passed
 
 #### Testing Comma and quotes in value
-```diff
+```csdiff
 [TestMethod]
 public void TestCommaAndQuotesInValue()
 {
@@ -161,7 +161,7 @@ The expected - "Virginie (""Test""),Lellouche",Ron
 The actual   - "Virginie ("Test"),Lellouche",Ron
 ```
 2. modify CSVwriter
-```diff
+```csdiff
 public void Add(object v)
 {
     if (_result.Length > 0)
@@ -176,7 +176,7 @@ public void Add(object v)
 3. Run the test, and it passed
 
 ### Test index column in the file
-```diff
+```csdiff
 public void TestUsingIndexer()
 {
     var cw = new Northwind.CSVWriter();
@@ -228,7 +228,7 @@ public class CSVWriter
 ```
 3. Run the test, and it passed
 4. this code uses `string result = "";` and `+=` (`result += ",";`), we recommend to use string builder
-```diff
+```csdiff
 public override string ToString()
 {
 -   string result = "";

@@ -46,7 +46,7 @@ public class Territories : Entity
 * These three most common parameters are part of the column properties list which can be accessed within curly brackets { } following the parenthesis:
 
 ![InputRange Parameter](InputRange_parameter.png)
-```diff
+```csdiff
 public class Territories : Entity
 {
     public TextColumn TerritoryID = new TextColumn("TerritoryID", "20", "Territory ID");
@@ -65,7 +65,7 @@ public class Territories : Entity
 In the example below, please set the range of the RegionID column between 1 and 4:
 
 ![InputRange with Parameter ](InputRange_parameter1.png)
-```diff
+```csdiff
 public class Territories : Entity
 {
     public TextColumn TerritoryID = new TextColumn("TerritoryID", "20", "Territory ID");
@@ -87,7 +87,7 @@ public class Territories : Entity
 2.	A primary key can be one or more columns that has the `[PrimaryKey]` attribute above them (for more than one column, the order of the columns in the class is the order of the primary key segments).
 
 ![Adding Primary Key ](add_primary_key.png)
-```diff
+```csdiff
 public class Territories : Entity
 {
 +   [PrimaryKey]

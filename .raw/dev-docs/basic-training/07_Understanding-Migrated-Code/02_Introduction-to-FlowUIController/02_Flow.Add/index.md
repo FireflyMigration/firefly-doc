@@ -3,7 +3,7 @@
 1.	The Flow property of the FlowUIController class allows us to put logic code between columns of the columns collections.
  The `Flow.Add` method accepts an “Action” that will be executed as the user navigates (flows) between the columns on the screen. The `Flow.Add` method has many overloads that allow you to specify the conditions in which the action should be executed, as explained next.
 Using the `Flow.Add` method, add a message box between the columns, as follows:
-```diff
+```csdiff
 public FlowOrders()
 {
     From = Orders;
@@ -18,7 +18,7 @@ public FlowOrders()
 ```
 Run the program and show that the message is displayed on both direction and when the user navigates between the columns using the Tab key or the mouse.
 Add another message box between the columns without using the `Flow.Add` method and notice that it’s displayed before the program is executed. 
-```diff
+```csdiff
 public FlowOrders()
 {
     From = Orders;
@@ -44,7 +44,7 @@ Any code between the columns is executed once the program is constructed, as it 
 
 1.	Add condition, so that the message will be displayed only when the “ShipName” is empty. Change the message to “Please enter a ship name”.
 
-```diff
+```csdiff
 public FlowOrders()
 {
     From = Orders;
@@ -66,7 +66,7 @@ Exercise: Flow.Add Condition
 #### 2. Direction
 1.	Change the code of the previous message to be forward only.
 
-```diff
+```csdiff
 public FlowOrders()
 {
     From = Orders;
@@ -89,7 +89,7 @@ public FlowOrders()
 * #### Tab or Skip
   
 1.	Change the code, so that the message will be displayed only when the user navigates using the Tab key.
-```diff
+```csdiff
 public FlowOrders()
 {
     From = Orders;
@@ -110,7 +110,7 @@ public FlowOrders()
 * #### Expand before/after
   
 1.	Using the `Flow.Add` method and the `ExpandBefore` flow mode, add a selection list to the , as follows:
-```diff
+```csdiff
 public FlowOrders()
 {
     From = Orders;

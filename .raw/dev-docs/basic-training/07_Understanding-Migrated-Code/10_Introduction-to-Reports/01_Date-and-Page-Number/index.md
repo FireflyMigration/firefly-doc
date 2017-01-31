@@ -2,7 +2,7 @@
 1.	Most reports have a date and the page number at each page.
 2.	Let’s add these values to our page header.
 3.	In the report BusinessProcess class, create the following methods:
-```diff
+```csdiff
 + public Date GetCurrentDate()
 + {
 +     return Date.Now;
@@ -20,7 +20,7 @@
 
   
 Discuss also what happens if you want to display the report submission time…
-```diff
+```csdiff
 + public TimeColumn _time = new TimeColumn();
 
 public OrdersReport()

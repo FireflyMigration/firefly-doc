@@ -8,7 +8,7 @@ To add a single line comment use **//** before the comment
 To Add Multi line comment add **/\*** before the comment and **\*/** at the end
 
 
-```diff
+```csdiff
 using System.Windows.Forms;
 namespace Northwind.Training
 {

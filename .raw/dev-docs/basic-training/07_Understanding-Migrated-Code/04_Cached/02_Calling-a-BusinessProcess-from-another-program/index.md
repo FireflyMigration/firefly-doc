@@ -1,6 +1,6 @@
 ﻿### Calling a BusinessProcess from another program
 1.	Create a new UIControler name "ShowCalcOrder":
-```diff
+```csdiff
 public class ShowCalcOrder : UIControllerBase
 {
 
@@ -17,7 +17,7 @@ public class ShowCalcOrder : UIControllerBase
 2.	Add the program as a menu entry
 3.	Run the program and see how it works. The total will be zero because we haven’t implemented its calculation yet.
 4.	Create a new BusinessProcess named "CalculateOrderTotal":
-```diff
+```csdiff
 public class CalculateOrderTotal : BusinessProcessBase
 {
         
@@ -50,7 +50,7 @@ public class CalculateOrderTotal : BusinessProcessBase
 ```
 
 5.	Call the BusinessProcess from the `OnEnterRow` method of the UIController "ShowCalcOrders":
-```diff
+```csdiff
 protected override void OnEnterRow()
 {
     new CalculateOrderTotal().Run(Orders.OrderID, TotalValue);

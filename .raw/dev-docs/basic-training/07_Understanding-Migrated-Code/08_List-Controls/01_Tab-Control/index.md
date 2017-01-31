@@ -1,7 +1,7 @@
 ﻿### Tab Control
 1.	Create a new UIController named `ListControlsDemo`.
 2.	Add a public `NumberColumn` named `TabValue`. Add it to the Columns collection.
-```diff
+```csdiff
 public class ListControlsDemo : UIControllerBase
 {
 +   public NumberColumn TabValue = new NumberColumn();
@@ -28,12 +28,12 @@ public class ListControlsDemo : UIControllerBase
 13. Add 2 more buttons to the other tabs.
 14. Run the program.
 As you can see, there is no default tab selected. Set a default value to the TabValue column.
-```diff
+```csdiff
 - public NumberColumn TabValue = new NumberColumn();
 + public NumberColumn TabValue = new NumberColumn() { DefaultValue =1 };
 ```
 15. Add a textbox below the tab control and attach it to a method that returns the TabValue.
-```diff
+```csdiff
 + public Number TabReturnValue()
 + {
 +     return TabValue;

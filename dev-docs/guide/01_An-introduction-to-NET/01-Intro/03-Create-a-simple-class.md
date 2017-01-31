@@ -15,7 +15,20 @@ Click the Add button
  
 <pre data-line="5-8" class="language-csdiff line-numbers"><code>namespace Northwind.Training
 {
-	Class HelloWorld
+	class HelloWorld
+	{
+       public void Run()
+       {
+           System.Windows.Forms.MessageBox.Show("Hello World");
+       }     
+	}
+}
+</code></pre>
+
+```csdiff
+namespace Northwind.Training
+{
+	class HelloWorld
 	{
 +       public void Run()
 +       {
@@ -23,7 +36,7 @@ Click the Add button
 +       }     
 	}
 }
-</code></pre>
+```
 
 5. The class is ready to use, let's call it from the menu  
 Go to Views Folder and go to ApplicationMdi.cs and double click on it  
