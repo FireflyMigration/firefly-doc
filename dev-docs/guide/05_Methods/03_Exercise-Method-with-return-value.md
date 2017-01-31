@@ -1,4 +1,4 @@
-﻿# Exercise - Method with return value
+﻿# Exercise - Method with a return value
 
 
 
