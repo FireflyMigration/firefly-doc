@@ -282,7 +282,7 @@ protected override void OnLoad()
 ## Advanced Tab
 A screen shot of eDeveloper's Advanced Properties tab appears below:
 
-![](edevadvancedpropertytab.jpg)
+![](img-edevadvancedpropertytab.jpg) 
 
 The following notes explain the equivalent to these properties in the migrated code.
 
@@ -343,7 +343,7 @@ protected override void OnLoad() {
 
 ## Enhanced Tab
 
-![](edevenhancedpropertytab.jpg)
+![](img-edevenhancedpropertytab.jpg) 
 
 The following notes explain the equivalent to these properties in the migrated code.
 

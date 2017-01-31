@@ -211,10 +211,9 @@ pre[data-line] {
 		bottom: .4em;
 	}
 	
-	
 pre.line-numbers {
 	position: relative;
-/*	padding-left: 3.8em;*/
+	padding-left: 3.8em;
 	counter-reset: linenumber;
 }
 

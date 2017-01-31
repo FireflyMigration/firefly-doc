@@ -25,7 +25,7 @@ Click the Add button
 }
 </code></pre>
 
-```csdiff
+```csdiff+line-numbers
 namespace Northwind.Training
 {
 	class HelloWorld
@@ -42,7 +42,7 @@ namespace Northwind.Training
 Go to Views Folder and go to ApplicationMdi.cs and double click on it  
 Click on an empty area on the menu bar, type *Training* and under Training type a sub-menu *Hello World*  
 Double click on it and here we will right the code to call the new class as follows  
-```csdiff
+```csdiff+line-numbers
 private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs e)
 {
 +   new Training.HelloWorld().Run();	
