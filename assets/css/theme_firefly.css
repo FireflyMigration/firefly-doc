@@ -10,11 +10,12 @@
 }
 
 .wrapper {
-	margin: 0 auto;
-}
+	width: 1000px;
+/*	margin: 0 auto;*/
+} 
 /* Middle
 -----------------------------------------------------------------------------*/
-.middle { 
+.middle {  
 	width: 100%;
 	position: relative;
 	
@@ -31,7 +32,8 @@
 	overflow: hidden;
 	}
 .content {
-	padding: 0 0 0 380px; 
+/*	padding: 0 0 0 380px; */
+	padding: 0 10px 0 370px;
 }
 
 /* Left Sidebar
@@ -42,8 +44,17 @@
 	margin-left: -100%;
 	position: relative;
 	background: #343131;
-	padding: -100% -100% -100% -100%;
+/*	padding: -100% -100% -100% -100%;*/
 	 
+}
+/* Right Sidebar
+-----------------------------------------------------------------------------*/
+.right-sidebar {
+	float: left;
+	width: 10px;
+	margin-left: -10px;
+	position: relative;
+	background: #FFACAA;
 }
 
 
