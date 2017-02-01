@@ -7,7 +7,7 @@
     c.	ENV.dll
 4.	Change the UniTest1.cs file name to BasicUnitTesting.cs and confirm the class rename.
 5.	In the class code, add the following using directive:
-```diff
+```csdiff
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 + using Firefly.Box.Testing;
@@ -15,7 +15,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 ```
 6. Make sure it builds.
 7. Add this code on the first `TestMethod1()`:
-```diff
+```csdiff
 public class BasicUnitTesting
     {
         [TestMethod]

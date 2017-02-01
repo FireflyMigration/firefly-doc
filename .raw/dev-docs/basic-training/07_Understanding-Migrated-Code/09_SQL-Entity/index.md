@@ -1,7 +1,7 @@
 ﻿### SQL Entity
 1.	The best way to access the data from the database is using the entities classes. However, sometimes, we need to write our own SQL, especially if we need to execute a stored procedure or use special SQL functions like Count, Sum etc.
 2.	Let’s see a simple `SELECT` example. Create a new UIController "SQLEntityDemo":
-```diff
+```csdiff
 public class SQLEntityDemo : UIControllerBase
 {
 +   public DynamicSQLEntity sqlEntity;
@@ -29,7 +29,7 @@ public class SQLEntityDemo : UIControllerBase
 6. Add Program to the menu
 7. Run the program.
 8. Add another parameter and run the program:
-```diff
+```csdiff
  public SQLEntityDemo()
 {
     sqlEntity = new DynamicSQLEntity(Models.DataSources.Northwind1,
@@ -47,7 +47,7 @@ public class SQLEntityDemo : UIControllerBase
 ```
 9. Notice that this creates in memory a result set, so the data is **read only**.
 10. Make the program read only:
-```diff
+```csdiff
 protected override void OnLoad()
 {
 +   Activity = Activities.Browse;

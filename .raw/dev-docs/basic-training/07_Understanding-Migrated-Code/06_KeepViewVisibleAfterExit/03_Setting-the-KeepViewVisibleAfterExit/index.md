@@ -1,6 +1,6 @@
 ﻿### Setting the KeepViewVisibleAfterExit
 1.	Assuming that we want the user to navigate on the left screen and see the related details on the right screen, we need to add the following code to the `ShowOrderDetailsChild` controller:
-```diff
+```csdiff
 protected override void OnLoad()
         {
 +           Exit();

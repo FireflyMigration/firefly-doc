@@ -5,7 +5,7 @@
 ![Extract the method](extract_method.png)
 3.	And move the code to a new method named “ValidateUserInput”:
 
-```diff
+```csdiff
  protected override void OnSavingRow()
         {
 +           ValidateUserInput();

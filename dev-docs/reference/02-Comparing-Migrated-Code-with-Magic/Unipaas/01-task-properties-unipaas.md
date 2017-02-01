@@ -15,7 +15,7 @@ Notes
   The task name is migrated to a Class Name. In the migrated code, the original name is also preserved for backward compatibility reasons (Such as the Prog function) in the Title Property.
 
 Example
-```csharp
+```csdiff
   public ShowOrders()
         {   //... other code
             Title = "ShowOrders";
@@ -36,19 +36,19 @@ The Task Type in Magic is either Online or Batch. In the migrated code, online T
 Name in Migrated Code: **UIController, BusinessProcess**
 Location in Migrated Code: **Class**
 Example: UIController:
-```csharp
+```csdiff
 internal class Orders1 :UIControllerBase 
  {
  }
 ```
 Example: BusinessProcess:
-```csharp
+```csdiff
 internal class Print_Order : BusinessProcessBase 
  {
  }
 ```
 Note: The FlowUIController Class is used for Magic Code from Online tasks that have code in the Record Main. For such Code, The migrated code will inherit from the FlowUIController Class:
-```csharp
+```csdiff
  internal class Orders1 : FlowUIControllerBase 
  {
  }
@@ -76,11 +76,11 @@ Values:
 | By Exp     | u.TranslateTaskActivity |
 
 Example: Browse:
-```csharp
+```csdiff
 Activity = Activities.Browse;
 ```
 Example: By Parent:
-```csharp
+```csdiff
   public ShowOrders()
         {   //... other code
             Activity = u.ActivityOfParent;
@@ -88,7 +88,7 @@ Example: By Parent:
         }
 ```
 Example: By Expression:
-```csharp
+```csdiff
   public ShowOrders()
         {   //... other code
             Activity =  u.TranslateTaskActivity(u.if(1==1,"Q","M")); 
@@ -116,20 +116,20 @@ Values:
 | Immediately when condition is Changed | AsSoonAsPossible   |
 
 Example: Exit:
-```csharp
+```csdiff
 Exit();
 ```
 Example: Exit Before Row:
-```csharp
+```csdiff
 Exit(ExitTiming.BeforeRow, () => u.EOF(0, 1));
 ```
 Example: Exit After Row
-```csharp
+```csdiff
 Exit(ExitTiming.AfterRow, () => Counter == 10);
 ```
 Note: As stated, the 'Immediately when condition is changed' option, translates in the migrated code to ExitTiming.AsSoonAsPossible. In this scenario, magic evaluates the end condition after each operation in the code. To support this behaviour, migrated code with this option will place the EvaluateExitCondition() Method between each line of code.  
 Example:
-```csharp
+```csdiff
 protected override void OnLoad()
 {
    Exit(ExitTiming.AsSoonAsPossible,() => numerator==1);
@@ -159,7 +159,7 @@ In this example, the task will end, even though at the end of the OnLeaveRow the
 Name in Migrated Code: **return _taskresult**  
 Location in Migrated Code: **Run Method**  
 Example:
-```csharp
+```csdiff
 class batchToCalculateSum : BusinessProcessBase 
  {
    readonly NumberColumn var1 = new NumberColumn("var1", "2");
@@ -193,7 +193,7 @@ The migrated code will calculate the return expression in the onEnd method and w
 Name in Migrated Code: **AllowSelect**  
 Location in Migrated Code: OnLoad Method
 Example:
-```csharp
+```csdiff
       protected override void OnLoad()
         {
             // other code
@@ -213,7 +213,7 @@ Location in Migrated Code: **OnLoad Method**
 Notes: This option allows the cache for relations to be stored even when exiting the class. Use this option for scenarios where it is very likely or definite that the class will execute again, requiring the relation cache from before to continue to be available.  
 The option is used together with CachedUIController and or Lazy. It is meant solely for the purposes of backward compatibility and should not be used when writing new code.   
 Example:
-```csharp
+```csdiff
  KeepChildRelationCacheAlive = true;
 ```
 
@@ -231,7 +231,7 @@ The following notes explain the equivalent to these properties in the migrated c
 Name in Migrated Code: AllowSelect
 Location in Migrated Code: OnLoad Method
 Example:
-```csharp
+```csdiff
     protected override void OnLoad()
       {
           // other code
@@ -249,7 +249,7 @@ Notes:
 This option allows the cache for relations to be stored even when exiting the class. Use this option for scenarios where it is very likely or definite that the class will execute again, requiring the relation cache from before to continue to be available.  
 The option is used together with CachedUIController and or Lazy. It is meant solely for the purposes of backward compatibility and should not be used when writing new code. 
 Example: 
-```csharp
+```csdiff
 KeepChildRelationCacheAlive = true;
 ```
 
@@ -259,7 +259,7 @@ This Option determines which screen to display based on a numeric value obtained
 Name in Migrated Code: **See example**   
 Location in Migrated Code: **OnLoad Method**  
 Example:  
-```csharp
+```csdiff
 protected override void OnLoad() {
 
    // other code
@@ -302,7 +302,7 @@ Values:
 
 Note: The Group option is only applicable for BusinessProcess.  
 Example: 
-```csharp
+```csdiff
 TransactionScope = TransactionScopes.RowLocking; 
 ```
 
@@ -325,7 +325,7 @@ Values:
 | On Modify           | OnUserEdit         | 
 
 Example: OnRowSaving: 
-```csharp
+```csdiff
 RowLocking = LockingStrategy.OnRowSaving; 
 ```
 
@@ -337,7 +337,7 @@ RowLocking = LockingStrategy.OnRowSaving;
 Note: If the Locking Strategy is “On Modify” in Magic (LockingSTrategy.OnUserEdit) then it may be necessary when calling a task or program to specify that the current record with all its links must be locked.  
 This may be specified in Magic by clicking Ctrl+P on the call task or call program line, and specifying the lock as 'Yes' in the dialog that appears. To support this functionality, the LockCurrentRow method is employed. 
 As an example: 
-```csharp
+```csdiff
 if(V_counter == 1) 
     { 
         LockCurrentRow(); 
@@ -353,7 +353,7 @@ if(V_counter == 1)
 
 The cache strategy that will be used for any specific table is determined by the property defined with the entity definition in the Class.  
 See: From. * As a reminder, here is the code for a table definition in a Class that will switch the cache on. 
-```csharp 
+```csdiff 
 readonly Model.Categories _categories = new Model.Categories { Cached = true }; 
 ```
 ---
@@ -362,11 +362,11 @@ readonly Model.Categories _categories = new Model.Categories { Cached = true };
 Name in Migrated Code: OnDatabaseErrorRetry  
 Location in Migrated Code: OnLoad Method  
 Example: Error behaviour strategy = abort
-```csharp 
+```csdiff 
  OnDatabaseErrorRetry = false; 
 ```
 Example: Error behaviour strategy = recover 
-```csharp 
+```csdiff 
 OnDatabaseErrorRetry = true; 
 ```
 
@@ -381,11 +381,11 @@ OnDatabaseErrorRetry = true;
 Name in Migrated Code: **AllowUserAbort**  
 Location in Migrated Code: **OnLoad Method**  
 Examples:  
-```csharp 
+```csdiff 
 AllowUserAbort = true;
 ```
 Example With Expression:
-```csharp 
+```csdiff 
 AllowUserAbort = Customers.CustomerID == "1";
 ```
 Note: This property allows the user to abort a Business process task by pressing Esc, or by clicking on a parent form. See Also: * Property and code example
@@ -399,11 +399,11 @@ Location in Migrated Class: **InitializeDataView Method**
 Example:  
 
 In the Class, define an object that represents the main table, as follows:
-```csharp 
+```csdiff 
 internal readonly Model.Customers Customers = new Model.Customers;
 ```
 In the constructor, define the table as the main table using From:
-```csharp 
+```csdiff 
 public ShowCustomers()
         {
             //other code
@@ -431,7 +431,7 @@ For further comparison articles, go to: Comparing migrated code with Magic
 Name in Migrated Code: **OrderBy**  
 Location in Migrated Code: **InitializeDataView Method**  
 Examples:
-```csharp 
+```csdiff 
 void InitializeDataViewAndUserFlow()
 {
         From = Customers;
@@ -451,7 +451,7 @@ Location in Migrated Code: **OnLoad Method**
 
 Note:  If the index is determined according to a boolean value based on an expression then the migrated code will have the orderBy statement in the OnLoad Method as opposed to the InitializeDataView Method. The following example shows the usage of a boolean expression to determine the index to be used in the Categories file:
 Example:
-```csharp
+```csdiff
    protected override void OnLoad()
    {
         // other code

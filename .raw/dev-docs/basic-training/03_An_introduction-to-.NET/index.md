@@ -21,7 +21,7 @@ What is .NET?
 	a. Add a new dropdown menu named “Training”.
 	b. Add a new entry to the Training menu named “Hello World” and double click it to create a handler for its click event.
 	c. Write the following code (without using the mbox snippet):
-```csharp
+```csdiff
 private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs e)
 {
 	System.Windows.Forms.MessageBox.Show("Hello World");
@@ -42,7 +42,7 @@ private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs 
 5.	MessageBox is a class
 6.	Show is a method
 	a. Add the following comments above the code line, using single line (//) and multi-line (/*…*/):
-```csharp 
+```csdiff 
 	/* The following line displays
  *  a message box
  *  to the User */
@@ -64,7 +64,7 @@ Similar to Magic Verify option that has several options.
 1.	Add the following line to the beginning of the file:
 `using System.Windows.Forms;`
 2.	Write the following code in the same method after the last message:
-```diff
+```csdiff
 private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs e)
 {
 	System.Windows.Forms.MessageBox.Show("Hello World");
@@ -78,7 +78,7 @@ private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs 
 1.	Use a snippet to shorten this even more.
 2.	Write the following code, using the “mbox” snippet (write mbox and press Tab twice):
 ![Snippet](Snippet.png)
-```diff
+```csdiff
 private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs e)
 {
 	System.Windows.Forms.MessageBox.Show("Hello World");
@@ -116,7 +116,7 @@ Open the migrated application in Visual Studio and review the following:
 4. The main types are - int, string, double, char and bool. Let's use them in a message as shown below.
 5. Note that until used, a variable is underlined to show that it seems unnecessary.
 6. Run the application and check the method.
-```csharp
+```csdiff
 private void basicDataTypeToolStripMenuItem_Click(object sender, EventArgs e)
 {
 	string name = "Virginie";
@@ -144,7 +144,7 @@ private void basicDataTypeToolStripMenuItem_Click(object sender, EventArgs e)
 ####	Strings
 1.	`+` concatenates two strings. For example: `"Hello " + name`
 2.	Other types can be turned into a string, by calling the ToString() method directly afterwards.
-```csharp
+```csdiff
 MessageBox.Show("Your height is "+ height.ToString());
 ```
 
@@ -153,19 +153,19 @@ MessageBox.Show("Your height is "+ height.ToString());
 1.	Special Characters: Use a Backslash to include special characters in a string.
 2.	This is useful for defining pathnames.
 3.	Add a MessageBox with: David says: "Hello".
-```csharp
+```csdiff
 MessageBox.Show("David says \"hello\"");
 ```
 4.	Another common example is using the '\' in a string such as file name:
-```csharp
+```csdiff
 MessageBox.Show("The system folder is - c:\\windows\\ ");
 ```
 Or Alternatively:
-```csharp
+```csdiff
 MessageBox.Show(@"The system folder is - c:\windows\ ");
 ```
 5.	Below is an example how to display each string in a new line using the character \n. Note that the rest of the options are in the student's workbook under _String and Chars_.
-```diff
+```csdiff
 private void basicDataTypeToolStripMenuItem_Click(object sender, EventArgs e)
 {
 	string name = "Virginie";

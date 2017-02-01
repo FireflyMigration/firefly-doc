@@ -1,6 +1,6 @@
 ﻿### Entity.Delete
 1.	Now let's add another button to remove the Chai from the order:
-```diff
+```csdiff
 +    private void btnDeleteChai_Click(object sender, ButtonClickEventArgs e)
 +    {
 +        var orderDetails = new Models.OrderDetails();

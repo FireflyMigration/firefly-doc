@@ -9,7 +9,7 @@ _**Note**_: There are also `ByteArrayParameter` (Blob) and `ArrayParameter` (Vec
 6. First, we will start with a new selection screen to the employee ID, we will add the employeeID to the ShowORders Screen;
 ![Add an employee ShowOrders](add_employee_ShowOrders.png)
 8.	And now we will create a new UIController "SelectEmployee" 
-```diff  
+```csdiff  
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -53,14 +53,14 @@ namespace Northwind.Training
 ```
 10. Use the expand event on the employeeID textbox to call the new select program.
 11. add in ShowOrders.View.cs :
-```diff
+```csdiff
 + private void txtEmployeeID_Expand()
 +        {
 +            _controller.SelectEmployee();
 +        }
 ```
 12. add in ShowOrders.cs :
-```diff
+```csdiff
 + internal void SelectEmployee()
 +        {
 +            new SelectEmployee().Run(Orders.EmployeeID);
@@ -69,7 +69,7 @@ namespace Northwind.Training
 13. Now we will see what happened if we change the calling program from calling using a value or calling using a column.
 14. The next program will show that we can now move the where to the contractor.
 15. Below is an example (Comment out the existing Run method that accepts parameters):
-```diff
+```csdiff
 public class ShowOrderDetailsWithParameter : UIControllerBase
 {
 +    internal Models.OrderDetails OrderDetails = new Models.OrderDetails();
@@ -100,7 +100,7 @@ public class ShowOrderDetailsWithParameter : UIControllerBase
 16. The `BindParameter` is a method that copies the value from the parameter to a local column. At the end of the execution it copies the value back from the local column to the parameter in order to affect the calling program if needed.
 17. Notice that the filter can be put in the constructor, as the values will be updated by the `BindParameter` method before that task is executed.
 18. In "ShowOrders" comment out the call to "ShowOrderDetails" and call ShowOrderDetailsWithParameter" instead:
-```diff
+```csdiff
 private void button2_Click(object sender, ButtonClickEventArgs e)
 {
 -    new ShowOrderDetails().Run(_controller.Orders.OrderID);

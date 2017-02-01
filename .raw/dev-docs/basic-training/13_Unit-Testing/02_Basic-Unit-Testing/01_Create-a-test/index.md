@@ -1,6 +1,6 @@
 ﻿### Create the unit test class
 1. Create a new item Code\Class on Northwind, and call it CSVWriter
-```diff
+```csdiff
 namespace Northwind
 {
 -    class CSVWriter
@@ -19,7 +19,7 @@ namespace Northwind
 5. And we add a new class, Test/Unit Test template and call it TestCSVWriter like :
 
 
-```diff
+```csdiff
 using System;
 using System.Text;
 using System.Collections.Generic;
@@ -43,7 +43,7 @@ namespace NorthwindUnitTests
 }
 ```
 
-```diff
+```csdiff
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,7 +69,7 @@ namespace Northwind
 9.  The Test is Failed, show the message. ToString method use by default the name of the class
 10. Add in the CSVwriter.cs :
 
-```diff
+```csdiff
 public class CSVWriter
 {
 +   string _result = "";

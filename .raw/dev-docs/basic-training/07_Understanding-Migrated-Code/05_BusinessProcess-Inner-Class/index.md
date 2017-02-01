@@ -2,7 +2,7 @@
 1.	Notice that a sub task in Magic is converted to an inner class in .NET (UIController or BusinessProcess).
 2.	Let’s change the previous example to be an inner class:
 
-```diff
+```csdiff
 
 public class ShowCalcOrder : UIControllerBase
     {

@@ -2,7 +2,7 @@
 
 1.	Let's use the entity Sum method to sum the number of items in the order:
 
-```diff
+```csdiff
 private void btnNumberOfItems_Click(object sender, ButtonClickEventArgs e)
 {
     var orderDetails = new Models.OrderDetails();

@@ -15,12 +15,12 @@ We can add
 and then just to type: MessageBox.Show("Text to be Displayed");
 
 
-1\.	Add the following line to the beginning of the file:
-```diff
+1.	Add the following line to the beginning of the file:
+```csdiff
 + using System.Windows.Forms;
 namespace Northwind.Training
 {
-    Class HelloWorld
+    class HelloWorld
     {
        public void Run()
        {
@@ -29,12 +29,12 @@ namespace Northwind.Training
     }
 }
 ```
-2\.	Remove the System.Windows.Forms from line which calls the Show() method :
-```diff
+2.	Remove the System.Windows.Forms from line which calls the Show() method :
+```csdiff
 using System.Windows.Forms;
 namespace Northwind.Training
 {
-    Class HelloWorld
+    class HelloWorld
     {
        public void Run()
        {
@@ -44,6 +44,6 @@ namespace Northwind.Training
     }
 }
 ```
-3\.	Note: The “using” keyword has more usages and meanings that will be covered later.
+3.	Note: The “using” keyword has more usages and meanings that will be covered later.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DuvZV5omiqY" frameborder="0" allowfullscreen></iframe>

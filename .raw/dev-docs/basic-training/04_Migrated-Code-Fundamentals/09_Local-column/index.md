@@ -1,7 +1,7 @@
 ﻿# Local Column
 1.	There are columns that are not related to tables and are mainly used for calculations and temporary storage. Local columns are like virtual variables in Magic.
 2.	Create a local column, and set its value as follows:
-```diff
+```csdiff
 public class ShowOrders : UIControllerBase
     {
         public readonly Models.Orders Orders = new Models.Orders();

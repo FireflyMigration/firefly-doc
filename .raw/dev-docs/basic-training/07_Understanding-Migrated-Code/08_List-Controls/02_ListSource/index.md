@@ -1,6 +1,6 @@
 ﻿### ListSource
 1.	In the ListControlsDemo class, add a `NumberColumn` named “ProductCode”. Add it to the columns collection.
-```diff
+```csdiff
 public NumberColumn TabValue = new NumberColumn() { DefaultValue =1 };
 + public NumberColumn ProductCode = new NumberColumn();
 
@@ -16,7 +16,7 @@ public ListControlsDemo()
 ![ListControlsDemo with List Source](ListControlsDemo_with_List_Source.png)
 5.	Run the program and demo the combo box values.
 6.	Reset the "Values" and "DisplayValues" and set the "ListSource" property, as follows:
-```diff
+```csdiff
 public ListControlsDemoView(ListControlsDemo controller)
 {
     _controller = controller;
@@ -30,7 +30,7 @@ public ListControlsDemoView(ListControlsDemo controller)
 ```
 7.	Run the program and demo
 8.	Show the `ListWhere` and `ListOrderBy` properties.
-```diff
+```csdiff
 public ListControlsDemoView(ListControlsDemo controller)
 {
     _controller = controller;

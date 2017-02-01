@@ -8,7 +8,7 @@
 2.	The "if" statement, similar to a block in Magic, causes the program control to be transferred to a specific flow, depending on a Boolean expression.
 3.	In C#, a group of related statement called a block and enclosed by curly brackets {}. 
 4.	Here is a simple example of the "if" statement:
-```diff
+```csdiff
 protected override void OnSavingRow()
         {
 -           System.Windows.Forms.MessageBox.Show("The saving row event occurs only if the record has changed");
@@ -35,7 +35,7 @@ protected override void OnSavingRow()
 
 1.	Notice that the MessageBox.Show method alone **does not prevent the user from leaving a bad row.**
 2.	Let's change it to use the Message.ShowError method, **which also prevent the user from leaving a row**, similar to the “Verify Error” in Magic. 
-```diff
+```csdiff
 protected override void OnSavingRow()
 {
     if (Orders.ShipName == "")
@@ -55,7 +55,7 @@ protected override void OnSavingRow()
 3.	The developer get access to all of the functions using the u member of the UIController class.
 Assume that the ShipName field is not allowed to contain the ‘@’ sign, let’s add a second input validation check:
 
-```diff
+```csdiff
 +           if (u.InStr(Orders.ShipName, "@") > 0)
 +           {
 +               Message.ShowError("The '@' sign is not allowed in the ship name field");
@@ -73,14 +73,14 @@ Assume that the ShipName field is not allowed to contain the ‘@’ sign, let�
 2.	The RowFound property of a Relation returns True if a row was found by the relation and False if not. This property is useful when we need to validate that
 3.	In the ShowOrders screen, the ShipVia column must be one of the shipper’s in the Shippers table (i.e. 1, 2 or 3). If the user enters any other value such as 4 or 5, we need show an error message.
 4.  To do this, we need to get the relation object, as follows:
-```diff
+```csdiff
 protected override void OnSavingRow()
         {
             var r = Relations[Shippers];
         }
 ```
 5.  Then, we can check if the RowFound property of the relation and if it’s false (notice the negation operator in the following example), display a message to the user:
-```Diff
+```csdiff
 protected override void OnSavingRow()
 {
     var r = Relations[Shippers];
@@ -96,7 +96,7 @@ protected override void OnSavingRow()
     c.	Enter 4 or 99 and notice that a message is displayed and no company name is returned. 
 7.	We can combine these steps together as follows:
 
-```diff
+```csdiff
 protected override void OnSavingRow()
 {
 -     var r = Relations[Shippers];

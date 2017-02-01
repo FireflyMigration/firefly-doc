@@ -1,6 +1,6 @@
 ﻿## Filter with Dates
 1.	Let’s see how to filter the orders and display only the orders of 1996:
-```diff
+```csdiff
 public ShowOrders()
 {
     From = Orders;

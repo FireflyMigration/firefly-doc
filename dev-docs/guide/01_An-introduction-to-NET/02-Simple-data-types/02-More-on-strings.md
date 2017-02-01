@@ -11,7 +11,7 @@ For example:
 
 
 
-```diff
+```csdiff
  using System.Windows.Forms;
 namespace Northwind.Training
 {
@@ -27,16 +27,20 @@ namespace Northwind.Training
 
 
 To display the backslash character double it: instead of \ use \\  
-```MessageBox.Show("Windows Path: c:\\windows");```
+```csdiff
+MessageBox.Show("Windows Path: c:\\windows");
+```
 
 Or Alternatively: to display a string as is use the @ sign before the string
 
 
-```MessageBox.Show(@"Windows Path: c:\windows using the @ sign to use quites just say ""double quotes"" ");```
+```csdiff
+MessageBox.Show(@"Windows Path: c:\windows using the @ sign to use quites just say ""double quotes"" ");
+```
 
 The @ sign can be used also to dsiplay multi line text without the need to use \n in the string:
 
-```csharp
+```csdiff
 MessageBox.Show(@"I'm a multi 
 line 
 text 

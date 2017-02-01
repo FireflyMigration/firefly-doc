@@ -1,7 +1,7 @@
 ﻿### The AddAllColumns Method
 - The `AddAllColumns` method can be used to add all the columns from the main entity and related entities. The columns will be added in the same order as defined in the entity class.
 - Call to the AddAllColumns method after the Columns.Add statement:
- ```diff
+ ```csdiff
   Columns.Add(Orders.OrderID, Orders.OrderDate, Orders.ShipName, Orders.ShipCity, Orders.ShipVia, Shippers.ShipperID, Shippers.CompanyName);
 + AddAllColumns();
  ```

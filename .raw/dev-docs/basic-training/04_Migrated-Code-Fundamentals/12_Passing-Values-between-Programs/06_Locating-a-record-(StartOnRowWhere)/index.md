@@ -2,7 +2,7 @@
 
 1.	When we open the selection list, it starts on the first row. It is useful to open the selection list starting on the current value of the parameter.
 2.	To do this we can use the StartOnRowWhere.Add method (like locate in Magic), as follows:
-```diff
+```csdiff
 public void Run(NumberColumn shipperid)
 {
     _shipperID = shipperid;

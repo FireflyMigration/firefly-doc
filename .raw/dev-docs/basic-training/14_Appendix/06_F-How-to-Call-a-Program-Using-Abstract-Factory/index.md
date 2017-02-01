@@ -25,7 +25,7 @@ namespace Northwind.Part2
     f. Change the inheritance of the class to derive from the abstract class named “Called”.
     g. Add the `override` key word to the Run method(s).
     h. In the “Calling” program, add the following line to call to the “Called” program:
-```diff
+```csdiff
 namespace Northwind.Part1
 {
 -   public abstract class Calling : BusinessProcessBase 

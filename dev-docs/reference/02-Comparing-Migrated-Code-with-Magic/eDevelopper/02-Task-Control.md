@@ -224,7 +224,7 @@ The following notes explain the equivalent to these properties in the migrated c
 Name in Migrated Code: **KeepViewVisibleAfterExit**
 Location in Migrated Code: **OnLoad Method**
 Example:
-```csharp
+```csdiff
     KeepViewVisibleAfterExit = true;
                 if(NewViewRequired)
                 {
@@ -233,7 +233,7 @@ Example:
 ```
 
 Example with Expression:
-```csharp
+```csdiff
  BindKeepViewVisibleAfterExit(()=>Exp_1());
                 if(NewViewRequired)
                 {
@@ -253,7 +253,7 @@ Note: This property works best in conjunction with CachedUIController To maintai
 Name in Migrated Code: **OnLoadSendToBack**
 Location in Migrated Code: **OnLoad Method**
 Example:
-```csharp
+```csdiff
  if(NewViewRequired)
             {
                 View = new UI.ShowProducts_UI(this);
@@ -262,7 +262,7 @@ Example:
 ```
 
 Example with Expression:
-```csharp
+```csdiff
 if(NewViewRequired)
             {
                 View = new UI.ShowProducts_UI(this);

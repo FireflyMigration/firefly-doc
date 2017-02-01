@@ -2,7 +2,7 @@
 
 1.	Since selection lists are very common and useful, we added a utility that makes the task of creating a selection list much easier.
 2.	Let’s see how to use it. In "ShowOrders" Replace the calling to the previous selection list with the following:
-```diff
+```csdiff
 internal void SelectShipper()
 {
 -    new SelectShipper().Run(Orders.ShipVia) ;

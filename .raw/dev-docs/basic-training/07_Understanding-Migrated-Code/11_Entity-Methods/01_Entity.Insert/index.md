@@ -1,6 +1,6 @@
 ﻿### Entity.Insert
 1.	Let's assume that we have a big stock of the Chai product and we want to sell it quickly. So we want to add a button to the ShowOrders screen that will add Chai to the current order. In magic, we had to create a BusinessProcess that looks like this:
-```diff
+```csdiff
 public class AddChaiToOrder : BusinessProcessBase
 {
 +   public readonly Models.OrderDetails OrderDetails = new Models.OrderDetails();
@@ -31,7 +31,7 @@ public class AddChaiToOrder : BusinessProcessBase
 }
 ```
 2. There is no need to create entire BusinessProcess just for adding a row to a table. Here is a better way to do this:
-```diff
+```csdiff
 + private void btnAddChai_Click(object sender, ButtonClickEventArgs e)
 + {
 +    var orderDetails = new Models.OrderDetails();

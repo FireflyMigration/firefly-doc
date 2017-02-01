@@ -6,7 +6,7 @@ Number n = 1234;
 MessageBox.Show(n.ToString("4.2")); // 1234.00
 ```
 2.	Set the myAge variable from the previous page to display the a two digits age without any decimals as follows:
-```Diff
+```csdiff
 - MessageBox.Show("My age is " + myAge.ToString() + "\n" +
 + MessageBox.Show("My age is " + myAge.ToString("2") + "\n" +
                             "I was born in " + myBirthday.Year.ToString()+ " at the " + timeOfDay);

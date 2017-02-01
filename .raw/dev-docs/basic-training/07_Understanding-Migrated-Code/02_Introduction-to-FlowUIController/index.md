@@ -5,7 +5,7 @@ There are two main differences between the UIController we have learned and the 
     b. **The Flow property** – Allows adding logic code between columns.
 
 Under "Training" folder, Add a new UIController named "FlowOrders" and change it to `FlowUIController` as follows:
-```diff
+```csdiff
 - public class FlowOrders : UIControllerBase
 + public class FlowOrders : FlowUIControllerBase
     {
