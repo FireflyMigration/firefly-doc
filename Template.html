@@ -23,14 +23,14 @@
             <div class="container">
 
                 <div class="content" role="navigation" aria-label="footer navigation">
-                    [BACK_BUTTON] [NEXT_BUTTON]
+                    <a id="previousButton" class="btn btn-neutral float-left">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right">Next</a>
                 </div>
                 <main class="content">[HTML_CONTENT]</main><!-- .content -->
             </div><!-- .container-->
 
             <aside class="left-sidebar"><div class="wy-side-nav-search-ff">
     <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
-</div>[MENU]</aside><!-- .left-sidebar -->
+</div><div id="menuTree" style="height:100em"></div></aside><!-- .left-sidebar -->
 
             <aside class="right-sidebar">
                 
@@ -54,7 +54,10 @@
     <script src="assets/js/prism-csdiff.js"></script>    
     <script src="assets/js/prism-function.js"></script>    
     
-    
-    
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', '[CURRENT_URL]', 'previousButton', 'nextButton');
+    </script>
 </body>
 </html>
