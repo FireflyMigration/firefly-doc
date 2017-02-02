@@ -52,7 +52,7 @@ namespace Northwind.Training.SimpleScreen
 
 1. The **using** statements at the top.  
    The dll are not being in used yet, you may use them later and that is why they are greyed.
-2. **namespace** definition - ````namespace Northwind.Training.SimpleScreen````
+2. **namespace** definition - `namespace Northwind.Training.SimpleScreen`
    The name space represents the position of the class in the solution
    In this case the UIController is under 'SimpleScreen' folder which defined under 'Training' folder under the 'Northwind' solution. 
 3. **class** definition: ```` public class ShowOrders : UIControllerBase````   

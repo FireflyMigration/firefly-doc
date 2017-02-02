@@ -25,7 +25,7 @@ Click the Add button
 }
 </code></pre>
 
-```csdiff+line-numbers
+```csdiff
 namespace Northwind.Training
 {
 	class HelloWorld
