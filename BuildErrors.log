@@ -1,9 +1,12 @@
 ERROR: url conflict: 
-OtherFile: Show-Arguments.png => C:\Users\Virginie\Source\Repos\firefly-doc-master\dev-docs\guide\01_An-introduction-to-NET\01-Intro\Show-Arguments.png
-OtherFile: Show-Arguments.png => C:\Users\Virginie\Source\Repos\firefly-doc-master\dev-docs\guide\Visual-Studio-Configuration\Show-Arguments.png'
+MarkDownFile: Filtering-Data-Exercise.html => C:\Users\Yoni\Source\Repos\firefly-doc\dev-docs\guide\02_An-introduction-to-UIController\02_Filtering-Data\02_Filtering-Data-Exercise.md
+MarkDownFile: Filtering-Data-exercise.html => C:\Users\Yoni\Source\Repos\firefly-doc\dev-docs\guide\04-Introduction-to-UI-Controller\02_Filtering-Data\exercise.md'
 ERROR: url conflict: 
-OtherFile: edevadvancedpropertytab.jpg => C:\Users\Virginie\Source\Repos\firefly-doc-master\dev-docs\reference\02-Comparing-Migrated-Code-with-Magic\eDevelopper\edevadvancedpropertytab.jpg
-OtherFile: edevadvancedpropertytab.jpg => C:\Users\Virginie\Source\Repos\firefly-doc-master\dev-docs\reference\02-Comparing-Migrated-Code-with-Magic\Unipaas\edevadvancedpropertytab.jpg'
+MarkDownFile: Filtering-Data.html => C:\Users\Yoni\Source\Repos\firefly-doc\dev-docs\guide\02_An-introduction-to-UIController\02_Filtering-Data\01_Filtering-Data.md
+MarkDownFile: Filtering-Data.html => C:\Users\Yoni\Source\Repos\firefly-doc\dev-docs\guide\04-Introduction-to-UI-Controller\02_Filtering-Data\index.md'
 ERROR: url conflict: 
-OtherFile: edevenhancedpropertytab.jpg => C:\Users\Virginie\Source\Repos\firefly-doc-master\dev-docs\reference\02-Comparing-Migrated-Code-with-Magic\eDevelopper\edevenhancedpropertytab.jpg
-OtherFile: edevenhancedpropertytab.jpg => C:\Users\Virginie\Source\Repos\firefly-doc-master\dev-docs\reference\02-Comparing-Migrated-Code-with-Magic\Unipaas\edevenhancedpropertytab.jpg'
+MarkDownFile: Sorting-Data-Exercise.html => C:\Users\Yoni\Source\Repos\firefly-doc\dev-docs\guide\02_An-introduction-to-UIController\03_Sorting-Data\02_Sorting-Data-Exercise.md
+MarkDownFile: Sorting-Data-exercise.html => C:\Users\Yoni\Source\Repos\firefly-doc\dev-docs\guide\04-Introduction-to-UI-Controller\03_Sorting-Data\exercise.md'
+ERROR: url conflict: 
+MarkDownFile: Sorting-Data.html => C:\Users\Yoni\Source\Repos\firefly-doc\dev-docs\guide\02_An-introduction-to-UIController\03_Sorting-Data\01_Sorting-Data.md
+MarkDownFile: Sorting-Data.html => C:\Users\Yoni\Source\Repos\firefly-doc\dev-docs\guide\04-Introduction-to-UI-Controller\03_Sorting-Data\index.md'

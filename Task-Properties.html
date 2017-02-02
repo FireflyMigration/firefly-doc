@@ -5,149 +5,27 @@
     <meta charset="utf-8" />
 
     <title>Comparison with Magic's Task Properties Dialog Box</title>
-    
+
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
     
-    <link rel="stylesheet" href="assets/css/theme.css" />
-    <link rel="stylesheet" href="assets/css/theme_extra.css" />
     <link rel="stylesheet" href="assets/css/theme_firefly.css" />
-    <link rel="stylesheet" href="assets/css/highlight.css" />
     <link rel="stylesheet" href="assets/css/mermaid.css" />
 </head>
 <body class="markdown-body" role="document">
-    <div class="wy-grid-for-nav">
-        <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-            <div class="wy-side-nav-search-ff">
-                <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
-            </div>
 
-            <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <ul>
-                    <li class="toctree-l1 "><a class="" href="">Home</a></li>
-                    <li class="toctree-l1">
-    <ul class="subnav">
-        <li><span>dev docs</span></li>
-        <li class="toctree-l1">
-            <ul class="subnav">
-                <li><span>guide</span></li>
-                <li class="toctree-l1">
-                    <ul class="subnav">
-                        <li><span>An introduction to NET</span></li>
-                        <li class="toctree-l1">
-                            <ul class="subnav">
-                                <li><span>Intro</span></li>
-                                <li  class="toctree-l1"><a href="NET-Framework-Overview.html">NET Framework Overview</a></li>
-                                <li  class="toctree-l1"><a href="Visual-Studio-and-CSharp-Overview.html">Visual Studio and CSharp Overview</a></li>
-                                <li  class="toctree-l1"><a href="Create-a-simple-class.html">Create a simple class</a></li>
-                                <li  class="toctree-l1"><a href="Explaining-The-Hello-world-example.html">Explaining The Hello world example</a></li>
-                                <li  class="toctree-l1"><a href="Method-Arguments-and-Overloading.html">Method Arguments and Overloading</a></li>
-                                <li  class="toctree-l1"><a href="Using-directives.html">Using directives</a></li>
-                                <li  class="toctree-l1"><a href="Snippets.html">Snippets</a></li>
-                                <li  class="toctree-l1"><a href="Comments.html">Comments</a></li>
-                                <li  class="toctree-l1"><a href="Hello-csharp-exercise.html">Hello csharp exercise</a></li>
-                            </ul>
-                        </li>
-                        <li class="toctree-l1">
-                            <ul class="subnav">
-                                <li  class="toctree-l1"><a href="Simple-data-types.html">Simple data types</a></li>
-                                <li  class="toctree-l1"><a href="More-on-strings.html">More on strings</a></li>
-                                <li  class="toctree-l1"><a href="Data-Types-Exercise.html">Data Types Exercise</a></li>
-                            </ul>
-                        </li>
-                        <li class="toctree-l1">
-                            <ul class="subnav">
-                                <li  class="toctree-l1"><a href="Operators.html">Operators</a></li>
-                                <li  class="toctree-l1"><a href="Operators-Exercise.html">Operators Exercise</a></li>
-                            </ul>
-                        </li>
-                        <li class="toctree-l1">
-                            <ul class="subnav">
-                                <li  class="toctree-l1"><a href="More-On-Classes.html">More On Classes</a></li>
-                                <li  class="toctree-l1"><a href="Constructor-Static_ReadOnly.html">Constructor Static_ReadOnly</a></li>
-                            </ul>
-                        </li>
-                        <li  class="toctree-l1"><a href="student-notes.html">student notes</a></li>
-                    </ul>
-                </li>
-                <li class="toctree-l1">
-                    <ul class="subnav">
-                        <li  class="toctree-l1"><a href="Getting-the-code-for-the-first-time.html">Getting the code for the first time</a></li>
-                    </ul>
-                </li>
-                <li class="toctree-l1">
-                    <ul class="subnav">
-                        <li><span>Visual Studio Configuration</span></li>
-                        <li  class="toctree-l1"><a href="file.html">file</a></li>
-                    </ul>
-                </li>
-                <li  class="toctree-l1"><a href="using-version-control.html">using version control</a></li>
-            </ul>
-        </li>
-        <li class="toctree-l1">
-            <ul class="subnav">
-                <li  class="toctree-l1"><a href="reference.html">reference</a></li>
-                <li class="toctree-l1">
-                    <ul class="subnav">
-                        <li><span>Articles</span></li>
-                        <li  class="toctree-l1"><a href="Automatic-Migration-Using-FTP.html">Automatic Migration Using FTP</a></li>
-                        <li  class="toctree-l1"><a href="Error-report-guide.html">Error report guide</a></li>
-                        <li  class="toctree-l1"><a href="Relations-in-depth.html">Relations in depth</a></li>
-                        <li  class="toctree-l1"><a href="shoulddeterminenameaccordingtocallstack.html">shoulddeterminenameaccordingtocallstack</a></li>
-                        <li  class="toctree-l1"><a href="Understanding-Error-Message-Details.html">Understanding Error Message Details</a></li>
-                        <li  class="toctree-l1"><a href="Using-issue-tracker.html">Using issue tracker</a></li>
-                        <li  class="toctree-l1"><a href="Using-Log-Files.html">Using Log Files</a></li>
-                        <li  class="toctree-l1"><a href="View-SQL-Output.html">View SQL Output</a></li>
-                    </ul>
-                </li>
-                <li class="toctree-l1">
-                    <ul class="subnav">
-                        <li><span>Comparing Migrated Code with Magic</span></li>
-                        <li class="toctree-l1">
-                            <ul class="subnav">
-                                <li><span>eDevelopper</span></li>
-                                <li  class="toctree-l1 current-page"><a href="Task-Properties.html">Task Properties</a></li>
-                                <li  class="toctree-l1"><a href="Task-Control.html">Task Control</a></li>
-                                <li  class="toctree-l1"><a href="IO-Files.html">IO Files</a></li>
-                                <li  class="toctree-l1"><a href="DB-Tables.html">DB Tables</a></li>
-                                <li  class="toctree-l1"><a href="Range-Locate.html">Range Locate</a></li>
-                                <li  class="toctree-l1"><a href="The-Sort.html">The Sort</a></li>
-                                <li  class="toctree-l1"><a href="Operations.html">Operations</a></li>
-                                <li  class="toctree-l1"><a href="State-Comparison.html">State Comparison</a></li>
-                                <li  class="toctree-l1"><a href="Handlers.html">Handlers</a></li>
-                            </ul>
-                        </li>
-                        <li class="toctree-l1">
-                            <ul class="subnav">
-                                <li><span>Unipaas</span></li>
-                                <li  class="toctree-l1"><a href="task-properties-unipaas.html">task properties unipaas</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="toctree-l1">
-                    <ul class="subnav">
-                        <li><span>Refactoring</span></li>
-                        <li  class="toctree-l1"><a href="Building-a-generic-GetName-method.html">Building a generic GetName method</a></li>
-                        <li  class="toctree-l1"><a href="Obtaining-category-name-based-on-CategoryID.html">Obtaining category name based on CategoryID</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
-</li>
+    <div class="wrapper">
 
+           <div class="middle">
 
-                </ul>
-            </div>
-            &nbsp;
-        </nav>
-        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-            <div class="wy-nav-content">
-                <div class="rst-content">
-                    <div role="main">
-                        <a href="View-SQL-Output.html"class="btn btn-neutral float-left">Previous</a> <a href="Task-Control.html"class="btn btn-neutral float-right">Next</a><br /><br />
-                        <div class="section"><h1 id="comparison-with-magics-task-properties-dialog-box">Comparison with Magic's Task Properties Dialog Box</h1>
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a href="View-SQL-Output.html"class="btn btn-neutral float-left">Previous</a> <a href="Task-Control.html"class="btn btn-neutral float-right">Next</a>
+                </div>
+                <main class="content"><h1 id="comparison-with-magics-task-properties-dialog-box">Comparison with Magic's Task Properties Dialog Box</h1>
 <h2 id="introduction">Introduction</h2>
 <p>This article is one of a series of articles aimed at providing further orientation with the migrated code for Magic programmers. This time we will look at the 'Task Properties' screens as they appear in eDeveloper (version 9) and show the equivelant representation of each property in the migrated code. Many of the Magic properties have various options and we will also look at the different representations in the migrated code for each option.</p>
 <p>There are three Properties tabs in eDeveloper, with the following tags: Properties, Advanced and Enhanced. Let's look at each Tab separately.</p>
@@ -157,12 +35,12 @@
 <p>The following sections explain the equivalent of these properties in the migrated code.</p>
 <hr />
 <h3 id="task-name">Task Name</h3>
-<p>Name in Migrated Code: <strong>Title</strong>
+<p>Name in Migrated Code: <strong>Title</strong><br />
 Location in Migrated Code: <strong>Constructor</strong></p>
 <h4 id="notes">Notes</h4>
 <p>The original task name is migrated to a Class Name.In the migrated code, the task name is preserved for backward compatibility reasons in the Title Property (such as supporting the 'prog' function).</p>
 <h4 id="example">Example</h4>
-<pre><code class="language-csharp">  public ShowOrders()
+<pre><code class="language-csdiff">  public ShowOrders()
         {   //... other code
             Title = &quot;ShowOrders&quot;;
             // other code
@@ -176,21 +54,22 @@ Location in Migrated Code: <strong>Constructor</strong></p>
 <hr />
 <h3 id="task-type">Task Type</h3>
 <p>The Task Type in Magic is either Online or Batch. In the migrated code, online tasks convert to classes which inherit from the UIController Class, while Batch tasks convert to classes which inherit from the BusinessProcess class.</p>
-<p>Name in Migrated Code: <strong>UIController, BusinessProcess</strong>
-Location in Migrated Code: <strong>Class</strong>
+<p>Name in Migrated Code: <strong>UIController, BusinessProcess</strong><br />
+Location in Migrated Code: <strong>Class</strong><br />
 Example: UIController</p>
-<pre><code class="language-csharp">internal class Orders1 :UIControllerBase 
+<pre><code class="language-csdiff">internal class Orders1 :UIControllerBase 
 {
 }
 </code></pre>
 <p>Example: BusinessProcess</p>
-<pre><code class="language-csharp">internal class Print_Order : BusinessProcessBase 
+<pre><code class="language-csdiff">internal class Print_Order : BusinessProcessBase 
 {
 }
 </code></pre>
-<p>Note: A further class called the <strong>FlowUIController</strong> class is used for Magic Code from Online tasks that have code in the Record Main. For such code, The migrated code will inherit from the FlowUIController class:</p>
+<p>Note: A further class called the <strong>FlowUIController</strong> class is used for Magic Code from Online tasks that have code in the Record Main.<br />
+For such code, The migrated code will inherit from the FlowUIController class:</p>
 <p>For example:</p>
-<pre><code class="language-csharp"> internal class Orders1 : FlowUIControllerBase 
+<pre><code class="language-csdiff"> internal class Orders1 : FlowUIControllerBase 
  {
  }
 </code></pre>
@@ -203,7 +82,7 @@ Example: UIController</p>
 </ul>
 <hr />
 <h3 id="initial-mode">Initial Mode</h3>
-<p>Name in Migrated Code: <strong>Activity</strong>
+<p>Name in Migrated Code: <strong>Activity</strong><br />
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Values:</p>
 <table>
@@ -240,18 +119,18 @@ Values:</p>
 </tr>
 </tbody>
 </table>
-<p>Examples:
-Browse:</p>
-<p><code>Activity = Activities.Browse;</code>
+<p>Examples:<br />
+Browse:<br />
+<code>Activity = Activities.Browse;</code><br />
 By Parent:</p>
-<pre><code class="language-csharp">  public ShowOrders()
+<pre><code class="language-csdiff">  public ShowOrders()
   {   //... other code
        Activity = u.ActivityOfParent;
        // other code
   }
 </code></pre>
 <p>By Expression:</p>
-<pre><code class="language-csharp">  public ShowOrders()
+<pre><code class="language-csdiff">  public ShowOrders()
   {   //... other code
       Activity =  u.TranslateTaskActivity(u.if(1==1,&quot;Q&quot;,&quot;M&quot;)); 
       // other code
@@ -265,8 +144,8 @@ By Parent:</p>
 </ul>
 <hr />
 <h3 id="end-task-condition-for-end-task">End Task / Condition for End Task</h3>
-<p>Name in Migrated Code: <strong>Exit</strong>
-Location in Migrated Class: <strong>OnLoad Method</strong>
+<p>Name in Migrated Code: <strong>Exit</strong><br />
+Location in Migrated Class: <strong>OnLoad Method</strong><br />
 Values:</p>
 <table>
 <thead>
@@ -290,15 +169,15 @@ Values:</p>
 </tr>
 </tbody>
 </table>
-<p>Examples:
-Exit:</p>
-<p><code>Exit();</code>
-Exit Before Row:</p>
-<p><code>Exit(ExitTiming.BeforeRow, () = &gt; u.EOF(0, 1));</code>
-Exit After Row</p>
-<p><code>Exit(ExitTiming.AfterRow, () = &gt; Counter == 10);</code></p>
+<p>Examples:<br />
+Exit:<br />
+<code>Exit();</code></p>
+<p>Exit Before Row:<br />
+<code>Exit(ExitTiming.BeforeRow, () = &gt; u.EOF(0, 1));</code></p>
+<p>Exit After Row<br />
+<code>Exit(ExitTiming.AfterRow, () = &gt; Counter == 10);</code></p>
 <p>Note: As stated, the 'Immediately when condition is changed' option, translates in the migrated code to ExitTiming.AsSoonAsPossible. In this scenario, Magic evaluates the end condition after each operation in the code. To support this behavior, migrated code with this option will place the EvaluateExitCondition() Method between each line of code. Example:</p>
-<pre><code class="language-csharp">protected override void OnLoad()
+<pre><code class="language-csdiff">protected override void OnLoad()
 {
    Exit(ExitTiming.AsSoonAsPossible,() =&gt; numerator==1);
 }
@@ -322,7 +201,7 @@ protected override void OnLeaveRow()
 </ul>
 <hr />
 <h3 id="allow-events">Allow Events</h3>
-<p>Name in Migrated Code: <strong>AllowUserAbort</strong>
+<p>Name in Migrated Code: <strong>AllowUserAbort</strong><br />
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Examples:</p>
 <p><code>AllowUserAbort = true;</code>
@@ -335,10 +214,10 @@ With Expression:</p>
 </ul>
 <hr />
 <h3 id="return-value">Return Value</h3>
-<p>Name in Migrated Code: <strong>return _taskresult;</strong>
+<p>Name in Migrated Code: <strong>return _taskresult;</strong><br />
 Location in Migrated Code: <strong>Run Method</strong>
 Example:</p>
-<pre><code class="language-csharp">class batchToCalculateSum : BusinessProcessBase 
+<pre><code class="language-csdiff">class batchToCalculateSum : BusinessProcessBase 
 {
    readonly NumberColumn var1 = new NumberColumn();
    readonly NumberColumn var2 = new NumberColumn();
@@ -368,7 +247,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>From</strong>
 Location in Migrated Class: <strong>InitializeDataView Method</strong>
 Example:</p>
-<pre><code class="language-csharp">class ShowCustomers
+<pre><code class="language-csdiff">class ShowCustomers
 {
 	internal readonly Model.Customers Customers = new Model.Customers();
 	//other code
@@ -389,7 +268,7 @@ Example:</p>
 <p>Name in Migrated Code : <strong>OrderBy</strong>
 Location in Migrated Code : <strong>InitializeDataView Method</strong>
 Examples:</p>
-<pre><code class="language-csharp">void InitializeDataView()
+<pre><code class="language-csdiff">void InitializeDataView()
 {
         From = Customers;
         OrderBy = Customers.SortByCustomerID;
@@ -406,7 +285,7 @@ Examples:</p>
 Location in Migrated Code : <strong>OnLoad Method</strong>
 Note :  If an index expression was used the migrated code will have the OrderBy statement in the OnLoad Method as opposed to the InitializeDataView Method.
 Example : In the following example, the index expression was set to: &quot;if (a=1, '1'Key, '2'Key)&quot;.</p>
-<pre><code class="language-csharp">protected override void OnLoad()
+<pre><code class="language-csdiff">protected override void OnLoad()
 {
     // other code
     OrderBy = Customers.Indexes[u.If(v_Indicator == 1, Category.Indexes.IndexOf(Category.SortByCategoryID), Category.Indexes.IndexOf(Category.SortByCategoryName))];
@@ -420,13 +299,13 @@ Example : In the following example, the index expression was set to: &quot;if (a
 <hr />
 <h2 id="advanced-tab">Advanced Tab</h2>
 <p>A screen shot of eDeveloper's Advanced Properties tab appears below:</p>
-<p><img src="edevadvancedpropertytab.jpg" alt="" /></p>
+<p><img src="img-edevadvancedpropertytab.jpg" alt="" /></p>
 <p>The following notes explain the equivalent to these properties in the migrated code.</p>
 <h3 id="selection-table">Selection Table</h3>
 <p>Name in Migrated Code: <strong>AllowSelect</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csharp">      protected override void OnLoad()
+<pre><code class="language-csdiff">      protected override void OnLoad()
         {
             // other code
             AllowSelect = true;
@@ -451,7 +330,7 @@ Example:
 <p>Name in Migrated Code: <strong>See example</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csharp">protected override void OnLoad() {
+<pre><code class="language-csdiff">protected override void OnLoad() {
 
    // other code
    switch ((int)(u.If(vEnglish, 2, 1)))
@@ -469,7 +348,7 @@ Example:</p>
 </code></pre>
 <hr />
 <h2 id="enhanced-tab">Enhanced Tab</h2>
-<p><img src="edevenhancedpropertytab.jpg" alt="" /></p>
+<p><img src="img-edevenhancedpropertytab.jpg" alt="" /></p>
 <p>The following notes explain the equivalent to these properties in the migrated code.</p>
 <h3 id="transaction-begin">Transaction Begin</h3>
 <p>Name in Migrated Code: <strong>Transaction Scope</strong>
@@ -556,7 +435,7 @@ Values:
 <li><a href="http://www.fireflymigration.com/reference/html/T_Firefly_Box_LockingStrategy.htm">LockingStrategy Enum</a></li>
 </ul>
 <p>Note: If the Locking Strategy is �On Modify� in Magic (LockingSTrategy.OnUserEdit) then it may be necessary when calling a task or program to specify that the current record with all its links must be locked. This may be specified in Magic by clicking ctrl+P on the call task or call program line, and specifying the lock as 'Yes' in the dialog that appears. To support this functionality, the LockCurrentRow method is employed. As an example:</p>
-<pre><code class="language-csharp">if(V_counter == 1) {
+<pre><code class="language-csdiff">if(V_counter == 1) {
 
  LockCurrentRow();
  new ProgramName(this).Run();
@@ -571,7 +450,7 @@ Values:
 <h3 id="cache-strategy">Cache Strategy</h3>
 <p>Location in migrated code *: The Cached property of the Entity defined in the From property of the task.
 Example:</p>
-<pre><code class="language-csharp">readonly Model.Categories _categories = new Model.Categories {
+<pre><code class="language-csdiff">readonly Model.Categories _categories = new Model.Categories {
 
  Cached = true
 };
@@ -589,24 +468,255 @@ Example: Error behaviour strategy = abort
 <li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_OnDatabaseErrorRetry.htm">BusinessProcess OnDatabaseError Property</a></li>
 </ul>
 <hr />
-</div>
-                        
-                        <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                            <a href="View-SQL-Output.html"class="btn btn-neutral float-left">Previous</a> <a href="Task-Control.html"class="btn btn-neutral float-right">Next</a>
-                        </div>
-                        
-                        
-                    </div>
-                </div>
+</main><!-- .content -->
+            </div><!-- .container-->
+
+            <aside class="left-sidebar"><div class="wy-side-nav-search-ff">
+    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+</div><div class="TreeItem">dev docs</div>
+<div class="TreeNode">
+    <div class="TreeItem">guide</div>
+    <div class="TreeNode">
+        <div class="TreeItem">An introduction to NET</div>
+        <div class="TreeNode">
+            <div class="TreeItem">Intro</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="NET-Framework-Overview.html">NET Framework Overview</a></div>
+                <div class="TreeItem"><a href="Visual-Studio-and-CSharp-Overview.html">Visual Studio and CSharp Overview</a></div>
+                <div class="TreeItem"><a href="Create-a-simple-class.html">Create a simple class</a></div>
+                <div class="TreeItem"><a href="Explaining-The-Hello-world-example.html">Explaining The Hello world example</a></div>
+                <div class="TreeItem"><a href="Method-Arguments-and-Overloading.html">Method Arguments and Overloading</a></div>
+                <div class="TreeItem"><a href="Using-directives.html">Using directives</a></div>
+                <div class="TreeItem"><a href="Snippets.html">Snippets</a></div>
+                <div class="TreeItem"><a href="Comments.html">Comments</a></div>
+                <div class="TreeItem"><a href="Hello-csharp-exercise.html">Hello csharp exercise</a></div>
             </div>
-        </section>
+            <div class="TreeItem"><a href="Simple-data-types.html">Simple data types</a></div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="More-on-strings.html">More on strings</a></div>
+                <div class="TreeItem"><a href="Data-Types-Exercise.html">Data Types Exercise</a></div>
+            </div>
+            <div class="TreeItem"><a href="Operators.html">Operators</a></div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Operators-Exercise.html">Operators Exercise</a></div>
+            </div>
+            <div class="TreeItem">More on Classes</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Classes-and-Instances.html">Classes and Instances</a></div>
+                <div class="TreeItem"><a href="Constructor-Static_ReadOnly.html">Constructor Static_ReadOnly</a></div>
+                <div class="TreeItem"><a href="Type-initializers.html">Type initializers</a></div>
+                <div class="TreeItem"><a href="var.html">var</a></div>
+                <div class="TreeItem"><a href="Short-way-to-write-a-single-line-method.html">Short way to write a single line method</a></div>
+                <div class="TreeItem"><a href="Inheritance-Basics-Adding-the-Dog-class.html">Inheritance Basics Adding the Dog class</a></div>
+                <div class="TreeItem"><a href="Creating-the-Cat-class.html">Creating the Cat class</a></div>
+                <div class="TreeItem"><a href="Virtual-method-and-override.html">Virtual method and override</a></div>
+                <div class="TreeItem"><a href="More-on-Instances-and-inheritance.html">More on Instances and inheritance</a></div>
+            </div>
+            <div class="TreeItem"><a href="student-notes.html">student notes</a></div>
+        </div>
+        <div class="TreeItem">An introduction to UIController</div>
+        <div class="TreeNode">
+            <div class="TreeItem"><a href="Creating-simple-screen.html">Creating simple screen</a></div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Explaining-The-Simple-UIController-Code.html">Explaining The Simple UIController Code</a></div>
+                <div class="TreeItem"><a href="Display-Data-From-DB-Simple-UIController.html">Display Data From DB Simple UIController</a></div>
+                <div class="TreeItem"><a href="Creating-Simple-Screen-Exercise.html">Creating Simple Screen Exercise</a></div>
+            </div>
+            <div class="TreeItem">Filtering Data</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Filtering-Data.html">Filtering Data</a></div>
+                <div class="TreeItem"><a href="Filtering-Data-Exercise.html">Filtering Data Exercise</a></div>
+            </div>
+            <div class="TreeItem">Sorting Data</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Sorting-Data.html">Sorting Data</a></div>
+                <div class="TreeItem"><a href="Sorting-Data-Exercise.html">Sorting Data Exercise</a></div>
+            </div>
+            <div class="TreeItem">Relations</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Relations.html">Relations</a></div>
+                <div class="TreeItem"><a href="More-On-Relation.html">More On Relation</a></div>
+                <div class="TreeItem"><a href="Relations-Exercise.html">Relations Exercise</a></div>
+            </div>
+            <div class="TreeItem">Using debug information in VS</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Using-debug-information-in-VS.html">Using debug information in VS</a></div>
+            </div>
+        </div>
+        <div class="TreeItem">MoreOnUIController</div>
+        <div class="TreeNode">
+            <div class="TreeItem">UI Controller Life Cycle</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="UI-Controller-Life-Cycle.html">UI Controller Life Cycle</a></div>
+                <div class="TreeItem"><a href="Life-Cycle-Demo.html">Life Cycle Demo</a></div>
+                <div class="TreeItem"><a href="UI-Controller-Life-Cycle-Exercise.html">UI Controller Life Cycle Exercise</a></div>
+            </div>
+            <div class="TreeItem">InputValidation</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Input-Validation-OnSavingRow-IF-Statement.html">Input Validation OnSavingRow IF Statement</a></div>
+                <div class="TreeItem"><a href="Input-Validation-Using-IF-Statement-Exercise.html">Input Validation Using IF Statement Exercise</a></div>
+                <div class="TreeItem"><a href="IF-Statement-Explanation.html">IF Statement Explanation</a></div>
+                <div class="TreeItem"><a href="Input-Validation-Using-Flow-Abort-Exception.html">Input Validation Using Flow Abort Exception</a></div>
+                <div class="TreeItem"><a href="More-About-The-Message-Class.html">More About The Message Class</a></div>
+                <div class="TreeItem"><a href="Input-Validation-Using-Message-Class-Exercise.html">Input Validation Using Message Class Exercise</a></div>
+                <div class="TreeItem"><a href="Introduction-To-User-Methods-And-u-Member.html">Introduction To User Methods And u Member</a></div>
+                <div class="TreeItem"><a href="Input-Validation-Using-Methods.html">Input Validation Using Methods</a></div>
+                <div class="TreeItem"><a href="Input-Validation-Using-Methods-Exercise.html">Input Validation Using Methods Exercise</a></div>
+            </div>
+            <div class="TreeItem">Row Found Validation</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Row-Found-Validation.html">Row Found Validation</a></div>
+                <div class="TreeItem"><a href="Row-Found-Validation-Exercise.html">Row Found Validation Exercise</a></div>
+            </div>
+        </div>
+        <div class="TreeItem">Introduction to UI Controller</div>
+        <div class="TreeNode">
+            <div class="TreeItem"><a href="creating-a-simple-screen.html">creating a simple screen</a></div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="creating-a-simple-screen-exercise.html">creating a simple screen exercise</a></div>
+            </div>
+            <div class="TreeItem"><a href="Filtering-Data.html">Filtering Data</a></div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Filtering-Data-exercise.html">Filtering Data exercise</a></div>
+            </div>
+            <div class="TreeItem"><a href="Sorting-Data.html">Sorting Data</a></div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Sorting-Data-exercise.html">Sorting Data exercise</a></div>
+            </div>
+            <div class="TreeItem"><a href="Adding-Relations.html">Adding Relations</a></div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Adding-Relations-exercise.html">Adding Relations exercise</a></div>
+            </div>
+            <div class="TreeItem"><a href="Debugger-Watch-Window.html">Debugger Watch Window</a></div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Debugger-Watch-Window-exercise.html">Debugger Watch Window exercise</a></div>
+            </div>
+            <div class="TreeItem"><a href="Summary-Exercise.html">Summary Exercise</a></div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Summary-Exercise-exercise.html">Summary Exercise exercise</a></div>
+            </div>
+        </div>
+        <div class="TreeItem">Migrated Data Types</div>
+        <div class="TreeNode">
+            <div class="TreeItem">In Depth</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="More-on-Null-Types-that-cannot-be-null.html">More on Null Types that cannot be null</a></div>
+                <div class="TreeItem"><a href="In-depth-Number.html">In depth Number</a></div>
+                <div class="TreeItem"><a href="Text-demo.html">Text demo</a></div>
+                <div class="TreeItem"><a href="Bool-demo.html">Bool demo</a></div>
+            </div>
+            <div class="TreeItem"><a href="Introduction-to-Null.html">Introduction to Null</a></div>
+            <div class="TreeItem"><a href="Number.html">Number</a></div>
+            <div class="TreeItem"><a href="Text-and-Bool.html">Text and Bool</a></div>
+            <div class="TreeItem"><a href="Date.html">Date</a></div>
+            <div class="TreeItem"><a href="Time.html">Time</a></div>
+            <div class="TreeItem"><a href="Using-a-date-in-filter-data.html">Using a date in filter data</a></div>
+            <div class="TreeItem"><a href="Exercise-Migrated-Data-types.html">Exercise Migrated Data types</a></div>
+            <div class="TreeItem"><a href="Exercise-Date-and-Time.html">Exercise Date and Time</a></div>
+            <div class="TreeItem"><a href="Exercise-Using-a-date-to-filter-data.html">Exercise Using a date to filter data</a></div>
+        </div>
+        <div class="TreeItem">Methods</div>
+        <div class="TreeNode">
+            <div class="TreeItem">Explain</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Methods.html">Methods</a></div>
+                <div class="TreeItem"><a href="Exercise-Simple-method.html">Exercise Simple method</a></div>
+                <div class="TreeItem"><a href="Method-with-return-value.html">Method with return value</a></div>
+                <div class="TreeItem"><a href="Introducing-Regions.html">Introducing Regions</a></div>
+                <div class="TreeItem"><a href="User-methods-and-u-class.html">User methods and u class</a></div>
+                <div class="TreeItem"><a href="Using-CSharp6-features-to-write-shorter-methods.html">Using CSharp6 features to write shorter methods</a></div>
+                <div class="TreeItem"><a href="Migrated-expression.html">Migrated expression</a></div>
+            </div>
+            <div class="TreeItem">MoreOnMethods</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Using-user-methods-class-in-non-migrated-code.html">Using user methods class in non migrated code</a></div>
+            </div>
+            <div class="TreeItem"><a href="Exercise-Method-with-return-value.html">Exercise Method with return value</a></div>
+        </div>
+        <div class="TreeItem">Binding controls data to method</div>
+        <div class="TreeNode">
+            <div class="TreeItem"><a href="Binding-the-data-of-a-control-to-a-method.html">Binding the data of a control to a method</a></div>
+            <div class="TreeItem"><a href="Getting-the-day-of-week-using-User-Methods.html">Getting the day of week using User Methods</a></div>
+            <div class="TreeItem"><a href="Using-csharp6-syntax-to-get-the-day-of-week.html">Using csharp6 syntax to get the day of week</a></div>
+            <div class="TreeItem"><a href="Binding-controls-Exercise.html">Binding controls Exercise</a></div>
+        </div>
+        <div class="TreeItem">Getting the code for the first time</div>
+        <div class="TreeNode">
+            <div class="TreeItem"><a href="Get-starting.html">Get starting</a></div>
+        </div>
+        <div class="TreeItem"><a href="Solving-the-project-scope-problem-using-Abstract-Base-classes.html">Solving the project scope problem using Abstract Base classes</a></div>
+        <div class="TreeNode">
+        </div>
+        <div class="TreeItem">Visual Studio Configuration</div>
+        <div class="TreeNode">
+            <div class="TreeItem"><a href="Configuration.html">Configuration</a></div>
+        </div>
+        <div class="TreeItem"><a href="using-version-control.html">using version control</a></div>
+    </div>
+    <div class="TreeItem"><a href="reference.html">reference</a></div>
+    <div class="TreeNode">
+        <div class="TreeItem">Articles</div>
+        <div class="TreeNode">
+            <div class="TreeItem"><a href="Automatic-Migration-Using-FTP.html">Automatic Migration Using FTP</a></div>
+            <div class="TreeItem"><a href="Error-report-guide.html">Error report guide</a></div>
+            <div class="TreeItem"><a href="Relations-in-depth.html">Relations in depth</a></div>
+            <div class="TreeItem"><a href="shoulddeterminenameaccordingtocallstack.html">shoulddeterminenameaccordingtocallstack</a></div>
+            <div class="TreeItem"><a href="Understanding-Error-Message-Details.html">Understanding Error Message Details</a></div>
+            <div class="TreeItem"><a href="Using-issue-tracker.html">Using issue tracker</a></div>
+            <div class="TreeItem"><a href="Using-Log-Files.html">Using Log Files</a></div>
+            <div class="TreeItem"><a href="View-SQL-Output.html">View SQL Output</a></div>
+        </div>
+        <div class="TreeItem">Comparing Migrated Code with Magic</div>
+        <div class="TreeNode">
+            <div class="TreeItem">eDevelopper</div>
+            <div class="TreeNode">
+                <div  class="TreeItem current-page"><a href="Task-Properties.html">Task Properties</a></div>
+                <div class="TreeItem"><a href="Task-Control.html">Task Control</a></div>
+                <div class="TreeItem"><a href="IO-Files.html">IO Files</a></div>
+                <div class="TreeItem"><a href="DB-Tables.html">DB Tables</a></div>
+                <div class="TreeItem"><a href="Range-Locate.html">Range Locate</a></div>
+                <div class="TreeItem"><a href="The-Sort.html">The Sort</a></div>
+                <div class="TreeItem"><a href="Operations.html">Operations</a></div>
+                <div class="TreeItem"><a href="State-Comparison.html">State Comparison</a></div>
+                <div class="TreeItem"><a href="Handlers.html">Handlers</a></div>
+            </div>
+            <div class="TreeItem">Unipaas</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="task-properties-unipaas.html">task properties unipaas</a></div>
+            </div>
+        </div>
+        <div class="TreeItem">Refactoring</div>
+        <div class="TreeNode">
+            <div class="TreeItem"><a href="Building-a-generic-GetName-method.html">Building a generic GetName method</a></div>
+            <div class="TreeItem"><a href="Obtaining-category-name-based-on-CategoryID.html">Obtaining category name based on CategoryID</a></div>
+        </div>
+    </div>
+</div>
+</aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar">
+                
+            </aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+   
 
     </div>
-    
-    <script src="assets/js/prism.js"></script>
-    <script src="assets/js/prism-csdiff.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/theme.js"></script>
+
+
     <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+    <script src="assets/js/prism-csharp.js"></script>
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>    
+    <script src="assets/js/prism-function.js"></script>    
+    
+    
+    
 </body>
 </html>
