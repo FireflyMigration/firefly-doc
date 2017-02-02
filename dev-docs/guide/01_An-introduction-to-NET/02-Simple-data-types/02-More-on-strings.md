@@ -1,6 +1,6 @@
 ﻿# More on Strings
 
-**Special characters in string**  
+**Special characters in string**
 
 Special characters are not displayed as is.  
 To display special characters in string add back slash sign before the characters  
@@ -12,7 +12,7 @@ For example:
 
 
 ```csdiff
- using System.Windows.Forms;
+using System.Windows.Forms;
 namespace Northwind.Training
 {
     class MoreOnStrings
@@ -38,7 +38,7 @@ Or Alternatively: to display a string as is use the @ sign before the string
 MessageBox.Show(@"Windows Path: c:\windows using the @ sign to use quites just say ""double quotes"" ");
 ```
 
-The @ sign can be used also to dsiplay multi line text without the need to use \n in the string:
+The @ sign can be used also to display multi line text without the need to use \n in the string:
 
 ```csdiff
 MessageBox.Show(@"I'm a multi 
@@ -48,8 +48,9 @@ in many
 line");
 ```
 
-Exercise : [Data types](03-Data-Types-Exercise.md)
+Exercise : [Data types](Data-Types-Exercise.html)
 
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/o1xAgJTEO8k?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
+
 ---
