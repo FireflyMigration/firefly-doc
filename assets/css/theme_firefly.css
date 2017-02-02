@@ -5,8 +5,9 @@
 	color:#fcfcfc;
 	}
 	
-.current-page  a{
-    background-color:white
+.current-page.TreeItem  a{
+    background-color:white ;
+	color: #b3b3b3;
 }
 
 .wrapper {

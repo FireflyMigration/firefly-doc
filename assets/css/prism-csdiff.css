@@ -121,8 +121,7 @@ code[class*="language-css"]{
 }
 .token.deleted,
 .language-autohotkey .token.tag {
-    color:darkgray;
-    background-color:#ffecec ;
+    color: #9a050f;
 }
 
 .token.selector,
