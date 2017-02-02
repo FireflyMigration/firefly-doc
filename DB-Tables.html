@@ -36,7 +36,7 @@
 <li>Example: <code>internal readonly Model.Orders Orders = new Model.Orders();</code></li>
 <li>Example of a Table definition with some properties:</li>
 </ul>
-<pre><code class="language-csdiff"> internal readonly Model.Orders Orders = new Model.Orders
+<pre data-line="" class="language-csdiff line-numbers"><code> internal readonly Model.Orders Orders = new Model.Orders
 {
   Cached = false,
   AllowRowLocking = true,
@@ -57,7 +57,7 @@
 <p>Name in Migrated Code: <strong>ReadOnly</strong>
 Location in Migrated Code: <strong>Class</strong> (in Model region)
 Example:</p>
-<pre><code class="language-csdiff">readonly Model.Orders _orders = new Model.Orders()
+<pre data-line="" class="language-csdiff line-numbers"><code>readonly Model.Orders _orders = new Model.Orders()
 {
    ReadOnly = true,
    //other code
@@ -72,7 +72,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>AllowRowLocking</strong>
 Location in Migrated Code: <strong>Class</strong> (in Model region)
 Example:</p>
-<pre><code class="language-csdiff">readonly Model.Orders _orders = new Model.Orders
+<pre data-line="" class="language-csdiff line-numbers"><code>readonly Model.Orders _orders = new Model.Orders
             {
             	AllowRowLocking = true,
                 //other code
@@ -93,9 +93,9 @@ Example:</p>
 <p>Name in Migrated Code: <strong>EntityName</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">protected override void OnLoad()
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLoad()
 {
-  Customers.EntityName = &quot;%PATH%FileName&quot;;
+  Customers.EntityName = "%PATH%FileName";
 }
 </code></pre>
 <hr />
@@ -103,14 +103,14 @@ Example:</p>
 <p>Name in Migrated Code: <strong>Cached</strong>
 Location in Migrated Code: <strong>Class</strong> (in Model region)
 Example: Cache = Yes:</p>
-<pre><code class="language-csdiff">readonly Model.Orders _orders = new Model.Orders
+<pre data-line="" class="language-csdiff line-numbers"><code>readonly Model.Orders _orders = new Model.Orders
             {
             	Cached = true,
                 //other code
             };
 </code></pre>
 <p>Example: Cache = No:</p>
-<pre><code class="language-csdiff">readonly Model.Orders _orders = new Model.Orders
+<pre data-line="" class="language-csdiff line-numbers"><code>readonly Model.Orders _orders = new Model.Orders
             {
             	Cached = false,
                 //other code

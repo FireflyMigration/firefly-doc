@@ -39,28 +39,28 @@ Members defined inside a class are known only in that class.</p>
 <li>Class called Animal</li>
 </ol>
 <p><strong>ClassesAndInstances</strong></p>
-<pre><code class="language-csdiff">+ using System.Windows.Forms;
+<pre data-line="1,6,7,8" class="language-csdiff line-numbers"><code>  using System.Windows.Forms;
 namespace Northwind.Training
 {
     class ClassesAndInstances
     {
-+       public void Run()
-+       {
-+       }     
+        public void Run()
+        {
+        }     
     }
 }
 </code></pre>
 <p><strong>Animal</strong></p>
-<pre><code class="language-csdiff">namespace Northwind.Training
+<pre data-line="7,8,9,10" class="language-csdiff line-numbers"><code>namespace Northwind.Training
 {
     class Animal
     {
         public string Name;
 
-+       public void Run()
-+       {
-+           
-+       }     
+        public void Run()
+        {
+            
+        }     
     }
 }
 </code></pre>
@@ -80,19 +80,19 @@ In our example this instance is represented by the variable a</p>
 <p>Since 'a' is an Animal it has a member called Name (as defined in the Animal class).<br />
 To set a value to the Name of 'a' we use the className.MemberName, and with this sample:<br />
 a.Name = &quot;Rexi&quot;</p>
-<pre><code class="language-csdiff">using System.Windows.Forms;
+<pre data-line="8,9,10,11,12,13" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
 namespace Northwind.Training
 {
     class ClassesAndInstances
     {
        public void Run()
        {
-+            Animal a = new Animal();
-+            Animal b = new Animal();
-+            a.Name = &quot;Rex&quot;;
-+            b.Name = &quot;Kitty&quot;;
-+            MessageBox.Show(a.Name); 
-+            MessageBox.Show(b.Name); 
+             Animal a = new Animal();
+             Animal b = new Animal();
+             a.Name = "Rex";
+             b.Name = "Kitty";
+             MessageBox.Show(a.Name); 
+             MessageBox.Show(b.Name); 
        }     
     }
 }
@@ -103,22 +103,22 @@ Then we use the MessageBox.Show() method to display the name of each of the Anim
 <p>Note: to access a member of a class (properties, variables, methods) we use the class instance.member</p>
 <p>Back to the Animal class:<br />
 A new member is added to that animal class: AnimalType</p>
-<pre><code class="language-csdiff">namespace Northwind.Training
+<pre data-line="8" class="language-csdiff line-numbers"><code>namespace Northwind.Training
 {
-   class Animal
-   {
-      public void Run()
-      {
-          public string Name;
-+          public string AnimalType;
-      }     
-   }
+    class Animal
+    {
+       public void Run()
+       {
+           public string Name;
+           public string AnimalType;
+       }     
+    }
 }
 </code></pre>
 <p>In the ClassesAndInstances we set 'a' (which is an instance of Animal) to be have AnimalTypa = Dog<br />
 and 'b'  (which is also an instance of Animal) to have AnimalTypa = Cat.<br />
 The message boxes displays the type and the name of the objects a &amp; b</p>
-<pre><code class="language-csdiff">using System.Windows.Forms;
+<pre data-line="11,13,15,17" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
 namespace Northwind.Training
 {
     class ClassesAndInstances
@@ -127,14 +127,14 @@ namespace Northwind.Training
        {
             Animal a = new Animal();
             Animal b = new Animal();
-            a.Name = &quot;Rex&quot;;
-+           b.AnimalType = &quot;Dog&quot; ;
-            b.Name = &quot;Kitty&quot;;
-+           b.AnimalType = &quot;Cat&quot; ;
+            a.Name = "Rex";
+            b.AnimalType = "Dog" ;
+            b.Name = "Kitty";
+            b.AnimalType = "Cat" ;
 -           MessageBox.Show(a.Name); 
-+           MessageBox.Show(a.Name+&quot; is a &quot;+a.AnimalType); 
+            MessageBox.Show(a.Name+" is a "+a.AnimalType); 
 -            MessageBox.Show(b.Name); 
-+           MessageBox.Show(b.Name+&quot; is a &quot;+b.AnimalType); 
+            MessageBox.Show(b.Name+" is a "+b.AnimalType); 
        }     
     }
 }
@@ -145,26 +145,26 @@ ClassesAndInstances, we can add a method in the Animal class itself to do that a
 The method displays the name and the type of the Animal object who used it.
 <code>this</code> is a reference to the current instance of the object (Animal class).<br />
 The code looks like that:</p>
-<pre><code class="language-csdiff">+ using System.Windows.Forms;
+<pre data-line="1,10,11,12,13" class="language-csdiff line-numbers"><code>  using System.Windows.Forms;
 namespace Northwind.Training
 {
-   class Animal
-   {
-      public void Run()
-      {
-          public string Name;
-          public string AnimalType;
-+          public void DescribeYourSelf()
-+          {
-+               MessageBox.Show(this.Name+&quot; is a &quot;+this.AnimalType); 
-+          }  
-      }     
-   }
+    class Animal
+    {
+       public void Run()
+       {
+           public string Name;
+           public string AnimalType;
+           public void DescribeYourSelf()
+           {
+                MessageBox.Show(this.Name+" is a "+this.AnimalType); 
+           }  
+       }     
+    }
 }
 </code></pre>
 <p>The method DescribeYourSelf() belong to the Animal class so every object representing this class can use it.<br />
 Now, in the ClassesAndInstances, instead of using the message box, 'a' and 'b' objects can call the method DescribeYourSelf() method to display the information.</p>
-<pre><code class="language-csdiff">using System.Windows.Forms;
+<pre data-line="15,17" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
 namespace Northwind.Training
 {
     class ClassesAndInstances
@@ -173,14 +173,14 @@ namespace Northwind.Training
        {
             Animal a = new Animal();
             Animal b = new Animal();
-            a.Name = &quot;Rex&quot;;
-            b.AnimalType = &quot;Dog&quot; ;
-            b.Name = &quot;Kitty&quot;;
-            b.AnimalType = &quot;Cat&quot; ;
--           MessageBox.Show(a.Name+&quot; is a &quot;+a.AnimalType); 
-+           a.DescribeYourSelf();
--           MessageBox.Show(b.Name+&quot; is a &quot;+b.AnimalType); 
-+           b.DescribeYourSelf();
+            a.Name = "Rex";
+            b.AnimalType = "Dog" ;
+            b.Name = "Kitty";
+            b.AnimalType = "Cat" ;
+-           MessageBox.Show(a.Name+" is a "+a.AnimalType); 
+            a.DescribeYourSelf();
+-           MessageBox.Show(b.Name+" is a "+b.AnimalType); 
+            b.DescribeYourSelf();
        }     
     }
 }

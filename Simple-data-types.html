@@ -35,7 +35,7 @@ string – is the type of the variable<br />
 CompanyName is the variable’s name.</p>
 <p>Notice the standard naming conventions: the name of the variable starts with lower case and the first letter of every word afterwards is an uppercase.<br />
 We can also initialize the variable in the same line by using the equation sign:</p>
-<pre><code class="language-csdiff">string CompanyName = &quot;my name&quot;;
+<pre data-line="" class="language-csdiff line-numbers"><code>string CompanyName = "my name";
 </code></pre>
 <p><strong>Let's create data types and display their values in the message box:</strong></p>
 <ol>
@@ -50,20 +50,20 @@ We can also initialize the variable in the same line by using the equation sign:
 </ul>
 </li>
 </ol>
-<pre><code class="language-csdiff">namespace Northwind.Training
+<pre data-line="5,6,7,8,9,11,12,14" class="language-csdiff line-numbers"><code>namespace Northwind.Training
 {
     class BasicTypes
     {
-+       public void Run()
-+       {
-+           string personName =&quot;Noam&quot;;
-+           int numberOfKids;             
-+           numberOfKids = 3;
+        public void Run()
+        {
+            string personName ="Noam";
+            int numberOfKids;             
+            numberOfKids = 3;
 
-+           bool isStudent = false;
-+           double height =1.77;
+            bool isStudent = false;
+            double height =1.77;
 
-+           char gender ='M';
+            char gender ='M';
        }     
     }
 }
@@ -75,14 +75,14 @@ A char is a single character as opposed to a string which is comprised of many c
 String is surrounded by double quotes while char is surrounded by a single quote.</p>
 <p>6. In order to use the System.Windows.Form.MessageBox class we will add it to the using section
 and we will use the MessageBox.Show() method to display them</p>
-<pre><code class="language-csdiff">+ using System.Windows.Forms;
+<pre data-line="1,17,18" class="language-csdiff line-numbers"><code>  using System.Windows.Forms;
 namespace Northwind.Training
 {
     class BasicTypes
     {
        public void Run()
        {
-           string personName =&quot;Noam&quot;;
+           string personName ="Noam";
            int numberOfKids;             
            numberOfKids = 3;
 
@@ -91,8 +91,8 @@ namespace Northwind.Training
 
            char gender ='M';
 
-+         	MessageBox.Show(&quot;Hello &quot;  + personName ); 
-+         	MessageBox.Show(&quot;You have &quot;  + numberOfKids.ToString() + &quot; children&quot; ); 
+          	MessageBox.Show("Hello "  + personName ); 
+          	MessageBox.Show("You have "  + numberOfKids.ToString() + " children" ); 
        }     
     }
 }
@@ -105,9 +105,9 @@ Every object in .net has <code>ToString()</code> method that convert itself to s
 <p>10. To call this class from the menu we will add a new entry in the ApplicationMDI menu<br />
 DbClick on the menu so Visual Studio generate the code that will be executed when clicking the menu entry
 and call this class by calling its Run() method</p>
-<pre><code class="language-csdiff">private void basicTypesToolStripMenuItem_Click(object sender, EventArgs e)
+<pre data-line="3" class="language-csdiff line-numbers"><code>private void basicTypesToolStripMenuItem_Click(object sender, EventArgs e)
 {
-+	new Training.BasicTypes().Run();
+ 	new Training.BasicTypes().Run();
 }
 </code></pre>
 <p>11. before running the application remember to build it.</p>

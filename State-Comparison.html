@@ -112,7 +112,7 @@
 <p>This refers to all properties that appear in screens such as Ctrl+P (Task Properties), Ctrl+C (Task Control), Ctrl+I (Media Properties), etc.</p>
 <p>Name in Migrated Code: <strong>OnLoad Method</strong><br />
 Example:</p>
-<pre><code class="language-csdiff">protected override void OnLoad()
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLoad()
 {
    AllowSelect = true;
    Activity = Activities.Browse;  
@@ -121,16 +121,16 @@ Example:</p>
 <h3 id="task-prefix">Task Prefix</h3>
 <p>Name in Migrated Code: <strong>OnStart Method</strong><br />
 Example:</p>
-<pre><code class="language-csdiff">protected override void OnStart()
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnStart()
 {
      v_myNumberColumnField.Value = 0;
-      u.DBDel(typeof(Model.myFileName), &quot;&quot;);
+      u.DBDel(typeof(Model.myFileName), "");
 }
 </code></pre>
 <h3 id="task-suffix">Task Suffix</h3>
 <p>Name in Migrated Code: <strong>OnEnd Method</strong><br />
 Example:</p>
-<pre><code class="language-csdiff">protected override void OnEnd()
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnEnd()
 {
      _taskresult = vMyValue;
      new ClosingMethod().Run();
@@ -139,7 +139,7 @@ Example:</p>
 <h3 id="record-prefix">Record Prefix</h3>
 <p>Name in Migrated Code: <strong>OnEnterRow Method</strong><br />
 Example:</p>
-<pre><code class="language-csdiff">protected override void OnEnterRow()
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnEnterRow()
 {
      new MethodtoRUnBeforeEachEachRow().Run();
 }
@@ -149,10 +149,10 @@ Example:</p>
 <h3 id="record-main">Record Main</h3>
 <p>Name in Migrated Code: <strong>Constructor and Run Method</strong><br />
 Example:</p>
-<pre><code class="language-csdiff">/// &lt;summary&gt;ShowProducts(P#10)&lt;/summary&gt;
+<pre data-line="" class="language-csdiff line-numbers"><code>/// <summary>ShowProducts(P#10)</summary>
 public ShowProducts()
 {
-    Title = &quot;ShowProducts&quot;;
+    Title = "ShowProducts";
     InitializeDataViewAndUserFlow();
 }
 void InitializeDataViewAndUserFlow()
@@ -167,8 +167,8 @@ void InitializeDataViewAndUserFlow()
     Columns.Add(Products.UnitPrice);
     Columns.Add(stam);
     }
-    /// &lt;summary&gt;Run&lt;/summary&gt;
-    /// &lt;param name=&quot;ppi_ProdID&quot;&gt;pi.Prod ID&lt;/param&gt;
+    /// <summary>Run</summary>
+    /// <param name="ppi_ProdID">pi.Prod ID</param>
     public void Run(NumberParameter ppi_ProdID)
     {
        BindParameter(pi_ProdID, ppi_ProdID);
@@ -182,7 +182,7 @@ Controls obviously appear only in UIController code and can have the following f
 <h4 id="control-prefix">Control Prefix</h4>
 <p>Methods of this type in the migrated code have names ending with <strong>_Enter</strong></p>
 <p>Example:</p>
-<pre><code class="language-csdiff">#region Controls handlers
+<pre data-line="" class="language-csdiff line-numbers"><code>#region Controls handlers
 internal void txtCustomers_CustomerID_Enter()
 {
    //code
@@ -192,7 +192,7 @@ internal void txtCustomers_CustomerID_Enter()
 <h4 id="control-suffix">Control Suffix</h4>
 <p>Methods of this type in the migrated code have names ending with <strong>_Leave</strong></p>
 <p>Example:</p>
-<pre><code class="language-csdiff">#region Controls handlers
+<pre data-line="" class="language-csdiff line-numbers"><code>#region Controls handlers
 internal void txtCustomers_CustomerID_Leave()
 {
    //code
@@ -202,7 +202,7 @@ internal void txtCustomers_CustomerID_Leave()
 <h4 id="control-verification">Control Verification</h4>
 <p>Methods of this type in the migrated code have names ending with <strong>_InputValidation</strong></p>
 <p>Example:</p>
-<pre><code class="language-csdiff">#region Controls handlers
+<pre data-line="" class="language-csdiff line-numbers"><code>#region Controls handlers
 internal void txtCustomers_CustomerID_InputValidation()
 {
    //code
@@ -212,7 +212,7 @@ internal void txtCustomers_CustomerID_InputValidation()
 <h4 id="control-change">Control Change</h4>
 <p>Methods of this type in the migrated code have names ending with <strong>_Change</strong></p>
 <p>Example:</p>
-<pre><code class="language-csdiff">#region Controls handlers
+<pre data-line="" class="language-csdiff line-numbers"><code>#region Controls handlers
 internal void txtCustomers_CustomerID_Change()
 {
    //code
@@ -228,14 +228,14 @@ internal void txtCustomers_CustomerID_Change()
 <p>Name in Migrated Code: <strong>OnLeaveRow, OnSavingRow Methods</strong></p>
 <p>OnLeaveRow() occurs after leaving every record as opposed to OnSavingRow() which occurs only when data from the record needs to be saved to the Database. Thus, for a record that needs to also be saved to the database, both <strong>OnLeaveRow</strong> and <strong>OnSavingRow</strong> events will occur.</p>
 <p>Example: OnLeaveRow:</p>
-<pre><code class="language-csdiff">protected override void OnLeaveRow()
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLeaveRow()
 {
     _layout.Body.WriteTo(_ioPrint_Order);
     if(false)
     {
-       StartRun(&quot;dir&quot;, false, System.Diagnostics.ProcessWindowStyle.Normal);
+       StartRun("dir", false, System.Diagnostics.ProcessWindowStyle.Normal);
     }
-    new ENV.Utilities.FileViewer(&quot;c:\\temp\\test.txt&quot;,new UI.Print_Orders_Browse(this)).Edit();
+    new ENV.Utilities.FileViewer("c:\\temp\\test.txt",new UI.Print_Orders_Browse(this)).Edit();
 }
 </code></pre>
 <h3 id="groups">Groups</h3>
@@ -244,9 +244,9 @@ Location in Migrated code: <strong>constructor</strong></p>
 <h4 id="groupprefix">GroupPrefix</h4>
 <p>Groups.Add defines the grouping for the selected variables, while groupname.Enter and groupname.Leave represent the GroupPrefix and the GroupSuffix respectively.<br />
 Example: First lets look at usage of Groups.Add in the Constructor:</p>
-<pre><code class="language-csdiff">public Print_Orders()
+<pre data-line="" class="language-csdiff line-numbers"><code>public Print_Orders()
 {
-   Title = &quot;Print - Orders&quot;;
+   Title = "Print - Orders";
    InitializeDataView();
    _layout = new Printing.Print_Orders_Layout(this);
    var Orders_CustomerIDGroup = Groups.Add(Orders.CustomerID);
@@ -256,13 +256,13 @@ Example: First lets look at usage of Groups.Add in the Constructor:</p>
 </code></pre>
 <h4 id="groupsuffix">GroupSuffix</h4>
 <p>Next, lets look at the delegate method call for the Group Prefix, using Group.Enter:</p>
-<pre><code class="language-csdiff">void Orders_CustomerIDGroup_Enter()
+<pre data-line="" class="language-csdiff line-numbers"><code>void Orders_CustomerIDGroup_Enter()
 {
    _layout.CustomerGroupHeader.WriteTo(_ioPrint_Order);
 } 
 </code></pre>
 <p>Finally, lets look at the delegate method call for the Group Suffix, using Group.Leave:</p>
-<pre><code class="language-csdiff">void Orders_CustomerIDGroup_Leave()
+<pre data-line="" class="language-csdiff line-numbers"><code>void Orders_CustomerIDGroup_Leave()
 {
    _layout.CustomerGroupFooter.WriteTo(_ioPrint_Order);
 } 

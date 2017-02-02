@@ -173,14 +173,14 @@ Example:</p>
 <p>Name in Migrated Code: <strong>KeepViewVisibleAfterExit</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">    KeepViewVisibleAfterExit = true;
+<pre data-line="" class="language-csdiff line-numbers"><code>    KeepViewVisibleAfterExit = true;
                 if(NewViewRequired)
                 {
                     View = new UI.ShowOrders_Details_UI(this);
                 }
 </code></pre>
 <p>Example with Expression:</p>
-<pre><code class="language-csdiff"> BindKeepViewVisibleAfterExit(()=&gt;Exp_1());
+<pre data-line="" class="language-csdiff line-numbers"><code> BindKeepViewVisibleAfterExit(()=>Exp_1());
                 if(NewViewRequired)
                 {
                     View = new UI.ShowOrders_Details_UI(this);
@@ -197,17 +197,17 @@ Example:</p>
 <p>Name in Migrated Code: <strong>OnLoadSendToBack</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff"> if(NewViewRequired)
+<pre data-line="" class="language-csdiff line-numbers"><code> if(NewViewRequired)
             {
                 View = new UI.ShowProducts_UI(this);
                 View.OnLoadSendToBack = true;
             }
 </code></pre>
 <p>Example with Expression:</p>
-<pre><code class="language-csdiff">if(NewViewRequired)
+<pre data-line="" class="language-csdiff line-numbers"><code>if(NewViewRequired)
             {
                 View = new UI.ShowProducts_UI(this);
-                View.BindOnLoadSendToBack (()=&gt;Exp_1());
+                View.BindOnLoadSendToBack (()=>Exp_1());
             }
 </code></pre>
 <h4 id="see-also-8">See Also :</h4>

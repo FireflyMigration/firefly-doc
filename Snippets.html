@@ -35,16 +35,16 @@
 Automatically the full call to the method is inserter to the code and the parameter is &quot;Test&quot; is marked.<br />
 You can change the text or press the Enter key to accept it.</p>
 <p><img src="Snippet.png" alt="Snippet" /></p>
-<pre><code class="language-csdiff">using System.Windows.Forms;
+<pre data-line="9,10" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
 namespace Northwind.Training
 {
     Class HelloWorld
     {
        public void Run()
        {
-          MessageBox.Show(&quot;Hello World&quot;, &quot;Hello World Caption&quot;, MessageBoxButton.OK);
-+         MessageBox.Show(&quot;the message&quot;);
-+         MessageBox.Show(&quot;Test&quot;);
+          MessageBox.Show("Hello World", "Hello World Caption", MessageBoxButton.OK);
+          MessageBox.Show("the message");
+          MessageBox.Show("Test");
 
 
        }     

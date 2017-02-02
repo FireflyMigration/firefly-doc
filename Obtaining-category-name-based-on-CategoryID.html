@@ -30,7 +30,7 @@
 <p>For the purposes of this article, we will refer to the Northwind database.</p>
 <h3 id="using-a-relation">Using a Relation</h3>
 <p>First, lets build a simple UIController grid which shows some columns from the Products Table. The code appears below:</p>
-<pre><code class="language-csdiff">using System; 
+<pre data-line="" class="language-csdiff line-numbers"><code>using System; 
 using System.Collections.Generic; 
 using System.Text; 
 using Firefly.Box; 
@@ -57,7 +57,7 @@ namespace Northwind.DevDemo
 <p>The screen looks like this:</p>
 <p><img src="showproductswithcategoryid.jpg" alt="" /></p>
 <p>The next step is to display the Category Name in the next column. One way of doing this is to add a relation to our code as follows:</p>
-<pre><code class="language-csdiff">using System;
+<pre data-line="" class="language-csdiff line-numbers"><code>using System;
 using System.Collections.Generic;
 using System.Text;
 using Firefly.Box;
@@ -91,7 +91,7 @@ namespace Northwind.DevDemo
 <p>We can now add the Category Name column to the screen as follows:</p>
 <p><img src="showproductswithcategoryidandname.jpg" alt="" /></p>
 <p>Now lets suppose that we want to write another program that will show data from the Prices table.This table includes the CategoryID column as well. Here is the code for this program:</p>
-<pre><code class="language-csdiff">namespace Northwind.DevDemo 
+<pre data-line="" class="language-csdiff line-numbers"><code>namespace Northwind.DevDemo 
 {     
     class ShowPrices : UIControllerBase
     {          
@@ -113,7 +113,7 @@ namespace Northwind.DevDemo
 <p>The screen looks as follows:</p>
 <p><img src="showpriceswitonlycatalogid.jpg" alt="" /></p>
 <p>Now lets add the CategoryName Column which will require once again, using a relation, as follows:</p>
-<pre><code class="language-csdiff">class ShowPrices : UIControllerBase
+<pre data-line="" class="language-csdiff line-numbers"><code>class ShowPrices : UIControllerBase
     {
  
         internal readonly Model.Prices _prices = new Model.Prices();
@@ -139,7 +139,7 @@ namespace Northwind.DevDemo
 Obviously, the need to create a relation to the Categories table each time proves to be repetitive.</p>
 <h3 id="using-a-businessprocess">Using a BusinessProcess</h3>
 <p>Let's introduce the following BusinessProcess Class called GetCategoryName, which returns the Category Name based on a CategoryID parameter, as follows:</p>
-<pre><code class="language-csdiff">namespace Northwind.DevDemo
+<pre data-line="" class="language-csdiff line-numbers"><code>namespace Northwind.DevDemo
 {
     class GetCategoryName : BusinessProcessBase
     {
@@ -167,7 +167,7 @@ Obviously, the need to create a relation to the Categories table each time prove
 </code></pre>
 <p>We can now use this utility in both our Classes above, ShowProducts and ShowPrices, by introducing a virtual column in both Classes and binding its value to the result of the Run method in the GetCategoryName Class.</p>
 <p>The adjustment will look like this, first in ShowPrices:</p>
-<pre><code class="language-csdiff">namespace Northwind.DevDemo
+<pre data-line="" class="language-csdiff line-numbers"><code>namespace Northwind.DevDemo
 {
     class ShowPricesUsingBP : UIControllerBase
     {
@@ -176,7 +176,7 @@ Obviously, the need to create a relation to the Categories table each time prove
  
          public ShowPricesUsingBP()
         {
-            _categoryName.BindValue(()=&gt;new Northwind.DevDemo.GetCategoryName().Run(_prices.CategoryID));
+            _categoryName.BindValue(()=>new Northwind.DevDemo.GetCategoryName().Run(_prices.CategoryID));
             View = new UI.ShowPricesUsingBPUI(this);
         }
  
@@ -188,7 +188,7 @@ Obviously, the need to create a relation to the Categories table each time prove
 }
 </code></pre>
 <p>and also in ShowProducts:</p>
-<pre><code class="language-csdiff">namespace Northwind.DevDemo
+<pre data-line="" class="language-csdiff line-numbers"><code>namespace Northwind.DevDemo
 {
     class ShowPricesUsingBP : UIControllerBase
     {
@@ -198,7 +198,7 @@ Obviously, the need to create a relation to the Categories table each time prove
          public ShowPricesUsingBP()
         {
             From = _prices;
-            _categoryName.BindValue(()=&gt;new Northwind.DevDemo.GetCategoryName().Run(_prices.CategoryID));
+            _categoryName.BindValue(()=>new Northwind.DevDemo.GetCategoryName().Run(_prices.CategoryID));
  
              View = new UI.ShowPricesUsingBPUI(this);
         }
@@ -214,13 +214,13 @@ Obviously, the need to create a relation to the Categories table each time prove
 <h3 id="method-in-the-entity">Method in the Entity</h3>
 <p>We can add a Method to each Entity with a CategoryID column to obtain the Category Name. The way to do this is to add a Method in each Entity Class, which returns the Category Name, based on the current CategoryID, as follows:</p>
 <p>For the Products and Prices Entities, we ad the following:</p>
-<pre><code class="language-csdiff">public Text GetCategoryName()
+<pre data-line="" class="language-csdiff line-numbers"><code>public Text GetCategoryName()
 {
     return new DevDemo.GetCategoryName().Run(this.CategoryID);
 }
 </code></pre>
 <p>In the ShowPrices Class code, we can now simplify the bindvalue statement as follows:</p>
-<pre><code class="language-csdiff">namespace Northwind.DevDemo
+<pre data-line="" class="language-csdiff line-numbers"><code>namespace Northwind.DevDemo
 {
     class ShowPricesUsingBP : UIControllerBase
     {
@@ -230,8 +230,8 @@ Obviously, the need to create a relation to the Categories table each time prove
         public ShowPricesUsingBP()
         {
             From = _prices;
- //           _categoryName.BindValue(()=&gt;new Northwind.DevDemo.GetCategoryName().Run(_prices.CategoryID));
-              _categoryName.BindValue(() =&gt; _prices.GetCategoryName());
+ //           _categoryName.BindValue(()=>new Northwind.DevDemo.GetCategoryName().Run(_prices.CategoryID));
+              _categoryName.BindValue(() => _prices.GetCategoryName());
  
             View = new UI.ShowPricesUsingBPUI(this);
         }
@@ -245,7 +245,7 @@ Obviously, the need to create a relation to the Categories table each time prove
 </code></pre>
 <p>Note the new BindValue syntax as opposed to the previous one, which is now commented out.</p>
 <p>The same applies for the ShowProducts Class code:</p>
-<pre><code class="language-csdiff">namespace Northwind.DevDemo
+<pre data-line="" class="language-csdiff line-numbers"><code>namespace Northwind.DevDemo
 {
     class ShowProductsUsingBP : UIControllerBase
     {
@@ -255,8 +255,8 @@ Obviously, the need to create a relation to the Categories table each time prove
         public ShowProductsUsingBP()
         {
             From = _products;
-            //_categoryName.BindValue(() =&gt; new Northwind.DevDemo.GetCategoryName().Run(_products.CategoryID));
-            _categoryName.BindValue(() =&gt; _products.GetCategoryName());
+            //_categoryName.BindValue(() => new Northwind.DevDemo.GetCategoryName().Run(_products.CategoryID));
+            _categoryName.BindValue(() => _products.GetCategoryName());
  
             View = new UI.ShowProductsUsingBPUI(this);
         }
@@ -273,41 +273,43 @@ Obviously, the need to create a relation to the Categories table each time prove
 <p>This can be useful, should you wish to directly bind a field using the Column Generator, to the Method. Note however, that in such a case, the field will not be sortable.</p>
 <h3 id="method-on-the-type">Method on the Type</h3>
 <p>The CategoryID field is defined as follows in the Products Entity:</p>
-<pre><code class="language-csdiff">/// &lt;summary&gt;CategoryID&lt;/summary&gt;
-public readonly NumberColumn CategoryID = new NumberColumn(&quot;CategoryID&quot;, &quot;N10&quot;, &quot;CategoryID&quot;);
+<pre data-line="" class="language-csdiff line-numbers"><code>/// <summary>CategoryID</summary>
+public readonly NumberColumn CategoryID = new NumberColumn("CategoryID", "N10", "CategoryID");
 </code></pre>
 <p>You can define a specific Type for the CategoryID as Follows:</p>
-<pre><code class="language-csdiff">namespace Northwind.Types
+<pre data-line="" class="language-csdiff line-numbers"><code>namespace Northwind.Types
 {
     class CategoryID : NumberColumn
     {
         public CategoryID()
-            : base(&quot;CategoryID&quot;, &quot;N10&quot;)
+            : base("CategoryID", "N10")
         {
         }
     }
 }
 </code></pre>
 <p>Now you redefine the CategoryID Numbercolumn in the Prices Entity Class to be defined based on the CategoryID Field's Type, as follows:</p>
-<pre><code class="language-csdiff">public readonly Types.CategoryID CategoryID = new Types.CategoryID();
+<pre data-line="" class="language-csdiff line-numbers"><code>public readonly Types.CategoryID CategoryID = new Types.CategoryID();
 </code></pre>
 <p>The same type of change is made in Products, firstly with the CategoryID Column Definition:</p>
-<pre><code class="language-csdiff">//public readonly NumberColumn CategoryID = new NumberColumn(&quot;CategoryID&quot;, &quot;N10&quot;, &quot;CategoryID&quot;);
+<pre data-line="" class="language-csdiff line-numbers"><code>//public readonly NumberColumn CategoryID = new NumberColumn("CategoryID", "N10", "CategoryID");
   public readonly Types.CategoryID CategoryID = new Types.CategoryID();
 </code></pre>
 <p>Secondly, The ShowProducts' Constructor now changes its BindValue for the Virtual Column as follows:</p>
-<pre><code class="language-csdiff">        public ShowPricesUsingBP()
+<pre data-line="" class="language-csdiff line-numbers"><code>        public ShowPricesUsingBP()
         {
             From = _prices;
  
-             //   _categoryName.BindValue(()=&gt;new Northwind.DevDemo.GetCategoryName().Run(_prices.CategoryID));
-            _categoryName.BindValue(() =&gt; _prices.CategoryID.GetCategoryName());
+             //   _categoryName.BindValue(()=>new Northwind.DevDemo.GetCategoryName().Run(_prices.CategoryID));
+            _categoryName.BindValue(() => _prices.CategoryID.GetCategoryName());
  
             View = new UI.ShowPricesUsingBPUI(this);
         }
+ ```
+Note also that when using the Column Wizard to build tables, the GetCategoryName Method will now be available as a method attached to CategoryID, as shown below:
+
+![](columngenwithmethodontype.jpg)
 </code></pre>
-<p>Note also that when using the Column Wizard to build tables, the GetCategoryName Method will now be available as a method attached to CategoryID, as shown below:</p>
-<p><img src="columngenwithmethodontype.jpg" alt="" /></p>
 </main><!-- .content -->
             </div><!-- .container-->
 

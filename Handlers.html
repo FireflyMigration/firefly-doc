@@ -33,11 +33,11 @@
 <p>Name in Migrated Code: <strong>Handlers.Add</strong> and the <strong>Handlers</strong> region of code<br />
 Location in Migrated Code: <strong>Constructor</strong> in the <strong>Event Handlers</strong> section (directly after the constructor<br />
 Example: In the constructor</p>
-<pre><code class="language-csdiff">   var PrintHandler = Handlers.Add(Print);
+<pre data-line="" class="language-csdiff line-numbers"><code>   var PrintHandler = Handlers.Add(Print);
    PrintHandler.Invokes += PrintHandler_Invokes;
 </code></pre>
 <p>Example: In the Handler Section:</p>
-<pre><code class="language-csdiff">  void PrintHandler_Invokes(Firefly.Box.Advanced.HandlerInvokeEventArgs e)
+<pre data-line="" class="language-csdiff line-numbers"><code>  void PrintHandler_Invokes(Firefly.Box.Advanced.HandlerInvokeEventArgs e)
   {
      e.Handled = true;
      // send range of this order
@@ -49,7 +49,7 @@ Example: In the constructor</p>
 <p>Name in Migrated Code: In the name of the parameter of the <strong>Handlers.Add</strong> method.<br />
 Location in Migrated Code: <strong>Constructor</strong><br />
 Example: In the constructor</p>
-<pre><code class="language-csdiff">   var PrintHandler = Handlers.Add(Print);
+<pre data-line="" class="language-csdiff line-numbers"><code>   var PrintHandler = Handlers.Add(Print);
    PrintHandler.Invokes += PrintHandler_Invokes;
 </code></pre>
 <h3 id="trigger-type">Trigger Type</h3>
@@ -59,7 +59,7 @@ Example: In the constructor</p>
 Location in Migrated Code: <strong>Constructor</strong><br />
 This defines a handler triggered by a keyboard shortcut.<br />
 Example:</p>
-<pre><code class="language-csdiff">var h = Handlers.Add(Keys.Shift | Keys.F3);
+<pre data-line="" class="language-csdiff line-numbers"><code>var h = Handlers.Add(Keys.Shift | Keys.F3);
 
 </code></pre>
 <p>####Internal</p>
@@ -67,7 +67,7 @@ Example:</p>
 Location in Migrated Code: <strong>Constructor</strong><br />
 This defines a handler triggered by an internal event command
 Example:</p>
-<pre><code class="language-csdiff">var Expand_vMyField_CopyFromHandler = Handlers.Add(Command.Expand, &quot;Copy From&quot;);
+<pre data-line="" class="language-csdiff line-numbers"><code>var Expand_vMyField_CopyFromHandler = Handlers.Add(Command.Expand, "Copy From");
 </code></pre>
 <p>Timer</p>
 <h4 id="expression">Expression</h4>

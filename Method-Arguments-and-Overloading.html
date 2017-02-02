@@ -41,14 +41,14 @@ Based on the parameters sent the matches method is be called.</p>
 <p>It can also receive the Text and the caption.</p>
 <p>The Show() method has 21 overloads meaning it has 21 variant of the method that receive different combination of parameters.</p>
 <p><img src="Method_Overloading.png" alt="Method Overloading" /></p>
-<pre><code class="language-csdiff">namespace Northwind.Training
+<pre data-line="8" class="language-csdiff line-numbers"><code>namespace Northwind.Training
 {
     class HelloWorld
     {
        public void Run()
        {
--           System.Windows.Forms.MessageBox.Show(&quot;Hello World&quot;);
-+           System.Windows.Forms.MessageBox.Show(&quot;Hello World&quot;, &quot;Hello World Caption&quot;, System.Windows.Forms.MessageBoxButton.OK);
+-           System.Windows.Forms.MessageBox.Show("Hello World");
+            System.Windows.Forms.MessageBox.Show("Hello World", "Hello World Caption", System.Windows.Forms.MessageBoxButton.OK);
        }     
     }
 }

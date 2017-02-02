@@ -31,7 +31,7 @@
 <p>In the previous article, based on Tables from the Northwind Database, we discussed how to improvise our code to obtain a Category Name for different Classes such as ShowProducts and ShowPrices, without having to use a relation each time. We showed how we can build a Method either in the Entity Class or even better, in the Type Class, if one exists. We then can directly reference this Method from any Class that we wish.</p>
 <h3 id="get-supplier-name">Get Supplier Name</h3>
 <p>Let's build a similar BusinessProcess to get the Supplier Name, based on the SupplierID, as follows.</p>
-<pre><code class="language-csdiff">class GetSupplierName : BusinessProcessBase
+<pre data-line="" class="language-csdiff line-numbers"><code>class GetSupplierName : BusinessProcessBase
 {
     internal readonly Model.Suppliers _suppliers = new Model.Suppliers();
     TextColumn _result;
@@ -55,10 +55,10 @@
 }
 </code></pre>
 <p>Now, let's define a Type called Supplier ID and add a Method to it that gets the Supplier Name:</p>
-<pre><code class="language-csdiff">class SupplierID : NumberColumn
+<pre data-line="" class="language-csdiff line-numbers"><code>class SupplierID : NumberColumn
 {
     public SupplierID()
-        : base(&quot;SupplierID&quot;, &quot;N10&quot;)
+        : base("SupplierID", "N10")
     {
     }
  
@@ -69,11 +69,11 @@
 }
 </code></pre>
 <p>Having defined the Type, let's redefine the SupplierID column in the Supplier Entity to be of type SupplierID:</p>
-<pre><code class="language-csdiff">/// &lt;summary&gt;SupplierID&lt;/summary&gt;
+<pre data-line="" class="language-csdiff line-numbers"><code>/// <summary>SupplierID</summary>
 public readonly Types.SupplierID SupplierID = new Types.SupplierID();
 </code></pre>
 <p>Now, as we did with GetCategoryName, let's create a virtual column called _supplierName and use BindValue to attach its value to the return value from GetSupplierName, as follows:</p>
-<pre><code class="language-csdiff">class ShowProductsUsingBP : UIControllerBase
+<pre data-line="" class="language-csdiff line-numbers"><code>class ShowProductsUsingBP : UIControllerBase
 {
     internal readonly Model.Products _products = new Model.Products();
  
@@ -84,8 +84,8 @@ public readonly Types.SupplierID SupplierID = new Types.SupplierID();
     {
         From = _products;
  
-        _categoryName.BindValue(() =&gt; _products.CategoryID.GetCategoryName());
-        _supplierName.BindValue(()=&gt; _products.SupplierID.GetSupplierName());
+        _categoryName.BindValue(() => _products.CategoryID.GetCategoryName());
+        _supplierName.BindValue(()=> _products.SupplierID.GetSupplierName());
  
         View = new UI.ShowProductsUsingBPUI(this);
     }
@@ -115,7 +115,7 @@ public readonly Types.SupplierID SupplierID = new Types.SupplierID();
 <li>Name - TextColumn</li>
 </ul>
 <p>The code appears as follows:</p>
-<pre><code class="language-csdiff">class GetNameFromNumberID : BusinessProcessBase
+<pre data-line="" class="language-csdiff line-numbers"><code>class GetNameFromNumberID : BusinessProcessBase
 {
     Text _result;
     TextColumn _name;
@@ -149,10 +149,10 @@ public readonly Types.SupplierID SupplierID = new Types.SupplierID();
 <li>Pass the SupplierID and the Supplier Name as parameters 2 and 3, to be displayed on the screen.</li>
 </ul>
 <p>The code appears below:</p>
-<pre><code class="language-csdiff">class SupplierID : NumberColumn
+<pre data-line="" class="language-csdiff line-numbers"><code>class SupplierID : NumberColumn
 {
     public SupplierID()
-        : base(&quot;SupplierID&quot;, &quot;N10&quot;)
+        : base("SupplierID", "N10")
     {
     }
         

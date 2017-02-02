@@ -99,9 +99,9 @@ For a comprehensive overview of all properties and methods in this class, see: P
 <p>Name in Migrated Code: <strong>Name</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioPrint_Order = new ENV.Printing.PrinterWriter()
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioPrint_Order = new ENV.Printing.PrinterWriter()
 {
-    Name = &quot;PrintOrders&quot;,
+    Name = "PrintOrders",
     //other code
 };
 </code></pre>
@@ -113,7 +113,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>PrinterName</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioPrint_Order = new ENV.Printing.PrinterWriter()
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioPrint_Order = new ENV.Printing.PrinterWriter()
 {   
     PrinterName = Shared.Printing.Printers.Mdpst1.PrinterName,
     //other code
@@ -127,7 +127,7 @@ Example:</p>
 <p>Name in Migrated Code: Name of a File is passed in the PrinterWriter constructor
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioPrint_Order = new ENV.Printing.PrinterWriter(vFileName)
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioPrint_Order = new ENV.Printing.PrinterWriter(vFileName)
 {
     // code
 };
@@ -141,7 +141,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>PrintDialog</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioPrint_Order = new ENV.Printing.PrinterWriter()
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioPrint_Order = new ENV.Printing.PrinterWriter()
 {
     PrintDialog = true,
     //other code
@@ -155,7 +155,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>PaperKind</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioPrint_Order = new ENV.Printing.PrinterWriter()
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioPrint_Order = new ENV.Printing.PrinterWriter()
 {
     PaperKind = System.Drawing.Printing.PaperKind.A4,
     //other code
@@ -170,7 +170,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>PageHeader</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioPrint_Order = new ENV.Printing.PrinterWriter()
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioPrint_Order = new ENV.Printing.PrinterWriter()
 {
     PageHeader = _layout.HeaderLayout,
     //other code
@@ -185,7 +185,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>PageFooter</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioPrint_Order = new ENV.Printing.PrinterWriter()
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioPrint_Order = new ENV.Printing.PrinterWriter()
 {
     PageFooter = _layout.FooterLayout,
     //other code
@@ -200,14 +200,14 @@ Note: For more information regarding _layout, see:<a href="http://www.fireflymig
 <p>Name in Migrated Code: <strong>Copies</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioPrint_Order = new ENV.Printing.PrinterWriter()
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioPrint_Order = new ENV.Printing.PrinterWriter()
 {
     Copies = 1,
     //other code
 };
 </code></pre>
 <p>Example Expression:</p>
-<pre><code class="language-csdiff">_ioPrint_Order = new ENV.Printing.PrinterWriter()
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioPrint_Order = new ENV.Printing.PrinterWriter()
 {
     Copies = Exp_1(),
     //other code
@@ -221,7 +221,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>Landscape</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioPrint_Order = new ENV.Printing.PrinterWriter()
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioPrint_Order = new ENV.Printing.PrinterWriter()
 {
     LandScape = true,
     //other code
@@ -235,7 +235,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>PrintPreview</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioPrint = new ENV.Printing.PrinterWriter()
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioPrint = new ENV.Printing.PrinterWriter()
 {
     PrintPreview = true,
     //other code
@@ -253,9 +253,9 @@ Example:</p>
 <p>Name in Migrated Code: <strong>Name</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioPrint_Order = new ENV.Printing.TextPrinterWriter()
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioPrint_Order = new ENV.Printing.TextPrinterWriter()
 {
-    Name = &quot;PrintFormattedOrders&quot;,
+    Name = "PrintFormattedOrders",
     //other code
 };
 </code></pre>
@@ -263,7 +263,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>Printer</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioPrint_Order = new ENV.Printing.TextPrinterWriter()
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioPrint_Order = new ENV.Printing.TextPrinterWriter()
 {
     Printer = Shared.Printing.Printers.Printer1,
     //other code
@@ -273,7 +273,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>IgnoreNewPage</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioPrint_Order = new ENV.Printing.TextPrinterWriter()
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioPrint_Order = new ENV.Printing.TextPrinterWriter()
 {
     IgnoreNewPage = true,
     //other code
@@ -284,7 +284,7 @@ Example:</p>
 <p>Name in Migrated Code: Name of a File is passed in the TextPrinterWriter constructor
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioTextPrint = new ENV.Printing.TextPrinterWriter(&quot;%TextPrinterFileName%&quot;)
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioTextPrint = new ENV.Printing.TextPrinterWriter("%TextPrinterFileName%")
 {
     // code
 };
@@ -293,7 +293,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>LinesPerPage</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioTextPrint = new ENV.Printing.TextPrinterWriter(&quot;%PRN_PORT%&quot;)
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioTextPrint = new ENV.Printing.TextPrinterWriter("%PRN_PORT%")
 {
 	Printer = Shared.Printing.Printers.Printer1,
 	LinesPerPage = 60,
@@ -306,7 +306,7 @@ _ioTextPrint.Open();
 <p>Name in Migrated Code: <strong>PerformRightToLeftManipulations</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioTextPrint = new ENV.Printing.TextPrinterWriter(&quot;%PRN_PORT%&quot;)
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioTextPrint = new ENV.Printing.TextPrinterWriter("%PRN_PORT%")
 {
 	Printer = Shared.Printing.Printers.Printer1,
 	PerformRightToLeftManipulations = true;
@@ -318,12 +318,12 @@ _ioTextPrint.Open();
 <p>Name in Migrated Code: <strong>FindIOByName</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioTextPrint = ENV.IO.TextFileWriter.FindIOByName(u.Trim(pFilename));
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioTextPrint = ENV.IO.TextFileWriter.FindIOByName(u.Trim(pFilename));
 if(_ioTextPrint==null)
 {
    _ioTextPrint = new ENV.IO.FileWriter()
   {
-  	Name = &quot;file1&quot;
+  	Name = "file1"
   };
   _ioTextPrint.Open();
 }
@@ -340,9 +340,9 @@ Example: Define the following object in the Class:</p>
 <p>Name in Migrated Code: <strong>Name</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioFileWrite = new ENV.IO.FileWriter()
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioFileWrite = new ENV.IO.FileWriter()
 {
-    Name = &quot;PrintOrdersToFile&quot;,
+    Name = "PrintOrdersToFile",
     //other code
 };
 </code></pre>
@@ -350,7 +350,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>AutoNewLine</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioFileWrite = new ENV.IO.FileWriter()
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioFileWrite = new ENV.IO.FileWriter()
 {     
     autoNewLine = false,  ??
     //other code
@@ -360,7 +360,7 @@ Example:</p>
 <p>Name in Migrated Code: FileName passed in Constructor
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioFileWrite = new ENV.IO.FileWriter(&quot;FileName.Txt&quot;)
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioFileWrite = new ENV.IO.FileWriter("FileName.Txt")
 {     
   //other code
 };
@@ -369,7 +369,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>Append</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioFileWrite = new ENV.IO.FileWriter(&quot;FileName.Txt&quot;)
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioFileWrite = new ENV.IO.FileWriter("FileName.Txt")
 {     
   Append = true,
 };
@@ -380,7 +380,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>Oem</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioFileWrite = new ENV.IO.FileWriter(&quot;FileName.Txt&quot;)
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioFileWrite = new ENV.IO.FileWriter("FileName.Txt")
 {     
   Oem = true,
 };
@@ -389,7 +389,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>PerformRightToLeftManipulations</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioFileWrite = new ENV.IO.FileWriter(&quot;FileName.txt&quot;)
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioFileWrite = new ENV.IO.FileWriter("FileName.txt")
 {
 	PerformRightToLeftManipulations = true;
         //other code
@@ -400,12 +400,12 @@ _ioFileWrite.Open();
 <p>Name in Migrated Code: <strong>FindIOByName</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioFileWrite = ENV.IO.TextFileWriter.FindIOByName(u.Trim(pFilename));
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioFileWrite = ENV.IO.TextFileWriter.FindIOByName(u.Trim(pFilename));
 if(_ioFileWrite==null)
 {
    _ioFileWrite = new ENV.IO.FileWriter()
   {
-  	Name = &quot;file1&quot;
+  	Name = "file1"
   };
   _ioFileWrite.Open();
 }
@@ -420,9 +420,9 @@ Example: Define the following object in the Class:</p>
 <p>Name in Migrated Code: <strong>Name</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioInput = new ENV.IO.FileReader()
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioInput = new ENV.IO.FileReader()
 {
-    Name = &quot;ReadFromFile&quot;,
+    Name = "ReadFromFile",
     //other code
 };
 </code></pre>
@@ -430,7 +430,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>AutoNewLine</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioInput = new ENV.IO.FileReader()
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioInput = new ENV.IO.FileReader()
 {     
     autoNewLine = false,  
     //other code
@@ -440,7 +440,7 @@ Example:</p>
 <p>Name in Migrated Code: FileName passed in Constructor
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioInput = new ENV.IO.FileReader(&quot;FileName.Txt&quot;)
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioInput = new ENV.IO.FileReader("FileName.Txt")
 {     
   //other code
 };
@@ -450,7 +450,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>Oem</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioInPut = new ENV.IO.FileReader(&quot;FileName.Txt&quot;)
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioInPut = new ENV.IO.FileReader("FileName.Txt")
 {     
   Oem = true,
 };
@@ -464,9 +464,9 @@ The following sub sections describe the migrated code usage for the options and 
 <p>Name in Migrated Code: <strong>Name</strong>
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioWeb = new ENV.IO.WebWriter()
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioWeb = new ENV.IO.WebWriter()
 {
-    Name = &quot;WebOperation&quot;,
+    Name = "WebOperation",
     //other code
 };
 </code></pre>
@@ -474,7 +474,7 @@ Example:</p>
 <p>Name in Migrated Code: FileName passed in Constructor
 Location in Migrated Code: <strong>OnLoad Method</strong>
 Example:</p>
-<pre><code class="language-csdiff">_ioWebOutput = new ENV.IO.WebWriter(&quot;FileName.htm&quot;)
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioWebOutput = new ENV.IO.WebWriter("FileName.htm")
 {     
   //other code
 };
@@ -487,9 +487,9 @@ Exp/Var: File name passed in constructor</p>
 <p>In the Class:</p>
 <p><code>ENV.IO.XML _ioXmlFIle;</code></p>
 <p>In the OnLoad Method:</p>
-<pre><code class="language-csdiff">_ioXmlFile = new ENV.IO.XML(&quot;c:\\temp\\FileName.xml&quot;)
+<pre data-line="" class="language-csdiff line-numbers"><code>_ioXmlFile = new ENV.IO.XML("c:\\temp\\FileName.xml")
 {
-   Name = &quot;קובץ XML&quot;,
+   Name = "קובץ XML",
    Readonly = true
 };
 Streams.Add(_ioXmlFile);
@@ -501,9 +501,9 @@ Streams.Add(_ioXmlFile);
 <p>In the Class:
 <code>ByteArrayWriter _io;</code>
 In the OnLoad Method:</p>
-<pre><code class="language-csdiff">_io = new ByteArrayWriter(vMyBlob)
+<pre data-line="" class="language-csdiff line-numbers"><code>_io = new ByteArrayWriter(vMyBlob)
 {
-    Name = &quot;HTM&quot;,
+    Name = "HTM",
     AutoNewLine = false
 };
 Streams.Add(_io);
@@ -524,7 +524,7 @@ Exp/Var:</p>
 <h4 id="character-set-to-use-3">Character set to use</h4>
 <p><code>ENV.IO.ByteArrayReader _io;</code></p>
 <p>In the OnLoad Method:</p>
-<pre><code class="language-csdiff_io">{
+<pre data-line="" class="language-csdiff line-numbers"><code>{
     IgnoreLineFeed = true
 };
 Streams.Add(_io);

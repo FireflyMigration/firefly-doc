@@ -36,9 +36,9 @@ Location in Migrated Code: <strong>Constructor</strong></p>
 <p>Notes<br />
 The task name is migrated to a Class Name. In the migrated code, the original name is also preserved for backward compatibility reasons (Such as the Prog function) in the Title Property.</p>
 <p>Example</p>
-<pre><code class="language-csdiff">  public ShowOrders()
+<pre data-line="" class="language-csdiff line-numbers"><code>  public ShowOrders()
         {   //... other code
-            Title = &quot;ShowOrders&quot;;
+            Title = "ShowOrders";
             // other code
         }
 </code></pre>
@@ -53,17 +53,17 @@ The task name is migrated to a Class Name. In the migrated code, the original na
 <p>Name in Migrated Code: <strong>UIController, BusinessProcess</strong>
 Location in Migrated Code: <strong>Class</strong>
 Example: UIController:</p>
-<pre><code class="language-csdiff">internal class Orders1 :UIControllerBase 
+<pre data-line="" class="language-csdiff line-numbers"><code>internal class Orders1 :UIControllerBase 
  {
  }
 </code></pre>
 <p>Example: BusinessProcess:</p>
-<pre><code class="language-csdiff">internal class Print_Order : BusinessProcessBase 
+<pre data-line="" class="language-csdiff line-numbers"><code>internal class Print_Order : BusinessProcessBase 
  {
  }
 </code></pre>
 <p>Note: The FlowUIController Class is used for Magic Code from Online tasks that have code in the Record Main. For such Code, The migrated code will inherit from the FlowUIController Class:</p>
-<pre><code class="language-csdiff"> internal class Orders1 : FlowUIControllerBase 
+<pre data-line="" class="language-csdiff line-numbers"><code> internal class Orders1 : FlowUIControllerBase 
  {
  }
 </code></pre>
@@ -113,19 +113,19 @@ Values:</p>
 </tbody>
 </table>
 <p>Example: Browse:</p>
-<pre><code class="language-csdiff">Activity = Activities.Browse;
+<pre data-line="" class="language-csdiff line-numbers"><code>Activity = Activities.Browse;
 </code></pre>
 <p>Example: By Parent:</p>
-<pre><code class="language-csdiff">  public ShowOrders()
+<pre data-line="" class="language-csdiff line-numbers"><code>  public ShowOrders()
         {   //... other code
             Activity = u.ActivityOfParent;
             // other code
         }
 </code></pre>
 <p>Example: By Expression:</p>
-<pre><code class="language-csdiff">  public ShowOrders()
+<pre data-line="" class="language-csdiff line-numbers"><code>  public ShowOrders()
         {   //... other code
-            Activity =  u.TranslateTaskActivity(u.if(1==1,&quot;Q&quot;,&quot;M&quot;)); 
+            Activity =  u.TranslateTaskActivity(u.if(1==1,"Q","M")); 
             // other code
         }
 </code></pre>
@@ -163,19 +163,19 @@ Values:</p>
 </tbody>
 </table>
 <p>Example: Exit:</p>
-<pre><code class="language-csdiff">Exit();
+<pre data-line="" class="language-csdiff line-numbers"><code>Exit();
 </code></pre>
 <p>Example: Exit Before Row:</p>
-<pre><code class="language-csdiff">Exit(ExitTiming.BeforeRow, () =&gt; u.EOF(0, 1));
+<pre data-line="" class="language-csdiff line-numbers"><code>Exit(ExitTiming.BeforeRow, () => u.EOF(0, 1));
 </code></pre>
 <p>Example: Exit After Row</p>
-<pre><code class="language-csdiff">Exit(ExitTiming.AfterRow, () =&gt; Counter == 10);
+<pre data-line="" class="language-csdiff line-numbers"><code>Exit(ExitTiming.AfterRow, () => Counter == 10);
 </code></pre>
 <p>Note: As stated, the 'Immediately when condition is changed' option, translates in the migrated code to ExitTiming.AsSoonAsPossible. In this scenario, magic evaluates the end condition after each operation in the code. To support this behaviour, migrated code with this option will place the EvaluateExitCondition() Method between each line of code.<br />
 Example:</p>
-<pre><code class="language-csdiff">protected override void OnLoad()
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLoad()
 {
-   Exit(ExitTiming.AsSoonAsPossible,() =&gt; numerator==1);
+   Exit(ExitTiming.AsSoonAsPossible,() => numerator==1);
 }
 
 protected override void OnLeaveRow()
@@ -183,7 +183,7 @@ protected override void OnLeaveRow()
     EvaluateExitCondition();
     numerator.Value = 1;
     EvaluateExitCondition();
-    Warning(&quot;Message to User&quot;);
+    Warning("Message to User");
     EvaluateExitCondition();
     numerator.Value = 2;
 }
@@ -200,10 +200,10 @@ protected override void OnLeaveRow()
 <p>Name in Migrated Code: <strong>return _taskresult</strong><br />
 Location in Migrated Code: <strong>Run Method</strong><br />
 Example:</p>
-<pre><code class="language-csdiff">class batchToCalculateSum : BusinessProcessBase 
+<pre data-line="" class="language-csdiff line-numbers"><code>class batchToCalculateSum : BusinessProcessBase 
  {
-   readonly NumberColumn var1 = new NumberColumn(&quot;var1&quot;, &quot;2&quot;);
-   readonly NumberColumn var2 = new NumberColumn(&quot;var2&quot;, &quot;2&quot;);
+   readonly NumberColumn var1 = new NumberColumn("var1", "2");
+   readonly NumberColumn var2 = new NumberColumn("var2", "2");
    Number _taskResult;
    public batchToCalculateSum()
    {
@@ -230,7 +230,7 @@ Example:</p>
 <p>Name in Migrated Code: <strong>AllowSelect</strong><br />
 Location in Migrated Code: OnLoad Method
 Example:</p>
-<pre><code class="language-csdiff">      protected override void OnLoad()
+<pre data-line="" class="language-csdiff line-numbers"><code>      protected override void OnLoad()
         {
             // other code
             AllowSelect = true;
@@ -248,7 +248,7 @@ Location in Migrated Code: <strong>OnLoad Method</strong><br />
 Notes: This option allows the cache for relations to be stored even when exiting the class. Use this option for scenarios where it is very likely or definite that the class will execute again, requiring the relation cache from before to continue to be available.<br />
 The option is used together with CachedUIController and or Lazy. It is meant solely for the purposes of backward compatibility and should not be used when writing new code.<br />
 Example:</p>
-<pre><code class="language-csdiff"> KeepChildRelationCacheAlive = true;
+<pre data-line="" class="language-csdiff line-numbers"><code> KeepChildRelationCacheAlive = true;
 </code></pre>
 <hr />
 <h1 id="advanced-tab">Advanced Tab</h1>
@@ -259,7 +259,7 @@ Example:</p>
 <p>Name in Migrated Code: AllowSelect
 Location in Migrated Code: OnLoad Method
 Example:</p>
-<pre><code class="language-csdiff">    protected override void OnLoad()
+<pre data-line="" class="language-csdiff line-numbers"><code>    protected override void OnLoad()
       {
           // other code
           AllowSelect = true;
@@ -277,14 +277,14 @@ Notes:<br />
 This option allows the cache for relations to be stored even when exiting the class. Use this option for scenarios where it is very likely or definite that the class will execute again, requiring the relation cache from before to continue to be available.<br />
 The option is used together with CachedUIController and or Lazy. It is meant solely for the purposes of backward compatibility and should not be used when writing new code.
 Example:</p>
-<pre><code class="language-csdiff">KeepChildRelationCacheAlive = true;
+<pre data-line="" class="language-csdiff line-numbers"><code>KeepChildRelationCacheAlive = true;
 </code></pre>
 <h2 id="main-display">Main Display</h2>
 <p>This Option determines which screen to display based on a numeric value obtained by an expression.
 Name in Migrated Code: <strong>See example</strong><br />
 Location in Migrated Code: <strong>OnLoad Method</strong><br />
 Example:</p>
-<pre><code class="language-csdiff">protected override void OnLoad() {
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLoad() {
 
    // other code
    switch ((int)(u.If(vEnglish, 2, 1)))
@@ -348,7 +348,7 @@ Values:</p>
 </table>
 <p>Note: The Group option is only applicable for BusinessProcess.<br />
 Example:</p>
-<pre><code class="language-csdiff">TransactionScope = TransactionScopes.RowLocking; 
+<pre data-line="" class="language-csdiff line-numbers"><code>TransactionScope = TransactionScopes.RowLocking; 
 </code></pre>
 <p><strong>See Also:</strong></p>
 <ul>
@@ -387,7 +387,7 @@ Values:</p>
 </tbody>
 </table>
 <p>Example: OnRowSaving:</p>
-<pre><code class="language-csdiff">RowLocking = LockingStrategy.OnRowSaving; 
+<pre data-line="" class="language-csdiff line-numbers"><code>RowLocking = LockingStrategy.OnRowSaving; 
 </code></pre>
 <p><strong>See Also:</strong></p>
 <ul>
@@ -398,7 +398,7 @@ Values:</p>
 <p>Note: If the Locking Strategy is “On Modify” in Magic (LockingSTrategy.OnUserEdit) then it may be necessary when calling a task or program to specify that the current record with all its links must be locked.<br />
 This may be specified in Magic by clicking Ctrl+P on the call task or call program line, and specifying the lock as 'Yes' in the dialog that appears. To support this functionality, the LockCurrentRow method is employed.
 As an example:</p>
-<pre><code class="language-csdiff">if(V_counter == 1) 
+<pre data-line="" class="language-csdiff line-numbers"><code>if(V_counter == 1) 
     { 
         LockCurrentRow(); 
         new ProgramName(this).Run(); 
@@ -413,17 +413,17 @@ As an example:</p>
 <h2 id="cache-strategy">Cache Strategy</h2>
 <p>The cache strategy that will be used for any specific table is determined by the property defined with the entity definition in the Class.<br />
 See: From. * As a reminder, here is the code for a table definition in a Class that will switch the cache on.</p>
-<pre><code class="language-csdiff">readonly Model.Categories _categories = new Model.Categories { Cached = true }; 
+<pre data-line="" class="language-csdiff line-numbers"><code>readonly Model.Categories _categories = new Model.Categories { Cached = true }; 
 </code></pre>
 <hr />
 <h2 id="error-behavior-strategy">Error Behavior Strategy</h2>
 <p>Name in Migrated Code: OnDatabaseErrorRetry<br />
 Location in Migrated Code: OnLoad Method<br />
 Example: Error behaviour strategy = abort</p>
-<pre><code class="language-csdiff"> OnDatabaseErrorRetry = false; 
+<pre data-line="" class="language-csdiff line-numbers"><code> OnDatabaseErrorRetry = false; 
 </code></pre>
 <p>Example: Error behaviour strategy = recover</p>
-<pre><code class="language-csdiff">OnDatabaseErrorRetry = true; 
+<pre data-line="" class="language-csdiff line-numbers"><code>OnDatabaseErrorRetry = true; 
 </code></pre>
 <p><strong>See Also:</strong></p>
 <ul>
@@ -435,10 +435,10 @@ Example: Error behaviour strategy = abort</p>
 <p>Name in Migrated Code: <strong>AllowUserAbort</strong><br />
 Location in Migrated Code: <strong>OnLoad Method</strong><br />
 Examples:</p>
-<pre><code class="language-csdiff">AllowUserAbort = true;
+<pre data-line="" class="language-csdiff line-numbers"><code>AllowUserAbort = true;
 </code></pre>
 <p>Example With Expression:</p>
-<pre><code class="language-csdiff">AllowUserAbort = Customers.CustomerID == &quot;1&quot;;
+<pre data-line="" class="language-csdiff line-numbers"><code>AllowUserAbort = Customers.CustomerID == "1";
 </code></pre>
 <p>Note: This property allows the user to abort a Business process task by pressing Esc, or by clicking on a parent form. See Also: * Property and code example</p>
 <hr />
@@ -447,10 +447,10 @@ Examples:</p>
 Location in Migrated Class: <strong>InitializeDataView Method</strong><br />
 Example:</p>
 <p>In the Class, define an object that represents the main table, as follows:</p>
-<pre><code class="language-csdiff">internal readonly Model.Customers Customers = new Model.Customers;
+<pre data-line="" class="language-csdiff line-numbers"><code>internal readonly Model.Customers Customers = new Model.Customers;
 </code></pre>
 <p>In the constructor, define the table as the main table using From:</p>
-<pre><code class="language-csdiff">public ShowCustomers()
+<pre data-line="" class="language-csdiff line-numbers"><code>public ShowCustomers()
         {
             //other code
             InitializeDataView();
@@ -474,7 +474,7 @@ For further comparison articles, go to: Comparing migrated code with Magic</p>
 <p>Name in Migrated Code: <strong>OrderBy</strong><br />
 Location in Migrated Code: <strong>InitializeDataView Method</strong><br />
 Examples:</p>
-<pre><code class="language-csdiff">void InitializeDataViewAndUserFlow()
+<pre data-line="" class="language-csdiff line-numbers"><code>void InitializeDataViewAndUserFlow()
 {
         From = Customers;
         OrderBy = Customers.SortByCustomerID;
@@ -491,7 +491,7 @@ Examples:</p>
 Location in Migrated Code: <strong>OnLoad Method</strong></p>
 <p>Note:  If the index is determined according to a boolean value based on an expression then the migrated code will have the orderBy statement in the OnLoad Method as opposed to the InitializeDataView Method. The following example shows the usage of a boolean expression to determine the index to be used in the Categories file:
 Example:</p>
-<pre><code class="language-csdiff">   protected override void OnLoad()
+<pre data-line="" class="language-csdiff line-numbers"><code>   protected override void OnLoad()
    {
         // other code
         OrderBy = Customers.Indexes[u.If(v_Indicator == 1,

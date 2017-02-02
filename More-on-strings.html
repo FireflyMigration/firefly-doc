@@ -34,29 +34,29 @@ For example:</p>
 <li>To display the quote sign in a message box use &quot; before the quote</li>
 <li>To display a message with 2 lines use \r\n</li>
 </ul>
-<pre><code class="language-csdiff">using System.Windows.Forms;
+<pre data-line="7,8" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
 namespace Northwind.Training
 {
     class MoreOnStrings
     {
-        MessageBox.Show(&quot;I'm a simple string&quot;);
-+       MessageBox.Show(&quot;I'm a quote\&quot;&quot;);
-+       MessageBox.Show(&quot;Line one\r\nLine Two&quot;);
+        MessageBox.Show("I'm a simple string");
+        MessageBox.Show("I'm a quote\"");
+        MessageBox.Show("Line one\r\nLine Two");
     }
 }
 </code></pre>
 <p>To display the backslash character double it: instead of \ use \</p>
-<pre><code class="language-csdiff">MessageBox.Show(&quot;Windows Path: c:\\windows&quot;);
+<pre data-line="" class="language-csdiff line-numbers"><code>MessageBox.Show("Windows Path: c:\\windows");
 </code></pre>
 <p>Or Alternatively: to display a string as is use the @ sign before the string</p>
-<pre><code class="language-csdiff">MessageBox.Show(@&quot;Windows Path: c:\windows using the @ sign to use quites just say &quot;&quot;double quotes&quot;&quot; &quot;);
+<pre data-line="" class="language-csdiff line-numbers"><code>MessageBox.Show(@"Windows Path: c:\windows using the @ sign to use quites just say ""double quotes"" ");
 </code></pre>
 <p>The @ sign can be used also to display multi line text without the need to use \n in the string:</p>
-<pre><code class="language-csdiff">MessageBox.Show(@&quot;I'm a multi 
+<pre data-line="" class="language-csdiff line-numbers"><code>MessageBox.Show(@"I'm a multi 
 line 
 text 
 in many 
-line&quot;);
+line");
 </code></pre>
 <p>Exercise : <a href="Data-Types-Exercise.html">Data types</a></p>
 <hr />

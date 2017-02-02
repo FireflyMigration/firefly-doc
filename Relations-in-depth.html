@@ -29,7 +29,7 @@
 <p>In this article we are going to review different types of Relations in your migrated code and their interaction with the database. We'll look at the difference between Find (Find, Insert if not found) and Join (Left Outer Join, Inner Join) as well as the different SQL code that each one generates. We will also discuss optimizing the SQL code for Relations, by using Cache. This article doesn't address Insert relation type and InsertIfNotFound relation types. To read more about these topics, and get code samples please see: <a href="http://www.fireflymigration.com/reference/html/T_Firefly_Box_RelationType.htm">RelationType Documentation</a></p>
 <h1 id="find-relation">Find Relation</h1>
 <p>To start with, we'll create a simple UIController, which will display a list of products and it's Categories.</p>
-<pre><code class="language-csdiff">    class ShowProducts : UIControllerBase
+<pre data-line="" class="language-csdiff line-numbers"><code>    class ShowProducts : UIControllerBase
     {
         internal readonly Model.Products _products = new Model.Products();
         internal readonly Model.Categories _categories = new Model.Categories()
@@ -60,7 +60,7 @@
 <h2 id="viewing-the-sql">Viewing the SQL</h2>
 <p>As a rule, a Relation is used to fetch related data from the database (or from Cache), for each row displayed in the grid. This rule applies whenever we enter a row, or whenever the values that define the Relation are changed (recompute). Now let's look into what goes on behind the scenes in the database, when we open this screen. The SQL code appears in the Output window. (For more details on the settings required to see SQL in the Output window, see: <a href="View-SQL-Output.html">View SQL Output</a> ).</p>
 <p>Let's examine the SQL code in the Output screen. Here is the generated SQL code, as shown in the Output window, for all 15 lines displayed on the grid:</p>
-<pre><code class="language-csdiff">ExecuteNonQuery - sp_cursorprepexec
+<pre data-line="" class="language-csdiff line-numbers"><code>ExecuteNonQuery - sp_cursorprepexec
  
 Query Parameters:
 @handle(Int32) = 
@@ -141,7 +141,7 @@ ExecuteReader Duration: 0
 <p>Let's review each and every part of the above statements.</p>
 <h3 id="first-statement">First statement</h3>
 <p>This statement declares a server side cursor. The cursor contains a select statement for the main table that returns all the rows from the Product entity, as displayed below:</p>
-<pre><code class="language-csdiff">ExecuteNonQuery - sp_cursorprepexec
+<pre data-line="" class="language-csdiff line-numbers"><code>ExecuteNonQuery - sp_cursorprepexec
  
 Query Parameters:
 @handle(Int32) = 
@@ -159,7 +159,7 @@ ExecuteReader Duration .. : 81.0046
 </code></pre>
 <h3 id="second-statement">Second statement:</h3>
 <p>This statement fetches the data from the cursor that was just declared, as displayed below:</p>
-<pre><code class="language-csdiff">ExecuteReader - sp_cursorfetch
+<pre data-line="" class="language-csdiff line-numbers"><code>ExecuteReader - sp_cursorfetch
  
 Query Parameters:
 @cursor(Int32) = 180150003
@@ -169,7 +169,7 @@ Query Parameters:
 </code></pre>
 <h3 id="third-statement">Third statement</h3>
 <p>This statement reflects that the program code is fetching data from the database using a Select command. This statement is the first one directly referring to the Relation that we defined.</p>
-<pre><code class="language-csdiff">ExecuteReader - 
+<pre data-line="" class="language-csdiff line-numbers"><code>ExecuteReader - 
 SELECT CategoryID, CategoryName, Description 
 FROM dbo.Categories 
 WHERE CategoryID = 5
@@ -184,13 +184,13 @@ ExecuteReader Duration..: 34.0019
 <h2 id="enabling-cache">Enabling Cache</h2>
 <p>To enable Cache either in the Entity or in the Task, Type “Cached = true” either in the Entity or the Task, as displayed below.</p>
 <p>In the entity:</p>
-<pre><code class="language-csdiff">        public Categories() : base(&quot;dbo.Categories&quot;, &quot;Categories&quot;, DataSources.Northwind1)
+<pre data-line="" class="language-csdiff line-numbers"><code>        public Categories() : base("dbo.Categories", "Categories", DataSources.Northwind1)
         {
              Cached = true;
         }
 </code></pre>
 <p>In the task:</p>
-<pre><code class="language-csdiff">        internal readonly Model.Categories _categories = new Model.Categories()
+<pre data-line="" class="language-csdiff line-numbers"><code>        internal readonly Model.Categories _categories = new Model.Categories()
         {
             Cached = true,
         };
@@ -200,20 +200,20 @@ ExecuteReader Duration..: 34.0019
 <p>Even if you enable Cache, rows from a dB table will only be saved to the Cache if the following specific 3 conditions are met:</p>
 <h3 id="unique-sort">Unique Sort</h3>
 <p>A unique sort was declared for the Relation. For example, here is a unique sort, as defined in the Categories entity:</p>
-<pre><code class="language-csdiff">        public readonly Sort SortByCategoryID = new Sort
+<pre data-line="" class="language-csdiff line-numbers"><code>        public readonly Sort SortByCategoryID = new Sort
         {
-        	Caption = &quot;CategoryID&quot;,
+        	Caption = "CategoryID",
         	Unique = true 
         }
 </code></pre>
 <p>.. and here is the code that shows how the Relation declares this unique sort:</p>
-<pre><code class="language-csdiff">           Relations.Add(_categories,RelationType.Find,
+<pre data-line="" class="language-csdiff line-numbers"><code>           Relations.Add(_categories,RelationType.Find,
                 _categories.CategoryID.IsEqualTo(_products.CategoryID),
                 _categories.SortByCategoryID);
 </code></pre>
 <h3 id="use-all-segments">Use all Segments</h3>
 <p>All the segments of the unique sort must be defined in the Relation's Where clause. For example, the code for this unique sort defines only one segment, CategoryID, as shown below, which the Relation Where clause uses, thus in this example, the Relation is using all segments.</p>
-<pre><code class="language-csdiff">  void InitializeIndexes()      
+<pre data-line="" class="language-csdiff line-numbers"><code>  void InitializeIndexes()      
   {
  
       SortByCategoryID.Add(CategoryID);
@@ -222,10 +222,10 @@ ExecuteReader Duration..: 34.0019
 <p>If the unique index also included, let's say, the Category Name segment, then Category Name would also have to appear in the Relation code, in order for Cache to be enabled.</p>
 <h3 id="implicit-use-of-primary-key-or-other-unique-index">Implicit Use of Primary key or other Unique Index</h3>
 <p>Even if the Relation does not use a specifically specified unique sort, if the Where criteria for the Relation match any of the unique indexes of the entity or it's primary key, Cache will still be applied. For example, the CategoryID columns is defined as the primary key of the Categories entity:</p>
-<pre><code class="language-csdiff">class Categories : Entity 
+<pre data-line="" class="language-csdiff line-numbers"><code>class Categories : Entity 
     {
         [PrimaryKey(Identity = true)]
-        public readonly NumberColumn CategoryID = new NumberColumn(&quot;CategoryID&quot;, &quot;N10&quot;, &quot;CategoryID&quot;)
+        public readonly NumberColumn CategoryID = new NumberColumn("CategoryID", "N10", "CategoryID")
         {
         	DbReadOnly = true
         };
@@ -234,7 +234,7 @@ ExecuteReader Duration..: 34.0019
 <p>Notes:</p>
 <p>If the Select statement doesn't return any row, nothing will be saved to the Cache. As a result, any further use of the same Select statement will be directed to the database.<br />
 Note that if the “CacheNonUniqueResults” property is set to true, then regardless of unique key or primary key definitions, Caching will be enabled. The usage is as follows:</p>
-<pre><code class="language-csdiff">        internal readonly Model.Categories _categories = new Model.Categories()
+<pre data-line="" class="language-csdiff line-numbers"><code>        internal readonly Model.Categories _categories = new Model.Categories()
         {
              CacheNonUniqueResults = true
         };
@@ -263,13 +263,13 @@ Note that if the “CacheNonUniqueResults” property is set to true, then regar
 </ul>
 <h3 id="cached-false">Cached = false</h3>
 <p>Now let's change the Cache to false, and see the result.</p>
-<pre><code class="language-csdiff">         internal readonly Model.Categories _categories = new Model.Categories()
+<pre data-line="" class="language-csdiff line-numbers"><code>         internal readonly Model.Categories _categories = new Model.Categories()
         {
             Cached = false
         };
 </code></pre>
 <p>After running the UIController, we'll get the following result containing 15 full dB SQL references, which clearly shows that we now access the Database for each row, regardless of whether the CategoryID has already appeared:</p>
-<pre><code class="language-csdiff">ExecuteNonQuery Duration: 0
+<pre data-line="" class="language-csdiff line-numbers"><code>ExecuteNonQuery Duration: 0
 ExecuteNonQuery - sp_cursorprepexec
  
 Query Parameters:
@@ -392,38 +392,38 @@ WHERE CategoryID = 5
 <p>Note that we get the cursor for the main table and 15 more queries that are generated by the Relation for the grid, as well as one more addtional query for the row that we are parked on, a total of 16 SQL Relation quesries.</p>
 <h3 id="no-primary-key-or-unique-sort">No Primary Key or Unique Sort</h3>
 <p>Now let's switch Cached back to true, but also change the code in the Category entity so that CategoryID is no longer the primary key. Additionally, lets change the sort key for CategoryID to no longer be unique. (Note that in the code below “Unique = 'true' ” is commented out and the primary key is moved to the CategoryName field).</p>
-<pre><code class="language-csdiff">        [PrimaryKey(Identity = true)]
-        public readonly NumberColumn CategoryID = new NumberColumn(&quot;CategoryID&quot;, &quot;N10&quot;, &quot;CategoryID&quot;)
+<pre data-line="" class="language-csdiff line-numbers"><code>        [PrimaryKey(Identity = true)]
+        public readonly NumberColumn CategoryID = new NumberColumn("CategoryID", "N10", "CategoryID")
         {
         	DbReadOnly = true
         }; 
  
-        public readonly TextColumn CategoryName = new TextColumn(&quot;CategoryName&quot;, &quot;15&quot;, &quot;CategoryName&quot;);
+        public readonly TextColumn CategoryName = new TextColumn("CategoryName", "15", "CategoryName");
  
-        public readonly TextColumn Description = new TextColumn(&quot;Description&quot;, &quot;10&quot;, &quot;Description&quot;); 
+        public readonly TextColumn Description = new TextColumn("Description", "10", "Description"); 
  
         public readonly Sort SortByCategoryName = new Sort
         {
-        	Caption = &quot;CategoryName&quot;
+        	Caption = "CategoryName"
         };
  
         public readonly Sort SortByCategoryID = new Sort
         {
-        	Caption = &quot;CategoryID&quot;,
+        	Caption = "CategoryID",
         	//Unique = true
         };
 </code></pre>
 <p>As expected, when we run the UIController, Cache is no longer applied.</p>
 <h3 id="unique-key-using-only-some-of-the-segments">Unique Key using only some of the segments</h3>
 <p>Now let's redefine the SortByCategoryID to be unique, but let's add another segment, CategoryName, to this key. Note that the last line of code in the code below adds 2 segments to the SortByCategoryID key.</p>
-<pre><code class="language-csdiff">        public readonly Sort SortByCategoryID = new Sort
+<pre data-line="" class="language-csdiff line-numbers"><code>        public readonly Sort SortByCategoryID = new Sort
         {
-        	Caption = &quot;CategoryID&quot;,
+        	Caption = "CategoryID",
         	Unique = true
         };
  
-        /// &lt;summary&gt;Categories(E#5)&lt;/summary&gt;
-        public Categories():base(&quot;dbo.Categories&quot;, &quot;Categories&quot;, DataSources.Northwind1)
+        /// <summary>Categories(E#5)</summary>
+        public Categories():base("dbo.Categories", "Categories", DataSources.Northwind1)
         {
             InitializeIndexes();
         }
@@ -448,7 +448,7 @@ Of course if we were using Cache, and Category 7 existed in the Cache, we would 
 <hr />
 <h1 id="left-outer-join">Left Outer Join</h1>
 <p>Let's adjust the code to use outer join.</p>
-<pre><code class="language-csdiff"> public ShowProducts()
+<pre data-line="" class="language-csdiff line-numbers"><code> public ShowProducts()
         {
             From = _products;
             Relations.Add(_categories,RelationType.OuterJoin, 
@@ -458,7 +458,7 @@ Of course if we were using Cache, and Category 7 existed in the Cache, we would 
         }
 </code></pre>
 <p>Now that we run the program, the following SQL will be generated, as displayed in the output window and shown below:</p>
-<pre><code class="language-csdiff">ExecuteNonQuery - sp_cursorprepexec
+<pre data-line="" class="language-csdiff line-numbers"><code>ExecuteNonQuery - sp_cursorprepexec
  
 Query Parameters:
 @handle(Int32) = 
@@ -479,7 +479,7 @@ ExecuteNonQuery Duration...: 53.0031
 <hr />
 <h2 id="recompute-1">Recompute</h2>
 <p>If the CategoryID is updated and a recompute has to occur in order to update the CategoryName, then a RELATION SQL statement will be executed according to the rules of FIND Relations and CACHE. For example, if the CategoryID on a row is updated to 1, then the following SQL can be seen on the output screen.</p>
-<pre><code class="language-csdiff">ExecuteReader - 
+<pre data-line="" class="language-csdiff line-numbers"><code>ExecuteReader - 
 SELECT top 1 CategoryID, CategoryName, Description 
 FROM dbo.Categories 
 WHERE CategoryID = 1 
@@ -490,7 +490,7 @@ ExecuteReader Duration: 3.0002
 <hr />
 <h1 id="inner-join">Inner Join</h1>
 <p>Now let's change the Relation type to Inner Join as displayed below: (note that Join, by default, implies Inner Join)</p>
-<pre><code class="language-csdiff">        public ShowProducts()
+<pre data-line="" class="language-csdiff line-numbers"><code>        public ShowProducts()
         {
             From = _products;
             Relations.Add(_categories,RelationType.Join,
@@ -500,7 +500,7 @@ ExecuteReader Duration: 3.0002
         }
 </code></pre>
 <p>In this case, in terms of an initial Join followed by no further Select statements, the SQL will be similar to the previous example of Outer Join and looks as follows:</p>
-<pre><code class="language-csdiff">ExecuteNonQuery - sp_cursorprepexec
+<pre data-line="" class="language-csdiff line-numbers"><code>ExecuteNonQuery - sp_cursorprepexec
  
 Query Parameters:
 @handle(Int32) = 
@@ -522,7 +522,7 @@ ExecuteNonQuery Duration..: 34.0019
 <p>Rows with ProductID 4 and Row 15 have CategoryID = 0 which does not appear in the Categories table, so these rows are thus not displayed.</p>
 <h2 id="recompute-2">Recompute</h2>
 <p>As is the case with Outer Join, if the CategoryID is updated and a recompute has to occur in order to update the CategoryName, then a RELATION SQL statement will be executed according to the rules of FIND Relations and CACHE. For example, if the CategoryID on a row is updated to 1, then the following SQL can be seen on the output screen.</p>
-<pre><code class="language-csdiff">ExecuteReader - 
+<pre data-line="" class="language-csdiff line-numbers"><code>ExecuteReader - 
 SELECT top 1 CategoryID, CategoryName, Description 
 FROM dbo.Categories 
 WHERE CategoryID = 1 

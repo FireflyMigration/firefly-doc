@@ -37,14 +37,14 @@ and then just to type: MessageBox.Show(&quot;Text to be Displayed&quot;);</p>
 <ol>
 <li>Add the following line to the beginning of the file:</li>
 </ol>
-<pre><code class="language-csdiff">+ using System.Windows.Forms;
+<pre data-line="1" class="language-csdiff line-numbers"><code>  using System.Windows.Forms;
 namespace Northwind.Training
 {
     class HelloWorld
     {
        public void Run()
        {
-           System.Windows.Forms.MessageBox.Show(&quot;Hello World&quot;, &quot;Hello World Caption&quot;, System.Windows.Forms.MessageBoxButton.OK);
+           System.Windows.Forms.MessageBox.Show("Hello World", "Hello World Caption", System.Windows.Forms.MessageBoxButton.OK);
        }     
     }
 }
@@ -52,15 +52,15 @@ namespace Northwind.Training
 <ol start="2">
 <li>Remove the System.Windows.Forms from line which calls the Show() method :</li>
 </ol>
-<pre><code class="language-csdiff">using System.Windows.Forms;
+<pre data-line="9" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
 namespace Northwind.Training
 {
     class HelloWorld
     {
        public void Run()
        {
--           System.Windows.Forms.MessageBox.Show(&quot;Hello World&quot;, &quot;Hello World Caption&quot;, System.Windows.Forms.MessageBoxButton.OK);
-+           MessageBox.Show(&quot;Hello World&quot;, &quot;Hello World Caption&quot;, MessageBoxButton.OK);
+-           System.Windows.Forms.MessageBox.Show("Hello World", "Hello World Caption", System.Windows.Forms.MessageBoxButton.OK);
+            MessageBox.Show("Hello World", "Hello World Caption", MessageBoxButton.OK);
        }     
     }
 }

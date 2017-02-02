@@ -29,23 +29,23 @@
 <p>Comments can be used to document lines in the code or to add remarks for the developers</p>
 <p>To add a single line comment use <strong>//</strong> before the comment</p>
 <p>To Add Multi line comment add <strong>/*</strong> before the comment and <strong>*/</strong> at the end</p>
-<pre><code class="language-csdiff">using System.Windows.Forms;
+<pre data-line="" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
 namespace Northwind.Training
 {
     Class HelloWorld
     {
        public void Run()
        {
-          MessageBox.Show(&quot;Hello World&quot;, &quot;Hello World Caption&quot;, MessageBoxButton.OK);
+          MessageBox.Show("Hello World", "Hello World Caption", MessageBoxButton.OK);
           /* this 
           is 
           a 
           multi line 
           comment          
           */  
-          MessageBox.Show(&quot;the message&quot;);;
+          MessageBox.Show("the message");;
           // one line comment
-          MessageBox.Show(&quot;Test&quot;);
+          MessageBox.Show("Test");
        }     
     }
 }
