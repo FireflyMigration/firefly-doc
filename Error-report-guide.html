@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+
+    <title>Error Report Guide</title>
+
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+    
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+           <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a href="Automatic-Migration-Using-FTP.html"class="btn btn-neutral float-left">Previous</a> <a href="Relations-in-depth.html"class="btn btn-neutral float-right">Next</a>
+                </div>
+                <main class="content"><h1 id="error-report-guide">Error Report Guide</h1>
+<h2 id="code-cleanup">Code Cleanup</h2>
+<p>This article explains how to use the Error Report to clean the Magic application from errors and unused code, before migrating it to .NET, while keeping the ability to restore programs that have been removed if needed.</p>
+<p>The error report is an XML file which can be displayed in Excel. It includes the following sections:</p>
+<ol>
+<li>Errors - Invalid magic code</li>
+<li>Not Used - Programs, Sub tasks and lines that are suspected as not being used</li>
+<li>Sql Migration Notices - Notes for Btrieve to SQL migration, which are not part of the cleanup process</li>
+</ol>
+<p>It is recommended to start with removing the unused programs, before dealing with any of the errors. As most of the errors are concentrated in unused programs, this will significantly reduce the number of errors.</p>
+<p>The code cleaning work is iterative, as each cycle of removing code might reveal new unused code. In order to produce a new error report after each cycle, you should upload an updated version of your magic code to our automatic migration server and execute a migration process. See <a href="Automatic-Migration-Using-FTP.html">Automatic Migration using FTP</a> for more details.</p>
+<p>Notice that most of the cleaning work is optional and you can decide if and when you would like to do it, until you commit the final migration. That said, a few of the errors might prevent the .NET code compilation and need to be fixed sooner rather than later. We will inform you of such errors if exists in your code.</p>
+<p>Make sure to backup your code before you start to cleanup process and several times during it.</p>
+<h2 id="removing-unused-code">Removing Unused Code</h2>
+<p>The Not Used section of the report includes all the programs and subtasks that are suspected as not being used. The first column of the report is the location of the program. Notice that the first line of the location is the program number and name, while the following lines (if exists) are the sub tasks number and name (see screenshot).</p>
+<p><img src="programsandsubtakslocation.png" alt="" /></p>
+<p>If you need to keep some of the programs, although not being used (or being called by their public name etc), it is recommended to mark them (add comment of change their name) to remind you that they have been examined and should not be removed, in the next cycle.</p>
+<p>In order to help you identify programs that are being called by their public name of index and therefor should be considered as being used, the report contains all the places where a program is being called dynamically (by an expression).</p>
+<p>Regarding sub tasks that are not used, according to the report, notice that only the sub task is considered as not used, and can be removed. Other parts of the program might be used and should not be removed.</p>
+<p>In order to keep the ability to restore a program that has been removed, it is important to remove it in a sage method that will sustain the program number as a blank line in the program repository. This is achieved by deleting the program from the intrenal program tree (Navigator window) and not from the programs repository, as follows:</p>
+<ol>
+<li>Enter to the program by pressing F5 on the program line in the programs repository.</li>
+<li>Select the program root in the Navigator window and delete it by pressing F3. (see screenshot).<br />
+The program name will remain in the program repository, but it will not be migrated, as empty program are ignored by the migration engine.</li>
+</ol>
+<p><img src="deleteprogramfromthetasknavigator.png" alt="" /></p>
+<p>While you continue to maintain and develop the magic application, it is recommended that new programs will be added at the end of the program repository, in order to keep the same programs numbers.</p>
+<h2 id="dealing-with-errors">Dealing With Errors</h2>
+<p>The error report include many types of errors. Some errors can be found be the magic syntax checker(F8) and some cannot. Most errors are tolareted by the migration engine, but some may prevent the code from compiling in .NET, or cause unexpected behavior. Thus, it is recommended to clean the code before the migration to .NET.</p>
+<p>Here are some of the common error types you may find in your report and their explanation:</p>
+<table>
+<thead>
+<tr>
+<th>Error Message</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Can't write form of type gui form to io of type Console</td>
+<td>The form type is not appropriate for the io</td>
+</tr>
+<tr>
+<td>Can't write form of type gui form to io of type requesterIO</td>
+<td>The form type is not appropriate for the io</td>
+</tr>
+<tr>
+<td>Control outside bounds of attached column…</td>
+<td>The control inside the grid (usually a textbox) is attached to a column, but it is not placed on it exactly, or attached to a different column. This can cause a problem in which after the migration, while parking on the control the characters of the user input or the parking cursor will not be seen.</td>
+</tr>
+<tr>
+<td>Parameter Mismatch:Called Task {2}parameter index {0}{1}</td>
+<td>The parameter type is different from the type of the value</td>
+</tr>
+<tr>
+<td>parameter to program {0}</td>
+<td>The same as the last error, some might be redundant</td>
+</tr>
+<tr>
+<td>TextPrintingStyles {0} was missing from the TextPrintingStyles file</td>
+<td>Unless using a text printer, this error can be disregarded</td>
+</tr>
+</tbody>
+</table>
+</main><!-- .content -->
+            </div><!-- .container-->
+
+            <aside class="left-sidebar"><div class="wy-side-nav-search-ff">
+    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+</div><div class="TreeItem">dev docs</div>
+<div class="TreeNode">
+    <div class="TreeItem">guide</div>
+    <div class="TreeNode">
+        <div class="TreeItem">An introduction to NET</div>
+        <div class="TreeNode">
+            <div class="TreeItem">Intro</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="NET-Framework-Overview.html">NET Framework Overview</a></div>
+                <div class="TreeItem"><a href="Visual-Studio-and-CSharp-Overview.html">Visual Studio and CSharp Overview</a></div>
+                <div class="TreeItem"><a href="Create-a-simple-class.html">Create a simple class</a></div>
+                <div class="TreeItem"><a href="Explaining-The-Hello-world-example.html">Explaining The Hello world example</a></div>
+                <div class="TreeItem"><a href="Method-Arguments-and-Overloading.html">Method Arguments and Overloading</a></div>
+                <div class="TreeItem"><a href="Using-directives.html">Using directives</a></div>
+                <div class="TreeItem"><a href="Snippets.html">Snippets</a></div>
+                <div class="TreeItem"><a href="Comments.html">Comments</a></div>
+                <div class="TreeItem"><a href="Hello-csharp-exercise.html">Hello csharp exercise</a></div>
+            </div>
+            <div class="TreeItem"><a href="Simple-data-types.html">Simple data types</a></div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="More-on-strings.html">More on strings</a></div>
+                <div class="TreeItem"><a href="Data-Types-Exercise.html">Data Types Exercise</a></div>
+            </div>
+            <div class="TreeItem"><a href="Operators.html">Operators</a></div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Operators-Exercise.html">Operators Exercise</a></div>
+            </div>
+            <div class="TreeItem">More on Classes</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Classes-and-Instances.html">Classes and Instances</a></div>
+                <div class="TreeItem"><a href="Constructor-Static_ReadOnly.html">Constructor Static_ReadOnly</a></div>
+                <div class="TreeItem"><a href="Type-initializers.html">Type initializers</a></div>
+                <div class="TreeItem"><a href="var.html">var</a></div>
+                <div class="TreeItem"><a href="Short-way-to-write-a-single-line-method.html">Short way to write a single line method</a></div>
+                <div class="TreeItem"><a href="Inheritance-Basics-Adding-the-Dog-class.html">Inheritance Basics Adding the Dog class</a></div>
+                <div class="TreeItem"><a href="Creating-the-Cat-class.html">Creating the Cat class</a></div>
+                <div class="TreeItem"><a href="Virtual-method-and-override.html">Virtual method and override</a></div>
+                <div class="TreeItem"><a href="More-on-Instances-and-inheritance.html">More on Instances and inheritance</a></div>
+            </div>
+            <div class="TreeItem"><a href="student-notes.html">student notes</a></div>
+        </div>
+        <div class="TreeItem">An introduction to UIController</div>
+        <div class="TreeNode">
+            <div class="TreeItem"><a href="Creating-simple-screen.html">Creating simple screen</a></div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Explaining-The-Simple-UIController-Code.html">Explaining The Simple UIController Code</a></div>
+                <div class="TreeItem"><a href="Display-Data-From-DB-Simple-UIController.html">Display Data From DB Simple UIController</a></div>
+                <div class="TreeItem"><a href="Creating-Simple-Screen-Exercise.html">Creating Simple Screen Exercise</a></div>
+            </div>
+            <div class="TreeItem">Filtering Data</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Filtering-Data.html">Filtering Data</a></div>
+                <div class="TreeItem"><a href="Filtering-Data-Exercise.html">Filtering Data Exercise</a></div>
+            </div>
+            <div class="TreeItem">Sorting Data</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Sorting-Data.html">Sorting Data</a></div>
+                <div class="TreeItem"><a href="Sorting-Data-Exercise.html">Sorting Data Exercise</a></div>
+            </div>
+            <div class="TreeItem">Relations</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Relations.html">Relations</a></div>
+                <div class="TreeItem"><a href="More-On-Relation.html">More On Relation</a></div>
+                <div class="TreeItem"><a href="Relations-Exercise.html">Relations Exercise</a></div>
+            </div>
+            <div class="TreeItem">Using debug information in VS</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Using-debug-information-in-VS.html">Using debug information in VS</a></div>
+            </div>
+        </div>
+        <div class="TreeItem">MoreOnUIController</div>
+        <div class="TreeNode">
+            <div class="TreeItem">UI Controller Life Cycle</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="UI-Controller-Life-Cycle.html">UI Controller Life Cycle</a></div>
+                <div class="TreeItem"><a href="Life-Cycle-Demo.html">Life Cycle Demo</a></div>
+                <div class="TreeItem"><a href="UI-Controller-Life-Cycle-Exercise.html">UI Controller Life Cycle Exercise</a></div>
+            </div>
+            <div class="TreeItem">InputValidation</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Input-Validation-OnSavingRow-IF-Statement.html">Input Validation OnSavingRow IF Statement</a></div>
+                <div class="TreeItem"><a href="Input-Validation-Using-IF-Statement-Exercise.html">Input Validation Using IF Statement Exercise</a></div>
+                <div class="TreeItem"><a href="IF-Statement-Explanation.html">IF Statement Explanation</a></div>
+                <div class="TreeItem"><a href="Input-Validation-Using-Flow-Abort-Exception.html">Input Validation Using Flow Abort Exception</a></div>
+                <div class="TreeItem"><a href="More-About-The-Message-Class.html">More About The Message Class</a></div>
+                <div class="TreeItem"><a href="Input-Validation-Using-Message-Class-Exercise.html">Input Validation Using Message Class Exercise</a></div>
+                <div class="TreeItem"><a href="Introduction-To-User-Methods-And-u-Member.html">Introduction To User Methods And u Member</a></div>
+                <div class="TreeItem"><a href="Input-Validation-Using-Methods.html">Input Validation Using Methods</a></div>
+                <div class="TreeItem"><a href="Input-Validation-Using-Methods-Exercise.html">Input Validation Using Methods Exercise</a></div>
+            </div>
+            <div class="TreeItem">Row Found Validation</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Row-Found-Validation.html">Row Found Validation</a></div>
+                <div class="TreeItem"><a href="Row-Found-Validation-Exercise.html">Row Found Validation Exercise</a></div>
+            </div>
+        </div>
+        <div class="TreeItem">Introduction to UI Controller</div>
+        <div class="TreeNode">
+            <div class="TreeItem"><a href="creating-a-simple-screen.html">creating a simple screen</a></div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="creating-a-simple-screen-exercise.html">creating a simple screen exercise</a></div>
+            </div>
+            <div class="TreeItem"><a href="Filtering-Data.html">Filtering Data</a></div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Filtering-Data-exercise.html">Filtering Data exercise</a></div>
+            </div>
+            <div class="TreeItem"><a href="Sorting-Data.html">Sorting Data</a></div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Sorting-Data-exercise.html">Sorting Data exercise</a></div>
+            </div>
+            <div class="TreeItem"><a href="Adding-Relations.html">Adding Relations</a></div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Adding-Relations-exercise.html">Adding Relations exercise</a></div>
+            </div>
+            <div class="TreeItem"><a href="Debugger-Watch-Window.html">Debugger Watch Window</a></div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Debugger-Watch-Window-exercise.html">Debugger Watch Window exercise</a></div>
+            </div>
+            <div class="TreeItem"><a href="Summary-Exercise.html">Summary Exercise</a></div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Summary-Exercise-exercise.html">Summary Exercise exercise</a></div>
+            </div>
+        </div>
+        <div class="TreeItem">Migrated Data Types</div>
+        <div class="TreeNode">
+            <div class="TreeItem">In Depth</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="More-on-Null-Types-that-cannot-be-null.html">More on Null Types that cannot be null</a></div>
+                <div class="TreeItem"><a href="In-depth-Number.html">In depth Number</a></div>
+                <div class="TreeItem"><a href="Text-demo.html">Text demo</a></div>
+                <div class="TreeItem"><a href="Bool-demo.html">Bool demo</a></div>
+            </div>
+            <div class="TreeItem"><a href="Introduction-to-Null.html">Introduction to Null</a></div>
+            <div class="TreeItem"><a href="Number.html">Number</a></div>
+            <div class="TreeItem"><a href="Text-and-Bool.html">Text and Bool</a></div>
+            <div class="TreeItem"><a href="Date.html">Date</a></div>
+            <div class="TreeItem"><a href="Time.html">Time</a></div>
+            <div class="TreeItem"><a href="Using-a-date-in-filter-data.html">Using a date in filter data</a></div>
+            <div class="TreeItem"><a href="Exercise-Migrated-Data-types.html">Exercise Migrated Data types</a></div>
+            <div class="TreeItem"><a href="Exercise-Date-and-Time.html">Exercise Date and Time</a></div>
+            <div class="TreeItem"><a href="Exercise-Using-a-date-to-filter-data.html">Exercise Using a date to filter data</a></div>
+        </div>
+        <div class="TreeItem">Methods</div>
+        <div class="TreeNode">
+            <div class="TreeItem">Explain</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Methods.html">Methods</a></div>
+                <div class="TreeItem"><a href="Exercise-Simple-method.html">Exercise Simple method</a></div>
+                <div class="TreeItem"><a href="Method-with-return-value.html">Method with return value</a></div>
+                <div class="TreeItem"><a href="Introducing-Regions.html">Introducing Regions</a></div>
+                <div class="TreeItem"><a href="User-methods-and-u-class.html">User methods and u class</a></div>
+                <div class="TreeItem"><a href="Using-CSharp6-features-to-write-shorter-methods.html">Using CSharp6 features to write shorter methods</a></div>
+                <div class="TreeItem"><a href="Migrated-expression.html">Migrated expression</a></div>
+            </div>
+            <div class="TreeItem">MoreOnMethods</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Using-user-methods-class-in-non-migrated-code.html">Using user methods class in non migrated code</a></div>
+            </div>
+            <div class="TreeItem"><a href="Exercise-Method-with-return-value.html">Exercise Method with return value</a></div>
+        </div>
+        <div class="TreeItem">Binding controls data to method</div>
+        <div class="TreeNode">
+            <div class="TreeItem"><a href="Binding-the-data-of-a-control-to-a-method.html">Binding the data of a control to a method</a></div>
+            <div class="TreeItem"><a href="Getting-the-day-of-week-using-User-Methods.html">Getting the day of week using User Methods</a></div>
+            <div class="TreeItem"><a href="Using-csharp6-syntax-to-get-the-day-of-week.html">Using csharp6 syntax to get the day of week</a></div>
+            <div class="TreeItem"><a href="Binding-controls-Exercise.html">Binding controls Exercise</a></div>
+        </div>
+        <div class="TreeItem">Getting the code for the first time</div>
+        <div class="TreeNode">
+            <div class="TreeItem"><a href="Get-starting.html">Get starting</a></div>
+        </div>
+        <div class="TreeItem"><a href="Solving-the-project-scope-problem-using-Abstract-Base-classes.html">Solving the project scope problem using Abstract Base classes</a></div>
+        <div class="TreeNode">
+        </div>
+        <div class="TreeItem">Visual Studio Configuration</div>
+        <div class="TreeNode">
+            <div class="TreeItem"><a href="Configuration.html">Configuration</a></div>
+        </div>
+        <div class="TreeItem"><a href="using-version-control.html">using version control</a></div>
+    </div>
+    <div class="TreeItem"><a href="reference.html">reference</a></div>
+    <div class="TreeNode">
+        <div class="TreeItem">Articles</div>
+        <div class="TreeNode">
+            <div class="TreeItem"><a href="Automatic-Migration-Using-FTP.html">Automatic Migration Using FTP</a></div>
+            <div  class="TreeItem current-page"><a href="Error-report-guide.html">Error report guide</a></div>
+            <div class="TreeItem"><a href="Relations-in-depth.html">Relations in depth</a></div>
+            <div class="TreeItem"><a href="shoulddeterminenameaccordingtocallstack.html">shoulddeterminenameaccordingtocallstack</a></div>
+            <div class="TreeItem"><a href="Understanding-Error-Message-Details.html">Understanding Error Message Details</a></div>
+            <div class="TreeItem"><a href="Using-issue-tracker.html">Using issue tracker</a></div>
+            <div class="TreeItem"><a href="Using-Log-Files.html">Using Log Files</a></div>
+            <div class="TreeItem"><a href="View-SQL-Output.html">View SQL Output</a></div>
+        </div>
+        <div class="TreeItem">Comparing Migrated Code with Magic</div>
+        <div class="TreeNode">
+            <div class="TreeItem">eDevelopper</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="Task-Properties.html">Task Properties</a></div>
+                <div class="TreeItem"><a href="Task-Control.html">Task Control</a></div>
+                <div class="TreeItem"><a href="IO-Files.html">IO Files</a></div>
+                <div class="TreeItem"><a href="DB-Tables.html">DB Tables</a></div>
+                <div class="TreeItem"><a href="Range-Locate.html">Range Locate</a></div>
+                <div class="TreeItem"><a href="The-Sort.html">The Sort</a></div>
+                <div class="TreeItem"><a href="Operations.html">Operations</a></div>
+                <div class="TreeItem"><a href="State-Comparison.html">State Comparison</a></div>
+                <div class="TreeItem"><a href="Handlers.html">Handlers</a></div>
+            </div>
+            <div class="TreeItem">Unipaas</div>
+            <div class="TreeNode">
+                <div class="TreeItem"><a href="task-properties-unipaas.html">task properties unipaas</a></div>
+            </div>
+        </div>
+        <div class="TreeItem">Refactoring</div>
+        <div class="TreeNode">
+            <div class="TreeItem"><a href="Building-a-generic-GetName-method.html">Building a generic GetName method</a></div>
+            <div class="TreeItem"><a href="Obtaining-category-name-based-on-CategoryID.html">Obtaining category name based on CategoryID</a></div>
+        </div>
+    </div>
+</div>
+</aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar">
+                
+            </aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+   
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+    
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>    
+    <script src="assets/js/prism-function.js"></script>    
+    
+    
+    
+</body>
+</html>
