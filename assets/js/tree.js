@@ -208,7 +208,7 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
                 if (searchInput.value == '')
                     reset(data.nodes);
                 else
-                    search(data.nodes, searchInput.value);
+                    search(data.nodes, searchInput.value.toLowerCase());
             };
 
         }
