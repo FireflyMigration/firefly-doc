@@ -1,4 +1,4 @@
-﻿"use strict";
+"use strict";
 
 function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
 
@@ -7,6 +7,16 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
     var nextBtn = document.getElementById(nextButtonId);
     backBtn.style.visibility = 'hidden';
     nextBtn.style.visibility = 'hidden';
+    function buttonHide(b) {
+        b.style.visibility = 'hidden';
+    }
+    buttonHide(backBtn);
+    buttonHide(nextBtn);
+
+    function buttonUrl(b, url) {
+        b.style.visibility = 'visible';
+        b.href = url;
+    }
 
     var prevUrl = undefined;
     var doNextBtn = false;
@@ -28,46 +38,46 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
     function buildNodes(nodes, parent) {
         var found = false;
         for (var i = 0; i < nodes.length; i++) {
-            var e = document.createElement('div');
-            e.classList.add('TreeItem');
-            if (nodes[i].url != undefined) {
-                var a = document.createElement('a');
-                a.href = nodes[i].url;
-                if (doNextBtn)
-                {
-                    nextBtn.style.visibility = 'visible';
-                    nextBtn.href = a.href;
+            var item = nodes[i];
+            var treeItem = document.createElement('div');
+            treeItem.classList.add('TreeItem');
+
+            var treeTitle = document.createElement('a');
+            if (item.url != undefined) {
+                treeTitle.href = item.url;
+                if (doNextBtn) {
+                    buttonUrl(nextBtn, treeTitle.href);
                     doNextBtn = false;
                 }
-                if (nodes[i].url == currentPageUrl) {
+                if (item.url == currentPageUrl) {
                     found = true;
-                    e.classList.add('current-page');
-                    backBtn.style.visibility = 'visible';
-                    backBtn.href = prevUrl;
+                    treeItem.classList.add('current-page');
+                    buttonUrl(backBtn, prevUrl);
                     doNextBtn = true;
                 }
-                prevUrl = a.href;
-                a.innerText = nodes[i].name;
-                e.appendChild(a);
-            }
-            else
-                e.innerHTML = nodes[i].name;
-            var b = document.createElement('div');
-            b.style.width = '1em';
-            b.style.display = 'inline-block';
-            e.insertBefore(b, e.childNodes[0]);
-            parent.appendChild(e);
-            if (nodes[i].nodes != undefined) {
-                var tn = document.createElement('div');
-                tn.classList.add('TreeNode');
-                parent.appendChild(tn);
-                b.innerText = '+';
-                registerClick(b, tn);
+                prevUrl = treeTitle.href;
+            } 
+            treeTitle.innerText = item.name;
+            treeItem.appendChild(treeTitle);
 
-                tn.style.display = 'none';
 
-                if (buildNodes(nodes[i].nodes, tn)) {
-                    b.onclick();
+            var plusMinusButton = document.createElement('div');
+            plusMinusButton.style.width = '1em';
+            plusMinusButton.style.display = 'inline-block';
+            treeItem.insertBefore(plusMinusButton, treeItem.childNodes[0]);
+            parent.appendChild(treeItem);
+
+            if (item.nodes != undefined) {
+                var childNodesContainer = document.createElement('div');
+                childNodesContainer.classList.add('TreeNode');
+                parent.appendChild(childNodesContainer);
+                plusMinusButton.innerText = '+';
+                registerClick(plusMinusButton, childNodesContainer);
+
+                childNodesContainer.style.display = 'none';
+
+                if (buildNodes(item.nodes, childNodesContainer)) {
+                    plusMinusButton.onclick();
                     found = true;
                 }
             }
