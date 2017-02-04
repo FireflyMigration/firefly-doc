@@ -31,28 +31,34 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
     var prevUrl = '/';
     var doNextBtn = false;
 
+
+    function showChildNodes(nodes) {
+        foreach(nodes, function (item) {
+            item.show();
+            showChildNodes(item.nodes);  
+        });
+    }
+
     function search(nodes, what) {
         var found = false;
         foreach(nodes, function (item) {
-
+            item.collapse();
             var imFound = false;
-            if (search(item.nodes, what)) {
-                imFound = true;
-            }
             if (item.matches(what)) {
+                item.show();
+
+                found = true;
                 imFound = true;
-            }
-            if (imFound) {
+            } 
+            if (search(item.nodes, what)) {
                 item.expand();
                 item.show();
                 found = true;
-
             }
-
-
-
-
-
+            
+            if(imFound)
+                showChildNodes(item.nodes);
+           
         });
         return found;
     }
@@ -145,11 +151,9 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
                 item.expand = function () { };
                 item.hide = function () {
                     nodeHide(treeItem);
-                    item.collapse();
                 };
                 item.show = function () {
                     nodeShow(treeItem);
-                    item.expand();
                 };
                 parent.appendChild(treeItem);
 
