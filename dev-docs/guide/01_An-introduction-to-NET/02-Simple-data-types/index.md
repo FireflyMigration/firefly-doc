@@ -49,14 +49,14 @@ namespace Northwind.Training
 ```
 
 
-4\. Note:  
+4. Note:  
     A variable which is not in used has a green underline  
 
-5\. **String VS Char**  
+5. **String VS Char**  
   A char is a single character as opposed to a string which is comprised of many characters.  
   String is surrounded by double quotes while char is surrounded by a single quote.  
    
-6\. In order to use the System.Windows.Form.MessageBox class we will add it to the using section 
+6. In order to use the System.Windows.Form.MessageBox class we will add it to the using section 
    and we will use the MessageBox.Show() method to display them
 
 ```csdiff
@@ -84,13 +84,13 @@ namespace Northwind.Training
 
 ```
 
-7\. The **+ operator** when used on strings concatenates the two string into a single string.  
-8\. The **ToString()** method is used to convert the value to string.  
+7. The **+ operator** when used on strings concatenates the two string into a single string.  
+8. The **ToString()** method is used to convert the value to string.  
     Every object in .net has `ToString()` method that convert itself to string.  
 
-9\. When concatenating string with number you do not have to use the ToString() method this will be done automatically by C#.
+9. When concatenating string with number you do not have to use the ToString() method this will be done automatically by C#.
  
-10\. To call this class from the menu we will add a new entry in the ApplicationMDI menu  
+10. To call this class from the menu we will add a new entry in the ApplicationMDI menu  
    DbClick on the menu so Visual Studio generate the code that will be executed when clicking the menu entry
    and call this class by calling its Run() method
 
@@ -102,7 +102,7 @@ private void basicTypesToolStripMenuItem_Click(object sender, EventArgs e)
 +	new Training.BasicTypes().Run();
 }
 ```
-11\. before running the application remember to build it.  
+11. before running the application remember to build it.  
 
 --- 
 
