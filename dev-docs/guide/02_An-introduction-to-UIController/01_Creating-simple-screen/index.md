@@ -33,7 +33,7 @@ The two classes will be explained in the next session
 4. DbClick on the new created entry - a new method is automatically created.
 5. Inside the  this method call the Controller by typing 
    new FolderName.[SubFolderName].ClassName().Run()
-````
+````csdiff
     private void ApplicationMdi_Load(object sender, EventArgs e)
     {
         new Training.SimpleScreen.ShowOrders().Run();
