@@ -26,7 +26,7 @@ namespace Northwind.Training
 
 
 
-To display the backslash character double it: instead of \ use \\  
+To display the backslash character double it: instead of `\` use `\\`  
 ```csdiff
 MessageBox.Show("Windows Path: c:\\windows");
 ```
@@ -48,7 +48,7 @@ in many
 line");
 ```
 
-Exercise : [Data types](Data-Types-Exercise.html)
+Exercise : [Data types](03-Data-Types-Exercise.md)
 
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/o1xAgJTEO8k?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
