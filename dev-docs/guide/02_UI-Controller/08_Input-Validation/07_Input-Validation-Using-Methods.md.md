@@ -1,4 +1,4 @@
-﻿# Introduction to UserMethods and the u Member 
+﻿# Introduction to User Methods and the u Member 
 
 ```csdiff
 protected override void OnSavingRow()

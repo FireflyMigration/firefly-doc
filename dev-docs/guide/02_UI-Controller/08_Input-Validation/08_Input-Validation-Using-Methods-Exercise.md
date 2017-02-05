@@ -1,4 +1,4 @@
-﻿# Exercise - Input Validation using UserMethods and the u Member 
+﻿# Exercise - Input Validation using User Methods and the u Member 
 
 
 1.	In "ShowProducts", add an error message if the "ProductName" has less than 3 characters (using the u.Len method). Use Trim where needed.
