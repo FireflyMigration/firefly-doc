@@ -26,7 +26,7 @@ If a new instance is created and no value is set to its Name and Type members - 
 
 
  ```csdiff
- using System.Windows.Forms;
+using System.Windows.Forms;
 namespace Northwind.Training
 {
     class Animal
@@ -74,7 +74,7 @@ That way - every new instance of the class will receive a new and unique id.
  
 The code below also display the id in the DescribeYouSlef() method:  
  ```csdiff
- using System.Windows.Forms;
+using System.Windows.Forms;
 namespace Northwind.Training
 {
     class Animal
