@@ -2,7 +2,7 @@
 
 
 Data types are  used to define fields , variables.  
-In C# we have various of data types but let's start with the basic ones:  
+In C# there are various of data types but let's start with the basic ones:  
 int, string, double, char and bool  
 
 When defining a variable we first need to set its type and then its name

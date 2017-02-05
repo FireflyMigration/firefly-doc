@@ -31,7 +31,9 @@ namespace Northwind.Training
 }
 ```
 
- <iframe width="560" height="315" src="https://www.youtube.com/embed/OdKoPet16bA" frameborder="0" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OdKoPet16bA?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
+
 
 
 Exercise: [Hello C#](09-Hello-csharp-exercise.md)

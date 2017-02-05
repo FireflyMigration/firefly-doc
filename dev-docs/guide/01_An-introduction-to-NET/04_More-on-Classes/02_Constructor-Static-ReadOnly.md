@@ -2,7 +2,9 @@
 
 In previous lesson we created 2 instances of Animal - 'a' & 'b'  
 To create them we used the **new** keyword and the class name Animal with the brackets at the end.  
+````
 Animal a = new Animal()  
+````
 
 Whenever we see the Brackets - we know we are calling a method.
 

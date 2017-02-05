@@ -46,4 +46,5 @@ namespace Northwind.Training
 ```
 3.	Note: The “using” keyword has more usages and meanings that will be covered later.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/DuvZV5omiqY" frameborder="0" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DuvZV5omiqY?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>

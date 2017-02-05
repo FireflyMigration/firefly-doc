@@ -20,7 +20,7 @@ Below you can see the code of 2 different classes:
 
 **ClassesAndInstances**
 ```csdiff
-+ using System.Windows.Forms;
+using System.Windows.Forms;
 namespace Northwind.Training
 {
     class ClassesAndInstances
