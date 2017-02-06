@@ -5,7 +5,7 @@
 | Type   | Similar to                               | Comments                                                                                                      |
 |--------|------------------------------------------|---------------------------------------------------------------------------------------------------------------|
 | **Number** | int, float, decimal, byte, short, double | One to handle them all., When divided by zero – returns Zero                                                  |
-| **Text**   | String                                   | When performs comparison – it ignores spaces at the end of the string. String- "A " <> "A" Text – "A " == "A" |
+| **Text**   | String                                   | When performs comparison – it ignores spaces at the end of the string. String- "A " != "A" Text – "A " == "A" |
 | **Bool**   | Bool                                     | Also supports null.                                                                                           |
 | **Date**   | DateTime                                 | Only has the date part (no time), Can be null, Can be Empty.                                                  |
 | **Time**   | Timespan                                 | Accurate to seconds., Can be null, Can be Empty                                                               |
