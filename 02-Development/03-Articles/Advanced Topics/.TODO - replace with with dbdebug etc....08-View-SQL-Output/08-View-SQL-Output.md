@@ -1,6 +1,7 @@
 ﻿
 
-This article deals with how to view SQL statements in the Output Window of the Visual Studio IDE, which represents the interaction between the application and the database. Its very helpful to be able to actually see the SQL statements that are being executed by any program, to be able to optimize performance efficiently.
+This article deals with how to view SQL statements in the Output Window of the Visual Studio IDE, which represents the interaction between the application and the database.  
+Its very helpful to be able to actually see the SQL statements that are being executed by any program, to be able to optimize performance efficiently.
 
 # Viewing the SQL
 

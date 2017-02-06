@@ -14,7 +14,7 @@ a.	*Number* – Used for any kind of numeric value. Can be divided by zero and r
 ```c#
 //Number
 
-int x=1;
+int x=1; 
 int y=0;
 int z = x/y;    // RunTime Error
 
