@@ -33,3 +33,13 @@ Defaults:
 * Classes are “internal” 
 * Members (methods, fields etc…) and inner classes are “private”
 
+
+
+## Visual Studio shortcuts
+
+**Ctrl K+D** - Formats the code
+**Ctrl+.** - Opens the Light bulb
+**Ctrl+,** - Navigate to
+
+
+ 
