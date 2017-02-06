@@ -12,7 +12,7 @@ To Add Multi line comment add **/\*** before the comment and **\*/** at the end
 using System.Windows.Forms;
 namespace Northwind.Training
 {
-    Class HelloWorld
+    class HelloWorld
     {
        public void Run()
        {

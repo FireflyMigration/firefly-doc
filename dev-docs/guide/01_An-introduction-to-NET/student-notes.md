@@ -37,9 +37,9 @@ Defaults:
 
 ## Visual Studio shortcuts
 
-**Ctrl K+D** - Formats the code
-**Ctrl+.** - Opens the Light bulb
-**Ctrl+,** - Navigate to
+**<kbd>Ctrl</kbd>+<kbd>K</kbd>+<kbd>D</kbd>** - Formats the code  
+**<kbd>Ctrl</kbd>+<kbd>.</kbd>** - Opens the Light bulb  
+**<kbd>Ctrl</kbd>+<kbd>,</kbd>** - Navigate to
 
 
  

@@ -1,7 +1,7 @@
 ﻿# Input Validation using Flow Abort Exception 
 
 ```csdiff
- protected override void OnSavingRow()
+protected override void OnSavingRow()
 {
     if (Orders.OrderDate.Year < 1990)
     {

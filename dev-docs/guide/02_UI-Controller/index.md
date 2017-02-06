@@ -34,10 +34,10 @@ The two classes will be explained in the next session
 5. Inside the  this method call the Controller by typing 
    new FolderName.[SubFolderName].ClassName().Run()
 ````csdiff
-    private void ApplicationMdi_Load(object sender, EventArgs e)
-    {
-        new Training.SimpleScreen.ShowOrders().Run();
-    }
+private void ApplicationMdi_Load(object sender, EventArgs e)
+{
+    new Training.SimpleScreen.ShowOrders().Run();
+}
 ````
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/woyyAU4droA?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>

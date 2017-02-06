@@ -1,7 +1,7 @@
 ﻿# More about the message class  
 
 ```csdiff
- protected override void OnSavingRow()
+protected override void OnSavingRow()
 {
     if (Orders.OrderDate.Year < 1990)
     {

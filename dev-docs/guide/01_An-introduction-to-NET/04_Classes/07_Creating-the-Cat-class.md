@@ -3,16 +3,16 @@
 Create a new class Cat.cs : 
 ```csdiff
 class Cat:Animal
+{
+    public Cat()
     {
-        public Cat()
-        {
-            AnimalType = "Cat";
-        }
-        public void Sleep()
-        {
-            MessageBox.Show("Sleeping ZZZ");
-        }
+        AnimalType = "Cat";
     }
+    public void Sleep()
+    {
+        MessageBox.Show("Sleeping ZZZ");
+    }
+}
 ```
 
 ```csdiff
