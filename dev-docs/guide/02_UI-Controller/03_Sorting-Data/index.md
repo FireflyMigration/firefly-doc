@@ -2,16 +2,16 @@
 
 ```csdiff
 public ShowOrders()
-        {
-            From = Orders;
-            Where.Add(Orders.ShipCity.IsEqualTo("London").Or(
-                Orders.ShipCity.IsEqualTo("Madrid")));
-            Where.Add(Orders.ShipName.IsDifferentFrom(""));
+{
+     From = Orders;
+     Where.Add(Orders.ShipCity.IsEqualTo("London").Or(
+           Orders.ShipCity.IsEqualTo("Madrid")));
+     Where.Add(Orders.ShipName.IsDifferentFrom(""));
 
-+           OrderBy.Add(Orders.ShipCity);
-+           OrderBy.Add(Orders.OrderDate, SortDirection.Descending);
++    OrderBy.Add(Orders.ShipCity);
++    OrderBy.Add(Orders.OrderDate, SortDirection.Descending);
 
-        }
+}
 ```
 ---
 
