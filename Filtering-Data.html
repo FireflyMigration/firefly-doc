@@ -3,13 +3,15 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
+    <meta name="keywords" content="where,range">
 
-    <title>Filtering Data</title>
+    <title>UIController - Filtering Data</title>
 
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
     
     <link rel="stylesheet" href="assets/css/theme_firefly.css" />
     <link rel="stylesheet" href="assets/css/mermaid.css" />
@@ -23,73 +25,23 @@
             <div class="container">
 
                 <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right">Next</a>
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <main class="content"><h1 id="filtering-data">Filtering Data</h1>
-<ol>
-<li>Add the following filter:</li>
-</ol>
-<pre><code class="language-diff">public class ShowOrders : UIControllerBase
+                <main class="content"><h1 id="uicontroller-filtering-data">UIController - Filtering Data</h1>
+<pre data-line="8,9,10" class="language-csdiff line-numbers"><code>public class ShowOrders : UIControllerBase
 {
 
     public readonly Models.Orders Orders = new Models.Orders();
     public ShowOrders()
     {
         From = Orders;
-+       Where.Add(Orders.ShipCity.IsEqualTo(&quot;London&quot;));
+         Where.Add(Orders.ShipCity.IsEqualTo("London").Or(
+             Orders.ShipCity.IsEqualTo("Madrid")));
+         Where.Add(Orders.ShipName.IsDifferentFrom(""));
     }
-
-    public void Run()
-    {
-        Execute();
-    }
-
-    protected override void OnLoad()
-    {
-        View = () =&gt; new Views.ShowOrdersView(this);
-    }
-}
-
 </code></pre>
-<ol start="2">
-<li>Notice that like IsEqualTo, there are more methods for IsGreater, IsLessThan, IsBetween etc.</li>
-<li>Run the application and check the results.</li>
-<li>Extend the previous example by adding an “Or” part to the Where.Add line, as follows:</li>
-</ol>
-<pre><code class="language-diff">public class ShowOrders : UIControllerBase
-{
-
-    public readonly Models.Orders Orders = new Models.Orders();
-    public ShowOrders()
-    {
-        From = Orders;
--       Where.Add(Orders.ShipCity.IsEqualTo(&quot;London&quot;));
-+       Where.Add(Orders.ShipCity.IsEqualTo(&quot;London&quot;).Or(Orders.ShipCity.IsEqualTo(&quot;Madrid&quot;)));
-+       Where.Add(Orders.ShipName.IsDifferentFrom(&quot;&quot;));
-    }
-
-    public void Run()
-    {
-        Execute();
-    }
-
-    protected override void OnLoad()
-    {
-        View = () =&gt; new Views.ShowOrdersView(this);
-    }
-}
-
-</code></pre>
-<ol start="5">
-<li>Notice that like .Or there is also .And.</li>
-<li>There are other ways to add this filter like using the SQL “In” function. The purpose here is to demonstrate the use of the Or method.</li>
-<li>Run the application and check the results.</li>
-<li>It’s possible to add multiple filter lines as follows:
-Note that there is an “AND” relationship between the Where.Add lines, as implied by the method name: “Add”.</li>
-<li>Run the application and check the results.</li>
-<li>Notice that  there is a lot more about filtering (Using expressions etc), that will be covered later on.</li>
-<li>Exercise: Filtering Data</li>
-</ol>
+<hr />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4RdbTuXP5Sc?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
 </main><!-- .content -->
             </div><!-- .container-->
 

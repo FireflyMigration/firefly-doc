@@ -3,13 +3,15 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
+    <meta name="keywords" content="">
 
-    <title>Migrated data Types - Text Demo</title>
+    <title>Text - Demo</title>
 
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
     
     <link rel="stylesheet" href="assets/css/theme_firefly.css" />
     <link rel="stylesheet" href="assets/css/mermaid.css" />
@@ -23,10 +25,37 @@
             <div class="container">
 
                 <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right">Next</a>
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <main class="content"><h1 id="migrated-data-types-text-demo">Migrated data Types - Text Demo</h1>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/DjwuAwkDuC4" frameborder="0" allowfullscreen></iframe>
+                <main class="content"><h1 id="text-demo">Text - Demo</h1>
+<pre data-line="" class="language-csdiff line-numbers"><code>using Firefly.Box;
+using System.Diagnostics;
+
+namespace Northwind.Training
+{
+    class DemoText
+    {
+        public void Run()
+        {
+            string s1 = "a";
+            string s2 = "a  ";
+            Text t1 = "a";
+            Text t2 = "a  ";
+            if (s1 == s2)
+                Debug.WriteLine("Strings are equal");
+            else
+                Debug.WriteLine("Strings are not equal");
+            if (t1 == t2)
+                Debug.WriteLine("Texts are equal");
+            else
+                Debug.WriteLine("Texts are not equal");
+        }
+    }
+}
+
+</code></pre>
+<hr />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DjwuAwkDuC4?list=PL1DEQjXG2xnJNTIi_lrTxD83bf5-8mrRP" frameborder="0" allowfullscreen></iframe>
 </main><!-- .content -->
             </div><!-- .container-->
 
@@ -59,7 +88,7 @@
     <script src="assets/js/jquery-3.1.1.js"></script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'Text-demo.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'Text-Demo.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

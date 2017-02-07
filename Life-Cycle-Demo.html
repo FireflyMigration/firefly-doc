@@ -3,13 +3,15 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
+    <meta name="keywords" content="">
 
-    <title>More on UI Controller - Life Cycle Demo</title>
+    <title>UI Controller - Life Cycle Demo</title>
 
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
     
     <link rel="stylesheet" href="assets/css/theme_firefly.css" />
     <link rel="stylesheet" href="assets/css/mermaid.css" />
@@ -23,9 +25,47 @@
             <div class="container">
 
                 <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right">Next</a>
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <main class="content"><h1 id="more-on-ui-controller-life-cycle-demo">More on UI Controller - Life Cycle Demo</h1>
+                <main class="content"><h1 id="ui-controller-life-cycle-demo">UI Controller - Life Cycle Demo</h1>
+<pre data-line="" class="language-csdiff line-numbers"><code>public void Run()
+{
+    Debug.WriteLine("Before the Execute");
+    Execute();
+    Debug.WriteLine("After the Execute");
+}
+protected override void OnStart()
+{
+    Debug.WriteLine("\t\tOnStart");
+}
+protected override void OnEnterRow()
+{
+    Debug.WriteLine("\t\t\tOnEnterRow");
+}
+protected override void OnLeaveRow()
+{
+    Debug.WriteLine("\t\t\tOnLeaveRow");
+}
+protected override void OnSavingRow()
+{
+    Debug.WriteLine("\t\t\tOnSavingRow");
+}
+protected override void OnUnLoad()
+{
+    Debug.WriteLine("\tOnUnLoad");
+}
+protected override void OnEnd()
+{
+    Debug.WriteLine("\t\tOnEnd");
+}
+
+protected override void OnLoad()
+{
+    Debug.WriteLine("\tOnLoad");
+    View = () => new Views.ShowOrdersView(this);
+}
+</code></pre>
+<hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/X4fP8lxqhEs?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
 </main><!-- .content -->
             </div><!-- .container-->
