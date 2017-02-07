@@ -13,7 +13,7 @@ For example:
 | ***=**    | We will use the \*= to multiple the number<br> i\*=3 |
 | **/=**    | and this operator to divide the number <br> i/=3; |
 | **++**    | The ++ operator is used to increase the value by 1  <br>int i=5;  <br>i++; <br>at this point i will be 6. |
-| **++**    | The - operator reduces the value by 1  <br>int i=5;  <br>i--;  <br>at this point i will be 4. |
+| **--**    | The - operator reduces the value by 1  <br>int i=5;  <br>i--;  <br>at this point i will be 4. |
 
 
 More information about operators can be found at: [MSDN C# Operators](https://msdn.microsoft.com/en-us/library/6a71f45d.aspx)  
