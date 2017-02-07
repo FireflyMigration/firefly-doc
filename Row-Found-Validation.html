@@ -26,6 +26,18 @@
                     <a id="previousButton" class="btn btn-neutral float-left">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right">Next</a>
                 </div>
                 <main class="content"><h1 id="row-found-validation-check-if-a-relation-succeeded">Row Found Validation - Check if a Relation succeeded</h1>
+<pre data-line="7,8,9,10" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
+{
+    if (u.Year( Orders.OrderDate) < 1990 || Orders.OrderDate.Year>2020)
+    {
+        Message.ShowError("Invalid Year");
+    }
+    if (!Relations[Shippers].RowFound)
+    {
+        Message.ShowError("Please enter a valid shipper");
+    }
+}
+</code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bZjpNK5k0VI?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
 </main><!-- .content -->
             </div><!-- .container-->

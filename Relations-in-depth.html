@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>Introduction</title>
+    <title>Relations in depth</title>
 
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -25,7 +25,7 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right">Next</a>
                 </div>
-                <main class="content"><h1 id="introduction">Introduction</h1>
+                <main class="content"><h1 id="relations-in-depth">Relations in depth</h1>
 <p>In this article we are going to review different types of Relations in your migrated code and their interaction with the database. We'll look at the difference between Find (Find, Insert if not found) and Join (Left Outer Join, Inner Join) as well as the different SQL code that each one generates. We will also discuss optimizing the SQL code for Relations, by using Cache. This article doesn't address Insert relation type and InsertIfNotFound relation types. To read more about these topics, and get code samples please see: <a href="http://www.fireflymigration.com/reference/html/T_Firefly_Box_RelationType.htm">RelationType Documentation</a></p>
 <h1 id="find-relation">Find Relation</h1>
 <p>To start with, we'll create a simple UIController, which will display a list of products and it's Categories.</p>
@@ -179,7 +179,7 @@ ExecuteReader Duration..: 34.0019
 <p>As you can see, the program is fetching data from the Categories Relation table, where CategoryID is equal to 5. This is the Category id for the first row, as displayed in the grid screenshot above. This statement is followed by many more similar statements, that fetch Categories for each product row. We will demonstrate the following principle: The select statement for the Relation is executed for each row displayed on the grid and if Cache is applied (as it is in this case), rows that were already fetched are not fetched again.</p>
 <hr />
 <h1 id="using-cache">Using Cache</h1>
-<h2 id="introduction-1">Introduction</h2>
+<h2 id="introduction">Introduction</h2>
 <p>When working with Relation Selects, you can enable Cache in order to optimize the number of direct queries to the Database. Once enabled, The UIController will try not to refetch rows with Related data directly from the DB that have already been fetched, but rather, will check the Cache first and fetch from there if possible.</p>
 <h2 id="enabling-cache">Enabling Cache</h2>
 <p>To enable Cache either in the Entity or in the Task, Type “Cached = true” either in the Entity or the Task, as displayed below.</p>

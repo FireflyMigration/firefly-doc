@@ -26,7 +26,37 @@
                     <a id="previousButton" class="btn btn-neutral float-left">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right">Next</a>
                 </div>
                 <main class="content"><h1 id="display-data-from-db-simple-ui-controller">Display data from DB – Simple UI Controller</h1>
+<p>To use table from the database first we need to define the Table we are going to use in the class</p>
+<pre><code>public readonly Models.Orders MyOrders = new Models.Orders(); 
+</code></pre>
+<p>Them we can set the Table as the Main table in our controller by setting the From in the constructor</p>
+<pre><code>From = MyOrders;
+</code></pre>
+<p><strong>Designing the View</strong><br />
+To be able to see the Columns of the table in the designer we need to build the project first
+To see the Controls comes from the migrated code - run the 'Setup Toolbox' wizard from the designer:
+RightClick on the window
+Select setup Toolbox
+Click Yes
+Visual studio will add all the controls available in the code to the Toolbox</p>
+<p>Drag a Grid to the Designer and place it as you like
+To add the columns use the <strong>Column Wizard</strong> by selecting the grid and select the Column wizard option from the small arrow at the right side of the grid</p>
+<p>The Column Wizard shows the Controller, the Models and the columns that can be selected to be add to the grid</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/1u67cUCXxE8?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
+<h3 id="things-that-can-go-wrong">Things that can go wrong</h3>
+<ol>
+<li><p>I can't see the Orders table under my controller when using the column wizard:</p>
+<ol type="a">
+<li>Did you build the project prior to opening the column wizard?</li>
+<li>Is the build successful?</li>
+<li>Make sure that the access modifier for the Orders field is <code>public</code></li>
+<li>Close and open visual studio.</li>
+</ol>
+<ol start="5">
+<li>Close visual studio, buildDebug.bat &amp; open visual studio</li>
+</ol>
+</li>
+</ol>
 </main><!-- .content -->
             </div><!-- .container-->
 

@@ -1,12 +1,3 @@
 ERROR: url conflict: 
-MarkDownFile: Filtering-Data-Exercise.html => C:\Users\anat\Source\Repos\firefly-doc\dev-docs\guide\02_An-introduction-to-UIController\02_Filtering-Data\02_Filtering-Data-Exercise.md
-MarkDownFile: Filtering-Data-exercise.html => C:\Users\anat\Source\Repos\firefly-doc\dev-docs\guide\04-Introduction-to-UI-Controller\02_Filtering-Data\exercise.md'
-ERROR: url conflict: 
-MarkDownFile: Filtering-Data.html => C:\Users\anat\Source\Repos\firefly-doc\dev-docs\guide\02_An-introduction-to-UIController\02_Filtering-Data\01_Filtering-Data.md
-MarkDownFile: Filtering-Data.html => C:\Users\anat\Source\Repos\firefly-doc\dev-docs\guide\04-Introduction-to-UI-Controller\02_Filtering-Data\index.md'
-ERROR: url conflict: 
-MarkDownFile: Sorting-Data-Exercise.html => C:\Users\anat\Source\Repos\firefly-doc\dev-docs\guide\02_An-introduction-to-UIController\03_Sorting-Data\02_Sorting-Data-Exercise.md
-MarkDownFile: Sorting-Data-exercise.html => C:\Users\anat\Source\Repos\firefly-doc\dev-docs\guide\04-Introduction-to-UI-Controller\03_Sorting-Data\exercise.md'
-ERROR: url conflict: 
-MarkDownFile: Sorting-Data.html => C:\Users\anat\Source\Repos\firefly-doc\dev-docs\guide\02_An-introduction-to-UIController\03_Sorting-Data\01_Sorting-Data.md
-MarkDownFile: Sorting-Data.html => C:\Users\anat\Source\Repos\firefly-doc\dev-docs\guide\04-Introduction-to-UI-Controller\03_Sorting-Data\index.md'
+OtherFile: CSharpTraining.pptx => C:\Users\anat\Source\Repos\firefly-doc\02-Development\01-Developer Guide\01_An-introduction-to-NET\CSharpTraining.pptx
+OtherFile: CSharpTraining.pptx => C:\Users\anat\Source\Repos\firefly-doc\02-Development\01-Developer Guide\CSharpTraining.pptx'

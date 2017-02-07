@@ -26,6 +26,16 @@
                     <a id="previousButton" class="btn btn-neutral float-left">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right">Next</a>
                 </div>
                 <main class="content"><h1 id="introduction-to-usermethods-and-the-u-member">Introduction to UserMethods and the u Member</h1>
+<pre data-line="4" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
+{
+-    if (Orders.OrderDate.Year < 1990 || Orders.OrderDate.Year>2020)
+     if (u.Year( Orders.OrderDate) < 1990 || Orders.OrderDate.Year>2020)
+    {
+        Message.ShowError("Invalid Year");
+    }
+}
+</code></pre>
+<hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/GKo8FHW_X6c?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
 </main><!-- .content -->
             </div><!-- .container-->
