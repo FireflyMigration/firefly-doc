@@ -1,6 +1,6 @@
 ﻿keywords: frm,form,call operation
-Name in Magic: **Call Program, Call Subtask**  
-Name in the Migrated Code **new ClassName().Run()**
+Name in Magic: **Frm, Form**  
+
 
 ***
 This property, determining which GUI screen will be displayed, is passed in the migrated code as a parameter, when calling the Method.  
