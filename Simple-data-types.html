@@ -27,7 +27,7 @@
                 </div>
                 <main class="content"><h1 id="simple-data-types">Simple Data Types</h1>
 <p>Data types are  used to define fields , variables.<br />
-In C# there are various of data types but let's start with the basic ones:<br />
+In C# we have various of data types but let's start with the basic ones:<br />
 int, string, double, char and bool</p>
 <p>When defining a variable we first need to set its type and then its name
 For example: string CompanyName;<br />
@@ -68,18 +68,13 @@ We can also initialize the variable in the same line by using the equation sign:
     }
 }
 </code></pre>
-<ol start="4">
-<li><p>Note:<br />
+<p>4. Note:<br />
 A variable which is not in used has a green underline</p>
-</li>
-<li><p><strong>String VS Char</strong><br />
+<p>5. <strong>String VS Char</strong><br />
 A char is a single character as opposed to a string which is comprised of many characters.<br />
 String is surrounded by double quotes while char is surrounded by a single quote.</p>
-</li>
-<li><p>In order to use the System.Windows.Form.MessageBox class we will add it to the using section
+<p>6. In order to use the System.Windows.Form.MessageBox class we will add it to the using section
 and we will use the MessageBox.Show() method to display them</p>
-</li>
-</ol>
 <pre data-line="1,17,18" class="language-csdiff line-numbers"><code>  using System.Windows.Forms;
 namespace Northwind.Training
 {
@@ -103,29 +98,21 @@ namespace Northwind.Training
 }
 
 </code></pre>
-<ol start="7">
-<li><p>The <strong>+ operator</strong> when used on strings concatenates the two string into a single string.</p>
-</li>
-<li><p>The <strong>ToString()</strong> method is used to convert the value to string.<br />
+<p>7. The <strong>+ operator</strong> when used on strings concatenates the two string into a single string.<br />
+8. The <strong>ToString()</strong> method is used to convert the value to string.<br />
 Every object in .net has <code>ToString()</code> method that convert itself to string.</p>
-</li>
-<li><p>When concatenating string with number you do not have to use the ToString() method this will be done automatically by C#.</p>
-</li>
-<li><p>To call this class from the menu we will add a new entry in the ApplicationMDI menu<br />
+<p>9. When concatenating string with number you do not have to use the ToString() method this will be done automatically by C#.</p>
+<p>10. To call this class from the menu we will add a new entry in the ApplicationMDI menu<br />
 DbClick on the menu so Visual Studio generate the code that will be executed when clicking the menu entry
 and call this class by calling its Run() method</p>
-</li>
-</ol>
 <pre data-line="3" class="language-csdiff line-numbers"><code>private void basicTypesToolStripMenuItem_Click(object sender, EventArgs e)
 {
  	new Training.BasicTypes().Run();
 }
 </code></pre>
-<ol start="11">
-<li>before running the application remember to build it.</li>
-</ol>
+<p>11. before running the application remember to build it.</p>
 <hr />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/eel6sOTM1hY?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eel6sOTM1hY" frameborder="0" allowfullscreen></iframe>
 </main><!-- .content -->
             </div><!-- .container-->
 

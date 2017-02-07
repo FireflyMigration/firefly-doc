@@ -40,23 +40,21 @@ Location in Migrated Code: <strong>InitializeDataView method</strong></p>
     From = Categories;
     OrderBy.Add(Categories.CategoryName, SortDirection.Descending);
     OrderBy.Add(Categories.Description);
-}
 </code></pre>
 <p>Notes:<br />
 For an index specified in the Task Properties Screen, see: <a href="Task-Properties.html">Task Properties Screen - Index</a><br />
 If the 'Unique' radio button is selected in Magic, this is reflected in the migrated code in the example below.<br />
 Example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>void InitializeDataView()
-{
-     From = Categories;
-     OrderBy.Add(Categories.CategoryName, SortDirection.Descending);
-     OrderBy.Add(Categories.Description);
-     OrderBy.Unique = true;
-}
+<pre data-line="" class="language-csdiff line-numbers"><code>       void InitializeDataView()
+        {
+            From = Categories;
+            OrderBy.Add(Categories.CategoryName, SortDirection.Descending);
+            OrderBy.Add(Categories.Description);
+            OrderBy.Unique = true;
 </code></pre>
 <h3 id="see-also">See Also:</h3>
 <ul>
-<li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_OrderBy.htm">UIController OrderBy Property</a></li>
+<li><a href="Task-Control.html">UIController OrderBy Property</a></li>
 </ul>
 </main><!-- .content -->
             </div><!-- .container-->

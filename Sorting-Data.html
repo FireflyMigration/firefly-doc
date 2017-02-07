@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>UIController - Sorting Data</title>
+    <title>Sorting Data</title>
 
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -25,21 +25,122 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right">Next</a>
                 </div>
-                <main class="content"><h1 id="uicontroller-sorting-data">UIController - Sorting Data</h1>
-<pre data-line="8,9" class="language-csdiff line-numbers"><code>public ShowOrders()
+                <main class="content"><h1 id="sorting-data">Sorting Data</h1>
+<ol>
+<li>Notice that our orders list is sorted by the OrderId, which is the default.</li>
+<li>Let’s sort the list by the ShipCity, as follows:</li>
+</ol>
+<pre><code class="language-diff">public class ShowOrders : UIControllerBase
 {
-     From = Orders;
-     Where.Add(Orders.ShipCity.IsEqualTo("London").Or(
-           Orders.ShipCity.IsEqualTo("Madrid")));
-     Where.Add(Orders.ShipName.IsDifferentFrom(""));
+    public readonly Models.Orders Orders = new Models.Orders();
+    public ShowOrders()
+    {
+        From = Orders;
+        Where.Add(Orders.ShipCity.IsEqualTo(&quot;London&quot;).Or(Orders.ShipCity.IsEqualTo(&quot;Madrid&quot;);
+        Where.Add(Orders.ShipName.IsDifferentFrom(&quot;&quot;));
++       OrderBy.Add(Orders.ShipCity);
+    }
 
-     OrderBy.Add(Orders.ShipCity);
-     OrderBy.Add(Orders.OrderDate, SortDirection.Descending);
+    public void Run()
+    {
+        Execute();
+    }
 
+    protected override void OnLoad()
+    {
+        View = () =&gt; new Views.ShowOrdersView(this);
+    }
 }
 </code></pre>
-<hr />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/lAtzSRwwJnE?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
+<ol start="3">
+<li>Run the application and check the results.</li>
+<li>Add a second segment to the previous example, as follows:</li>
+</ol>
+<pre><code class="language-diff">public class ShowOrders : UIControllerBase
+{
+    public readonly Models.Orders Orders = new Models.Orders();
+    public ShowOrders()
+    {
+        From = Orders;
+        Where.Add(Orders.ShipCity.IsEqualTo(&quot;London&quot;).Or(Orders.ShipCity.IsEqualTo(&quot;Madrid&quot;);
+        Where.Add(Orders.ShipName.IsDifferentFrom(&quot;&quot;));
+        OrderBy.Add(Orders.ShipCity);
++       OrderBy.Add(Orders.OrderDate);
+    }
+
+    public void Run()
+    {
+        Execute();
+    }
+
+    protected override void OnLoad()
+    {
+        View = () =&gt; new Views.ShowOrdersView(this);
+    }
+}
+</code></pre>
+<ol start="5">
+<li>Run the application and check the results.</li>
+<li>Notice that the default direction is ascending and you can sort in descending order using a second OrderBy line, as follows:</li>
+</ol>
+<pre><code class="language-Diff">public class ShowOrders : UIControllerBase
+{
+    public readonly Models.Orders Orders = new Models.Orders();
+    public ShowOrders()
+    {
+        From = Orders;
+        Where.Add(Orders.ShipCity.IsEqualTo(&quot;London&quot;).Or(Orders.ShipCity.IsEqualTo(&quot;Madrid&quot;);
+        Where.Add(Orders.ShipName.IsDifferentFrom(&quot;&quot;));
+        OrderBy.Add(Orders.ShipCity);
++       OrderBy.Add(Orders.OrderDate,SortDirection.Descending);
+    }
+
+    public void Run()
+    {
+        Execute();
+    }
+
+    protected override void OnLoad()
+    {
+        View = () =&gt; new Views.ShowOrdersView(this);
+    }
+}
+</code></pre>
+<ol start="7">
+<li>Notice that the SortDirection has two options to choose from. This parameter type is called enum. enum is used whenever there is a parameter that accepts a close list of options.</li>
+<li>Run the application and check the results.</li>
+<li>A pre-defined index can also be used to sort the data:</li>
+</ol>
+<pre><code class="language-diff">public class ShowOrders : UIControllerBase
+    {
+        public readonly Models.Orders Orders = new Models.Orders();
+        public ShowOrders()
+        {
+            From = Orders;
+            Where.Add(Orders.ShipCity.IsEqualTo(&quot;London&quot;).Or(Orders.ShipCity.IsEqualTo(&quot;Madrid&quot;);
+            Where.Add(Orders.ShipName.IsDifferentFrom(&quot;&quot;));
+            OrderBy.Add(Orders.ShipCity);
+            OrderBy.Add(Orders.OrderDate,SortDirection.Descending);
++           OrderBy = Orders.SortByOrderDate;
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () =&gt; new Views.ShowOrdersView(this);
+        }
+    }
+</code></pre>
+<h2 id="there-is-no-sortbyorderdate-in-the-entity">** there is no SortByOrderDate in the entity** !!!!!!!</h2>
+<p>Fix the example</p>
+<ol start="10">
+<li>Modify the program so it will use the OrderDate index.</li>
+<li>Run the application and check the results.</li>
+</ol>
 </main><!-- .content -->
             </div><!-- .container-->
 

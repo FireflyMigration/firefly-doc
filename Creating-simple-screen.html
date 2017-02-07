@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>Creating a Simple Screen</title>
+    <title>Introduction to UIController</title>
 
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -25,8 +25,18 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right">Next</a>
                 </div>
-                <main class="content"><h1 id="creating-a-simple-screen">Creating a Simple Screen</h1>
-<p>To create a new UI Controller:</p>
+                <main class="content"><h1 id="introduction-to-uicontroller">Introduction to UIController</h1>
+<p>UI Controller is a class that controls the UI interaction.<br />
+It is the equivalent to the Online program in the original application.</p>
+<p>The video shows how to create a Folder and in it a Simple UIController and how to add the it to the menu, run the application and call the controller.<br />
+In the next session the UIControllel will be explained.</p>
+<h6 id="to-create-a-new-folder-in-the-solution-explorer">To create a new Folder in the solution explorer:</h6>
+<ol>
+<li>Stand on the Project where you want to create the folder and RightClick</li>
+<li>Select 'Add' -&gt; 'New Folder'</li>
+<li>Give it a name</li>
+</ol>
+<h6 id="to-create-a-new-ui-controller">To create a new UI Controller:</h6>
 <ol>
 <li>In the solution explorer right click on the Folder you would like to add the new UI controller to it</li>
 <li>Select ‘Add’ -&gt; ‘New item’</li>
@@ -34,100 +44,25 @@
 <li>From the Templates list select UIController</li>
 <li>Give it a name and press the Add button</li>
 </ol>
-<p>Two classes are automatically created:</p>
+<p>Two classes are automatically created:
+The Controller class – where the logic is written
+The View class – the design of the screen (the window of the program)
+The two classes will be explained in the next session</p>
+<h6 id="to-add-the-controller-to-the-menu">To Add the Controller to the menu:</h6>
 <ol>
-<li>The Controller class – where the logic is written</li>
-<li>The View class – the design of the screen (the window of the program)</li>
+<li>In the Solution explorer go to the Views folder and DbClick on the ApplicationMDI.cs file</li>
+<li>Click on the Menu bar and give the menu a name</li>
+<li>Click outside the menu to save it</li>
+<li>DbClick on the new created entry - a new method is automatically created.</li>
+<li>Inside the  this method call the Controller by typing
+new FolderName.[SubFolderName].ClassName().Run()</li>
 </ol>
-<p><strong>The Controller class:</strong></p>
-<pre><code class="language-csdiff">using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing;
-using Firefly.Box;
-using ENV;
-using ENV.Data;
-
-namespace Northwind.Training.SimpleScreen
-{
-    public class ShowOrders : UIControllerBase
+<pre><code class="language-csdiff">    private void ApplicationMdi_Load(object sender, EventArgs e)
     {
-
-        public ShowOrders()
-        {
-
-        }
-
-        public void Run()
-        {
-            Execute();
-        }
-
-        protected override void OnLoad()
-        {
-            View = () =&gt; new Views.ShowOrdersView(this);
-        }
-    }
-}
-
-</code></pre>
-<ol>
-<li>The <strong>using</strong> statements at the top.<br />
-The dll are not being in used yet, you may use them later and that is why they are greyed.</li>
-<li><strong>namespace</strong> definition - <code>namespace Northwind.Training.SimpleScreen</code>
-The name space represents the position of the class in the solution
-In this case the UIController is under 'SimpleScreen' folder which defined under 'Training' folder under the 'Northwind' solution.</li>
-<li><strong>class</strong> definition: <code>public class ShowOrders : UIControllerBase</code><br />
-This is a public class called ShowOrders which inherits from UIControllerBase class,<br />
-meaning the ShowOrders class receives the capabilities of the UIController class.</li>
-<li>The <strong>Constructor</strong> : <code>public ShowOrders()</code></li>
-<li>The <strong>Run</strong> method : <code>public void Run()</code> that calls the <code>Execute()</code> method which actually executes the UIController</li>
-<li>Override <strong>OnLoad</strong> method which overrides the basic implementation of OnLoad method which declared in the UIControllerBase class:</li>
-<li><strong>View</strong> - in the OnLoad() method the view property of the UIController is set</li>
-</ol>
-<pre><code class="language-csdiff">    protected override void OnLoad()
-    {
-         View = () =&gt; new Views.ShowOrdersView(this);
+        new Training.SimpleScreen.ShowOrders().Run();
     }
 </code></pre>
-<p><strong>The View class:</strong></p>
-<pre><code class="language-csdiff">using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using Firefly.Box;
-using Firefly.Box.UI.Advanced;
-using ENV;
-using ENV.Data;
-
-namespace Northwind.Training.SimpleScreen.Views
-{
-    partial class ShowOrdersView : Shared.Theme.Controls.Form
-    {
-        ShowOrders _controller;
-        public ShowOrdersView(ShowOrders controller)
-        {
-            _controller = controller;
-            InitializeComponent();
-        }
-    }
-}
-</code></pre>
-<ol>
-<li>The <strong>using</strong> statements at the top.</li>
-<li><strong>namespace</strong> definition - <code>namespace Northwind.Training.SimpleScreen.Views</code><br />
-The view has the .Views at the end as it is defined under the Views folder</li>
-<li><strong>class</strong> definition - <code>partial class ShowOrdersView : Shared.Theme.Controls.Form</code><br />
-This class inherits from <code>Form</code> class. This inheritance sets the visual designer capability to the View of the ShowOrders class.</li>
-<li><strong>Constructor</strong> - <code>public ShowOrdersView(ShowOrders controller)</code></li>
-<li><strong>Controller parameter</strong> - the View class receive the controller as parameter and saves it to a local class variable called '_controller'</li>
-<li>After updating the local variable _controller with the parameter <code>_controller = controller;</code> the constructor calls the <code>InitializeComponent();</code> method</li>
-<li>The InitializeComponent() method defined in the code of the designer which is automatically created by Visual Studio.</li>
-</ol>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/DzEjXid8mSc?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/woyyAU4droA?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
 </main><!-- .content -->
             </div><!-- .container-->
 

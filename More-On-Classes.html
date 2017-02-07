@@ -4,28 +4,150 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
 
-    <title>More on Classes - Classes & Instances</title>
-
-    <link rel="stylesheet" href="assets/css/toc.css" />
-    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <title>More on Classes</title>
+    
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
     
+    <link rel="stylesheet" href="assets/css/theme.css" />
+    <link rel="stylesheet" href="assets/css/theme_extra.css" />
     <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
     <link rel="stylesheet" href="assets/css/mermaid.css" />
 </head>
 <body class="markdown-body" role="document">
+    <div class="wy-grid-for-nav">
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+            <div class="wy-side-nav-search-ff">
+                <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+            </div>
 
-    <div class="wrapper">
+            <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1 "><a class="" href="">Home</a></li>
+                    <li class="toctree-l1">
+    <ul class="subnav">
+        <li><span>dev docs</span></li>
+        <li class="toctree-l1">
+            <ul class="subnav">
+                <li><span>guide</span></li>
+                <li class="toctree-l1">
+                    <ul class="subnav">
+                        <li><span>An introduction to NET</span></li>
+                        <li class="toctree-l1">
+                            <ul class="subnav">
+                                <li><span>Intro</span></li>
+                                <li  class="toctree-l1"><a href="NET-Framework-Overview.html">NET Framework Overview</a></li>
+                                <li  class="toctree-l1"><a href="Visual-Studio-and-CSharp-Overview.html">Visual Studio and CSharp Overview</a></li>
+                                <li  class="toctree-l1"><a href="Create-a-simple-class.html">Create a simple class</a></li>
+                                <li  class="toctree-l1"><a href="Explaining-The-Hello-world-example.html">Explaining The Hello world example</a></li>
+                                <li  class="toctree-l1"><a href="Method-Arguments-and-Overloading.html">Method Arguments and Overloading</a></li>
+                                <li  class="toctree-l1"><a href="Using-directives.html">Using directives</a></li>
+                                <li  class="toctree-l1"><a href="Snippets.html">Snippets</a></li>
+                                <li  class="toctree-l1"><a href="Comments.html">Comments</a></li>
+                                <li  class="toctree-l1"><a href="Hello-csharp-exercise.html">Hello csharp exercise</a></li>
+                            </ul>
+                        </li>
+                        <li class="toctree-l1">
+                            <ul class="subnav">
+                                <li  class="toctree-l1"><a href="Simple-data-types.html">Simple data types</a></li>
+                                <li  class="toctree-l1"><a href="More-on-strings.html">More on strings</a></li>
+                                <li  class="toctree-l1"><a href="Data-Types-Exercise.html">Data Types Exercise</a></li>
+                            </ul>
+                        </li>
+                        <li class="toctree-l1">
+                            <ul class="subnav">
+                                <li  class="toctree-l1"><a href="Operators.html">Operators</a></li>
+                                <li  class="toctree-l1"><a href="Operators-Exercise.html">Operators Exercise</a></li>
+                            </ul>
+                        </li>
+                        <li class="toctree-l1">
+                            <ul class="subnav">
+                                <li  class="toctree-l1 current-page"><a href="More-On-Classes.html">More On Classes</a></li>
+                                <li  class="toctree-l1"><a href="Constructor-Static_ReadOnly.html">Constructor Static_ReadOnly</a></li>
+                            </ul>
+                        </li>
+                        <li  class="toctree-l1"><a href="student-notes.html">student notes</a></li>
+                    </ul>
+                </li>
+                <li class="toctree-l1">
+                    <ul class="subnav">
+                        <li  class="toctree-l1"><a href="Getting-the-code-for-the-first-time.html">Getting the code for the first time</a></li>
+                    </ul>
+                </li>
+                <li class="toctree-l1">
+                    <ul class="subnav">
+                        <li><span>Visual Studio Configuration</span></li>
+                        <li  class="toctree-l1"><a href="file.html">file</a></li>
+                    </ul>
+                </li>
+                <li  class="toctree-l1"><a href="using-version-control.html">using version control</a></li>
+            </ul>
+        </li>
+        <li class="toctree-l1">
+            <ul class="subnav">
+                <li  class="toctree-l1"><a href="reference.html">reference</a></li>
+                <li class="toctree-l1">
+                    <ul class="subnav">
+                        <li><span>Articles</span></li>
+                        <li  class="toctree-l1"><a href="Automatic-Migration-Using-FTP.html">Automatic Migration Using FTP</a></li>
+                        <li  class="toctree-l1"><a href="Error-report-guide.html">Error report guide</a></li>
+                        <li  class="toctree-l1"><a href="Relations-in-depth.html">Relations in depth</a></li>
+                        <li  class="toctree-l1"><a href="shoulddeterminenameaccordingtocallstack.html">shoulddeterminenameaccordingtocallstack</a></li>
+                        <li  class="toctree-l1"><a href="Understanding-Error-Message-Details.html">Understanding Error Message Details</a></li>
+                        <li  class="toctree-l1"><a href="Using-issue-tracker.html">Using issue tracker</a></li>
+                        <li  class="toctree-l1"><a href="Using-Log-Files.html">Using Log Files</a></li>
+                        <li  class="toctree-l1"><a href="View-SQL-Output.html">View SQL Output</a></li>
+                    </ul>
+                </li>
+                <li class="toctree-l1">
+                    <ul class="subnav">
+                        <li><span>Comparing Migrated Code with Magic</span></li>
+                        <li class="toctree-l1">
+                            <ul class="subnav">
+                                <li><span>eDevelopper</span></li>
+                                <li  class="toctree-l1"><a href="Task-Properties.html">Task Properties</a></li>
+                                <li  class="toctree-l1"><a href="Task-Control.html">Task Control</a></li>
+                                <li  class="toctree-l1"><a href="IO-Files.html">IO Files</a></li>
+                                <li  class="toctree-l1"><a href="DB-Tables.html">DB Tables</a></li>
+                                <li  class="toctree-l1"><a href="Range-Locate.html">Range Locate</a></li>
+                                <li  class="toctree-l1"><a href="The-Sort.html">The Sort</a></li>
+                                <li  class="toctree-l1"><a href="Operations.html">Operations</a></li>
+                                <li  class="toctree-l1"><a href="State-Comparison.html">State Comparison</a></li>
+                                <li  class="toctree-l1"><a href="Handlers.html">Handlers</a></li>
+                            </ul>
+                        </li>
+                        <li class="toctree-l1">
+                            <ul class="subnav">
+                                <li><span>Unipaas</span></li>
+                                <li  class="toctree-l1"><a href="task-properties-unipaas.html">task properties unipaas</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="toctree-l1">
+                    <ul class="subnav">
+                        <li><span>Refactoring</span></li>
+                        <li  class="toctree-l1"><a href="Building-a-generic-GetName-method.html">Building a generic GetName method</a></li>
+                        <li  class="toctree-l1"><a href="Obtaining-category-name-based-on-CategoryID.html">Obtaining category name based on CategoryID</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</li>
 
-           <div class="middle">
 
-            <div class="container">
-
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right">Next</a>
-                </div>
-                <main class="content"><h1 id="more-on-classes-classes-instances">More on Classes - Classes &amp; Instances</h1>
+                </ul>
+            </div>
+            &nbsp;
+        </nav>
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+            <div class="wy-nav-content">
+                <div class="rst-content">
+                    <div role="main">
+                        <a href="Operators-Exercise.html"class="btn btn-neutral float-left">Previous</a> <a href="Constructor-Static_ReadOnly.html"class="btn btn-neutral float-right">Next</a><br /><br />
+                        <div class="section"><h1 id="more-on-classes">More on Classes</h1>
 <p>In this chapter, we will discuss more about Classes and instances.</p>
 <p>The C# code is written inside classes.<br />
 Class is a <strong>collection of operations and Data</strong>.</p>
@@ -39,28 +161,28 @@ Members defined inside a class are known only in that class.</p>
 <li>Class called Animal</li>
 </ol>
 <p><strong>ClassesAndInstances</strong></p>
-<pre data-line="6,7,8" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
+<pre><code class="language-diff">+ using System.Windows.Forms;
 namespace Northwind.Training
 {
     class ClassesAndInstances
     {
-        public void Run()
-        {
-        }     
++       public void Run()
++       {
++       }     
     }
 }
 </code></pre>
 <p><strong>Animal</strong></p>
-<pre data-line="7,8,9,10" class="language-csdiff line-numbers"><code>namespace Northwind.Training
+<pre><code class="language-diff">namespace Northwind.Training
 {
     class Animal
     {
         public string Name;
 
-        public void Run()
-        {
-            
-        }     
++       public void Run()
++       {
++           
++       }     
     }
 }
 </code></pre>
@@ -80,19 +202,19 @@ In our example this instance is represented by the variable a</p>
 <p>Since 'a' is an Animal it has a member called Name (as defined in the Animal class).<br />
 To set a value to the Name of 'a' we use the className.MemberName, and with this sample:<br />
 a.Name = &quot;Rexi&quot;</p>
-<pre data-line="8,9,10,11,12,13" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
+<pre><code class="language-diff">using System.Windows.Forms;
 namespace Northwind.Training
 {
     class ClassesAndInstances
     {
        public void Run()
        {
-             Animal a = new Animal();
-             Animal b = new Animal();
-             a.Name = "Rex";
-             b.Name = "Kitty";
-             MessageBox.Show(a.Name); 
-             MessageBox.Show(b.Name); 
++            Animal a = new Animal();
++            Animal b = new Animal();
++            a.Name = &quot;Rex&quot;;
++            b.Name = &quot;Kitty&quot;;
++            MessageBox.Show(a.Name); 
++            MessageBox.Show(b.Name); 
        }     
     }
 }
@@ -103,22 +225,22 @@ Then we use the MessageBox.Show() method to display the name of each of the Anim
 <p>Note: to access a member of a class (properties, variables, methods) we use the class instance.member</p>
 <p>Back to the Animal class:<br />
 A new member is added to that animal class: AnimalType</p>
-<pre data-line="8" class="language-csdiff line-numbers"><code>namespace Northwind.Training
+<pre><code class="language-diff">namespace Northwind.Training
 {
-    class Animal
-    {
-       public void Run()
-       {
-           public string Name;
-           public string AnimalType;
-       }     
-    }
+   class Animal
+   {
+      public void Run()
+      {
+          public string Name;
++          public string AnimalType;
+      }     
+   }
 }
 </code></pre>
 <p>In the ClassesAndInstances we set 'a' (which is an instance of Animal) to be have AnimalTypa = Dog<br />
 and 'b'  (which is also an instance of Animal) to have AnimalTypa = Cat.<br />
 The message boxes displays the type and the name of the objects a &amp; b</p>
-<pre data-line="11,13,15,17" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
+<pre><code class="language-diff">using System.Windows.Forms;
 namespace Northwind.Training
 {
     class ClassesAndInstances
@@ -127,14 +249,14 @@ namespace Northwind.Training
        {
             Animal a = new Animal();
             Animal b = new Animal();
-            a.Name = "Rex";
-            b.AnimalType = "Dog" ;
-            b.Name = "Kitty";
-            b.AnimalType = "Cat" ;
+            a.Name = &quot;Rex&quot;;
++           b.AnimalType = &quot;Dog&quot; ;
+            b.Name = &quot;Kitty&quot;;
++           b.AnimalType = &quot;Cat&quot; ;
 -           MessageBox.Show(a.Name); 
-            MessageBox.Show(a.Name+" is a "+a.AnimalType); 
++           MessageBox.Show(a.Name+&quot; is a &quot;+a.AnimalType); 
 -            MessageBox.Show(b.Name); 
-            MessageBox.Show(b.Name+" is a "+b.AnimalType); 
++           MessageBox.Show(b.Name+&quot; is a &quot;+b.AnimalType); 
        }     
     }
 }
@@ -145,26 +267,26 @@ ClassesAndInstances, we can add a method in the Animal class itself to do that a
 The method displays the name and the type of the Animal object who used it.
 <code>this</code> is a reference to the current instance of the object (Animal class).<br />
 The code looks like that:</p>
-<pre data-line="1,10,11,12,13" class="language-csdiff line-numbers"><code>  using System.Windows.Forms;
+<pre><code class="language-diff">+ using System.Windows.Forms;
 namespace Northwind.Training
 {
-    class Animal
-    {
-       public void Run()
-       {
-           public string Name;
-           public string AnimalType;
-           public void DescribeYourSelf()
-           {
-                MessageBox.Show(this.Name+" is a "+this.AnimalType); 
-           }  
-       }     
-    }
+   class Animal
+   {
+      public void Run()
+      {
+          public string Name;
+          public string AnimalType;
++          public void DescribeYourSelf()
++          {
++               MessageBox.Show(this.Name+&quot; is a &quot;+this.AnimalType); 
++          }  
+      }     
+   }
 }
 </code></pre>
 <p>The method DescribeYourSelf() belong to the Animal class so every object representing this class can use it.<br />
 Now, in the ClassesAndInstances, instead of using the message box, 'a' and 'b' objects can call the method DescribeYourSelf() method to display the information.</p>
-<pre data-line="15,17" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
+<pre><code class="language-diff">using System.Windows.Forms;
 namespace Northwind.Training
 {
     class ClassesAndInstances
@@ -173,14 +295,14 @@ namespace Northwind.Training
        {
             Animal a = new Animal();
             Animal b = new Animal();
-            a.Name = "Rex";
-            b.AnimalType = "Dog" ;
-            b.Name = "Kitty";
-            b.AnimalType = "Cat" ;
--           MessageBox.Show(a.Name+" is a "+a.AnimalType); 
-            a.DescribeYourSelf();
--           MessageBox.Show(b.Name+" is a "+b.AnimalType); 
-            b.DescribeYourSelf();
+            a.Name = &quot;Rex&quot;;
+            b.AnimalType = &quot;Dog&quot; ;
+            b.Name = &quot;Kitty&quot;;
+            b.AnimalType = &quot;Cat&quot; ;
+-           MessageBox.Show(a.Name+&quot; is a &quot;+a.AnimalType); 
++           a.DescribeYourSelf();
+-           MessageBox.Show(b.Name+&quot; is a &quot;+b.AnimalType); 
++           b.DescribeYourSelf();
        }     
     }
 }
@@ -194,39 +316,24 @@ a is set with Name = Rexi and AnimalType = Dog
 b is set with Name = Kitty and AnimalType = Cat
 Both object use their DescribeYourSelf() method (the Animal class method) to display the information.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/v6wbQgPYwU0?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
-</main><!-- .content -->
-            </div><!-- .container-->
-
-            <aside class="left-sidebar"><div class="wy-side-nav-search-ff">
-    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
-</div><div id="menuTree" style="height:100em"></div></aside><!-- .left-sidebar -->
-
-            <aside class="right-sidebar">
-                
-            </aside><!-- .right-sidebar -->
-
-        </div><!-- .middle-->
-
-   
+</div>
+                        
+                        <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+                            <a href="Operators-Exercise.html"class="btn btn-neutral float-left">Previous</a> <a href="Constructor-Static_ReadOnly.html"class="btn btn-neutral float-right">Next</a>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </div>
-
-
+    
+    <script src="assets/js/prism.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/theme.js"></script>
     <script src="assets/js/mermaid.js"></script>
-    <script src="assets/js/prism-start.js"></script>
-    <script src="assets/js/prism-clike.js"></script>
-    <script src="assets/js/prism-markup.js"></script>
-    <script src="assets/js/prism-css.js"></script>
-    <script src="assets/js/prism-javascript.js"></script>
-    
-    <script src="assets/js/prism-diff.js"></script>
-    <script src="assets/js/prism-csdiff.js"></script>    
-    <script src="assets/js/prism-function.js"></script>    
-    
-    <script src="assets/js/jquery-3.1.1.js"></script>
-    <script src="assets/js/tree.js"></script>
-    <script language="javascript">
-        buildTree('menuTree', 'More-on-Classes.html', 'previousButton', 'nextButton');
-    </script>
 </body>
 </html>
