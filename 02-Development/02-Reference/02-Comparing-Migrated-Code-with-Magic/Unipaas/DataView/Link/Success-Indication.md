@@ -11,8 +11,10 @@ void InitializeDataView()
 +   Relations[Customers].NotifyRowWasFoundTo(v_FoundCustomer);
 }
 ```
+  
 
-Screenshot on Magic:
+Screenshot on Magic:  
+
 ![](NotifyRowWasFound.png)
 
 It is not recommended to use this in new code, instead we recommend to use the RowFound property of a relation see  

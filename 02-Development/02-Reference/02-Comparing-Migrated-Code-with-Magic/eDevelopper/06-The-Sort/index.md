@@ -20,18 +20,20 @@ void InitializeDataView()
     From = Categories;
     OrderBy.Add(Categories.CategoryName, SortDirection.Descending);
     OrderBy.Add(Categories.Description);
+}
 ```
 Notes:  
 For an index specified in the Task Properties Screen, see: [Task Properties Screen - Index](Task-Properties.html)  
 If the 'Unique' radio button is selected in Magic, this is reflected in the migrated code in the example below.  
 Example:  
 ```csdiff
-       void InitializeDataView()
-        {
-            From = Categories;
-            OrderBy.Add(Categories.CategoryName, SortDirection.Descending);
-            OrderBy.Add(Categories.Description);
-            OrderBy.Unique = true;
+void InitializeDataView()
+{
+     From = Categories;
+     OrderBy.Add(Categories.CategoryName, SortDirection.Descending);
+     OrderBy.Add(Categories.Description);
+     OrderBy.Unique = true;
+}
 ```
 ### See Also:  
-* [UIController OrderBy Property](Task-Control.html)  
+* [UIController OrderBy Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_OrderBy.htm)  
