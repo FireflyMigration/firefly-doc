@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
+    <meta name="keywords" content="">
 
     <title>More on Strings</title>
 
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="assets/css/highlight.css" />
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
     
     <link rel="stylesheet" href="assets/css/theme_firefly.css" />
     <link rel="stylesheet" href="assets/css/mermaid.css" />
@@ -23,7 +25,7 @@
             <div class="container">
 
                 <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right">Next</a>
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <main class="content"><h1 id="more-on-strings">More on Strings</h1>
 <p><strong>Special characters in string</strong></p>
@@ -45,7 +47,7 @@ namespace Northwind.Training
     }
 }
 </code></pre>
-<p>To display the backslash character double it: instead of \ use \</p>
+<p>To display the backslash character double it: instead of <code>\</code> use <code>\\</code></p>
 <pre data-line="" class="language-csdiff line-numbers"><code>MessageBox.Show("Windows Path: c:\\windows");
 </code></pre>
 <p>Or Alternatively: to display a string as is use the @ sign before the string</p>

@@ -35,7 +35,7 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
     function showChildNodes(nodes) {
         foreach(nodes, function (item) {
             item.show();
-            showChildNodes(item.nodes);  
+            showChildNodes(item.nodes);
         });
     }
 
@@ -49,16 +49,16 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
 
                 found = true;
                 imFound = true;
-            } 
+            }
             if (search(item.nodes, what)) {
                 item.expand();
                 item.show();
                 found = true;
             }
-            
-            if(imFound)
+
+            if (imFound)
                 showChildNodes(item.nodes);
-           
+
         });
         return found;
     }
@@ -89,11 +89,23 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
                 var plusMinusButton = document.createElement('div');
                 plusMinusButton.style.width = '1em';
                 plusMinusButton.style.display = 'inline-block';
+                plusMinusButton.style.verticalAlign = 'top';
                 treeItem.appendChild(plusMinusButton);
+
+                var treeItemContent = document.createElement('div');
+                treeItemContent.style.display = 'inline-block';
+                treeItem.appendChild(treeItemContent);
 
                 var treeTitle = document.createElement('a');
                 treeTitle.innerText = item.name;
-                treeItem.appendChild(treeTitle);
+                treeItemContent.appendChild(treeTitle);
+
+                var keywords = document.createElement('div');
+                keywords.style.paddingLeft = '1em';
+                keywords.style.fontSize = 'small';
+                keywords.innerHTML = 'Keywords: ';
+                nodeHide(keywords);
+                treeItemContent.appendChild(keywords)
 
 
 
@@ -114,25 +126,46 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
 
 
                 item.lowerName = item.name.toLowerCase();
+                item.lowerKeywords = item.keywords.toLowerCase();
                 item.matches = function (what) {
-                    var i = item.lowerName.indexOf(what);
-                    if (i === -1) {
+                    var indexInName = item.lowerName.indexOf(what);
+                    var found = false;
+                    if (indexInName === -1) {
                         treeTitle.innerText = item.name;
+                    }
+                    else {
+
+                        found = true;
+                        var before = item.name.substring(0, indexInName);
+                        var middle = item.name.substr(indexInName, what.length);
+                        var after = item.name.substr(indexInName + what.length, item.name.length - indexInName - what.length);
+                        treeTitle.innerHTML = before + '<strong>' + middle + '</strong>' + after;
+                    }
+
+                    var indexInKeywords = item.lowerKeywords.indexOf(what);
+                    if (indexInKeywords === -1) {
+                        nodeHide(keywords);
+                    } else {
+                        var before = item.keywords.substring(0, indexInKeywords);
+                        var middle = item.keywords.substr(indexInKeywords, what.length);
+                        var after = item.keywords.substr(indexInKeywords + what.length, item.keywords.length - indexInKeywords - what.length);
+                        keywords.innerHTML = 'keywords: ' + before + '<strong>' + middle + '</strong>' + after;
+                        nodeShow(keywords);
+                        found = true;
+                    }
+                    if (found) {
+                        item.show();
+                        return true;
+                    }
+                    else {
                         item.hide();
                         item.collapse();
                         return false;
                     }
-                    else {
-                        item.show();
-                        var before = item.name.substring(0, i);
-                        var middle = item.name.substr(i, what.length);
-                        var after = item.name.substr(i + what.length, item.name.length - i - what.length);
-                        treeTitle.innerHTML = before + '<strong>' + middle + '</strong>' + after;
-                        return true;
-                    }
                 };
                 item.resetAndReturnTrueIfYouAreSelected = function () {
                     treeTitle.innerText = item.name;
+                    nodeHide(keywords);
                     item.show();
                     item.collapse();
                     if (item.url == currentPageUrl) {

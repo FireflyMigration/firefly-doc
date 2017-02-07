@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Error Report Guide</title>
+
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+    
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+           <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <main class="content"><h1 id="error-report-guide">Error Report Guide</h1>
+<h2 id="code-cleanup">Code Cleanup</h2>
+<p>This article explains how to use the Error Report to clean the Magic application from errors and unused code, before migrating it to .NET, while keeping the ability to restore programs that have been removed if needed.</p>
+<p>The error report is an XML file which can be displayed in Excel. It includes the following sections:</p>
+<ol>
+<li>Errors - Invalid magic code</li>
+<li>Not Used - Programs, Sub tasks and lines that are suspected as not being used</li>
+<li>Sql Migration Notices - Notes for Btrieve to SQL migration, which are not part of the cleanup process</li>
+</ol>
+<p>It is recommended to start with removing the unused programs, before dealing with any of the errors. As most of the errors are concentrated in unused programs, this will significantly reduce the number of errors.</p>
+<p>The code cleaning work is iterative, as each cycle of removing code might reveal new unused code. In order to produce a new error report after each cycle, you should upload an updated version of your magic code to our automatic migration server and execute a migration process. See <a href="Automatic-Migration-Using-FTP.html">Automatic Migration using FTP</a> for more details.</p>
+<p>Notice that most of the cleaning work is optional and you can decide if and when you would like to do it, until you commit the final migration. That said, a few of the errors might prevent the .NET code compilation and need to be fixed sooner rather than later. We will inform you of such errors if exists in your code.</p>
+<p>Make sure to backup your code before you start to cleanup process and several times during it.</p>
+<h2 id="removing-unused-code">Removing Unused Code</h2>
+<p>The Not Used section of the report includes all the programs and subtasks that are suspected as not being used. The first column of the report is the location of the program. Notice that the first line of the location is the program number and name, while the following lines (if exists) are the sub tasks number and name (see screenshot).</p>
+<p><img src="programsandsubtakslocation.png" alt="" /></p>
+<p>If you need to keep some of the programs, although not being used (or being called by their public name etc), it is recommended to mark them (add comment of change their name) to remind you that they have been examined and should not be removed, in the next cycle.</p>
+<p>In order to help you identify programs that are being called by their public name of index and therefor should be considered as being used, the report contains all the places where a program is being called dynamically (by an expression).</p>
+<p>Regarding sub tasks that are not used, according to the report, notice that only the sub task is considered as not used, and can be removed. Other parts of the program might be used and should not be removed.</p>
+<p>In order to keep the ability to restore a program that has been removed, it is important to remove it in a sage method that will sustain the program number as a blank line in the program repository. This is achieved by deleting the program from the intrenal program tree (Navigator window) and not from the programs repository, as follows:</p>
+<ol>
+<li>Enter to the program by pressing F5 on the program line in the programs repository.</li>
+<li>Select the program root in the Navigator window and delete it by pressing F3. (see screenshot).<br />
+The program name will remain in the program repository, but it will not be migrated, as empty program are ignored by the migration engine.</li>
+</ol>
+<p><img src="deleteprogramfromthetasknavigator.png" alt="" /></p>
+<p>While you continue to maintain and develop the magic application, it is recommended that new programs will be added at the end of the program repository, in order to keep the same programs numbers.</p>
+<h2 id="dealing-with-errors">Dealing With Errors</h2>
+<p>The error report include many types of errors. Some errors can be found be the magic syntax checker(F8) and some cannot. Most errors are tolareted by the migration engine, but some may prevent the code from compiling in .NET, or cause unexpected behavior. Thus, it is recommended to clean the code before the migration to .NET.</p>
+<p>Here are some of the common error types you may find in your report and their explanation:</p>
+<table>
+<thead>
+<tr>
+<th>Error Message</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Can't write form of type gui form to io of type Console</td>
+<td>The form type is not appropriate for the io</td>
+</tr>
+<tr>
+<td>Can't write form of type gui form to io of type requesterIO</td>
+<td>The form type is not appropriate for the io</td>
+</tr>
+<tr>
+<td>Control outside bounds of attached column…</td>
+<td>The control inside the grid (usually a textbox) is attached to a column, but it is not placed on it exactly, or attached to a different column. This can cause a problem in which after the migration, while parking on the control the characters of the user input or the parking cursor will not be seen.</td>
+</tr>
+<tr>
+<td>Parameter Mismatch:Called Task {2}parameter index {0}{1}</td>
+<td>The parameter type is different from the type of the value</td>
+</tr>
+<tr>
+<td>parameter to program {0}</td>
+<td>The same as the last error, some might be redundant</td>
+</tr>
+<tr>
+<td>TextPrintingStyles {0} was missing from the TextPrintingStyles file</td>
+<td>Unless using a text printer, this error can be disregarded</td>
+</tr>
+</tbody>
+</table>
+</main><!-- .content -->
+            </div><!-- .container-->
+
+            <aside class="left-sidebar"><div class="wy-side-nav-search-ff">
+    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+</div><div id="menuTree" style="height:100em"></div></aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar">
+                
+            </aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+   
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+    
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>    
+    <script src="assets/js/prism-function.js"></script>    
+    
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'Using the migration reports.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>
