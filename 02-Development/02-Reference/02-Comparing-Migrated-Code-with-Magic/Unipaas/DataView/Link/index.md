@@ -13,7 +13,7 @@ Sample code:
     From = Orders;
     Relations.Add(Shippers, RelationType.Find, Shippers.ShipperID.IsEqualTo(Orders.ShipVia));
  }
- ```
+```
 
  See also:  [Relations](Relations.html)
 
