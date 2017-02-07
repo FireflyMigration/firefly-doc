@@ -1,6 +1,6 @@
 ﻿keywords: Args, parameters   
 Name in Magic: **Args / Arguments** property   
-In the Migrated Code: the **parameters** are being sent to teh Run() method  
+In the Migrated Code: the **parameters** are being sent to the Run() method  
 
 ***
 
@@ -30,4 +30,4 @@ For backward compatibility reasons, Migrated code will use parameter types such 
 This allows the .Net code to behave like Magic, so that, like in Magic, expressions can be passed as parameters too.  
 
 For more information about the Parameter Types see:
-[Migrated Style Parameters](13_Migrated-Style-Parameters//index.md)
+[Migrated Style Parameters](Migrated-Style-Parameters.html)
