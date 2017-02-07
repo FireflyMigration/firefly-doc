@@ -1,4 +1,5 @@
-﻿# Row Found Validation - Check if a Relation succeeded
+﻿keywords:relation,link
+# Row Found Validation - Check if a Relation succeeded
 
 ```csdiff
 protected override void OnSavingRow()

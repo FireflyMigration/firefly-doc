@@ -1,11 +1,11 @@
-﻿
+﻿keywords:relation,link
 # UIController - Relations
 
 ```csdiff
-public readonly Models.Orders Orders = new Models.Orders();
+ public readonly Models.Orders Orders = new Models.Orders();
 +public readonly Models.Shippers Shippers = new Models.Shippers();
-public ShowOrders()
-{
+ public ShowOrders()
+ {
     From = Orders;
     Where.Add(Orders.ShipCity.IsEqualTo("London").Or(
         Orders.ShipCity.IsEqualTo("Madrid")));
@@ -14,7 +14,8 @@ public ShowOrders()
     OrderBy.Add(Orders.ShipCity);
     OrderBy.Add(Orders.OrderDate, SortDirection.Descending);
 
-+    Relations.Add(Shippers, RelationType.Find, Shippers.ShipperID.IsEqualTo(Orders.ShipVia));
++   Relations.Add(Shippers, RelationType.Find, Shippers.ShipperID.IsEqualTo(Orders.ShipVia));
+ }
     
 ```
 ---
