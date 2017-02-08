@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="range,filtering data, where">
+
+    <title>Range</title>
+
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+    
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+           <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <main class="content"><h1 id="range">Range</h1>
+<p>Name in Magic: <strong>Range</strong><br />
+Name in the Migrated Code <strong>Where.Add Method</strong></p>
+<hr />
+<p>The Where.Add method is written at the beginning of the <strong>InitializeDataView Method</strong>, using the Where.Add syntax.</p>
+<p>Example:</p>
+<pre><code>Where.Add(Orders.OrderId.IsBetween(1,3));
+</code></pre>
+<p>Note:<br />
+When the same expression in Magic is used for the Range and for the Init,
+use the BindEqualTo Method instead of the IsEqualTo Method for the range and BindValue Method for the Init.</p>
+<pre><code>Where.Add(Orders.OrderId.BindEqualTo(3));
+</code></pre>
+<p>Without this, we would have to write the following 2 lines of code:</p>
+<pre><code>Columns.Add(Orders.OrderId).BindValue(()=&gt;3); 
+Where.Add(Orders.OrderId.IsEqualTo(3));
+</code></pre>
+</main><!-- .content -->
+            </div><!-- .container-->
+
+            <aside class="left-sidebar"><div class="wy-side-nav-search-ff">
+    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+</div><div id="menuTree" style="height:100em"></div></aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar">
+                
+            </aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+   
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+    
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>    
+    <script src="assets/js/prism-function.js"></script>    
+    
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'Range.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>

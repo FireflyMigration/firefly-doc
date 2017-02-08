@@ -1,3 +1,9 @@
 ERROR: url conflict: 
 OtherFile: CSharpTraining.pptx => C:\Users\Yoni\Source\Repos\firefly-doc\02-Development\01-Developer Guide\01_An-introduction-to-NET\CSharpTraining.pptx
 OtherFile: CSharpTraining.pptx => C:\Users\Yoni\Source\Repos\firefly-doc\02-Development\01-Developer Guide\CSharpTraining.pptx'
+ERROR: url conflict: 
+MarkDownFile: Resident-Task.html => C:\Users\Yoni\Source\Repos\firefly-doc\02-Development\02-Reference\02-Comparing-Migrated-Code-with-Magic\Unipaas\01-task-properties-unipaas\02-Advanced-Tab\03-Resident-Task.md
+MarkDownFile: Resident-Task.html => C:\Users\Yoni\Source\Repos\firefly-doc\02-Development\02-Reference\02-Comparing-Migrated-Code-with-Magic\Unipaas\01-task-properties-unipaas\01-General-Tab\08-Resident-Task.md'
+ERROR: url conflict: 
+MarkDownFile: Selection-Table.html => C:\Users\Yoni\Source\Repos\firefly-doc\02-Development\02-Reference\02-Comparing-Migrated-Code-with-Magic\Unipaas\01-task-properties-unipaas\02-Advanced-Tab\02-Selection-Table.md
+MarkDownFile: Selection-Table.html => C:\Users\Yoni\Source\Repos\firefly-doc\02-Development\02-Reference\02-Comparing-Migrated-Code-with-Magic\Unipaas\01-task-properties-unipaas\01-General-Tab\07-Selection-Table.md'

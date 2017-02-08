@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>End Task Condition, Evaluate Condition for End Task</title>
+
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+    
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+           <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <main class="content"><h1 id="end-task-condition-evaluate-condition-for-end-task">End Task Condition, Evaluate Condition for End Task</h1>
+<p>Name in Migrated Code: <strong>Exit</strong><br />
+Location in Migrated Class: <strong>OnLoad Method</strong><br />
+Values:</p>
+<table>
+<thead>
+<tr>
+<th>Magic Name</th>
+<th>Migrated Code Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Before Entering Record</td>
+<td>BeforeRow</td>
+</tr>
+<tr>
+<td>After Updating Record</td>
+<td>AfterRow</td>
+</tr>
+<tr>
+<td>Immediately when condition is Changed</td>
+<td>AsSoonAsPossible</td>
+</tr>
+</tbody>
+</table>
+<p>Example: Exit:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Exit();
+</code></pre>
+<p>Example: Exit Before Row:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Exit(ExitTiming.BeforeRow, () => u.EOF(0, 1));
+</code></pre>
+<p>Example: Exit After Row</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Exit(ExitTiming.AfterRow, () => Counter == 10);
+</code></pre>
+<p>Note: As stated, the 'Immediately when condition is changed' option, translates in the migrated code to ExitTiming.AsSoonAsPossible. In this scenario, magic evaluates the end condition after each operation in the code. To support this behaviour, migrated code with this option will place the EvaluateExitCondition() Method between each line of code.<br />
+Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+   Exit(ExitTiming.AsSoonAsPossible,() => numerator==1);
+}
+
+protected override void OnLeaveRow()
+{
+    EvaluateExitCondition();
+    numerator.Value = 1;
+    EvaluateExitCondition();
+    Warning("Message to User");
+    EvaluateExitCondition();
+    numerator.Value = 2;
+}
+</code></pre>
+<p>In this example, the task will end, even though at the end of the OnLeaveRow the numerator value was 2, because in second row it was set to 1, and then the EvaluateExitCondition method was called, and the condition evaluated to true.</p>
+<hr />
+<p><strong>See Also:</strong></p>
+<ul>
+<li><a href="http://www.fireflymigration.com/reference/html/M_Firefly_Box_UIController_Exit.htm">UIController Exit Method + examples</a></li>
+<li><a href="http://fireflymigration.com/reference/html/M_Firefly_Box_BusinessProcess_Exit.htm">BusinessProcess Exit Method + examples</a></li>
+<li><a href="http://www.fireflymigration.com/reference/html/Overload_Firefly_Box_BusinessProcess_Exit.htm">Exit Method Overloads</a></li>
+</ul>
+<hr />
+</main><!-- .content -->
+            </div><!-- .container-->
+
+            <aside class="left-sidebar"><div class="wy-side-nav-search-ff">
+    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+</div><div id="menuTree" style="height:100em"></div></aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar">
+                
+            </aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+   
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+    
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>    
+    <script src="assets/js/prism-function.js"></script>    
+    
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'End-Task-Condition-Evaluate-Condition-for-End-Task.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>

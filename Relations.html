@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="relation,link">
 
     <title>UIController - Relations</title>
 
@@ -28,10 +28,10 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <main class="content"><h1 id="uicontroller-relations">UIController - Relations</h1>
-<pre data-line="2,13" class="language-csdiff line-numbers"><code>public readonly Models.Orders Orders = new Models.Orders();
+<pre data-line="2,13" class="language-csdiff line-numbers"><code> public readonly Models.Orders Orders = new Models.Orders();
  public readonly Models.Shippers Shippers = new Models.Shippers();
-public ShowOrders()
-{
+ public ShowOrders()
+ {
     From = Orders;
     Where.Add(Orders.ShipCity.IsEqualTo("London").Or(
         Orders.ShipCity.IsEqualTo("Madrid")));
@@ -40,7 +40,8 @@ public ShowOrders()
     OrderBy.Add(Orders.ShipCity);
     OrderBy.Add(Orders.OrderDate, SortDirection.Descending);
 
-     Relations.Add(Shippers, RelationType.Find, Shippers.ShipperID.IsEqualTo(Orders.ShipVia));
+    Relations.Add(Shippers, RelationType.Find, Shippers.ShipperID.IsEqualTo(Orders.ShipVia));
+ }
     
 </code></pre>
 <hr />
