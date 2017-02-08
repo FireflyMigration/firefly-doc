@@ -13,7 +13,7 @@ See the video
 
 2. Condition
 
-## Input validation using the Flow.Add
+## Using Flow.Add to perform input validation
 Keywords:ShowError,FlowAbortException
 
 To prevent the user from proceeding in the flow or leaving the screen use ShowError or FlowAbortException
@@ -22,3 +22,4 @@ To prevent the user from proceeding in the flow or leaving the screen use ShowEr
 2. Flow Mode TabOrSkip
 5. Flow Mode Expand Before + Expand After
 6. Blocks
+
