@@ -88,12 +88,12 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
 
                 var plusMinusButton = document.createElement('div');
                 plusMinusButton.style.width = '1em';
-                plusMinusButton.style.display = 'inline-block';
-                plusMinusButton.style.verticalAlign = 'top';
+                plusMinusButton.style.display = 'table-cell';
+                plusMinusButton.innerText='•';
                 treeItem.appendChild(plusMinusButton);
 
                 var treeItemContent = document.createElement('div');
-                treeItemContent.style.display = 'inline-block';
+                treeItemContent.style.display = 'table-cell';
                 treeItem.appendChild(treeItemContent);
 
                 var treeTitle = document.createElement('a');
