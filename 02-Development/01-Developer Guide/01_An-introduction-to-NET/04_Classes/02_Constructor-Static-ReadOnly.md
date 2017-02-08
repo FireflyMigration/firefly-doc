@@ -29,20 +29,18 @@ namespace Northwind.Training
 {
     class Animal
     {
-       public void Run()
-       {
-           public string Name;
-           public string AnimalType;
-+          public Animal()
-+          {
-+               Name = "No name was given";
-+               AnimalType = "No type was given";
-+          }
-           public void DescribeYourSelf()
-           {
-            MessageBox.Show(this.Name+" is a "+this.AnimalType); 
-           }  
-       }     
+        public string Name;
+        public string AnimalType;
++       public Animal()
++       {
++          Name = "No name was given";
++          AnimalType = "No type was given";
++       }
+        public void DescribeYourSelf()
+        {
+        MessageBox.Show(this.Name+" is a "+this.AnimalType); 
+        }  
+
     }
 }
 ```
@@ -77,25 +75,23 @@ namespace Northwind.Training
 {
     class Animal
     {
-       public void Run()
-       {
-+          static int LastUsedId =0;
-+          public int Id;            
-           public string Name;
-           public string AnimalType;
-           public Animal()
-           {
-+               LastUsedId++;        
-+               Id = LastUsedId;    
-                Name = "No name was given";
-                AnimalType = "No type was given";
-           }
-           public void DescribeYourSelf()
-           {
+
++       static int LastUsedId =0;
++       public int Id;            
+        public string Name;
+        public string AnimalType;
+        public Animal()
+        {
++           LastUsedId++;        
++           Id = LastUsedId;    
+            Name = "No name was given";
+            AnimalType = "No type was given";
+        }
+        public void DescribeYourSelf()
+        {
 -           MessageBox.Show(this.Name+" is a "+this.AnimalType); 
 +           MessageBox.Show(this.Name+" is a "+this.AnimalType+ " and it's id is :"+ Id );
-           }  
-       }     
+        }  
     }
 }
 ```
