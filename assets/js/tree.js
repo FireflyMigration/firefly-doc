@@ -1,4 +1,4 @@
-"use strict";
+﻿"use strict";
 
 function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
 
@@ -89,7 +89,8 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
                 var plusMinusButton = document.createElement('div');
                 plusMinusButton.style.width = '1em';
                 plusMinusButton.style.display = 'table-cell';
-                plusMinusButton.innerText='•';
+                plusMinusButton.innerText = '▪';
+                plusMinusButton.style.cursor = 'pointer';
                 treeItem.appendChild(plusMinusButton);
 
                 var treeItemContent = document.createElement('div');

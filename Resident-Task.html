@@ -30,12 +30,12 @@
                 <main class="content"><h1 id="resident-task">Resident Task</h1>
 <p>Name in Migrated Code: <strong>KeepChildRelationCacheAlive</strong><br />
 Location in Migrated Code: <strong>OnLoad Method</strong></p>
-<p>Notes: This option allows the cache for relations to be stored even when exiting the class. Use this option for scenarios where it is very likely or definite that the class will execute again, requiring the relation cache from before to continue to be available.<br />
+<p>Notes:<br />
+This option allows the cache for relations to be stored even when exiting the class. Use this option for scenarios where it is very likely or definite that the class will execute again, requiring the relation cache from before to continue to be available.<br />
 The option is used together with CachedUIController and or Lazy. It is meant solely for the purposes of backward compatibility and should not be used when writing new code.</p>
 <p>Example:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>KeepChildRelationCacheAlive = true;
 </code></pre>
-<hr />
 </main><!-- .content -->
             </div><!-- .container-->
 
