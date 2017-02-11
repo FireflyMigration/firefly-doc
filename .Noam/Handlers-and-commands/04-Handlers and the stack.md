@@ -1,0 +1,1 @@
+﻿* Explain that a handler handles by default this specific controller and all it's child controllers - all controllers that were called from it.
