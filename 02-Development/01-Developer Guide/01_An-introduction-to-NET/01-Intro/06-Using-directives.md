@@ -17,9 +17,9 @@ and then just to type: MessageBox.Show("Text to be Displayed");
 
 1.	Add the following line to the beginning of the file:
 ```csdiff
-+ using System.Windows.Forms;
-namespace Northwind.Training
-{
++using System.Windows.Forms;
+ namespace Northwind.Training
+ {
     class HelloWorld
     {
        public void Run()
@@ -27,7 +27,7 @@ namespace Northwind.Training
            System.Windows.Forms.MessageBox.Show("Hello World", "Hello World Caption", System.Windows.Forms.MessageBoxButton.OK);
        }     
     }
-}
+ }
 ```
 2.	Remove the System.Windows.Forms from line which calls the Show() method :
 ```csdiff
