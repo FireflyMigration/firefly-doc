@@ -1,4 +1,4 @@
-﻿**Visual Studio and Migrated project Overview**
+﻿In this article we'll review the migrated solution and it's different parts
 
 **Solution Structure**
 

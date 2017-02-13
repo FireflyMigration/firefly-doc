@@ -33,8 +33,8 @@ namespace Northwind.Training
 {
     class BasicTypes
     {
-+       public void Run()
-+       {
+       public void Run()
+       {
 +           string personName ="Noam";
 +           int numberOfKids;             
 +           numberOfKids = 3;
@@ -60,7 +60,7 @@ namespace Northwind.Training
    and we will use the MessageBox.Show() method to display them
 
 ```csdiff
-+ using System.Windows.Forms;
++using System.Windows.Forms;
 namespace Northwind.Training
 {
     class BasicTypes
@@ -91,7 +91,7 @@ namespace Northwind.Training
 9. When concatenating string with number you do not have to use the ToString() method this will be done automatically by C#.
  
 10. To call this class from the menu we will add a new entry in the ApplicationMDI menu  
-   DbClick on the menu so Visual Studio generate the code that will be executed when clicking the menu entry
+   DbClick on the menu so Visual Studio will generate the code that will be executed when clicking the menu entry
    and call this class by calling its Run() method
 
 

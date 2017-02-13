@@ -15,36 +15,19 @@ The same goes for Method - Variables defined inside a method are only known insi
 
 
 Below you can see the code of 2 different classes: 
-1. Class called ClassesAndInstances
-2. Class called Animal 
 
-**ClassesAndInstances**
-```csdiff
-using System.Windows.Forms;
-namespace Northwind.Training
-{
-    class ClassesAndInstances
-    {
-+       public void Run()
-+       {
-+       }     
-    }
-}
-```
-
-
-**Animal**  
+### the Animal Class
 ```csdiff
 namespace Northwind.Training
 {
     class Animal
     {
-        public string Name;
++       public string Name;
 
-+       public void Run()
-+       {
-+           
-+       }     
+        public void Run()
+        {
+            
+        }     
     }
 }
 ```
@@ -60,20 +43,23 @@ In the ClassesAndInstances class we can define an instance of the Animal class.
 meaning - the ClassesAndInstances class has a member from Animal class.  
 
 To use this member in the ClassesAndInstances class we need to create a new instance of it:  
+```csdiff
 Animal a = new Animal();  
+```
 
-**new** keyword  
+#### the **new** keyword  
 By using the **new** keyword a new instance of the class is created  
-By using the new keyword a new instance of the object is created in the memory.
-In our example this instance is represented by the variable a  
+
+In our example this instance is represented by the variable `a` 
  
-Since 'a' is an Animal it has a member called Name (as defined in the Animal class).  
-To set a value to the Name of 'a' we use the className.MemberName, and with this sample:  
-a.Name = "Rexi"
+Since `a` is an Animal it has a member called `Name` (as defined in the Animal class).  
+To set a value to the `Name` of 'a' we use the `className.MemberName`, and with this sample:  
+```csdiff
+a.Name = "Rexi";
+```
 
 
-
-
+#### the entire file
 ```csdiff
 using System.Windows.Forms;
 namespace Northwind.Training

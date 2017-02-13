@@ -1,5 +1,11 @@
-﻿**Explaining The Hello world example**
+﻿In this video and article we explain the code we wrote in the hello world example
 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/X_8GeOvDMaM?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
+
+
+* [CSharp Basics PowerPoint Slides](CSharp-Basics.pptx)
+* [Access Modifier Power Point Slides](AccessModifiers.pptx)
 
 Review the actual code:
 
@@ -37,7 +43,7 @@ There are Four access modifiers :
  * `public` – visible to any code.  
 The Run() used in the HelloWorld has public access modifier.  
 
-See also [Access Modifier](AccessModifiers.pptx)
+See also [Access Modifier Power Point Slides](AccessModifiers.pptx)
 
 *Return value* - Method can return a value to the caller
 The return value type should be define in the Method header before the Method name
@@ -77,5 +83,5 @@ in this case we create a new instance of HelloWorld class which defined under th
 and then we called the Run() method.
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/X_8GeOvDMaM?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
+
 
