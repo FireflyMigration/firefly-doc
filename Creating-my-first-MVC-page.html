@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Creating my first MVC page</title>
+
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+    
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+           <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <main class="content"><h1 id="creating-my-first-mvc-page">Creating my first MVC page</h1>
+<p>This article is a part of a series of articles about reusing code from a migrated project in a web project.</p>
+<p>To configure and setup an MVC application that reuses migrated code, see Setting up an MVC project that reuses migrated code</p>
+<p>Next I recommend you read the following articles in the following order:</p>
+<ol>
+<li>Creating my first MVC page – this article</li>
+<li>Using POCO Objects Based on Migrated Entities</li>
+<li>Poco Creator–automatically create poco object based on entities, (T4 Templates)</li>
+<li>Poco Creator, next step–extending the generated objects</li>
+<li>Reusing Migrated Reports on the Web</li>
+</ol>
+<p>This article will show you how to create your very first, quick and dirty, MVC page.</p>
+<p>In later articles we’ll explain how to do it better.</p>
+<p>This article requires the setup described in the setting up of a MVC project that reuses migrated code article.</p>
+<p>I will not go into a detailed explanation of what MVC is and what role it fills. I’ll just explain what I do in this case and you can read about MVC everywhere else on the web. Smile</p>
+<h2 id="customer-list">Customer List</h2>
+<p>The goal is to show a list of all the customers in the database.</p>
+<p>We’ll first focus on the MVC stuff, and then focus on the migrated code stuff.</p>
+<p>We’ll start by adding a controller, and call it CustomersController:</p>
+<p>To do so, right click on the Controllers folder, and choose Add Controller.<br />
+<img src="Add_new_controller.png" alt="" /><br />
+Choose Empty MVC Controller:<br />
+<img src="Add_new_MVC.png" alt="" /></p>
+<p>And name it CustomersController:<br />
+<img src="Add_new_MVC_name.png" alt="" /></p>
+<p>This will add the CustomersController:<br />
+<img src="CustomersController_add.png" alt="" /><br />
+<img src="controllers_code.png" alt="" /></p>
+<p>Note that a method called “Index” was created. That is the default method that will be called when we access this controller. Meaning, that when we use the following url “localhost/customers,” this method will be called. It’s the same as “local/customers/index”.</p>
+<p>Next, we would like to create it’s View:</p>
+<p>Right click the “View()” text and select add Controller:<br />
+<img src="add_view.png" alt="" /><br />
+<img src="add_view1.png" alt="" /><br />
+Since this is a basic demo, which focuses on the migrated code, we’ll uncheck the “Use a layout page”. In a real MVC application, you’ll probably have a layout page to help you.</p>
+<p>The following file was created:<br />
+<img src="MVC_source.png" alt="" /></p>
+<p>And it was created in the following folder:<br />
+<img src="add_view_vs.png" alt="" /></p>
+<p>We’ll add the following line to the cshtml file:<br />
+<img src="CustomersController_source.png" alt="" /></p>
+<p>Now when we run the application and go to the “/customers” url we’ll get the following result:<br />
+<img src="CustomersController_browser.png" alt="" /></p>
+<p>So far we have done the basic MVC stuff, now let’s get the actual customers.</p>
+<p>Back in the ClientsController, let’s create a list of strings, and use the customers entity to populate it, and send it to the View:<br />
+<img src="ActionResult_index3.png" alt="" /></p>
+<p>Whatever we send to the View method as a parameter is accessible in the index.cshtml file as the “Model” member.</p>
+<p>So now in the index.cshtml, we can use it, and write the following code:<br />
+<img src="MVC_source1.png" alt="" /></p>
+<p>Now when we’ll run this, we’ll get the following result:
+<img src="CustomersController_browser1.png" alt="" /></p>
+<p>That’s it, we now can reuse code from the migrated application in our web application.</p>
+<p>There is great potential of the types of code we can reuse.</p>
+<p>In this sample, I used a list of strings to display the customers. In the next posts, we’ll use more complex data types also known as “POCO”s.</p>
+<p>Next I recommend that you read: Using POCO Objects Based on Migrated Entities</p>
+</main><!-- .content -->
+            </div><!-- .container-->
+
+            <aside class="left-sidebar"><div class="wy-side-nav-search-ff">
+    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+</div><div id="menuTree" style="height:100em"></div></aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar">
+                
+            </aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+   
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+    
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>    
+    <script src="assets/js/prism-function.js"></script>    
+    
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'Creating-my-first-MVC-page.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>

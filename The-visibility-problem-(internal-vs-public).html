@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>The visibility problem (internal vs public)</title>
+
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+    
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+           <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <main class="content"><h1 id="the-visibility-problem-internal-vs-public">The visibility problem (internal vs public)</h1>
+<p>Note that the Orders member in the parent class is marked “internal” and also the “v_Total” column, and the Run method for the “Total” class is also internal.
+That means that it is only accessible to code that exists in that project – and not to the code we are about to write in the NorthwindWeb MVC project.</p>
+<p>The conventional thing to do is to change all these members to public – that’s a perfectly good way to go – but as a lazy person – I always look for alternative.</p>
+<p>In comes the “InternalsVisibleTo” attribute. An attribute that when you add it to the “assemblyInfo.cs” file it enables specific other projects to see the internal members of this project – as if they were the same project.</p>
+<p>So in our case, we’ll go to the “AssemblyInfo.cs” file in the “Northwind.Part1” project:<br />
+<img src="select_assemblyinfo.png" alt="" /></p>
+<p>And add the following line:<br />
+<img src="add_assembly.png" alt="" /></p>
+<p>This will cause the “Northwind.Part1” project show all of it’s internal members to the “NorthwindWeb” project, saving us the trouble of changing all of it’s members to public.</p>
+<p>There is a philosophical question of weather or not it’s a good thing – with good points to both sides, but I won’t get into it now.</p>
+<p>So all that is left for us is do in “Northwind.Part1” project, is to change the “Totals” inner class to be internal (or public) so that we can see it from the “NorthwindWeb” project.</p>
+<p><img src="totals_class.png" alt="" /></p>
+<p>Now let’s start using it:</p>
+<p>First we’ll add a reference to the “Northwind” project. The northwind project holds the ApplicationCore class for the Northwind application, which is executed whenever a controller is called – see notes at end of article about this.</p>
+<p>In our MVC project, we’ll add an Orders Controller – just like before, and write the following code:</p>
+<p><img src="orderscontroller_northwindweb.png" alt="" /></p>
+<p>This is the result we’ll get in the browser:<br />
+<img src="result_browser.png" alt="" /></p>
+<p>That’s it – it’s working. Now let’s explain each and every line:</p>
+<ul>
+<li>in line 13 we define an instance of the “ShowOrders” class which we’ll use for the “Totals” class later which needs it.</li>
+<li>In line 14 – we set the Orders.OrderID with the value that we received as parameter.<br />
+As we are not actually running the “ShowOrders” controller – we don’t have to worry about this value being updated to the database, or any recompute that it may have – all of this only happens when we run the controller – so as far as we are concern – it’s the same as updating local columns.</li>
+<li>In line 15 we create an instance of the “Totals” inner class and send to it’s constructor the “ShowOrder” instance we created earlier and then we run it – so it’ll perform it’s data.</li>
+<li>The “Totals” inner class updates the “v_Total” column in it’s parent class with the total that we need.</li>
+<li>Last in line 16, we create our result string extracting the value of the “v_Total” column from the instance of the “ShowOrders” class.</li>
+</ul>
+<p><strong>Note</strong> that we are running the child BusinessProcess (ShowOrders.Totals) without running it’s parent UIController (ShowOrders) – we are simply mocknig the UIController by setting it’s values without running it.</p>
+</main><!-- .content -->
+            </div><!-- .container-->
+
+            <aside class="left-sidebar"><div class="wy-side-nav-search-ff">
+    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+</div><div id="menuTree" style="height:100em"></div></aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar">
+                
+            </aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+   
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+    
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>    
+    <script src="assets/js/prism-function.js"></script>    
+    
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'The-visibility-problem-(internal-vs-public).html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>

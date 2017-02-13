@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Making the most out of Where</title>
+
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+    
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+           <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <main class="content"><h1 id="making-the-most-out-of-where">Making the most out of Where</h1>
+<p>One of our customers sent us a question in the following spirit.</p>
+<p>How can I do the following using Entities, and reusing the code/db-definition separation:</p>
+<pre><code>Select count(*) from A where a.col not in
+(select b.col from B where x=y)
+</code></pre>
+<p>I’ve been meaning to write a blog post about making the most out of “Where”, and this gave me the right excuse to do so.</p>
+<ul>
+<li><a href="The-short-answer.html">The short answer</a></li>
+<li><a href="The-long-answer.html">The long answer</a></li>
+<li><a href="The-simpler-question-how-do-I-create-my-own-%E2%80%9CIn%E2%80%9D-statement.html">The simpler question how do I create my own “In” statement</a></li>
+<li><a href="Refactor-to-Method.html">Refactor to Method</a></li>
+<li><a href="Refactor-to-Context.html">Refactor to Context</a></li>
+<li><a href="Back-to-the-original-question.html">Back to the original question</a></li>
+<li><a href="Introducing-ENV.Utilities.FilterHelper-ToSQLWhere.html">Introducing ENV.Utilities.FilterHelper ToSQLWhere</a></li>
+</ul>
+</main><!-- .content -->
+            </div><!-- .container-->
+
+            <aside class="left-sidebar"><div class="wy-side-nav-search-ff">
+    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+</div><div id="menuTree" style="height:100em"></div></aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar">
+                
+            </aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+   
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+    
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>    
+    <script src="assets/js/prism-function.js"></script>    
+    
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'Making-the-most-out-of-Where.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>

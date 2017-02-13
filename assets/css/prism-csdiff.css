@@ -56,7 +56,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-	background: #f5f2f0;
+	background: #fff;
 }
 
 /* Inline code */
@@ -121,7 +121,10 @@ code[class*="language-css"]{
 }
 .token.deleted,
 .language-autohotkey .token.tag {
-    color: #9a050f;
+    color: black;
+    background-color: rgba(172,0,0,.1);
+    text-shadow: none;
+    text-decoration: line-through;
 }
 
 .token.selector,
@@ -179,7 +182,7 @@ pre[data-line] {
 	margin-top: 1em; /* Same as .prism’s padding-top */
 
 	background: hsla(24, 20%, 50%,.08);
-	background: linear-gradient(to right, hsla(78, 62%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+	background: rgba(51,153,51,.1);
 
 	pointer-events: none;
 

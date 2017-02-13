@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Setting up an MVC project that reuses migrated code</title>
+
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+    
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+           <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <main class="content"><h1 id="setting-up-an-mvc-project-that-reuses-migrated-code">Setting up an MVC project that reuses migrated code</h1>
+<p>This article is a part of a series of articles about reusing code from a migrated project in a web project.</p>
+<p>To configure and setup an MVC application that reuses migrated code, see Setting up an MVC project that reuses migrated code – this article</p>
+<p>Next I recommend you read the following articles in the following order:</p>
+<ol>
+<li>Creating my first MVC page</li>
+<li>Using POCO Objects Based on Migrated Entities</li>
+<li>Poco Creator–automatically create poco object based on entities, (T4 Templates)</li>
+<li>Poco Creator, next step–extending the generated objects</li>
+<li>Reusing Migrated Reports on the Web</li>
+</ol>
+<p>In the next set of posts, I’m going to discuss usage of migrated code in the context of an MVC web application.</p>
+<p>In my previous post about migrated reports in MVC web applications I’ve explained how to reuse a report we already had in the application, but I didn’t explain how to setup and configure the MVC web project.</p>
+<p>Using the MVC technology and its advantages is extremely easy, but the setup takes some configuring.</p>
+<p>The paradox is that before we enjoy and understand the technology, we need to do the setup at the point when we know the least about how to do it. Smile</p>
+<p>So let’s cover that now:</p>
+<p>I’m starting with a standard migrated project:<br />
+<img src="Solution_explorer_northwind.png" alt="" /></p>
+<p>We’ll start by adding a MVC project. I’m using Visual Studio 2013, the following screens may look different in other versions of Visual Studio:<br />
+<img src="add_new_project.png" alt="" /></p>
+<p>We’ll choose the “ASP.NET Web Application” project template:<br />
+<img src="add_web_application.png" alt="" /></p>
+<p>And in the Properties window, I’ll select the “Empty” template and check the “MVC” checkbox:<br />
+<img src="add_web_application1.png" alt="" /></p>
+<p>This is the expected result:
+<img src="Solution_explorer_northwind1.png" alt="" /></p>
+<ul>
+<li><a href="Referencing-and-configuring-the-migrated-code.html">Referencing and configuring the migrated code</a></li>
+<li><a href="Application-setup-code.html">Application setup code</a></li>
+<li><a href="Configuring-The-Global.asax-file.html">Configuring The Global.asax file</a></li>
+</ul>
+</main><!-- .content -->
+            </div><!-- .container-->
+
+            <aside class="left-sidebar"><div class="wy-side-nav-search-ff">
+    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+</div><div id="menuTree" style="height:100em"></div></aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar">
+                
+            </aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+   
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+    
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>    
+    <script src="assets/js/prism-function.js"></script>    
+    
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'Setting-up-an-MVC-project-that-reuses-migrated-code.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>

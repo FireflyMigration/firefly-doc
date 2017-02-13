@@ -7,7 +7,8 @@
 	
 .current-page.TreeItem  a{
     background-color:white ;
-	color: #b3b3b3;
+	color: #333;
+    font-weight:bold
 }
 
 .wrapper {

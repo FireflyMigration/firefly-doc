@@ -3,13 +3,15 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
+    <meta name="keywords" content="">
 
-    <title>Input Validation using UserMethods and the u Member</title>
+    <title>Introduction to User Methods and the u Member</title>
 
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
     
     <link rel="stylesheet" href="assets/css/theme_firefly.css" />
     <link rel="stylesheet" href="assets/css/mermaid.css" />
@@ -23,9 +25,19 @@
             <div class="container">
 
                 <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right">Next</a>
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <main class="content"><h1 id="input-validation-using-usermethods-and-the-u-member">Input Validation using UserMethods and the u Member</h1>
+                <main class="content"><h1 id="introduction-to-user-methods-and-the-u-member">Introduction to User Methods and the u Member</h1>
+<pre data-line="4" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
+{
+-    if (Orders.OrderDate.Year < 1990 || Orders.OrderDate.Year>2020)
+     if (u.Year( Orders.OrderDate) < 1990 || Orders.OrderDate.Year>2020)
+    {
+        Message.ShowError("Invalid Year");
+    }
+}
+</code></pre>
+<hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/GKo8FHW_X6c?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
 </main><!-- .content -->
             </div><!-- .container-->

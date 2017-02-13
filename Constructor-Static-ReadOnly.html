@@ -45,25 +45,23 @@ If we don't define a constructor, a constructor is automatically created.</p>
 For example in the code below<br />
 In the Animal class we created a constructor and in the constructor define default values for the 'Name' &amp; 'AnimalType' member.<br />
 If a new instance is created and no value is set to its Name and Type members - they will hold the default values as defined in the constructor</p>
-<pre data-line="10,11,12,13,14" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
+<pre data-line="8,9,10,11,12" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
 namespace Northwind.Training
 {
     class Animal
     {
-       public void Run()
-       {
-           public string Name;
-           public string AnimalType;
-           public Animal()
-           {
-                Name = "No name was given";
-                AnimalType = "No type was given";
-           }
-           public void DescribeYourSelf()
-           {
-            MessageBox.Show(this.Name+" is a "+this.AnimalType); 
-           }  
-       }     
+        public string Name;
+        public string AnimalType;
+        public Animal()
+        {
+           Name = "No name was given";
+           AnimalType = "No type was given";
+        }
+        public void DescribeYourSelf()
+        {
+        MessageBox.Show(this.Name+" is a "+this.AnimalType); 
+        }  
+
     }
 }
 </code></pre>
@@ -82,30 +80,28 @@ so every type a new instance of the Animal class is created the value of the sta
 <p>Then, we set the value of the LastUsedId (the static member) to the Id.<br />
 That way - every new instance of the class will receive a new and unique id.</p>
 <p>The code below also display the id in the DescribeYouSlef() method:</p>
-<pre data-line="8,9,14,15,22" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
+<pre data-line="7,8,13,14,21" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
 namespace Northwind.Training
 {
     class Animal
     {
-       public void Run()
-       {
-           static int LastUsedId =0;
-           public int Id;            
-           public string Name;
-           public string AnimalType;
-           public Animal()
-           {
-                LastUsedId++;        
-                Id = LastUsedId;    
-                Name = "No name was given";
-                AnimalType = "No type was given";
-           }
-           public void DescribeYourSelf()
-           {
+
+        static int LastUsedId =0;
+        public int Id;            
+        public string Name;
+        public string AnimalType;
+        public Animal()
+        {
+            LastUsedId++;        
+            Id = LastUsedId;    
+            Name = "No name was given";
+            AnimalType = "No type was given";
+        }
+        public void DescribeYourSelf()
+        {
 -           MessageBox.Show(this.Name+" is a "+this.AnimalType); 
             MessageBox.Show(this.Name+" is a "+this.AnimalType+ " and it's id is :"+ Id );
-           }  
-       }     
+        }  
     }
 }
 </code></pre>

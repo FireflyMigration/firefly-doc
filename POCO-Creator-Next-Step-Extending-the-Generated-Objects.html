@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>POCO Creator, Next Step: Extending the Generated Objects</title>
+
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+    
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+           <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <main class="content"><h1 id="poco-creator-next-step-extending-the-generated-objects">POCO Creator, Next Step: Extending the Generated Objects</h1>
+<p>This article is part of a series of articles about reusing code from a migrated application in a web project.</p>
+<p>To configure and setup a MVC application that reuses migrated code, see Setting Up an MVC Project that Reuses Migrated Code.</p>
+<p>Next I recommend you read these articles in the following order:</p>
+<ol>
+<li>Creating My First MVC Page</li>
+<li>Using POCO Objects Based on Migrated Entities</li>
+<li>POCO Creator: Automatically Create POCO Object Based on Entities, (T4 Templates)</li>
+<li>POCO Creator, Next Step: Extending the Generated Objects – this article</li>
+<li>Reusing Migrated Reports on the Web</li>
+</ol>
+<p>In the previous post, we have seen how to automatically create the Products POCO Object, based on the columns in it’s Entity.</p>
+<p>But sometimes, we would like to add columns to it that don’t already exist in the Entity.</p>
+<p>For example, in the previous post we created the ProductsController’s Index method.
+Here is the View code:<br />
+<img src="productsPoco.png" alt="" /></p>
+<p>When we run it, we get the following result in the browser:<br />
+<img src="productsPoco_browser.png" alt="" /></p>
+<p>See how we got the supplier code? Our users prefer to get it’s name, so we would like to add another member to the ProductsPoco which will have the supplier name.</p>
+<p>When you look at the ProductsPoco class, you can see that it’s a “partial” class; that means that we can add another class to the same project, and also tag in as “partial”, causing the .NET framework to merge the two “partial” classes into one.<br />
+So let’s do that:<br />
+<img src="productsPoco1.png" alt="" /></p>
+<p>Next we need to put some data into it, which will change the line in the “CreatePoco.tt” file, and send true as the second parameter:<br />
+<img src="productsPoco_parameter.png" alt="" />
+This instructs the PocoCreator to create an abstract ProductsPocoProvider instead of the PocoProvider created earlier, called ProductsPocoProviderBase. Here is the code from the generated file:<br />
+<img src="productspocoproviderbase.png" alt="" /></p>
+<p>Next, we’ll add a class called ProductsPocoProvider that will inherit from the ProductsPocoProviderBase class. The ProductsPocoProviderBase has an overrideable method called “CreatePoco” that is called every time a new ProductsPoco is created. In that method we’ll get the supplier’s name as following:<br />
+<img src="productspocoprovider.png" alt="" /></p>
+<p>That’s it. Now let’s change the View’s code to display the supplier name:<br />
+<img src="supplier_name_view_code.png" alt="" /></p>
+<p>And get the following result in the browser:
+<img src="productsPoco_browser1.png" alt="" /></p>
+<p>In the same way, we can also override the “UpdateEntityBasedOnPoco” method to control the way the Entity is updated based on the POCO.</p>
+<h2 id="master-detail">Master Detail</h2>
+<p>Next we would like to show a master detail list in which we want to show the Categories, and for each Category, we’ll have a list of the Products that exist in that Category.</p>
+<p>First we’ll instruct the “CreatePoco” to also create a POCO for the Categories table:<br />
+<img src="productsPoco_parameter1.png" alt="" /></p>
+<p>This will create a CategoriesPoco partial class, and a CategoriesPocoProviderBase abstract class.</p>
+<p>Next, we’ll create another “partial” class called CategoriesPoco, and add to it an Array member that will hold the Products:<br />
+<img src="productsPoco2.png" alt="" /></p>
+<p>Then we’ll create a class called “CategoriesPocoProvider” that will inherit from the “CategoriesPocoProviderBase” class and override the CreatePoco method to populate the Products member, using the ProductsPocoProvider:<br />
+<img src="CategoriesPocoProvider.png" alt="" /></p>
+<p>That’s it; that’s the wiring! Now all that is left is to create the Controller and View to display it.
+Controller:</p>
+<p><img src="categoriescontroller.png" alt="" /></p>
+<p>View:
+<img src="categoriescontroller_view.png" alt="" /></p>
+<p>And here is the result we got in the browser:<br />
+<img src="categoriescontroller_browser.png" alt="" /></p>
+</main><!-- .content -->
+            </div><!-- .container-->
+
+            <aside class="left-sidebar"><div class="wy-side-nav-search-ff">
+    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+</div><div id="menuTree" style="height:100em"></div></aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar">
+                
+            </aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+   
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+    
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>    
+    <script src="assets/js/prism-function.js"></script>    
+    
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'POCO-Creator-Next-Step-Extending-the-Generated-Objects.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>
