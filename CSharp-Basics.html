@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Handlers and commands</title>
+    <title>CSharp Basics</title>
 
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,38 +27,15 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <main class="content"><h1 id="handlers-and-commands">Handlers and commands</h1>
-<pre data-line="9,12,13,14,15" class="language-csdiff line-numbers"><code> public class ShowOrders : UIControllerBase
-{
-
-    public readonly Models.Orders Orders = new Models.Orders();
-    public ShowOrders()
-    {
-        From = Orders;
-
-        Handlers.Add(System.Windows.Forms.Keys.F8).Invokes += ShowOrders_Invokes;
-    }
-
-    private void ShowOrders_Invokes(Firefly.Box.Advanced.HandlerInvokeEventArgs e)
-    {
-        Message.ShowWarning("Pressed F8");
-    }
-</code></pre>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/YLnmepqyrv4?list=PL1DEQjXG2xnIGbO3DlvFQjv-T0OXM81r-" frameborder="0" allowfullscreen></iframe>
+                <main class="content"><h1 id="csharp-basics">CSharp Basics</h1>
 <ul>
-<li><a href="explaining-the-first-handler.html">explaining the first handler</a></li>
-<li>[using anonymous methods for handlers](using anonymous methods for handlers.html)</li>
-<li>[Handlers and the stack](Handlers and the stack.html)</li>
-<li>[Introducing e.Handled](Introducing e.Handled.html)</li>
-<li><a href="HandlerScope.html">HandlerScope</a></li>
-<li>[Add Handler Snippet](Add Handler Snippet.html)</li>
-<li><a href="BindEnables.html">BindEnables</a></li>
-<li><a href="Commands.html">Commands</a></li>
-<li>[Using commands to override default behaviour](Using commands to override default behaviour.html)</li>
-<li><a href="Raise.html">Raise</a></li>
-<li><a href="CustomCommand.html">CustomCommand</a></li>
-<li>[CustomCommand Settings](CustomCommand Settings.html)</li>
-<li><a href="Invoke.html">Invoke</a></li>
+<li><a href="Create-a-simple-class.html">Create a simple class</a></li>
+<li><a href="Explaining-The-Hello-world-example.html">Explaining The Hello world example</a></li>
+<li><a href="Method-Arguments-and-Overloading.html">Method Arguments and Overloading</a></li>
+<li><a href="Using-directives.html">Using directives</a></li>
+<li><a href="Snippets.html">Snippets</a></li>
+<li><a href="Comments.html">Comments</a></li>
+<li><a href="Hello-csharp-exercise.html">Hello csharp exercise</a></li>
 </ul>
 </main><!-- .content -->
             </div><!-- .container-->
@@ -92,7 +69,7 @@
     <script src="assets/js/jquery-3.1.1.js"></script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'Handlers-and-commands.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'CSharp-Basics.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

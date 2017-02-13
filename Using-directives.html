@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Using Directives</title>
+    <title>Using directives</title>
 
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,34 +27,21 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <main class="content"><h1 id="using-directives">Using Directives</h1>
+                <main class="content"><h1 id="using-directives">Using directives</h1>
 <p>The Using statements are added to improve the code readability.</p>
 <p>Adding the namespace as a using statement saves the developer from writing the namespace in the code before each method.</p>
 <p>For example:</p>
-<p>Instead of typing -
-System.Windows.Forms.MessageBox.Show(&quot;Test&quot;);</p>
-<p>We can add
-<code>using System.Windows.Forms;</code> at the top of the file
-and then just to type: MessageBox.Show(&quot;Text to be Displayed&quot;);</p>
-<ol>
-<li>Add the following line to the beginning of the file:</li>
-</ol>
-<pre data-line="1" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
- namespace Northwind.Training
- {
-    class HelloWorld
-    {
-       public void Run()
-       {
-           System.Windows.Forms.MessageBox.Show("Hello World", "Hello World Caption", System.Windows.Forms.MessageBoxButton.OK);
-       }     
-    }
- }
+<p>Instead of typing:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>System.Windows.Forms.MessageBox.Show("Test");
 </code></pre>
-<ol start="2">
-<li>Remove the System.Windows.Forms from line which calls the Show() method :</li>
-</ol>
-<pre data-line="9" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
+<p>We can add</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
+</code></pre>
+<p>at the top of the file
+and then just to type:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>MessageBox.Show("Text to be Displayed");
+</code></pre>
+<pre data-line="1,9" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
 namespace Northwind.Training
 {
     class HelloWorld

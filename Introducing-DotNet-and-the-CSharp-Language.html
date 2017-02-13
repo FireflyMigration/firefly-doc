@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Handlers and commands</title>
+    <title>Introducing DotNet and the CSharp Language</title>
 
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,38 +27,24 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <main class="content"><h1 id="handlers-and-commands">Handlers and commands</h1>
-<pre data-line="9,12,13,14,15" class="language-csdiff line-numbers"><code> public class ShowOrders : UIControllerBase
-{
-
-    public readonly Models.Orders Orders = new Models.Orders();
-    public ShowOrders()
-    {
-        From = Orders;
-
-        Handlers.Add(System.Windows.Forms.Keys.F8).Invokes += ShowOrders_Invokes;
-    }
-
-    private void ShowOrders_Invokes(Firefly.Box.Advanced.HandlerInvokeEventArgs e)
-    {
-        Message.ShowWarning("Pressed F8");
-    }
-</code></pre>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/YLnmepqyrv4?list=PL1DEQjXG2xnIGbO3DlvFQjv-T0OXM81r-" frameborder="0" allowfullscreen></iframe>
+                <main class="content"><h1 id="introducing-dotnet-and-the-csharp-language">Introducing DotNet and the CSharp Language</h1>
+<p>In this section we'll cover the basics of .NET and C# Development</p>
+<p>This section is intended for developers who are new to .NET and the C# Language.</p>
+<p>We recommend that you start with this great Microsoft C# training prior to going over this course.
+<a href="https://mva.microsoft.com/en-US/training-courses/c-fundamentals-for-absolute-beginners-16169?l=Lvld4EQIC_2706218949">C# Fundamentals for Absolute Beginners by Bob Tabor</a></p>
+<h3 id="what-is.net">What is .NET?</h3>
+<ol>
+<li>.Net is a comprehensive <strong>development environment</strong>.</li>
+<li>C# is the premier <strong>language</strong> of the .NET platform, specifically designed to take advantage of the .NET framework. It’s simple, and easy to learn.</li>
+<li>The .NET framework class library is a broad collection of reusable functionality that simplifies development and enables you to accomplish a range of common programming tasks, such as, string manipulations, data collection, database connectivity, and file access.</li>
+<li>.NET Framework is free (SDK and Runtime).</li>
+</ol>
 <ul>
-<li><a href="explaining-the-first-handler.html">explaining the first handler</a></li>
-<li>[using anonymous methods for handlers](using anonymous methods for handlers.html)</li>
-<li>[Handlers and the stack](Handlers and the stack.html)</li>
-<li>[Introducing e.Handled](Introducing e.Handled.html)</li>
-<li><a href="HandlerScope.html">HandlerScope</a></li>
-<li>[Add Handler Snippet](Add Handler Snippet.html)</li>
-<li><a href="BindEnables.html">BindEnables</a></li>
-<li><a href="Commands.html">Commands</a></li>
-<li>[Using commands to override default behaviour](Using commands to override default behaviour.html)</li>
-<li><a href="Raise.html">Raise</a></li>
-<li><a href="CustomCommand.html">CustomCommand</a></li>
-<li>[CustomCommand Settings](CustomCommand Settings.html)</li>
-<li><a href="Invoke.html">Invoke</a></li>
+<li><a href="CSharp-Basics.html">CSharp Basics</a></li>
+<li><a href="Simple-data-types.html">Simple data types</a></li>
+<li><a href="Operators.html">Operators</a></li>
+<li><a href="Classes.html">Classes</a></li>
+<li><a href="student-notes.html">student notes</a></li>
 </ul>
 </main><!-- .content -->
             </div><!-- .container-->
@@ -92,7 +78,7 @@
     <script src="assets/js/jquery-3.1.1.js"></script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'Handlers-and-commands.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'Introducing-DotNet-and-the-CSharp-Language.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

@@ -52,12 +52,12 @@ We can also initialize the variable in the same line by using the equation sign:
 </ul>
 </li>
 </ol>
-<pre data-line="5,6,7,8,9,11,12,14" class="language-csdiff line-numbers"><code>namespace Northwind.Training
+<pre data-line="7,8,9,11,12,14" class="language-csdiff line-numbers"><code>namespace Northwind.Training
 {
     class BasicTypes
     {
-        public void Run()
-        {
+       public void Run()
+       {
             string personName ="Noam";
             int numberOfKids;             
             numberOfKids = 3;
@@ -82,7 +82,7 @@ String is surrounded by double quotes while char is surrounded by a single quote
 and we will use the MessageBox.Show() method to display them</p>
 </li>
 </ol>
-<pre data-line="1,17,18" class="language-csdiff line-numbers"><code>  using System.Windows.Forms;
+<pre data-line="1,17,18" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
 namespace Northwind.Training
 {
     class BasicTypes
@@ -114,7 +114,7 @@ Every object in .net has <code>ToString()</code> method that convert itself to s
 <li><p>When concatenating string with number you do not have to use the ToString() method this will be done automatically by C#.</p>
 </li>
 <li><p>To call this class from the menu we will add a new entry in the ApplicationMDI menu<br />
-DbClick on the menu so Visual Studio generate the code that will be executed when clicking the menu entry
+DbClick on the menu so Visual Studio will generate the code that will be executed when clicking the menu entry
 and call this class by calling its Run() method</p>
 </li>
 </ol>
