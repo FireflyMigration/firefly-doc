@@ -22,3 +22,4 @@ In order to update a toolbar menu item:
 (it will be added automatically to the resources.resx file)
 
 ![](ApplicationMDI_tool.png)
+ 
