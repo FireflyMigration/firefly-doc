@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Handlers and commands</title>
+    <title>POCO Creator – V0.1</title>
 
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,39 +27,31 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <main class="content"><h1 id="handlers-and-commands">Handlers and commands</h1>
-<pre data-line="9,12,13,14,15" class="language-csdiff line-numbers"><code> public class ShowOrders : UIControllerBase
-{
-
-    public readonly Models.Orders Orders = new Models.Orders();
-    public ShowOrders()
-    {
-        From = Orders;
-
-        Handlers.Add(System.Windows.Forms.Keys.F8).Invokes += ShowOrders_Invokes;
-    }
-
-    private void ShowOrders_Invokes(Firefly.Box.Advanced.HandlerInvokeEventArgs e)
-    {
-        Message.ShowWarning("Pressed F8");
-    }
-</code></pre>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/YLnmepqyrv4?list=PL1DEQjXG2xnIGbO3DlvFQjv-T0OXM81r-" frameborder="0" allowfullscreen></iframe>
-<ul>
-<li><a href="Explaining-the-first-handler.html">Explaining the first handler</a></li>
-<li><a href="Using-Anonymous-Methods-for-Handlers.html">Using Anonymous Methods for Handlers</a></li>
-<li><a href="Handlers-and-the-stack.html">Handlers and the stack</a></li>
-<li><a href="Introducing-e.Handled.html">Introducing e.Handled</a></li>
-<li><a href="HandlerScope.html">HandlerScope</a></li>
-<li><a href="Add-Handler-Snippet.html">Add Handler Snippet</a></li>
-<li><a href="BindEnables.html">BindEnables</a></li>
-<li><a href="Commands.html">Commands</a></li>
-<li><a href="Using-commands-to-override-default-behaviour.html">Using commands to override default behaviour</a></li>
-<li><a href="Raise.html">Raise</a></li>
-<li><a href="CustomCommand.html">CustomCommand</a></li>
-<li><a href="CustomCommand-Settings.html">CustomCommand Settings</a></li>
-<li><a href="Invoke.html">Invoke</a></li>
-</ul>
+                <main class="content"><h1 id="poco-creator-v0.1">POCO Creator – V0.1</h1>
+<p><strong>Disclaimer – this is a sample code, it’s here to give you indication of what can be done, not to do everything. It is intended as a starting point for your future development. It has bugs and room for improvement</strong></p>
+<p>Now that we have seen what can be done with code generation, let’s have it create our entities for us , with add the member and a provider class.</p>
+<p>Again, we’ll start with the setup, that may be a bit annoying, but after we do it once we can use it, again and again by adding just one line of code.</p>
+<p>We’ll start by adding the “PocoCreator” class to ENV.Utilities, you can find the source for that class, at the end of this article.</p>
+<p>Then we’ll build ENV, and our Northwind.Poco project (trust me, it’s important).</p>
+<p>We’ll add a new TextTemplate to the Northwind.Poco project and call it “CreatePocos”, and place in it the Content of the CreatePoco.tt file that is detailed at the end of this article.</p>
+<p>Save, build and see that everything works.</p>
+<p>Now we need to let the TextTemplate know about the NorthwindBase assembly (where all my Entities are), so we’ll add the following line:<br />
+<img src="code_text_template3.png" alt="" /></p>
+<p>Now let’s add the following line inside, instructing the creator to create a PocoObject for the Products Entity:<br />
+<img src="code_text_template4.png" alt="" /></p>
+<p>Once we save the file, the “CreatePoco.cs” file will include the following two classes:</p>
+<ol>
+<li>The ProductsPoco<br />
+<img src="ProductsPoco_auto.png" alt="" /></li>
+<li>The “ProductsPocoProvider” class:<br />
+<img src="ProductsPocoProvider_auto.png" alt="" /></li>
+<li>That class also has all the code required to load data into the POCO:<br />
+<img src="ProductsPocoProvider_auto1.png" alt="" /></li>
+<li>And all the code to save the data back to the Entity:<br />
+<img src="ProductsPocoProvider_auto2.png" alt="" /></li>
+</ol>
+<p>The PocoProvider class has several useful methods that can be used to load and save data from to the database:<br />
+<img src="pocoprovider_methods.png" alt="" /></p>
 </main><!-- .content -->
             </div><!-- .container-->
 
@@ -92,7 +84,7 @@
     <script src="assets/js/jquery-3.1.1.js"></script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'Handlers-and-commands.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'POCO-Creator-V0_1.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

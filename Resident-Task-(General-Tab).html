@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Using MVC with Migrated Code</title>
+    <title>Resident Task</title>
 
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,15 +27,15 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <main class="content"><h1 id="using-mvc-with-migrated-code">Using MVC with Migrated Code</h1>
-<ul>
-<li><a href="Setting-up-an-MVC-project-that-reuses-migrated-code.html">Setting up an MVC project that reuses migrated code</a></li>
-<li><a href="Creating-my-first-MVC-page.html">Creating my first MVC page</a></li>
-<li><a href="Using-POCO-Objects-Based-on-Migrated-Entities.html">Using POCO Objects Based on Migrated Entities</a></li>
-<li><a href="Reusing-Migrated-Reports-on-the-Web.html">Reusing Migrated Reports on the Web</a></li>
-<li><a href="POCO-Creator-Automatically-Create-POCO-Object-Based-on-Entities.html">POCO Creator Automatically Create POCO Object Based on Entities</a></li>
-<li><a href="POCO-Creator-Next-Step-Extending-the-Generated-Objects.html">POCO Creator Next Step Extending the Generated Objects</a></li>
-</ul>
+                <main class="content"><h1 id="resident-task">Resident Task</h1>
+<p>Name in Migrated Code: <strong>KeepChildRelationCacheAlive</strong><br />
+Location in Migrated Code: <strong>OnLoad Method</strong></p>
+<p>Notes: This option allows the cache for relations to be stored even when exiting the class. Use this option for scenarios where it is very likely or definite that the class will execute again, requiring the relation cache from before to continue to be available.<br />
+The option is used together with CachedUIController and or Lazy. It is meant solely for the purposes of backward compatibility and should not be used when writing new code.</p>
+<p>Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>KeepChildRelationCacheAlive = true;
+</code></pre>
+<hr />
 </main><!-- .content -->
             </div><!-- .container-->
 
@@ -68,7 +68,7 @@
     <script src="assets/js/jquery-3.1.1.js"></script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'Using MVC with Migrated Code.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'Resident-Task-(General-Tab).html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
