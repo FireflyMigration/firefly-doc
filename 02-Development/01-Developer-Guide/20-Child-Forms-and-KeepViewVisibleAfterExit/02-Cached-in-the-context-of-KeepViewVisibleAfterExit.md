@@ -14,7 +14,7 @@ internal void RunOrderDetails()
 {
 -    new ShowOrderDetails().Run(Orders.OrderID);
 +   Cached<ShowOrderDetails>().Run(Orders.OrderID);
-}
+} 
 ```
 ### in ShowOrdersDetails controller
 ```csdiff

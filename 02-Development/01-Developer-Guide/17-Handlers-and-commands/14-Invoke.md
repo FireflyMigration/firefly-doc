@@ -1,4 +1,5 @@
-﻿Keyword:raise,wait yes
+﻿Keywords:raise,wait yes
+
 ```csdiff
 +Raise(Command.Exit);
 ```
