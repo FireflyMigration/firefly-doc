@@ -2,6 +2,10 @@
 # UI Controller - Life Cycle
 
 
+### The constructor
+* Explain that the From, Relations, Columns etc... are defined in the constructor, as part of the contruction of the controller.
+* In the migrated code, they are defined in a method called `InitializeDataView` which is called from the constructor.
+
 
 ---
 
