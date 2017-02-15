@@ -1,7 +1,7 @@
 ﻿# Selection Table
 
 Name in Migrated Code: **AllowSelect**  
-Location in Migrated Code: OnLoad Method  
+Location in Migrated Code: **OnLoad Method**  
 Example:
 ```csdiff
 protected override void OnLoad()
