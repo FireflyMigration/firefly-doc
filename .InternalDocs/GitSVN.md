@@ -5,3 +5,5 @@
 * push changes to svn repo `git svn dcommit`
 
 These are my changes
+
+I have another suggestion
