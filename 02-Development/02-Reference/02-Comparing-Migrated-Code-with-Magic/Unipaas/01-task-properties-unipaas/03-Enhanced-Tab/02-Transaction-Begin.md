@@ -15,10 +15,18 @@ Values:
 | Group               | Group              | 
 
 Note: The Group option is only applicable for BusinessProcess.  
+
+
+
 Example: 
 ```csdiff
 TransactionScope = TransactionScopes.RowLocking; 
 ```
+
+Note: The migrated code will not write the `TransactionScope` property if no transaction is required.
+The `TransactionScope` property will be written whenever a transaction was set - even if it was the default in magic. 
+It does that to explicitly indicate that there is a transaction.
+
 ---
 **See Also:** 
 * [UIController TransactionScope Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_TransactionScope.htm) 
