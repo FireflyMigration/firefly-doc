@@ -1,7 +1,5 @@
 ﻿keywords:where,range,range expression, sql where,DB sql,magic sql,dynamic where
 
-
-
 ### basic condition
 ```csdiff
 public class ShowOrders : UIControllerBase
