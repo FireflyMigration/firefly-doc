@@ -1,4 +1,5 @@
-﻿# End Task Condition, Evaluate Condition for End Task
+﻿Keywords:exit,checkexit,BindExitAsSoonAsPossible
+# End Task Condition, Evaluate Condition for End Task
 
 Name in Migrated Code: **Exit**  
 Location in Migrated Class: **OnLoad Method**  
@@ -22,25 +23,45 @@ Example: Exit After Row
 ```csdiff
 Exit(ExitTiming.AfterRow, () => Counter == 10);
 ```
-Note: As stated, the 'Immediately when condition is changed' option, translates in the migrated code to ExitTiming.AsSoonAsPossible. In this scenario, magic evaluates the end condition after each operation in the code. To support this behaviour, migrated code with this option will place the EvaluateExitCondition() Method between each line of code.  
+
+
+
+### "Immediately when condition is Changed" - ExitTiming.AsSoonAsPossible
+
+#### BindExitAsSoonAsPossible
+In most cases this exit condition will be translated to:
+
+```csdiff
+BindExitAsSoonAsPossible(() => Orders.ShipCity == "London", Orders.ShipCity);
+```
+
+* The first argument is the condition, and the other arguments are columns that on their change, the controller should reevaluate the Exit Condition.
+
+
+
+#### CheckExit
+As stated, the 'Immediately when condition is changed' option, translates in the migrated code to ExitTiming.AsSoonAsPossible. In this scenario, magic evaluates the end condition after each operation in the code. 
+
+To support this behaviour in most cases we migrate it to `BindExitAsSoonAsPossible` is indicated above. 
+In all other cases  migrated code with this option will place the `CheckExit()` Method between each line of code.  
 Example:
 ```csdiff
 protected override void OnLoad()
 {
-   Exit(ExitTiming.AsSoonAsPossible,() => numerator==1);
+   Exit(ExitTiming.AsSoonAsPossible,() => u.GetParam("exit"));
 }
 
 protected override void OnLeaveRow()
 {
-    EvaluateExitCondition();
+    CheckExit();
     numerator.Value = 1;
-    EvaluateExitCondition();
+    CheckExit();
     Warning("Message to User");
-    EvaluateExitCondition();
+    CheckExit();
     numerator.Value = 2;
 }
 ```
-In this example, the task will end, even though at the end of the OnLeaveRow the numerator value was 2, because in second row it was set to 1, and then the EvaluateExitCondition method was called, and the condition evaluated to true.
+In this example, the task will end, even though at the end of the OnLeaveRow the numerator value was 2, because in second row it was set to 1, and then the CheckExit method was called, and the condition evaluated to true.
 
 ---
 **See Also:**
