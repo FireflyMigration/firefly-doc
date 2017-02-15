@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="lockcurrentrow">
 
     <title>Locking Strategy</title>
 
@@ -68,6 +68,10 @@ Values:</p>
 <li><a href="http://www.fireflymigration.com/reference/html/T_Firefly_Box_LockingStrategy.htm">LockingStrategy Enum</a></li>
 </ul>
 <hr />
+<p>Note: The migrated code will not write the <code>RowLocking</code> property if no locking is required.
+The <code>RowLocking</code> property will be written whenever a locking is used - even if it was the default in magic.
+It does that to explicitly indicate that there is locking.</p>
+<h3 id="lockcurrentrow">LockCurrentRow</h3>
 <p>Note: If the Locking Strategy is “On Modify” in Magic (LockingSTrategy.OnUserEdit) then it may be necessary when calling a task or program to specify that the current record with all its links must be locked.<br />
 This may be specified in Magic by clicking Ctrl+P on the call task or call program line, and specifying the lock as 'Yes' in the dialog that appears. To support this functionality, the LockCurrentRow method is employed.</p>
 <p>As an example:</p>

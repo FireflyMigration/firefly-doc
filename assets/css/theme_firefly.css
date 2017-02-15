@@ -13,7 +13,7 @@
 
 .wrapper {
 	width: 1000px;
-/*	margin: 0 auto;*/
+	margin: 0 0;
 } 
 /* Middle
 -----------------------------------------------------------------------------*/
@@ -36,6 +36,7 @@
 .content {
 /*	padding: 0 0 0 380px; */
 	padding: 0 10px 0 370px;
+	display: inline-block;
 }
 
 /* Left Sidebar
@@ -97,4 +98,8 @@
 
 .float-right {
     float: right;
+	position: absolute;
+    top: 0px;
+    right: 0px;
+    
 } 
