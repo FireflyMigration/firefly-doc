@@ -53,11 +53,11 @@ protected override void OnLoad()
 
 protected override void OnLeaveRow()
 {
-    CheckExit();
++   CheckExit();
     numerator.Value = 1;
-    CheckExit();
++   CheckExit();
     Warning("Message to User");
-    CheckExit();
++   CheckExit();
     numerator.Value = 2;
 }
 ```
