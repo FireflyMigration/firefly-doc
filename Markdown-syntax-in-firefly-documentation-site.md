@@ -1,49 +1,47 @@
 # Markdown syntax in Firefly documentation site
 
 The documents in our documentation site are written with Markdown language.
+Here are some guide lines to markdown language to write a document to be displayed in our site:
 
-Here are a few tips of how to write a document to be displayed in our site:
-
-1.	File name
-The file name cannot contains spaces, 
-instead we are using the hyphen sign to separate between the words
-for example: Column-Collection-and-Recompute
+**File name**  
+The file name cannot contains spaces, instead use the hyphen sign to separate between the words.  
+for example: Column-Collection-and-Recompute.md  
  
-2.	Document Title
-By default the document title is taken from the file name. The hyphen are replaced with spaces, so you do not need to define a title.
-If you would like to have a title different than the file name use the # sign before the text
-For example: # 
+**Document Title**  
+By default the title is taken from the file name. The hyphen are replaced with spaces. 
+To define a different title use the # sign before the text.
 
-3.	Internal titles:
-To display titles inside the document use '###' before the title
-### What is .Net
+**Internal titles**    
+To display titles inside the document use '###' before the text.
 
-4.	Keywords
+**New line**  
+To force new line add 2 spaces at the end of the line. 
+
+**Keywords**  
 Keywords are used to make the document searchable also based on text that doesn’t appear in the document itself.
 Keywords are added at the top of the document using this syntax:
 keywords: text1, text2, text2
 
+**Bold text**  
+Add 2  asterisks before the text and after.
 
-5.	Emphasis
-a.	Bold text will be written between 2 strikes.
-    Make sure you don’t have space between the strikes and the text.
-b.	Italic – text written between a single strikes *aaaa*
+**Italic**  
+Write the text between single asterisks.
 
+**Inline code**  
+Inline code is srounded with back-ticks.  
+start with  \`\`\`  csdiff    
+ends  with  \`\`\` 
 
-6.	Code
-To mark text as code start the code section with  ```csdiff 
-and ends the section with  ``` .
-To mark a new code line – that will be displayed with green background use the + sign at the before the text 
-To mark a line of code that has been removed use the – sign before the text.
-This line will be displayed with red background
+**new code line** – will be displayed with green background if you use the + (plus) sign at the before the text   
+**removed code line** - will be displayed with red background if you use the – (minus) sign before the text.
 
-7.	To insert Link from youtube use the Embed option and copy the link.
+**Youtube video Link**   
+Use the Embed option in youtube share button, copy the link and paste it in the document.
 
-8.	To insert Image
-Make sure to upload the image and use the bellow syntax:
-![Name](ImageName)
+**Image**  
+Make sure to upload the image and use the bellow syntax: !\[Name to be displayed](ImageName)
 
-9.	Link 
-To add a link use the below syntax
-[The text to be displayed](URL)
+**Link**  
+To add a link use the below syntax \[The text to be displayed](URL)
  
