@@ -35,8 +35,8 @@
 	}
 .content {
 /*	padding: 0 0 0 380px; */
-	padding: 0 10px 0 370px;
-	display: inline-block;
+	padding: 0px 10px 0px 370px;
+	display: block;
 }
 
 /* Left Sidebar
