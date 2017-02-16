@@ -2,7 +2,7 @@
 The documents in our documentation site are written with Markdown language.
 Here are some guide lines to markdown language to write a document to be displayed in our site:
 
-### File name
+### File name 
 The file name cannot contains spaces, instead use the hyphen sign to separate between the words.  
 for example: Column-Collection-and-Recompute.md  
  
@@ -10,11 +10,13 @@ for example: Column-Collection-and-Recompute.md
 Do not specify a title to the file as by default the title is taken from the file name. The hyphen are replaced with spaces. 
 
 ### Internal titles    
-To display titles inside the document use '###' before the text.
+To display titles inside the document use '###' before the text.  
+
 ```
 ### My Internal Title
 ```
 ### My Internal Title
+
 
 ### New line    
 To force new line add 2 spaces at the end of the line. 
@@ -28,13 +30,13 @@ keywords: text1, text2, text2
 
 ### Emphasis
 Bold - add 2 asterisks before and after the text.  
-Italic - add single astrike before and after the text.
-``` 
-**Bold text**
-*Italic text*
-```
-**Bold text**  
-*Italic text*
+Italic - add single astrike before and after the text.  
+
+| Code                       | Result                 |
+| -------------------------- | --------------------- |
+| ``` **Bold text**   ```    | **Bold text**         |
+| ``` *Italic text*   ```    | *Italic text*         |
+
 
 
 ### Inline code
@@ -59,6 +61,16 @@ private void ApplicationMdi_Load(object sender, EventArgs e)
 
 **new code line** – will be displayed with green background if you use the + (plus) sign at the before the text   
 **removed code line** - will be displayed with red background if you use the – (minus) sign before the text.
+<pre>
+```csdiff
+private void ApplicationMdi_Load(object sender, EventArgs e)
+{
+-    new Training.SimpleScreen.ShowOrders().Run()
++    new Training.SimpleScreen.ShowOrders().Run();
+} 
+```  
+</pre>
+
 ```csdiff
 private void ApplicationMdi_Load(object sender, EventArgs e)
 {
@@ -71,20 +83,21 @@ private void ApplicationMdi_Load(object sender, EventArgs e)
 ### Youtube video Link
 Use the Embed option in youtube share button, copy the link and paste it in the document.
 
+
 ### Image
-Make sure to upload the image and use the bellow syntax: 
-```
-![Image text](ImageName)
-![FireflyLogo](FireflyLogo.png)
-```
-![FireflyLogo](FireflyLogo.png)
+Make sure to upload the image and use the bellow syntax:  
+ 
+| Code                                       | Result                                  |
+| ------------------------------------------ | --------------------------------------- |
+| ``` ![FireflyLogo](FireflyLogo.png) ```    | ![FireflyLogo](FireflyLogo.png)         |
+
 
 
 ### Link  
-To add a link use the below syntax 
-```
-[The text to be displayed](URL)
-[Firefly migration](www.Fireflymigration.com)
-```
-[Firefly migration](www.Fireflymigration.com)
+To add a link use the below syntax  
+
+| Code                                                    | Result                                           |
+| ------------------------------------------------------- | ------------------------------------------------ |
+| ``` [Firefly migration](www.Fireflymigration.com) ```   | [Firefly migration](www.Fireflymigration.com)    |
+ 
  
