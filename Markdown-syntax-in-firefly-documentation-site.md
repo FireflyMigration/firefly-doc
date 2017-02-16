@@ -8,11 +8,14 @@ The file name cannot contains spaces, instead use the hyphen sign to separate be
 for example: Column-Collection-and-Recompute.md  
  
 **Document Title**  
-By default the title is taken from the file name. The hyphen are replaced with spaces. 
-To define a different title use the # sign before the text.
+Do not specify a title to the file as by default the title is taken from the file name. The hyphen are replaced with spaces. 
 
 **Internal titles**    
 To display titles inside the document use '###' before the text.
+```
+### My Internal Title
+```
+### My Internal Title
 
 **New line**  
 To force new line add 2 spaces at the end of the line. 
