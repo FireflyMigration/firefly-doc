@@ -40,14 +40,14 @@ Italic - add single astrike before and after the text.
 ### Inline code
 Inline code is srounded with back-ticks.  
 
-```
+<pre>
 ```csdiff
 private void ApplicationMdi_Load(object sender, EventArgs e)
 {
     new Training.SimpleScreen.ShowOrders().Run();
 } 
 ```  
-```  
+</pre>
 
 ```csdiff
 private void ApplicationMdi_Load(object sender, EventArgs e)
