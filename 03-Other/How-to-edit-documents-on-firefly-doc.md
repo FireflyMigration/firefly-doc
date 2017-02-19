@@ -1,6 +1,12 @@
 
-The documents in our documentation site are written with Markdown language.
-Here are some guide lines to markdown language to write a document to be displayed in our site:
+Here is a short video on how to contribute to the doc.fireflymigration.com web site:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yX9qum4tDAQ" frameborder="0" allowfullscreen></iframe>
+
+---
+The documents in our documentation site are written with the **Markdown** language.
+
+Here are some guide lines to help you edit the content affectively:
 
 ### File name 
 The file name cannot contains spaces, instead use the hyphen sign to separate between the words.  
