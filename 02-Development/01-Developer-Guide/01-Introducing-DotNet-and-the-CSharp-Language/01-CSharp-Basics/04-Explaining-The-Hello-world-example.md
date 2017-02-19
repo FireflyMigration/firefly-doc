@@ -9,7 +9,7 @@
 
 Review the actual code:
 
-The code is organized by Namespace, Class and Method
+The code is organized by Namespace, Class and Method.  
 Code that is actually executed can only be defined inside Methods.  
 
 In the HelloWorld sample we created a new class and we defined a method inside this class  
