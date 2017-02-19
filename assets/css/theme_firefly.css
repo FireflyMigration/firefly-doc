@@ -51,7 +51,7 @@
     height: 99%;
     position: fixed;
     margin:0;
-    overflow-y: scroll;
+    overflow-y: auto;
     -ms-overflow-style: scrollbar;
 }
 .left-sidebar input{
