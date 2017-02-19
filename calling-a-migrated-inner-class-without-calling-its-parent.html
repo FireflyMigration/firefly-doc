@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Calling a migrated inner class without calling it’s parent</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="calling-a-migrated-inner-class-without-calling-its-parent">Calling a migrated inner class without calling it’s parent</h1>
+<p>Some times we want to be able to run an inner class without calling it’s parent class, this usually happens when we are writing some code without any user interaction that want’s to reuse a code that used to be in a batch “SubTask” of an online task – and now it’s a BusinessProcess inner class of an outer UIContorller Class.</p>
+<p>Let’s see a specific example.</p>
+<p>In the Northwind application, we have a screen called “Show Orders”:</p>
+<p><img src="showOrders_application.png" alt="" /></p>
+<p>That screen is implemented by the following classes:<br />
+<img src="scren_implemented_with_class.png" alt="" /></p>
+<ol>
+<li>Show Orders UIController class – which iterates the orders and shows the info at the top of the screen (marked as 1)
+<ol>
+<li>Details UIController inner class – which displays the products in the order – (marked as 2)</li>
+<li>Totals BusinessProcess inner class – which calculates the order total that is displayed at the bottom right (makred as 3)</li>
+</ol>
+</li>
+</ol>
+<p>In our case we want to call “Totals” inner class without a user to activate the parent “ShowOrders” screen.
+For the sake of making it simple, we would like the user to type the following url “localhost/orders/total/10248” and get the result in the browser saying “The total of order 10248 is 366.75”</p>
+<p>Let’s examine the Totals Inner Class:
+<img src="Total_inner_class.png" alt="" /></p>
+<p>We can see that the “Totals” inner class relies heavily on it’s parent class:</p>
+<ol>
+<li>It receives it in it’s constructor</li>
+<li>It filters the OrderDetails table according to the OrderID from the Orders entity used in the parent class.</li>
+<li>It updated the column “v_Total” in the parent class to 0.</li>
+<li>It updated the column “v_Total” with the current value.</li>
+</ol>
+<ul>
+<li><a href="the-visibility-problem-(internal-vs-public).html">The visibility problem (internal vs public)</a></li>
+<li><a href="recap.html">Recap</a></li>
+<li><a href="important-notes.html">Important notes</a></li>
+</ul>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/Advanced-Topics/30-Calling-a-migrated-inner-class-without-calling-its-parent/index.md">Edit this page on GitHub</a></div><!-- .content -->
+                
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree"</div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'calling-a-migrated-inner-class-without-calling-its-parent.html', 'previousButton', 'nextButton');
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4806432-3', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+</body>
+</html>

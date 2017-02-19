@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Make your coding easier – use snippets</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="make-your-coding-easier-use-snippets">Make your coding easier – use snippets</h1>
+<p>As much as a developer’s life is exciting / challenging / demanding (you can choose any of the 3…), sometimes there are parts of it you wish you could change / make easier. Mostly in the pieces of code you repeat in almost any class you write.</p>
+<p>Well – using snippets can make it a bit easier.<br />
+A snippet is a usually a small reusable piece of structured code template, which the programmer can easily use when coding.<br />
+You have probably been using it for some time without realizing you are using snippets.<br />
+The most common ones are for, foreach, while, mbox – once you type these words (the complete list is here) and tab twice, a little piece of code is generated for you.</p>
+<p>Visual Studio is friendly enough to let you add your own snippets – you can read an article describing how to write one here (there are also snippets editors you can use)</p>
+<p>We have created our own sample of a snippet you can use – to see how it works, what needs to be defined and how to use it please watch this video.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZkQKNSxaeQY" frameborder="0" allowfullscreen></iframe>
+<p>This is the snippet code we used:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;CodeSnippets xmlns=&quot;http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet&quot;&gt;
+ &lt;CodeSnippet Format=&quot;1.0.0&quot;&gt;
+
+&lt;Header&gt;
+ &lt;Title&gt;Public member&lt;/Title&gt;
+ &lt;Shortcut&gt;ffp&lt;/Shortcut&gt;
+ &lt;Description&gt;Adds a public member to a class&lt;/Description&gt;
+ &lt;Author&gt;Firefly Ltd&lt;/Author&gt;
+ &lt;SnippetTypes&gt;
+ &lt;SnippetType&gt;Expansion&lt;/SnippetType&gt;
+ &lt;/SnippetTypes&gt;
+ &lt;/Header&gt;
+
+ &lt;Snippet&gt;
+ &lt;Declarations&gt;
+ &lt;Literal&gt;
+ &lt;ID&gt;type&lt;/ID&gt;
+ &lt;ToolTip&gt;Member Type&lt;/ToolTip&gt;
+ &lt;Default&gt;TextColumn&lt;/Default&gt;
+ &lt;/Literal&gt;
+ &lt;Literal&gt;
+ &lt;ID&gt;name&lt;/ID&gt;
+ &lt;ToolTip&gt;Member Name&lt;/ToolTip&gt;
+ &lt;Default&gt;myName&lt;/Default&gt;
+ &lt;/Literal&gt;
+ 
+ &lt;/Declarations&gt;
+ &lt;Code Language=&quot;csharp&quot;&gt;&lt;![CDATA[public readonly $type$ $name$ = new $type$ ($end$);]]&gt;
+ &lt;/Code&gt;
+ &lt;/Snippet&gt;
+ &lt;/CodeSnippet&gt;
+&lt;/CodeSnippets&gt;
+</code></pre>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/VisualStudio-Tips/11-Make-your-coding-easier-–use-snippets/index.md">Edit this page on GitHub</a></div><!-- .content -->
+                
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree"</div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'make-your-coding-easier--use-snippets.html', 'previousButton', 'nextButton');
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4806432-3', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+</body>
+</html>

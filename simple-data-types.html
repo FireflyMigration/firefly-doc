@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Simple Data Types</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="simple-data-types">Simple Data Types</h1>
+<p>Data types are  used to define fields , variables.<br />
+In C# there are various of data types but let's start with the basic ones:<br />
+int, string, double, char and bool</p>
+<p>When defining a variable we first need to set its type and then its name
+For example: string CompanyName;<br />
+string – is the type of the variable<br />
+CompanyName is the variable’s name.</p>
+<p>Notice the standard naming conventions: the name of the variable starts with lower case and the first letter of every word afterwards is an uppercase.<br />
+We can also initialize the variable in the same line by using the equation sign:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>string CompanyName = "my name";
+ </code></pre>
+<p><strong>Let's create data types and display their values in the message box:</strong></p>
+<ol>
+<li>Right click on the <em>Training</em> folder and select <strong>Add/New Item</strong></li>
+<li>Choose Class and name it 'BasicTypes.cs'</li>
+<li>in the code below 5 different data types are defined and initialized
+<ul>
+<li>string, int, bool, double and char are the data types</li>
+<li>personName, numberOfKids, isStudent, height &amp; gender are the variables names</li>
+<li>personName is initialize when it is defined</li>
+<li>The numberOfKids received it value in the next assignment line of code <code>numberOfKids = 3</code></li>
+</ul>
+</li>
+</ol>
+<pre data-line="7,8,9,11,12,14" class="language-csdiff line-numbers"><code>namespace Northwind.Training
+{
+    class BasicTypes
+    {
+       public void Run()
+       {
+            string personName ="Noam";
+            int numberOfKids;             
+            numberOfKids = 3;
+
+            bool isStudent = false;
+            double height =1.77;
+
+            char gender ='M';
+       }     
+    }
+}
+ </code></pre>
+<ol start="4">
+<li><p>Note:<br />
+A variable which is not in used has a green underline</p>
+</li>
+<li><p><strong>String VS Char</strong><br />
+A char is a single character as opposed to a string which is comprised of many characters.<br />
+String is surrounded by double quotes while char is surrounded by a single quote.</p>
+</li>
+<li><p>In order to use the System.Windows.Form.MessageBox class we will add it to the using section
+and we will use the MessageBox.Show() method to display them</p>
+</li>
+</ol>
+<pre data-line="1,17,18" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
+namespace Northwind.Training
+{
+    class BasicTypes
+    {
+       public void Run()
+       {
+           string personName ="Noam";
+           int numberOfKids;             
+           numberOfKids = 3;
+
+           bool isStudent = false;
+           double height =1.77;
+
+           char gender ='M';
+
+          	MessageBox.Show("Hello "  + personName ); 
+          	MessageBox.Show("You have "  + numberOfKids.ToString() + " children" ); 
+       }     
+    }
+}
+
+ </code></pre>
+<ol start="7">
+<li><p>The <strong>+ operator</strong> when used on strings concatenates the two string into a single string.</p>
+</li>
+<li><p>The <strong>ToString()</strong> method is used to convert the value to string.<br />
+Every object in .net has <code>ToString()</code> method that convert itself to string.</p>
+</li>
+<li><p>When concatenating string with number you do not have to use the ToString() method this will be done automatically by C#.</p>
+</li>
+<li><p>To call this class from the menu we will add a new entry in the ApplicationMDI menu<br />
+DbClick on the menu so Visual Studio will generate the code that will be executed when clicking the menu entry
+and call this class by calling its Run() method</p>
+</li>
+</ol>
+<pre data-line="3" class="language-csdiff line-numbers"><code>private void basicTypesToolStripMenuItem_Click(object sender, EventArgs e)
+{
+	new Training.BasicTypes().Run();
+}
+ </code></pre>
+<ol start="11">
+<li>before running the application remember to build it.</li>
+</ol>
+<hr />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eel6sOTM1hY?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
+<ul>
+<li><a href="more-on-strings.html">More on strings</a></li>
+<li><a href="data-types-exercise.html">Data Types Exercise</a></li>
+</ul>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/01-Introducing-DotNet-and-the-CSharp-Language/02-Simple-data-types/index.md">Edit this page on GitHub</a></div><!-- .content -->
+                
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree"</div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'simple-data-types.html', 'previousButton', 'nextButton');
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4806432-3', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+</body>
+</html>
