@@ -1,0 +1,669 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Events</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="events">Events</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Magic event</th>
+<th style="text-align: left;">Firefly Handler (Command….)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Align Left</td>
+<td style="text-align: left;">AlignRichTextBoxLeft</td>
+</tr>
+<tr>
+<td style="text-align: left;">Align Right</td>
+<td style="text-align: left;">AlignRichTextBoxRight</td>
+</tr>
+<tr>
+<td style="text-align: left;">Begin Field</td>
+<td style="text-align: left;">PlaceCursorAtStartOfTextBox</td>
+</tr>
+<tr>
+<td style="text-align: left;">Begin Line</td>
+<td style="text-align: left;">PlaceCursorAtStartOfLine</td>
+</tr>
+<tr>
+<td style="text-align: left;">Begin Next Line</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Begin Row</td>
+<td style="text-align: left;">GoToFirstControl</td>
+</tr>
+<tr>
+<td style="text-align: left;">Begin Screen</td>
+<td style="text-align: left;">GoToTopGridRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Begin Table</td>
+<td style="text-align: left;">GoToFirstRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Browser Status Text Change</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Bullet</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Button Press</td>
+<td style="text-align: left;">PerformButtonClick</td>
+</tr>
+<tr>
+<td style="text-align: left;">Cancel</td>
+<td style="text-align: left;">UndoChangesInRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Center</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Change Color</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Change Font</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Click</td>
+<td style="text-align: left;">Click</td>
+</tr>
+<tr>
+<td style="text-align: left;">Close</td>
+<td style="text-align: left;">CloseForm</td>
+</tr>
+<tr>
+<td style="text-align: left;">Close All</td>
+<td style="text-align: left;">CloseAllTasks</td>
+</tr>
+<tr>
+<td style="text-align: left;">Close Application</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Close Context</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Collapse Node</td>
+<td style="text-align: left;">CollapseTreeNode</td>
+</tr>
+<tr>
+<td style="text-align: left;">Column Click</td>
+<td style="text-align: left;">GridColumnClick</td>
+</tr>
+<tr>
+<td style="text-align: left;">Column Filter</td>
+<td style="text-align: left;">GridColumnFilterClick</td>
+</tr>
+<tr>
+<td style="text-align: left;">Context Got Focus</td>
+<td style="text-align: left;">ContextGotFocus</td>
+</tr>
+<tr>
+<td style="text-align: left;">Context Lost Focus</td>
+<td style="text-align: left;">ContextLostFocus</td>
+</tr>
+<tr>
+<td style="text-align: left;">Control Hit</td>
+<td style="text-align: left;">BeforeControlClick</td>
+</tr>
+<tr>
+<td style="text-align: left;">Control Modify</td>
+<td style="text-align: left;">ControlValueChanged</td>
+</tr>
+<tr>
+<td style="text-align: left;">Copy</td>
+<td style="text-align: left;">Copy</td>
+</tr>
+<tr>
+<td style="text-align: left;">Create Child</td>
+<td style="text-align: left;">InsertChildNode</td>
+</tr>
+<tr>
+<td style="text-align: left;">Create Line</td>
+<td style="text-align: left;">InsertRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Create Records</td>
+<td style="text-align: left;">SwitchToInsertActivity</td>
+</tr>
+<tr>
+<td style="text-align: left;">Cut</td>
+<td style="text-align: left;">Cut</td>
+</tr>
+<tr>
+<td style="text-align: left;">DblClick</td>
+<td style="text-align: left;">DoubleClick</td>
+</tr>
+<tr>
+<td style="text-align: left;">Del Current Char</td>
+<td style="text-align: left;">DeleteNextCharacter</td>
+</tr>
+<tr>
+<td style="text-align: left;">Del Previous Char</td>
+<td style="text-align: left;">DeletePreviousCharacter</td>
+</tr>
+<tr>
+<td style="text-align: left;">Delete Line</td>
+<td style="text-align: left;">DeleteRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Ditto</td>
+<td style="text-align: left;">SetFocusedControlValueSameAsInPreviousRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Drag Begin</td>
+<td style="text-align: left;">DragStart</td>
+</tr>
+<tr>
+<td style="text-align: left;">Drop</td>
+<td style="text-align: left;">DragDrop</td>
+</tr>
+<tr>
+<td style="text-align: left;">Edit Node</td>
+<td style="text-align: left;">BeginEditingTreeNodeCaption</td>
+</tr>
+<tr>
+<td style="text-align: left;">Empty Dataview</td>
+<td style="text-align: left;">NoData</td>
+</tr>
+<tr>
+<td style="text-align: left;">End Field</td>
+<td style="text-align: left;">PlaceCursorAtEndOfTextBox</td>
+</tr>
+<tr>
+<td style="text-align: left;">End Line</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">End Row</td>
+<td style="text-align: left;">PlaceCursorAtEndOfLine</td>
+</tr>
+<tr>
+<td style="text-align: left;">End Screen</td>
+<td style="text-align: left;">GoToLastControl</td>
+</tr>
+<tr>
+<td style="text-align: left;">End Table</td>
+<td style="text-align: left;">GoToLastRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Exit</td>
+<td style="text-align: left;">Exit</td>
+</tr>
+<tr>
+<td style="text-align: left;">Exit System</td>
+<td style="text-align: left;">ExitApplication</td>
+</tr>
+<tr>
+<td style="text-align: left;">Expand Node</td>
+<td style="text-align: left;">ExpandTreeNode</td>
+</tr>
+<tr>
+<td style="text-align: left;">External Event</td>
+<td style="text-align: left;">ExternalEvent</td>
+</tr>
+<tr>
+<td style="text-align: left;">Help</td>
+<td style="text-align: left;">Help</td>
+</tr>
+<tr>
+<td style="text-align: left;">Indent</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Index Change</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Invert Marking</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Locate Next</td>
+<td style="text-align: left;">FindNextRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Locate a Record</td>
+<td style="text-align: left;">FindRows</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mark All</td>
+<td style="text-align: left;">MultiSelectAllRows</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mark Next Char</td>
+<td style="text-align: left;">SelectNextCharacter</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mark Next Line MLE</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mark Prev Line MLE</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mark Previous Char</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mark To Bottom</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mark To Top</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mark/UnMark</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Modify Records</td>
+<td style="text-align: left;">SwitchToUpdateActivity</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mouse Out</td>
+<td style="text-align: left;">MouseLeave</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mouse Over</td>
+<td style="text-align: left;">MouseEnter</td>
+</tr>
+<tr>
+<td style="text-align: left;">Move To Parent</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Next Char</td>
+<td style="text-align: left;">PlaceCursorAfterNextCharacter</td>
+</tr>
+<tr>
+<td style="text-align: left;">Next Field</td>
+<td style="text-align: left;">GoToNextControl</td>
+</tr>
+<tr>
+<td style="text-align: left;">Next Line</td>
+<td style="text-align: left;">PlaceCursorAtNextLineInMultiline</td>
+</tr>
+<tr>
+<td style="text-align: left;">Next Line Mark</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Next Page</td>
+<td style="text-align: left;">GoToNextPage</td>
+</tr>
+<tr>
+<td style="text-align: left;">Next Page in MM</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Next Row</td>
+<td style="text-align: left;">GoToNextRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Next Row in MM</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Next Screen</td>
+<td style="text-align: left;">GoToNextPage</td>
+</tr>
+<tr>
+<td style="text-align: left;">Next Window</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Next Word</td>
+<td style="text-align: left;">PlaceCursorBeforeNextWord</td>
+</tr>
+<tr>
+<td style="text-align: left;">OLE2</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Open Application</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Open Form Designer</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Page Footer</td>
+<td style="text-align: left;">PageFooter</td>
+</tr>
+<tr>
+<td style="text-align: left;">Page Header</td>
+<td style="text-align: left;">PageHeader</td>
+</tr>
+<tr>
+<td style="text-align: left;">Paste</td>
+<td style="text-align: left;">Paste</td>
+</tr>
+<tr>
+<td style="text-align: left;">Post Refresh by Parent</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Prev Line Mark</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Prev Page in MM</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Prev Row in MM</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Previous Char</td>
+<td style="text-align: left;">PlaceCursorBeforePreviosuCharacter</td>
+</tr>
+<tr>
+<td style="text-align: left;">Previous Field</td>
+<td style="text-align: left;">GoToPreviousControl</td>
+</tr>
+<tr>
+<td style="text-align: left;">Previous Line</td>
+<td style="text-align: left;">PlaceCursorAtPreviousLineInMultiline</td>
+</tr>
+<tr>
+<td style="text-align: left;">Previous Page</td>
+<td style="text-align: left;">GoToPreviousPage</td>
+</tr>
+<tr>
+<td style="text-align: left;">Previous Row</td>
+<td style="text-align: left;">GoToPreviousRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Previous Screen</td>
+<td style="text-align: left;">GoToPreviousPage</td>
+</tr>
+<tr>
+<td style="text-align: left;">Previous Window</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Previous Word</td>
+<td style="text-align: left;">PlaceCursorBeforeWord</td>
+</tr>
+<tr>
+<td style="text-align: left;">Print Data</td>
+<td style="text-align: left;">ExportData</td>
+</tr>
+<tr>
+<td style="text-align: left;">Printer Setup</td>
+<td style="text-align: left;">PrinterSettingsDialog</td>
+</tr>
+<tr>
+<td style="text-align: left;">Program Recall</td>
+<td style="text-align: left;">SingleInstanceAsyncTaskReactivated</td>
+</tr>
+<tr>
+<td style="text-align: left;">Query Records</td>
+<td style="text-align: left;">SwitchToBrowseActivity</td>
+</tr>
+<tr>
+<td style="text-align: left;">Quit</td>
+<td style="text-align: left;">UndoChangesInRowAndExit</td>
+</tr>
+<tr>
+<td style="text-align: left;">Range of Records</td>
+<td style="text-align: left;">FilterRows</td>
+</tr>
+<tr>
+<td style="text-align: left;">Record Flush</td>
+<td style="text-align: left;">SaveCurrentRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Screen Refresh</td>
+<td style="text-align: left;">RefreshDisplayedData</td>
+</tr>
+<tr>
+<td style="text-align: left;">Select</td>
+<td style="text-align: left;">Select</td>
+</tr>
+<tr>
+<td style="text-align: left;">Select All</td>
+<td style="text-align: left;">SelectAll</td>
+</tr>
+<tr>
+<td style="text-align: left;">Server termination</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Set to NULL</td>
+<td style="text-align: left;">SetFocusedControlValueToNull</td>
+</tr>
+<tr>
+<td style="text-align: left;">Shell to OS</td>
+<td style="text-align: left;">ShellToOS</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sort Records</td>
+<td style="text-align: left;">CustomOrderBy</td>
+</tr>
+<tr>
+<td style="text-align: left;">Subform Refresh</td>
+<td style="text-align: left;">RefreshSubform</td>
+</tr>
+<tr>
+<td style="text-align: left;">To First Child</td>
+<td style="text-align: left;">GoToFirstChildNode</td>
+</tr>
+<tr>
+<td style="text-align: left;">To next sibling</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">To prev sibling</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">UnMark All</td>
+<td style="text-align: left;">CancelMultiSelection</td>
+</tr>
+<tr>
+<td style="text-align: left;">Undo Editing</td>
+<td style="text-align: left;">UndoEditing</td>
+</tr>
+<tr>
+<td style="text-align: left;">Unident</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 1</td>
+<td style="text-align: left;">CustomCommand_1</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 2</td>
+<td style="text-align: left;">CustomCommand_2</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 3</td>
+<td style="text-align: left;">CustomCommand_3</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 4</td>
+<td style="text-align: left;">CustomCommand_4</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 5</td>
+<td style="text-align: left;">CustomCommand_5</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 6</td>
+<td style="text-align: left;">CustomCommand_6</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 7</td>
+<td style="text-align: left;">CustomCommand_7</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 8</td>
+<td style="text-align: left;">CustomCommand_8</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 9</td>
+<td style="text-align: left;">CustomCommand_9</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 10</td>
+<td style="text-align: left;">CustomCommand_10</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 11</td>
+<td style="text-align: left;">CustomCommand_11</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 12</td>
+<td style="text-align: left;">CustomCommand_12</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 13</td>
+<td style="text-align: left;">CustomCommand_13</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 14</td>
+<td style="text-align: left;">CustomCommand_14</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 15</td>
+<td style="text-align: left;">CustomCommand_15</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 16</td>
+<td style="text-align: left;">CustomCommand_16</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 17</td>
+<td style="text-align: left;">CustomCommand_17</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 18</td>
+<td style="text-align: left;">CustomCommand_18</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 19</td>
+<td style="text-align: left;">CustomCommand_19</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Action 20</td>
+<td style="text-align: left;">CustomCommand_20</td>
+</tr>
+<tr>
+<td style="text-align: left;">View Refresh</td>
+<td style="text-align: left;">ReloadData</td>
+</tr>
+<tr>
+<td style="text-align: left;">View by Key</td>
+<td style="text-align: left;">SelectOrderBy</td>
+</tr>
+<tr>
+<td style="text-align: left;">Wide</td>
+<td style="text-align: left;">ExpandTextBox</td>
+</tr>
+<tr>
+<td style="text-align: left;">Window Hit</td>
+<td style="text-align: left;">BeforeWindowClick</td>
+</tr>
+<tr>
+<td style="text-align: left;">Window Reposition</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Window Resize</td>
+<td style="text-align: left;">WindowResize</td>
+</tr>
+<tr>
+<td style="text-align: left;">Zoom</td>
+<td style="text-align: left;">Expand</td>
+</tr>
+</tbody>
+</table>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/02-Reference/02-Comparing-Migrated-Code-with-Magic/Events.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+                
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree"</div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4806432-3', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'events.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>
