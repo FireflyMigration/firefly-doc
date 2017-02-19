@@ -242,6 +242,7 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
             searchDiv.appendChild(searchInput);
             root.appendChild(searchDiv);
             buildNodes(data.nodes, root);
+
             searchInput.oninput = function () {
                 if (searchInput.value == '')
                     reset(data.nodes);
@@ -249,6 +250,12 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
                     if (!search(data.nodes, searchInput.value.toLowerCase()))
                         ga('send','event', 'searchFailed', searchInput.value);
             };
+            if (currentPageUrl == '404.html') {
+                if (window.location.href.toLowerCase() != window.location.href)
+                    window.location.href = window.location.href.toLowerCase();
+                else
+                    ga('send', 'event', 'page not found', window.location.href);
+            }
 
         }
     });
