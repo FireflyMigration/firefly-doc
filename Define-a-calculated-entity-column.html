@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Define-a-“calculated”-entity-column</title>
+
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="define-a-calculated-entity-column">Define-a-“calculated”-entity-column</h1>
+<p>There are cases in which we need to use a value based on a calculation done on a column or several columns, an inner select or using an SQL function.</p>
+<p>In most cases we were told to use SQL views – this has some downsides (like the fact a view has to be maintained, compiled, has to be for read-only usage, etc.)</p>
+<p>In this video you can see another approach of defining a column based on an expression and use it wherever you need:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MYvLYb0zVjk" frameborder="0" allowfullscreen></iframe>
+<p>I was asked to check the following requirements:</p>
+<ol>
+<li>A new column based on two columns from the entity</li>
+<li>A join will be used in a controller to the same entity.</li>
+</ol>
+<p>This is the entity and the new column:
+<img src="add_new_column_entity.jpg" alt="" /></p>
+<p>This is the controller and the join:</p>
+<p><img src="controller_and_join.jpg" alt="" /></p>
+<p>This creates a problem in the generated SQL statement, as one of the columns in the new Fullname column will not get an alias:</p>
+<pre><code>Select A.EmployeeID, A.LastName, A.FirstName, A.Title, A.TitleOfCourtesy, A.BirthDate, A.HireDate, A.Address, A.City, A.Region, A.PostalCode, A.Country, A.HomePhone, A.Extension, A.Notes, A.ReportsTo, A.PhotoPath,
+A.FirstName + ‘ ‘ + Lastname, B.EmployeeID, B.LastName, B.FirstName, B.Title, B.TitleOfCourtesy, B.BirthDate, B.HireDate, B.Address, B.City, B.Region, B.PostalCode, B.Country, B.HomePhone, B.Extension, B.Notes, B.ReportsTo, B.PhotoPath, B.FirstName + ‘ ‘ + Lastname
+From Employees A
+left outer join Employees B on B.EmployeeID = A.ReportsTo
+Order by A.EmployeeID
+</code></pre>
+<p>In order to make it work, two changes were required.</p>
+<p>In the controller – setting the column name (the one sent to the SQL):</p>
+<p><img src="controller_setting_column.jpg" alt="" /></p>
+<p>In the ENV code that builds the SQL – making sure that  the new column name provided in the controller will not have an added alias:
+<img src="check_new_column_controller.jpg" alt="" />
+The result:
+<img src="result_new_column.jpg" alt="" /></p>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/DataAccess/10-Define-a-calculated-entity-column/index.md">Edit this page on GitHub</a></div><!-- .content -->
+                
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree" style="height:100em"></div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'Define-a-calculated-entity-column.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>

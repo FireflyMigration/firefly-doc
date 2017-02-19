@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
 
-    
+
     <link rel="stylesheet" href="assets/css/theme_firefly.css" />
     <link rel="stylesheet" href="assets/css/mermaid.css" />
 </head>
@@ -20,14 +20,14 @@
 
     <div class="wrapper">
 
-           <div class="middle">
+        <div class="middle">
 
             <div class="container">
 
                 <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <main class="content"><h1 id="relations-in-depth">Relations in depth</h1>
+                <div class="content"><h1 id="relations-in-depth">Relations in depth</h1>
 <p>In this article we are going to review different types of Relations in your migrated code and their interaction with the database. We'll look at the difference between Find (Find, Insert if not found) and Join (Left Outer Join, Inner Join) as well as the different SQL code that each one generates. We will also discuss optimizing the SQL code for Relations, by using Cache. This article doesn't address Insert relation type and InsertIfNotFound relation types. To read more about these topics, and get code samples please see: <a href="http://www.fireflymigration.com/reference/html/T_Firefly_Box_RelationType.htm">RelationType Documentation</a></p>
 <h1 id="find-relation">Find Relation</h1>
 <p>To start with, we'll create a simple UIController, which will display a list of products and it's Categories.</p>
@@ -532,20 +532,21 @@ ORDER BY CategoryID, CategoryName
  
 ExecuteReader Duration: 1
 </code></pre>
-</main><!-- .content -->
-            </div><!-- .container-->
-
-            <aside class="left-sidebar"><div class="wy-side-nav-search-ff">
-    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
-</div><div id="menuTree" style="height:100em"></div></aside><!-- .left-sidebar -->
-
-            <aside class="right-sidebar">
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/DataAccess/Relations-in-depth/index.md">Edit this page on GitHub</a></div><!-- .content -->
                 
-            </aside><!-- .right-sidebar -->
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree" style="height:100em"></div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
 
         </div><!-- .middle-->
 
-   
+
 
     </div>
 
@@ -556,11 +557,11 @@ ExecuteReader Duration: 1
     <script src="assets/js/prism-markup.js"></script>
     <script src="assets/js/prism-css.js"></script>
     <script src="assets/js/prism-javascript.js"></script>
-    
+
     <script src="assets/js/prism-diff.js"></script>
-    <script src="assets/js/prism-csdiff.js"></script>    
-    <script src="assets/js/prism-function.js"></script>    
-    
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
     <script src="assets/js/jquery-3.1.1.js"></script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">

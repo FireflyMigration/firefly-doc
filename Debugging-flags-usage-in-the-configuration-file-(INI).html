@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
 
-    
+
     <link rel="stylesheet" href="assets/css/theme_firefly.css" />
     <link rel="stylesheet" href="assets/css/mermaid.css" />
 </head>
@@ -20,14 +20,14 @@
 
     <div class="wrapper">
 
-           <div class="middle">
+        <div class="middle">
 
             <div class="container">
 
                 <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <main class="content"><h1 id="debugging-flags-usage-in-the-configuration-file-ini">Debugging flags usage in the configuration file (INI)</h1>
+                <div class="content"><h1 id="debugging-flags-usage-in-the-configuration-file-ini">Debugging flags usage in the configuration file (INI)</h1>
 <p>Below are valuable flags for debugging purposes which you can add to the INI file by adding them under the [MAGIC_ENV] section.</p>
 <p><strong>GENERALERRORLOG = filename</strong><br />
 This flag will output errors that occur during the application execution to a text file. These errors affect the functionally of the application and therefore the log includes important information such as parameters, variables and call stack.<br />
@@ -51,20 +51,21 @@ For programs that operate through an internet browser, use the this flag to reco
 Setting this flag will start the profiler once the application starts and will save its information to the file you specified. It is usful for monitoring processes that run as the application starts, for Web application or in case developer tools option is disabled.</p>
 <p>As with any setting from the INI file, the flags above can also be set using a command line arguments. (e.g /GENERALERRORLOG = filename /DBLOGFILE = filename /DBDEBUG = Y /DBNOPARAMS = Y )</p>
 <p><strong>Note</strong> – Using these flags affects the performance of the application and should therefore only be used when necessary. Also note that the flags are cumulative in respect of adding further comments as they occur. As such, if there is a need to keep a record of the log files for a specific incident, it is useful to make a copy of the files at that point so that they can more easily be used as a point of reference in solving that issue.</p>
-</main><!-- .content -->
-            </div><!-- .container-->
-
-            <aside class="left-sidebar"><div class="wy-side-nav-search-ff">
-    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
-</div><div id="menuTree" style="height:100em"></div></aside><!-- .left-sidebar -->
-
-            <aside class="right-sidebar">
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Migration-project/Testing-and-Troubleshooting/06-Debugging-flags-usage-in-the-configuration-file-(INI)/index.md">Edit this page on GitHub</a></div><!-- .content -->
                 
-            </aside><!-- .right-sidebar -->
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree" style="height:100em"></div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
 
         </div><!-- .middle-->
 
-   
+
 
     </div>
 
@@ -75,11 +76,11 @@ Setting this flag will start the profiler once the application starts and will s
     <script src="assets/js/prism-markup.js"></script>
     <script src="assets/js/prism-css.js"></script>
     <script src="assets/js/prism-javascript.js"></script>
-    
+
     <script src="assets/js/prism-diff.js"></script>
-    <script src="assets/js/prism-csdiff.js"></script>    
-    <script src="assets/js/prism-function.js"></script>    
-    
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
     <script src="assets/js/jquery-3.1.1.js"></script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">

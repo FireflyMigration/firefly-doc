@@ -1,9 +1,0 @@
-ERROR: url conflict: 
-MarkDownFile: Bound-Controls-and-Tab-Controls.html => C:\Users\Yoni\Source\Repos\firefly-doc\02-Development\01-Developer-Guide\16_Binding-Controls\01-Bound-Controls-and-Tab-Controls.md
-MarkDownFile: Bound-Controls-and-Tab-Controls.html => C:\Users\Yoni\Source\Repos\firefly-doc\02-Development\01-Developer-Guide\16_Binding-Controls\Bound-Controls-and-Tab-Controls.md'
-ERROR: url conflict: 
-MarkDownFile: Selection-Table.html => C:\Users\Yoni\Source\Repos\firefly-doc\02-Development\02-Reference\02-Comparing-Migrated-Code-with-Magic\Unipaas\01-task-properties-unipaas\01-General-Tab\07-Selection-Table.md
-MarkDownFile: Selection-Table.html => C:\Users\Yoni\Source\Repos\firefly-doc\02-Development\02-Reference\02-Comparing-Migrated-Code-with-Magic\Unipaas\01-task-properties-unipaas\02-Advanced-Tab\02-Selection-Table.md'
-ERROR: url conflict: 
-MarkDownFile: Resident-Task.html => C:\Users\Yoni\Source\Repos\firefly-doc\02-Development\02-Reference\02-Comparing-Migrated-Code-with-Magic\Unipaas\01-task-properties-unipaas\01-General-Tab\08-Resident-Task.md
-MarkDownFile: Resident-Task.html => C:\Users\Yoni\Source\Repos\firefly-doc\02-Development\02-Reference\02-Comparing-Migrated-Code-with-Magic\Unipaas\01-task-properties-unipaas\02-Advanced-Tab\03-Resident-Task.md'

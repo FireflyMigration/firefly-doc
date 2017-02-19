@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
 
-    
+
     <link rel="stylesheet" href="assets/css/theme_firefly.css" />
     <link rel="stylesheet" href="assets/css/mermaid.css" />
 </head>
@@ -20,14 +20,14 @@
 
     <div class="wrapper">
 
-           <div class="middle">
+        <div class="middle">
 
             <div class="container">
 
                 <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <main class="content"><h1 id="env.data.entity.shoulddeterminenameaccordingtocallstack">ENV.Data.Entity.ShouldDetermineNameAccordingToCallStack</h1>
+                <div class="content"><h1 id="env.data.entity.shoulddeterminenameaccordingtocallstack">ENV.Data.Entity.ShouldDetermineNameAccordingToCallStack</h1>
 <p>Most programs use entity objects to access database tables.</p>
 <p>In most cases, the physical name of the table is defined in the entity class. However, sometimes we want to redefine the physical name of the table at runtime, so we set the EntityName property of the entity object to a different name. For example, the following program iterates data of products in stock rather than all products, by changing the entity name:</p>
 <p><img src="shoulddeterminenameaccordingtocallstack1.png" alt="" /></p>
@@ -37,20 +37,21 @@
 <p>The tables of the migrated application are all derived from the ENV.Data.Entity class, which has the “ShouldDertermineNameAccordingToCallStack”property. By default, this property is set to true for backward compatibility with the original application. Setting this property to “false” in a specific program will use the new EntityName, even if the table is previously used in the current call stack. For example, here is the same program that now only iterates products in stock:</p>
 <p><img src="shoulddeterminenameaccordingtocallstack3.png" alt="" /></p>
 <p>It is also possible to change this behavior for the entire application, by changing the default value of the property to “false” in the ENV.Data.Entity base class. Notice that this change affects existing programs that have the specific scenario above, of changing the EntityName of a table that is used by previous programs in the current call stack, so any assignment to the EntityName property should be examined.</p>
-</main><!-- .content -->
-            </div><!-- .container-->
-
-            <aside class="left-sidebar"><div class="wy-side-nav-search-ff">
-    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
-</div><div id="menuTree" style="height:100em"></div></aside><!-- .left-sidebar -->
-
-            <aside class="right-sidebar">
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/DataAccess/04-Should-determine-name-according-to-callstack/index.md">Edit this page on GitHub</a></div><!-- .content -->
                 
-            </aside><!-- .right-sidebar -->
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree" style="height:100em"></div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
 
         </div><!-- .middle-->
 
-   
+
 
     </div>
 
@@ -61,11 +62,11 @@
     <script src="assets/js/prism-markup.js"></script>
     <script src="assets/js/prism-css.js"></script>
     <script src="assets/js/prism-javascript.js"></script>
-    
+
     <script src="assets/js/prism-diff.js"></script>
-    <script src="assets/js/prism-csdiff.js"></script>    
-    <script src="assets/js/prism-function.js"></script>    
-    
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
     <script src="assets/js/jquery-3.1.1.js"></script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">

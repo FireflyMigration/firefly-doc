@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/css/prism.css" />
     <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
 
-    
+
     <link rel="stylesheet" href="assets/css/theme_firefly.css" />
     <link rel="stylesheet" href="assets/css/mermaid.css" />
 </head>
@@ -20,14 +20,14 @@
 
     <div class="wrapper">
 
-           <div class="middle">
+        <div class="middle">
 
             <div class="container">
 
                 <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a  id="nextButton"  class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <main class="content"><h1 id="refactoring-the-code-for-better-reuse">Refactoring the code for better reuse</h1>
+                <div class="content"><h1 id="refactoring-the-code-for-better-reuse">Refactoring the code for better reuse</h1>
 <p>So far we have written this code in the quick and dirty way, but now it’s time to grow up.</p>
 <p>This code has a lot of repetitive code. We create the CustomerPoco object in at least four places. That means four places to maintain it, Four places to make any change etc…
 Also, this code is in the controller, and I would like to move it to another class, and another project which I can reuse in my migrated code and in new code.</p>
@@ -51,20 +51,21 @@ Here it is:<br />
 <img src="add_namespace_poco.png" alt="" /></p>
 <p>If we don’t do this, we’ll get the following error:</p>
 <p>Now let’s run and see that everything is working.</p>
-</main><!-- .content -->
-            </div><!-- .container-->
-
-            <aside class="left-sidebar"><div class="wy-side-nav-search-ff">
-    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
-</div><div id="menuTree" style="height:100em"></div></aside><!-- .left-sidebar -->
-
-            <aside class="right-sidebar">
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/Web-Development/Using-MVC-with-Migrated-Code/03-Using-POCO-Objects-Based-on-Migrated-Entities/06-Refactoring-the-code-for-better-reuse/index.md">Edit this page on GitHub</a></div><!-- .content -->
                 
-            </aside><!-- .right-sidebar -->
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree" style="height:100em"></div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
 
         </div><!-- .middle-->
 
-   
+
 
     </div>
 
@@ -75,11 +76,11 @@ Here it is:<br />
     <script src="assets/js/prism-markup.js"></script>
     <script src="assets/js/prism-css.js"></script>
     <script src="assets/js/prism-javascript.js"></script>
-    
+
     <script src="assets/js/prism-diff.js"></script>
-    <script src="assets/js/prism-csdiff.js"></script>    
-    <script src="assets/js/prism-function.js"></script>    
-    
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
     <script src="assets/js/jquery-3.1.1.js"></script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
