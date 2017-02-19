@@ -2,7 +2,7 @@
 
 
 Data types are  used to define fields , variables.  
-In C# there are various of data types but let's start with the basic ones:  
+In C# there are various data types, but let's start with the basic ones:  
 int, string, double, char and bool  
 
 When defining a variable we first need to set its type and then its name
@@ -22,11 +22,11 @@ string CompanyName = "my name";
 
 1. Right click on the *Training* folder and select **Add/New Item**  
 2. Choose Class and name it 'BasicTypes.cs'  
-3. in the code below 5 different data types are defined and initialized  
+3. In the code below 5 different data types are defined and initialized  
     - string, int, bool, double and char are the data types   
     - personName, numberOfKids, isStudent, height & gender are the variables names  
-    - personName is initialize when it is defined  
-    - The numberOfKids received it value in the next assignment line of code `numberOfKids = 3`
+    - personName is initialized when it is defined  
+    - The numberOfKids received its value in the next assignment line of code `numberOfKids = 3`
 
 ```csdiff
 namespace Northwind.Training
@@ -50,7 +50,7 @@ namespace Northwind.Training
 
 
 4. Note:  
-    A variable which is not in used has a green underline  
+    A variable which is not in used is marked with a green underline  
 
 5. **String VS Char**  
   A char is a single character as opposed to a string which is comprised of many characters.  
@@ -84,14 +84,14 @@ namespace Northwind.Training
 
 ```
 
-7. The **+ operator** when used on strings concatenates the two string into a single string.  
+7. When used on strings the **+ operator** concatenates the two string into a single string.  
 8. The **ToString()** method is used to convert the value to string.  
     Every object in .net has `ToString()` method that convert itself to string.  
 
 9. When concatenating string with number you do not have to use the ToString() method this will be done automatically by C#.
  
 10. To call this class from the menu we will add a new entry in the ApplicationMDI menu  
-   DbClick on the menu so Visual Studio will generate the code that will be executed when clicking the menu entry
+   DblClick on the menu so Visual Studio will generate the code that will be executed when clicking the menu entry
    and call this class by calling its Run() method
 
 
