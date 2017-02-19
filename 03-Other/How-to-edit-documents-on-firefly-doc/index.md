@@ -45,17 +45,11 @@ Italic - add single astrike before and after the text.
 
 
 
-### Inline code
-Inline code is srounded with back-ticks.  
+### code
+ A code section should be prefixed by 3 back-ticks and the phrase csdiff and suffixed by another 3 back-ticks
 
-<pre>
-```csdiff
-private void ApplicationMdi_Load(object sender, EventArgs e)
-{
-    new Training.SimpleScreen.ShowOrders().Run();
-} 
-```  
-</pre>
+![](Img2017-02-19_10h55_17.png)
+
 
 ```csdiff
 private void ApplicationMdi_Load(object sender, EventArgs e)
@@ -64,18 +58,12 @@ private void ApplicationMdi_Load(object sender, EventArgs e)
 }
 ```
 
+### code change highlighting
 
-**new code line** – will be displayed with green background if you use the + (plus) sign at the before the text   
-**removed code line** - will be displayed with red background if you use the – (minus) sign before the text.
-<pre>
-```csdiff
-private void ApplicationMdi_Load(object sender, EventArgs e)
-{
--    new Training.SimpleScreen.ShowOrders().Run()
-+    new Training.SimpleScreen.ShowOrders().Run();
-} 
-```  
-</pre>
+**new code line** – should start with the sign + (plus);  
+**removed code line** - should start with the - (minus) sign.
+
+![](Img2017-02-19_10h50_30.png)
 
 ```csdiff
 private void ApplicationMdi_Load(object sender, EventArgs e)
