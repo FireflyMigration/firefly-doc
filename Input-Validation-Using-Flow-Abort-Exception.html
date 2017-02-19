@@ -30,13 +30,13 @@
                 <div class="content"><h1 id="input-validation-using-flow-abort-exception">Input Validation using Flow Abort Exception</h1>
 <pre data-line="6" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
 {
-    if (Orders.OrderDate.Year < 1990)
+    if (Orders.OrderDate.Year &lt; 1990)
     {
         System.Windows.Forms.MessageBox.Show("Invalid Year");
         throw new Firefly.Box.Advanced.FlowAbortException();
     }
 }
-</code></pre>
+ </code></pre>
 <hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/23jvCXomfQs?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/02_UI-Controller/08_Input-Validation/04_Input-Validation-Using-Flow-Abort-Exception.md">Edit this page on GitHub</a></div><!-- .content -->

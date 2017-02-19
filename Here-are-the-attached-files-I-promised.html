@@ -189,7 +189,7 @@ namespace ENV.Utilities
                     public void DoOnColumn(TypedColumnBase column)
                     {
                         var nc = column as NumberColumn;
-                        if (nc.FormatInfo.DecimalDigits == 0 &amp;&amp; nc.FormatInfo.WholeDigits &lt; 10)
+                        if (nc.FormatInfo.DecimalDigits == 0 &amp;amp;&amp;amp; nc.FormatInfo.WholeDigits &amp;lt; 10)
                             _parent._returnType = "int";
                         else
                             _parent._returnType = "decimal";
@@ -221,7 +221,7 @@ namespace ENV.Utilities
                         }
                     }
 
-                    public void DoOnColumn(TypedColumnBase<time> column)
+                    public void DoOnColumn(TypedColumnBase&lt;time&gt; column)
                     {
                         _parent._returnType = "string";
                         _parent._getValueMethod += ".ToString(\"HH:MM:SS\")";
@@ -299,7 +299,7 @@ namespace ENV.Utilities
 
         public PocoType[] Select(Func r)
         {
-            return Select((e, w) =&gt; w.Add(r(e)));
+            return Select((e, w) =&amp;gt; w.Add(r(e)));
         }
         public PocoType[] Select(FilterRows r)
         {
@@ -317,7 +317,7 @@ namespace ENV.Utilities
             r(Entity, bp.Where);
             if (orderBy != null)
                 bp.OrderBy = orderBy;
-            bp.ForEachRow(() =&gt;
+            bp.ForEachRow(() =&amp;gt;
             {
                 var x = CreatePoco(Entity);
                 if (PopulateItem != null)
@@ -333,7 +333,7 @@ namespace ENV.Utilities
         {
             var bp = new BusinessProcess { From = Entity, Activity = Activities.Insert }
                 ;
-            bp.ForFirstRow(() =&gt;
+            bp.ForFirstRow(() =&amp;gt;
             {
                 UpdateEntityBasedOnPoco(p);
             });
@@ -349,7 +349,7 @@ namespace ENV.Utilities
             var bp = new BusinessProcess { From = Entity, Activity = Activities.Update };
 
             bp.Where.Add(filter);
-            bp.ForFirstRow(() =&gt;
+            bp.ForFirstRow(() =&amp;gt;
             {
                 UpdateEntityBasedOnPoco(p);
             });
@@ -364,7 +364,7 @@ namespace ENV.Utilities
         {
             var bp = new BusinessProcess { From = Entity, Activity = Activities.Delete };
             bp.Where.Add(filter);
-            bp.ForFirstRow(() =&gt;
+            bp.ForFirstRow(() =&amp;gt;
             {
                 UpdateEntityBasedOnPoco(p);
             });
@@ -413,7 +413,7 @@ namespace ENV.Utilities
         public event Action PopulateItem;
     }
 }
-</code></pre>
+ </code></pre>
 <p>CreatePocos.tt</p>
 <pre><code>&lt;#@ template debug=&quot;false&quot; hostspecific=&quot;false&quot; language=&quot;C#&quot; #&gt;
 &lt;#@ assembly name=&quot;System.Core&quot; #&gt; 

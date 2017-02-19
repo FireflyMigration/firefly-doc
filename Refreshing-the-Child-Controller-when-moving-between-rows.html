@@ -31,24 +31,24 @@
 <pre data-line="2,4" class="language-csdiff line-numbers"><code>-public void Run(Number orderId)
 public void Run(Number orderId,bool exitImmediately)
 {
-     Exit(ExitTiming.BeforeRow, () => exitImmediately);
+     Exit(ExitTiming.BeforeRow, () =&gt; exitImmediately);
     Where.Clear();
     Where.Add(Order_Details.OrderID.BindEqualTo(orderId));
     Execute();
 }
-</code></pre>
+ </code></pre>
 <h3 id="in-showorders-controller">In ShowOrders Controller</h3>
 <pre data-line="1,2,3,4,9" class="language-csdiff line-numbers"><code>protected override void OnEnterRow()
 {
-    Cached<ShowOrderDetails>().Run(Orders.OrderID,true);
+    Cached&lt;ShowOrderDetails&gt;().Run(Orders.OrderID,true);
 }
 
 internal void RunOrderDetails()
 {
--   Cached<ShowOrderDetails>().Run(Orders.OrderID);
-    Cached<ShowOrderDetails>().Run(Orders.OrderID,false);
+-   Cached&lt;ShowOrderDetails&gt;().Run(Orders.OrderID);
+    Cached&lt;ShowOrderDetails&gt;().Run(Orders.OrderID,false);
 }
-</code></pre>
+ </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3Sb88aYW-dA?list=PL1DEQjXG2xnKZADlPXY_P61ujx3lGsP6m" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/20-Child-Forms-and-KeepViewVisibleAfterExit/04-Refreshing-the-Child-Controller-when-moving-between-rows.md">Edit this page on GitHub</a></div><!-- .content -->
                 

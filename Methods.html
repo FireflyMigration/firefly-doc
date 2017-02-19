@@ -34,7 +34,7 @@
 <p>Step 1 : Create ValidateOrderDate Method</p>
 <pre data-line="8,15,16,17,18,19,20,21" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
 {
--   if (u.Year( Orders.OrderDate) < 1990 || Orders.OrderDate.Year>2020)
+-   if (u.Year( Orders.OrderDate) &lt; 1990 || Orders.OrderDate.Year&gt;2020)
 -   {
 -       Message.ShowError("Invalid Year");
 -   }
@@ -48,13 +48,13 @@
 
 void ValidateOrderDate()
 {
-    if (u.Year(Orders.OrderDate) < 1990 || Orders.OrderDate.Year > 2020)
+    if (u.Year(Orders.OrderDate) &lt; 1990 || Orders.OrderDate.Year &gt; 2020)
     {
         Message.ShowError("Invalid Year");
     }
 }
 
-</code></pre>
+ </code></pre>
 <p>Step 2 :  Create ValidateShipperId Method</p>
 <pre data-line="4,7" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
 {
@@ -72,12 +72,12 @@ void ValidateShipperId()
 
 void ValidateOrderDate()
 {
-    if (u.Year(Orders.OrderDate) < 1990 || Orders.OrderDate.Year > 2020)
+    if (u.Year(Orders.OrderDate) &lt; 1990 || Orders.OrderDate.Year &gt; 2020)
     {
         Message.ShowError("Invalid Year");
     }
 }
-</code></pre>
+ </code></pre>
 <ul>
 <li><a href="Method-with-return-value.html">Method with return value</a></li>
 <li><a href="Introducing-Regions.html">Introducing Regions</a></li>

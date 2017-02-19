@@ -30,13 +30,13 @@
                 <div class="content"><h1 id="introduction-to-user-methods-and-the-u-member">Introduction to User Methods and the u Member</h1>
 <pre data-line="4" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
 {
--    if (Orders.OrderDate.Year < 1990 || Orders.OrderDate.Year>2020)
-     if (u.Year( Orders.OrderDate) < 1990 || Orders.OrderDate.Year>2020)
+-    if (Orders.OrderDate.Year &lt; 1990 || Orders.OrderDate.Year&gt;2020)
+     if (u.Year( Orders.OrderDate) &lt; 1990 || Orders.OrderDate.Year&gt;2020)
     {
         Message.ShowError("Invalid Year");
     }
 }
-</code></pre>
+ </code></pre>
 <hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/GKo8FHW_X6c?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/02_UI-Controller/08_Input-Validation/07_Input-Validation-Using-Methods.md">Edit this page on GitHub</a></div><!-- .content -->

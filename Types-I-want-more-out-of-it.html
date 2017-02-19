@@ -35,16 +35,16 @@
 using ENV.Data;
 namespace Northwind.Types
 {
-    /// <summary>Prod ID(T#3)</summary>
+    /// &lt;summary&gt;Prod ID(T#3)&lt;/summary&gt;
     public class ProdID : NumberColumn
     {
         public ProdID() : base("ProductID","2","Prod ID")
         {
-            Expand += () => new Products.ShowProducts().Run(this);
+            Expand += () =&gt; new Products.ShowProducts().Run(this);
         }
     }
 }
-</code></pre>
+ </code></pre>
 <p><img src="expand_handler.png" alt="" /></p>
 <p>So the question is how to get more out of it ?</p>
 <p>Since the type is a class we can add more code to it. The first thing we can do is add a method that will return relevant information like the product name.<br />
@@ -54,12 +54,12 @@ So now the code will look like that :</p>
 using ENV.Data;
 namespace Northwind.Types
 {
-    /// <summary>Prod ID(T#3)</summary>
+    /// &lt;summary&gt;Prod ID(T#3)&lt;/summary&gt;
     public class ProdID : NumberColumn
     {
         public ProdID() : base("ProductID","2","Prod ID")
         {
-            Expand += () => new Products.ShowProducts().Run(this);
+            Expand += () =&gt; new Products.ShowProducts().Run(this);
         }
  
         Models.Products products;
@@ -71,7 +71,7 @@ namespace Northwind.Types
         }
     }
 }
-</code></pre>
+ </code></pre>
 <p><img src="product_instance.png" alt="" /></p>
 <p>Now, whenever this type is used, there is no need to add a Relation to the Products model, you can get the product name directly from the column that use the type, for example:<br />
 <img src="Using_type.png" alt="" /><br />
@@ -84,13 +84,13 @@ The first option looks like more of the same, meaning:</p>
 using ENV.Data;
 namespace Northwind.Types
 {
-    /// <summary>Prod ID(T#3)</summary>
+    /// &lt;summary&gt;Prod ID(T#3)&lt;/summary&gt;
     public class ProdID : NumberColumn
     {
  
         public ProdID() : base("ProductID","2","Prod ID")
         {
-            Expand += () => new Products.ShowProducts().Run(this);
+            Expand += () =&gt; new Products.ShowProducts().Run(this);
         }
  
         Models.Products products;
@@ -110,7 +110,7 @@ namespace Northwind.Types
         }
     }
 }
-</code></pre>
+ </code></pre>
 <p>The problem is that now we will have two queries going to the database:
 <img src="using_profiler.png" alt="" />
 So we need to improve our code,  we need one SQL query that will return more than one column a time. To do so we need some ground work. We need to create a new object that will store all the information we need :</p>
@@ -118,13 +118,13 @@ So we need to improve our code,  we need one SQL query that will return more tha
 using ENV.Data;
 namespace Northwind.Types
 {
-    /// <summary>Prod ID(T#3)</summary>
+    /// &lt;summary&gt;Prod ID(T#3)&lt;/summary&gt;
     public class ProdID : NumberColumn
     {
  
         public ProdID() : base("ProductID","2","Prod ID")
         {
-            Expand += () => new Products.ShowProducts().Run(this);
+            Expand += () =&gt; new Products.ShowProducts().Run(this);
         }
  
         class ProductInfo
@@ -136,19 +136,19 @@ namespace Northwind.Types
         Models.Products products;
     }
 }
-</code></pre>
+ </code></pre>
 <p>Now we need to get the data from the model :</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>using Firefly.Box;
 using ENV.Data;
 namespace Northwind.Types
 {
-    /// <summary>Prod ID(T#3)</summary>
+    /// &lt;summary&gt;Prod ID(T#3)&lt;/summary&gt;
     public class ProdID : NumberColumn
     {
  
         public ProdID() : base("ProductID","2","Prod ID")
         {
-            Expand += () => new Products.ShowProducts().Run(this);
+            Expand += () =&gt; new Products.ShowProducts().Run(this);
         }
  
         class ProductInfo
@@ -163,7 +163,7 @@ namespace Northwind.Types
         {
             if (products == null)
                 products = new Models.Products();
-            var result = products.GetValue(() => new ProductInfo
+            var result = products.GetValue(() =&gt; new ProductInfo
             {
                 Name = products.ProductName,
                 Price = products.UnitPrice
@@ -174,20 +174,20 @@ namespace Northwind.Types
         }
     }
 }
-</code></pre>
+ </code></pre>
 <p><img src="data_from_model_explain.png" alt="" />
 Let us get the two methods returning the name and the price back, but this time we will use the ProductInfo object</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>using Firefly.Box;
 using ENV.Data;
 namespace Northwind.Types
 {
-    /// <summary>Prod ID(T#3)</summary>
+    /// &lt;summary&gt;Prod ID(T#3)&lt;/summary&gt;
     public class ProdID : NumberColumn
     {
  
         public ProdID() : base("ProductID","2","Prod ID")
         {
-            Expand += () => new Products.ShowProducts().Run(this);
+            Expand += () =&gt; new Products.ShowProducts().Run(this);
         }
  
         class ProductInfo
@@ -202,7 +202,7 @@ namespace Northwind.Types
         {
             if (products == null)
                 products = new Models.Products();
-            var result = products.GetValue(() => new ProductInfo
+            var result = products.GetValue(() =&gt; new ProductInfo
             {
                 Name = products.ProductName,
                 Price = products.UnitPrice
@@ -222,21 +222,21 @@ namespace Northwind.Types
         }
     }
 }
-</code></pre>
+ </code></pre>
 <p>This time we can see that there is only one database call:
 <img src="using_profiler_1.png" alt="" /></p>
 <p>If you have an older version of firefly ENV (Before version 21719), your version does not support the lambda option in GetValue method. To add it to your version add and replace the current GetValue code in your ENV.Data.Entity class with the following code :</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Dictionary<object, Dictionary<string, object>> _getCache =
-            new Dictionary<object, Dictionary<string, object>>();
-        public T GetValue<T>(TypedColumnBase<T> column, FilterBase where, Sort s = null)
+<pre data-line="" class="language-csdiff line-numbers"><code>Dictionary&lt;object, Dictionary&lt;string, object&gt;&gt; _getCache =
+            new Dictionary&lt;object, Dictionary&lt;string, object&gt;&gt;();
+        public T GetValue&lt;T&gt;(TypedColumnBase&lt;T&gt; column, FilterBase where, Sort s = null)
         {
             string cacheKey = null;
-            Dictionary<string, object> specificCache = null;
+            Dictionary&lt;string, object&gt; specificCache = null;
             cacheKey = FilterHelper.ToSQLWhere(where, false, this);
  
             if (!_getCache.TryGetValue(column, out specificCache))
             {
-                specificCache = new Dictionary<string, object>();
+                specificCache = new Dictionary&lt;string, object&gt;();
                 _getCache.Add(column, specificCache);
             }
             else
@@ -263,20 +263,20 @@ namespace Northwind.Types
                 specificCache.Add(cacheKey, result);
             return result;
         }
-        public T GetValue<T>(Func<T> expression, FilterBase where, params ColumnBase[] selectColumns)
+        public T GetValue&lt;T&gt;(Func&lt;T&gt; expression, FilterBase where, params ColumnBase[] selectColumns)
         {
             return GetValue(expression, where, null, selectColumns);
         }
-        public T GetValue<T>(Func<T> expression, FilterBase where, Sort s = null, params ColumnBase[] selectColumns)
+        public T GetValue&lt;T&gt;(Func&lt;T&gt; expression, FilterBase where, Sort s = null, params ColumnBase[] selectColumns)
         {
             string cacheKey = null;
-            Dictionary<string, object> specificCache = null;
+            Dictionary&lt;string, object&gt; specificCache = null;
             object id = expression;
             cacheKey = FilterHelper.ToSQLWhere(where, false, this);
  
             if (!_getCache.TryGetValue(id, out specificCache))
             {
-                specificCache = new Dictionary<string, object>();
+                specificCache = new Dictionary&lt;string, object&gt;();
                 _getCache.Add(id, specificCache);
             }
             else
@@ -292,17 +292,17 @@ namespace Northwind.Types
                 bp.Relations.Add(this, where);
             else
                 bp.Relations.Add(this, where, s);
-            if (selectColumns != null && selectColumns.Length > 0)
+            if (selectColumns != null &amp;&amp; selectColumns.Length &gt; 0)
                 bp.Columns.Add(selectColumns);
  
             T result = default(T);
-            bp.ForFirstRow(() => result = expression());
+            bp.ForFirstRow(() =&gt; result = expression());
  
             if (specificCache != null)
                 specificCache.Add(cacheKey, result);
             return result;
         }
-</code></pre>
+ </code></pre>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/Advanced-Topics/04-Types-I-want-more-out-of-it/index.md">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->

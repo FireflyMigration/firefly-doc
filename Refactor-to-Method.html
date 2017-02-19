@@ -35,7 +35,7 @@
     where.Add("{0} in ({1},{2})", col, val1, val2);
     return where;
 }
-</code></pre>
+ </code></pre>
 <p>and use it, as following:</p>
 <pre><code class="language-csdiff">var o = new Orders();
 return o.CountRows(IsIn(o.CustomerID, &quot;TOMSP&quot;, &quot;HANAR&quot;));
@@ -51,7 +51,7 @@ return o.CountRows(IsIn(o.CustomerID, &quot;TOMSP&quot;, &quot;HANAR&quot;));
 
     foreach (var val in vals)
     {
-        if (i &gt; 1)
+        if (i &amp;gt; 1)
             inStatement += ",";
         inStatement += "{" + i++ + "}";
         args.Add(val);
@@ -61,7 +61,7 @@ return o.CountRows(IsIn(o.CustomerID, &quot;TOMSP&quot;, &quot;HANAR&quot;));
     where.Add(inStatement, args.ToArray());
     return where;
 }
-</code></pre>
+ </code></pre>
 <p>In this code, we simply create the statement and arguments, according to the number of values received in the “vals” parameter.</p>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/DataAccess/27-Making-the-most-out-of-Where/05-Refactor-to-Method.md">Edit this page on GitHub</a></div><!-- .content -->
                 

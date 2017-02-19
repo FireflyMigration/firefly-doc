@@ -49,7 +49,7 @@ namespace Northwind.BasicAngular.Utils
 {
     public class SObject : ISerializedObject
     {
-        List<Val> _value = new List<Val>();
+        List&lt;Val&gt; _value = new List&lt;Val&gt;();
         public string ObjectType = "Object";
         public void Set(params ColumnBase[] cols)
         {
@@ -293,7 +293,7 @@ namespace Northwind.BasicAngular.Utils
         bool _inValue = false;
         public void WriteName(string name)
         {
-            if (_titleLine.Length > 0)
+            if (_titleLine.Length &gt; 0)
                 _titleLine += ",";
             _titleLine += name;
             _inValue = true;
@@ -310,7 +310,7 @@ namespace Northwind.BasicAngular.Utils
  
         public void WriteValue(object value)
         {
-            if (_dataLine.Length > 0)
+            if (_dataLine.Length &gt; 0)
                 _dataLine += ",";
             var val = value.ToString();
             if (val.Contains(",") || val.Contains("\r\n"))
@@ -321,7 +321,7 @@ namespace Northwind.BasicAngular.Utils
     }
     public class SArray : ISerializedObject
     {
-        List<SObject> _list = new List<SObject>();
+        List&lt;SObject&gt; _list = new List&lt;SObject&gt;();
  
         public SObject AddObject()
         {
@@ -370,7 +370,7 @@ namespace Northwind.BasicAngular.Utils
  
         internal void SortBy(string name)
         {
-            _list.Sort((a, b) =>
+            _list.Sort((a, b) =&gt;
             {
                 return Firefly.Box.Advanced.Comparer.Compare(a.Get(name), b.Get(name));
             });
@@ -379,7 +379,7 @@ namespace Northwind.BasicAngular.Utils
     }
  
 }
-</code></pre>
+ </code></pre>
 <p><strong>SArrayResult.cs</strong></p>
 <p>This file contains the definition of an MVC Action result that matches the SArray and SObject, and also the extension method required to use the “ToResult()” method.</p>
 <p>It should be placed in a project with references to System.Web.MVC.</p>
@@ -429,7 +429,7 @@ namespace Northwind.BasicAngular.Utils
         }
     }
 }
-</code></pre>
+ </code></pre>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/Web-Development/13-SArray-and-SObject/index.md">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->

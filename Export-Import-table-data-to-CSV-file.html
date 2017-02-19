@@ -58,7 +58,7 @@
         Execute();
     }
 }
-</code></pre>
+ </code></pre>
 <p><strong>Export/Import using ENV classes</strong></p>
 <p>Please see below: (The classes that are used are below as well)</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/m62m1rTYc80" frameborder="0" allowfullscreen></iframe>
@@ -87,7 +87,7 @@ namespace ENV.IO
             Add(items);
         }
 
-        List<object> _cells = new List<object>();
+        List&lt;object&gt; _cells = new List&lt;object&gt;();
         public void Add(params object[] a)
         {
             _cells.AddRange(a);
@@ -122,7 +122,7 @@ namespace ENV.IO
             set
             {
                 var i = index;
-                while (_cells.Count <= i)
+                while (_cells.Count &lt;= i)
                 _cells.Add(“”);
                 _cells[i] = value;
             }
@@ -147,7 +147,7 @@ namespace ENV.IO
         public char Seperator = ‘,’;
     }
 }
-</code></pre>
+ </code></pre>
 <p><strong>SeperatedReader class</strong></p>
 <pre data-line="" class="language-csdiff line-numbers"><code>
 using System;
@@ -157,9 +157,9 @@ using System.Text;
 
 namespace ENV.IO
 {
-    public class SeperatedReader : IEnumerable<string>
+    public class SeperatedReader : IEnumerable&lt;string&gt;
     {
-        List<string> _values = new List<string>();
+        List&lt;string&gt; _values = new List&lt;string&gt;();
         string _line;
         public SeperatedReader(string line, char seperator = ‘,’)
         {
@@ -230,7 +230,7 @@ namespace ENV.IO
             return result;
         }
 
-        public IEnumerator<string> GetEnumerator()
+        public IEnumerator&lt;string&gt; GetEnumerator()
         {
             return _values.GetEnumerator();
         }
@@ -241,7 +241,7 @@ namespace ENV.IO
         }
     }
 }
-</code></pre>
+ </code></pre>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/Basics/Writing-and-reading-files/17-Export-Import-table-data-to-CSV-file/index.md">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->

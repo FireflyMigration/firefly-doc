@@ -30,14 +30,14 @@
                 <div class="content"><h1 id="more-about-the-message-class">More about the message class</h1>
 <pre data-line="7" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
 {
-    if (Orders.OrderDate.Year < 1990)
+    if (Orders.OrderDate.Year &lt; 1990)
     {
 -        System.Windows.Forms.MessageBox.Show("Invalid Year");
 -        throw new Firefly.Box.Advanced.FlowAbortException();
          Message.ShowError("Invalid Year");
     }
 }
-</code></pre>
+ </code></pre>
 <hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ogUjXIBsygI?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/02_UI-Controller/08_Input-Validation/05_More-About-The-Message-Class.md">Edit this page on GitHub</a></div><!-- .content -->

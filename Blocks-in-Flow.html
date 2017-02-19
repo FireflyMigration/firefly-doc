@@ -34,14 +34,14 @@
     Columns.Add(Orders.CustomerID);
     Flow.StartBlock(FlowMode.ExpandBefore);
     {
-        Flow.Add(() => Message.ShowWarning("Hello"));
-        Flow.Add(() => Message.ShowWarning("World"));
+        Flow.Add(() =&gt; Message.ShowWarning("Hello"));
+        Flow.Add(() =&gt; Message.ShowWarning("World"));
     }
     Flow.EndBlock();
     Columns.Add(Orders.EmployeeID);
     Columns.Add(Orders.OrderDate);
     Columns.Add(Orders.RequiredDate);
-</code></pre>
+ </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/mIr6B-X_Ej8?list=PL1DEQjXG2xnJ622kTVgstJEVh0DGRHkmU" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/19-FlowUIController/07-Blocks-in-Flow.md">Edit this page on GitHub</a></div><!-- .content -->
                 

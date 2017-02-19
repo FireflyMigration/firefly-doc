@@ -47,7 +47,7 @@ Usually when I write a filter, I select my column, then press the dot key, and s
 
             foreach (var val in vals)
             {
-                if (i &gt; 1)
+                if (i &amp;gt; 1)
                     inStatement += ",";
                 inStatement += "{" + i++ + "}";
                 args.Add(val);
@@ -60,14 +60,14 @@ Usually when I write a filter, I select my column, then press the dot key, and s
 .......
     }
 }
-</code></pre>
+ </code></pre>
 <p>Note that this method is no longer static, and no longer receives the TextColumn parameter called “col”. Instead it uses the “this” operator – referring to the current instance of TextColumn.</p>
 <p>So now instead of writing:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>return o.CountRows(IsIn(o.CustomerID, "TOMSP", "HANAR","RICSU"));
-</code></pre>
+ </code></pre>
 <p>We can write:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>return o.CountRows(o.CustomerID.IsIn("TOMSP", "HANAR", "RICSU"));
-</code></pre>
+ </code></pre>
 <p>To better understand all the different aspects of the “Where” I recommend that you have a look at the following topics in our documentation:</p>
 <hr />
 <ul>

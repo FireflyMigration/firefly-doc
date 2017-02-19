@@ -42,13 +42,13 @@
            " where " + stringFilter+")",col);
     return where;
 }
-</code></pre>
+ </code></pre>
 <p>And use it like this:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>var o = new Orders();
 var c = new Customers();
 return o.CountRows(IsNotInSelect(
       o.CustomerID,c.CustomerID,c.City.IsEqualTo("London")));
-</code></pre>
+ </code></pre>
 <p>If you are interested in how to get there, keep reading.</p>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/DataAccess/27-Making-the-most-out-of-Where/02-The-short-answer.md">Edit this page on GitHub</a></div><!-- .content -->
                 

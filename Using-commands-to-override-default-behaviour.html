@@ -28,11 +28,11 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="using-commands-to-override-default-behaviour">Using commands to override default behaviour</h1>
-<pre data-line="3" class="language-csdiff line-numbers"><code>Handlers.Add(Command.Exit).Invokes += e =>
+<pre data-line="3" class="language-csdiff line-numbers"><code>Handlers.Add(Command.Exit).Invokes += e =&gt;
 {
     e.Handled = !Common.ShowYesNoMessageBox("Exit", "Are you sure you want to exit?", false); 
 };
-</code></pre>
+ </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qOKrRlzzuGY?list=PL1DEQjXG2xnIGbO3DlvFQjv-T0OXM81r-" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/17-Handlers-and-commands/10-Using-commands-to-override-default-behaviour.md">Edit this page on GitHub</a></div><!-- .content -->
                 

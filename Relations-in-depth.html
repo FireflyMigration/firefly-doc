@@ -55,7 +55,7 @@
             Execute();
         }
     }
-</code></pre>
+ </code></pre>
 <p>The .NET code displays this data on a form, as shown below:</p>
 <p><img src="noname.jpg" alt="" /></p>
 <p>Note that there are 15 lines on the grid displaying the first 15 lines from the Products Entity and a corresponding Category Name from the Category Relation. It is precisely this Category Relation that we will be looking at in this article in depth. As we progress, we will examine the SQL code for the Category Relation on each of these lines and understand the differences according to the Relation used and depending on whether Cache is enabled or not.</p>
@@ -134,7 +134,7 @@ FROM dbo.Categories
 WHERE CategoryID = 0
  
 ExecuteReader Duration: 0
-</code></pre>
+ </code></pre>
 <p>Note: It is possible to see the above information within the context of a logfile, by defining the following in the ini file:</p>
 <p>dblogfile = c:\temp\db.log</p>
 <p>For further information regarding using logfiles, see : <a href="using_log_files.html">Using Log Files</a></p>
@@ -158,7 +158,7 @@ ORDER BY ProductID
 @rowcount(Int32) =
  
 ExecuteReader Duration .. : 81.0046
-</code></pre>
+ </code></pre>
 <h3 id="second-statement">Second statement:</h3>
 <p>This statement fetches the data from the cursor that was just declared, as displayed below:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>ExecuteReader - sp_cursorfetch
@@ -168,7 +168,7 @@ Query Parameters:
 @fetchtype(Int32) = 2
 @rownum(Int32) = 1
 @nrows(Int32) = 40
-</code></pre>
+ </code></pre>
 <h3 id="third-statement">Third statement</h3>
 <p>This statement reflects that the program code is fetching data from the database using a Select command. This statement is the first one directly referring to the Relation that we defined.</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>ExecuteReader - 
@@ -177,7 +177,7 @@ FROM dbo.Categories
 WHERE CategoryID = 5
  
 ExecuteReader Duration..: 34.0019
-</code></pre>
+ </code></pre>
 <p>As you can see, the program is fetching data from the Categories Relation table, where CategoryID is equal to 5. This is the Category id for the first row, as displayed in the grid screenshot above. This statement is followed by many more similar statements, that fetch Categories for each product row. We will demonstrate the following principle: The select statement for the Relation is executed for each row displayed on the grid and if Cache is applied (as it is in this case), rows that were already fetched are not fetched again.</p>
 <hr />
 <h1 id="using-cache">Using Cache</h1>
@@ -190,13 +190,13 @@ ExecuteReader Duration..: 34.0019
         {
              Cached = true;
         }
-</code></pre>
+ </code></pre>
 <p>In the task:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>        internal readonly Model.Categories _categories = new Model.Categories()
         {
             Cached = true,
         };
-</code></pre>
+ </code></pre>
 <hr />
 <h2 id="rules-for-working-with-cache">Rules for Working with Cache</h2>
 <p>Even if you enable Cache, rows from a dB table will only be saved to the Cache if the following specific 3 conditions are met:</p>
@@ -207,12 +207,12 @@ ExecuteReader Duration..: 34.0019
         	Caption = "CategoryID",
         	Unique = true 
         }
-</code></pre>
+ </code></pre>
 <p>.. and here is the code that shows how the Relation declares this unique sort:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>           Relations.Add(_categories,RelationType.Find,
                 _categories.CategoryID.IsEqualTo(_products.CategoryID),
                 _categories.SortByCategoryID);
-</code></pre>
+ </code></pre>
 <h3 id="use-all-segments">Use all Segments</h3>
 <p>All the segments of the unique sort must be defined in the Relation's Where clause. For example, the code for this unique sort defines only one segment, CategoryID, as shown below, which the Relation Where clause uses, thus in this example, the Relation is using all segments.</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>  void InitializeIndexes()      
@@ -220,7 +220,7 @@ ExecuteReader Duration..: 34.0019
  
       SortByCategoryID.Add(CategoryID);
   }
-</code></pre>
+ </code></pre>
 <p>If the unique index also included, let's say, the Category Name segment, then Category Name would also have to appear in the Relation code, in order for Cache to be enabled.</p>
 <h3 id="implicit-use-of-primary-key-or-other-unique-index">Implicit Use of Primary key or other Unique Index</h3>
 <p>Even if the Relation does not use a specifically specified unique sort, if the Where criteria for the Relation match any of the unique indexes of the entity or it's primary key, Cache will still be applied. For example, the CategoryID columns is defined as the primary key of the Categories entity:</p>
@@ -232,7 +232,7 @@ ExecuteReader Duration..: 34.0019
         	DbReadOnly = true
         };
    };
-</code></pre>
+ </code></pre>
 <p>Notes:</p>
 <p>If the Select statement doesn't return any row, nothing will be saved to the Cache. As a result, any further use of the same Select statement will be directed to the database.<br />
 Note that if the “CacheNonUniqueResults” property is set to true, then regardless of unique key or primary key definitions, Caching will be enabled. The usage is as follows:</p>
@@ -240,7 +240,7 @@ Note that if the “CacheNonUniqueResults” property is set to true, then regar
         {
              CacheNonUniqueResults = true
         };
-</code></pre>
+ </code></pre>
 <hr />
 <h2 id="applying-the-cache-rules">Applying the Cache Rules</h2>
 <p>Using our acquired knowledge, let's revisit the detailed SQL log displayed before.</p>
@@ -269,7 +269,7 @@ Note that if the “CacheNonUniqueResults” property is set to true, then regar
         {
             Cached = false
         };
-</code></pre>
+ </code></pre>
 <p>After running the UIController, we'll get the following result containing 15 full dB SQL references, which clearly shows that we now access the Database for each row, regardless of whether the CategoryID has already appeared:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>ExecuteNonQuery Duration: 0
 ExecuteNonQuery - sp_cursorprepexec
@@ -390,7 +390,7 @@ ExecuteReader -
 SELECT CategoryID, CategoryName, Description 
 FROM dbo.Categories 
 WHERE CategoryID = 5
-</code></pre>
+ </code></pre>
 <p>Note that we get the cursor for the main table and 15 more queries that are generated by the Relation for the grid, as well as one more addtional query for the row that we are parked on, a total of 16 SQL Relation quesries.</p>
 <h3 id="no-primary-key-or-unique-sort">No Primary Key or Unique Sort</h3>
 <p>Now let's switch Cached back to true, but also change the code in the Category entity so that CategoryID is no longer the primary key. Additionally, lets change the sort key for CategoryID to no longer be unique. (Note that in the code below “Unique = 'true' ” is commented out and the primary key is moved to the CategoryName field).</p>
@@ -414,7 +414,7 @@ WHERE CategoryID = 5
         	Caption = "CategoryID",
         	//Unique = true
         };
-</code></pre>
+ </code></pre>
 <p>As expected, when we run the UIController, Cache is no longer applied.</p>
 <h3 id="unique-key-using-only-some-of-the-segments">Unique Key using only some of the segments</h3>
 <p>Now let's redefine the SortByCategoryID to be unique, but let's add another segment, CategoryName, to this key. Note that the last line of code in the code below adds 2 segments to the SortByCategoryID key.</p>
@@ -424,7 +424,7 @@ WHERE CategoryID = 5
         	Unique = true
         };
  
-        /// <summary>Categories(E#5)</summary>
+        /// &lt;summary&gt;Categories(E#5)&lt;/summary&gt;
         public Categories():base("dbo.Categories", "Categories", DataSources.Northwind1)
         {
             InitializeIndexes();
@@ -437,7 +437,7 @@ WHERE CategoryID = 5
  
             SortByCategoryID.Add(CategoryID, CategoryName);
         }
-</code></pre>
+ </code></pre>
 <p>Once again if we run the UIController, Cache is not applied, since not all segments of the key are used in the Relation.</p>
 <h3 id="recompute">Recompute</h3>
 <p>On the row that we are parked on (product 1), le'ts change the Category from 5 to 7. As soon as we leave the CategoryID column, the Relation is re-evaluated, and a select statement to fetch row 7 is sent to the database:</p>
@@ -458,7 +458,7 @@ Of course if we were using Cache, and Category 7 existed in the Cache, we would 
  
             View = new UI.ShowProductsUI(this);
         }
-</code></pre>
+ </code></pre>
 <p>Now that we run the program, the following SQL will be generated, as displayed in the output window and shown below:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>ExecuteNonQuery - sp_cursorprepexec
  
@@ -476,7 +476,7 @@ ORDER BY A.ProductID
 @rowcount(Int32) = 
  
 ExecuteNonQuery Duration...: 53.0031
-</code></pre>
+ </code></pre>
 <p>Looking at the above, we can see that there is initial overhead on the Relation code but this is followed by no further SQL Select statements for rows. Using Outer Join can therefore potentially lead to a significant increase in performance, specifically when working with smaller tables.</p>
 <hr />
 <h2 id="recompute-1">Recompute</h2>
@@ -488,7 +488,7 @@ WHERE CategoryID = 1
 ORDER BY CategoryID, CategoryName
  
 ExecuteReader Duration: 3.0002
-</code></pre>
+ </code></pre>
 <hr />
 <h1 id="inner-join">Inner Join</h1>
 <p>Now let's change the Relation type to Inner Join as displayed below: (note that Join, by default, implies Inner Join)</p>
@@ -500,7 +500,7 @@ ExecuteReader Duration: 3.0002
  
             View = new UI.ShowProductsUI(this);
         }
-</code></pre>
+ </code></pre>
 <p>In this case, in terms of an initial Join followed by no further Select statements, the SQL will be similar to the previous example of Outer Join and looks as follows:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>ExecuteNonQuery - sp_cursorprepexec
  
@@ -518,7 +518,7 @@ ORDER BY A.ProductID
 @rowcount(Int32) = 
  
 ExecuteNonQuery Duration..: 34.0019
-</code></pre>
+ </code></pre>
 <p>This being the case, Cache is not required for Relations. Of course, in this case, only product rows that have a categoryID that exists also in the categories table will be displayed as shown below:</p>
 <p><img src="capture1.jpg" alt="" /></p>
 <p>Rows with ProductID 4 and Row 15 have CategoryID = 0 which does not appear in the Categories table, so these rows are thus not displayed.</p>
@@ -531,7 +531,7 @@ WHERE CategoryID = 1
 ORDER BY CategoryID, CategoryName
  
 ExecuteReader Duration: 1
-</code></pre>
+ </code></pre>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/DataAccess/Relations-in-depth/index.md">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
