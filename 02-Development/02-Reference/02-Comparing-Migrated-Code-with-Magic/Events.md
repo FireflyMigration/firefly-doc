@@ -141,7 +141,7 @@
 | View Refresh | ReloadData |
 | View by Key | SelectOrderBy |
 | Wide | ExpandTextBox |
-| Window Hit | - |
-| Window Reposition | BeforeWindowClick |
+| Window Hit | BeforeWindowClick |
+| Window Reposition | - |
 | Window Resize | WindowResize |
 | Zoom | Expand |
