@@ -246,7 +246,8 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
                 if (searchInput.value == '')
                     reset(data.nodes);
                 else
-                    search(data.nodes, searchInput.value.toLowerCase());
+                    if (!search(data.nodes, searchInput.value.toLowerCase()))
+                        ga('event', 'searchFailed', searchInput.value);
             };
 
         }
