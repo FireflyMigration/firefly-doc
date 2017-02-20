@@ -155,6 +155,9 @@ code[class*="language-css"]{
 .token.selector {
     color: #800000;
 }
+.token.generic-type{
+    color: #2B91AF;
+}
 
 .token.attr-name,
 .token.property,
