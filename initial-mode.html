@@ -66,22 +66,19 @@ Values:</p>
 </tbody>
 </table>
 <p>Example: Browse:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Activity = Activities.Browse;
- </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>Activity = Activities.Browse; </code></pre>
 <p>Example: By Parent:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>public ShowOrders()
 {   //... other code
     Activity = u.ActivityOfParent;
     // other code
-}
- </code></pre>
+} </code></pre>
 <p>Example: By Expression:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>public ShowOrders()
 {   //... other code
     Activity =  u.TranslateTaskActivity(u.if(1==1,"Q","M")); 
     // other code
-}
- </code></pre>
+} </code></pre>
 <hr />
 <p><strong>See Also:</strong></p>
 <ul>

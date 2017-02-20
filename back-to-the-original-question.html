@@ -39,8 +39,7 @@ var where = new FilterCollection();
 where.Add(
 "CustomerID not in 
     (select CustomerID from Customers where City='London')");
-return o.CountRows(where);
- </code></pre>
+return o.CountRows(where); </code></pre>
 <p>Step 1 - let’s replace the usage of the CustomerID column to a token, so if we ever change it in the Entity, this query will keep working:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>var o = new Orders();
 var where = new FilterCollection();
@@ -48,16 +47,14 @@ where.Add(
   "{0} not in  
       (select CustomerID from Customers where ShipCity='London')"
       ,o.CustomerID);
-return o.CountRows(where);
- </code></pre>
+return o.CountRows(where); </code></pre>
 <p>Step 2 – let’s take out the value “London” so that we can receive it as a parameter, and keep it SQL injection free:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>var o = new Orders();
 var where = new FilterCollection();
 where.Add("{0} not in 
   (select CustomerID from Customers where ShipCity={1})"
          ,o.CustomerID,"London");
-return o.CountRows(where);
- </code></pre>
+return o.CountRows(where); </code></pre>
 <p>Step 3 – let’s use the ‘Customers’ entity name and its column names, instead of writing them in the SQL file itself. This is a bit more tricky. Due to many reasons the method of placing the column as a token, only works on the main entity, which is Orders in our case, so to do that we’ll just insert these values to the SQL string itself. Ironically, this is actually more readable.</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>var o = new Orders();
 var c = new Customers();
@@ -66,13 +63,11 @@ where.Add("{0} not in
    (select "+c.CustomerID.Name+
   " from "+c.EntityName+
   " where "+c.City.Name+"={1})",o.CustomerID,"London");
-return o.CountRows(where);
- </code></pre>
+return o.CountRows(where); </code></pre>
 <p>Step 4 – let’s refactor it so that we can have an ‘IsNotInSelect” method. First, let’s see the usage:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>var o = new Orders();
 var c = new Customers();
-return o.CountRows(IsNotInSelect(o.CustomerID,c.CustomerID,c.City,”London”));
- </code></pre>
+return o.CountRows(IsNotInSelect(o.CustomerID,c.CustomerID,c.City,”London”)); </code></pre>
 <p>Now let’s see the implementation:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>static FilterBase IsNotInSelect
   (ColumnBase col, ColumnBase colInOtherTable,
@@ -84,8 +79,7 @@ return o.CountRows(IsNotInSelect(o.CustomerID,c.CustomerID,c.City,”London”))
       " from " + colInOtherTable.Entity.EntityName +
       " where " + filterColumn.Name + "={1})", col, filterValue);
     return where;
-}
- </code></pre>
+} </code></pre>
 <p>Note that we didn’t send the “Customers” entity as a parameter, we simply used the column’s Entity property to figure out the entity that is being used.</p>
 <p>This implementation may seem a bit complex, but the beauty of it is that you only do it once – and now you can reuse it all over your code.</p>
 <p>Step 5 – Let’s generalize this function further to take care of more complex scenarios with more complex values then “City=’London’”. So I would prefer to send it a filter and use that.</p>
@@ -93,14 +87,12 @@ return o.CountRows(IsNotInSelect(o.CustomerID,c.CustomerID,c.City,”London”))
 <pre data-line="" class="language-csdiff line-numbers"><code>var o = new Orders();
 var c = new Customers();
 return o.CountRows(IsNotInSelect
-(o.CustomerID,c.CustomerID,c.City.IsEqualTo(“London”)));
- </code></pre>
+(o.CustomerID,c.CustomerID,c.City.IsEqualTo(“London”))); </code></pre>
 <p>Note that I’m using the IsEqualTo filter, but I can also use any other filter, like the IsIn that we have defined earlier in this post:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>var o = new Orders();
 var c = new Customers();
 return o.CountRows(IsNotInSelect
-(o.CustomerID,c.CustomerID,c.City.IsIn("London","Madrid")));
- </code></pre>
+(o.CustomerID,c.CustomerID,c.City.IsIn("London","Madrid"))); </code></pre>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/DataAccess/27-Making-the-most-out-of-Where/07-Back-to-the-original-question.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->

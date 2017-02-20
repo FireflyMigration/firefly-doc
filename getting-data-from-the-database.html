@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Refactor to Method</title>
+    <title>Getting Data From The Database</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,41 +27,68 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="refactor-to-method">Refactor to Method</h1>
-<p>So I’ll probably need the “in” function to be used all across my application, so the best way to reuse it is to refactor it. Let’s create a method called “IsIn”.</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>static FilterCollection IsIn(TextColumn col, Text val1, Text val2)
+                <div class="content"><h1 id="getting-data-from-the-database">Getting Data From The Database</h1>
+<p>In this article we'll</p>
+<ul>
+<li>Get data from the database</li>
+<li>Add a grid and display he following columns on it:
+<ul>
+<li>OrderID</li>
+<li>OrderDate</li>
+<li>ShipVia</li>
+<li>ShipName</li>
+<li>ShipCity</li>
+</ul>
+</li>
+</ul>
+<pre data-line="3,6" class="language-csdiff line-numbers"><code>public class ShowOrders : UIControllerBase
 {
-    var where = new FilterCollection();
-    where.Add("{0} in ({1},{2})", col, val1, val2);
-    return where;
-} </code></pre>
-<p>and use it, as following:</p>
-<pre><code class="language-csdiff">var o = new Orders();
-return o.CountRows(IsIn(o.CustomerID, &quot;TOMSP&quot;, &quot;HANAR&quot;));
-</code></pre>
-<p>OK, I like the usage, it’s simple enough (will improve it a bit more later), but what if I have more then two values? Let’s change the IsIn function, to support more then two values:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>static FilterCollection IsIn(TextColumn col, params Text[] vals)
-{
-    var where = new FilterCollection();
-    var args = new ArrayList();
-    args.Add(col);
-    int i = 1;
-    string inStatement = "{0} in (";
-
-    foreach (var val in vals)
+    public readonly Models.Orders Orders = new Models.Orders();
+    public ShowOrders()
     {
-        if (i &amp;gt; 1)
-            inStatement += ",";
-        inStatement += "{" + i++ + "}";
-        args.Add(val);
+        From = Orders;
     }
-    inStatement += ")";
 
-    where.Add(inStatement, args.ToArray());
-    return where;
+    public void Run()
+    {
+        Execute();
+    }
+    ...
 } </code></pre>
-<p>In this code, we simply create the statement and arguments, according to the number of values received in the “vals” parameter.</p>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/DataAccess/27-Making-the-most-out-of-Where/05-Refactor-to-Method.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1u67cUCXxE8?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
+<hr />
+<p>To use a table from the database first we need to define the Table we are going to use in the class</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>public readonly Models.Orders MyOrders = new Models.Orders(); </code></pre>
+<p>Them we can set the Table as the Main table in our controller by setting the From in the constructor</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>From = MyOrders; </code></pre>
+<p><strong>Designing the View</strong><br />
+To be able to see the Columns of the table in the designer we need to build the project first
+To see the Controls comes from the migrated code - run the 'Setup Toolbox' wizard from the designer:
+RightClick on the window
+Select setup Toolbox
+Click Yes
+Visual studio will add all the controls available in the code to the Toolbox</p>
+<p>Drag a Grid to the Designer and place it as you like
+To add the columns use the <strong>Column Wizard</strong> by selecting the grid and select the Column wizard option from the small arrow at the right side of the grid</p>
+<p>The Column Wizard shows the Controller, the Models and the columns that can be selected to be add to the grid</p>
+<h3 id="things-that-can-go-wrong">Things that can go wrong</h3>
+<ol>
+<li><p>I can't see the Orders table under my controller when using the column wizard:</p>
+<ol type="a">
+<li>Did you build the project prior to opening the column wizard?</li>
+<li>Is the build successful?</li>
+<li>Make sure that the access modifier for the Orders field is <code>public</code></li>
+<li>Close and open visual studio.</li>
+</ol>
+<ol start="5">
+<li>Close visual studio, buildDebug.bat &amp; open visual studio</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><a href="creating-simple-screen-exercise.html">Creating Simple Screen Exercise</a></li>
+</ul>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/02_UI-Controller/03-Getting-Data-From-The-Database/index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -106,7 +133,7 @@ return o.CountRows(IsIn(o.CustomerID, &quot;TOMSP&quot;, &quot;HANAR&quot;));
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'refactor-to-method.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'getting-data-from-the-database.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

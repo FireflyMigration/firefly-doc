@@ -54,19 +54,15 @@ Values:</p>
 </tbody>
 </table>
 <p>Example: Exit:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Exit();
- </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>Exit(); </code></pre>
 <p>Example: Exit Before Row:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Exit(ExitTiming.BeforeRow, () =&gt; u.EOF(0, 1));
- </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>Exit(ExitTiming.BeforeRow, () =&gt; u.EOF(0, 1)); </code></pre>
 <p>Example: Exit After Row</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Exit(ExitTiming.AfterRow, () =&gt; Counter == 10);
- </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>Exit(ExitTiming.AfterRow, () =&gt; Counter == 10); </code></pre>
 <h3 id="immediately-when-condition-is-changed-exittiming.assoonaspossible">&quot;Immediately when condition is Changed&quot; - ExitTiming.AsSoonAsPossible</h3>
 <h4 id="bindexitassoonaspossible">BindExitAsSoonAsPossible</h4>
 <p>In most cases this exit condition will be translated to:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>BindExitAsSoonAsPossible(() =&gt; Orders.ShipCity == "London", Orders.ShipCity);
- </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>BindExitAsSoonAsPossible(() =&gt; Orders.ShipCity == "London", Orders.ShipCity); </code></pre>
 <ul>
 <li>The first argument is the condition, and the other arguments are columns that on their change, the controller should reevaluate the Exit Condition.</li>
 </ul>
@@ -88,8 +84,7 @@ protected override void OnLeaveRow()
     Warning("Message to User");
     CheckExit();
     numerator.Value = 2;
-}
- </code></pre>
+} </code></pre>
 <p>In this example, the task will end, even though at the end of the OnLeaveRow the numerator value was 2, because in second row it was set to 1, and then the CheckExit method was called, and the condition evaluated to true.</p>
 <hr />
 <p><strong>See Also:</strong></p>

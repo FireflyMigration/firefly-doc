@@ -41,11 +41,9 @@
 <p>Note that we are using basic types here (in this case string) as those integrate best with the MVC framework.</p>
 <p>Next, we’ll alter our code to use these classes for the list, instead of the strings used earlier.</p>
 <p>We’ll change it from:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>var result = new List&lt;string&gt;();
- </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>var result = new List&lt;string&gt;(); </code></pre>
 <p>to :</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>var result = new List&lt;CustomerPoco&gt;();
- </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>var result = new List&lt;CustomerPoco&gt;(); </code></pre>
 <p>Next we’ll change the business process to create these POCO objects instead of the strings.</p>
 <p>We’ll change it from :<br />
 <img src="poco_objects.png" alt="" /></p>

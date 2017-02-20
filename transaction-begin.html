@@ -71,8 +71,7 @@ Values:</p>
 </table>
 <p>Note: The Group option is only applicable for BusinessProcess.</p>
 <p>Example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>TransactionScope = TransactionScopes.RowLocking; 
- </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>TransactionScope = TransactionScopes.RowLocking; </code></pre>
 <p>Note: The migrated code will not write the <code>TransactionScope</code> property if no transaction is required.
 The <code>TransactionScope</code> property will be written whenever a transaction was set - even if it was the default in magic.
 It does that to explicitly indicate that there is a transaction.</p>

@@ -37,8 +37,7 @@
         From = Orders;
         Where.Add(Orders.ShipCity.IsEqualTo("London"));
     }
-}
- </code></pre>
+} </code></pre>
 <h3 id="using-or">Using or</h3>
 <pre data-line="8,9" class="language-csdiff line-numbers"><code>public class ShowOrders : UIControllerBase
 {
@@ -50,8 +49,7 @@
         Where.Add(Orders.ShipCity.IsEqualTo("London").Or(
             Orders.ShipCity.IsEqualTo("Madrid")));
     }
-}
- </code></pre>
+} </code></pre>
 <h3 id="using-an-in-memory-expression">Using an in memory expression</h3>
 <h4 id="example-1">Example 1</h4>
 <pre data-line="8" class="language-csdiff line-numbers"><code>public class ShowOrders : UIControllerBase
@@ -63,8 +61,7 @@
         From = Orders;
         Where.Add(() =&gt; Orders.ShipCity=="London");
     }
-}
- </code></pre>
+} </code></pre>
 <h4 id="example-2">Example 2</h4>
 <pre data-line="8" class="language-csdiff line-numbers"><code>public class ShowOrders : UIControllerBase
 {
@@ -75,8 +72,7 @@
         From = Orders;
         Where.Add(() =&gt; Orders.ShipCity.Contains("o"));
     }
-}
- </code></pre>
+} </code></pre>
 <h3 id="sql-where">SQL Where</h3>
 <pre data-line="8" class="language-csdiff line-numbers"><code>public class ShowOrders : UIControllerBase
 {
@@ -87,8 +83,7 @@
         From = Orders;
         Where.Add("{0} = {1}", Orders.ShipCity, "London");
     }
-}
- </code></pre>
+} </code></pre>
 <h3 id="sql-where-using-prebuilt-functions">SQL Where using prebuilt functions</h3>
 <h4 id="example-1-1">Example 1</h4>
 <pre data-line="8" class="language-csdiff line-numbers"><code>public class ShowOrders : UIControllerBase
@@ -101,8 +96,7 @@
         Where.Add(db.In(Orders.ShipCity, "London", "Madrid"));
 
     }
-}
- </code></pre>
+} </code></pre>
 <h4 id="example-2-1">Example 2</h4>
 <pre data-line="8" class="language-csdiff line-numbers"><code>public class ShowOrders : UIControllerBase
 {
@@ -114,8 +108,7 @@
         Where.Add("{0} = {1} or {2}", Orders.ShipCity, "London",db.In(Orders.ShipCity,"Madrid", "Berlin"));
 
     }
-}
- </code></pre>
+} </code></pre>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/Other-Types-Of-Where.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->

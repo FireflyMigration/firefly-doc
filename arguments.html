@@ -34,16 +34,14 @@ In the Migrated Code: the <strong>parameters</strong> are being sent to the Run(
 <pre><code></code></pre>
 <p>Arguments are passed in the migrated code in the standard .Net way.<br />
 For example, the following code passes OrderID as an argument to the Print_Order program:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Print_Order().Run(Orders.OrderID);
- </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>new Print_Order().Run(Orders.OrderID); </code></pre>
 <pre><code></code></pre>
 <p>In the receiving program, the Run method receives the argument/s, for example:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>public void Run(NumberParameter ppi_OrderID)
 {
   BindParameter(pi_OrderID, ppi_OrderID);
   Execute();
-}
- </code></pre>
+} </code></pre>
 <p>Note:<br />
 For backward compatibility reasons, Migrated code will use parameter types such as NumberParameter, TextParameter etc, as opposed to NumberColumn, TextColumn.<br />
 This allows the .Net code to behave like Magic, so that, like in Magic, expressions can be passed as parameters too.</p>

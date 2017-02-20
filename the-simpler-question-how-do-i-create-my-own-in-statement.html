@@ -32,8 +32,7 @@
 <p>The basic to it will be:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>var o = new Orders();
 return o.CountRows(o.CustomerID.IsEqualTo("TOMSP")
-       .Or(o.CustomerID.IsEqualTo("HANAR")));
- </code></pre>
+       .Or(o.CustomerID.IsEqualTo("HANAR"))); </code></pre>
 <p>We’re using the “CountRows” method, that receives a “FilterBase” object – just like any other filter that is used in the application.</p>
 <p>This is a bit cumbersome, and is tolerable when I have two customers, but what if I have more?</p>
 <p>Let’s evolve this by creating our own “In” function.</p>
@@ -42,21 +41,18 @@ return o.CountRows(o.CustomerID.IsEqualTo("TOMSP")
 var where = new FilterCollection();
 where.Add(o.CustomerID.IsEqualTo("TOMSP")
       .Or(o.CustomerID.IsEqualTo("HANAR")));
-return o.CountRows(where);
- </code></pre>
+return o.CountRows(where); </code></pre>
 <p>Now that we have the filter collection, we can use all of the power of the regular where, that we are used to, and send our own SQL commands to the where:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>var o = new Orders();
 var where = new FilterCollection();
 where.Add("{0}={1} or {0}={2}", o.CustomerID, "TOMSP", "HANAR");
-return o.CountRows(where);
- </code></pre>
+return o.CountRows(where); </code></pre>
 <p>Note that the token “{0}” will be replaced by the “Name” of the CustomerID column, and the tokens “{1}” and “{2}” will be replaced by the values “TOMSP” and “HANAR” respectively.</p>
 <p>Next let’s use the SQL in statement, instead of the or statement:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>var o = new Orders();
 var where = new FilterCollection();
 where.Add("{0} in ({1},{2})", o.CustomerID, "TOMSP", "HANAR");
-return o.CountRows(where);
- </code></pre>
+return o.CountRows(where); </code></pre>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/DataAccess/27-Making-the-most-out-of-Where/04-The-simpler-question-how-do-I-create-my-own-In-statement.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->

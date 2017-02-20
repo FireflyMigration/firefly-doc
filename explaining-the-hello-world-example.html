@@ -74,8 +74,7 @@ The Run() used in the HelloWorld has no return value so we specify void.</p>
 The Run() used in the HelloWorld receives no parameters so nothing is specify inside the parentheses</p>
 <h6 id="calling-a-method">Calling a Method</h6>
 <p>To call a method we will specify the Method “Address” name space and the method name:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>System.Windows.Forms.MessageBox.Show("Hello World");
- </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>System.Windows.Forms.MessageBox.Show("Hello World"); </code></pre>
 <p>System.Windows.Forms – is the namespace
 MessageBox – is the class name
 Show – is the method name
@@ -83,8 +82,7 @@ which receives text as parameters</p>
 <h6 id="calling-the-method-from-the-menu">Calling the Method from the menu</h6>
 <p>When we DbClick on the menu item Visual Studio generated a method which is called every time the menu item is being clicked
 inside this method we added the code to call the Run method of the HelloWorld class.</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Training.HelloWorld().Run();
- </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>new Training.HelloWorld().Run(); </code></pre>
 <p><em>new</em> – a keyword to create a new instance of a class
 in this case we create a new instance of HelloWorld class which defined under the Training folder.
 and then we called the Run() method.</p>

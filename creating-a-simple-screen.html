@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Refactor to Method</title>
+    <title>Creating a simple screen</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,41 +27,52 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="refactor-to-method">Refactor to Method</h1>
-<p>So I’ll probably need the “in” function to be used all across my application, so the best way to reuse it is to refactor it. Let’s create a method called “IsIn”.</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>static FilterCollection IsIn(TextColumn col, Text val1, Text val2)
+                <div class="content"><h1 id="creating-a-simple-screen">Creating a simple screen</h1>
+<p>In this article we'll:</p>
+<ul>
+<li>Create our ShowOrders UIController without any grid or data</li>
+<li>Call the ShowOrders UIController from the menu</li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/woyyAU4droA?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
+<hr />
+<h1 id="introduction-to-uicontroller">Introduction to UIController</h1>
+<p>UI Controller is a class that controls the UI interaction.<br />
+It is the equivalent to the Online program in the original application.</p>
+<p>The video shows how to create a Folder and in it a Simple UIController and how to add the it to the menu, run the application and call the controller.<br />
+In the next session the UIControllel will be explained.</p>
+<h6 id="to-create-a-new-folder-in-the-solution-explorer">To create a new Folder in the solution explorer:</h6>
+<ol>
+<li>Stand on the Project where you want to create the folder and RightClick</li>
+<li>Select 'Add' -&gt; 'New Folder'</li>
+<li>Give it a name</li>
+</ol>
+<h6 id="to-create-a-new-ui-controller">To create a new UI Controller:</h6>
+<ol>
+<li>In the solution explorer right click on the Folder you would like to add the new UI controller to it</li>
+<li>Select ‘Add’ -&gt; ‘New item’</li>
+<li>On the left pane select ‘Templates’</li>
+<li>From the Templates list select UIController</li>
+<li>Give it a name and press the Add button</li>
+</ol>
+<p>Two classes are automatically created:
+The Controller class – where the logic is written
+The View class – the design of the screen (the window of the program)
+The two classes will be explained in the next session</p>
+<h6 id="to-add-the-controller-to-the-menu">To Add the Controller to the menu:</h6>
+<ol>
+<li>In the Solution explorer go to the Views folder and DbClick on the ApplicationMDI.cs file</li>
+<li>Click on the Menu bar and give the menu a name</li>
+<li>Click outside the menu to save it</li>
+<li>DbClick on the new created entry - a new method is automatically created.</li>
+<li>Inside the  this method call the Controller by typing
+new FolderName.[SubFolderName].ClassName().Run()</li>
+</ol>
+<pre><code class="language-csdiff">private void ApplicationMdi_Load(object sender, EventArgs e)
 {
-    var where = new FilterCollection();
-    where.Add("{0} in ({1},{2})", col, val1, val2);
-    return where;
-} </code></pre>
-<p>and use it, as following:</p>
-<pre><code class="language-csdiff">var o = new Orders();
-return o.CountRows(IsIn(o.CustomerID, &quot;TOMSP&quot;, &quot;HANAR&quot;));
+    new Training.SimpleScreen.ShowOrders().Run();
+}
 </code></pre>
-<p>OK, I like the usage, it’s simple enough (will improve it a bit more later), but what if I have more then two values? Let’s change the IsIn function, to support more then two values:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>static FilterCollection IsIn(TextColumn col, params Text[] vals)
-{
-    var where = new FilterCollection();
-    var args = new ArrayList();
-    args.Add(col);
-    int i = 1;
-    string inStatement = "{0} in (";
-
-    foreach (var val in vals)
-    {
-        if (i &amp;gt; 1)
-            inStatement += ",";
-        inStatement += "{" + i++ + "}";
-        args.Add(val);
-    }
-    inStatement += ")";
-
-    where.Add(inStatement, args.ToArray());
-    return where;
-} </code></pre>
-<p>In this code, we simply create the statement and arguments, according to the number of values received in the “vals” parameter.</p>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/DataAccess/27-Making-the-most-out-of-Where/05-Refactor-to-Method.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/02_UI-Controller/00-Creating-a-simple-screen.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -106,7 +117,7 @@ return o.CountRows(IsIn(o.CustomerID, &quot;TOMSP&quot;, &quot;HANAR&quot;));
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'refactor-to-method.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'creating-a-simple-screen.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

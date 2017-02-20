@@ -32,8 +32,7 @@
 <hr />
 <p>This property, determining which GUI screen will be displayed, is passed in the migrated code as a parameter, when calling the Method.<br />
 An example of this implementation is as follows:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code> new Print_Order().Run(Orders.OrderID, new UI.ShowOrders_UI(this));
- </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code> new Print_Order().Run(Orders.OrderID, new UI.ShowOrders_UI(this)); </code></pre>
 <pre><code></code></pre>
 <p>In the called Method, the code will look like this:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>public void Run(NumberParameter ppi_OrderID, Firefly.Box.UI.Form view)
@@ -41,8 +40,7 @@ An example of this implementation is as follows:</p>
     BindParameter(pi_OrderID, ppi_OrderID);
     BindView(view);
     Execute();
-}
- </code></pre>
+} </code></pre>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/02-Reference/02-Comparing-Migrated-Code-with-Magic/Operations/Call/03-Form.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->

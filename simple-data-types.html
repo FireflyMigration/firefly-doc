@@ -36,9 +36,9 @@ For example: string CompanyName;<br />
 string – is the type of the variable<br />
 CompanyName is the variable’s name.</p>
 <p>Notice the standard naming conventions: the name of the variable starts with lower case and the first letter of every word afterwards is an uppercase.<br />
-We can also initialize the variable in the same line by using the equation sign:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>string CompanyName = "my name";
- </code></pre>
+You can read more about the Capitalization styles and recommendations at <a href="https://msdn.microsoft.com/en-us/library/x2dbyw72(v=vs.71).aspx">Capitalization Styles</a>.</p>
+<p>We can also initialize the variable in the same line by using the equation sign:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>string companyName = "my name"; </code></pre>
 <p><strong>Let's create data types and display their values in the message box:</strong></p>
 <ol>
 <li>Right click on the <em>Training</em> folder and select <strong>Add/New Item</strong></li>
@@ -68,8 +68,7 @@ We can also initialize the variable in the same line by using the equation sign:
             char gender ='M';
        }     
     }
-}
- </code></pre>
+} </code></pre>
 <ol start="4">
 <li><p>Note:<br />
 A variable which is not in used is marked with a green underline</p>
@@ -102,9 +101,7 @@ namespace Northwind.Training
           	MessageBox.Show("You have "  + numberOfKids.ToString() + " children" ); 
        }     
     }
-}
-
- </code></pre>
+} </code></pre>
 <ol start="7">
 <li><p>When used on strings the <strong>+ operator</strong> concatenates the two string into a single string.</p>
 </li>
@@ -121,8 +118,7 @@ and call this class by calling its Run() method</p>
 <pre data-line="3" class="language-csdiff line-numbers"><code>private void basicTypesToolStripMenuItem_Click(object sender, EventArgs e)
 {
 	new Training.BasicTypes().Run();
-}
- </code></pre>
+} </code></pre>
 <ol start="11">
 <li>before running the application remember to build it.</li>
 </ol>

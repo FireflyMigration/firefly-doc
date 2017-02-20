@@ -52,8 +52,7 @@ namespace Northwind.Training
            }  
        }     
     }
-}
- </code></pre>
+} </code></pre>
 <h3 id="classesandinstances-class">ClassesAndInstances class</h3>
 <pre data-line="15,17" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
 namespace Northwind.Training
@@ -74,8 +73,7 @@ namespace Northwind.Training
             MessageBox.Show(b.Name+" is a "+b.AnimalType); 
        }     
     }
-}
- </code></pre>
+} </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/v6wbQgPYwU0?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
 <h2 id="classes-and-instances-explained">Classes and Instances explained</h2>
 <p>The C# code is written inside classes.<br />
@@ -97,8 +95,7 @@ Members defined inside a class are known only in that class.</p>
             
         }     
     }
-}
- </code></pre>
+} </code></pre>
 <p>The Animal class has a member defined called Name.<br />
 This member is:<br />
 <strong>public</strong> -  so it is accessible from all our code<br />
@@ -106,18 +103,15 @@ Its <strong>type</strong> is string
 and its name is <code>Name</code></p>
 <h4 id="using-the-animal-class">using the Animal class</h4>
 <p>To use the animal class first we'll need to define a field of that type.</p>
-<pre data-line="1" class="language-csdiff line-numbers"><code>Animal a;
- </code></pre>
+<pre data-line="1" class="language-csdiff line-numbers"><code>Animal a; </code></pre>
 <p>Then we'll need to assign it with an instance of the Animal class using the <code>new</code> keyword</p>
-<pre data-line="1" class="language-csdiff line-numbers"><code>Animal a = new Animal();
- </code></pre>
+<pre data-line="1" class="language-csdiff line-numbers"><code>Animal a = new Animal(); </code></pre>
 <h4 id="the-new-keyword">the <strong>new</strong> keyword</h4>
 <p>By using the <strong>new</strong> keyword a new instance of the class is created.</p>
 <p>In our example this instance is represented by the variable <code>a</code></p>
 <p>Since <code>a</code> is an Animal it has a member called <code>Name</code> (as defined in the Animal class).<br />
 To set a value to the <code>Name</code> of 'a' we use the <code>className.MemberName</code>, and with this sample:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>a.Name = "Rexi";
- </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>a.Name = "Rexi"; </code></pre>
 <p>Every Instance is a separate instance and can have it's own value for the <code>Name</code> field</p>
 <h4 id="the-entire-file">the entire file</h4>
 <pre data-line="8,9,10,11,12,13" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
@@ -135,8 +129,7 @@ namespace Northwind.Training
              MessageBox.Show(b.Name); 
        }     
     }
-}
- </code></pre>
+} </code></pre>
 <p>The code above defines two instances of Animal class a &amp; b.<br />
 The Name of 'a' is &quot;Rexi&quot; the name of 'b' is &quot;Kitty&quot;.<br />
 Then we use the MessageBox.Show() method to display the name of each of the Animals.</p>
@@ -153,8 +146,7 @@ A new member is added to that animal class: AnimalType</p>
            public string AnimalType;
        }     
     }
-}
- </code></pre>
+} </code></pre>
 <p>In the ClassesAndInstances we set the <code>AnimalType</code> field of the instance referenced by 'a' (which is an instance of Animal) to 'Dog'
 and 'b'  (which is also an instance of Animal) to 'Cat'.<br />
 The message boxes displays the type and the name of the objects in fields a &amp; b</p>
@@ -177,8 +169,7 @@ namespace Northwind.Training
             MessageBox.Show(b.Name+" is a "+b.AnimalType); 
        }     
     }
-}
- </code></pre>
+} </code></pre>
 <p>Instead of using the message box to display the Name and the Type for 'a' and for 'b' in the
 ClassesAndInstances, we can add a method in the Animal class itself to do that and call this method.</p>
 <p>The method <code>DescribeYourSelf()</code> is added to the Animal class<br />
@@ -200,8 +191,7 @@ namespace Northwind.Training
            }  
        }     
     }
-}
- </code></pre>
+} </code></pre>
 <p>The method <code>DescribeYourSelf()</code> belong to the Animal class so every object representing this class can use it.<br />
 Now, in the ClassesAndInstances, instead of using the <code>MessageBox</code>, 'a' and 'b' objects can call the  <code>DescribeYourSelf()</code> method to display the information.</p>
 <pre data-line="15,17" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
@@ -223,8 +213,7 @@ namespace Northwind.Training
             b.DescribeYourSelf();
        }     
     }
-}
- </code></pre>
+} </code></pre>
 <h4 id="to-summarize">To summarize:</h4>
 <p>We Created a class representing an Animal<br />
 It has 3 members:
@@ -242,7 +231,7 @@ Both object use their DescribeYourSelf() method (the Animal class method) to dis
 <li><a href="inheritance-basics-adding-the-dog-class.html">Inheritance Basics Adding the Dog class</a></li>
 <li><a href="creating-the-cat-class.html">Creating the Cat class</a></li>
 <li><a href="virtual-method-and-override.html">Virtual method and override</a></li>
-<li><a href="more-on-instances-and-inheritance.html">More on Instances and inheritance</a></li>
+<li><a href="polymorphism.html">polymorphism</a></li>
 </ul>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/01-Introducing-DotNet-and-the-CSharp-Language/04_Classes/01-index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 

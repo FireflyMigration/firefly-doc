@@ -63,8 +63,7 @@ namespace Northwind.Models
             }
         }
     }
-}
- </code></pre>
+} </code></pre>
 <p><img src="DynamicSQLSupporingDataProvider_explain.png" alt="" /></p>
 <p>We can see that the return value is “DynamicSQLSupporingDataProvider”, which means that this is a connection to an SQL database, rather than Memory, Btrieve, etc.</p>
 <p>The property “getter” (get) asks the “ConnectionManager” class for a SQLDataProvider by the name of the entry in the INI file “Northwind”.</p>

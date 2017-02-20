@@ -43,8 +43,7 @@ namespace Northwind.Types
             Expand += () =&gt; new Products.ShowProducts().Run(this);
         }
     }
-}
- </code></pre>
+} </code></pre>
 <p><img src="expand_handler.png" alt="" /></p>
 <p>So the question is how to get more out of it ?</p>
 <p>Since the type is a class we can add more code to it. The first thing we can do is add a method that will return relevant information like the product name.<br />
@@ -70,8 +69,7 @@ namespace Northwind.Types
             return products.GetValue(products.ProductName, products.ProductID.IsEqualTo(this)); 
         }
     }
-}
- </code></pre>
+} </code></pre>
 <p><img src="product_instance.png" alt="" /></p>
 <p>Now, whenever this type is used, there is no need to add a Relation to the Products model, you can get the product name directly from the column that use the type, for example:<br />
 <img src="Using_type.png" alt="" /><br />
@@ -109,8 +107,7 @@ namespace Northwind.Types
  
         }
     }
-}
- </code></pre>
+} </code></pre>
 <p>The problem is that now we will have two queries going to the database:
 <img src="using_profiler.png" alt="" />
 So we need to improve our code,  we need one SQL query that will return more than one column a time. To do so we need some ground work. We need to create a new object that will store all the information we need :</p>
@@ -135,8 +132,7 @@ namespace Northwind.Types
  
         Models.Products products;
     }
-}
- </code></pre>
+} </code></pre>
 <p>Now we need to get the data from the model :</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>using Firefly.Box;
 using ENV.Data;
@@ -173,8 +169,7 @@ namespace Northwind.Types
             return new ProductInfo { Name = "", Price = 0};
         }
     }
-}
- </code></pre>
+} </code></pre>
 <p><img src="data_from_model_explain.png" alt="" />
 Let us get the two methods returning the name and the price back, but this time we will use the ProductInfo object</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>using Firefly.Box;
@@ -221,8 +216,7 @@ namespace Northwind.Types
             return GetInfo().Price;
         }
     }
-}
- </code></pre>
+} </code></pre>
 <p>This time we can see that there is only one database call:
 <img src="using_profiler_1.png" alt="" /></p>
 <p>If you have an older version of firefly ENV (Before version 21719), your version does not support the lambda option in GetValue method. To add it to your version add and replace the current GetValue code in your ENV.Data.Entity class with the following code :</p>
@@ -301,8 +295,7 @@ namespace Northwind.Types
             if (specificCache != null)
                 specificCache.Add(cacheKey, result);
             return result;
-        }
- </code></pre>
+        } </code></pre>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/Advanced-Topics/04-Types-I-want-more-out-of-it/index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->

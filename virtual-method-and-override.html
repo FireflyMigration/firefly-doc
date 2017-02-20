@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Virtual Method and Override</title>
+    <title>Virtual method and override</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,12 +27,36 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="virtual-method-and-override">Virtual Method and Override</h1>
-<pre data-line="" class="language-csdiff line-numbers"><code>public override void MakeSound()
+                <div class="content"><h1 id="virtual-method-and-override">Virtual method and override</h1>
+<p>In this article we'll:</p>
+<ul>
+<li>Add a virtual method called &quot;MakeSound&quot; to the <code>Animal</code> base class.</li>
+<li>Override the <code>MakeSound</code> method with specific implementation for the Cat and the Dog Classes.</li>
+</ul>
+<h3 id="animal-class">Animal Class</h3>
+<pre data-line="3,4,5,6" class="language-csdiff line-numbers"><code>class Animal
 {
-    MessageBox.Show("Hav Hav");
-}
- </code></pre>
+    public virtual void MakeSound()
+    {
+    
+    }
+} </code></pre>
+<h3 id="dog-class">Dog Class</h3>
+<pre data-line="3,4,5,6" class="language-csdiff line-numbers"><code>class Dog:Animal
+{
+    public override void MakeSound()
+    {
+        MessageBox.Show("Hav Hav");
+    }
+} </code></pre>
+<h3 id="cat-class">Cat Class</h3>
+<pre data-line="3,4,5,6" class="language-csdiff line-numbers"><code>class Cat:Animal
+{
+    public override void MakeSound()
+    {
+        MessageBox.Show("Miaoo");
+    }
+} </code></pre>
 <hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/K9xJh8fQEik?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/01-Introducing-DotNet-and-the-CSharp-Language/04_Classes/09_Virtual-method-and-override.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->

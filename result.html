@@ -34,18 +34,15 @@
 That variable will return the required value to the calling Method.<br />
 The calling Method receives this value.</p>
 <p>For example, in the calling Method, a value is returned to v_return which defined as Alpha in the original code:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code> v_return.Value = new called().Run();
- </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code> v_return.Value = new called().Run(); </code></pre>
 <p>In the called Method, a Text variable defined in the Class:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Text _taskResult;
- </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>Text _taskResult; </code></pre>
 <p>The variable is returned to the calling class by using the return keyword in the run() method after the execution ends.</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>public Text Run()
 {
     Execute();
     return _taskResult;
-}
- </code></pre>
+} </code></pre>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/02-Reference/02-Comparing-Migrated-Code-with-Magic/Operations/Call/04-Result.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->

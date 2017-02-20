@@ -41,13 +41,11 @@ Access to the Developer tools is specified in the  <em>ApplicationCore.cs</em>:<
 </ul>
 <pre data-line="" class="language-csdiff line-numbers"><code>#if DEBUG
 Common.EnableDeveloperTools = Roles.Administrator.Allowed;
-#endif
- </code></pre>
+#endif </code></pre>
 <p>Setting this option to true will enable this menu to all the users.</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>#if DEBUG
 Common.EnableDeveloperTools = true;
-#endif
- </code></pre>
+#endif </code></pre>
 <p>Notice that users who have access to this menu can also modify table data so you might consider this option.</p>
 <ul>
 <li>Debug/Release mode<br />
@@ -55,8 +53,7 @@ By default, the menu is enabled only in debug mode. in order to enable it in rel
 </ul>
 <pre data-line="" class="language-csdiff line-numbers"><code>#if DEBUG
 Common.EnableDeveloperTools = Roles.Administrator.Allowed;;
-#endif
- </code></pre>
+#endif </code></pre>
 <p>Debug/Release modes:<br />
 <img src="demode.png" alt="" /></p>
 <p><strong>Users Management</strong></p>

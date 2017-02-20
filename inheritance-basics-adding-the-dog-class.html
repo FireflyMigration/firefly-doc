@@ -28,8 +28,13 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="inheritance-basics-adding-the-dog-class">Inheritance Basics - Adding the Dog class</h1>
-<h4 id="dog.cs">Dog.cs :</h4>
-<pre data-line="" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
+<p>In this article we'll:</p>
+<ul>
+<li>Create a specific Dog class that inherits from the Animal base class.</li>
+<li>Add the Dog specific method <code>WatchHouse</code> to the dog class.</li>
+</ul>
+<h4 id="dog-class">Dog class :</h4>
+<pre data-line="4" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
 namespace Northwind.Training
 {
     class Dog:Animal
@@ -39,16 +44,14 @@ namespace Northwind.Training
             MessageBox.Show("Watching carefully");
         }
     }
-}
-
- </code></pre>
+} </code></pre>
 <p>replace Animal by Dog class :</p>
-<pre data-line="4" class="language-csdiff line-numbers"><code>public void Run()
+<pre data-line="4,5" class="language-csdiff line-numbers"><code>public void Run()
 {
 -    var a = new Animal();
      var a = new Dog();
-}
- </code></pre>
+     a.WatchHouse();
+} </code></pre>
 <hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ai0m24Oy6nY?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/01-Introducing-DotNet-and-the-CSharp-Language/04_Classes/06_Inheritance-Basics-Adding-the-Dog-class.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->

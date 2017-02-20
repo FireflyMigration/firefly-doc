@@ -32,15 +32,12 @@
 <p>Adding the namespace as a using statement saves the developer from writing the namespace in the code before each method.</p>
 <p>For example:</p>
 <p>Instead of typing:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>System.Windows.Forms.MessageBox.Show("Test");
- </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>System.Windows.Forms.MessageBox.Show("Test"); </code></pre>
 <p>We can add</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
- </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>using System.Windows.Forms; </code></pre>
 <p>at the top of the file
 and then just to type:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>MessageBox.Show("Text to be Displayed");
- </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>MessageBox.Show("Text to be Displayed"); </code></pre>
 <pre data-line="1,9" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
 namespace Northwind.Training
 {
@@ -52,8 +49,7 @@ namespace Northwind.Training
             MessageBox.Show("Hello World", "Hello World Caption", MessageBoxButton.OK);
        }     
     }
-}
- </code></pre>
+} </code></pre>
 <ol start="3">
 <li>Note: The “using” keyword has more usages and meanings that will be covered later.</li>
 </ol>
