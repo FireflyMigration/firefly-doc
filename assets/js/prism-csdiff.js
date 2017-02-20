@@ -31,7 +31,20 @@ Prism.languages.insertBefore('csharp_ff', 'keyword', {
 				alias: 'keyword'
 			}
 		}
+	},
+	'generic-type': {
+		pattern: /<\/?(?!\d)[^\s>\/=$<]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\\1|\\?(?!\1)[\w\W])*\1|[^\s'">=]+))?)*\s*\/?>/i,
+		inside: {
+			'generic-type': {
+				pattern: /^<\/?[^\s>\/]+/i,
+				inside: {
+					'punctuation': /^<\/?/,
+					'namespace': /^[^\s>\/:]+:/
+				}
+			}
+		}
 	}
+	
 });
 
 Prism.languages.csdiff = Prism.languages.extend('diff', Prism.languages.csharp_ff);
