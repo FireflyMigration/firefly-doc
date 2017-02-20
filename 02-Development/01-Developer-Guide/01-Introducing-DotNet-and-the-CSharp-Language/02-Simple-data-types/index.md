@@ -11,10 +11,12 @@ string – is the type of the variable
 CompanyName is the variable’s name.  
 
 Notice the standard naming conventions: the name of the variable starts with lower case and the first letter of every word afterwards is an uppercase.  
+You can read more about the Capitalization styles and recommendations at [Capitalization Styles](https://msdn.microsoft.com/en-us/library/x2dbyw72(v=vs.71).aspx).  
+
 We can also initialize the variable in the same line by using the equation sign: 
 
 ```csdiff
-string CompanyName = "my name";
+string companyName = "my name";
 ```
 
 
