@@ -1,16 +1,45 @@
-﻿# Display data from DB – Simple UI Controller
+﻿In this article we'll
+* Get data from the database 
+* Add a grid and display he following columns on it:
+  * OrderID
+  * OrderDate
+  * ShipVia
+  * ShipName
+  * ShipCity
 
-To use table from the database first we need to define the Table we are going to use in the class
 
-````
+```csdiff
+public class ShowOrders : UIControllerBase
+{
++   public readonly Models.Orders Orders = new Models.Orders();
+    public ShowOrders()
+    {
++       From = Orders;
+    }
+
+    public void Run()
+    {
+        Execute();
+    }
+    ...
+}
+```
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1u67cUCXxE8?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
+
+---
+
+To use a table from the database first we need to define the Table we are going to use in the class
+
+```csdiff
 public readonly Models.Orders MyOrders = new Models.Orders(); 
-````
+```
 
 Them we can set the Table as the Main table in our controller by setting the From in the constructor
 
-````
+```csdiff
 From = MyOrders;
-````
+```
 
 **Designing the View**  
 To be able to see the Columns of the table in the designer we need to build the project first
@@ -27,7 +56,7 @@ The Column Wizard shows the Controller, the Models and the columns that can be s
 
  
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1u67cUCXxE8?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
+
 
 
 ### Things that can go wrong

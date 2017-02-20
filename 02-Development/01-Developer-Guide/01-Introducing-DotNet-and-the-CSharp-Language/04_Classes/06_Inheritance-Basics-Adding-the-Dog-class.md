@@ -1,11 +1,15 @@
 ﻿# Inheritance Basics - Adding the Dog class 
 
-#### Dog.cs :
+In this article we'll:
+* Create a specific Dog class that inherits from the Animal base class.
+* Add the Dog specific method `WatchHouse` to the dog class.
+
+#### Dog class :
 ```csdiff
 using System.Windows.Forms;
 namespace Northwind.Training
 {
-    class Dog:Animal
++   class Dog:Animal
     {
         public void WatchHouse()
         {
@@ -22,6 +26,7 @@ public void Run()
 {
 -    var a = new Animal();
 +    var a = new Dog();
++    a.WatchHouse();
 }
 ```
 ---

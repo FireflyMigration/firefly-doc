@@ -1,6 +1,6 @@
 ﻿# Creating the Cat Class 
 
-Create a new class Cat.cs : 
+#### the Cat Class
 ```csdiff
 class Cat:Animal
 {
@@ -16,15 +16,8 @@ class Cat:Animal
 ```
 
 ```csdiff
--   var b = new Animal
-+   var b = new Cat
-      {
-        Name = "Kitty",
--       AnimalType = "Cat"
-    };
-    a.DescribeYourself();
-    a.WatchHouse();
-    b.DescribeYourself();
+-   var b = new Animal();
++   var b = new Cat();
 +   b.Sleep();
 ```
 ---

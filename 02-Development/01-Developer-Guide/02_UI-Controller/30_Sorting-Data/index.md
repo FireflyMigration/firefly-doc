@@ -1,5 +1,8 @@
-﻿keywords:orderby,sort
-# UIController - Sorting Data
+﻿keywords:orderby,sort,order by
+
+In this article we'll:
+* Sort by Ship City
+* Show how to make the sort descending
 
 ```csdiff
 public ShowOrders()
