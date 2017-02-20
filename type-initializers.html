@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Type Initializers</title>
+    <title>Type initializers</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,17 +27,20 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="type-initializers">Type Initializers</h1>
-<pre data-line="4,5,6,7,8" class="language-csdiff line-numbers"><code>- Animal c = new Animal();
-- c.Name = "Snoopy";
-- c.AnimalType = "Dog";
-  Animal c = new Animal
-  {
-  Name = "Snoopy",
-  AnimalType = "Dog"
-  };
+                <div class="content"><h1 id="type-initializers">Type initializers</h1>
+<p>Usage</p>
+<h4 id="without-type-initializers">without type initializers</h4>
+<pre data-line="" class="language-csdiff line-numbers"><code>-Animal c = new Animal();
+-c.Name = "Snoopy";
+-c.AnimalType = "Dog";
  </code></pre>
-<hr />
+<h4 id="with-type-initializers">with type initializers</h4>
+<pre data-line="" class="language-csdiff line-numbers"><code>Animal c = new Animal
+{
+   Name = "Snoopy",
+   AnimalType = "Dog"
+};
+ </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RSJOjzJ4Obc?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/01-Introducing-DotNet-and-the-CSharp-Language/04_Classes/03_Type-initializers.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
