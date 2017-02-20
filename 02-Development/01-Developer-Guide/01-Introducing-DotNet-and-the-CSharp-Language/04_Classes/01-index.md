@@ -1,8 +1,63 @@
 ﻿# More on Classes - Classes & Instances
 
 
-In this chapter, we will discuss more about Classes and instances.  
+In this chapter, we will discuss more about Classes and **instance**.  
 
+We'll:
+* Create the Animal Class with a string member of Name and Animal Type
+* Explain about **new** and instance
+* We'll use that class to create two animals, a Cat and a Dog
+* We'll add a `DescribeYourself` method to the Animal Class.
+
+### Animal Class
+ ```csdiff
++using System.Windows.Forms;
+namespace Northwind.Training
+{
+    class Animal
+    {
+       public void Run()
+       {
+           public string Name;
+           public string AnimalType;
++          public void DescribeYourSelf()
++          {
++               MessageBox.Show(this.Name + " is a " + this.AnimalType); 
++          }  
+       }     
+    }
+}
+```
+
+### ClassesAndInstances class
+```csdiff
+using System.Windows.Forms;
+namespace Northwind.Training
+{
+    class ClassesAndInstances
+    {
+       public void Run()
+       {
+            Animal a = new Animal();
+            Animal b = new Animal();
+            a.Name = "Rex";
+            b.AnimalType = "Dog" ;
+            b.Name = "Kitty";
+            b.AnimalType = "Cat" ;
+-           MessageBox.Show(a.Name); 
++           MessageBox.Show(a.Name+" is a "+a.AnimalType); 
+-           MessageBox.Show(b.Name); 
++           MessageBox.Show(b.Name+" is a "+b.AnimalType); 
+       }     
+    }
+}
+```
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/v6wbQgPYwU0?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
+
+
+
+## Classes and Instances explained
 The C# code is written inside classes.  
 Class is a **collection of operations and Data**.  
 
@@ -36,19 +91,21 @@ The Animal class has a member defined called Name.
 This member is:  
 **public** -  so it is accessible from all our code  
 Its **type** is string
-and its name is Name  
+and its name is `Name`  
 
 
-In the ClassesAndInstances class we can define an instance of the Animal class.  
-meaning - the ClassesAndInstances class has a member from Animal class.  
-
-To use this member in the ClassesAndInstances class we need to create a new instance of it:  
+#### using the Animal class
+To use the animal class first we'll need to define a field of that type.
 ```csdiff
-Animal a = new Animal();  
++Animal a;
+```
+Then we'll need to assign it with an instance of the Animal class using the `new` keyword
+```csdiff
++Animal a = new Animal();
 ```
 
 #### the **new** keyword  
-By using the **new** keyword a new instance of the class is created  
+By using the **new** keyword a new instance of the class is created. 
 
 In our example this instance is represented by the variable `a` 
  
@@ -57,6 +114,8 @@ To set a value to the `Name` of 'a' we use the `className.MemberName`, and with 
 ```csdiff
 a.Name = "Rexi";
 ```
+
+Every Instance is a separate instance and can have it's own value for the `Name` field
 
 
 #### the entire file
@@ -108,9 +167,9 @@ namespace Northwind.Training
 ```
 
 
-In the ClassesAndInstances we set 'a' (which is an instance of Animal) to be have AnimalTypa = Dog  
-and 'b'  (which is also an instance of Animal) to have AnimalTypa = Cat.  
-The message boxes displays the type and the name of the objects a & b
+In the ClassesAndInstances we set the `AnimalType` field of the instance referenced by 'a' (which is an instance of Animal) to 'Dog'
+and 'b'  (which is also an instance of Animal) to 'Cat'.  
+The message boxes displays the type and the name of the objects in fields a & b
 
 
 ```csdiff
@@ -137,16 +196,16 @@ namespace Northwind.Training
 ```
 
 
-Instead of using the message box to display the Name and the Type for 'a' and for 'b' in the  
+Instead of using the message box to display the Name and the Type for 'a' and for 'b' in the 
 ClassesAndInstances, we can add a method in the Animal class itself to do that and call this method. 
 
-The method DescribeYourSelf() is added to the Animal class  
+The method `DescribeYourSelf()` is added to the Animal class  
 The method displays the name and the type of the Animal object who used it.
 `this` is a reference to the current instance of the object (Animal class).  
  The code looks like that:  
 
  ```csdiff
-+ using System.Windows.Forms;
++using System.Windows.Forms;
 namespace Northwind.Training
 {
     class Animal
@@ -157,7 +216,7 @@ namespace Northwind.Training
            public string AnimalType;
 +          public void DescribeYourSelf()
 +          {
-+               MessageBox.Show(this.Name+" is a "+this.AnimalType); 
++               MessageBox.Show(this.Name + " is a " + this.AnimalType); 
 +          }  
        }     
     }
@@ -165,8 +224,8 @@ namespace Northwind.Training
 ```
 
 
-The method DescribeYourSelf() belong to the Animal class so every object representing this class can use it.  
-Now, in the ClassesAndInstances, instead of using the message box, 'a' and 'b' objects can call the method DescribeYourSelf() method to display the information.  
+The method `DescribeYourSelf()` belong to the Animal class so every object representing this class can use it.  
+Now, in the ClassesAndInstances, instead of using the `MessageBox`, 'a' and 'b' objects can call the  `DescribeYourSelf()` method to display the information.  
 
 
 
@@ -193,7 +252,7 @@ namespace Northwind.Training
 }
 ```
 
-To summarize:  
+#### To summarize:  
 We Created a class representing an Animal  
 It has 3 members:
 2 fields - Name and Type and a Method that displays the name and the type of the animal  

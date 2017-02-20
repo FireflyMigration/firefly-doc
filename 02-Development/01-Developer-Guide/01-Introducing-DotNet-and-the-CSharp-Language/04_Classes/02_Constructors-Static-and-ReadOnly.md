@@ -1,4 +1,40 @@
-﻿# More on Classes - constructor static and readonly
+﻿In this article we'll:
+* Add a constructor to the Animal class
+* Use the `static` keyword to add an automatically generated id
+* Use `readonly` keyword to make sure that the "id" can't change
+
+ ```csdiff
+using System.Windows.Forms;
+namespace Northwind.Training
+{
+    class Animal
+    {
+
++       static int LastUsedId = 0;
++       public readonly int Id;            
+        public string Name;
+        public string AnimalType;
++       public Animal()
++       {
++           Name = "No name was given";
++           AnimalType = "No type was given";
++           LastUsedId++;        
++           Id = LastUsedId;    
++       }
+        public void DescribeYourSelf()
+        {
+            MessageBox.Show(this.Name+" is a "+this.AnimalType+ " and it's id is :"+ Id );
+        }  
+    }
+}
+```
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pyuGLDnGk2U?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
+
+---
+
+
 
 In previous lesson we created 2 instances of Animal - 'a' & 'b'  
 To create them we used the **new** keyword and the class name Animal with the brackets at the end.  
@@ -38,7 +74,7 @@ namespace Northwind.Training
 +       }
         public void DescribeYourSelf()
         {
-        MessageBox.Show(this.Name+" is a "+this.AnimalType); 
+            MessageBox.Show(this.Name+" is a "+this.AnimalType); 
         }  
 
     }
@@ -76,7 +112,7 @@ namespace Northwind.Training
     class Animal
     {
 
-+       static int LastUsedId =0;
++       static int LastUsedId = 0;
 +       public int Id;            
         public string Name;
         public string AnimalType;
@@ -107,7 +143,10 @@ The Id should be set automatically in the constructor and we don't want to take 
 
 readonly means that a variable can only be updated inside the constructor but not anywhere else in the code.  
 
-By setting the Id to readonly:  public readonly int Id;  
+By setting the Id to readonly:
+```
++public readonly int Id;  
+```
 we make sure the Id is updated in the constructor and cannot be updated anywhere else.  
 That helps us making sure the Id stays unique and cannot be modified.  
 If we try to set a value to the Id we will receive a compilation error in Visual studio.  
@@ -117,4 +156,3 @@ If we try to set a value to the Id we will receive a compilation error in Visual
 
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/pyuGLDnGk2U?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
