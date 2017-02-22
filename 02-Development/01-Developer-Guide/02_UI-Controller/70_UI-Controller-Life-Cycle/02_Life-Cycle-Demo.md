@@ -1,12 +1,23 @@
 ﻿# UI Controller - Life Cycle Demo
-
+In this page we'll
+* Add using to `System.Diagnostics`
+* Use the Visual Studio `Output` window to show the execution of the controller
+* Add `Debug.WriteLine` to the existing Run and OnLoad Methods:
 ```csdiff
 public void Run()
 {
-    Debug.WriteLine("Before the Execute");
++   Debug.WriteLine("Before the Execute");
     Execute();
-    Debug.WriteLine("After the Execute");
++   Debug.WriteLine("After the Execute");
 }
+protected override void OnLoad()
+{
++   Debug.WriteLine("\tOnLoad");
+    View = () => new Views.ShowOrdersView(this);
+}
+```
+* Add code for all the controller life cycle events (just copy)
+```csdiff
 protected override void OnStart()
 {
     Debug.WriteLine("\t\tOnStart");
@@ -30,12 +41,6 @@ protected override void OnUnLoad()
 protected override void OnEnd()
 {
     Debug.WriteLine("\t\tOnEnd");
-}
-
-protected override void OnLoad()
-{
-    Debug.WriteLine("\tOnLoad");
-    View = () => new Views.ShowOrdersView(this);
 }
 ```
 ---

@@ -1,11 +1,9 @@
 ﻿keywords:record prefix,record suffix,task prefix,task suffix,
-# UI Controller - Life Cycle
+In this page we'll:
+* Explain that the `Constructor` runs first and builds our controller. In it we'll set the `From`, `Relations`, `Columns` etc.
+* Explain that the `Run` method is then called, and runs the `Execute` method that launches the Controller.
 
-
-### The constructor
-* Explain that the From, Relations, Columns etc... are defined in the constructor, as part of the contruction of the controller.
-* In the migrated code, they are defined in a method called `InitializeDataView` which is called from the constructor.
-
+[UI Controller Life Cycle presentation slides](UILifeCycle.pptx)
 
 ---
 
@@ -14,4 +12,4 @@
 
 ---
 
-[UI Controller Life Cycle presentation slide](UILifeCycle.pptx)
+

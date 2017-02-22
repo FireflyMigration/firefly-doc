@@ -1,5 +1,5 @@
 ﻿keywords:control verification
-# Input Validation using OnSavingRow event - If Statement 
+
 
 ```csdiff
 protected override void OnSavingRow()
