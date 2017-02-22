@@ -39,6 +39,9 @@ Common.EnableDeveloperTools = Roles.Administrator.Allowed;;
 Debug/Release modes:  
 ![](demode.png)
 
+More information about the Developer Tools menu can be found here:<br>
+http://doc.fireflymigration.com/using-developer-tools-in-the-alpha-testing-stage.html
+
 **Users Management**
 
 The User Management menu is visible only to a user with “UserManager” role or a user with the Administrator role
