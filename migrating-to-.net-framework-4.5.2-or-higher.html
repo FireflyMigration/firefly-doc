@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Exercise: Operators</title>
+    <title>Migrating to .Net framework 4.5.2 or higher</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,14 +27,22 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="exercise-operators">Exercise: Operators</h1>
-<ol>
-<li>Go back to the code of the previous exercise and add a new variable named &quot;currentYear&quot;. Set its value to the current year.</li>
-<li>Add a new variable named carAvgKmPerYear that will hold the average KM per year that the car has ran.</li>
-<li>Add the new variable (carAvgKmPerYear) to the message box.</li>
-<li>Build and test.</li>
-</ol>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/01-Introducing-.NET-and-the-CSharp-Language/03-Operators/02-Operators-Exercise.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+                <div class="content"><h1 id="migrating-to.net-framework-4.5.2-or-higher">Migrating to .Net framework 4.5.2 or higher</h1>
+<p>Microsoft has set the support end date of  .Net framework 4.5 and 4.5.1 to 12/01/2016, as you can see <a href="https://support.microsoft.com/en-us/lifecycle?C2=548">here</a>.</p>
+<p>In most cases this does not present any problem, so you can continue using the existing version.</p>
+<p>In case you decide to upgrade the version, all you need to do is make sure the .Net framework version you are using is higher than 4.5.1 in the project properties:</p>
+<p><img src="project_properties_framework.jpg" alt="" /></p>
+<p>In the new version Microsoft added a new namespace named “Windows”.<br />
+This creates an issue whenever the code contains the “Windows.OSCommand”
+(the Magic equivalent of the Exit / Invoke OS operations), since now there is no unique distinction between the Windows class in ENV and the Windows namespace of Microsoft:</p>
+<p><img src="namespace_between_net_windows.jpg" alt="" /></p>
+<p>The solution is simple – add the “ENV.” reference before the “Windows.OSCommand”:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnStart()
+{
+    ENV.Windows.OSCommand("winword.exe");
+} </code></pre>
+<p>Since you might have more than one location to change you can use the VS find and replace.</p>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/Visual-Studio-Tips/12-Migrating-to-.Net-framework-4.5.2-or-higher/index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -79,7 +87,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'operators-exercise.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'migrating-to-.net-framework-4.5.2-or-higher.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
