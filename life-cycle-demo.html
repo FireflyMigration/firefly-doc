@@ -28,13 +28,27 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="ui-controller-life-cycle-demo">UI Controller - Life Cycle Demo</h1>
-<pre data-line="" class="language-csdiff line-numbers"><code>public void Run()
+<p>In this page we'll</p>
+<ul>
+<li>Add using to <code>System.Diagnostics</code></li>
+<li>Use the Visual Studio <code>Output</code> window to show the execution of the controller</li>
+<li>Add <code>Debug.WriteLine</code> to the existing Run and OnLoad Methods:</li>
+</ul>
+<pre data-line="3,5,9" class="language-csdiff line-numbers"><code>public void Run()
 {
     Debug.WriteLine("Before the Execute");
     Execute();
     Debug.WriteLine("After the Execute");
 }
-protected override void OnStart()
+protected override void OnLoad()
+{
+    Debug.WriteLine("\tOnLoad");
+    View = () =&gt; new Views.ShowOrdersView(this);
+} </code></pre>
+<ul>
+<li>Add code for all the controller life cycle events (just copy)</li>
+</ul>
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnStart()
 {
     Debug.WriteLine("\t\tOnStart");
 }
@@ -57,12 +71,6 @@ protected override void OnUnLoad()
 protected override void OnEnd()
 {
     Debug.WriteLine("\t\tOnEnd");
-}
-
-protected override void OnLoad()
-{
-    Debug.WriteLine("\tOnLoad");
-    View = () =&gt; new Views.ShowOrdersView(this);
 } </code></pre>
 <hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/X4fP8lxqhEs?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>

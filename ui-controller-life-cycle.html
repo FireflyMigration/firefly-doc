@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="record prefix,record suffix,task prefix,task suffix,">
 
-    <title>UI Controller - Life Cycle</title>
+    <title>UI Controller Life Cycle</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,16 +27,16 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="ui-controller-life-cycle">UI Controller - Life Cycle</h1>
-<h3 id="the-constructor">The constructor</h3>
+                <div class="content"><h1 id="ui-controller-life-cycle">UI Controller Life Cycle</h1>
+<p>In this page we'll:</p>
 <ul>
-<li>Explain that the From, Relations, Columns etc... are defined in the constructor, as part of the contruction of the controller.</li>
-<li>In the migrated code, they are defined in a method called <code>InitializeDataView</code> which is called from the constructor.</li>
+<li>Explain that the <code>Constructor</code> runs first and builds our controller. In it we'll set the <code>From</code>, <code>Relations</code>, <code>Columns</code> etc.</li>
+<li>Explain that the <code>Run</code> method is then called, and runs the <code>Execute</code> method that launches the Controller.</li>
 </ul>
+<p><a href="UILifeCycle.pptx">UI Controller Life Cycle presentation slides</a></p>
 <hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/VP-AYhajNSw?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
 <hr />
-<p><a href="UILifeCycle.pptx">UI Controller Life Cycle presentation slide</a></p>
 <ul>
 <li><a href="life-cycle-demo.html">Life Cycle Demo</a></li>
 <li><a href="ui-controller-life-cycle-exercise.html">UI Controller Life Cycle Exercise</a></li>
