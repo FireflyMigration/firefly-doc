@@ -1,14 +1,6 @@
-﻿# Methods
-
-
-
-
----
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GRyRO3fX_do?list=PL1DEQjXG2xnK0hrpTQpa2p8ZvEMPsvh7n" frameborder="0" allowfullscreen></iframe>
-
-
----
-Step 1 : Create ValidateOrderDate Method
+﻿In this section we'll review:
+* What are methods - a better way to organize code
+* We'll extract the order validate logic, to the ValidateOrderDateMethod
 ```csdiff
 protected override void OnSavingRow()
 {
@@ -16,12 +8,7 @@ protected override void OnSavingRow()
 -   {
 -       Message.ShowError("Invalid Year");
 -   }
-
 +   ValidateOrderDate();
-    if (!Relations[Shippers].RowFound)
-    {
-        Message.ShowError("Please enter a valid shipper");
-    }
 }
 
 +void ValidateOrderDate()
@@ -34,27 +21,7 @@ protected override void OnSavingRow()
 
 ```
 
-Step 2 :  Create ValidateShipperId Method
-```csdiff
-protected override void OnSavingRow()
-{
-    ValidateOrderDate();
-+   ValidateShipperId();
-}
+* Demo how to use the "ExtractMethod" automatic refactoring from Visual Studio
 
-+void ValidateShipperId()
-{
-    if (!Relations[Shippers].RowFound)
-    {
-        Message.ShowError("Please enter a valid shipper");
-    }
-}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GRyRO3fX_do?list=PL1DEQjXG2xnK0hrpTQpa2p8ZvEMPsvh7n" frameborder="0" allowfullscreen></iframe>
 
-void ValidateOrderDate()
-{
-    if (u.Year(Orders.OrderDate) < 1990 || Orders.OrderDate.Year > 2020)
-    {
-        Message.ShowError("Invalid Year");
-    }
-}
-```

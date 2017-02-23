@@ -1,5 +1,4 @@
-﻿# Exercise - Date & Time
-
+﻿
 1.	Add a new menu entry "My Age"
 2.	Create data types for the following:
     a.  myBirthDay (new Date())

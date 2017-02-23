@@ -1,17 +1,14 @@
-﻿keywords:relation,link
-# Row Found Validation - Check if a Relation succeeded
+﻿keywords:relation,link,rowfound,row found, success indicator
+In this article we'll
+* Use the `watch` window to review the debug information of a `Relation` and examine the `RowFound` value when the row exists or not
+* Use the `RowFound` property to check if a row exists in a relation
+*
 
 ```csdiff
 protected override void OnSavingRow()
 {
-    if (u.Year( Orders.OrderDate) < 1990 || Orders.OrderDate.Year>2020)
-    {
-        Message.ShowError("Invalid Year");
-    }
 +   if (!Relations[Shippers].RowFound)
-+   {
 +       Message.ShowError("Please enter a valid shipper");
-+   }
 }
 ```
 

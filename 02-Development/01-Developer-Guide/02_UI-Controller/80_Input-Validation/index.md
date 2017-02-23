@@ -1,5 +1,6 @@
 ﻿keywords:control verification
-
+In this page we'll
+* Use the `OnSavingRow` event to validate user input
 
 ```csdiff
 protected override void OnSavingRow()

@@ -5,7 +5,7 @@
 * Can be null
 * Usage : 
   * Time t = Time.Now;
-  * Time t1 = new Time(8,35,25);
+  * Time t1 = new Time(8, 35, 25);
   * Time t2 = Time.StartOfDay;
 
 
