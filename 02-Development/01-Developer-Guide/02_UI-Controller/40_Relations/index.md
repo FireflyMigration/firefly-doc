@@ -4,7 +4,7 @@ In this article we'll:
 * Mention the different RelationTypes
 * Use that relation to get the CompanyName of the shipper in ShipVIA
 * Explain the recompute, when we change the shipVIA  - the CompanyName will be recomputed
-
+* Explain that you can use the `rel` snippet to create the relation using the wizard
 
 ```csdiff
 public readonly Models.Orders Orders = new Models.Orders();
@@ -23,6 +23,9 @@ public ShowOrders()
 }
     
 ```
+Notes:
+* To duplicate the control on the grid, we drag the control while holding the <kbd>Ctrl </kbd> key
+
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6X7M-PbloU4?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
 
