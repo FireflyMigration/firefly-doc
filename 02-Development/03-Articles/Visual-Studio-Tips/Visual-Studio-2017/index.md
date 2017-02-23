@@ -3,7 +3,7 @@ In this page we'll try to outline some of the things we like about Visual Studio
 ### You can now filter the intelisense window
 This is useful when you try to find a Column in an entity, and you only want to see "Fields"
 
-![](VisualStudio2017FilterIntelisense.gif)
+![](visualstudio2017filterintelisense.gif)
 
 
 ### Improved search capabilities
