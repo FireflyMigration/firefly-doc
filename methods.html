@@ -28,44 +28,18 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="methods">Methods</h1>
-<hr />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GRyRO3fX_do?list=PL1DEQjXG2xnK0hrpTQpa2p8ZvEMPsvh7n" frameborder="0" allowfullscreen></iframe>
-<hr />
-<p>Step 1 : Create ValidateOrderDate Method</p>
-<pre data-line="8,15,16,17,18,19,20,21" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
+<p>In this section we'll review:</p>
+<ul>
+<li>What are methods - a better way to organize code</li>
+<li>We'll extract the order validate logic, to the ValidateOrderDateMethod</li>
+</ul>
+<pre data-line="7,10,11,12,13,14,15,16" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
 {
 -   if (u.Year( Orders.OrderDate) &lt; 1990 || Orders.OrderDate.Year&gt;2020)
 -   {
 -       Message.ShowError("Invalid Year");
 -   }
-
     ValidateOrderDate();
-    if (!Relations[Shippers].RowFound)
-    {
-        Message.ShowError("Please enter a valid shipper");
-    }
-}
-
-void ValidateOrderDate()
-{
-    if (u.Year(Orders.OrderDate) &lt; 1990 || Orders.OrderDate.Year &gt; 2020)
-    {
-        Message.ShowError("Invalid Year");
-    }
-} </code></pre>
-<p>Step 2 :  Create ValidateShipperId Method</p>
-<pre data-line="4,7" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
-{
-    ValidateOrderDate();
-    ValidateShipperId();
-}
-
-void ValidateShipperId()
-{
-    if (!Relations[Shippers].RowFound)
-    {
-        Message.ShowError("Please enter a valid shipper");
-    }
 }
 
 void ValidateOrderDate()
@@ -76,10 +50,14 @@ void ValidateOrderDate()
     }
 } </code></pre>
 <ul>
+<li>Demo how to use the &quot;ExtractMethod&quot; automatic refactoring from Visual Studio</li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GRyRO3fX_do?list=PL1DEQjXG2xnK0hrpTQpa2p8ZvEMPsvh7n" frameborder="0" allowfullscreen></iframe>
+<ul>
 <li><a href="method-with-return-value.html">Method with return value</a></li>
 <li><a href="introducing-regions.html">Introducing Regions</a></li>
-<li><a href="using-csharp6-features-to-write-shorter-methods.html">Using CSharp6 features to write shorter methods</a></li>
-<li><a href="migrated-expression-and-rename-refactoring.html">Migrated expression and Rename refactoring</a></li>
+<li><a href="using-csharp-6-features-to-write-shorter-methods.html">Using CSharp 6 features to write shorter methods</a></li>
+<li><a href="expressions-are-migrated-to-methods.html">Expressions are migrated to methods</a></li>
 </ul>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/05_Methods/index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 

@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content=""Object reference not set to an instance of an object",">
 
-    <title>IF Statement Explanation</title>
+    <title>nulls explained</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,80 +27,20 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="if-statement-explanation">IF Statement Explanation</h1>
-<p>In this page we'll</p>
+                <div class="content"><h1 id="nulls-explained">nulls explained</h1>
+<p>In this page we'll Demo and explain:</p>
 <ul>
-<li>Explain more about the if statement</li>
-<li>Demo single and multi line if statement</li>
-<li>Discuss the different bool operator</li>
+<li><code>null</code> is a special value that indicates that there is no value</li>
+<li><code>null</code> is different than '0' or '&quot;&quot;;</li>
+<li>if a member value was not set, it's value is <code>null</code></li>
+<li>Explain that when you get the &quot;Object reference not set to an instance of an object&quot; exception, it means that you are trying to use a field that has a <code>null</code> value - it's value was not set.</li>
+<li>Not all types can have a null value, for example <code>int</code>, <code>bool</code>, and <code>DateTime</code> can not havea a null value because they are <code>structs</code></li>
 </ul>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">Operators</th>
-<th>Explanation</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><strong>==</strong></td>
-<td>Equals</td>
-<td>a == &quot;London&quot;</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>!=</strong></td>
-<td>No Equals, different</td>
-<td>a != &quot;London&quot;</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>&gt;</strong></td>
-<td>Greater Than</td>
-<td>n &gt; 5</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>&lt;</strong></td>
-<td>Less Than</td>
-<td>n &lt; 7</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>&lt;=</strong></td>
-<td>Less or Equal</td>
-<td>n &lt;= 6</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>&gt;=</strong></td>
-<td>Greater or Equal</td>
-<td>n &gt;= 7</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>&amp;&amp;</strong></td>
-<td>And</td>
-<td>n &gt; 5 &amp;&amp; a == &quot;London&quot;</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>||</strong></td>
-<td>Or</td>
-<td>n &lt; 7 || a !=&quot;London&quot;</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>!</strong></td>
-<td>Not</td>
-<td>!(n &lt; 7)</td>
-</tr>
-</tbody>
-</table>
-<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
-{
-    if (Orders.OrderDate.Year &lt; 1990 || Orders.OrderDate.Year&gt;2020)
-        Message.ShowError("Invalid Year");
-} </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>string s = null; </code></pre>
 <hr />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ILv1m8NA2sM?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
-<ul>
-<li><a href="if-statement-explanation-exercise.html">IF Statement Explanation exercise</a></li>
-</ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/02_UI-Controller/80_Input-Validation/02_IF-Statement-Explanation/index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9fawzsxoiiI?list=PL1DEQjXG2xnJNTIi_lrTxD83bf5-8mrRP" frameborder="0" allowfullscreen></iframe>
+---
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/nulls-explained.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -145,7 +85,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'if-statement-explanation.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'nulls-explained.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

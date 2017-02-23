@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>IF Statement Explanation</title>
+    <title>Exercise - Input Validation using User Methods and the u Member</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,80 +27,15 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="if-statement-explanation">IF Statement Explanation</h1>
-<p>In this page we'll</p>
-<ul>
-<li>Explain more about the if statement</li>
-<li>Demo single and multi line if statement</li>
-<li>Discuss the different bool operator</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">Operators</th>
-<th>Explanation</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><strong>==</strong></td>
-<td>Equals</td>
-<td>a == &quot;London&quot;</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>!=</strong></td>
-<td>No Equals, different</td>
-<td>a != &quot;London&quot;</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>&gt;</strong></td>
-<td>Greater Than</td>
-<td>n &gt; 5</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>&lt;</strong></td>
-<td>Less Than</td>
-<td>n &lt; 7</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>&lt;=</strong></td>
-<td>Less or Equal</td>
-<td>n &lt;= 6</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>&gt;=</strong></td>
-<td>Greater or Equal</td>
-<td>n &gt;= 7</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>&amp;&amp;</strong></td>
-<td>And</td>
-<td>n &gt; 5 &amp;&amp; a == &quot;London&quot;</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>||</strong></td>
-<td>Or</td>
-<td>n &lt; 7 || a !=&quot;London&quot;</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>!</strong></td>
-<td>Not</td>
-<td>!(n &lt; 7)</td>
-</tr>
-</tbody>
-</table>
-<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
-{
-    if (Orders.OrderDate.Year &lt; 1990 || Orders.OrderDate.Year&gt;2020)
-        Message.ShowError("Invalid Year");
-} </code></pre>
-<hr />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ILv1m8NA2sM?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
-<ul>
-<li><a href="if-statement-explanation-exercise.html">IF Statement Explanation exercise</a></li>
-</ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/02_UI-Controller/80_Input-Validation/02_IF-Statement-Explanation/index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+                <div class="content"><h1 id="exercise-input-validation-using-user-methods-and-the-u-member">Exercise - Input Validation using User Methods and the u Member</h1>
+<ol>
+<li>In &quot;ShowProducts&quot;, add an error message if the &quot;ProductName&quot; has less than 3 characters (using the u.Len method). Use Trim where needed.</li>
+<li>Add an error message in status bar if the &quot;ProductName&quot; contains one of the following characters: %, @.</li>
+<li>Add a warning in status bar if the &quot;ProductName&quot; starts with &quot;T&quot; (using the u.Left method).</li>
+<li>Build and test.</li>
+</ol>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FQNAVNcdtTo?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/02_UI-Controller/80_Input-Validation/07_UserMethods-class/exercise.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -145,7 +80,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'if-statement-explanation.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'usermethods-class-exercise.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

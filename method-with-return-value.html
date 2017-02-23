@@ -28,6 +28,18 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="method-with-return-value">Method with return value</h1>
+<p>In this page we'll:</p>
+<ul>
+<li>Explain how to create a method with return type</li>
+<li>Create a method called <code>ShipperDoesNotExist</code> and use it in our If Statement</li>
+</ul>
+<pre data-line="" class="language-csdiff line-numbers"><code>bool ShipperDoesNotExist()
+{
+    return !Relations[Shippers].RowFound;
+} </code></pre>
+<ul>
+<li>Use the &quot;Extract Method&quot; visual studio refactoring to create the <code>InvalidOrderDate</code> method</li>
+</ul>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/167q9f19unM?list=PL1DEQjXG2xnK0hrpTQpa2p8ZvEMPsvh7n" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/05_Methods/01_Method-with-return-value.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 

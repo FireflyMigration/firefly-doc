@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Input Validation using Flow Abort Exception</title>
+    <title>Input Validation Using Flow Abort Exception</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,7 +27,11 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="input-validation-using-flow-abort-exception">Input Validation using Flow Abort Exception</h1>
+                <div class="content"><h1 id="input-validation-using-flow-abort-exception">Input Validation Using Flow Abort Exception</h1>
+<p>In this page we'll:</p>
+<ul>
+<li>Use the <code>FlowAbortException</code> to prevent the user from leaving the Controller</li>
+</ul>
 <pre data-line="6" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
 {
     if (Orders.OrderDate.Year &lt; 1990)
@@ -36,6 +40,21 @@
         throw new Firefly.Box.Advanced.FlowAbortException();
     }
 } </code></pre>
+<ul>
+<li>Use <code>ENV.Message.ShowError</code> to show a message and throw the exception in one line</li>
+</ul>
+<pre data-line="7" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
+{
+    if (Orders.OrderDate.Year &lt; 1990)
+    {
+-       System.Windows.Forms.MessageBox.Show("Invalid Year");
+-       throw new Firefly.Box.Advanced.FlowAbortException();
+        Message.ShowError("Invalid Year");
+    }
+} </code></pre>
+<ul>
+<li>Explain how to determine if Visual Studio should switch to the code when this exception happens</li>
+</ul>
 <hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/23jvCXomfQs?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/02_UI-Controller/80_Input-Validation/04_Input-Validation-Using-Flow-Abort-Exception.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->

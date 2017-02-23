@@ -29,28 +29,22 @@
                 </div>
                 <div class="content"><h1 id="using-date-to-filter-data">Using Date to Filter Data</h1>
 <p><em>Using Dates in the Where statement</em></p>
-<pre data-line="8" class="language-csdiff line-numbers"><code>public ShowOrders()
+<pre data-line="4" class="language-csdiff line-numbers"><code>public ShowOrders()
 {
     From = Orders;
-    Where.Add(Orders.ShipCity.IsEqualTo("London").Or(
-        Orders.ShipCity.IsEqualTo("Madrid")));
-    Where.Add(Orders.ShipName.IsDifferentFrom(""));
-
-     Where.Add(Orders.OrderDate.IsGreaterOrEqualTo(1996, 1, 1).And(Orders.OrderDate.IsLessOrEqualTo(1996,12,31)));
-
-    OrderBy.Add(Orders.ShipCity);
-    OrderBy.Add(Orders.OrderDate, SortDirection.Descending);
-
-    Relations.Add(Shippers, Shippers.ShipperID.IsEqualTo(Orders.ShipVia),Shippers.SortByPK_Shippers);
+    Where.Add(Orders.OrderDate.IsGreaterOrEqualTo(new Date(1997, 1, 1)));
 } </code></pre>
 <p><em>Using date in the Between statement</em></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Where.Add(Orders.OrderDate.IsBetween(new Date(1996, 1, 1),new Date(1996,12,31))); </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>Where.Add(Orders.OrderDate.IsBetween(new Date(1996, 1, 1), new Date(1996, 12, 31))); </code></pre>
 <p><em>An other example:</em></p>
 <pre data-line="" class="language-csdiff line-numbers"><code>var start = new Date(1996, 1, 1);
 Where.Add(Orders.OrderDate.IsBetween(start,start.EndOfYear)); </code></pre>
 <hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/B_Xqlz1Cy-U?list=PL1DEQjXG2xnJNTIi_lrTxD83bf5-8mrRP" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/04_Migrated-Data-Types-and-Null/11_Using-Date-to-Filter-Data.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<ul>
+<li><a href="exercise-using-a-date-to-filter-data.html">Exercise Using a date to filter data</a></li>
+</ul>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/04_Migrated-Data-Types/11_Using-Date-to-Filter-Data/01-index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
