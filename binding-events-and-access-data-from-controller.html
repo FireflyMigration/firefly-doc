@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Binding Events and accessing the Data from the controller</title>
+    <title>Binding events and access data from controller</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,7 +27,19 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="binding-events-and-accessing-the-data-from-the-controller">Binding Events and accessing the Data from the controller</h1>
+                <div class="content"><h1 id="binding-events-and-access-data-from-controller">Binding events and access data from controller</h1>
+<ul>
+<li>Add a button to the form</li>
+<li>Show the Events Tab in the &quot;Properties&quot; window in Visual Studio
+<img src="2017-02-24_09h38_54.png" alt="2017 02 24 09H38 54" /></li>
+<li>Double click the <code>Click</code> event and show how Visual Studio generates the code that will be executed when the user clicks on the button.</li>
+<li>Show a message box when the user clicks on a button</li>
+<li>Use the <code>_controll</code> field to access the controller and extract the order id</li>
+</ul>
+<pre data-line="3" class="language-csdiff line-numbers"><code>private void button1_Click(object sender, ButtonClickEventArgs e)
+{
+    MessageBox.Show("Order ID: " + _controller.Orders.OrderID);
+} </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Qq7IIRpQrSs?list=PL1DEQjXG2xnKm36EZepT3dIiM5E8s5W0f" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/07_Control-Properties-and-Events/03_Binding-events-and-access-data-from-controller.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 

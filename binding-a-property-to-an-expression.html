@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Binding controls data to method</title>
+    <title>Binding a Property to an Expression</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,34 +27,35 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="binding-controls-data-to-method">Binding controls data to method</h1>
-<p>In this article We'll:</p>
+                <div class="content"><h1 id="binding-a-property-to-an-expression">Binding a Property to an Expression</h1>
 <ul>
-<li>Create a GetDayOfWeek method and bind a control to the result of this method.</li>
-<li>Explain the different parts of the method</li>
-<li>We need the method to be <code>internal</code> or <code>public</code> because we want to use it in another class - the <code>ShowOrdersView</code> class</li>
-<li>The method has to have the one of the migrated return types <code>Text</code>, <code>Number</code>, <code>Date</code>, <code>Time</code> or <code>Bool</code></li>
+<li>When we want to automatically change a value of a &quot;Property&quot; based on an expression we'll use the &quot;BindEvents&quot;</li>
+<li>By using the &quot;BindEvents&quot; we are &quot;Binding&quot; the value of the &quot;Property&quot; to the code that is set in the &quot;Event&quot;</li>
+<li>We'll go to the &quot;Events&quot; tab in the &quot;Properties&quot; window, and select the &quot;BindForeColor&quot; event - to dynamically determine the &quot;ForeColor&quot; of our control</li>
+<li>We can type the name of the method we want, next to the event we wish to bind to</li>
 </ul>
-<pre data-line="" class="language-csdiff line-numbers"><code>internal Text GetDayOfWeek()
+<p><img src="2017-02-24_09h49_01.png" alt="2017 02 24 09H49 01" /></p>
+<ul>
+<li>When we click enter, visual studio creates a method for us in the &quot;Code Behind&quot; of our view, where we can write the rules of that we'll determine the value of the property</li>
+<li>We'll use the <code>Value</code> property of the Event args we get, by writing `e.Value</li>
+</ul>
+<pre data-line="3,4,5,6" class="language-csdiff line-numbers"><code>private void IDontLikeMondays(object sender, ColorBindingEventArgs e)
 {
-    return Orders.OrderDate.DayOfWeek.ToString();
+     if (_controller.Orders.OrderDate.DayOfWeek == DayOfWeek.Monday)
+         e.Value = Color.Red;
+     else
+         e.Value = Color.Green;
 } </code></pre>
 <ul>
-<li>Review the Property Sheet in the Visual Studio Designer</li>
-<li>Explain about the quick properties window</li>
+<li><p>We can use the same method for multiple controls, by selecting these controls while holding the  <kbd>ctrl</kbd> key, and selecting the method we wrote in the &quot;Properties&quot; window
+<img src="2017-02-24_09h56_22.png" alt="2017 02 24 09H56 22" /></p>
+</li>
+<li><p>We can change the way the Active row is displayed on the Grid, by setting it's <code>ActiveRowStyle</code> property:
+<img src="2017-02-24_09h58_01.png" alt="2017 02 24 09H58 01" /></p>
+</li>
 </ul>
-<p><img src="2017-02-24_08h32_34.png" alt="2017 02 24 08H32 34" /></p>
-<ul>
-<li>We'll review the &quot;Select Data&quot; window, and explain that we have the controller, the tables, and the new <code>GetDayOfWeek</code> method</li>
-</ul>
-<p><img src="2017-02-24_08h35_18.png" alt="2017 02 24 08H35 18" /></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/sVi8uQlCBNE?list=PL1DEQjXG2xnKm-XBP3t3KCFZzWMVogMlj" frameborder="0" allowfullscreen></iframe>
-<ul>
-<li><a href="getting-the-day-of-week-using-user-methods.html">Getting the day of week using User Methods</a></li>
-<li><a href="using-csharp6-syntax-to-get-the-day-of-week.html">Using csharp6 syntax to get the day of week</a></li>
-<li><a href="binding-controls-exercise.html">Binding controls Exercise</a></li>
-</ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/06_Binding-controls-data-to-method/index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eJj6GrcctZE?list=PL1DEQjXG2xnKm36EZepT3dIiM5E8s5W0f" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/07_Control-Properties-and-Events/04_Binding-a-Property-to-an-Expression.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -99,7 +100,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'binding-controls-data-to-method.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'binding-a-property-to-an-expression.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

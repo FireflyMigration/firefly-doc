@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Getting the day of the week using the User Methods</title>
+    <title>Getting the day of week using User Methods</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,7 +27,20 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="getting-the-day-of-the-week-using-the-user-methods">Getting the day of the week using the User Methods</h1>
+                <div class="content"><h1 id="getting-the-day-of-week-using-user-methods">Getting the day of week using User Methods</h1>
+<ul>
+<li>We can use the <code>UserMethods</code>, or it's short <code>u</code> to get the day of week using the migrated version of the functions we already knew in magic. To read more about it see <a href="usermethods-class.html">UserMethods Class</a></li>
+<li>User methods class is important as it teaches us about subtleties like <em>&quot;Date can be null&quot;</em>  or <em>&quot;Date can be empty&quot;</em> and handles it for us.</li>
+</ul>
+<pre data-line="4" class="language-csdiff line-numbers"><code>internal Text GetDayOfWeek()
+{
+-   return Orders.OrderDate.DayOfWeek.ToString();
+    return u.NDOW(u.DOW(Orders.OrderDate));
+} </code></pre>
+<ul>
+<li>In the code of the <code>DOW</code> method we can see that we write - <code>date.DayOfWeek + 1</code>. From that we can learn that in .NET Sunday is 0, and in the migrated code, Sunday was 1.
+The difference that in the original code, the first element of everything (a string, week days, etc...) was 1 and in .NET it's 0 is something to remember for your future .NET developer.</li>
+</ul>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/zky5_J5oYQE?list=PL1DEQjXG2xnKm-XBP3t3KCFZzWMVogMlj" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/06_Binding-controls-data-to-method/02_Getting-the-day-of-week-using-User-Methods.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
