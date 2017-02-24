@@ -8,4 +8,4 @@ For developers without any C# knowledge, we recommend that you start with this g
 
 [C# Fundamentals for Absolute Beginners by Bob Tabor](https://mva.microsoft.com/en-US/training-courses/c-fundamentals-for-absolute-beginners-16169?l=Lvld4EQIC_2706218949)
 
-For developers with prior C# training, we recommend that you skim through the C# introduction 
+For developers with prior C# training, we recommend that you skim through the C# introduction

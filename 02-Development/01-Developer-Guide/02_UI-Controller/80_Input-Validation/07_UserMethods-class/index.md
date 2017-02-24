@@ -1,6 +1,8 @@
 ﻿In this page we'll
 * introduce the `ENV.UserMethods` class - used by the `u` member
+* `u` is a member of the base classes we use from `ENV` and that is how we can access it through out our code
 * We'll show how it has any function that you knew in magic with it's source code
+![2017 02 24 08H46 00](2017-02-24_08h46_00.png)
 * We'll explain that it serves 3 roles:
   * **You're always productive** - You'll never be stuck, you can always think, *"How would I have done that in magic"* and start from there
   * You can read it's code and learn how to *"do it in .NET"*
