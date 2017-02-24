@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="relation,link">
+    <meta name="keywords" content="">
 
-    <title>Relations</title>
+    <title>Add a Button to Show the Current OrderID using the Click event</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,37 +27,21 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="relations">Relations</h1>
-<p>In this article we'll:</p>
+                <div class="content"><h1 id="add-a-button-to-show-the-current-orderid-using-the-click-event">Add a Button to Show the Current OrderID using the Click event</h1>
 <ul>
-<li>Add a relation to the Shippers table</li>
-<li>Mention the different RelationTypes</li>
-<li>Use that relation to get the CompanyName of the shipper in ShipVIA</li>
-<li>Explain the recompute, when we change the shipVIA  - the CompanyName will be recomputed</li>
+<li>Add a button to the form</li>
+<li>Show the Events Tab in the &quot;Properties&quot; window in Visual Studio
+<img src="2017-02-24_09h38_54.png" alt="2017 02 24 09H38 54" /></li>
+<li>Double click the <code>Click</code> event and show how Visual Studio generates the code that will be executed when the user clicks on the button.</li>
+<li>Show a message box when the user clicks on a button</li>
+<li>Use the <code>_controll</code> field to access the controller and extract the order id</li>
 </ul>
-<pre data-line="2,13" class="language-csdiff line-numbers"><code>public readonly Models.Orders Orders = new Models.Orders();
-public readonly Models.Shippers Shippers = new Models.Shippers();
-public ShowOrders()
+<pre data-line="3" class="language-csdiff line-numbers"><code>private void button1_Click(object sender, ButtonClickEventArgs e)
 {
-    From = Orders;
-    Where.Add(Orders.ShipCity.IsEqualTo("London").Or(
-        Orders.ShipCity.IsEqualTo("Madrid")));
-    Where.Add(Orders.ShipName.IsDifferentFrom(""));
-
-    OrderBy.Add(Orders.ShipCity);
-    OrderBy.Add(Orders.OrderDate, SortDirection.Descending);
-
-    Relations.Add(Shippers, RelationType.Find, Shippers.ShipperID.IsEqualTo(Orders.ShipVia));
+    MessageBox.Show("Order ID: " + _controller.Orders.OrderID);
 } </code></pre>
-<hr />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/6X7M-PbloU4?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
-<p>For more information about the different relation types see:
-<a href="http://www.fireflymigration.com/reference/html/T_Firefly_Box_RelationType.htm">RelationTypes</a></p>
-<ul>
-<li><a href="more-on-relation.html">More On Relation</a></li>
-<li><a href="relations-exercise.html">Relations Exercise</a></li>
-</ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/02_UI-Controller/40_Relations/index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Qq7IIRpQrSs?list=PL1DEQjXG2xnKm36EZepT3dIiM5E8s5W0f" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/07_Control-Properties-and-Events/03_Add-a-Button-to-Show-the-Current-OrderID-using-the-Click-event.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -102,7 +86,7 @@ public ShowOrders()
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'relations.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'add-a-button-to-show-the-current-orderid-using-the-click-event.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

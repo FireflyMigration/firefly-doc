@@ -33,14 +33,13 @@
 <li>Explain that <code>RelationType.Find</code> is the default, so no need to specify it</li>
 <li>Show how to use Sort in the context of a Relation</li>
 <li>Show how you can set more properties to a relation, or Query information about a relation using <code>Relations[Shippers]</code> syntax.</li>
-<li>When the relation returns more than one row - only the first row that matches the condition will be used by the controller</li>
 </ul>
 <h3 id="example">Example</h3>
 <pre data-line="5" class="language-csdiff line-numbers"><code>public ShowOrders()
 {
 ...
-   Relations.Add(Shippers, RelationType.Find, Shippers.ShipperID.IsEqualTo(Orders.ShipVia), Shippers.SortByPK_Shippers);
-   Relations[Shippers].OrderBy.Reversed = true;
+   Relations.Add(Shippers, RelationType.Find, Shippers.ShipperID.IsEqualTo(Orders.ShipVia));
+   Relations[Shippers].Where.Add(Shippers.CompanyName.IsDifferentFrom(""));
 } </code></pre>
 <hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9ifSzrZNh4U?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
