@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Func</title>
+    <title>Lambda Expressions</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,27 +27,26 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="func">Func</h1>
+                <div class="content"><h1 id="lambda-expressions">Lambda Expressions</h1>
 <ul>
-<li><p>Func<code>&lt;dataType&gt;</code> means a method that returns a dataType.</p>
+<li><p>Creating a method for each and every BindValue can become cumbersome</p>
 </li>
-<li><p>Func<code>&lt;Date&gt;</code> means a method that return <code>Date</code></p>
+<li><p>Imagine if we had 10 or 20 of these.</p>
 </li>
-<li><p>Func<code>&lt;Number&gt;</code> means a method that return <code>Number</code></p>
+<li><p>Also - to see the actual implementation of the method, we would need to go back and forth between our constructor and the  <code>GetDaysBetween</code> and <code>GetEndOfMonthOfFromDate</code> methods themselves</p>
 </li>
-<li><p>Func<code>&lt;Time&gt;</code> means a method that return <code>Time</code></p>
+<li><p>Also every time we create such a method we have to think of a name for it, and than only use it once</p>
 </li>
-<li><p>Func<code>&lt;Text&gt;</code> means a method that return <code>Text</code></p>
+<li><p>That's why in C# they came up with a term called <strong>anonymous methods</strong> also known as <strong>lambda expressions</strong></p>
 </li>
-<li><p>Func<code>&lt;Bool&gt;</code> means a method that return <code>Bool</code></p>
+<li><p><strong>anonymous methods</strong> aka <strong>lambda expressions</strong> are methods that are written in line, where they are used</p>
 </li>
-<li><p>see <a href="Func.pptx">Func Power Point Presentation</a></p>
+<li><p>Simply take the C#6 style method without it's name and put it in place.</p>
 </li>
-<li><p>Bind the value of the <code>DaysBetween</code> Column, Use Visual Studio's &quot;Generate Method&quot; factoring to create it.<br />
-<img src="2017-02-26_10h41_42.png" alt="2017 02 26 10H41 42" /></p>
+<li><p>In our code we have the <code>GetDaysBetween</code> and <code>GetEndOfMonthOfFromDate</code> method that are only used once.</p>
 </li>
 </ul>
-<pre data-line="10,12,13,14,15" class="language-csdiff line-numbers"><code>public class DemoLocalColumns : UIControllerBase
+<pre data-line="9,10" class="language-csdiff line-numbers"><code>public class DemoLocalColumns : UIControllerBase
 {
     public readonly DateColumn FromDate = new DateColumn("From Date");
     public readonly DateColumn ToDate = new DateColumn("To Date");
@@ -55,21 +54,22 @@
 
     public DemoLocalColumns()
     {
-        ToDate.BindValue(GetEndOfMonthOfFromDate);
-        DaysBetween.BindValue(GetDaysBetween);
+        ToDate.BindValue(() =&gt; FromDate.EndOfMonth);
+        DaysBetween.BindValue(() =&gt; ToDate - FromDate);
     }
-    public Number GetDaysBetween()
-    {
-        return ToDate - FromDate;
-    }
-    public Date GetEndOfMonthOfFromDate()
-    {
-        return FromDate.EndOfMonth;
-    }
+-   public Number GetDaysBetween() =&gt; ToDate - FromDate;
+
+-   public Date GetEndOfMonthOfFromDate() =&gt; FromDate.EndOfMonth;
   ...
 } </code></pre>
-<h3 id="use-c6-style-methods-to-write-shorter-code">Use C#6 style methods to write shorter code</h3>
-<pre data-line="12,14" class="language-csdiff line-numbers"><code>public class DemoLocalColumns : UIControllerBase
+<ul>
+<li>Once you get used to it, it's easier to read and easier to write (a lot less code)</li>
+</ul>
+<h3 id="multiline-vs-single-line">Multiline vs single line</h3>
+<ul>
+<li>A Single line <strong>lambda expression</strong> is written like this:</li>
+</ul>
+<pre data-line="9,10" class="language-csdiff line-numbers"><code>public class DemoLocalColumns : UIControllerBase
 {
     public readonly DateColumn FromDate = new DateColumn("From Date");
     public readonly DateColumn ToDate = new DateColumn("To Date");
@@ -77,16 +77,37 @@
 
     public DemoLocalColumns()
     {
-        ToDate.BindValue(GetEndOfMonthOfFromDate);
-        DaysBetween.BindValue(GetDaysBetween);
+        ToDate.BindValue(() =&gt; FromDate.EndOfMonth);
+        DaysBetween.BindValue(() =&gt; ToDate - FromDate);
     }
-    public Number GetDaysBetween() =&gt; ToDate - FromDate;
-
-    public Date GetEndOfMonthOfFromDate() =&gt; FromDate.EndOfMonth;
   ...
 } </code></pre>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/-nr5FgbFYpo?list=PL1DEQjXG2xnKHKNIRzI4K6oZL-KulU-Vw" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/09-Local-Columns-and-BindValue/11_Func.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<ul>
+<li>A multi line <strong>lambda expression</strong> is written like this:</li>
+</ul>
+<pre data-line="10,11,12,13,14" class="language-csdiff line-numbers"><code>public class DemoLocalColumns : UIControllerBase
+{
+    public readonly DateColumn FromDate = new DateColumn("From Date");
+    public readonly DateColumn ToDate = new DateColumn("To Date");
+    public readonly NumberColumn DaysBetween = new NumberColumn("Days Between","5CN");
+
+    public DemoLocalColumns()
+    {
+        ToDate.BindValue(() =&gt; FromDate.EndOfMonth);
+        DaysBetween.BindValue(() =&gt; 
+        {
+            Debug.WriteLine("Evaluating To Date");
+            return ToDate - FromDate;
+        });
+    }
+  ...
+} </code></pre>
+<ul>
+<li>A single line <strong>lambda expression</strong> doesn't need the curly brackets, and it doesn't need the keyword <code>return</code> to return a value</li>
+<li>A multi line <strong>lambda expression</strong> <strong>needs the curly brackets</strong>, and it <strong>needs the <code>return</code> keyword to return a value</strong></li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9VQXH9k25o8?list=PL1DEQjXG2xnKHKNIRzI4K6oZL-KulU-Vw" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/09-Local-Columns-and-BindValue/12_Lambda-Expressions.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -131,7 +152,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'func.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'lambda-expressions.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

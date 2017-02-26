@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Adding an Index to the Entity</title>
+    <title>Adding an Index</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,8 +27,67 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="adding-an-index-to-the-entity">Adding an Index to the Entity</h1>
+                <div class="content"><h1 id="adding-an-index">Adding an Index</h1>
+<ul>
+<li>Add a member of type <code>Index</code></li>
+<li>Add the Index columns in the constructor using the Add syntax</li>
+<li>Determine if the Index is unique, using the <code>Unique</code> property</li>
+</ul>
+<pre data-line="15,20" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using Firefly.Box;
+using ENV.Data;
+
+namespace Northwind.Models
+{
+    public class Students : Entity
+    {
+        [PrimaryKey]
+        public readonly NumberColumn Id = new NumberColumn("Id", "5"){ AllowNull = false };
+        public readonly TextColumn LastName = new TextColumn("LastName", "30");
+        public readonly TextColumn FirstName = new TextColumn("FirstName","30");
+        public readonly Index SortById = new Index() { Unique = true };
+
+        public Students()
+            : base("Students", Northwind.Shared.DataSources.Northwind1)
+        {
+            SortById.Add(Id);
+        }
+    }
+} </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/i7gVA26K-4w?list=PL1DEQjXG2xnItyh3tX-1kfE3K50w48PNA" frameborder="0" allowfullscreen></iframe>
+<p>Another index:</p>
+<pre data-line="16,23" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using Firefly.Box;
+using ENV.Data;
+
+namespace Northwind.Models
+{
+    public class Students : Entity
+    {
+        [PrimaryKey]
+        public readonly NumberColumn Id = new NumberColumn("Id", "5"){ AllowNull = false };
+        public readonly TextColumn LastName = new TextColumn("LastName", "30");
+        public readonly TextColumn FirstName = new TextColumn("FirstName","30");
+        public readonly Index SortById = new Index() { Unique = true };
+        public readonly Index SortByName = new Index() { Unique = true };
+
+        public Students()
+            : base("Students", Northwind.Shared.DataSources.Northwind1)
+        {
+            SortById.Add(Id);
+
+            SortByName.Add(LastName, FirstName, Id);
+        }
+
+    }
+} </code></pre>
+<ul>
+<li>Use the options, view by key menu entry to select the Index to use</li>
+</ul>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/MtXu8RxEZcU?list=PL1DEQjXG2xnItyh3tX-1kfE3K50w48PNA" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/08_Tables-and-Entities/08_Adding-an-Index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 

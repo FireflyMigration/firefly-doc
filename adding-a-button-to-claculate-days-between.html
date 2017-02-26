@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Control Properties and Events</title>
+    <title>Adding a Button to Claculate Days Between</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,38 +27,45 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="control-properties-and-events">Control Properties and Events</h1>
-<p>First let's start with:</p>
-<h2 id="control-properties">Control Properties</h2>
-<p>In this section we'll:</p>
+                <div class="content"><h1 id="adding-a-button-to-claculate-days-between">Adding a Button to Claculate Days Between</h1>
 <ul>
-<li>Review the properties tab in visual studio</li>
-<li>See that at the top of the tab we can see the control's <code>Name</code> and it's type</li>
+<li>Add a new column called DaysBetween, and set it's format to &quot;5CN&quot; - for more info on formating see:<a href="formatting.html">formatting</a></li>
 </ul>
-<p><img src="2017-02-24_09h03_34.png" alt="2017 02 24 09H03 34" /></p>
+<pre data-line="5" class="language-csdiff line-numbers"><code>public class DemoLocalColumns : UIControllerBase
+{
+    public readonly DateColumn FromDate = new DateColumn("From Date");
+    public readonly DateColumn ToDate = new DateColumn("To Date");
+    public readonly NumberColumn DaysBetween = new NumberColumn("Days Between","5CN");
+
+    public DemoLocalColumns()
+    {
+    }
+  ...
+} </code></pre>
 <ul>
-<li>Talk about several properties:
-<ul>
-<li>The Text Property</li>
-<li>BackColor Property</li>
+<li>Add the &quot;DaysBetween&quot; column to the screen</li>
+<li>Add a button called &quot;Calc Days Between&quot;</li>
+<li>Double click it to handle it's <code>Click</code> event</li>
 </ul>
-</li>
-</ul>
-<p><img src="2017-02-24_09h04_43.png" alt="2017 02 24 09H04 43" /></p>
-<ul>
-<li>Discuss the &quot;Quick Properties&quot; window where we can change the most commonly used properties of a control</li>
-</ul>
-<p><img src="2017-02-24_09h06_06.png" alt="2017 02 24 09H06 06" /></p>
-<ul>
-<li>We can use the &quot;Move Left&quot; and &quot;Move Right&quot; links on the screen to move a &quot;GridColumn&quot; left or right in the grid</li>
-</ul>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/6bghqa_AjGs?list=PL1DEQjXG2xnKm36EZepT3dIiM5E8s5W0f" frameborder="0" allowfullscreen></iframe>
-<ul>
-<li><a href="controller-and-view-explained.html">Controller and View Explained</a></li>
-<li><a href="add-a-button-to-show-the-current-orderid-using-the-click-event.html">Add a Button to Show the Current OrderID using the Click event</a></li>
-<li><a href="binding-a-property-to-an-expression.html">Binding a Property to an Expression</a></li>
-</ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/07_Control-Properties-and-Events/01-index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<pre data-line="14" class="language-csdiff line-numbers"><code>namespace Northwind.Training.SimpleScreen.Views
+{
+    partial class DemoLocalColumnsView : Shared.Theme.Controls.Form
+    {
+        DemoLocalColumns _controller;
+        public DemoLocalColumnsView(DemoLocalColumns controller)
+        {
+            _controller = controller;
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, ButtonClickEventArgs e)
+        {
+            _controller.DaysBetween.Value = _controller.ToDate - _controller.FromDate;
+        }
+    }
+} </code></pre>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mbekDWnVAq8?list=PL1DEQjXG2xnKHKNIRzI4K6oZL-KulU-Vw" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/09-Local-Columns-and-BindValue/03-Adding-a-Button-to-Claculate-Days-Between.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -103,7 +110,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'control-properties-and-events.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'adding-a-button-to-claculate-days-between.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Adding the first column to the Entity</title>
+    <title>Adding a column</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,7 +27,30 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="adding-the-first-column-to-the-entity">Adding the first column to the Entity</h1>
+                <div class="content"><h1 id="adding-a-column">Adding a column</h1>
+<ul>
+<li>Add a new <code>NumberColumn</code> named Id.</li>
+<li>In the call to the <code>NumberColumn</code> constructor, we'll set the column's name in the database and it's format.  To read more about formats go to <a href="formatting.html">formatting</a></li>
+<li>The member should be <code>public</code> so that we can access it from any class in our code.</li>
+<li>The member should be <code>readonly</code> to make sure that no one will replace it's reference by mistake - note that it doesn't make the column itself readonly, only makes sure that we'll not replace the reference stored in the Id field. For more info see:<a href="constructors-static-and-readonly.html">Constructors Static and Readonly</a></li>
+</ul>
+<pre data-line="11" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using Firefly.Box;
+using ENV.Data;
+
+namespace Northwind.Models
+{
+    public class Students : Entity
+    {
+        public readonly NumberColumn Id = new NumberColumn("Id", "5");
+        public Students()
+           : base("Students", Northwind.Shared.DataSources.Northwind1)
+        {
+        }
+    }
+} </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qlOMtv2X68A?list=PL1DEQjXG2xnItyh3tX-1kfE3K50w48PNA" frameborder="0" allowfullscreen></iframe> 
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/08_Tables-and-Entities/03_Adding-a-column.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
