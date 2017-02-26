@@ -3,7 +3,7 @@
 
 In this section we'll:
 * Review the properties tab in visual studio
-* Mention that at the top of the tab we can see the control's `Name` and it's type
+* See that at the top of the tab we can see the control's `Name` and it's type
 
 ![2017 02 24 09H03 34](2017-02-24_09h03_34.png)
 * Talk about several properties:
