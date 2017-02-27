@@ -28,8 +28,126 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="adding-an-inner-class">Adding an Inner Class</h1>
+<ul>
+<li>Previously we created a separate BusinessProcess to collect the statistics of our order, now we'll use an inner class to achieve the same results</li>
+<li>An inner class is a class that is defined within the scope of it's container class.</li>
+<li>In the following code the class called <code>myInnerClass</code> is considered an inner class, since it is defined within the scope of it's container class <code>ShowOrdersToDemoInnerClasses</code> class</li>
+</ul>
+<pre data-line="19,20,21" class="language-csdiff line-numbers"><code>public class ShowOrdersToDemoInnerClasses : UIControllerBase
+{
+    public readonly Models.Orders Orders = new Models.Orders();
+    public readonly NumberColumn Items = new NumberColumn("Items", "2");
+    public readonly NumberColumn TotalQuantity = new NumberColumn("Total Quantity", "4");
+    public readonly NumberColumn TotalAmount = new NumberColumn("Total Amount", "5C");
+    public ShowOrdersToDemoInnerClasses()
+    {
+        From = Orders;
+    }
+    public void Run()
+    {
+        Execute();
+    }
+    protected override void OnLoad()
+    {
+        View = () =&gt; new Views.ShowOrdersToDemoInnerClassesView(this);
+    }
+    class myInnerClass
+    {
+    }
+} </code></pre>
+<ul>
+<li>To quickly create an inner class, we'll use the &quot;Inner Controller Class&quot; snippet (<code>contr</code> in short)<br />
+<img src="../12_Inner-Classes/2017-02-27_11h01_57.png" alt="2017 02 27 11H01 57" /></li>
+<li>Will determine:
+<ul>
+<li>The name of the inner class - in our case &quot;GetTotals&quot;</li>
+<li>The base class - on our case <code>BusinessProcessBase</code> which is the default</li>
+<li>The Container class - in our case <code>ShowOrdersToDemoInnerClasses</code></li>
+</ul>
+</li>
+<li>Here's the result</li>
+</ul>
+<pre data-line="19,20,21,22,23,24,25,26,27,28,29,30,31,32,33" class="language-csdiff line-numbers"><code>public class ShowOrdersToDemoInnerClasses : UIControllerBase
+{
+    public readonly Models.Orders Orders = new Models.Orders();
+    public readonly NumberColumn Items = new NumberColumn("Items", "2");
+    public readonly NumberColumn TotalQuantity = new NumberColumn("Total Quantity", "4");
+    public readonly NumberColumn TotalAmount = new NumberColumn("Total Amount", "5C");
+    public ShowOrdersToDemoInnerClasses()
+    {
+        From = Orders;
+    }
+    public void Run()
+    {
+        Execute();
+    }
+    protected override void OnLoad()
+    {
+        View = () =&gt; new Views.ShowOrdersToDemoInnerClassesView(this);
+    }
+    class GetTotals : BusinessProcessBase
+    {
+        ShowOrdersToDemoInnerClasses _parent;
+        public GetTotals(ShowOrdersToDemoInnerClasses parent)
+        {
+            _parent = parent;
+        }
+        public void Run()
+        {
+            Execute();
+        }
+        protected override void OnLoad()
+        {
+        }
+    }
+} </code></pre>
+<ul>
+<li>Note that it's getting the parent controller as a parameter to it's constructor, and stores it in a field called <code>_parent</code> which we cal later use to access the parent controller.</li>
+<li>Here is how we call our inner controller</li>
+</ul>
+<pre data-line="19,20,21,22" class="language-csdiff line-numbers"><code>public class ShowOrdersToDemoInnerClasses : UIControllerBase
+{
+    public readonly Models.Orders Orders = new Models.Orders();
+    public readonly NumberColumn Items = new NumberColumn("Items", "2");
+    public readonly NumberColumn TotalQuantity = new NumberColumn("Total Quantity", "4");
+    public readonly NumberColumn TotalAmount = new NumberColumn("Total Amount", "5C");
+    public ShowOrdersToDemoInnerClasses()
+    {
+        From = Orders;
+    }
+    public void Run()
+    {
+        Execute();
+    }
+    protected override void OnLoad()
+    {
+        View = () =&gt; new Views.ShowOrdersToDemoInnerClassesView(this);
+    }
+    protected override void OnEnterRow()
+    {
+        new GetTotals(this).Run();
+    }
+    class GetTotals : BusinessProcessBase
+    {
+        ShowOrdersToDemoInnerClasses _parent;
+        public GetTotals(ShowOrdersToDemoInnerClasses parent)
+        {
+            _parent = parent;
+        }
+        public void Run()
+        {
+            Execute();
+        }
+        protected override void OnLoad()
+        {
+        }
+    }
+} </code></pre>
+<ul>
+<li>Note that when we call it, we are sending <code>this</code> as a parameter to it's constructor. This means that we are sending the parent controller as a parameter to the inner controller. Later we'll be able to use that <code>_parent</code> on our inner controller, to access fields in the <code>parent</code> controller.</li>
+</ul>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tmzHPxAyP7U?list=PL1DEQjXG2xnK8xPqBW89oPL6AHonic9Iz" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/12_Inner-classes/02_Adding-an-Inner-Class.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/12_Inner-Classes/02_Adding-an-Inner-Class.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Inner Classes</title>
+    <title>Cached and Inner Class</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,55 +27,25 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="inner-classes">Inner Classes</h1>
+                <div class="content"><h1 id="cached-and-inner-class">Cached and Inner Class</h1>
 <ul>
-<li>In Magic you used to have programs, which had many sub tasks</li>
-<li>In the migrated code, these subtasks are migrated to inner classes</li>
+<li>Just like before when we discussed <code>Cached</code> in the context of another BusinessProcess (see <a href="introducing-cached.html">Introducing Cached</a>), we can use <code>Cached</code> for an inner class.</li>
 </ul>
-<h3 id="task-tree-in-magic">Task tree in magic</h3>
-<p><img src="2017-02-27_10h43_24.png" alt="2017 02 27 10H43 24" /></p>
-<h3 id="classes-and-inner-classes-in.net">Classes and inner classes in .NET</h3>
-<p><img src="2017-02-27_10h43_42.png" alt="2017 02 27 10H43 42" /></p>
-<ul>
-<li>These inner classes can be over-viewed using the Classes ComboBox at the top of the screen<br />
-<img src="2017-02-27_10h46_56.png" alt="2017 02 27 10H46 56" /></li>
-<li>Or using the &quot;Class Outline&quot; Visual studio extension that you can download from here: <a href="https://marketplace.visualstudio.com/items?itemName=Stickle.ClassOutline">Class Outline Visual Studio Extension</a><br />
-<img src="2017-02-27_10h43_42.png" alt="2017 02 27 10H43 42" /></li>
-</ul>
-<h3 id="setting-the-scene-for-writing-a-new-inner-class">Setting the scene for writing a new inner class</h3>
-<ul>
-<li>Create a new UIController called &quot;ShowOrdersToDemoInnerClasses&quot;</li>
-<li>Use the Orders Table</li>
-<li>Add the following local columns to collect the order statistics</li>
-<li>Design the screen so that you'll have some columns on the grid, and the 3 local columns below the grid.</li>
-</ul>
-<pre data-line="4,5,6,7,10" class="language-csdiff line-numbers"><code>public class ShowOrdersToDemoInnerClasses : UIControllerBase
+<pre data-line="7" class="language-csdiff line-numbers"><code>public class ShowOrdersToDemoInnerClasses : UIControllerBase
 {
-
-    public readonly Models.Orders Orders = new Models.Orders();
-    public readonly NumberColumn Items = new NumberColumn("Items", "2");
-    public readonly NumberColumn TotalQuantity = new NumberColumn("Total Quantity", "4");
-    public readonly NumberColumn TotalAmount = new NumberColumn("Total Amount", "5C");
-    public ShowOrdersToDemoInnerClasses()
+...
+    protected override void OnEnterRow()
     {
-        From = Orders;
+-       new GetTotals(this).Run();
+        Cached&lt;GetTotals&gt;().Run();
     }
-    public void Run()
-    {
-        Execute();
-    }
-    protected override void OnLoad()
-    {
-        View = () =&gt; new Views.ShowOrdersToDemoInnerClassesView(this);
-    }
+ ...
 } </code></pre>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QazBGI0zzW0?list=PL1DEQjXG2xnK8xPqBW89oPL6AHonic9Iz" frameborder="0" allowfullscreen></iframe>
 <ul>
-<li><a href="adding-an-inner-class.html">Adding an Inner Class</a></li>
-<li><a href="using-information-from-the-parent-class-in-the-inner-class.html">Using Information from the parent class in the Inner class</a></li>
-<li><a href="cached-and-inner-classes.html">Cached and Inner Classes</a></li>
+<li>Note that we don't have to send <code>this</code> to the cached method - it is implicit. The <code>Cached</code> method knows automatically that if the called constructor requires the parent class, it'll send it <code>this</code></li>
 </ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/12_Inner-Classes/01-index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Wh0SuWF2bcw?list=PL1DEQjXG2xnK8xPqBW89oPL6AHonic9Iz" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/12_Inner-Classes/04_Cached-and-Inner-Class.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -120,7 +90,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'inner-classes.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'cached-and-inner-class.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

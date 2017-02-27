@@ -28,8 +28,146 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="using-information-from-the-parent-class-in-the-inner-class">Using Information from the parent class in the Inner class</h1>
+<ul>
+<li>Let's use the Order_Details table in our inner controller</li>
+</ul>
+<pre data-line="25,30" class="language-csdiff line-numbers"><code>public class ShowOrdersToDemoInnerClasses : UIControllerBase
+{
+    public readonly Models.Orders Orders = new Models.Orders();
+    public readonly NumberColumn Items = new NumberColumn("Items", "2");
+    public readonly NumberColumn TotalQuantity = new NumberColumn("Total Quantity", "4");
+    public readonly NumberColumn TotalAmount = new NumberColumn("Total Amount", "5C");
+    public ShowOrdersToDemoInnerClasses()
+    {
+        From = Orders;
+    }
+    public void Run()
+    {
+        Execute();
+    }
+    protected override void OnLoad()
+    {
+        View = () =&gt; new Views.ShowOrdersToDemoInnerClassesView(this);
+    }
+    protected override void OnEnterRow()
+    {
+        new GetTotals(this).Run();
+    }
+    class GetTotals : BusinessProcessBase
+    {
+        readonly Models.Order_Details Order_Details = new Models.Order_Details();
+        ShowOrdersToDemoInnerClasses _parent;
+        public GetTotals(ShowOrdersToDemoInnerClasses parent)
+        {
+            _parent = parent;
+            From = Order_Details;
+        }
+        public void Run()
+        {
+            Execute();
+        }
+    }
+} </code></pre>
+<ul>
+<li>To Filter the <code>GetTotals</code> inner controller based on the current order in the parent controller we'll add the following line:</li>
+</ul>
+<pre data-line="31" class="language-csdiff line-numbers"><code>public class ShowOrdersToDemoInnerClasses : UIControllerBase
+{
+    public readonly Models.Orders Orders = new Models.Orders();
+    public readonly NumberColumn Items = new NumberColumn("Items", "2");
+    public readonly NumberColumn TotalQuantity = new NumberColumn("Total Quantity", "4");
+    public readonly NumberColumn TotalAmount = new NumberColumn("Total Amount", "5C");
+    public ShowOrdersToDemoInnerClasses()
+    {
+        From = Orders;
+    }
+    public void Run()
+    {
+        Execute();
+    }
+    protected override void OnLoad()
+    {
+        View = () =&gt; new Views.ShowOrdersToDemoInnerClassesView(this);
+    }
+    protected override void OnEnterRow()
+    {
+        new GetTotals(this).Run();
+    }
+    class GetTotals : BusinessProcessBase
+    {
+        readonly Models.Order_Details Order_Details = new Models.Order_Details();
+        ShowOrdersToDemoInnerClasses _parent;
+        public GetTotals(ShowOrdersToDemoInnerClasses parent)
+        {
+            _parent = parent;
+            From = Order_Details;
+            Where.Add(Order_Details.OrderID.IsEqualTo(_parent.Orders.OrderID));
+        }
+        public void Run()
+        {
+            Execute();
+        }
+    }
+} </code></pre>
+<ul>
+<li>We use the <code>_parent</code> field, to access the parent controller, and get the current value of the OrderID column in the Orders Entity.</li>
+<li>An inner class can access any of it's parent class fields, including <code>private</code> members - that is what makes it the perfect match for a migrated inner task.</li>
+<li>Now let's update the parent's local columns with the information we gather for each row.</li>
+</ul>
+<pre data-line="35,36,37,40,41,42,43,44,45" class="language-csdiff line-numbers"><code>public class ShowOrdersToDemoInnerClasses : UIControllerBase
+{
+    public readonly Models.Orders Orders = new Models.Orders();
+    public readonly NumberColumn Items = new NumberColumn("Items", "2");
+    public readonly NumberColumn TotalQuantity = new NumberColumn("Total Quantity", "4");
+    public readonly NumberColumn TotalAmount = new NumberColumn("Total Amount", "5C");
+    public ShowOrdersToDemoInnerClasses()
+    {
+        From = Orders;
+    }
+    public void Run()
+    {
+        Execute();
+    }
+    protected override void OnLoad()
+    {
+        View = () =&gt; new Views.ShowOrdersToDemoInnerClassesView(this);
+    }
+    protected override void OnEnterRow()
+    {
+        new GetTotals(this).Run();
+    }
+    class GetTotals : BusinessProcessBase
+    {
+        readonly Models.Order_Details Order_Details = new Models.Order_Details();
+        ShowOrdersToDemoInnerClasses _parent;
+        public GetTotals(ShowOrdersToDemoInnerClasses parent)
+        {
+            _parent = parent;
+            From = Order_Details;
+            Where.Add(Order_Details.OrderID.IsEqualTo(_parent.Orders.OrderID));
+        }
+        public void Run()
+        {
+            _parent.Items.Value = 0;
+            _parent.TotalQuantity.Value = 0;
+            _parent.TotalAmount.Value = 0;
+            Execute();
+        }
+        protected override void OnLeaveRow()
+        {
+            _parent.Items.Value++;
+            _parent.TotalQuantity.Value += Order_Details.Quantity;
+            _parent.TotalAmount.Value += Order_Details.Quantity * Order_Details.UnitPrice;
+        }
+    }
+} </code></pre>
+<ul>
+<li>Note that inner classes are great and easy to use, but they are used a lot less in .NET than they were used in Magic.</li>
+<li>Many of the subtasks you've written in magic, will be simple methods in .NET</li>
+<li>And in other cases, I would prefer to have a clear and separate controller, that will be easier to reuse than an inner class.</li>
+</ul>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/A9gQ-Ob8ZDg?list=PL1DEQjXG2xnK8xPqBW89oPL6AHonic9Iz" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/12_Inner-classes/03_Using-Information-from-the-parent-class-in-the-Inner-class.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/12_Inner-Classes/03_Using-Information-from-the-parent-class-in-the-Inner-class.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
