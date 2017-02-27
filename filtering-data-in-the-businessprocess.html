@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>UI Controller - Life Cycle Demo</title>
+    <title>Filtering data in the BusinessProcess</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,54 +27,40 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="ui-controller-life-cycle-demo">UI Controller - Life Cycle Demo</h1>
-<p>In this page we'll</p>
+                <div class="content"><h1 id="filtering-data-in-the-businessprocess">Filtering data in the BusinessProcess</h1>
 <ul>
-<li>Add using to <code>System.Diagnostics</code></li>
-<li>Use the Visual Studio <code>Output</code> window to show the execution of the controller</li>
-<li>Add <code>Debug.WriteLine</code> to the existing Run and OnLoad Methods:</li>
+<li>Add a parameter to the <code>Run</code> method of type <code>Number</code> called &quot;OrderId&quot; and filter according to it:</li>
 </ul>
-<pre data-line="3,5,9" class="language-csdiff line-numbers"><code>public void Run()
+<pre data-line="1,3" class="language-csdiff line-numbers"><code>public void Run(Number OrderId)
 {
+    Where.Add(Order_Details.OrderID.IsEqualTo(OrderId));
     Debug.WriteLine("Before the Execute");
     Execute();
     Debug.WriteLine("After the Execute");
-}
-protected override void OnLoad()
-{
-    Debug.WriteLine("\tOnLoad");
-    View = () =&gt; new Views.ShowOrdersView(this);
 } </code></pre>
 <ul>
-<li>Add code for all the controller life cycle events (just copy)</li>
+<li>Run the controller, using the &quot;Controllers&quot; developer tool</li>
+<li>Note that now it asks for an 'OrderId' to use as a parameter to the 'GetOrderStatistics' BusinessProcess</li>
+<li>Review the Life-Cycle using the output window, for a specific order</li>
+<li>Note that the 'OnSavingRow' event doesn't get executed, since we didn't make any change to any row.</li>
+<li>Remove all the Life-Cycle related code, to get a simple Business Process</li>
 </ul>
-<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnStart()
+<pre data-line="" class="language-csdiff line-numbers"><code>public class GetOrderStatistics : BusinessProcessBase
 {
-    Debug.WriteLine("\t\tOnStart");
-}
-protected override void OnEnterRow()
-{
-    Debug.WriteLine("\t\t\tOnEnterRow");
-}
-protected override void OnLeaveRow()
-{
-    Debug.WriteLine("\t\t\tOnLeaveRow");
-}
-protected override void OnSavingRow()
-{
-    Debug.WriteLine("\t\t\tOnSavingRow");
-}
-protected override void OnEnd()
-{
-    Debug.WriteLine("\t\tOnEnd");
-}
-protected override void OnUnLoad()
-{
-    Debug.WriteLine("\tOnUnLoad");
+    readonly Models.Order_Details Order_Details = new Models.Order_Details();
+
+    public GetOrderStatistics()
+    {
+        From = Order_Details;
+    }
+    public void Run(Number OrderId)
+    {
+        Where.Add(Order_Details.OrderID.IsEqualTo(OrderId));
+        Execute();
+    }
 } </code></pre>
-<hr />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/X4fP8lxqhEs?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/02_UI-Controller/70_UI-Controller-Life-Cycle/02_Life-Cycle-Demo.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7GhNi_2FFsM?list=PL1DEQjXG2xnKS0Zo7h-PrExXZ18hGxhvA" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/11_BusinessProcess-and-Out-Parameters/03_Filtering-data-in-the-BusinessProcess.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -119,7 +105,7 @@ protected override void OnUnLoad()
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'life-cycle-demo.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'filtering-data-in-the-businessprocess.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

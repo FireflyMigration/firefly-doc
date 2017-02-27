@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="BindEqualTo">
 
-    <title>BindValue() and BindEqualTo() in the Migrated code</title>
+    <title>BindValue and BindEqualTo in the Migrated code</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,9 +27,36 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="bindvalue-and-bindequalto-in-the-migrated-code">BindValue() and BindEqualTo() in the Migrated code</h1>
+                <div class="content"><h1 id="bindvalue-and-bindequalto-in-the-migrated-code">BindValue and BindEqualTo in the Migrated code</h1>
+<ul>
+<li>In Magic you couldn't set the default value property to a runtime determined value, and instead you would use an &quot;Init&quot; expression, which gets migrated to &quot;BindValue&quot;</li>
+</ul>
+<h3 id="migrated-code-will-usually-use-bindvalue-instead-of-defaultvalue">Migrated code will usually use BindValue instead of DefaultValue</h3>
+<pre data-line="4" class="language-csdiff line-numbers"><code>public void Run(Number OrderId)
+{
+-   Order_Details.OrderID.DefaultValue = OrderId;
+    Order_Details.OrderID.BindValue(() =&gt; OrderId);
+    Where.Add(Order_Details.OrderID.IsEqualTo(OrderId));
+    Execute();
+} </code></pre>
+<ul>
+<li>Since this is a common pattern, used throughout the code, the migration engine automatically translates this to 'BindEqualTo' so instead of two lines, you now have one.</li>
+</ul>
+<pre data-line="5" class="language-csdiff line-numbers"><code>public void Run(Number OrderId)
+{
+-   Order_Details.OrderID.BindValue(() =&gt; OrderId);
+-   Where.Add(Order_Details.OrderID.IsEqualTo(OrderId));
+    Where.Add(Order_Details.OrderID.BindEqualTo(OrderId));
+    Execute();
+} </code></pre>
+<h3 id="final-result">Final Result</h3>
+<pre data-line="" class="language-csdiff line-numbers"><code>public void Run(Number OrderId)
+{
+    Where.Add(Order_Details.OrderID.BindEqualTo(OrderId));
+    Execute();
+} </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/vJQTHCnNhro?list=PL1DEQjXG2xnJxhcxZ1ItQdfroctirL8Qr" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/10_Parameters/05_BindValue-and-BindEqualTo-in-the-Migrated-code.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/10_Parameters/06_BindValue-and-BindEqualTo-in-the-Migrated-code.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         

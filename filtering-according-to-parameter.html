@@ -28,8 +28,31 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="filtering-according-to-parameter">Filtering according to Parameter</h1>
+<ul>
+<li>We'll start by filtering the ShowOrderDetails controller with a hard coded OrderID</li>
+</ul>
+<pre data-line="3" class="language-csdiff line-numbers"><code>public void Run()
+{
+    Where.Add(Order_Details.OrderID.IsEqualTo(10250));
+    Execute();
+} </code></pre>
+<ul>
+<li>Add a parameter of type <code>Number</code> to our run method, and use that value to filter oru controller</li>
+</ul>
+<pre data-line="1,3" class="language-csdiff line-numbers"><code>public void Run(Number OrderId)
+{
+    Where.Add(Order_Details.OrderID.IsEqualTo(OrderId));
+    Execute();
+} </code></pre>
+<ul>
+<li>When we'll run this controller from the &quot;Controllers&quot; developer tool, it'll ask us to send a value for that parameter</li>
+<li>Run the &quot;ShowOrderDetails&quot; controller multiple times with several values to see the parameters in action</li>
+<li>Note that we are sending a <code>Number</code> and not a <code>NumberColumn</code>. We refer to it as a &quot;Value&quot; type vs a &quot;Column&quot; type.</li>
+<li>When we receive a parameter which is a &quot;Value&quot; type (Number, Date, Time, Text, Bool, string, etc...) it indicates that we are sending an &quot;In&quot; parameter, and any change we'll make to that value in our controller will remain only in the scope of this controller and will not affect the calling controller.</li>
+<li>When we want to send an in out parameter we'll send a &quot;Column&quot; type such as &quot;NumberColumn&quot;. We'll cover that later in this course</li>
+</ul>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4NaZwmlI4zI?list=PL1DEQjXG2xnJxhcxZ1ItQdfroctirL8Qr" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/10_Parameters/02_Filtering-according-to-Parameter.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/10_Parameters/03_Filtering-according-to-Parameter.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         

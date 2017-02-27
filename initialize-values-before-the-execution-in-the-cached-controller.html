@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Where.Clear">
 
-    <title>Initialize values before the execution in the Cached controller</title>
+    <title>Initialize Values Before the Execution in the Cached Controller</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,9 +27,64 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="initialize-values-before-the-execution-in-the-cached-controller">Initialize values before the execution in the Cached controller</h1>
+                <div class="content"><h1 id="initialize-values-before-the-execution-in-the-cached-controller">Initialize Values Before the Execution in the Cached Controller</h1>
+<ul>
+<li>Now that we are using <code>Cached</code> we are reusing the same instance of the <code>GetOrderStatistics</code> class</li>
+<li>We need to adjust the code of the <code>GetOrderStatistics</code> class to accommodate the fact that it runs multiple times.</li>
+<li>Add a &quot;Break Point&quot; in the <code>Run</code> method, and review the value of <code>Where</code> for the several times you run this controller.</li>
+<li>We can see that the where has multiple values<br />
+<img src="2017-02-27_10h18_58.png" alt="2017 02 27 10H18 58" /></li>
+</ul>
+<h3 id="the-where-problem-explained">The Where Problem Explained</h3>
+<ul>
+<li>In our run method, we do <code>Where.Add</code> this means that whenever we run the code, a new condition is added to the Where.</li>
+<li>In first run, the where is: <code>OrderID = 10388</code></li>
+<li>In the Second run, the where is <code>OrderID = 10388 And OrderID = 10377</code></li>
+<li>In the Third run, the where is <code>OrderID = 10388 And OrderID = 10364 And OrderID = 10377</code>, this condition doesn't return any row, since no row is both 10388 and 10364 and 10377.</li>
+<li>To Clear the Where, before every execution, we'll use the <code>Where.Clear</code> method.</li>
+</ul>
+<pre data-line="3" class="language-csdiff line-numbers"><code>public void Run(Number OrderId,NumberColumn Count,NumberColumn Quantity, NumberColumn totalAmount)
+{
+    Where.Clear();
+    Where.Add(Order_Details.OrderID.IsEqualTo(OrderId));
+    Execute();
+    Count.Value = _count;
+    Quantity.Value = _quantity;
+    totalAmount.Value = _totalAmount;
+} </code></pre>
+<ul>
+<li>Now that we've fixed that, we can see that when we are running the code, the values in Items, Total Quantity and Total Amount are always increasing.</li>
+<li>That is because we only initialized them with the value 0, when the class was created and not before every run.</li>
+</ul>
+<pre data-line="" class="language-csdiff line-numbers"><code>Number _count = 0;
+Number _quantity = 0;
+Number _totalAmount = 0;
+protected override void OnLeaveRow()
+{
+    _count++;
+    _quantity += Order_Details.Quantity;
+    _totalAmount += Order_Details.Quantity * Order_Details.Quantity.UnitPrice;
+} </code></pre>
+<ul>
+<li>So now we need to initialize them before every execution in the <code>Run</code> method. Make sure to do that before the call to the <code>Execute</code> method in the base class</li>
+</ul>
+<pre data-line="3,5,6,7" class="language-csdiff line-numbers"><code>public void Run(Number OrderId,NumberColumn Count,NumberColumn Quantity, NumberColumn totalAmount)
+{
+    Where.Clear();
+    Where.Add(Order_Details.OrderID.IsEqualTo(OrderId));
+    _count = 0;
+    _quantity = 0;
+    _totalAmount = 0;
+    Execute();
+    Count.Value = _count;
+    Quantity.Value = _quantity;
+    totalAmount.Value = _totalAmount;
+} </code></pre>
+<ul>
+<li>And now, everything works.</li>
+</ul>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/59_rs9udFSk?list=PL1DEQjXG2xnKS0Zo7h-PrExXZ18hGxhvA" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/11_Business-Process-and-Parameters/08_Initialize-values-before-the-execution-in-the-Cached-controller.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/11_BusinessProcess-and-Out-Parameters/08_Initialize-Values-Before-the-Execution-in-the-Cached-Controller.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         

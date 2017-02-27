@@ -28,8 +28,52 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="introducing-cached">Introducing Cached</h1>
+<ul>
+<li>For every line in the ShowOrders controller, the following code gets executed:</li>
+</ul>
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnEnterRow()
+{
+    new GetOrderStatistics().Run(Orders.OrderID, Items, TotalQuantity, TotalAmount);
+} </code></pre>
+<ul>
+<li>this means that for every row
+<ul>
+<li>A new instance of the <code>GetOrderStatistics</code> class is created</li>
+<li>The Constructor for the <code>GetOrderStatistics</code> class get's executed</li>
+<li>The <code>Run</code> method of the <code>GetOrderStatistics</code> get's executed.</li>
+</ul>
+</li>
+<li>This can be wasteful in some cases</li>
+<li>To avoid that, we can create the instance of the <code>GetOrderStatistics</code> class once, and run it multiple times.</li>
+</ul>
+<h3 id="the-long-way">the long way</h3>
+<pre data-line="1,4" class="language-csdiff line-numbers"><code>GetOrderStatistics _stats = new GetOrderStatistics();
+protected override void OnEnterRow()
+{
+    _stats.Run(Orders.OrderID, Items, TotalQuantity, TotalAmount);
+} </code></pre>
+<ul>
+<li>By following this pattern:
+<ul>
+<li>The <code>GetOrderStatistics</code> class instance is created once.</li>
+<li>The <code>GetOrderStatistics</code> constructor is executed once</li>
+<li>Only the <code>Run</code> method get's executed for each row.</li>
+</ul>
+</li>
+<li>Since this is such a common pattern, we decided to create a way of doing it in just one line, by using the <code>Cached</code> method</li>
+</ul>
+<h3 id="the-short-way-using-cached">the short way, using Cached</h3>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnEnterRow()
+{
+    Cached&lt;GetOrderStatistics&gt;().Run(Orders.OrderID, Items, TotalQuantity, TotalAmount);
+} </code></pre>
+<ul>
+<li>The <code>Cached</code> method, creates an instance of the <code>GetOrderStatistics</code> only when it's used for the first time, and then simply returns the same instance, so that we can run it again and again.</li>
+<li>Review in the output window, that the <code>Constructor</code> get's executed once, while the <code>Run</code> method get's executed for each row.</li>
+<li>Note - now we have a bug, since the values of Items, Total Quantity and Total Amount don't change for each row - we'll fix that in the next step</li>
+</ul>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3qyrFYnfB4E?list=PL1DEQjXG2xnKS0Zo7h-PrExXZ18hGxhvA" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/11_Business-Process-and-Parameters/07_Introducing-Cached.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/11_BusinessProcess-and-Out-Parameters/07_Introducing-Cached.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         

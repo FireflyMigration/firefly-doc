@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>UI Controller - Life Cycle Demo</title>
+    <title>Calling the BusinessProcess from the ShowOrders UIController</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,54 +27,34 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="ui-controller-life-cycle-demo">UI Controller - Life Cycle Demo</h1>
-<p>In this page we'll</p>
+                <div class="content"><h1 id="calling-the-businessprocess-from-the-showorders-uicontroller">Calling the BusinessProcess from the ShowOrders UIController</h1>
+<p>Here we will see how to call the GetOrdersStatistics business process form the ShowOrders UI controller</p>
+<pre data-line="18" class="language-csdiff line-numbers"><code>public class ShowOrders : UIControllerBase
+{
+
+    public readonly Models.Orders Orders = new Models.Orders();
+    public readonly Models.Shippers Shippers = new Models.Shippers();
+
+    public readonly NumberColumn Items = new NumberColumn("Items","2");
+    public readonly NumberColumn TotalQuantity = new NumberColumn("Total Quantity","4");
+    public readonly NumberColumn TotalAmount = new NumberColumn("Total Amount","5C");
+    public ShowOrders()
+    {
+        From = Orders;
+        ...
+    }
+    ...
+    protected override void OnEnterRow()
+    {
+        new GetOrderStatistics().Run(Orders.OrderID, Items, TotalQuantity, TotalAmount);
+    }     
+    ... </code></pre>
 <ul>
-<li>Add using to <code>System.Diagnostics</code></li>
-<li>Use the Visual Studio <code>Output</code> window to show the execution of the controller</li>
-<li>Add <code>Debug.WriteLine</code> to the existing Run and OnLoad Methods:</li>
+<li>Run the &quot;ShowOrders&quot; controller, and see that we get the results for each order</li>
+<li></li>
 </ul>
-<pre data-line="3,5,9" class="language-csdiff line-numbers"><code>public void Run()
-{
-    Debug.WriteLine("Before the Execute");
-    Execute();
-    Debug.WriteLine("After the Execute");
-}
-protected override void OnLoad()
-{
-    Debug.WriteLine("\tOnLoad");
-    View = () =&gt; new Views.ShowOrdersView(this);
-} </code></pre>
-<ul>
-<li>Add code for all the controller life cycle events (just copy)</li>
-</ul>
-<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnStart()
-{
-    Debug.WriteLine("\t\tOnStart");
-}
-protected override void OnEnterRow()
-{
-    Debug.WriteLine("\t\t\tOnEnterRow");
-}
-protected override void OnLeaveRow()
-{
-    Debug.WriteLine("\t\t\tOnLeaveRow");
-}
-protected override void OnSavingRow()
-{
-    Debug.WriteLine("\t\t\tOnSavingRow");
-}
-protected override void OnEnd()
-{
-    Debug.WriteLine("\t\tOnEnd");
-}
-protected override void OnUnLoad()
-{
-    Debug.WriteLine("\tOnUnLoad");
-} </code></pre>
-<hr />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/X4fP8lxqhEs?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/02_UI-Controller/70_UI-Controller-Life-Cycle/02_Life-Cycle-Demo.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/WqOqEi6LQGw?list=PL1DEQjXG2xnKS0Zo7h-PrExXZ18hGxhvA" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/11_BusinessProcess-and-Out-Parameters/06_Calling-the-BusinessProcess-from-the-ShowOrders-UIController.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -119,7 +99,7 @@ protected override void OnUnLoad()
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'life-cycle-demo.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'calling-the-businessprocess-from-the-showorders-uicontroller.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>UI Controller - Life Cycle Demo</title>
+    <title>In Out Parameters using NumberColumn</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,54 +27,40 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="ui-controller-life-cycle-demo">UI Controller - Life Cycle Demo</h1>
-<p>In this page we'll</p>
+                <div class="content"><h1 id="in-out-parameters-using-numbercolumn">In Out Parameters using NumberColumn</h1>
 <ul>
-<li>Add using to <code>System.Diagnostics</code></li>
-<li>Use the Visual Studio <code>Output</code> window to show the execution of the controller</li>
-<li>Add <code>Debug.WriteLine</code> to the existing Run and OnLoad Methods:</li>
+<li>So far we received the OrderId as an in parameter, so we made it a &quot;Value&quot; type (<code>Number</code>) that only gets sent in.</li>
+<li>Now we want to return the statistical information we gathered (count, quantity, totalAmount) to the calling code.</li>
+<li>We could used the <code>return</code> keyword, but that would restrict us to return just one value, and we want to return 3.</li>
+<li>We could also use the C# 'out' or 'ref' keywords, but they have some disadvantages that are beyond the scope of this course.</li>
+<li>To return a value to the calling code, we'll receive a parameter of type &quot;Column&quot; (in our case <code>NumberColumn</code>).</li>
+<li>This means that the calling code will send us the actual &quot;Column&quot; to which it wants us to send the result to.</li>
+<li>We'll receive the Columns as parameters, and update their value based on the values collected by this business process</li>
 </ul>
-<pre data-line="3,5,9" class="language-csdiff line-numbers"><code>public void Run()
+<pre data-line="1,5,6,7" class="language-csdiff line-numbers"><code>public void Run(Number OrderId,NumberColumn Count,NumberColumn Quantity, NumberColumn totalAmount)
 {
-    Debug.WriteLine("Before the Execute");
+    Where.Add(Order_Details.OrderID.IsEqualTo(OrderId));
     Execute();
-    Debug.WriteLine("After the Execute");
+    Count.Value = _count;
+    Quantity.Value = _quantity;
+    totalAmount.Value = _totalAmount;
 }
-protected override void OnLoad()
-{
-    Debug.WriteLine("\tOnLoad");
-    View = () =&gt; new Views.ShowOrdersView(this);
-} </code></pre>
-<ul>
-<li>Add code for all the controller life cycle events (just copy)</li>
-</ul>
-<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnStart()
-{
-    Debug.WriteLine("\t\tOnStart");
-}
-protected override void OnEnterRow()
-{
-    Debug.WriteLine("\t\t\tOnEnterRow");
-}
+Number _count = 0;
+Number _quantity = 0;
+Number _totalAmount = 0;
 protected override void OnLeaveRow()
 {
-    Debug.WriteLine("\t\t\tOnLeaveRow");
-}
-protected override void OnSavingRow()
-{
-    Debug.WriteLine("\t\t\tOnSavingRow");
-}
-protected override void OnEnd()
-{
-    Debug.WriteLine("\t\tOnEnd");
-}
-protected override void OnUnLoad()
-{
-    Debug.WriteLine("\tOnUnLoad");
+    _count++;
+    _quantity += Order_Details.Quantity;
+    _totalAmount += Order_Details.Quantity * Order_Details.Quantity.UnitPrice;
 } </code></pre>
-<hr />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/X4fP8lxqhEs?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/02_UI-Controller/70_UI-Controller-Life-Cycle/02_Life-Cycle-Demo.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<ul>
+<li>Call the'GetOrderStatistics` BusinessProcess using the &quot;Controllers&quot; developer tool</li>
+<li>Note how the gathered statistical information is returned to the Count,Quantity and totalAmount columns.</li>
+<li>Review that &quot;OrderId&quot; is of type 'Number' which is a &quot;Value&quot; type, so if we set it's value, the value we set will not affect the calling code, as opposed to &quot;Count&quot; which is of type 'NumberColumn&quot; which is a &quot;Column&quot; type, so when we set it's value, that value returns to the calling code.</li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eyeww84-coA?list=PL1DEQjXG2xnKS0Zo7h-PrExXZ18hGxhvA" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/11_BusinessProcess-and-Out-Parameters/05_In-Out-Parameters-using-NumberColumn.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -119,7 +105,7 @@ protected override void OnUnLoad()
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'life-cycle-demo.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'in-out-parameters-using-numbercolumn.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
