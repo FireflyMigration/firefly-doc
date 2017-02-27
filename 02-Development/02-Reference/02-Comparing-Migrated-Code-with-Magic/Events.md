@@ -1,26 +1,23 @@
 keywords: AcceptButtonClick, About, Align Left, AlignRichTextBoxLeft, Align Right, AlignRichTextBoxRight, Begin Field, PlaceCursorAtStartOfTextBox, Begin Line, PlaceCursorAtStartOfLine, Begin Next Line, Begin Row, GoToFirstControl, Begin Screen, GoToTopGridRow, Begin Table, GoToFirstRow, Browser Status Text Change, Bullet, Button Press, PerformButtonClick, ButtonClick, Cancel, UndoChangesInRow, Center, Change Color, Change Font, ClearCurrentValueInTemplate, ClearTemplate, Click, Close, CloseForm, Close All, CloseAllTasks, Close Application, Close Context, Collapse Node, CollapseTreeNode, Colors, Column Click, GridColumnClick, Column Filter, GridColumnFilterClick, Context Got Focus, ContextGotFocus, Context Lost Focus, ContextLostFocus, Control Hit, BeforeControlClick, Control Modify, ControlValueChanged, Copy, Create Child, InsertChildNode, Create Line, InsertRow, Create Records, SwitchToInsertActivity, Cut, DblClick, DoubleClick, Del Current Char, DeleteNextCharacter, Del Previous Char, DeletePreviousCharacter, Delete Line, DeleteRow, Ditto, SetFocusedControlValueSameAsInPreviousRow, Drag Begin, DragStart, Drop, DragDrop, Edit Node, BeginEditingTreeNodeCaption, Empty Dataview, NoData, End Field, PlaceCursorAtEndOfTextBox, End Line, End Row, PlaceCursorAtEndOfLine, End Screen, GoToLastControl, End Table, GoToLastRow, Exit, Exit System, ExitApplication, Expand Node, ExpandTreeNode, External Event, ExternalEvent, Fonts, Help, Indent, Index Change, Invert Marking, Locate Next, FindNextRow, Locate a Record, FindRows, Mark All, MultiSelectAllRows, MultiSelectToNextPage, MultiSelectToNextRow, MultiSelectToPreviousPage, MultiSelectToPreviousRow, Mark Next Char, SelectNextCharacter, Mark Next Line MLE, Mark Prev Line MLE, Mark Previous Char, Mark To Bottom, Mark To Top, Mark/UnMark, Modify Records, SwitchToUpdateActivity, Mouse Out, MouseLeave, Mouse Over, MouseEnter, Move To Parent, Next Char, PlaceCursorAfterNextCharacter, Next Field, GoToNextControl, Next Line, PlaceCursorAtNextLineInMultiline, Next Line Mark, Next Page, GoToNextPage, Next Page in MM, Next Row, GoToNextRow, Next Row in MM, Next Screen, GoToNextPage, Next Window, Next Word, PlaceCursorBeforeNextWord, OK, OLE2, Open Application, Open Form Designer, Page Footer, PageFooter, Page Header, PageHeader, Paste, Post Refresh by Parent, Prev Line Mark, Prev Page in MM, Prev Row in MM, Previous Char, PlaceCursorBeforePreviosuCharacter, Previous Field, GoToPreviousControl, Previous Line, PlaceCursorAtPreviousLineInMultiline, Previous Page, GoToPreviousPage, Previous Row, GoToPreviousRow, Previous Screen, GoToPreviousPage, Previous Window, Previous Word, PlaceCursorBeforeWord, Print Data, ExportData, Printer Setup, PrinterSettingsDialog, Program Recall, SingleInstanceAsyncTaskReactivated, Query Records, SwitchToBrowseActivity, Quit, UndoChangesInRowAndExit, Range of Records, FilterRows, Record Flush, SaveCurrentRow, Screen Refresh, RefreshDisplayedData, Select, Select All, SelectAll, SelectNextTabPage, SelectPreviousTabPage, SelectToFirstCharacter, SelectToLastCharacter, Server termination, Set to NULL, SetFocusedControlValueToNull, Shell to OS, ShellToOS, Sort Records, CustomOrderBy, Subform Refresh, RefreshSubform, TemplateExit, TemplateExpression, TemplateFromValues, TemplateOk, TemplateToValues, ToggleCurrentRowMultiSelection, ToggleInsertOverwriteMode, To First Child, GoToFirstChildNode, To next sibling, To prev sibling, UnMark All, CancelMultiSelection, Undo Editing, UndoEditing, Unident, User Action, CustomCommand, View Refresh, ReloadData, View by Key, SelectOrderBy, Wide, ExpandTextBox, Window Hit, Window Reposition, BeforeWindowClick, Window Resize, WindowResize, Zoom, Expand
 ### Magic internal events
-In Magic you can use either the build in internal events or create your own events. This compare table only compares the build in internal events of Magic. In Firefly however these are split into two parts. One part, the internal events are in the ENV and can be invoked by 'Command.'. The other part resides in the Firefly.box and can be invoked by using 'Commands.' (with and 's'!).
+In Magic you can use either the build in internal events or create your own events. This compare table only compares the build in internal events of Magic. In Firefly however these are split into two parts. One part, the internal events are in  Firefly and can be invoked by 'Firefly.Box.Command.' or in short 'Command.. The other part resides in ENV and can be invoked by using 'ENV.Commands.' or in short `Commands.` (with and 's'!).
 
 The newly added handlers in Firefly are also added for search purposes.
 
-### ENV handlers
+### Firefly handlers
 ```csdiff
 Raise(Command.Expand)
 ```
 
-| Magic internal event | Firefly Handler |
+| Magic internal event | Firefly Command |
 | :--- | :--- |
-| - | AcceptButtonClick |
 | Align Left | AlignRichTextBoxLeft |
 | Align Right | AlignRichTextBoxRight |
 | Begin Field | PlaceCursorAtStartOfTextBox |
 | Begin Line | PlaceCursorAtStartOfLine |
 | Begin Row | GoToFirstControl |
-| - | GoToFirstRowWhileMultiSelecting |
 | Begin Screen | GoToTopGridRow |
 | Begin Table | GoToFirstRow |
-| - | ButtonClick |
 | Cancel | UndoChangesInRow |
 | Click | Click |
 | Close | CloseForm |
@@ -45,17 +42,12 @@ Raise(Command.Expand)
 | End Field | PlaceCursorAtEndOfTextBox |
 | End Row | PlaceCursorAtEndOfLine |
 | End Screen | GoToLastControl |
-| - | GoToBottomGridRow |
 | End Table | GoToLastRow |
 | Exit | Exit |
 | Exit System | ExitApplication |
 | Expand Node | ExpandTreeNode |
 | Help | Help |
 | Mark All | MultiSelectAllRows |
-| - | MultiSelectToNextRow |
-| - | MultiSelectToNextPage |
-| - | MultiSelectToPreviousRow |
-| - | MultiSelectToPreviousPage |
 | Mark Next Char | SelectNextCharacter |
 | Modify Records | SwitchToUpdateActivity |
 | Mouse Out | MouseLeave |
@@ -64,10 +56,7 @@ Raise(Command.Expand)
 | Next Field | GoToNextControl |
 | Next Line | PlaceCursorAtNextLineInMultiline |
 | Next Page | GoToNextPage |
-| - | GoToNextPageWhileMultiSelecting |
 | Next Row | GoToNextRow |
-| - | GoToLastRowWhileMultiSelecting |
-| - | GoToNextRowWhileMultiSelecting |
 | Next Screen | GoToNextPage |
 | Next Word | PlaceCursorBeforeNextWord |
 | Paste | Paste |
@@ -75,9 +64,7 @@ Raise(Command.Expand)
 | Previous Field | GoToPreviousControl |
 | Previous Line | PlaceCursorAtPreviousLineInMultiline |
 | Previous Page | GoToPreviousPage |
-| - | GoToPreviousPageWhileMultiSelecting |
 | Previous Row | GoToPreviousRow |
-| - | GoToPreviousRowWhileMultiSelecting |
 | Previous Screen | GoToPreviousPage |
 | Previous Window | - |
 | Previous Word | PlaceCursorBeforeWord |
@@ -85,18 +72,12 @@ Raise(Command.Expand)
 | Query Records | SwitchToBrowseActivity |
 | Quit | UndoChangesInRowAndExit |
 | Record Flush | SaveCurrentRow |
-| - | RepaintForm |
 | Screen Refresh | RefreshDisplayedData |
 | Select | Select |
 | Select All | SelectAll |
-| - | SelectNextTabPage |
-| - | SelectPreviousTabPage |
-| - | SelectToFirstCharacter |
-| - | SelectToLastCharacter |
 | Set to NULL | SetFocusedControlValueToNull |
 | Subform Refresh | RefreshSubform |
 | To First Child | GoToFirstChildNode |
-| _ | ToggleCurrentRowMultiSelection |
 | UnMark All | CancelMultiSelection |
 | Undo Editing | UndoEditing |
 | View Refresh | ReloadData |
@@ -105,42 +86,28 @@ Raise(Command.Expand)
 | Window Resize | WindowResize |
 | Zoom | Expand |
 
-### Firefly.box handlers
+### ENV handlers
 ```csdiff
 Raise(Commands.ShellToOS)
 ```
 
-| Magic internal event | Firefly Handler |
+| Magic internal event | ENV Command |
 | :--- | :--- |
-| - | About |
 | Button Press | PerformButtonClick |
-| - | ClearCurrentValueInTemplate |
-| - | ClearTemplate |
 | Close All | CloseAllTasks |
-| - | Colors |
 | Column Filter | GridColumnFilterClick |
 | Context Got Focus | ContextGotFocus |
 | Context Lost Focus | ContextLostFocus |
 | External Event | ExternalEvent |
-| - | Fonts |
 | Locate Next | FindNextRow |
 | Locate a Record | FindRows |
-| - | OK |
 | Page Footer | PageFooter |
 | Page Header | PageHeader |
 | Print Data | ExportData |
 | Program Recall | SingleInstanceAsyncTaskReactivated |
 | Range of Records | FilterRows |
-| - | SelectApplicationFromList |
 | Shell to OS | ShellToOS |
-| - | TemplateExit |
-| - | TemplateExpression |
-| - | TemplateFromValues |
-| - | TemplateOK |
-| - | TemplateToValues |
-| - | ToggleInsertOverwriteMode |
 | Sort Records | CustomOrderBy |
-| - | UnKnownCommand |
 | User Action 1 | CustomCommand_1 |
 | User Action 2 | CustomCommand_2 |
 | User Action 3 | CustomCommand_3 |
@@ -163,43 +130,3 @@ Raise(Commands.ShellToOS)
 | User Action 20 | CustomCommand_20 |
 | View by Key | SelectOrderBy |
 
-### Unsupported events
-These Magic events are either not possible in C# as they are Magic specific or they are not supported (yet) because until now they have not been used in migrated code.
-
-| Magic internal event |
-| :--- |
-| Begin Next Line |
-| Browser Status Text Change |
-| Bullet |
-| Center |
-| Change Color |
-| Change Font |
-| Close Application |
-| Close Context |
-| End Line |
-| Indent |
-| Index Change |
-| Invert Marking |
-| Mark Next Line MLE |
-| Mark Prev Line MLE |
-| Mark Previous Char |
-| Mark To Bottom |
-| Mark To Top |
-| Mark/UnMark |
-| Move To Parent |
-| Next Line Mark |
-| Next Page in MM |
-| Next Row in MM |
-| Next Window |
-| OLE2 |
-| Open Application |
-| Open Form Designer |
-| Post Refresh by Parent |
-| Prev Line Mark |
-| Prev Page in MM |
-| Prev Row in MM |
-| Server termination |
-| To next sibling |
-| To prev sibling |
-| Unident |
-| Window Reposition |
