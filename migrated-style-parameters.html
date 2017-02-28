@@ -28,13 +28,67 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="migrated-style-parameters">Migrated Style Parameters</h1>
-<p><strong>Introducing the NumberParameter</strong></p>
+<ul>
+<li>When working with parameters, we distinguish between &quot;Value&quot; parameters (ie <code>Number</code>) and &quot;Column&quot; parameters (ie <code>NumberColumn</code>)</li>
+<li>A method that receives a &quot;Value&quot; parameter, for example <code>MethodA</code> can receive either a value parameter or a column parameter (lines 5 and 6)</li>
+<li>A method that receives a &quot;Column&quot; parameter, can only receive a Column (line 9). If you try to send it a &quot;Value&quot; parameter, you'll get an error (line 8)</li>
+<li>That way you can easily distinguish between &quot;In&quot; parameters, or &quot;Value&quot; parameters as we call them and &quot;In Out&quot; parameters, or &quot;Column&quot; parameters as we call them.</li>
+</ul>
+<pre data-line="" class="language-csdiff line-numbers"><code>public void Run()
+{
+    Number myValue = 5;
+    NumberColumn myColumn = new NumberColumn();
+    myColumn.Value = 7;
+    MethodA(myValue);
+    MethodA(myColumn);
+
+-   MethodB(myValue);//this line would not work, since you can't send a value to a parameter of type column
+    MethodB(myColumn);
+}
+void MethodA(Number value)
+{
+    Debug.WriteLine(value);
+}
+void MethodB(NumberColumn column)
+{
+    Debug.WriteLine(column);
+} </code></pre>
+<ul>
+<li>In magic there was no way to make that distinction, so in the migrated code we needed to create a parameter type that can receive both &quot;Value&quot; and &quot;Column&quot;</li>
+<li>This problem is solved by using the <code>NumberParameter</code> type (Line 22), which can receive both &quot;Value&quot; (Line 11) and &quot;Column&quot; (Line 12) and in the case of &quot;Value&quot; work as an &quot;In&quot; parameter and in the case of &quot;Column&quot; work as an &quot;In Out&quot; parameter</li>
+</ul>
+<pre data-line="12,13,23,24,25,26" class="language-csdiff line-numbers"><code>public void Run()
+{
+    Number myValue = 5;
+    NumberColumn myColumn = new NumberColumn();
+    myColumn.Value = 7;
+    MethodA(myValue);
+    MethodA(myColumn);
+
+-   MethodB(myValue);//this line would not work, since you can't send a value to a parameter of type column
+    MethodB(myColumn);
+
+    MethodC(myValue);
+    MethodC(myColumn);
+}
+void MethodA(Number value)
+{
+    Debug.WriteLine(value);
+}
+void MethodB(NumberColumn column)
+{
+    Debug.WriteLine(column);
+}
+void MethodC(NumberParameter parameter)
+{
+     Debug.WriteLine(parameter);
+} </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RVXdR1L41G8?list=PL1DEQjXG2xnKwFgNR1U2nGp4GyrPETlZE" frameborder="0" allowfullscreen></iframe>
 <ul>
-<li><a href="in-and-out-migrated-style-parameters.html">In and Out Migrated style parameters</a></li>
-<li><a href="using-migrated-parameters-in-the-migrated-code.html">Using Migrated Parameters in the migrated code</a></li>
+<li><a href="in-and-out-parameters-and-migrated-style-parameters.html">In and Out Parameters and Migrated Style Parameters</a></li>
+<li><a href="migrated-style-parameters-in-the-migrated-code.html">Migrated Style Parameters in the Migrated Code</a></li>
 </ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/13_Migrated-Style-Parameters/index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/13_Migrated-Style-Parameters/01-index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         

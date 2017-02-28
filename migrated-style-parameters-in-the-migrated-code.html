@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Migrated Style Parameters in the Migrated Code</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="migrated-style-parameters-in-the-migrated-code">Migrated Style Parameters in the Migrated Code</h1>
+<ul>
+<li>We'll create a new controller 'GetOrderStatisticsDemoNumberParameter`</li>
+</ul>
+<pre data-line="3,6" class="language-csdiff line-numbers"><code>public class GetOrderStatisticsDemoNumberParameter : BusinessProcessBase
+{
+    readonly Models.Order_Details Order_Details = new Models.Order_Details();
+    public GetOrderStatisticsDemoNumberParameter()
+    {
+        From = Order_Details;
+    }
+    public void Run()
+    {
+        Execute();
+    }
+} </code></pre>
+<ul>
+<li>In Magic, any parameter was also a local column</li>
+</ul>
+<pre data-line="4" class="language-csdiff line-numbers"><code>public class GetOrderStatisticsDemoNumberParameter : BusinessProcessBase
+{
+    readonly Models.Order_Details Order_Details = new Models.Order_Details();
+    readonly NumberColumn OrderId = new NumberColumn();
+    public GetOrderStatisticsDemoNumberParameter()
+    {
+        From = Order_Details;
+    }
+    public void Run()
+    {
+        Execute();
+    }
+} </code></pre>
+<ul>
+<li>When we receive it as a parameter, we'll add it to the <code>Run</code> method, and call the <code>BindParameter</code> method to bind the parameter to the local column</li>
+</ul>
+<pre data-line="9,11" class="language-csdiff line-numbers"><code>public class GetOrderStatisticsDemoNumberParameter : BusinessProcessBase
+{
+    readonly Models.Order_Details Order_Details = new Models.Order_Details();
+    readonly NumberColumn OrderId = new NumberColumn();
+    public GetOrderStatisticsDemoNumberParameter()
+    {
+        From = Order_Details;
+    }
+    public void Run(NumberParameter orderId)
+    {
+        BindParameter(OrderId, orderId);
+        Execute();
+    }
+} </code></pre>
+<ul>
+<li>This is how the migrated code reflects parameters.
+<ul>
+<li>A Local column</li>
+<li>A <code>NumberParameter</code></li>
+<li>And a call to the <code>BindParameter</code> method</li>
+</ul>
+</li>
+<li>Since we use a local column for the parameter value, we can write the <code>Where</code> in the constructor, and we no longer have to write the <code>Where</code> in the <code>Run</code> method.</li>
+<li>The <code>BindParameter</code> method  will make sure that the local column <code>OrderId</code> will have the value of the parameter and vice versa. This update will happen before the <code>OnLoad</code> method get's executed</li>
+</ul>
+<pre data-line="8" class="language-csdiff line-numbers"><code>public class GetOrderStatisticsDemoNumberParameter : BusinessProcessBase
+{
+    readonly Models.Order_Details Order_Details = new Models.Order_Details();
+    readonly NumberColumn OrderId = new NumberColumn();
+    public GetOrderStatisticsDemoNumberParameter()
+    {
+        From = Order_Details;
+        Where.Add(Order_Details.OrderID.IsEqualTo(OrderId));
+    }
+    public void Run(NumberParameter orderId)
+    {
+        BindParameter(OrderId, orderId);
+        Execute();
+    }
+} </code></pre>
+<ul>
+<li>Let's add the Quantity</li>
+</ul>
+<pre data-line="5,12,15" class="language-csdiff line-numbers"><code>public class GetOrderStatisticsDemoNumberParameter : BusinessProcessBase
+{
+    readonly Models.Order_Details Order_Details = new Models.Order_Details();
+    readonly NumberColumn OrderId = new NumberColumn();
+    readonly NumberColumn Quantity = new NumberColumn();
+
+    public GetOrderStatisticsDemoNumberParameter()
+    {
+        From = Order_Details;
+        Where.Add(Order_Details.OrderID.IsEqualTo(OrderId));
+    }
+    public void Run(NumberParameter orderId, NumberParameter quantity)
+    {
+        BindParameter(OrderId, orderId);
+        BindParameter(Quantity, quantity);
+        Execute();
+    }
+} </code></pre>
+<ul>
+<li>And update the <code>Quantity</code> local column in the <code>OnLeaveRow</code> method</li>
+</ul>
+<pre data-line="18,19,20,21" class="language-csdiff line-numbers"><code>public class GetOrderStatisticsDemoNumberParameter : BusinessProcessBase
+{
+    readonly Models.Order_Details Order_Details = new Models.Order_Details();
+    readonly NumberColumn OrderId = new NumberColumn();
+    readonly NumberColumn Quantity = new NumberColumn();
+
+    public GetOrderStatisticsDemoNumberParameter()
+    {
+        From = Order_Details;
+        Where.Add(Order_Details.OrderID.IsEqualTo(OrderId));
+    }
+    public void Run(NumberParameter orderId, NumberParameter quantity)
+    {
+        BindParameter(OrderId, orderId);
+        BindParameter(Quantity, quantity);
+        Execute();
+    }
+    protected override void OnLeaveRow()
+    {
+        Quantity.Value += Order_Details.Quantity;
+    }
+} </code></pre>
+<ul>
+<li>The usage of <code>BindParameter</code> makes sure that when the controller ends, the value in the local column <code>Quantity</code> will be returned to the <code>quantity</code> <code>NumberParameter</code></li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vvI5Sd8b2-Q?list=PL1DEQjXG2xnKwFgNR1U2nGp4GyrPETlZE" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/13_Migrated-Style-Parameters/03-Migrated-Style-Parameters-in-the-Migrated-Code.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+                
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree"</div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4806432-3', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'migrated-style-parameters-in-the-migrated-code.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>
