@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Calling Controllers Across Project Scopes</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="calling-controllers-across-project-scopes">Calling Controllers Across Project Scopes</h1>
+<p>Since each project in a large application can only see the controllers within it, and can't see controllers in other projects of the same application, how can we call them?
+This article explains how this problem is solved using the &quot;AbstractFactory&quot; pattern.</p>
+<hr />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YRW09f3cijc?list=PL1DEQjXG2xnJzHc7zzs7CxZX0uK_oOWOY" frameborder="0" allowfullscreen></iframe>
+<hr />
+<h3 id="the-problem">The Problem</h3>
+<ul>
+<li>In the Northwind application we have 3 projects (Northwind.Products, Northwind.Customers, and Northwind.Orders)</li>
+<li>In the Northwind.Orders project, we added a new Controller called <code>CustomerOrders</code> which displays all the orders of a specific customer</li>
+</ul>
+<pre data-line="" class="language-csdiff line-numbers"><code>namespace Northwind.Orders
+{
+    public class CustomerOrders : UIControllerBase
+    {
+    ...
+        public void Run(Text customerId)
+        {
+            Where.Add(Orders.CustomerID.IsEqualTo(customerId);
+            Execute();
+        }
+    ...
+    }
+} </code></pre>
+<ul>
+<li>In the Northwind.Customers project we have a screen called <code>ShuwCustomerView</code> that has a button which when it's clicked we want to call the <code>CustomerOrders</code> controller that is in the Northwind.Orders project.</li>
+</ul>
+<pre data-line="11,12,13,14" class="language-csdiff line-numbers"><code>namespace Northwind.Customers.Views
+{
+    partial class ShowCustomersView : Northwind.Shared.Theme.Controls.CompatibleForm 
+    {
+        ShowCustomers _controller;
+        internal ShowCustomersView(ShowCustomers controller)
+        {
+            _controller = controller;
+            InitializeComponent();
+        }
+        private void button1_Click(object sender, ButtonClickEventArgs e)
+        {
+            //we want to call the CustomerOrders from here
+        }
+    }
+} </code></pre>
+<ul>
+<li>Since Northwind.Customers project does not reference Northwind.Orders project, we can't call it simply by writing <code>new Orders.CustomerOrders()</code> since it doesn't see it - it doesn't reference it.</li>
+</ul>
+<h3 id="the-solution">The Solution</h3>
+<h4 id="step-1-create-an-interface-in-the-northwindbase-project">Step 1, Create an interface in the NorthwindBase project</h4>
+<ul>
+<li>That interface will be in the NorthwindBase project, in the Orders namespace (the same namespace of the <code>CustomerOrders</code> controller</li>
+<li>That interface will be called ICustomerOrders (using the standard naming convention for an interface)</li>
+<li>That interface will have a <code>Run</code> method that has the exact same parameters as the <code>Run</code> method of the <code>CustomerOrders</code> controller.</li>
+</ul>
+<pre data-line="5" class="language-csdiff line-numbers"><code>namespace Northwind.Orders
+{
+    public interface ICustomerOrders
+    {
+        void Run(Text customerid);
+    }
+} </code></pre>
+<ul>
+<li>Build NorthwindBase</li>
+</ul>
+<h4 id="step-2-add-the-interface-to-the-definition-of-the-actual-customerorders-class">Step 2, Add the interface to the definition of the actual CustomerOrders class</h4>
+<pre data-line="4" class="language-csdiff line-numbers"><code>namespace Northwind.Orders
+{
+-   public class CustomerOrders : UIControllerBase
+    public class CustomerOrders : UIControllerBase, ICustomerOrders
+    {
+    ...
+        public void Run(Text customerId)
+        {
+            Where.Add(Orders.CustomerID.IsEqualTo(customerId);
+            Execute();
+        }
+    ...
+    }
+} </code></pre>
+<h4 id="step-3-in-the-northwind.customers-project-call-the-icustomerorders-interface-using-the-create-method">Step 3, in the Northwind.Customers project, call the ICustomerOrders interface using the <code>Create&lt;&gt;</code> method</h4>
+<pre data-line="13" class="language-csdiff line-numbers"><code>namespace Northwind.Customers.Views
+{
+    partial class ShowCustomersView : Northwind.Shared.Theme.Controls.CompatibleForm 
+    {
+        ShowCustomers _controller;
+        internal ShowCustomersView(ShowCustomers controller)
+        {
+            _controller = controller;
+            InitializeComponent();
+        }
+        private void button1_Click(object sender, ButtonClickEventArgs e)
+        {
+            Create&lt;Orders.ICustomerOrders&gt;().Run(_controller.Customers1.CustomerID);
+        }
+    }
+} </code></pre>
+<ul>
+<li><a href="demo-calling-controllers-across-project-scopes.html">Demo Calling Controllers Across Project Scopes</a></li>
+</ul>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/14-Large-Applications-Architecture/02-Calling-Controllers-Across-Project-Scopes/01-index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+                
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree"</div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4806432-3', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'calling-controllers-across-project-scopes.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>
