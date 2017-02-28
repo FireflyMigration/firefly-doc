@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="Not added to the columns collection or task was not executed,ColumnNotAddedToColumnCollection">
+    <meta name="keywords" content="">
 
-    <title>Column Collection and Recompute</title>
+    <title>Using VSDropAssist to Easily Add Many Columns</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,30 +27,32 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="column-collection-and-recompute">Column Collection and Recompute</h1>
-<p>The Columns Collection has two roles:</p>
+                <div class="content"><h1 id="using-vsdropassist-to-easily-add-many-columns">Using VSDropAssist to Easily Add Many Columns</h1>
 <ul>
-<li>Determine which columns will be loaded from the database</li>
-<li>Controls the Recompute mechanism which affects BindValue and Relations</li>
+<li>Select multiple columns in the Solution Explorer
+<img src="2017-02-28_10h18_56.png" alt="2017 02 28 10H18 56" /></li>
+<li>Drag them to the code, and before you drop, click the <kbd>Shift</kbd> key</li>
+<li>The Columns Will be Automatically added to your code</li>
 </ul>
-<h3 id="determine-which-columns-will-be-loaded-from-the-database">Determine which columns will be loaded from the database</h3>
-<ul>
-<li>By Default - If no column were added using “Columns.Add” then all the columns which belongs to entities used in this controller will be added. (“Local columns” will not be added as part of this rule)</li>
-<li>Columns are added using the “Columns.Add” method</li>
-<li>PrimaryKey columns are added automatically</li>
-<li>Any column that is set as a Data of a control on the View is automatically added.</li>
-</ul>
-<pre data-line="8,9,10,11" class="language-csdiff line-numbers"><code>    public class DemoColumnsCollection : UIControllerBase
+<pre data-line="13,14,15,16,17,18,19" class="language-csdiff line-numbers"><code>    public class DemoColumnsCollection : UIControllerBase
     {
         public readonly Models.Orders Orders = new Models.Orders();
+        public readonly Models.Customers Customers = new Models.Customers();
+        public readonly DateColumn EndOfMonth = new DateColumn("EndOfMonth");
         public DemoColumnsCollection()
         {
             From = Orders;
+            Relations.Add(Customers, Customers.CustomerID.IsEqualTo(Orders.CustomerID));
 
-            Columns.Add(Orders.OrderID);
-            Columns.Add(Orders.CustomerID);
-            Columns.Add(Customers.CustomerID);
-            Columns.Add(Orders.OrderDate);
+             Columns.Add(Orders.OrderID);
+             Columns.Add(Orders.CustomerID);
+             Columns.Add(Orders.OrderDate);
+             Columns.Add(Orders.RequiredDate);
+             Columns.Add(Orders.Freight);
+             Columns.Add(Orders.ShipName);
+             Columns.Add(Orders.ShipAddress);
+             Columns.Add(Orders.ShipRegion);
+             Columns.Add(Orders.Ship Country);
         }
         public void Run()
         {
@@ -61,38 +63,8 @@
             View = () =&gt; new Views.DemoColumnsCollectionView(this);
         }
     } </code></pre>
-<ul>
-<li>Columns that were not added to the columns collection will provide the error &quot;Not added to the columns collection or task was not executed&quot;, or the exception &quot;ColumnNotAddedToColumnCollection&quot;</li>
-<li>Columns can also be added using a comma separated parameter</li>
-</ul>
-<pre data-line="8" class="language-csdiff line-numbers"><code>    public class DemoColumnsCollection : UIControllerBase
-    {
-        public readonly Models.Orders Orders = new Models.Orders();
-        public DemoColumnsCollection()
-        {
-            From = Orders;
-
-            Columns.Add(Orders.OrderID, Orders.CustomerID, Orders.OrderDate);
-        }
-        public void Run()
-        {
-            Execute();
-        }
-        protected override void OnLoad()
-        {
-            View = () =&gt; new Views.DemoColumnsCollectionView(this);
-        }
-    } </code></pre>
-<p><a href="ColumnCollection.pptx">The Column collection Power Point Presentation</a></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ti87yg2hTyE?list=PL1DEQjXG2xnLhBFafjdkhUD_rDsiXiXHr" frameborder="0" allowfullscreen></iframe>
-<hr />
-<ul>
-<li><a href="using-vsdropassist-to-easily-add-many-columns.html">Using VSDropAssist to Easily Add Many Columns</a></li>
-<li><a href="columns-recompute.html">Columns Recompute</a></li>
-<li><a href="relations-recompute.html">Relations Recompute</a></li>
-<li><a href="addallcolumns.html">AddAllColumns</a></li>
-</ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/15_Column-Collection-and-Recompute/01-index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4Ao3rf2M8cU?list=PL1DEQjXG2xnLhBFafjdkhUD_rDsiXiXHr" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/15_Column-Collection-and-Recompute/02-Using-VSDropAssist-to-Easily-Add-Many-Columns.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -137,7 +109,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'column-collection-and-recompute.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'using-vsdropassist-to-easily-add-many-columns.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

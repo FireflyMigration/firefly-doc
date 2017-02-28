@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>AddAllColumns</title>
+    <title>Relations Recompute</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,13 +27,34 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="addallcolumns">AddAllColumns</h1>
+                <div class="content"><h1 id="relations-recompute">Relations Recompute</h1>
 <ul>
-<li>To add all the columns of all the Entities that are used in this controller to the columns collection, we can use the <code>AddAllColumns</code> method</li>
-<li>The <code>AddAllColumns</code> method will add all the columns that were not yet added.</li>
-<li>The <code>AddAllColumns</code> method will <strong>not</strong> add local columns</li>
+<li>Let's add a relation to our demo</li>
 </ul>
-<pre data-line="14" class="language-csdiff line-numbers"><code>public class DemoColumnsCollection : UIControllerBase
+<pre data-line="4,8" class="language-csdiff line-numbers"><code>public class DemoColumnsCollection : UIControllerBase
+{
+    public readonly Models.Orders Orders = new Models.Orders();
+    public readonly Models.Customers Customers = new Models.Customers();
+    public DemoColumnsCollection()
+    {
+        From = Orders;
+        Relations.Add(Customers, Customers.CustomerID.IsEqualTo(Orders.CustomerID));
+
+        Columns.Add(Orders.OrderID);
+        Columns.Add(Orders.CustomerID);
+        Columns.Add(Orders.OrderDate);
+    }
+    public void Run()
+    {
+        Execute();
+    }
+    protected override void OnLoad()
+    {
+        View = () =&gt; new Views.DemoColumnsCollectionView(this);
+    }
+} </code></pre>
+<h4 id="relations-will-only-recompute-based-on-columns-that-were-added-before-the-relations-first-column-in-the-column-collection">Relations will only recompute based on columns that were added before the relation’s first column in the column collection</h4>
+<pre data-line="12" class="language-csdiff line-numbers"><code>public class DemoColumnsCollection : UIControllerBase
 {
     public readonly Models.Orders Orders = new Models.Orders();
     public readonly Models.Customers Customers = new Models.Customers();
@@ -46,7 +67,6 @@
         Columns.Add(Orders.CustomerID);
         Columns.Add(Customers.CustomerID);
         Columns.Add(Orders.OrderDate);
-        AddAllColumns();
     }
     public void Run()
     {
@@ -58,34 +78,12 @@
     }
 } </code></pre>
 <ul>
-<li>To add all the columns of a specific relation to the columns collection, we can use the <code>AddAllColumns</code> method of a relation</li>
+<li>Note that if the <code>Columns.Add</code> of the <code>Customers.CustomerID</code> column is <strong>after</strong> the call to <code>Columns.Add</code> of the <code>Orders.CustomerID</code> column, the relation to <code>Customers</code> will automatically recompute (refresh) whenever the value of <code>Orders.CustomerID</code> changes</li>
+<li>Note that if the <code>Columns.Add</code> of the <code>Customers.CustomerID</code> column is <strong>Before</strong> the call to <code>Columns.Add</code> of the <code>Orders.CustomerID</code> column, the relation to <code>Customers</code>  will <strong>NOT</strong> automatically recompute (refresh) whenever the value of <code>Orders.CustomerID</code> changes, it'll only evaluate once when you enter the row.</li>
+<li>Note that you can also use the <code>__RecomputePath</code> property to explore the recompute of a relation. For more information see <a href="columns-recompute.html">Columns Recompute</a></li>
 </ul>
-<pre data-line="14" class="language-csdiff line-numbers"><code>public class DemoColumnsCollection : UIControllerBase
-{
-    public readonly Models.Orders Orders = new Models.Orders();
-    public readonly Models.Customers Customers = new Models.Customers();
-    public DemoColumnsCollection()
-    {
-        From = Orders;
-        Relations.Add(Customers, Customers.CustomerID.IsEqualTo(Orders.CustomerID));
-
-        Columns.Add(Orders.OrderID);
-        Columns.Add(Orders.CustomerID);
-        Columns.Add(Customers.CustomerID);
-        Columns.Add(Orders.OrderDate);
-        Relations[Customers].AddAllColumns();
-    }
-    public void Run()
-    {
-        Execute();
-    }
-    protected override void OnLoad()
-    {
-        View = () =&gt; new Views.DemoColumnsCollectionView(this);
-    }
-} </code></pre>
- <iframe width="560" height="315" src="https://www.youtube.com/embed/jMP7WNJlamY?list=PL1DEQjXG2xnLhBFafjdkhUD_rDsiXiXHr" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/15_Column-Collection-and-Recompute/05_AddAllColumns.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SO8B_WDDycc?list=PL1DEQjXG2xnLhBFafjdkhUD_rDsiXiXHr" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/15_Column-Collection-and-Recompute/04-Relations-Recompute.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -130,7 +128,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'addallcolumns.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'relations-recompute.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
