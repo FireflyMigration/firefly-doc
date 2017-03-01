@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content=""Object reference not set to an instance of an object",">
+    <meta name="keywords" content="">
 
-    <title>Nulls Explained</title>
+    <title>Lambda Expressions Generics and BindValue</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,22 +27,35 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="nulls-explained">Nulls Explained</h1>
-<p>In this page we'll Demo and explain:</p>
+                <div class="content"><h1 id="lambda-expressions-generics-and-bindvalue">Lambda Expressions Generics and BindValue</h1>
+<p>In this section we'll do an in depth review which will focus on Delegates, Lambda expressions and Generics</p>
+<p>We'll start with local columns, to set the scene for the discussions, and quickly proceed to the List Class and use Generics and Lambda in it's context</p>
+<p>Later, we'll use that info as we implement that knowledge in the context of BindValue</p>
 <ul>
-<li><code>null</code> is a special value that indicates that there is no value</li>
-<li><code>null</code> is different than '0' or '&quot;&quot;;</li>
-<li>if a member value was not set, it's value is <code>null</code></li>
-<li>Explain that when you get the &quot;Object reference not set to an instance of an object&quot; exception, it means that you are trying to use a field that has a <code>null</code> value - it's value was not set.</li>
-<li>Not all types can have a null value, for example <code>int</code>, <code>bool</code>, and <code>DateTime</code> can not havea a null value because they are <code>structs</code></li>
+<li><a href="add-local-column.html">Add Local Column</a></li>
+<li><a href="setting-column-values.html">Setting column values</a></li>
+<li><a href="calculating-days.html">Calculating days</a></li>
+<li><a href="the-list-class.html">The List class</a></li>
+<li><a href="using-generics.html">Using Generics</a></li>
+<li><a href="generics-in-the-migrated-code.html">Generics in the Migrated code</a></li>
+<li><a href="using-delegates.html">Using Delegates</a></li>
+<li><a href="more-on-delegates.html">More on Delegates</a></li>
+<li><a href="using-csharrp6-to-reduce-code-lines.html">Using CSharrp6 to reduce code lines</a></li>
+<li><a href="lambda-expression.html">Lambda expression</a></li>
+<li><a href="multiline-lambda-expression.html">Multiline Lambda expression</a></li>
+<li><a href="comparing-the-code.html">Comparing the code</a></li>
+<li><a href="playing-with-lambda.html">Playing with Lambda</a></li>
+<li><a href="lambda-exercise.html">Lambda exercise</a></li>
+<li><a href="using-bindvalue.html">Using BindValue</a></li>
+<li><a href="using-system-func.html">Using System Func</a></li>
+<li><a href="bindvalue-evaluation-timing.html">BindValue evaluation timing</a></li>
+<li><a href="using-csharp6.html">Using CSharp6</a></li>
+<li><a href="using-lambda-with-bindvalue.html">Using Lambda with BindValue</a></li>
+<li><a href="multiline-method-in-lambda.html">Multiline method in Lambda</a></li>
+<li><a href="multiline-lambda-to-a-single-line-lambda.html">Multiline Lambda to a single line Lambda</a></li>
+<li><a href="lambda-in-the-migrated-code.html">Lambda in the Migrated code</a></li>
 </ul>
-<pre data-line="" class="language-csdiff line-numbers"><code>string s = null; </code></pre>
-<h3 id="introducing-nulls">Introducing Nulls</h3>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/9fawzsxoiiI" frameborder="0" allowfullscreen></iframe>
-<h3 id="more-on-nulls">More on Nulls</h3>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/SHTubP30rRY" frameborder="0" allowfullscreen></iframe>
----
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/Further-Learning/10-Nulls-Explained.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/Further-Learning/30-Lambda-Expressions-Generics-and-BindValue/00-index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -87,7 +100,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'nulls-explained.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'lambda-expressions-generics-and-bindvalue.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
