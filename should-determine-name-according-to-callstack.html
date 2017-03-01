@@ -37,7 +37,7 @@
 <p>The tables of the migrated application are all derived from the ENV.Data.Entity class, which has the “ShouldDertermineNameAccordingToCallStack”property. By default, this property is set to true for backward compatibility with the original application. Setting this property to “false” in a specific program will use the new EntityName, even if the table is previously used in the current call stack. For example, here is the same program that now only iterates products in stock:</p>
 <p><img src="shoulddeterminenameaccordingtocallstack3.png" alt="" /></p>
 <p>It is also possible to change this behavior for the entire application, by changing the default value of the property to “false” in the ENV.Data.Entity base class. Notice that this change affects existing programs that have the specific scenario above, of changing the EntityName of a table that is used by previous programs in the current call stack, so any assignment to the EntityName property should be examined.</p>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/DataAccess/04-Should-determine-name-according-to-callstack/index.md" target="_blank">Edit this page on GitHub</a></div><!-- .content -->
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/DataAccess/04-Should-determine-name-according-to-callstack/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
