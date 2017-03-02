@@ -39,7 +39,7 @@ The two classes will be explained in the next session
 2. Click on the Menu bar and give the menu a name
 3. Click outside the menu to save it
 4. DbClick on the new created entry - a new method is automatically created.
-5. Inside the  this method call the Controller by typing 
+5. Inside this method call the Controller by typing 
    new FolderName.[SubFolderName].ClassName().Run()
 ````csdiff
 private void ApplicationMdi_Load(object sender, EventArgs e)
