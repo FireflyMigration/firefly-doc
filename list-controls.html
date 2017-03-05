@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Using commands to override default behaviour</title>
+    <title>List Controls</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,13 +27,39 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="using-commands-to-override-default-behaviour">Using commands to override default behaviour</h1>
-<pre data-line="3" class="language-csdiff line-numbers"><code>Handlers.Add(Command.Exit).Invokes += e =&gt;
+                <div class="content"><h1 id="list-controls">List Controls</h1>
+<p>In this section we'll discuss how to use List Controls.</p>
+<ul>
+<li>Create a UIController called &quot;DemoComboBox&quot;</li>
+<li>Add a local NumberColumn called &quot;OurDataInCombo&quot;</li>
+<li>Place a ComboBox on the View, and bind it's data to the local column &quot;OurDataInCombo&quot;</li>
+<li>We can set the values of the Combo Box, by changing the Values propery in the property sheet<br />
+<img src="2017-03-05_16h50_20.png" alt="2017 03 05 16H50 20" /><br />
+or in the control's quick properties<br />
+<img src="2017-03-05_16h48_32.png" alt="2017 03 05 16H48 32" /></li>
+<li>If no values are set in the ComboBox's Values property - the attached column's InputRange values will be used as Values</li>
+</ul>
+<pre data-line="3" class="language-csdiff line-numbers"><code>public readonly NumberColumn OurDataInCombo = new NumberColumn
 {
-    e.Handled = !Common.ShowYesNoMessageBox("Exit", "Are you sure you want to exit?", false); 
+    InputRange = "4,5,6"
 }; </code></pre>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qOKrRlzzuGY?list=PL1DEQjXG2xnIGbO3DlvFQjv-T0OXM81r-" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/18-Handlers-and-commands/10-Using-commands-to-override-default-behaviour.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<ul>
+<li>Values that are set in the control's Values property override the values that were set to the Column's InputRange property</li>
+<li>When we want the ComboBox to display values that are different from it's underlying value (descriptions for a code etc... we can use the DisplayValues property</li>
+<li>For example, if we set the Values properties to &quot;1,2,3&quot; and the DisplayValues property to &quot;Noam, Yoni, Eran&quot;.
+<ul>
+<li>When the user selects Noam, the data bound column will have the value of 1.</li>
+<li>When the user selects Yoni, the data bound column will have the value of 2.</li>
+<li>When the user selects Eran, the data bound column will have the value of 3.</li>
+</ul>
+</li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NXx0C69b6mk?list=PL1DEQjXG2xnIm0e_t85TXwY-Y9r19m-Mz" frameborder="0" allowfullscreen></iframe>
+<ul>
+<li><a href="binding-list-control-values-to-an-expression.html">Binding List Control Values to an Expression</a></li>
+<li><a href="binding-list-control-values-to-data-from-the-database.html">Binding List Control Values to Data from the Database</a></li>
+</ul>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/16-List-Controls/01-index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -78,7 +104,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'using-commands-to-override-default-behaviour.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'list-controls.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

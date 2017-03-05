@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>List Control - basic</title>
+    <title>List Control</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,13 +27,39 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="list-control-basic">List Control - basic</h1>
+                <div class="content"><h1 id="list-control">List Control</h1>
+<p>In this section we'll discuss how to use List Controls.</p>
+<ul>
+<li>Create a UIController called &quot;DemoComboBox&quot;</li>
+<li>Add a local <code>NumberColumn</code> called &quot;OurDataInCombo&quot;</li>
+<li>Place a <code>ComboBox</code> on the View, and bind it's data to the local column &quot;OurDataInCombo&quot;</li>
+<li>We can set the values of the Combo Box, by changing the <code>Values</code> propery in the property sheet<br />
+<img src="2017-03-05_16h50_20.png" alt="" /><br />
+or in the control's quick properties
+<img src="2017-03-05_16h48_32.png" alt="" /></li>
+<li>If no values are set in the ComboBox's <code>Values</code> property - the attached column's <code>InputRange</code> values will be used as <code>Values</code></li>
+</ul>
+<pre data-line="3" class="language-csdiff line-numbers"><code>public readonly NumberColumn OurDataInCombo = new NumberColumn
+{
+	InputRange = "4,5,6"
+}; </code></pre>
+<ul>
+<li>Values that are set in the control's <code>Values</code> property override the values that were set to the Column's <code>InputRange</code> property</li>
+<li>When we want the combobox to display values that are different from it's underlying value (descriptions for a code etc... we can use the <code>DisplayValues</code> property</li>
+<li>For example, if we set the <code>Values</code> properties to &quot;1,2,3&quot; and the <code>DisplayValues</code> property to &quot;Noam, Yoni, Eran&quot;.
+<ul>
+<li>When the user selects Noam, the data bound column will have the value of 1.</li>
+<li>When the user selects Yoni, the data bound column will have the value of 2.</li>
+<li>When the user selects Eran, the data bound column will have the value of 3.</li>
+</ul>
+</li>
+</ul>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NXx0C69b6mk" frameborder="0" allowfullscreen></iframe>
 <ul>
-<li><a href="list-controls-dynamic-binding.html">List Controls Dynamic Binding</a></li>
+<li><a href="binding-list-control-values-to-an-expression.html">Binding List Control Values to an Expression</a></li>
 <li><a href="list-controls-binding-to-data-from-the-database.html">List Controls Binding to Data from the Database</a></li>
 </ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/16_Binding-Controls/02-List-Control/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/16-List-Control/01-index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         

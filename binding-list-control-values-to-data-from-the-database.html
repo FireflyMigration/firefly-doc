@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="naming a control">
+
+    <title>Binding List Control Values to Data from the Database</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="binding-list-control-values-to-data-from-the-database">Binding List Control Values to Data from the Database</h1>
+<p>In this article, we'll demo how to populate ListControls with data from the database.</p>
+<ul>
+<li>We'll start by giving a meaningful name to our ComboBox. By default when you drag a ComboBox to the View it is given the name &quot;comboBox1&quot;.</li>
+<li>That is the name that we'll use through out the code to refer to our ComboBox from code.</li>
+<li>We can change this name by changing the value of the Property called &quot;(Name)&quot; in the Properties Window<br />
+<img src="2017-03-05_17h24_29.png" alt="2017 03 05 17H24 29" /></li>
+<li>In our case, we'll use the name &quot;myCombo&quot;. Note that when you change the value of this Property, Visual Studio will fix all the code that was referring to it.</li>
+</ul>
+<h3 id="binding-to-listcontrol-to-values-from-the-database">Binding to ListControl to Values from the Database</h3>
+<ul>
+<li>We'll register to the <code>BindListSource</code> event, in the &quot;events&quot; tab of the Properties window<br />
+<img src="2017-03-05_17h26_32.png" alt="2017 03 05 17H26 32" /></li>
+<li>We'll declare the entity that we want to use and set it as the <code>ListSource</code>, we'll also determine the <code>ValueColumn</code> and the <code>DisplayColumn</code> which will be used for the data that is atcually displayed in the ComboBox</li>
+</ul>
+<pre data-line="3,4,5,6" class="language-csdiff line-numbers"><code>private void myCombo_BindListSource(object sender, EventArgs e)
+{
+    var p = new Models.Products();
+    myCombo.ListSource = p;
+    myCombo.ValueColumn = p.ProductID;
+    myCombo.DisplayColumn = p.ProductName;
+} </code></pre>
+<ul>
+<li>We can also filter the values in the list by using the <code>ListWhere</code> property</li>
+</ul>
+<pre data-line="7" class="language-csdiff line-numbers"><code>private void myCombo_BindListSource(object sender, EventArgs e)
+{
+    var p = new Models.Products();
+    myCombo.ListSource = p;
+    myCombo.ValueColumn = p.ProductID;
+    myCombo.DisplayColumn = p.ProductName;
+    myCombo.ListWhere.Add(p.CategoryID.IsEqualTo(1));
+} </code></pre>
+<ul>
+<li>We can Sort the list by using the <code>ListOrderBy</code> property, and assign it to an index from our Entiyu</li>
+</ul>
+<pre data-line="8" class="language-csdiff line-numbers"><code>private void myCombo_BindListSource(object sender, EventArgs e)
+{
+    var p = new Models.Products();
+    myCombo.ListSource = p;
+    myCombo.ValueColumn = p.ProductID;
+    myCombo.DisplayColumn = p.ProductName;
+    myCombo.ListWhere.Add(p.CategoryID.IsEqualTo(1));
+    myCombo.ListOrderBy = p.SortByProductName;
+} </code></pre>
+<ul>
+<li>Or we can use any custom sort we want:</li>
+</ul>
+<pre data-line="9" class="language-csdiff line-numbers"><code>private void myCombo_BindListSource(object sender, EventArgs e)
+{
+    var p = new Models.Products();
+    myCombo.ListSource = p;
+    myCombo.ValueColumn = p.ProductID;
+    myCombo.DisplayColumn = p.ProductName;
+    myCombo.ListWhere.Add(p.CategoryID.IsEqualTo(1));
+-   myCombo.ListOrderBy = p.SortByProductName;
+    myCombo.ListOrderBy.Add(p.SortByProductName);
+} </code></pre>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/iQhcbeo6Du0?list=PL1DEQjXG2xnIm0e_t85TXwY-Y9r19m-Mz" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/16-List-Controls/03-Binding-List-Control-Values-to-Data-from-the-Database.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree"</div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4806432-3', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'binding-list-control-values-to-data-from-the-database.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>

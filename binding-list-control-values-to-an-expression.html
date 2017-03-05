@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Using commands to override default behaviour</title>
+    <title>Binding List Control Values to an Expression</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,13 +27,41 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="using-commands-to-override-default-behaviour">Using commands to override default behaviour</h1>
-<pre data-line="3" class="language-csdiff line-numbers"><code>Handlers.Add(Command.Exit).Invokes += e =&gt;
+                <div class="content"><h1 id="binding-list-control-values-to-an-expression">Binding List Control Values to an Expression</h1>
+<p>In this article we'll bind the ComboBox's <code>Values</code> property to an expression that is based on another local column. We'll</p>
+<ul>
+<li>Start by adding a new local Column called &quot;Values&quot; and place a TextBox that is bound to it on the View</li>
+</ul>
+<pre data-line="3" class="language-csdiff line-numbers"><code>class DemoComboBox:UIController
 {
-    e.Handled = !Common.ShowYesNoMessageBox("Exit", "Are you sure you want to exit?", false); 
-}; </code></pre>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qOKrRlzzuGY?list=PL1DEQjXG2xnIGbO3DlvFQjv-T0OXM81r-" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/18-Handlers-and-commands/10-Using-commands-to-override-default-behaviour.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+    public TextColumn Values = new TextColumn("Values");
+} </code></pre>
+<ul>
+<li>To Bind the <code>Values</code> property to an expression, we'll use the <code>BindValues</code> event, in the events tab of the property sheet.
+<img src="2017-03-05_17h12_12.png" alt="2017 03 05 17H12 12" /></li>
+</ul>
+<pre data-line="3" class="language-csdiff line-numbers"><code>private void comboBox1_BindValues(object sender, StringBindingEventArgs e)
+{
+    e.Value = _controller.Values;
+} </code></pre>
+<ul>
+<li>Run the controller and see how when we change the value in the<code>Values</code> TextBox, the options of the ComboBox, change accordingly.</li>
+<li>We can also do the same for <code>DisplayValues</code>, by adding a local column called <code>DisplayValues</code> and then binding the <code>DisplayValues</code> property, using the <code>BindDisplayValues</code> event.</li>
+</ul>
+<h3 id="adding-the-local-column-to-the-controller">Adding the local column to the Controller</h3>
+<pre data-line="4" class="language-csdiff line-numbers"><code>class DemoComboBox:UIController
+{
+    public TextColumn Values = new TextColumn("Values");
+    public TextColumn DisplayValues = new TextColumn("Display Values");
+} </code></pre>
+<h3 id="implementing-the-binddisplayvalues-method-in-the-view">Implementing the BindDisplayValues method in the View</h3>
+<pre data-line="4" class="language-csdiff line-numbers"><code>
+private void comboBox1_BindDisplayValues(object sender, StringBindingEventArgs e)
+{
+    e.Value = _controller.DisplayValues;
+} </code></pre>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SeOM5oiKbDg?list=PL1DEQjXG2xnIm0e_t85TXwY-Y9r19m-Mz" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/16-List-Controls/02-Binding-List-Control-Values-to-an-Expression.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -78,7 +106,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'using-commands-to-override-default-behaviour.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'binding-list-control-values-to-an-expression.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

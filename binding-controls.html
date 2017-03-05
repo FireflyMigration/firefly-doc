@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="link to parent,BoundTo">
 
-    <title>Bound Control - Basic</title>
+    <title>Binding Controls</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,18 +27,38 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="bound-control-basic">Bound Control - Basic</h1>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/iQhcbeo6Du0" frameborder="0" allowfullscreen></iframe>
+                <div class="content"><h1 id="binding-controls">Binding Controls</h1>
 <ul>
-<li><a href="list-control.html">List Control</a></li>
-<li><a href="bound-controls-and-tab-controls.html">Bound Controls and Tab Controls</a></li>
-<li><a href="bound-controls-basics.html">Bound Controls Basics</a></li>
-<li><a href="listcontrols-basics.html">ListControls basics</a></li>
-<li><a href="listcontrols-basics-binding-to-data-from-the-database.html">ListControls basics binding to data from the database</a></li>
-<li><a href="listcontrols-basics-dynamic-binding.html">ListControls Basics Dynamic Binding</a></li>
-<li><a href="toolbox-and-controls-in-migrated-code.html">Toolbox and Controls in Migrated Code</a></li>
+<li>We can create a relationship between several controls and another control, so that when that control's visibility expression is changed, all the visibility of all the controls that are bound to that control will change accordingly.</li>
+<li>In this video we demo this behavior in magic, and demo how to achieve the same result in .NET</li>
+<li>Add a new UIContorller &quot;DemoBoundControls&quot;</li>
+<li>We'll add a new local <code>BoolColumn</code> called &quot;ShowGroupBox&quot;, we'll use it later as the visible expression of the GroupBox</li>
 </ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/16_Binding-Controls/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<pre data-line="3" class="language-csdiff line-numbers"><code>public class DemoBoundContorls : UIContorllerBase
+{
+    public readonly BoolColumn ShowGroupBox = new BoolColumn("Show Group Box");
+...
+} </code></pre>
+<ul>
+<li>We'll add the &quot;ShowGroupBox&quot; column to the View</li>
+<li>We'll add a GroupBox and two labels to the View, and place one Label inside the GroupBox and another outside.<br />
+<img src="2017-03-05_18h10_50.png" alt="2017 03 05 18H10 50" /></li>
+<li>To bind the labels to the GroupBox, we'll go to the &quot;Properties&quot; window and select the <code>BoundTo</code> Property, in it we can select <code>groupBox1</code> as the bound to  <code>Control</code>.<br />
+<img src="2017-03-05_18h12_20.png" alt="2017 03 05 18H12 20" /></li>
+<li>We'll bind the visibility of the <code>groupBox1</code>to the &quot;ShowGroupBox&quot; column using the <code>BindVisibile</code> event in the &quot;events&quot; tab of the &quot;Properties&quot; window</li>
+</ul>
+<pre data-line="3" class="language-csdiff line-numbers"><code>private void groupBox1_BindVisible(object sender, BooleanBindingEventArgs e)
+{
+    e.Value = _controller.ShowGroupBox;
+} </code></pre>
+<ul>
+<li>See how the visibility of the labels change together with the visibility of the GroupBox</li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/WKQrW2CBbOI?list=PL1DEQjXG2xnJAj9_s5itTMM-n7zpLKEnC" frameborder="0" allowfullscreen></iframe>
+<ul>
+<li><a href="binding-tabcontrols-and-other-list-contorls.html">Binding TabControls and other List Contorls</a></li>
+</ul>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/17_Binding-Controls/01-index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
