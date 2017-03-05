@@ -34,6 +34,7 @@
 <li>Mention the different RelationTypes</li>
 <li>Use that relation to get the CompanyName of the shipper in ShipVIA</li>
 <li>Explain the recompute, when we change the shipVIA  - the CompanyName will be recomputed</li>
+<li>Explain that you can use the <code>rel</code> snippet to create the relation using the wizard</li>
 </ul>
 <pre data-line="2,13" class="language-csdiff line-numbers"><code>public readonly Models.Orders Orders = new Models.Orders();
 public readonly Models.Shippers Shippers = new Models.Shippers();
@@ -49,6 +50,10 @@ public ShowOrders()
 
     Relations.Add(Shippers, RelationType.Find, Shippers.ShipperID.IsEqualTo(Orders.ShipVia));
 } </code></pre>
+<p>Notes:</p>
+<ul>
+<li>To duplicate the control on the grid, we drag the control while holding the <kbd>Ctrl </kbd> key</li>
+</ul>
 <hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6X7M-PbloU4?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
 <p>For more information about the different relation types see:
