@@ -31,4 +31,14 @@
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ztHuX9ncvTY?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
 
+** Exercise ** Application Structure 
+Let us go over the main parts of the Application, using the "Solution Explorer":
+- Find the startup project (Marked in Bold).
+- Find the Views folder and open the ApplicationMdi.
+- Find and open the Program.cs
+- Find and open the INI file 
+- Find and open the ApplicationPrograms.cs
+- Find and open the ApplicationEntities.cs
+- Find and open the ApplicationCore.cs
+- Go the base project end look at the Model and the Types Folders 
 
