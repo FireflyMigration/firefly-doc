@@ -10,8 +10,8 @@
 UI Controller is a class that controls the UI interaction.  
 It is the equivalent to the Online program in the original application.
 
-The video shows how to create a Folder and in it a Simple UIController and how to add the it to the menu, run the application and call the controller.  
-In the next session the UIControllel will be explained.  
+The video shows how to create a Folder and in it a Simple UIController and how to add it to the menu, run the application and call the controller.  
+In the next session the UIController will be explained.  
 
 ######  To create a new Folder in the solution explorer:
 1. Stand on the Project where you want to create the folder and RightClick
