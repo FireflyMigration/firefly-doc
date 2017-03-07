@@ -10,8 +10,8 @@
 UI Controller is a class that controls the UI interaction.  
 It is the equivalent to the Online program in the original application.
 
-The video shows how to create a Folder and in it a Simple UIController and how to add the it to the menu, run the application and call the controller.  
-In the next session the UIControllel will be explained.  
+The video shows how to create a Folder and in it a Simple UIController and how to add it to the menu, run the application and call the controller.  
+In the next session the UIController will be explained.  
 
 ######  To create a new Folder in the solution explorer:
 1. Stand on the Project where you want to create the folder and RightClick
@@ -39,7 +39,7 @@ The two classes will be explained in the next session
 2. Click on the Menu bar and give the menu a name
 3. Click outside the menu to save it
 4. DbClick on the new created entry - a new method is automatically created.
-5. Inside the  this method call the Controller by typing 
+5. Inside this method call the Controller by typing 
    new FolderName.[SubFolderName].ClassName().Run()
 ````csdiff
 private void ApplicationMdi_Load(object sender, EventArgs e)
