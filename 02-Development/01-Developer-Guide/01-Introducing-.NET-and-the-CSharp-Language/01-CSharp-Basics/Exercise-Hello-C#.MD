@@ -22,7 +22,7 @@ namespace Northwind.Exercises
     }
 }
 ```
-###Add our first Method:
+###Add your first Method:
 - Add to your new class A Run Method
 
 Your new Class supposed to look like this code:
@@ -69,4 +69,12 @@ namespace Northwind.Exercises
     }
 }
 ```
+###Menu Item
+- using the "Solution Explorer" open the "Views" folder at the startup project
+- open the "ApplicationMdi.cs"
+- Add a new menu called “Exercises”
+- Add a new entry called “Hello C#”
+- Dobble click the new entery
+- In the CodeBehind Call the new calss your just created
+
 ###Build and Run
