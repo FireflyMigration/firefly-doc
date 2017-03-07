@@ -1,4 +1,6 @@
-﻿# Splitting an application into smaller parts
+keywords: namespaces
+
+# Splitting an application into smaller parts
 
 During the conversion process, you can easily group programs / tables into projects.  
 This can be done by adding a text file named “<project>.namespaces” to the AutomaticMigraion folder on the FTP.  
