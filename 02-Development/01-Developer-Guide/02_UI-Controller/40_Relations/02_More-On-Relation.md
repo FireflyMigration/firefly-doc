@@ -2,6 +2,7 @@
 * Explain that `RelationType.Find` is the default, so no need to specify it
 * Show how to use Sort in the context of a Relation
 * Show how you can set more properties to a relation, or Query information about a relation using `Relations[Shippers]` syntax. 
+* When the relation returns more than one row - only the first row that matches the condition will be used by the controller
 
 
 ### Example
@@ -10,8 +11,8 @@
 public ShowOrders()
 {
 ...
-   Relations.Add(Shippers, RelationType.Find, Shippers.ShipperID.IsEqualTo(Orders.ShipVia));
-+  Relations[Shippers].Where.Add(Shippers.CompanyName.IsDifferentFrom(""));
+   Relations.Add(Shippers, RelationType.Find, Shippers.ShipperID.IsEqualTo(Orders.ShipVia), Shippers.SortByPK_Shippers);
++  Relations[Shippers].OrderBy.Reversed = true;
 }
 ```
 
@@ -20,3 +21,4 @@ public ShowOrders()
 
 ---
 
+ 

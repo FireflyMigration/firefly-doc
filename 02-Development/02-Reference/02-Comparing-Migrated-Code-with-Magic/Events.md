@@ -10,6 +10,7 @@ Raise(Command.Expand)
 ```
 
 | Magic internal event | Firefly Command |
+
 | :--- | :--- |
 | Align Left | AlignRichTextBoxLeft |
 | Align Right | AlignRichTextBoxRight |
@@ -129,4 +130,11 @@ Raise(Commands.ShellToOS)
 | User Action 19 | CustomCommand_19 |
 | User Action 20 | CustomCommand_20 |
 | View by Key | SelectOrderBy |
+| Wide | ExpandTextBox |
+| Window Hit | BeforeWindowClick |
+| Window Reposition | - |
+| Window Resize | WindowResize |
+| Zoom | Expand |
+
+Contributor: Harry Kleinsmit.
 
