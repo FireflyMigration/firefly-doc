@@ -11,6 +11,9 @@ Allows you to compare any two files in Visual Studio
 ### Spell Checker
 * [Download](https://marketplace.visualstudio.com/items?itemName=EWoodruff.VisualStudioSpellCheckerVS2017andLater)
 
+### Ctrl Click Go To Definition
+* [Download](https://marketplace.visualstudio.com/items?itemName=VisualStudioProductTeam.CtrlClickGoToDefinition)
+
 ## Markdown Editor
 This is how we write our documentation
 * [Download](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.MarkdownEditor)
