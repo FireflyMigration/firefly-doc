@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>CSharp Basics</title>
+    <title>Exercise Adding Using And Snippet</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,19 +27,50 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="csharp-basics">CSharp Basics</h1>
+                <div class="content"><h1 id="exercise-adding-using-and-snippet">Exercise Adding Using And Snippet</h1>
+<p>Let us add to the previous Class:</p>
 <ul>
-<li><a href="create-a-simple-class.html">Create a simple class</a></li>
-<li><a href="explaining-the-hello-world-example.html">Explaining The Hello world example</a></li>
-<li><a href="method-arguments-and-overloading.html">Method Arguments and Overloading</a></li>
-<li><a href="exercise-hello-csharp.html">Exercise Hello CSharp</a></li>
-<li><a href="using-directives.html">Using directives</a></li>
-<li><a href="snippets.html">Snippets</a></li>
-<li><a href="comments.html">Comments</a></li>
-<li><a href="hello-csharp-exercise.html">Hello csharp exercise</a></li>
-<li><a href="exercise-adding-using-and-snippet.html">Exercise Adding Using And Snippet</a></li>
+<li>In the beginning of the file, add using directive to System.Windows.Forms namespace</li>
+<li>Add another message box, using shorter syntax, to show the following message: “Learning C# is fun!”</li>
+<li>Build and run.</li>
 </ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/01-Introducing-.NET-and-the-CSharp-Language/01-CSharp-Basics/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<h3 id="using-snippet">Using Snippet</h3>
+<ul>
+<li>Using the “mbox” snippet, add another message box to show the following message: “Snippets are cool!”</li>
+<li>Build and run.</li>
+</ul>
+<h3 id="comments">Comments</h3>
+<ul>
+<li>Add comments to describe your code.</li>
+<li>Build and run.</li>
+</ul>
+<p>Your new Class supposed to look like this code:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises
+{
+    class MyFirstClass
+    {
+        public void Run()
+        {
+            /*This is my first Class
+             * this class will show 3 message box */
+            System.Windows.Forms.MessageBox.Show("Hello C#");
+
+            // Using using
+            MessageBox.Show("Learning C# is fun!");
+
+            // Using snippet 
+            MessageBox.Show("Snippets are cool!");
+        }
+    }
+} </code></pre>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/01-Developer-Guide/01-Introducing-.NET-and-the-CSharp-Language/01-CSharp-Basics/Exercise-Adding-Using-And-Snippet.MD" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -84,7 +115,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'csharp-basics.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'exercise-adding-using-and-snippet.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
