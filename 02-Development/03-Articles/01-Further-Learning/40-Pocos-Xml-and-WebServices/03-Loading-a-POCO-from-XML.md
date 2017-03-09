@@ -1,5 +1,5 @@
 Keywords: read xml, reading xml
-`ReadXml` Method
+* Create the `ReadXml` Method
 ```csdiff
 public OrderPoco ReadXml(string fileName)
 {
@@ -10,10 +10,12 @@ public OrderPoco ReadXml(string fileName)
 }
 ```
 
-Using the `ReadXml` Method
+* Using the `ReadXml` Method
 ```csdiff
 void DemoReadXml()
 {
 +   var o = ReadXml(@"c:\temp\orders.xml");
 }
 ```
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/a70zevpIu1g?list=PL1DEQjXG2xnIpyKeZmM66PL2bbuUyhyNE" frameborder="0" allowfullscreen></iframe>

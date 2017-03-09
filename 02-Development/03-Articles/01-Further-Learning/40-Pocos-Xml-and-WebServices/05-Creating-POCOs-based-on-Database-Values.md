@@ -1,4 +1,4 @@
-Getting the data from the Orders table
+* Getting the data from the Orders table
 
 ```csdiff
 private void DemoWriteXml()
@@ -16,7 +16,7 @@ private void DemoWriteXml()
     SaveXml(o, @"c:\temp\orders.xml");
 }
 ```
-Adding the data from Order_Details to the OrderPoco
+* Adding the data from the Order_Details table to the OrderPoco
 ```csdiff
 private void DemoWriteXml()
 {
@@ -42,3 +42,5 @@ private void DemoWriteXml()
     SaveXml(o, @"c:\temp\orders.xml");
 }
 ```
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RwzvdgH9KCA?list=PL1DEQjXG2xnIpyKeZmM66PL2bbuUyhyNE" frameborder="0" allowfullscreen></iframe>

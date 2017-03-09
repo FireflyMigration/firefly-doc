@@ -1,6 +1,6 @@
 Keywords: write xml, writing xml
 
-Add using statements
+* Add using statements
 ```csdiff
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace Northwind.Training.PocosAndXml
     { 
 ...    
 ```
-Create `SaveXml` Method
+* Create the `SaveXml` Method
 ```csdiff
 public void SaveXml(OrderPoco o, string fileName)
 {
@@ -27,7 +27,7 @@ public void SaveXml(OrderPoco o, string fileName)
 }
 ```
 
-Using the `SaveXml` Method
+* Using the `SaveXml` Method
 ```csdiff
 public void Run()
 {
@@ -40,3 +40,5 @@ public void Run()
 +   SaveXml(o, @"c:\temp\orders.xml");
 }
 ```
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2UeIQuqwzOU?list=PL1DEQjXG2xnIpyKeZmM66PL2bbuUyhyNE" frameborder="0" allowfullscreen></iframe>

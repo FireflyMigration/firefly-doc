@@ -22,7 +22,7 @@ namespace Northwind.Training.PocosAndXml
 
 ```
 
-Adding the Order Details Info from code
+* Adding the Order Details data from code
 ```csdiff
  private void DemoWriteXml()
 {
@@ -46,3 +46,6 @@ Adding the Order Details Info from code
     SaveXml(o, @"c:\temp\orders.xml");
 }
 ```
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/l3Z6mweJRNk?list=PL1DEQjXG2xnIpyKeZmM66PL2bbuUyhyNE" frameborder="0" allowfullscreen></iframe>
