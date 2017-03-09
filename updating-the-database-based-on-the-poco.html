@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Further Learning</title>
+    <title>Updating the Database based on the POCO</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,15 +27,45 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="further-learning">Further Learning</h1>
+                <div class="content"><h1 id="updating-the-database-based-on-the-poco">Updating the Database based on the POCO</h1>
 <ul>
-<li><a href="nulls-explained.html">Nulls Explained</a></li>
-<li><a href="migrated-datatypes-demos.html">Migrated DataTypes Demos</a></li>
-<li><a href="lambda-expressions-generics-and-bindvalue.html">Lambda Expressions Generics and BindValue</a></li>
-<li><a href="in-and-out-parameters-and-migrated-style-parameters.html">In and Out Parameters and Migrated Style Parameters</a></li>
-<li><a href="pocos-xml-and-webservices.html">Pocos Xml and WebServices</a></li>
+<li>Updating the Order</li>
 </ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/01-Further-Learning/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<pre data-line="4,5,6,7,8" class="language-csdiff line-numbers"><code>void DemoReadXml()
+{
+    var o = ReadXml(@"c:\temp\orders.xml");
+     var Orders = new Models.Orders();
+     Orders.InsertIfNotFound(Orders.OrderID.BindEqualTo(o.OrderID), ()=&gt; {
+         Orders.CustomerID.Value = o.CustomerID;
+         Orders.ShipVia.Value = o.Shipper;
+     }); 
+} </code></pre>
+<h3 id="updating-the-order-details">Updating the Order Details</h3>
+<ul>
+<li>We start by deleting the existing order details, as we expect the object we receive to include all products in the order</li>
+</ul>
+<pre data-line="9,10,11,12,13,14,15,16,17,18,19" class="language-csdiff line-numbers"><code>void DemoReadXml()
+{
+    var o = ReadXml(@"c:\temp\orders.xml");
+    var Orders = new Models.Orders();
+    Orders.InsertIfNotFound(Orders.OrderID.BindEqualTo(o.OrderID),()=&gt; {
+        Orders.CustomerID.Value = o.CustomerID;
+        Orders.ShipVia.Value = o.Shipper;
+    }); 
+    var Order_Details = new Models.Order_Details();
+    Order_Details.Delete(Order_Details.OrderID.IsEqualTo(o.OrderID));
+    foreach (var item in o.Details)
+    {
+        Order_Details.Insert(() =&gt; {
+            Order_Details.OrderID.Value = o.OrderID;
+            Order_Details.ProductID.Value = item.ProductID;
+            Order_Details.Quantity.Value = item.Quantity;
+            Order_Details.UnitPrice.Value = item.UnitPrice;
+        });
+    }
+} </code></pre>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oeCSxLEqmO0?list=PL1DEQjXG2xnIpyKeZmM66PL2bbuUyhyNE" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/01-Further-Learning/40-Pocos-Xml-and-WebServices/07-Updating-the-Database-based-on-the-POCO.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -80,7 +110,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'further-learning.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'updating-the-database-based-on-the-poco.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

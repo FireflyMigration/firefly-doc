@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Further Learning</title>
+    <title>XmlHelper Reusable Class</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,15 +27,49 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="further-learning">Further Learning</h1>
-<ul>
-<li><a href="nulls-explained.html">Nulls Explained</a></li>
-<li><a href="migrated-datatypes-demos.html">Migrated DataTypes Demos</a></li>
-<li><a href="lambda-expressions-generics-and-bindvalue.html">Lambda Expressions Generics and BindValue</a></li>
-<li><a href="in-and-out-parameters-and-migrated-style-parameters.html">In and Out Parameters and Migrated Style Parameters</a></li>
-<li><a href="pocos-xml-and-webservices.html">Pocos Xml and WebServices</a></li>
-</ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/01-Further-Learning/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                <div class="content"><h1 id="xmlhelper-reusable-class">XmlHelper Reusable Class</h1>
+<pre data-line="" class="language-csdiff line-numbers"><code>using System.IO;
+using System.Xml.Serialization;
+
+namespace Northwind.Shared
+{
+    public class XMLHelper
+    {
+        public static ObjectType ReadXml&lt;ObjectType&gt;(string fileName)
+        {
+            using (var sw = new StreamReader(ENV.PathDecoder.DecodePath(fileName)))
+            {
+                return (ObjectType)new XmlSerializer(typeof(ObjectType)).Deserialize(sw);
+            }
+        }
+
+        public static void SaveXml&lt;ObjectType&gt;(ObjectType o, string fileName)
+        {
+            using (var sw = new StreamWriter(ENV.PathDecoder.DecodePath(fileName)))
+            {
+                new XmlSerializer(typeof(ObjectType)).Serialize(sw, o);
+            }
+        }
+        public static ObjectType ReadXmlString&lt;ObjectType&gt;(string xmlString)
+        {
+            using (var sw = new StringReader(xmlString))
+            {
+                return (ObjectType)new XmlSerializer(typeof(ObjectType)).Deserialize(sw);
+            }
+        }
+
+        public static string SaveXmlString&lt;ObjectType&gt;(ObjectType o)
+        {
+            using (var sw = new StringWriter())
+            {
+                new XmlSerializer(typeof(ObjectType)).Serialize(sw, o);
+                return sw.ToString();
+            }
+        }
+    }
+} </code></pre>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rv8Zi-Lf6-I?list=PL1DEQjXG2xnIpyKeZmM66PL2bbuUyhyNE" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/01-Further-Learning/40-Pocos-Xml-and-WebServices/10-XmlHelper-Reusable-Class.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -80,7 +114,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'further-learning.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'xmlhelper-reusable-class.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

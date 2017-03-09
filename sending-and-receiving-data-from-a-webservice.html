@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Further Learning</title>
+    <title>Sending and receiving data from a WebService</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,15 +27,50 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="further-learning">Further Learning</h1>
+                <div class="content"><h1 id="sending-and-receiving-data-from-a-webservice">Sending and receiving data from a WebService</h1>
 <ul>
-<li><a href="nulls-explained.html">Nulls Explained</a></li>
-<li><a href="migrated-datatypes-demos.html">Migrated DataTypes Demos</a></li>
-<li><a href="lambda-expressions-generics-and-bindvalue.html">Lambda Expressions Generics and BindValue</a></li>
-<li><a href="in-and-out-parameters-and-migrated-style-parameters.html">In and Out Parameters and Migrated Style Parameters</a></li>
-<li><a href="pocos-xml-and-webservices.html">Pocos Xml and WebServices</a></li>
+<li>Create a <code>PrintOrderToDebug</code> method to write the order to the Output Window</li>
 </ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/01-Further-Learning/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<pre data-line="" class="language-csdiff line-numbers"><code>private static void PrintOrderToDebug(OrderService.OrderPoco o)
+{
+    Debug.WriteLine(o.OrderID + " Customer: " + o.CustomerID);
+    foreach (var item in o.Details)
+    {
+        Debug.WriteLine("Product:" + item.ProductID + " Quantity:" + item.Quantity);
+    }
+} </code></pre>
+<ul>
+<li>Get the order from the WebService and print it</li>
+</ul>
+<pre data-line="5" class="language-csdiff line-numbers"><code>private static void DemoReadingAndWritingToWebServer()
+{
+    var c = new OrderService.OrderServiceClient();
+    var o = c.GetOrder(10249);
+    PrintOrderToDebug(o);
+} </code></pre>
+<h3 id="update-the-order-object-and-send-it-back-to-the-web-service">Update the order object and send it back to the web service</h3>
+<ul>
+<li>On lines 6-9 we update the Order we just got from the WebService</li>
+<li>On line 10, we send the updated Order to the WebService</li>
+<li>On line 12, we request that Order from the web service</li>
+<li>On line 13, we print that order and see that the changes were saved</li>
+</ul>
+<pre data-line="6,7,8,9,10,11,12,13" class="language-csdiff line-numbers"><code>private static void DemoReadingAndWritingToWebServer()
+{
+    var c = new OrderService.OrderServiceClient();
+    var o = c.GetOrder(10249);
+    PrintOrderToDebug(o);
+    foreach (var item in o.Details)
+    {
+        item.Quantity++;
+    }
+    c.InsertOrUpdateOrder(o);
+
+    var y = c.GetOrder(10249);
+    PrintOrderToDebug(y);
+} </code></pre>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4u0-cBMjyF8?list=PL1DEQjXG2xnIpyKeZmM66PL2bbuUyhyNE" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/01-Further-Learning/40-Pocos-Xml-and-WebServices/11-Consuming-a-WebService/12-Sending-and-receiving-data-from-a-WebService.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -80,7 +115,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'further-learning.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'sending-and-receiving-data-from-a-webservice.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
