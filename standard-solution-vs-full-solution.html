@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Standard Solution vs Full Solution</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="standard-solution-vs-full-solution">Standard Solution vs Full Solution</h1>
+<p>In the migrated code folder you'll usually find two Visual Studio solution Files</p>
+<ul>
+<li>Standard (in our case, Northwind.sln)</li>
+<li>Full (in our case, Northwind Full.sln)</li>
+</ul>
+<h3 id="the-standard-solution">The Standard Solution</h3>
+<p>Contains only the startup project (In our case, Northwind) and you can add to it any project that you would like to work on.</p>
+<h3 id="the-full-solution">The Full Solution</h3>
+<p>Contains all the projects that were migrated, in one big solution.</p>
+<p>The drawback of using the Full solution is that it requires a lot of resources from Visual Studio.</p>
+<p>For example, the &quot;CRS&quot; Solution, takes 41 seconds to load, and requires 229mb when it's fully loaded.</p>
+<p>The &quot;CRS Full&quot; Solution, that contains all the source code of 57 projects,  will appear in under a minute, but can take up to 7:37 Minutes to load (including all the background threads), and requires 1,441 mb when it's fully loaded.</p>
+<p>You might think, <em>&quot;well that's ok, I have a 16gb ram machine&quot;</em>, but unfortunately, Visual Studio is a 32bit application, which means that it can only use about 2gb of ram - so when you use the &quot;CRS Full&quot; Solution, you start by pushing Visual Studio to it's limits, and that's only your starting point.</p>
+<p>Every operation that you perform there after, will take longer - since visual studio is already using most of it's allocated resources.</p>
+<h2 id="our-recommendation">Our Recommendation</h2>
+<p>I'm guessing that you can see where this is going, we recommend that you'll use the &quot;Standard&quot; Solution for all your day to day development.
+Have as many solution files as you like, each with only the few relevant projects to that specific module/code area.<br />
+You'll end up developing faster and enjoying visual studio more.</p>
+<p>Only use the &quot;Full&quot; Solution when you need to do something that touches all your code, such as a wide &quot;Find Reference&quot;, or a refactoring that changes the names of something that is used throughout the code.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-MuUxigaxFU" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/22-Working-and-Navigating-in-Large-Migrated-Solutions/01-Standard-Solution-vs-Full-Solution.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree"</div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4806432-3', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'standard-solution-vs-full-solution.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>
