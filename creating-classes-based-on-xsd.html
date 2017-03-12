@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>JSON</title>
+    <title>Creating Classes based on XSD</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,15 +27,32 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="json">JSON</h1>
-<p>JSON is a lightweight data-interchange format.</p>
-<p>It started from an easy way to communicate object to JavaScript, and grew into a common way to transfer data between servers and clients.</p>
+                <div class="content"><h1 id="creating-classes-based-on-xsd">Creating Classes based on XSD</h1>
+<p>In many cases we have an XSD file that is provided to us by some 3rd party that dictates the structure of the xml file we need to read or create.</p>
+<p>We want to be able to word with that xsd file from code, using classes as we've done so far.</p>
+<p>To do that, we'll need to use the <code>xsd.exe</code> tool.</p>
 <ul>
-<li><a href="saving-an-object-to-json.html">Saving an Object to JSON</a></li>
-<li><a href="loading-an-object-from-json.html">Loading an Object from JSON</a></li>
-<li><a href="creating-classes-based-on-json-data.html">Creating Classes based on JSON data</a></li>
+<li><p>Open the Windows Search bar, and search for &quot;Developer&quot;<br />
+<img src="2017-03-12_14h19_39.png" alt="2017 03 12 14H19 39" /></p>
+</li>
+<li><p>Choose Developer Command Prompt for VS2017 (or VS2015)</p>
+</li>
+<li><p>In the command line window, change the directory to the directory in which you have the Xsd file.</p>
+</li>
+<li><p>Run the following command:</p>
+</li>
 </ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/01-Further-Learning/40-Pocos-Xml-and-WebServices/14-JSON/00-index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<pre><code>xsd.exe /c {xsdfilename.xsd} /n:{namespace for the classes}
+</code></pre>
+<p>In our example it is:</p>
+<pre><code>xsd.exe /c ShipOrder.xsd /n:Northwind.Training.DemoXsd
+</code></pre>
+<ul>
+<li>This will create a file called ShipOrder.cs, drag and drop it into your folder in Visual Studio and use it just like any other POCO.</li>
+</ul>
+<pre data-line="" class="language-csdiff line-numbers"><code>var x = Shared.XMLHelper.ReadXml&lt;shiporder&gt;(@"c:\temp\shiporder\shiporder.xml"); </code></pre>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BXL3cEzkFmU?list=PL1DEQjXG2xnIpyKeZmM66PL2bbuUyhyNE" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/01-Further-Learning/40-Pocos-Xml-and-WebServices/13-Creating-Classes-based-on-XSD/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -80,7 +97,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'json.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'creating-classes-based-on-xsd.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
