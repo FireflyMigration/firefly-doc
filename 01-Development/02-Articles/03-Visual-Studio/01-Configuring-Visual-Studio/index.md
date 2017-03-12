@@ -72,7 +72,11 @@ Allows you to edit your code, while the application is running
 2. Uncheck the "Enable IntelliTrace" checkbox
 ![2017 03 08 10H33 43](2017-03-08_10h33_43.png)
 **Improves performance** when running in Debug
-### C.4 Disable "full solution analysis"
+### C.4 Check "Collapse #regions when collapsing to definition"
+1. Go to the "Text Editor\C#\Advanced" Tab
+2. Check the "Collapse #regions when collapsing to definition" check box, under "Outlining"  
+![2017 03 12 18H01 23](2017-03-12_18h01_23.png)  
+### C.5 Disable "full solution analysis"
 1. Go to the "Text Editor\C#\Advanced" Tab
 2. Uncheck the "Enable full solution analysis" check box, under "Editor Help"  
 ![2017 03 08 10H38 50](2017-03-08_10h38_50.png)
