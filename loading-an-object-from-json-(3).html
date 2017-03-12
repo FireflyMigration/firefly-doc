@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Sending a new Poco to the WebService</title>
+    <title>Loading an Object from JSON (3)</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,47 +27,49 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="sending-a-new-poco-to-the-webservice">Sending a new Poco to the WebService</h1>
-<ul>
-<li>On line 4-8 we create a new Order, using the OrderPoco that was automatically generated based on the WebService we use.</li>
-<li>On line 10, we create a List of type OrderDetailsPoco, to which we'll add the individual <code>OrderDetailsPoco</code> objects</li>
-<li>On line 11-16, we create the First <code>OrderDetailsPoco</code> object and add it to the <code>items</code> list.</li>
-<li>On line 17-22, we create the second <code>ORderDetailsPoco</code> and add it to the <code>items</code> list</li>
-<li>On line 23, we convert the list to an array using the <code>ToArray</code> method, and set the <code>Details</code> property of the <code>OrderPoco</code> object with that array.</li>
-<li>On line 24, we send the OrderPoco to the WebService</li>
-<li>On line 25, we request the Order back from the WebService</li>
-<li>On line 26, we print the Order to verify that it was saved correctly</li>
-</ul>
-<pre data-line="4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26" class="language-csdiff line-numbers"><code>public void Run()
+                <div class="content"><h1 id="loading-an-object-from-json-3">Loading an Object from JSON (3)</h1>
+<pre data-line="" class="language-csdiff line-numbers"><code>using System.IO;
+using System.Xml.Serialization;
+
+namespace Northwind.Shared
 {
-    var c = new OrderService.OrderServiceClient();
-    var o = new OrderService.OrderPoco
+    public class XMLHelper
     {
-        OrderID = 20000,
-        CustomerID = "NOAM"
-    };
+        public static ObjectType ReadXml&lt;ObjectType&gt;(string fileName)
+        {
+            using (var sw = new StreamReader(ENV.PathDecoder.DecodePath(fileName)))
+            {
+                return (ObjectType)new XmlSerializer(typeof(ObjectType)).Deserialize(sw);
+            }
+        }
 
-    var items = new List&lt;OrderService.OrderDetailsPoco&gt;();
-    items.Add(new OrderService.OrderDetailsPoco
-    {
-        ProductID = 1,
-        Quantity = 1,
-        UnitPrice = 10
-    });
-    items.Add(new OrderService.OrderDetailsPoco
-    {
-        ProductID = 2,
-        Quantity = 4,
-        UnitPrice = 15
-    });
-    o.Details = items.ToArray();
-    c.InsertOrUpdateOrder(o);
-    var y = c.GetOrder(20000);
-    PrintOrderToDebug(y);
+        public static void SaveXml&lt;ObjectType&gt;(ObjectType o, string fileName)
+        {
+            using (var sw = new StreamWriter(ENV.PathDecoder.DecodePath(fileName)))
+            {
+                new XmlSerializer(typeof(ObjectType)).Serialize(sw, o);
+            }
+        }
+        public static ObjectType ReadXmlString&lt;ObjectType&gt;(string xmlString)
+        {
+            using (var sw = new StringReader(xmlString))
+            {
+                return (ObjectType)new XmlSerializer(typeof(ObjectType)).Deserialize(sw);
+            }
+        }
 
+        public static string SaveXmlString&lt;ObjectType&gt;(ObjectType o)
+        {
+            using (var sw = new StringWriter())
+            {
+                new XmlSerializer(typeof(ObjectType)).Serialize(sw, o);
+                return sw.ToString();
+            }
+        }
+    }
 } </code></pre>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/nAjJfCctpXU?list=PL1DEQjXG2xnIpyKeZmM66PL2bbuUyhyNE" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/01-Further-Learning/40-Pocos-Xml-and-WebServices/12-Consuming-a-WebService/13-Sending-a-new-Poco-to-the-WebService.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rv8Zi-Lf6-I?list=PL1DEQjXG2xnIpyKeZmM66PL2bbuUyhyNE" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/01-Further-Learning/40-Pocos-Xml-and-WebServices/13-JSON/02-Loading-an-Object-from-JSON (3).md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -112,7 +114,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'sending-a-new-poco-to-the-webservice.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'loading-an-object-from-json-(3).html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

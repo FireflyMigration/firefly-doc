@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Sending a new Poco to the WebService</title>
+    <title>Saving an Object to JSON</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,47 +27,45 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="sending-a-new-poco-to-the-webservice">Sending a new Poco to the WebService</h1>
+                <div class="content"><h1 id="saving-an-object-to-json">Saving an Object to JSON</h1>
+<p>We'll use the &quot;Newtonsoft.Json&quot; library to read and write json data.</p>
+<p>We'll download it and add it to our project using NuGet. (NuGet is an easy way to download, and reference a 3rd part component - it downloads it and takes care of all the basic configuration)</p>
 <ul>
-<li>On line 4-8 we create a new Order, using the OrderPoco that was automatically generated based on the WebService we use.</li>
-<li>On line 10, we create a List of type OrderDetailsPoco, to which we'll add the individual <code>OrderDetailsPoco</code> objects</li>
-<li>On line 11-16, we create the First <code>OrderDetailsPoco</code> object and add it to the <code>items</code> list.</li>
-<li>On line 17-22, we create the second <code>ORderDetailsPoco</code> and add it to the <code>items</code> list</li>
-<li>On line 23, we convert the list to an array using the <code>ToArray</code> method, and set the <code>Details</code> property of the <code>OrderPoco</code> object with that array.</li>
-<li>On line 24, we send the OrderPoco to the WebService</li>
-<li>On line 25, we request the Order back from the WebService</li>
-<li>On line 26, we print the Order to verify that it was saved correctly</li>
+<li><p>Add a &quot;NuGen Package&quot; by right clicking on &quot;Northwind&quot; and choose &quot;Manage NuGet Packages...&quot;</p>
+</li>
+<li><p><img src="2017-03-12_09h38_09.png" alt="2017 03 12 09H38 09" /></p>
+</li>
+<li><p>We'll search for &quot;Newtonsoft.Json&quot; and Install it<br />
+<img src="2017-03-12_09h40_22.png" alt="2017 03 12 09H40 22" /></p>
+</li>
+<li><p>To use the previews Demo code we used for XML, we'll change the  <code>GetOrder</code> and <code>UpdateOrder</code> methods in the <code>Demo</code> class to <code>public static</code></p>
+</li>
 </ul>
-<pre data-line="4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26" class="language-csdiff line-numbers"><code>public void Run()
+<pre data-line="3,7" class="language-csdiff line-numbers"><code>class Demo
 {
-    var c = new OrderService.OrderServiceClient();
-    var o = new OrderService.OrderPoco
+    public static OrderPoco GetOrderPoco(int orderId)
     {
-        OrderID = 20000,
-        CustomerID = "NOAM"
-    };
-
-    var items = new List&lt;OrderService.OrderDetailsPoco&gt;();
-    items.Add(new OrderService.OrderDetailsPoco
+        ...
+    }
+    public static void UpdateOrder(OrderPoco o)
     {
-        ProductID = 1,
-        Quantity = 1,
-        UnitPrice = 10
-    });
-    items.Add(new OrderService.OrderDetailsPoco
-    {
-        ProductID = 2,
-        Quantity = 4,
-        UnitPrice = 15
-    });
-    o.Details = items.ToArray();
-    c.InsertOrUpdateOrder(o);
-    var y = c.GetOrder(20000);
-    PrintOrderToDebug(y);
-
+        ...
+    }
 } </code></pre>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/nAjJfCctpXU?list=PL1DEQjXG2xnIpyKeZmM66PL2bbuUyhyNE" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/01-Further-Learning/40-Pocos-Xml-and-WebServices/12-Consuming-a-WebService/13-Sending-a-new-Poco-to-the-WebService.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<ul>
+<li>Add <code>using Newtonsoft.Json;</code></li>
+<li>Save Json data to string</li>
+</ul>
+<pre data-line="2" class="language-csdiff line-numbers"><code>var o = Demo.GetOrderPoco(10249);
+var s = JsonConvert.SerializeObject(o); </code></pre>
+<ul>
+<li>Save the string to a file</li>
+</ul>
+<pre data-line="3" class="language-csdiff line-numbers"><code>var o = Demo.GetOrderPoco(10249);
+var s = JsonConvert.SerializeObject(o);
+System.IO.File.WriteAllText(@"c:\temp\order.json", s); </code></pre>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/D9voLUegY74?list=PL1DEQjXG2xnIpyKeZmM66PL2bbuUyhyNE" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Development/03-Articles/01-Further-Learning/40-Pocos-Xml-and-WebServices/13-JSON/01-Saving-an-Object-to-JSON.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -112,7 +110,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'sending-a-new-poco-to-the-webservice.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'saving-an-object-to-json.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

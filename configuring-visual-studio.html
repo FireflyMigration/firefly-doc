@@ -28,18 +28,19 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="configuring-visual-studio">Configuring Visual Studio</h1>
-<p>In this document we'll detail how we configure Visual Studio 2017 to make the most out of it while you work in large migrated applications.</p>
-<p>Although this document was written with Visual Studio 2017 in mind, most of it is also relevant to previous version of Visual Studio</p>
+<p>In this document we'll detail how we configure Visual Studio 2017 to make the most out of it while working with large migrated applications.</p>
+<p>Although this document was written with Visual Studio 2017 in mind, most of it is also relevant to previous versions of Visual Studio.</p>
+<p>These are the extensions and settings we use - since they are our preferences none of them are mandatory but they are highly recommended.</p>
 <h2 id="a-visual-studio-extentions">A - Visual Studio Extentions</h2>
 <h3 id="a.1-class-outline">A.1 - Class Outline</h3>
-<p>A tool that shows you a window with all the classes and inner classes in a file.</p>
-<p>When you right click on any file, you'll see the different important methods of it, such as OnStart etc... and will also be able to go directly to the controller's view</p>
+<p>A tool that shows you a window with all the classes and inner classes in a C# code file.</p>
+<p>When you right click on any node, you'll see the different important methods of it, such as OnStart etc... and will also be able to go directly to the controller's view</p>
 <ul>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=Stickle.ClassOutline">The official 2015 version</a></li>
 <li><a href="https://github.com/FireflyMigration/ClassOutline/releases">The Beta 2017 version</a></li>
 </ul>
 <h3 id="a.2-vs-drop-assist">A.2 - VS Drop Assist</h3>
-<p>Allows for drag and drops of classes and fields into the code.</p>
+<p>Allows for drag and drop of various objects from the solution into the code.</p>
 <ul>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=Stickle.VSDropAssist">The official 2015 version</a></li>
 <li><a href="https://github.com/FireflyMigration/VSDropAssist/issues/34">The Beta 2017 version can be found in this thread for now</a></li>
@@ -52,7 +53,7 @@
 <li>Shortcuts</li>
 </ul>
 <h3 id="b.1-placing-the-templates-folder">B.1 - Placing the Templates folder</h3>
-<p>In Visual Studio,</p>
+<p>In Visual Studio:</p>
 <ol>
 <li>Open the &quot;Tools\Options&quot; menu<br />
 <img src="2017-03-08_09h59_27.png" alt="2017 03 08 09H59 27" /></li>
@@ -74,7 +75,7 @@
 <li>Select the &quot;Shortcuts&quot; folder that you've downloaded
 <img src="2017-03-08_10h05_26.png" alt="2017 03 08 10H05 26" /></li>
 </ol>
-<h2 id="c-other-important-settings-that-improve-your-performance-and-experiance-in-visual-studio">C - Other important settings that improve your performance and experiance in Visual Studio</h2>
+<h2 id="c-other-important-settings-that-improve-the-performance-and-experience-in-visual-studio">C - Other important settings that improve the performance and experience in Visual Studio</h2>
 <p>The following settings are in the  &quot;Tools\Options&quot; menu
 <img src="2017-03-08_09h59_27.png" alt="2017 03 08 09H59 27" /></p>
 <h3 id="c.1-set-automatically-populate-toolbox-to-false">C.1 set &quot;Automatically Populate Toolbox&quot; to False</h3>
@@ -84,7 +85,7 @@
 <h3 id="c.2-debugging-tab">C.2 - &quot;Debugging&quot; Tab</h3>
 <h4 id="c.2.1-uncheck-warn-if-no-user-code-on-launch-managed-only">C.2.1 - Uncheck &quot;Warn if no user code on launch (Managed only)&quot;</h4>
 <p><img src="2017-02-21_07h32_11.png" alt="2017 02 21 07H32 11" />
-Removes the &quot;Symbols for the module 'ENV.dll' were not loaded&quot; message you get every time you run the code
+Eliminates the &quot;Symbols for the module 'ENV.dll' were not loaded&quot; message you get every time you run the code
 <img src="ENV_message.png" alt="ENV Message" /></p>
 <h4 id="c.2.2-uncheck-enable-edit-and-continue">C.2.2 - Uncheck &quot;Enable Edit and Continue&quot;</h4>
 <p><img src="2017-02-21_06h55_05.png" alt="2017 02 21 06H55 05" />
@@ -94,39 +95,30 @@ Allows you to edit your code, while the application is running</p>
 <strong>Improves performance</strong> when running in Debug</p>
 <h3 id="c.3-disable-intellitrace">C.3 Disable IntelliTrace</h3>
 <ol>
-<li>In the &quot;IntelliTrace&quot; Tab</li>
+<li>Go to the &quot;IntelliTrace&quot; Tab</li>
 <li>Uncheck the &quot;Enable IntelliTrace&quot; checkbox
 <img src="2017-03-08_10h33_43.png" alt="2017 03 08 10H33 43" />
 <strong>Improves performance</strong> when running in Debug</li>
 </ol>
 <h3 id="c.4-disable-full-solution-analysis">C.4 Disable &quot;full solution analysis&quot;</h3>
 <ol>
-<li>In the &quot;Text Editor\C#\Advanced&quot; Tab</li>
+<li>Go to the &quot;Text Editor\C#\Advanced&quot; Tab</li>
 <li>Uncheck the &quot;Enable full solution analysis&quot; check box, under &quot;Editor Help&quot;<br />
 <img src="2017-03-08_10h38_50.png" alt="2017 03 08 10H38 50" />
 <strong>Improves performance</strong></li>
 </ol>
-<h3 id="c.5-track-active-item-in-solution-explorer">C.5 - Track Active Item in Solution Explorer</h3>
-<p>This instructs Visual Studio to highlight in the &quot;Solution Explorer&quot; the current code file you are in, so that when you move between different code files, you'll see their place in the &quot;Solution Explorer&quot;</p>
-<ul>
-<li>In the &quot;Project and Solutions&quot; tab, check the &quot;Track Active item in Solution Explorer&quot;<br />
-<img src="2017-03-08_10h23_28.png" alt="2017 03 08 10H23 28" /></li>
-</ul>
 <h3 id="d-configure-the-error-list.window">D - Configure the &quot;Error List...&quot; Window</h3>
 <ol>
-<li>Goto &quot;View\Error List&quot; menu<br />
+<li>Go to &quot;View\Error List&quot; menu<br />
 <img src="2017-03-08_10h43_55.png" alt="2017 03 08 10H43 55" /></li>
-<li>Uncheck the &quot;Warnings Tab&quot; (Our preference, not mandatory)</li>
-<li>Uncheck the &quot;Messages&quot; tab (Our preference, not mandatory)</li>
-<li>Set the Right Combo to &quot;Build Only&quot;<br />
+<li>Uncheck the &quot;Warnings&quot; tab by clicking on it (Our preference, not mandatory)</li>
+<li>Uncheck the &quot;Messages&quot; tab by clicking on it (Our preference, not mandatory)</li>
+<li>Set the combo to &quot;Build Only&quot;<br />
 <img src="2017-03-08_10h45_18.png" alt="2017 03 08 10H45 18" /></li>
 </ol>
 <h3 id="e-disable-preview-selected-item">E - Disable &quot;Preview Selected Item&quot;</h3>
-<ol>
-<li>In the &quot;Solution Explorer&quot; window</li>
-<li>Make sure that the &quot;Preview Selected Item&quot; Icon is not checked (highlighted)<br />
-<img src="2017-03-08_10h47_38.png" alt="2017 03 08 10H47 38" /></li>
-</ol>
+<p>In the &quot;Solution Explorer&quot; window make sure that the &quot;Preview Selected Item&quot; Icon is not checked (highlighted)<br />
+<img src="2017-03-08_10h47_38.png" alt="2017 03 08 10H47 38" /></p>
 <h3 id="f-add-the-parameter-information-toolbar-item">F - Add the parameter information toolbar item</h3>
 <ol>
 <li>On the toolbar</li>
