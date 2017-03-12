@@ -77,11 +77,6 @@ Allows you to edit your code, while the application is running
 2. Uncheck the "Enable full solution analysis" check box, under "Editor Help"  
 ![2017 03 08 10H38 50](2017-03-08_10h38_50.png)
 **Improves performance**
-### C.5 - Track Active Item in Solution Explorer 
-This instructs Visual Studio to highlight in the "Solution Explorer" the current code file you are in, so that when you move between different code files, you'll see their place in the "Solution Explorer"
-* In the "Project and Solutions" tab, check the "Track Active item in Solution Explorer"  
-![2017 03 08 10H23 28](2017-03-08_10h23_28.png)
-
 ### D - Configure the "Error List..." Window
 1. Go to "View\Error List" menu  
 ![2017 03 08 10H43 55](2017-03-08_10h43_55.png)
