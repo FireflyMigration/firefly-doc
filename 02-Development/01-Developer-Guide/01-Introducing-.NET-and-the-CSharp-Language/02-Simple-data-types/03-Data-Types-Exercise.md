@@ -5,7 +5,7 @@
     - string carName 
     - int carYear
     - int carKm
-    - char carGroup (A, B or C)  
+    - char carGroup (set the value to be one of this options A, B or C)  
 4. Display the values on a message box as below:  
 ![](messagebox.png)  
 5. Add a new menu entry named “Data Types”.  
