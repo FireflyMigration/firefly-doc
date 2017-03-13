@@ -1,5 +1,5 @@
-###Let us add our first C# Class:  
-- using the "Solution Explorer" Find the NorthWind startup project.
+### Let us add our first C# Class:  
+- using the "Solution Explorer" Find the Northwind startup project.
 - Right click on the project name and select "Add" then select "New Folder".
 - Change the name of the new Folder to "Exercises".
 - Right click the new folder you just created and select "Add" then select "New Item"
@@ -22,7 +22,7 @@ namespace Northwind.Exercises
     }
 }
 ```
-###Add your first Method:
+### Add your first Method:
 - Add to your new class A Run Method
 
 Your new Class supposed to look like this code:
@@ -46,7 +46,7 @@ namespace Northwind.Exercises
 }
 ```
 
-###Add a message
+### Add a message
 - Add the code to show a "Hello C#" message to the end user
 
 Your new Class supposed to look like this code:
@@ -69,7 +69,7 @@ namespace Northwind.Exercises
     }
 }
 ```
-###Menu Item
+### Menu Item
 - using the "Solution Explorer" open the "Views" folder at the startup project
 - open the "ApplicationMdi.cs"
 - Add a new menu called “Exercises”
@@ -77,4 +77,4 @@ namespace Northwind.Exercises
 - Dobble click the new entery
 - In the CodeBehind Call the new calss your just created
 
-###Build and Run
+**Build and Run**
