@@ -4,7 +4,7 @@
 1. Change the name of the new Folder to "Exercises".
 1. Right click the new folder you just created and select "Add" then select "New Item"
 1. From the "Add New Item" screen, select Class
-1. Name your new Class **"MyFirstClass"** and click the "Add" button.
+1. Name your new Class **MyFirstClass** and click the "Add" button.
 
 Your new Class supposed to look like this code :
 
