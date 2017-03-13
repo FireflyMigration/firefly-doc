@@ -1,4 +1,4 @@
-Let us add to the previous Class:
+### Let us add to the previous Class:
 -	In the beginning of the file, add using directive to System.Windows.Forms namespace
 -	Add another message box, using shorter syntax, to show the following message: “Learning C# is fun!”
 -	Build and run.
