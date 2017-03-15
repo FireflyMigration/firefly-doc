@@ -8,20 +8,29 @@ In addition, the migrated .NET application is already designed to work with SQL 
 ## Preparing for SQL migration
 The migrated application has been designed to work in both Btrieve and in SQL with the same code base. 
 This allows you to migrate your customers to SQL gradually, while you can continue developing the application and serve both Btrieve and SQL customers.
-Based on our experience a lot has been done to make the application behave in SQL exactly the same as it was in Btrieve in terms of transactions, locking, sorting etc.
-However, there are special cases that are unique to your application, which have to be revisited and may need some manual adjustment.
 
-If you think you have any of the following cases in your application, please provide an example of how you use it from the user perspective.
+Firefly has invested a lot in making the application behave in SQL exactly the same as it was in Btrieve. This includes:
+1. Optimal SQL Schema design
+2. Object naming
+3  Primary key violations detecting
+4. Identical transactions and locking behavior (a Main issue when migrating in Magic)
+4. Identical sorting behavior
+5. Code that runs on both databases, configured by a feature flag.
+6. Superior tuning tools
+
+## What You Can Do To Prepare
+There are special cases that are unique to your application, which may need some manual adjustment.
+
+In general, anything in the application that is tied to Btrieve technology might need adjustment or at least be considered.
+
+Please find below a list of  usages that might exist in your application and need to be considered.
+If you think you have any of the following cases in your application, **please provide an example of how you use it from the user perspective.**
 Firefly is here to help and guide you through this process.
-We will examine each test scenario and advise about the right solution for your specific application.
+We will examine each scenario and advise about the right solution for your specific application.
 
-With the delivery of the SQL version of the application, We will show you how to apply the solution
+With the delivery of the SQL version of the application, we will show you how to apply the solution
 and make sure that it works in SQL using the same tests cases your provide.
 
-Our objective is that you will continue developing your .NET application using Btrieve,
-while at the same time you can do the required adjustments **on the same code**.
-
-In general, anything in the application that is tied to Btrieve technology might need adjustment or at least be considered. Next is a list of special usages that might exist in your application and need to be considered.
 
 ## Referencing data tables as regular files
 In Btrieve, all tables are files on disk that could be copied, renamed, deleted just like any other file. 
@@ -36,7 +45,7 @@ IODel    | u.IODel(
 IOCopy   | u.IOCopy(
 IOExist  | u.IOExist(
 
-#### In Unipaas you also have the following functions
+#### Migrating from UniPaas may also include the following:
 Function    | What to search for
 ----------- |-------------------
 FileRename  | u.FileRename(          
