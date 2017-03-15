@@ -1,104 +1,171 @@
-﻿## Preface
+﻿## About SQL Migration
 At this stage you should already be using the migrated .NET application with your original Btrieve database.
 Everything works great and it's time to migrate the data as well.
-Firefly provide a fast and easy way to migrate all your data from Btrieve to SQL server. 
-In addition, the migrated .NET application is already designed to work with SQL server, 
-but there are some adjustments specific to your application, that need to be done, in order to make sure everything will work the same in SQL.
-These adjustments will be described here.
+Firefly provides a fast and easy way to migrate all your data from Btrieve to SQL server. 
+In addition, the migrated .NET application is already designed to work with SQL server.
 
 
+## Preparing for SQL migration
+The migrated application has been designed to work in both Btrieve and in SQL with the same code base. 
+This allows you to migrate your customers to SQL gradually, while you can continue developing the application and serve both Btrieve and SQL customers.
+Based on our experience a lot has been done to make the application behave in SQL exactly the same as it was in Btrieve in terms of transactions, locking, sorting etc.
+However, there are special cases that are unique to your application, which have to be revisited and may need some manual adjustment.
 
-## Prepering for SQL migration
-In general anything in the application that is tied to Btrieve technology should be adjusted or at list considered.
-For example, in Btrieve, all tables are files on disk that could be copied, renamed, deleted just like any other file. 
-In SQL the tables are stored in SQL server database and are not accessed from the file system.
-Firefly has done many migrations from Btrieve to SQL and can help you decide what would be the right solution for your application.
+If you think you have any of the following cases in your application, please provide an example of how you use it from the user perspective.
+Firefly is here to help and guide you through this process.
+We will examine each test scenario and advise about the right solution for your specific application.
+
+With the delivery of the SQL version of the application, We will show you how to apply the solution
+and make sure that it works in SQL using the same tests cases your provide.
+
 Our objective is that you will continue developing your .NET application using Btrieve,
-while at the same time you can do the required adjustments to have a stable ready SQL version of the application using the same code.
-Thus, in any case where data tables are treated as files in the original code, please prepare a use case and consult with Firefly about the appropriate adjustment.
+while at the same time you can do the required adjustments **on the same code**.
+
+In general, anything in the application that is tied to Btrieve technology might need adjustment or at least be considered. Next is a list of special usages that might exist in your application and need to be considered.
+
+## Referencing data tables as regular files
+In Btrieve, all tables are files on disk that could be copied, renamed, deleted just like any other file. 
+In SQL the tables are stored in SQL server database and are not accessed from the file system.  
+
+These are the most common functions that manipulate files in the application, which you should search for in the code:
+
+Function | What to search for
+-------- |-------------------
+IORen    | u.IORen(          
+IODel    | u.IODel(
+IOCopy   | u.IOCopy(
+IOExist  | u.IOExist(
+
+#### In Unipaas you also have the following functions
+Function    | What to search for
+----------- |-------------------
+FileRename  | u.FileRename(          
+FileDelete  | u.FileDelete(
+FileCopy    | u.FileCopy(
+FileExist   | u.FileExist(
+
+#### Searching for usages in Visual Studio
+You can also use search for "u.IO" to find all of function at once as follows:
+1. Open the migrated applicaiton in Visual Studio
+2. Press Ctrl+Shift+F
+3. In Find What: enter 'u.IO'
+4. In Look In: select 'Entire Solution'
+5. Press 'Find All'
+6. The result wll display in "Find Result #" window
+7. Click on each result to go to the code
+
+![2017 03 09 16H52 36](2017-03-09_16h52_36.png)
 
 
-Here is a list of special usages that might exist in your application and need to be considered: 
+#### Example for code that is harmless
 
-### IOCopy, IORen, IODelete for data files manupulation
-These uses can be easily traced by searching for the methods uses in all the code files of the migrated application. 
-For example, in order to find all uses of IOCopy method **search for the text "u.IOCopy("** in all your .cs files.
+```csdiff
+protected override OnStart()
+{
++   u.IODel("logo.bmp");
+}
+```
+
+#### Example for code that should be considered
+```csdiff
+protected override OnStart()
+{
++   u.IODel("Orders.DAT");
+}
+```
 
 ### OS Command
-**Search for "ENV.Windows.OSCommand("** to find all the uses of the OSCommand and check if the command has anything to do with data files.
-For example if the OSCommand copies a data file use DBCopy to do the same in the SQL version.
+**Search for "ENV.Windows.OSCommand("** to find all the usages of the OSCommand and check if the command has anything to do with data files.
 
-### Dll calls to Btrieve (W32mkde)
-This is not very common but we have seen some applications that has calls to the Btrieve dll.
-**Search for "W32mkde"** to check if such calls exists in your application. If so, prepare a use case and let us know.
+#### Example for code that is harmless
 
-### Dynamic names of tables
+```csdiff
+protected override OnStart()
+{
++   ENV.Windows.OSCommand("excel \"" + fileName + "\"");
+}
+```
+
+#### Example for code that should be considered
+```csdiff
+protected override OnStart()
+{
++    ENV.Windows.OSCommand("cmd /C xcopy " + "Orders.DAT Orders2016.DAT");
+}
+```
+
+## Dynamic names of tables 
 The table names can be changed in runtime in many ways:
-1. Using logical names for tables and set the logical name in runtime using the IniPut() function or by using different ini file for different systems.
-2. Using expressions for table names. For example, a program can change the table name so that it ends with the terminal number (using the Term() function).
+### Using Logical Names
+Using logical names for table names in the tables repository (Shift + F2) and set the logical name in runtime using the IniPut() function or by using different ini file for different systems / users.
+![2017 03 09 17H08 35](2017-03-09_17h08_35.png)
 
-**To trace these cases search for the text "EntityName = ".**
-You may find code lines that set the EntityName in the OnLoad method of some of your programs.
-There are two things to consider here:
-1. Do we need to migrate more than one data file to SQL. 
-For example if there is a separate table for each terminal and we need all the data permanently in SQL.
-2. Is this going to work in runtime? If the table name is a valid SQL table name, than it should be OK in SQL as long as the tables exists and migrated. Please verify that it works.
-However, if the table name is not valid, for example it is "c:\temp\sometable.dat", than it should be adjusted.
-Please prepare some use cases of your application that demonstrate this and consult with Firefly about the right adjustment to your application
+**Look for table with Logical Names in their DB Name in the Table Repository**
 
-### Actian PSQL (formerly Pervasive) and SQL Commands
+### Using Expresssions
+Using expressions for table names in DB tables (Ctrl + D). For example, a program can change the table name so that it ends with the terminal number (using the Term() function).  
+**To trace table name changes in Ctrl+D search for the text "EntityName = ".**
+```csdiff
+protected override void OnLoad()
+{
++    Orders.EntityName = "Orders2016.DAT";
+}
+```
+
+## Pervasive (a.k.a Actian) PSQL and SQL Commands (Ctrl + Q)
 If you have used PSQL to enable SQL commands (Direct SQL) to your tables via ODBC, the SQL code may need to be adjusted.
-**Search for “new Dynamic” to find all the usages in your application.**
-Again, please find some use cases in the application, explain how they work from the user perspective and consult with Firefly.
+**Search for “new DynamicSQL” to find all the usages in your application.**
+```csdiff
+void InitializeDataView()
+{
++    sqlEntity = new DynamicSQLEntity(Northwind.Shared.DataSources.SQL, 
++@"SELECT ""OrderID"", Count(*) as OrderItems
+FROM ""Order Details"" 
+WHERE ""CustomerID""=:1";
+}
+```
 
+### Changing Table Names
+In Magic, each table has a name (caption) and a DB Table name.
+In Btrieve the DB Table name usually refer to the file name, which might be invalid SQL name.
+In this case, we use the captions as SQL names for the table and fix them so that there will be SQL style without any spaces for example "my table name" will be changed "MyTableName".
+This can affect existing SQL Commands that use different table names
+
+### Changing Column Names
+As with table names, Btrieve has no notion of Column names. The only thing that matters in the table structure is the columns position.
+In SQL, column names are important and are based on the columns captions of the original application.
+If your application had SQL commands which uses different columns names, they could be affected.
+
+### Changing Column Storage
+Most applications store dates as char(8) in the database and store times as numbers.
+In Pervasive PSQL, there could be non-standard ways to store data values for date, time or boolean columns.
+For example, dates might be stored as number instead of char(8).
+
+## Multiple Entries in Table Repository for the same Data File
 ### Using the same table structure with different column names
-In Btrieve it is possible to use the same data file with different tables that have the same structure and differ only in the column names.
-If you have such a case in your application please find a use case and consult with Firefly.
+In Btrieve, it is possible to use the same data file with different entries in the table repository (Shift + F2) that have the same structure and differ only by the column names.
 
-### Using the same talbe with different structure
+## Using the same table with different structures
 In Btrieve it is possible to refer to the same data file with different table structure.
 For example, if a table has the following fields:
 1. FirstName, alpha 50
 2. LastName, alpha 50
+3. Address, alpha 100
+4. Phone, alpha 50
 
 It is possible to create a second table structure for the same data file,
- which has only one column named FullName with length of 100.
+ which has the following structure:
+ 1. FirestName, alpha 50
+ 2. LastName, alpha 50  
+ 3. **Filler, alpha 150**  
 Both structures will open the file and show the data in it.
 
-
-## Some Decisions to make
-### Multiple schemas vs Prefixing the tables
-Some applications have group of Btrieve tables in a separate folder for different purposes. 
-For example, tables that serve a specific module named "Reports" may be stored in a folder named "ReportsTables".
-It is recommended to migrate all the tables of the application into one SQL database (schema). 
-This makes the maintenance and backup of the database very easy. 
-It is possible to give some of the tables a special prefix,
-for example all the tables from the ReporstsTables folder will have the prefix "rpt_" in their name on SQL server.
-Alternatively, it is possible to migrate these tables into a separate SQL database, which is less recommended.
-
-### Naming Tables
-In magic the tables have captions and DB Table name.
-In Btrieve the DB Table name usually refer to the file name, which might be invalid SQL name.
-In this case, we use the captions as SQL names for the table and fix them so that there will be SQL style without any spaces for example my table name will be changed MyTableName.
-This is the standard and recommended option but there are alternatives that you can choose:
-1. Using the captions as is (i.e. "my table name")
-In case you used Actian PSQL (formerly pervasive) heavily and you want to keep the original SQL commands in the code which uses the captions as table names.
-2. However this will require adjustments to all the table names which are based on expressions.
-
-### Naming Columns 
-As with table names, Btrieve has no notion of Column names. The only thing that matters in the table structure is the columns position.
-In SQL, column names are important and are based on the columns captions of the original application.
-However, if your application uses SQL commands and have different columns names in your tables DDFs (Data Definition File),
- the column names should be adjusted.
- Please prepare a use case and consult with Firefly.
-
-### Data Storage
-Most applications store dates as char(8) in the database and store times as numbers.
-In Btrieve, there could be non-standard ways to store data values. For example storing dates as numbers.
-If your application uses special kind of storage for dates, times, booleans etc, please prepare use cases and consult with Firefly.
+## Dll calls to Btrieve (W32mkde)
+This is not very common but we have seen some applications that has calls to the Btrieve dll.
+**Search for "W32mkde"** to check if such calls exists in your application.
 
 
-## Summary
+# Summary
 The most important purpose of this article is to list the special cases that need to be considered when migrating the data from Btrieve to SQL.
 Now that you are aware of all them, please make sure you have use cases in your application that you can demonstrate to Firefly. Together we will decide on the best solution that you can apply to your specific application.
 Firefly will deliver a version with some adjustments to the data migration engine, based on these decisions.
