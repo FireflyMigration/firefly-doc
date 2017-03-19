@@ -1,0 +1,271 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>About SQL Migration</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="about-sql-migration">About SQL Migration</h1>
+<p>At this stage you should already be using the migrated .NET application with your original Btrieve database.
+Everything works great and it's time to migrate the data as well.
+Firefly provides a fast and easy way to migrate all your data from Btrieve to SQL server.
+In addition, the migrated .NET application is already designed to work with SQL server.</p>
+<h2 id="preparing-for-sql-migration">Preparing for SQL migration</h2>
+<p>The migrated application has been designed to work in both Btrieve and in SQL with the same code base.
+This allows you to migrate your customers to SQL gradually, while you can continue developing the application and serve both Btrieve and SQL customers.</p>
+<p>Firefly has invested a lot in making the application behave in SQL exactly the same as it was in Btrieve. This includes:</p>
+<ol>
+<li>Optimal SQL Schema design</li>
+<li>Object naming</li>
+<li>Primary key violations detecting</li>
+<li>Identical transactions and locking behavior (a Main issue when migrating in Magic)</li>
+<li>Identical sorting behavior</li>
+<li>Code that runs on both databases, configured by a feature flag.</li>
+<li>Superior tuning tools</li>
+</ol>
+<h2 id="what-you-can-do-to-prepare">What You Can Do To Prepare</h2>
+<p>There are special cases that are unique to your application, which may need some manual adjustment.</p>
+<p>In general, anything in the application that is tied to Btrieve technology might need adjustment or at least be considered.</p>
+<p>Please find below a list of  usages that might exist in your application and need to be considered.
+If you think you have any of the following cases in your application, <strong>please provide an example of how you use it <strong>from the user perspective.</strong></strong>
+Firefly is here to help and guide you through this process.
+We will examine each scenario and advise about the right solution for your specific application.</p>
+<p>With the delivery of the SQL version of the application, we will show you how to apply the solution
+and make sure that it works in SQL using the same tests cases you provide.</p>
+<h2 id="referencing-data-tables-as-regular-files">Referencing data tables as regular files</h2>
+<p>In Btrieve, all tables are files on disk that could be copied, renamed, deleted just like any other file.
+In SQL the tables are stored in SQL server database and are not accessed from the file system.</p>
+<p>These are the most common functions that manipulate files in the application, which you should search for in the code:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>What to search for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IORen</td>
+<td>u.IORen(</td>
+</tr>
+<tr>
+<td>IODel</td>
+<td>u.IODel(</td>
+</tr>
+<tr>
+<td>IOCopy</td>
+<td>u.IOCopy(</td>
+</tr>
+<tr>
+<td>IOExist</td>
+<td>u.IOExist(</td>
+</tr>
+</tbody>
+</table>
+<h4 id="migrating-from-unipaas-may-also-include-the-following">Migrating from UniPaas may also include the following:</h4>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>What to search for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FileRename</td>
+<td>u.FileRename(</td>
+</tr>
+<tr>
+<td>FileDelete</td>
+<td>u.FileDelete(</td>
+</tr>
+<tr>
+<td>FileCopy</td>
+<td>u.FileCopy(</td>
+</tr>
+<tr>
+<td>FileExist</td>
+<td>u.FileExist(</td>
+</tr>
+</tbody>
+</table>
+<h4 id="searching-for-usages-in-visual-studio">Searching for usages in Visual Studio</h4>
+<p>In Visual Studio, search for &quot;u.IO&quot; to find all of the above functions at once, as follows:</p>
+<ol>
+<li>Open the full solution of the migrated application in Visual Studio</li>
+<li>Press Ctrl+Shift+F</li>
+<li>In Find What: enter 'u.IO'</li>
+<li>In Look In: select 'Entire Solution'</li>
+<li>Press 'Find All'</li>
+<li>The result wll display in &quot;Find Result #&quot; window</li>
+<li>Click on each result to go to the code</li>
+</ol>
+<p><img src="2017-03-09_16h52_36.png" alt="2017 03 09 16H52 36" /></p>
+<h4 id="example-for-code-that-is-harmless">Example for code that is harmless</h4>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override OnStart()
+{
+    u.IODel("logo.bmp");
+} </code></pre>
+<h4 id="example-for-code-that-should-be-considered">Example for code that should be considered</h4>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override OnStart()
+{
+    u.IODel("Orders.DAT");
+} </code></pre>
+<h3 id="os-command">OS Command</h3>
+<p><strong>Search for &quot;ENV.Windows.OSCommand(&quot;</strong> to find all the usages of the OSCommand and check if the command has anything to do with data files.</p>
+<h4 id="example-for-code-that-is-harmless-1">Example for code that is harmless</h4>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override OnStart()
+{
+    ENV.Windows.OSCommand("excel \"" + fileName + "\"");
+} </code></pre>
+<h4 id="example-for-code-that-should-be-considered-1">Example for code that should be considered</h4>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override OnStart()
+{
+     ENV.Windows.OSCommand("cmd /C xcopy " + "Orders.DAT Orders2016.DAT");
+} </code></pre>
+<h2 id="dynamic-names-of-tables">Dynamic names of tables</h2>
+<p>The table names can be changed in runtime in many ways:</p>
+<h3 id="using-logical-names">Using Logical Names</h3>
+<p>Logical names can be used in two places:</p>
+<ol>
+<li>Using logical names for table names in the tables repository (Shift + F2) and set the logical name in runtime using the IniPut() function or by using different ini file for different systems / users.
+<img src="2017-03-09_17h08_35.png" alt="2017 03 09 17H08 35" /></li>
+</ol>
+<p><strong>Look for table with Logical Names in their DB Name in the Table Repository</strong></p>
+<ol start="2">
+<li>In the dabases settings, using logical name as the location</li>
+</ol>
+<p><img src="2017-03-16_11h01_12.png" alt="2017 03 16 11H01 12" /></p>
+<h3 id="using-expresssions">Using Expresssions</h3>
+<p>Using expressions for table names in DB tables (Ctrl + D). For example, a program can change the table name so that it ends with the terminal number (using the Term() function).<br />
+<strong>To trace table name changes in Ctrl+D search for the text &quot;EntityName = &quot;.</strong></p>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+     Orders.EntityName = "Orders2016.DAT";
+} </code></pre>
+<h2 id="pervasive-a.k.a-actian-psql-and-sql-commands-ctrl-q">Pervasive (a.k.a Actian) PSQL and SQL Commands (Ctrl + Q)</h2>
+<p>If you have used PSQL to enable SQL commands (Direct SQL) to your tables via ODBC, the SQL code may need to be adjusted.
+<strong>Search for “new DynamicSQL” to find all the usages in your application.</strong></p>
+<pre data-line="3,4" class="language-csdiff line-numbers"><code>void InitializeDataView()
+{
+     sqlEntity = new DynamicSQLEntity(Northwind.Shared.DataSources.SQL, 
+@"SELECT ""OrderID"", Count(*) as OrderItems
+FROM ""Order Details"" 
+WHERE ""CustomerID""=:1";
+} </code></pre>
+<h3 id="changing-table-names">Changing Table Names</h3>
+<p>In Magic, each table has a name (caption) and a DB Table name.
+In Btrieve the DB Table name usually refer to the file name, which might be invalid SQL name.
+In this case, we use the captions as SQL names for the table and fix them so that there will be SQL style without any spaces for example &quot;my table name&quot; will be changed &quot;MyTableName&quot;.
+This can affect existing SQL Commands that use different table names</p>
+<h3 id="changing-column-names">Changing Column Names</h3>
+<p>As with table names, Btrieve has no notion of Column names. The only thing that matters in the table structure is the columns position.
+In SQL, column names are important and are based on the columns captions of the original application.
+If your application had SQL commands which uses different columns names, they could be affected.</p>
+<h3 id="changing-column-storage">Changing Column Storage</h3>
+<p>Most applications store dates as char(8) in the database and store times as numbers.
+In Pervasive PSQL, there could be non-standard ways to store data values for date, time or boolean columns.
+For example, dates might be stored as number instead of char(8).</p>
+<h2 id="multiple-entries-in-table-repository-for-the-same-data-file">Multiple Entries in Table Repository for the same Data File</h2>
+<h3 id="using-the-same-table-structure-with-different-column-names">Using the same table structure with different column names</h3>
+<p>In Btrieve, it is possible to use the same data file with different entries in the table repository (Shift + F2) that have the same structure and differ only by the column names.</p>
+<h3 id="using-the-same-table-with-different-structures">Using the same table with different structures</h3>
+<p>In Btrieve it is possible to refer to the same data file with different table structure.
+For example, if a table has the following fields:</p>
+<ol>
+<li>FirstName, alpha 50</li>
+<li>LastName, alpha 50</li>
+<li>Address, alpha 100</li>
+<li>Phone, alpha 50</li>
+</ol>
+<p>It is possible to create a second table structure for the same data file,
+which has the following structure:</p>
+<ol>
+<li>FirestName, alpha 50</li>
+<li>LastName, alpha 50</li>
+<li><strong>Filler, alpha 150</strong><br />
+Both structures will open the file and show the data in it.</li>
+</ol>
+<h2 id="dll-calls-to-btrieve-w32mkde">Dll calls to Btrieve (W32mkde)</h2>
+<p>This is not very common but we have seen some applications that has calls to the Btrieve dll.
+<strong>Search for &quot;W32mkde&quot;</strong> to check if such calls exists in your application.</p>
+<h1 id="summary">Summary</h1>
+<p>The most important purpose of this article is to list the special cases that need to be considered when migrating the data from Btrieve to SQL.
+Now that you are aware of all them, please make sure you have use cases in your application that you can demonstrate to Firefly. Together we will decide on the best solution that you can apply to your specific application.
+Firefly will deliver a version with some adjustments to the data migration engine, based on these decisions.
+Once the application is ready for the migration, you can run the migration and start testing the application in SQL using the use cases that were prepared in advance.
+While testing the SQL version, you might find some performance differences.
+This is because Btrieve and SQL are very different technologies designed with different approach.
+Firefly can help in improving any performance issue that might be found in the SQL version.
+As always, please prepare use cases to demo these issues and consult with us.</p>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Migration-project/Migrating-from-Btrieve-to-SQL/01-Preparing-for-the-Migration.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree"</div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4806432-3', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'preparing-for-the-migration.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>

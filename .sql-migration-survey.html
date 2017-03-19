@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Some Decisions to make</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="some-decisions-to-make">Some Decisions to make</h1>
+<h3 id="multiple-schemas-vs-prefixing-the-tables">Multiple schemas vs Prefixing the tables</h3>
+<p>Some applications have group of Btrieve tables in a separate folder for different purposes.
+For example, tables that serve a specific module named &quot;Reports&quot; may be stored in a folder named &quot;ReportsTables&quot;.
+It is recommended to migrate all the tables of the application into one SQL database (schema).
+This makes the maintenance and backup of the database very easy.
+In order to differentiate these tables, it is possible to add  a special prefix to their name,
+for example all the tables from the ReportsTables folder will have the prefix &quot;rpt_&quot; in their SQL column name.
+Alternatively, it is possible to migrate these tables into a separate SQL database, which is less recommended.</p>
+<h3 id="naming-tables">Naming Tables</h3>
+<p>In Magic, each table has a name (caption) and a DB Table name.
+In Btrieve the DB Table name usually refer to the file name, which might be invalid SQL name.
+In this case, we use the captions as SQL names for the table and fix them so that there will be SQL style without any spaces for example &quot;my table name&quot; will be changed &quot;MyTableName&quot;.
+This is the standard and recommended option but there are alternatives that you can choose:</p>
+<ol>
+<li>Using the captions as is (i.e. &quot;my table name&quot;)
+In case you used Actian PSQL (formerly pervasive) heavily and you want to keep the original SQL commands in the code which uses the captions as table names.</li>
+<li>However this will require adjustments to all the table names which are based on expressions.</li>
+</ol>
+<h3 id="naming-columns">Naming Columns</h3>
+<p>As with table names, Btrieve has no notion of Column names. The only thing that matters in the table structure is the columns position.
+In SQL, column names are important and are based on the columns captions of the original application.
+However, if your application uses SQL commands and have different columns names in your tables DDFs (Data Definition File),
+the column names should be adjusted.
+Please prepare a use case and consult with Firefly.</p>
+<h3 id="data-storage">Data Storage</h3>
+<p>Most applications store dates as char(8) in the database and store times as numbers.
+In Btrieve, there could be non-standard ways to store data values. For example storing dates as numbers.
+If your application uses special kind of storage for dates, times, booleans etc, please prepare use cases and consult with Firefly.</p>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Migration-project/Migrating-from-Btrieve-to-SQL/.SQL-Migration-Survey.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree"</div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4806432-3', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', '.sql-migration-survey.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>
