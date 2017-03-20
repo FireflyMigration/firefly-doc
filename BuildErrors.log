@@ -1,1 +1,4 @@
 ERROR: invalid char in url # (35) at position 6. COOL-C#-TUTORIAL.HTML
+ERROR: url conflict: 
+MarkDownFile: Index.html => c:\repos\firefly-doc\01-Development\02-Articles\Import-Security-file\Index.md
+MarkDownFile: index.html => c:\repos\firefly-doc\index.md'

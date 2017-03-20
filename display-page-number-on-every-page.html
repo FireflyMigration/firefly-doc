@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Automatic Migration Using FTP</title>
+    <title>Display Page Number on Every Page</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,19 +27,10 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="automatic-migration-using-ftp">Automatic Migration Using FTP</h1>
-<p>This document explains how to run an automatic migration using Firefly’s FTP server. The migration can be invoke at any time, in order to get an updated error report or a test version. Usually, it is used after uploading a new version of the original applications or when Firefly has enhanced its migration engine. In order to run a migration, please do the following steps:</p>
-<ol>
-<li>Log in to the Firefly’s FTP server using your account username and password.</li>
-<li>Upload the exports of your applications and other environment files as needed into the AutomaticMigration folder.</li>
-<li>Create an empty file named “Start” in the AutomaticMigration folder (or delete the extension of the existing “Start.Done” file). This is the trigger of the migration process.</li>
-<li>An email message will be sent to you, informing that the migration process has started.</li>
-<li>Few minutes later, the “Start” file name will be changed to “Start.Done” and the content of this file will be the log of the migration process.</li>
-<li>A second email will be sent, informing that the migration process has completed successfully with statistics about the converted application.</li>
-<li>The new version and error report will be found in the AutomaticMigration\MigrationResult folder, on the FTP server.</li>
-<li>In case you want to migrate to an older version of Firefly, you may do so by changing the &quot;Start.Done&quot; to &quot;Start.[version number]&quot; (E.g &quot;Start.26175&quot;). The Firefly version can be found by Right Clicking on Firefly.Box.dll -&gt; &quot;Details&quot; TAB</li>
-</ol>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Migration-project/01-Automatic-Migration-Using-FTP.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                <div class="content"><h1 id="display-page-number-on-every-page">Display Page Number on Every Page</h1>
+<hr />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZzkFcwA9WKY?list=PL1DEQjXG2xnLss44EgCJq1bAM-Blgf2jd" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/23-Reports/03-Display-Page-Number-on-Every-Page.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -84,7 +75,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'automatic-migration-using-ftp.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'display-page-number-on-every-page.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
