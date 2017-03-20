@@ -1,4 +1,6 @@
-﻿* Add a new column called DaysBetween, and set it's format to "5CN" - for more info on formating see:[formatting](formatting.html)
+﻿# Adding a Button to Calculate Days Between
+
+* Add a new column called DaysBetween, and set it's format to "5CN" - for more info on formating see:[formatting](formatting.html)
 
 ```csdiff
 public class DemoLocalColumns : UIControllerBase
@@ -35,6 +37,8 @@ namespace Northwind.Training.SimpleScreen.Views
     }
 }
 ```
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=8IWGmQotZE0&list=PL1DEQjXG2xnKHKNIRzI4K6oZL-KulU-Vw&index=3" frameborder="0" allowfullscreen></iframe>
+---
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8IWGmQotZE0?list=PL1DEQjXG2xnKHKNIRzI4K6oZL-KulU-Vw" frameborder="0" allowfullscreen></iframe>
+
 
 
