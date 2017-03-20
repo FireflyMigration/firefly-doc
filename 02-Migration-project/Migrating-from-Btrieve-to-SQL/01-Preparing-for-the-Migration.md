@@ -64,7 +64,7 @@ In Visual Studio, search for "u.IO" to find all of the above functions at once, 
 7. Click on each result to go to the code
 
 ![2017 03 09 16H52 36](2017-03-09_16h52_36.png)
-
+ 
 
 #### Example for code that is harmless
 
