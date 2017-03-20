@@ -9,5 +9,4 @@ This document explains how to run an automatic migration using Firefly’s FTP s
 5. Few minutes later, the “Start” file name will be changed to “Start.Done” and the content of this file will be the log of the migration process.
 6. A second email will be sent, informing that the migration process has completed successfully with statistics about the converted application.
 7. The new version and error report will be found in the AutomaticMigration\MigrationResult folder, on the FTP server.
-8. In case you want to migrate to an older version of Firefly, you may do so by changing the "Start.Done" to "Start.<version number>" (E.g "Start.26175"). The Firefly version can be found by Right Clicking on Firefly.Box.dll -> "Details" TAB
- 
+8. In case you want to migrate to an older version of Firefly, you may do so by changing the "Start.Done" to "Start.[version number]" (E.g "Start.26175"). The Firefly version can be found by Right Clicking on Firefly.Box.dll -> "Details" TAB
