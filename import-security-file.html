@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Articles</title>
+    <title>Import Security file</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,29 +27,27 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="articles">Articles</h1>
+                <div class="content"><h1 id="import-security-file">Import Security file</h1>
+<p>In order to import the security file of Magic (usr_std) into the migrated .NET application you first need to export it from uniPaaS/XPA using a utility
+provided by Magic Software called <strong>MgUsrDmp.exe</strong> which is located in the Magic engine folder.<br />
+This utility exports all the users (without passwords) and rights to an XML file.</p>
+<ol>
+<li>Make sure you know the SUPERVISOR password</li>
+<li>If the user file is from v9 or below, you first need to convert it to uniPaaS/XPA using the utility called <strong>userupd.exe</strong> located in the engine folder.</li>
+<li>Once the file is converted, run:
+<blockquote>
+<p>MgUsrDmp.exe /p=supervisorPassword /n=inputFile /o=outputFile</p>
+</blockquote>
+</li>
+</ol>
+<p>In the .NET application open the Users screen (Options-&gt;Users*), click the Import button and select the XML that was created.<br />
+Notice that .NET imports the users and rights into a file called &quot;security&quot; which is located in the bin folder.</p>
+<p><img src="Users.png" alt="Users" /></p>
+<p>For future migrations, upload the .NET security file to the AutomaticMigration folder in the FTP.</p>
 <ul>
-<li><a href="further-learning.html">Further Learning</a></li>
-<li><a href="common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-net.html">Common migrated code patterns and how to improve on them in new code in NET</a></li>
-<li><a href="visual-studio.html">Visual Studio</a></li>
-<li><a href="version-control-and-git.html">Version Control and Git</a></li>
-<li><a href="access-developer-tools-and-users-management-menu.html">Access Developer Tools and Users management menu</a></li>
-<li><a href="large-applications-architecture-for-projects-migrated-up-to-2016.html">Large Applications Architecture for Projects Migrated up to 2016</a></li>
-<li><a href="cool-.net-open-source-library.html">Cool .NET open source library</a></li>
-<li><a href="advanced-topics.html">Advanced Topics</a></li>
-<li><a href="basics.html">Basics</a></li>
-<li><a href="cool-c#-tutorial.html">Cool C# Tutorial</a></li>
-<li><a href="creating-windows-services-and-using-migrated-code.html">Creating Windows Services and using Migrated Code</a></li>
-<li><a href="dataaccess.html">DataAccess</a></li>
-<li><a href="import-security-file.html">Import Security file</a></li>
-<li><a href="investigating-memory-issues.html">Investigating memory issues</a></li>
-<li><a href="other-types-of-where.html">Other Types Of Where</a></li>
-<li><a href="sql-migration.html">SQL Migration</a></li>
-<li><a href="unit-tests-and-migrated-code.html">Unit Tests and Migrated Code</a></li>
-<li><a href="user-interface.html">User Interface</a></li>
-<li><a href="web-development.html">Web Development</a></li>
+<li>In case you do not see the Users menu please refer to: <a href="http://doc.fireflymigration.com/access-developer-tools-and-users-management-menu.html">http://doc.fireflymigration.com/access-developer-tools-and-users-management-menu.html</a></li>
 </ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Import-Security-file/01-index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -94,7 +92,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'articles.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'import-security-file.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
