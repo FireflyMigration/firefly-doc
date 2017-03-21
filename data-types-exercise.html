@@ -29,15 +29,15 @@
                 </div>
                 <div class="content"><h1 id="exercise-data-types">Exercise: Data Types</h1>
 <ol>
-<li>Create a new class called DataTypes</li>
-<li>Define a Run() method for that class</li>
+<li>Create a new class called <strong>DataTypes</strong>.</li>
+<li>Define a Run() method for that class.</li>
 <li>Define the following variables:
-<ul>
+<ol>
 <li>string carName</li>
 <li>int carYear</li>
 <li>int carKm</li>
-<li>char carGroup (A, B or C)</li>
-</ul>
+<li>char carGroup (set the value to be one of this options A, B or C).</li>
+</ol>
 </li>
 <li>Display the values on a message box as below:<br />
 <img src="messagebox.png" alt="" /></li>
@@ -45,6 +45,27 @@
 <li>Call this class to display the message box from the menu</li>
 <li>Build and test.</li>
 </ol>
+<p>Your <strong>DataTypes</strong> Class supposed to look like this code:</p>
+<pre data-line="11,12,13,14,15,16,17,18" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Northwind.Exercises
+{
+    class DataTypes
+    {
+        public void Run()
+        {
+            string carName = "Mini";
+            int carYear = 2015;
+            int CarKM = 20000;
+            char carGroup = 'A';
+            System.Windows.Forms.MessageBox.Show("My car is a " + carName +"\nit's from year "+carYear+"\nI already drove it for "+CarKM );
+        }
+    }
+} </code></pre>
 <hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_asGbeIkEgg?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/01-Introducing-.NET-and-the-CSharp-Language/02-Simple-data-types/03-Data-Types-Exercise.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->

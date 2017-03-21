@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Exercise: Adding Using and Snippet</title>
+    <title>Exercise: Type initializers</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,50 +27,45 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="exercise-adding-using-and-snippet">Exercise: Adding Using and Snippet</h1>
-<p>In <strong>&quot;MyFirstClass&quot;</strong> add to the previous Class:</p>
+                <div class="content"><h1 id="exercise-type-initializers">Exercise: Type initializers</h1>
 <ol>
-<li>In the beginning of the file, add using directive to System.Windows.Forms namespace.</li>
-<li>Add another message box, using shorter syntax, to show the following message: “Learning C# is fun!”.</li>
-<li>Build and run.</li>
+<li>In the <strong>TestClass</strong> move all the variable values update to be set as type initializer.</li>
 </ol>
-<h3 id="using-snippet">Using Snippet</h3>
-<ol>
-<li>Using the “mbox” snippet, add another message box to show the following message: “Snippets are cool!”</li>
-<li>Build and run.</li>
-</ol>
-<h3 id="comments">Comments</h3>
-<ol>
-<li>Add comments to describe your code.</li>
-<li>Build and run.</li>
-</ol>
-<p>Your <strong>&quot;MyFirstClass&quot;</strong> Class supposed to look like this code:</p>
-<pre data-line="6,18,19,21,22" class="language-csdiff line-numbers"><code>using System;
+<p>Your <strong>TestClass</strong> class supposed to look like this code:</p>
+<pre data-line="14,15,16" class="language-csdiff line-numbers"><code>using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Northwind.Exercises
+namespace Northwind.Exercises.MoreOnClass
 {
-    class MyFirstClass
+    class TestClass
     {
         public void Run()
         {
-            /*This is my first Class
-             * this class will show 3 message box */
-            System.Windows.Forms.MessageBox.Show("Hello C#");
+            Car mainCar = new Car {carName = "BMW X6",carYear = 2015,CarKM = 20000,carType = "Main" };
+            Car weekendCar = new Car {carName = "Ford mustang",carYear = 1965,CarKM = 160000,carType = "Weekend" };
+            Car funCar = new Car();
 
-            // Using using
-            MessageBox.Show("Learning C# is fun!");
+-           mainCar.carName = "BMW X6";
+-           mainCar.carYear = 2015;
+-           mainCar.CarKM = 20000;
+-           mainCar.carType = "Main";
+-
+-           weekendCar.carName = "Ford mustang";
+-           weekendCar.carYear = 1965;
+-           weekendCar.CarKM = 160000;
+-           weekendCar.carType = "Weekend";
 
-            // Using snippet 
-            MessageBox.Show("Snippets are cool!");
+            mainCar.CarInfo();
+            weekendCar.CarInfo();
+            funCar.CarInfo();
         }
     }
 } </code></pre>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/01-Introducing-.NET-and-the-CSharp-Language/01-CSharp-Basics/Exercise-Adding-Using-And-Snippet.MD" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/01-Introducing-.NET-and-the-CSharp-Language/04_Classes/05_Exercise-Type-initializers.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -115,7 +110,7 @@ namespace Northwind.Exercises
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'exercise-adding-using-and-snippet.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'exercise-type-initializers.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
