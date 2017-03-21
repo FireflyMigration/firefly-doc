@@ -1,24 +1,25 @@
-Let us add to the previous Class:
--	In the beginning of the file, add using directive to System.Windows.Forms namespace
--	Add another message box, using shorter syntax, to show the following message: “Learning C# is fun!”
--	Build and run.
+# Exercise: Adding Using and Snippet
+In **"MyFirstClass"** add to the previous Class:  
+1. In the beginning of the file, add using directive to System.Windows.Forms namespace.  
+2. Add another message box, using shorter syntax, to show the following message: “Learning C# is fun!”.  
+3. Build and run.
 
 ### Using Snippet
--	Using the “mbox” snippet, add another message box to show the following message: “Snippets are cool!”
--	Build and run.
+1. Using the “mbox” snippet, add another message box to show the following message: “Snippets are cool!”
+1. Build and run.
 
 ### Comments
-- Add comments to describe your code.
-- Build and run.
+1. Add comments to describe your code.
+1. Build and run.
 
-Your new Class supposed to look like this code:
+Your **"MyFirstClass"** Class supposed to look like this code:
 ```csdiff
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
++using System.Windows.Forms;
 
 namespace Northwind.Exercises
 {
@@ -30,11 +31,11 @@ namespace Northwind.Exercises
              * this class will show 3 message box */
             System.Windows.Forms.MessageBox.Show("Hello C#");
 
-            // Using using
-            MessageBox.Show("Learning C# is fun!");
++           // Using using
++           MessageBox.Show("Learning C# is fun!");
 
-            // Using snippet 
-            MessageBox.Show("Snippets are cool!");
++           // Using snippet 
++           MessageBox.Show("Snippets are cool!");
         }
     }
 }
