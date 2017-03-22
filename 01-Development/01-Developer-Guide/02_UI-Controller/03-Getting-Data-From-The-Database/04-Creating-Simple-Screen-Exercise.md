@@ -16,8 +16,42 @@
 5.	Add a new menu entry to call this screen.
 6.	Build and test.
 
-The **Car** class should look like :
+The **ShowProducts** class should look like :
+```csdiff
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
 
+namespace Northwind.Exercises
+{
+    public class ShowProducts : UIControllerBase
+    {
+
++       public readonly Models.Products Products = new Models.Products();
+
+        public ShowProducts()
+        {
++           From = Products;
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () => new Views.ShowProductsView(this);
+        }
+    }
+}
+```
+The **ShowProducts Form Designer** should look like :  
+![Show Products Screen](ShowProductsScreen.png)
 
 
 
