@@ -1,6 +1,6 @@
 ﻿# Exercise: Using Vars
 
-1. In the **TestClass** change all the 3 declarations of your cars to user var instead of the Car type.
+1. In the **TestClass** change all the 3 declarations of your cars, use var instead of the Car type.
 
 Your **TestClass** class supposed to look like this code:
 ```csdiff
