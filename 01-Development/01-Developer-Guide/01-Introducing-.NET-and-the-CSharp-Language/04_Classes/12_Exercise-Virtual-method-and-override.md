@@ -1,9 +1,10 @@
 ﻿# Exercise: Virtual method and override
 
-1. In **Car** class add a new virtual method name it **RoofType**.
-2. In **Main** Override the **RoofType** show message box : **"Sunroofs"**. 
-3. In **Weekend** Override the **RoofType** show message box : **"Convertible"**.
-4. In **TestClass** call the **RoofType** for the first two cars declarations.
+1. In the **Car** class add a new virtual method name it **RoofType**.
+2. In the **Main** class Override the **RoofType** show message box : **"Sunroofs"**. 
+3. In the **Weekend** class Override the **RoofType** show message box : **"Convertible"**.
+4. In the **TestClass** class call the **RoofType** for the first two cars declarations.
+5. Build and test.
 
 The **Car** class should look like :
 ```csdiff
