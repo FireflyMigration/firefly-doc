@@ -1,9 +1,9 @@
 ﻿# Exercise - Creating a Simple Screen
 
 
-1.	In the “Exercises” folder, create a UIController named “ShowProducts”.
-2.	Define the Products table at the beginning of the controller class.
-3.	Open the Form Designer:  
+1.	Under the “Exercises” folder, create a UIController named **ShowProducts**.
+2.	Define the **Products** table at the beginning of the controller class.(drag and drop it, holding the **Shift** key just before the drop).
+3.	Using the **Class Outline** Open the Form Designer:  
     1.  Setup the Toolbox if you did not do that early, by right clicking on the form, select "Setup Toolbox".  
     2.  Add a grid with the following columns:  
         i.  ProducrID
