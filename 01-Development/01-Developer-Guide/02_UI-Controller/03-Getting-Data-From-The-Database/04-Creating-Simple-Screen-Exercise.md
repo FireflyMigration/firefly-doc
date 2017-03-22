@@ -16,6 +16,7 @@
 5.	Add a new menu entry to call this screen.
 6.	Build and test.
 
+The **Car** class should look like :
 
 
 
