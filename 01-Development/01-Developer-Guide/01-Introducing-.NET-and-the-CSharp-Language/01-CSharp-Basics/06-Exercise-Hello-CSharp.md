@@ -9,18 +9,18 @@
 Your new Class supposed to look like this code :
 
 ```csdiff
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Northwind.Exercises
-{
-    class MyFirstClass
-    {
-    }
-}
++using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Text;
++using System.Threading.Tasks;
++
++namespace Northwind.Exercises
++{
++    class MyFirstClass
++    {
++    }
++}
 ```
 ### Add your first Method:
 1. Add to your new class A Run Method
@@ -38,10 +38,10 @@ namespace Northwind.Exercises
 {
     class MyFirstClass
     {
-        public void Run()
-        {
-
-        }
++       public void Run()
++       {
++
++       }
     }
 }
 ```
@@ -64,17 +64,25 @@ namespace Northwind.Exercises
     {
         public void Run()
         {
-            System.Windows.Forms.MessageBox.Show("Hello C#");
++           System.Windows.Forms.MessageBox.Show("Hello C#");
         }
     }
 }
 ```
 ### Menu Item
-1.s using the "Solution Explorer" open the "Views" folder at the startup project
-1. open the "ApplicationMdi.cs"
-1. Add a new menu called “Exercises”
-1. Add a new entry called “Hello C#”
-1. Dobble click the new entery
-1. In the CodeBehind Call the new calss your just created
+1. Using the "Solution Explorer" open the "Views" folder at the startup project.
+1. open the "ApplicationMdi.cs".
+1. Add a new menu called **Exercises**.
+1. Add a new entry called **Hello C#**.
+1. Double click the new entry.
+1. In the **Code Behind** Call the new class your just created
+
+Your menu enter **Code Behind** should look like that :
+```csdiff
++       private void helloCToolStripMenuItem_Click(object sender, EventArgs e)
++       {
++           new Exercises.MyFirstClass().Run();
++       }
+```
 
 **Build and Run**
