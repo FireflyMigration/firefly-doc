@@ -57,8 +57,8 @@ namespace Northwind.Exercises.MoreOnClass
 }
 ```
 7. In the **TestClass** class create 2 new instance of the Car class name it:
-   1. MainCar.
-   2. WeekendCar.
+   1. mainCar.
+   2. weekendCar.
 8. Set the value of your two new cars to fit your dream cars.
 9. Add message box to show the two cars info.
 
