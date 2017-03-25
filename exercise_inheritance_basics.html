@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Exercise: Inheritance_Basics</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="exercise-inheritance_basics">Exercise: Inheritance_Basics</h1>
+<ol>
+<li>Under <strong>Exercises</strong> folder and under the <strong>MoreOnClass</strong> folder Create two new class :
+<ol>
+<li><strong>Main</strong> inheriting from <strong>Car</strong>.</li>
+<li><strong>Weekend</strong> inheriting from <strong>Car</strong>.</li>
+</ol>
+</li>
+</ol>
+<p>Your new two class should look like :</p>
+<pre data-line="1,2,3,4,5,6,7,8,9,10,11,12" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+     class Main : Car
+     {
+     }
+} </code></pre>
+<pre data-line="1,2,3,4,5,6,7,8,9,10,11,12" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+     class Weekend : Car
+     {
+     }
+} </code></pre>
+<ol start="2">
+<li>Add to the <strong>Main</strong> class, a new method name it <strong>DriveFast</strong>, the new method will show a message &quot;Whoop I am fast&quot;.</li>
+<li>Add to the <strong>Weekend</strong> class, a new method name it <strong>DriveInStyle</strong>, the new method will show a message &quot;I am cruising on the highway&quot;.</li>
+</ol>
+<p>The two class should look like :</p>
+<pre data-line="6,12,13,14,15" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class Main : Car
+    {
+        public void DriveFast()
+        {
+            MessageBox.Show("Whoop I am fast");
+        }
+    }
+} </code></pre>
+<pre data-line="6,12,13,14,15" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class Weekend : Car
+    {
+        public void DriveInStyle()
+        {
+            MessageBox.Show("I am cruising on the highway");
+        }
+    }
+} </code></pre>
+<ol start="4">
+<li>Add <strong>constructor</strong> to the two class.</li>
+<li>In the <strong>constructors</strong> initialize the <strong>carType</strong>.
+The two class should look like :</li>
+</ol>
+<pre data-line="12,13,14,15" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class Main : Car
+    {
+         public Main()
+         {
+             carType = "Main";
+         }
+        public void DriveFast()
+        {
+            MessageBox.Show("Whoop I am fast");
+        }
+    }
+} </code></pre>
+<pre data-line="12,13,14,15" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class Weekend : Car
+    {
+         public Weekend()
+         {
+             carType = "Weekend";
+         }
+        public void DriveInStyle()
+        {
+            MessageBox.Show("I am cruising on the highway");
+        }
+    }
+} </code></pre>
+<ol start="6">
+<li>In the <strong>TestClass</strong> change the first 2 cars declarations to use the right class.</li>
+<li>Remove the carType update from the first 2 cars declarations.</li>
+<li>Add a call to the cars <strong>DriveFast</strong> method and the <strong>DriveInStyle</strong> method.</li>
+<li>Notice that:
+<ol>
+<li><strong>mainCar</strong> do not have the <strong>DriveInStyle</strong> method.</li>
+<li><strong>weekendCar</strong> do not have the<strong>DriveFast</strong> method.</li>
+<li><strong>funCar</strong> do not have any of the above methods.</li>
+</ol>
+</li>
+<li>Build and Test.</li>
+</ol>
+<p>The <strong>TestClass</strong> class should look like :</p>
+<pre data-line="15,17,21,23" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class TestClass
+    {
+        public void Run()
+        {
+-           var mainCar = new Car {carName = "BMW X6",carYear = 2015,CarKM = 20000,carType = "Main" };
+            var mainCar = new Main {carName = "BMW X6",carYear = 2015,CarKM = 20000};
+-           var weekendCar = new Car {carName = "Ford mustang",carYear = 1965,CarKM = 160000,carType = "Weekend" };
+            var weekendCar = new Weekend {carName = "Ford mustang",carYear = 1965,CarKM = 160000};
+            var funCar = new Car();
+
+            mainCar.CarInfo();
+            mainCar.DriveFast();
+            weekendCar.CarInfo();
+            weekendCar.DriveInStyle();
+            funCar.CarInfo();
+        }
+    }
+} </code></pre>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/01-Introducing-.NET-and-the-CSharp-Language/04_Classes/12_Exercise_Inheritance_Basics.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree"</div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4806432-3', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'exercise_inheritance_basics.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>

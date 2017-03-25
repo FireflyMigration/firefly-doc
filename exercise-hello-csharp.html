@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Exercise Hello CSharp</title>
+    <title>Add the first C# Class:</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,18 +27,17 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="exercise-hello-csharp">Exercise Hello CSharp</h1>
-<p>###Let us add our first C# Class:</p>
-<ul>
-<li>using the &quot;Solution Explorer&quot; Find the NorthWind startup project.</li>
+                <div class="content"><h1 id="add-the-first-c-class">Add the first C# Class:</h1>
+<ol>
+<li>using the &quot;Solution Explorer&quot; Find the Northwind startup project.</li>
 <li>Right click on the project name and select &quot;Add&quot; then select &quot;New Folder&quot;.</li>
 <li>Change the name of the new Folder to &quot;Exercises&quot;.</li>
 <li>Right click the new folder you just created and select &quot;Add&quot; then select &quot;New Item&quot;</li>
 <li>From the &quot;Add New Item&quot; screen, select Class</li>
-<li>Name your new Class <strong>&quot;MyFirstClass&quot;</strong> and click the &quot;Add&quot; button.</li>
-</ul>
+<li>Name your new Class <strong>MyFirstClass</strong> and click the &quot;Add&quot; button.</li>
+</ol>
 <p>Your new Class supposed to look like this code :</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>using System;
+<pre data-line="1,2,3,4,5,6,7,8,9,10,11,12" class="language-csdiff line-numbers"><code>using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,16 +45,16 @@ using System.Threading.Tasks;
 
 namespace Northwind.Exercises
 {
-    class MyFirstClass
-    {
-    }
+     class MyFirstClass
+     {
+     }
 } </code></pre>
-<p>###Add your first Method:</p>
-<ul>
+<h3 id="add-your-first-method">Add your first Method:</h3>
+<ol>
 <li>Add to your new class A Run Method</li>
-</ul>
+</ol>
 <p>Your new Class supposed to look like this code:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>using System;
+<pre data-line="11,12,13,14" class="language-csdiff line-numbers"><code>using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -71,12 +70,12 @@ namespace Northwind.Exercises
         }
     }
 } </code></pre>
-<p>###Add a message</p>
-<ul>
+<h3 id="add-a-message">Add a message</h3>
+<ol>
 <li>Add the code to show a &quot;Hello C#&quot; message to the end user</li>
-</ul>
+</ol>
 <p>Your new Class supposed to look like this code:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>using System;
+<pre data-line="13" class="language-csdiff line-numbers"><code>using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -92,16 +91,21 @@ namespace Northwind.Exercises
         }
     }
 } </code></pre>
-<p>###Menu Item</p>
-<ul>
-<li>using the &quot;Solution Explorer&quot; open the &quot;Views&quot; folder at the startup project</li>
-<li>open the &quot;ApplicationMdi.cs&quot;</li>
-<li>Add a new menu called “Exercises”</li>
-<li>Add a new entry called “Hello C#”</li>
-<li>Dobble click the new entery</li>
-<li>In the CodeBehind Call the new calss your just created</li>
-</ul>
-<p>###Build and Run</p>
+<h3 id="menu-item">Menu Item</h3>
+<ol>
+<li>Using the &quot;Solution Explorer&quot; open the &quot;Views&quot; folder at the startup project.</li>
+<li>open the &quot;ApplicationMdi.cs&quot;.</li>
+<li>Add a new menu called <strong>Exercises</strong>.</li>
+<li>Add a new entry called <strong>Hello C#</strong>.</li>
+<li>Double click the new entry.</li>
+<li>In the <strong>Code Behind</strong> Call the new class your just created</li>
+</ol>
+<p>Your menu enter <strong>Code Behind</strong> should look like that :</p>
+<pre data-line="1,2,3,4" class="language-csdiff line-numbers"><code>        private void helloCToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Exercises.MyFirstClass().Run();
+        } </code></pre>
+<p><strong>Build and Run</strong></p>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/01-Introducing-.NET-and-the-CSharp-Language/01-CSharp-Basics/06-Exercise-Hello-CSharp.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->

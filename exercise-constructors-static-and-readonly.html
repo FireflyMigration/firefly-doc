@@ -30,11 +30,11 @@
                 <div class="content"><h1 id="exercise-constructors-static-and-readonly">Exercise: Constructors Static and ReadOnly</h1>
 <h2 id="constructors">Constructors</h2>
 <ol>
-<li>In the <strong>Car</strong> class add a constructor</li>
-<li>Initialize the value of all the variables</li>
-<li>In the <strong>TestClass</strong> add one more car instance</li>
-<li>Call the <strong>CarInfo</strong> method of the new car</li>
-<li>Build and Test</li>
+<li>Add a constructor to the <strong>Car</strong> class.</li>
+<li>Initialize the value of all the variables.</li>
+<li>In the <strong>TestClass</strong> add one more car instance.</li>
+<li>Call the <strong>CarInfo</strong> method of the new car.</li>
+<li>Build and Test.</li>
 </ol>
 <p>Your <strong>Car</strong> class supposed to look like this code:</p>
 <pre data-line="16,17,18,19,20,21,22" class="language-csdiff line-numbers"><code>using System;
@@ -100,15 +100,23 @@ namespace Northwind.Exercises.MoreOnClass
         } </code></pre>
 <h2 id="static">Static</h2>
 <ol>
-<li>In the <strong>Car</strong> class add static variable type <strong>int</strong> name it <strong>CarCounter</strong></li>
-<li>Add variavble type<strong>int</strong> name it <strong>Id</strong></li>
-<li>In the class <strong>constructor</strong> set the <strong>CarCounter</strong> to increase by one</li>
-<li>In the Class <strong>constructor</strong> set the <strong>Id</strong> value to the value of the <strong>CarCounter</strong></li>
-<li>Change the <strong>CarInfo</strong> method to reflact the new <strong>Id</strong> in the message box;</li>
+<li>In the <strong>Car</strong> class:
+<ol>
+<li>Add static variable type <strong>int</strong> name it <strong>CarCounter</strong>.</li>
+<li>Add variable type <strong>int</strong> name it <strong>Id</strong>.</li>
+</ol>
+</li>
+<li>In the class <strong>constructor</strong>:
+<ol>
+<li>Set the <strong>CarCounter</strong> to increase by one.</li>
+<li>In the Class <strong>constructor</strong> set the <strong>Id</strong> value to the value of the <strong>CarCounter</strong>.</li>
+</ol>
+</li>
+<li>Change the <strong>CarInfo</strong> method to reflect the new <strong>Id</strong> in the message box.</li>
 <li>Build and Test</li>
 </ol>
 <p>Your <strong>Car</strong> class supposed to look like this code:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>using System;
+<pre data-line="16,17,21,22,32,33" class="language-csdiff line-numbers"><code>using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -137,6 +145,8 @@ namespace Northwind.Exercises.MoreOnClass
         }
         public void CarInfo()
         {
+-           MessageBox.Show("My " + this.carType + " car is " + this.carYear + " " + this.carName + "\n" +
+-               " I drove it for " + this.CarKM + " KM");
             MessageBox.Show("My number"+ this.Id + " " + this.carType + " car is " + this.carYear + " " + this.carName + "\n" +
                 " I drove it for " + this.CarKM + " KM");
         }
@@ -144,12 +154,12 @@ namespace Northwind.Exercises.MoreOnClass
 } </code></pre>
 <h2 id="readonly">ReadOnly</h2>
 <ol>
-<li>In the <strong>TestClass</strong> class Try to update the Id of one of the cars to 10</li>
-<li>Build and test</li>
-<li>In the <strong>car</strong> class change the <strong>Id</strong> variavble to readonly</li>
-<li>Notice the error message in the <strong>TestClass</strong> class</li>
-<li>Delete the update of the <strong>Id</strong> from the <strong>TestClass</strong></li>
-<li>Build and test</li>
+<li>In the <strong>TestClass</strong> class Try to update the Id of one of the cars to 10.</li>
+<li>Build and test.</li>
+<li>In the <strong>car</strong> class change the <strong>Id</strong> variable to readonly.</li>
+<li>Notice the error message in the <strong>TestClass</strong> class.</li>
+<li>Delete the update of the <strong>Id</strong> from the <strong>TestClass</strong>.</li>
+<li>Build and test.</li>
 </ol>
 <p>Your <strong>Car</strong> class supposed to look like this code:</p>
 <pre data-line="17" class="language-csdiff line-numbers"><code>using System;
