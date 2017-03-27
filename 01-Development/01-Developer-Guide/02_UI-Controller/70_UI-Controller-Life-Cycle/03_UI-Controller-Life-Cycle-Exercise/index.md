@@ -23,5 +23,5 @@
 1.  Notice the **Output window**.
   
   
-# open the output windows:  
+How to open the output windows:  
 ![Open Output Window](OpenOutputWindow.png)
