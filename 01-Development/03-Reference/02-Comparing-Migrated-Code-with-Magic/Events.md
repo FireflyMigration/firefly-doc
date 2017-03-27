@@ -9,8 +9,7 @@ The newly added handlers in Firefly are also added for search purposes.
 Raise(Command.Expand)
 ```
 
-| Magic internal event | Firefly Command |
-
+| Magic internal event | Firefly Command 
 | :--- | :--- |
 | Align Left | AlignRichTextBoxLeft |
 | Align Right | AlignRichTextBoxRight |
