@@ -2,8 +2,8 @@
 
 1. Under the **Exercises** folder add new folder name it **MoreOnClass**.
 2. Add a new Class name it **TestClass**.
-3. Add Run method
-4. Call it from the application MDI
+3. Add Run method.
+4. Call it from the application MDI.
 
 Your new Class supposed to look like this code:
 
@@ -26,12 +26,12 @@ namespace Northwind.Exercises.MoreOnClass
 ```
 
 4. Add a new class name it **Car**.
-5. Add Run Method
+5. Add Run Method.
 6. Add This members to the Run :
-   1. string carName
-   2. int carYear
-   3. int CarKM
-   4. char carType 
+   1. string carName.
+   2. int carYear.
+   3. int CarKM.
+   4. char carType. 
  
 Your new Class supposed to look like this code:
 
@@ -57,10 +57,10 @@ namespace Northwind.Exercises.MoreOnClass
 }
 ```
 7. In the **TestClass** class create 2 new instance of the Car class name it:
-   1. MainCar
-   2. WeekendCar
+   1. mainCar.
+   2. weekendCar.
 8. Set the value of your two new cars to fit your dream cars.
-9. Add message box to show the two cars info
+9. Add message box to show the two cars info.
 
 Your Class supposed to look like this code:
 
@@ -100,11 +100,11 @@ namespace Northwind.Exercises.MoreOnClass
     }
 }
 ```
-10. Build and test
-11. In the **Car** class Add a new method **CarInfo**
-12. add a message box to the new method to show the car info
-13. In the **TestClass** class replace the message box to use the new method
-14. Build and test
+10. Build and test.
+11. In the **Car** class Add a new method **CarInfo**.
+12. add a message box to the new method to show the car info.
+13. In the **TestClass** class replace the message box to use the new method.
+14. Build and test.
 
 
 Your **Car** Class supposed to look like this code:
