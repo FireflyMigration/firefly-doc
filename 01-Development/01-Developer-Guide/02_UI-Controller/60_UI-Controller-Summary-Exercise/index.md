@@ -16,7 +16,7 @@
 1.	Add a relation to the **Products** table. 
 1.  **Build** and open the form designer (Using the **Class outline** window). 
 1.  Add the **ProductName** next to the **ProductID** on the same column.
-1.	**Build and tes**t.
+1.	**Build and test**.
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/yXLJhIwrFdY?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
