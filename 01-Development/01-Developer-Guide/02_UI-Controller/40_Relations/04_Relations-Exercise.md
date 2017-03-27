@@ -20,13 +20,13 @@ namespace Northwind.Exercises
     {
 
         public readonly Models.Products Products = new Models.Products();
-        public readonly Models.Categories Categories = new Models.Categories();
++       public readonly Models.Categories Categories = new Models.Categories();
 
         public ShowProducts()
         {
             From = Products;
-            Relations.Add(Categories, RelationType.Find,
-                Categories.CategoryID.IsEqualTo(Products.CategoryID));
++           Relations.Add(Categories, RelationType.Find,
++               Categories.CategoryID.IsEqualTo(Products.CategoryID));
 
             Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
             Where.Add(Products.UnitPrice.IsGreaterThan(25));
@@ -47,7 +47,7 @@ namespace Northwind.Exercises
 }
 ```
 
-3.  Using the **Class Outline** open the **designer**.
+3.  **Build** the project and then using the **Class Outline** open the **designer**.
 4.  Add to the grid the **CategoryName** next to the **CategoryID** value.
 2.	Build and test.
 3.	While running the project, change the value of the "CategoryID" and verify that the "CategoryName" is changed.
