@@ -13,7 +13,7 @@ public class DemoLocalColumns : UIControllerBase
 
     public DemoLocalColumns()
     {
-+       ToDate.BindValue(GetEndOfMonthOfFromDate);
++       ToDate.BindValue(()=>GetEndOfMonthOfFromDate);
     }
 +   public Date GetEndOfMonthOfFromDate()
 +   {
