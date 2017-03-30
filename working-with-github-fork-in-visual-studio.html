@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Working with GitHub Fork in Visual Studio</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="working-with-github-fork-in-visual-studio">Working with GitHub Fork in Visual Studio</h1>
+<p>GitHub is a great place for open source project that you can contribute to.
+One of them is the Firefly-doc repository which has all the developers documentation.
+This article explain how to work with a repository that you have only read access using Visual Studio.</p>
+<h2 id="create-a-fork-on-github">Create a Fork on GitHub</h2>
+<p>If you don't already have a fork of the repository you can create one.</p>
+<ol>
+<li>Open a web browser to the GitHub project page (i.e. <a href="https://github.com/FireflyMigration/firefly-doc">https://github.com/FireflyMigration/firefly-doc</a>).</li>
+<li>Make sure you have a GitHub account and that you are logged in (your user avatar should appear at the top right corner)</li>
+<li>Click on the &quot;Fork&quot; button in the upper right corner.<br />
+<img src="2017-03-23_15h36_29.png" alt="" /><br />
+This creates a copy of the repository under your GitHub account which you have read and <strong>write</strong> access.</li>
+</ol>
+<h2 id="clone-the-forked-repository">Clone the forked repository</h2>
+<p>Clone your forked repository to your local machine using Visual Studio.<br />
+This creates a local clone of your repository with the cloud repository is configured as the default remote named &quot;origin&quot;<br />
+<img src="2017-03-23_15h42_51.png" alt="" /><br />
+Notice that this is your own copy of the repository connected to the fork and not the main repository.</p>
+<h2 id="keeping-your-fork-up-to-date-with-the-main-repository">Keeping your fork up to date with the main repository</h2>
+<h3 id="create-upstream-remote">Create &quot;upstream&quot; remote</h3>
+<p>First, you need to add a second remote that refer to the original master repository.</p>
+<ol>
+<li>Click on View -&gt; Team Explorer</li>
+<li>Click on the Home button</li>
+<li>Click on Settings<br />
+<img src="2017-03-23_15h45_58.png" alt="" /></li>
+<li>Click on &quot;Repository Settings&quot; hyper-link</li>
+<li>Under &quot;Remotes&quot; sub-menu, click &quot;Add&quot; hyper-link</li>
+<li>Enter &quot;upstream&quot; in the name and the main repository url (i.e. <a href="https://github.com/FireflyMigration/firefly-doc">https://github.com/FireflyMigration/firefly-doc</a>) in Fetch<br />
+<img src="2017-03-23_15h47_35.png" alt="" /></li>
+<li>Click Save</li>
+</ol>
+<p>This create a connection to the main repository named &quot;upstream&quot; that will allow us to get the latest change from it.</p>
+<h3 id="pulling-updates-from-the-main-upstream-repository">Pulling updates from the main (upstream) repository</h3>
+<p>Sooner or later, the main repo will have updates that you will want to pull into your fork.<br />
+If you go to your fork's GitHub web page you will see that there is a line just before the description of the files in the repo that indicates if your fork is ahead, behind or in sync with the master branch of the original repo.<br />
+To pull the latest changes and bring your fork up date:</p>
+<ol>
+<li>Click View-&gt; Team Explorer</li>
+<li>Click on the Home button</li>
+<li>Click on Sync</li>
+<li>Click on Fetch</li>
+<li>In the combo-box select upstream</li>
+<li>Click on the Fetch button<br />
+<img src="2017-03-23_15h51_49.png" alt="" /></li>
+</ol>
+<p>This will fetch all the changes from the &quot;upstream&quot; repository and put them in the LOCAL repository.<br />
+Notice that this does not change any existing branch.</p>
+<h3 id="merging-the-changes-from-upstrammaster-branch-into-the-local-master-branch">Merging the changes from upstram/master branch into the local master branch</h3>
+<ol>
+<li>Click View-&gt; Team Explorer</li>
+<li>Click on the Home button</li>
+<li>Click on Branches</li>
+<li>Make sure that master is the active branch (it should be bold). If not double click on master to make it the active branch. You may have to commit all the current changes before you can switch branches.</li>
+<li>Right click the master branch and select &quot;Merge from...&quot;<br />
+<img src="2017-03-23_15h53_32.png" alt="" /></li>
+<li>Select upstream/master in &quot;Merge from branch:&quot;combo-box<br />
+<img src="2017-03-23_15h57_51.png" alt="" /></li>
+<li>Click Merge</li>
+</ol>
+<h3 id="pushing-the-local-repository-to-your-github-fork">Pushing the local repository to your GitHub fork</h3>
+<ol>
+<li>Click on View-&gt; Team Explorer</li>
+<li>Click on the Home button</li>
+<li>Click Sync</li>
+<li>Click on the &quot;Push&quot; hyper-link</li>
+<li>Select &quot;origin&quot; in the first combo-box</li>
+<li>Select &quot;master&quot; in the second combo-box</li>
+<li>Click Push<br />
+<img src="2017-03-23_15h58_55.png" alt="" /></li>
+</ol>
+<p>Go to your GitHub web page for the fork and make sure that you see a line that says:
+&quot;This branch is even with FireflyMigration:master.&quot;<br />
+<img src="2017-03-23_16h00_18.png" alt="" /></p>
+<h2 id="contributing-to-the-main-repository-using-pull-request">Contributing to the main repository using Pull Request</h2>
+<p>Creating a pull request to the main repository starts by creating a local branch for your work and pushing this branch to your GitHub fork.<br />
+At this point you should already be up-to-date with the main repository.</p>
+<h3 id="create-a-local-branch">Create a local branch</h3>
+<ol>
+<li>Click on View -&gt; Team Explorer</li>
+<li>Click on the Home button</li>
+<li>Click on Branches</li>
+<li>Right click on master and select &quot;New Local Branch From...&quot;<br />
+<img src="2017-03-23_16h02_46.png" alt="" /></li>
+<li>Enter a branch name</li>
+<li>Select &quot;master&quot; in the combo-box</li>
+<li>Click on Create Branch button<br />
+<img src="2017-03-23_16h04_27.png" alt="" /></li>
+</ol>
+<h3 id="publish-the-branch">Publish the branch</h3>
+<p>Once your work is done and committed to your local new branch you need to push it to the GitHub fork</p>
+<ol>
+<li>Click on View -&gt; Team Explorer</li>
+<li>Click on the Home button</li>
+<li>Click on Branches</li>
+<li>Right click your new branch and select &quot;Publish Branch&quot;<br />
+<img src="2017-03-23_16h05_45.png" alt="" /></li>
+</ol>
+<p>This creates a new branch in your GitHub Fork that is tracked by the local branch with the same name.</p>
+<h3 id="create-a-pull-request">Create a pull request</h3>
+<ol>
+<li>Go to your fork page on GitHub website</li>
+<li>Near the top left side, change the active branch to your new branch</li>
+<li>Click on the &quot;New Pull Request&quot; button next to the branch name.<br />
+<img src="2017-03-23_16h08_07.png" alt="" /></li>
+<li>Enter a description and submit</li>
+</ol>
+<h3 id="create-a-pull-request-by-visual-studio">Create a pull request by Visual Studio</h3>
+<ol>
+<li>Click on View -&gt; Other Window -&gt; Github</li>
+<li>Click on Create New<br />
+<img src="2017-03-23_16h11_03.png" alt="" /></li>
+<li>Select FireflyMigration:master &lt; Name of the new branch</li>
+<li>Click on Create pull request button<br />
+<img src="2017-03-23_16h12_41.png" alt="" /></li>
+</ol>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/04-Version-Control-and-Git/Working-with-GitHub-Fork-in-Visual-Studio/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree"</div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4806432-3', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'working-with-github-fork-in-visual-studio.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>

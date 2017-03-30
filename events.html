@@ -32,82 +32,312 @@
 <p>The newly added handlers in Firefly are also added for search purposes.</p>
 <h3 id="firefly-handlers">Firefly handlers</h3>
 <pre data-line="" class="language-csdiff line-numbers"><code>Raise(Command.Expand) </code></pre>
-<p>| Magic internal event | Firefly Command |</p>
-<p>| :--- | :--- |
-| Align Left | AlignRichTextBoxLeft |
-| Align Right | AlignRichTextBoxRight |
-| Begin Field | PlaceCursorAtStartOfTextBox |
-| Begin Line | PlaceCursorAtStartOfLine |
-| Begin Row | GoToFirstControl |
-| Begin Screen | GoToTopGridRow |
-| Begin Table | GoToFirstRow |
-| Cancel | UndoChangesInRow |
-| Click | Click |
-| Close | CloseForm |
-| Collapse Node | CollapseTreeNode |
-| Column Click | GridColumnClick |
-| Control Hit | BeforeControlClick |
-| Control Modify | ControlValueChanged |
-| Copy | Copy |
-| Create Child | InsertChildNode |
-| Create Line | InsertRow |
-| Create Records | SwitchToInsertActivity |
-| Cut | Cut |
-| DblClick | DoubleClick |
-| Del Current Char | DeleteNextCharacter |
-| Del Previous Char | DeletePreviousCharacter |
-| Delete Line | DeleteRow |
-| Ditto | SetFocusedControlValueSameAsInPreviousRow |
-| Drag Begin | DragStart |
-| Drop | DragDrop |
-| Edit Node | BeginEditingTreeNodeCaption |
-| Empty Dataview | NoData |
-| End Field | PlaceCursorAtEndOfTextBox |
-| End Row | PlaceCursorAtEndOfLine |
-| End Screen | GoToLastControl |
-| End Table | GoToLastRow |
-| Exit | Exit |
-| Exit System | ExitApplication |
-| Expand Node | ExpandTreeNode |
-| Help | Help |
-| Mark All | MultiSelectAllRows |
-| Mark Next Char | SelectNextCharacter |
-| Modify Records | SwitchToUpdateActivity |
-| Mouse Out | MouseLeave |
-| Mouse Over | MouseEnter |
-| Next Char | PlaceCursorAfterNextCharacter |
-| Next Field | GoToNextControl |
-| Next Line | PlaceCursorAtNextLineInMultiline |
-| Next Page | GoToNextPage |
-| Next Row | GoToNextRow |
-| Next Screen | GoToNextPage |
-| Next Word | PlaceCursorBeforeNextWord |
-| Paste | Paste |
-| Previous Char | PlaceCursorBeforePreviosuCharacter |
-| Previous Field | GoToPreviousControl |
-| Previous Line | PlaceCursorAtPreviousLineInMultiline |
-| Previous Page | GoToPreviousPage |
-| Previous Row | GoToPreviousRow |
-| Previous Screen | GoToPreviousPage |
-| Previous Window | - |
-| Previous Word | PlaceCursorBeforeWord |
-| Printer Setup | PrinterSettingsDialog |
-| Query Records | SwitchToBrowseActivity |
-| Quit | UndoChangesInRowAndExit |
-| Record Flush | SaveCurrentRow |
-| Screen Refresh | RefreshDisplayedData |
-| Select | Select |
-| Select All | SelectAll |
-| Set to NULL | SetFocusedControlValueToNull |
-| Subform Refresh | RefreshSubform |
-| To First Child | GoToFirstChildNode |
-| UnMark All | CancelMultiSelection |
-| Undo Editing | UndoEditing |
-| View Refresh | ReloadData |
-| Wide | ExpandTextBox |
-| Window Hit | BeforeWindowClick |
-| Window Resize | WindowResize |
-| Zoom | Expand |</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Magic internal event</th>
+<th style="text-align: left;">Firefly Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Align Left</td>
+<td style="text-align: left;">AlignRichTextBoxLeft</td>
+</tr>
+<tr>
+<td style="text-align: left;">Align Right</td>
+<td style="text-align: left;">AlignRichTextBoxRight</td>
+</tr>
+<tr>
+<td style="text-align: left;">Begin Field</td>
+<td style="text-align: left;">PlaceCursorAtStartOfTextBox</td>
+</tr>
+<tr>
+<td style="text-align: left;">Begin Line</td>
+<td style="text-align: left;">PlaceCursorAtStartOfLine</td>
+</tr>
+<tr>
+<td style="text-align: left;">Begin Row</td>
+<td style="text-align: left;">GoToFirstControl</td>
+</tr>
+<tr>
+<td style="text-align: left;">Begin Screen</td>
+<td style="text-align: left;">GoToTopGridRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Begin Table</td>
+<td style="text-align: left;">GoToFirstRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Cancel</td>
+<td style="text-align: left;">UndoChangesInRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Click</td>
+<td style="text-align: left;">Click</td>
+</tr>
+<tr>
+<td style="text-align: left;">Close</td>
+<td style="text-align: left;">CloseForm</td>
+</tr>
+<tr>
+<td style="text-align: left;">Collapse Node</td>
+<td style="text-align: left;">CollapseTreeNode</td>
+</tr>
+<tr>
+<td style="text-align: left;">Column Click</td>
+<td style="text-align: left;">GridColumnClick</td>
+</tr>
+<tr>
+<td style="text-align: left;">Control Hit</td>
+<td style="text-align: left;">BeforeControlClick</td>
+</tr>
+<tr>
+<td style="text-align: left;">Control Modify</td>
+<td style="text-align: left;">ControlValueChanged</td>
+</tr>
+<tr>
+<td style="text-align: left;">Copy</td>
+<td style="text-align: left;">Copy</td>
+</tr>
+<tr>
+<td style="text-align: left;">Create Child</td>
+<td style="text-align: left;">InsertChildNode</td>
+</tr>
+<tr>
+<td style="text-align: left;">Create Line</td>
+<td style="text-align: left;">InsertRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Create Records</td>
+<td style="text-align: left;">SwitchToInsertActivity</td>
+</tr>
+<tr>
+<td style="text-align: left;">Cut</td>
+<td style="text-align: left;">Cut</td>
+</tr>
+<tr>
+<td style="text-align: left;">DblClick</td>
+<td style="text-align: left;">DoubleClick</td>
+</tr>
+<tr>
+<td style="text-align: left;">Del Current Char</td>
+<td style="text-align: left;">DeleteNextCharacter</td>
+</tr>
+<tr>
+<td style="text-align: left;">Del Previous Char</td>
+<td style="text-align: left;">DeletePreviousCharacter</td>
+</tr>
+<tr>
+<td style="text-align: left;">Delete Line</td>
+<td style="text-align: left;">DeleteRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Ditto</td>
+<td style="text-align: left;">SetFocusedControlValueSameAsInPreviousRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Drag Begin</td>
+<td style="text-align: left;">DragStart</td>
+</tr>
+<tr>
+<td style="text-align: left;">Drop</td>
+<td style="text-align: left;">DragDrop</td>
+</tr>
+<tr>
+<td style="text-align: left;">Edit Node</td>
+<td style="text-align: left;">BeginEditingTreeNodeCaption</td>
+</tr>
+<tr>
+<td style="text-align: left;">Empty Dataview</td>
+<td style="text-align: left;">NoData</td>
+</tr>
+<tr>
+<td style="text-align: left;">End Field</td>
+<td style="text-align: left;">PlaceCursorAtEndOfTextBox</td>
+</tr>
+<tr>
+<td style="text-align: left;">End Row</td>
+<td style="text-align: left;">PlaceCursorAtEndOfLine</td>
+</tr>
+<tr>
+<td style="text-align: left;">End Screen</td>
+<td style="text-align: left;">GoToLastControl</td>
+</tr>
+<tr>
+<td style="text-align: left;">End Table</td>
+<td style="text-align: left;">GoToLastRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Exit</td>
+<td style="text-align: left;">Exit</td>
+</tr>
+<tr>
+<td style="text-align: left;">Exit System</td>
+<td style="text-align: left;">ExitApplication</td>
+</tr>
+<tr>
+<td style="text-align: left;">Expand Node</td>
+<td style="text-align: left;">ExpandTreeNode</td>
+</tr>
+<tr>
+<td style="text-align: left;">Help</td>
+<td style="text-align: left;">Help</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mark All</td>
+<td style="text-align: left;">MultiSelectAllRows</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mark Next Char</td>
+<td style="text-align: left;">SelectNextCharacter</td>
+</tr>
+<tr>
+<td style="text-align: left;">Modify Records</td>
+<td style="text-align: left;">SwitchToUpdateActivity</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mouse Out</td>
+<td style="text-align: left;">MouseLeave</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mouse Over</td>
+<td style="text-align: left;">MouseEnter</td>
+</tr>
+<tr>
+<td style="text-align: left;">Next Char</td>
+<td style="text-align: left;">PlaceCursorAfterNextCharacter</td>
+</tr>
+<tr>
+<td style="text-align: left;">Next Field</td>
+<td style="text-align: left;">GoToNextControl</td>
+</tr>
+<tr>
+<td style="text-align: left;">Next Line</td>
+<td style="text-align: left;">PlaceCursorAtNextLineInMultiline</td>
+</tr>
+<tr>
+<td style="text-align: left;">Next Page</td>
+<td style="text-align: left;">GoToNextPage</td>
+</tr>
+<tr>
+<td style="text-align: left;">Next Row</td>
+<td style="text-align: left;">GoToNextRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Next Screen</td>
+<td style="text-align: left;">GoToNextPage</td>
+</tr>
+<tr>
+<td style="text-align: left;">Next Word</td>
+<td style="text-align: left;">PlaceCursorBeforeNextWord</td>
+</tr>
+<tr>
+<td style="text-align: left;">Paste</td>
+<td style="text-align: left;">Paste</td>
+</tr>
+<tr>
+<td style="text-align: left;">Previous Char</td>
+<td style="text-align: left;">PlaceCursorBeforePreviosuCharacter</td>
+</tr>
+<tr>
+<td style="text-align: left;">Previous Field</td>
+<td style="text-align: left;">GoToPreviousControl</td>
+</tr>
+<tr>
+<td style="text-align: left;">Previous Line</td>
+<td style="text-align: left;">PlaceCursorAtPreviousLineInMultiline</td>
+</tr>
+<tr>
+<td style="text-align: left;">Previous Page</td>
+<td style="text-align: left;">GoToPreviousPage</td>
+</tr>
+<tr>
+<td style="text-align: left;">Previous Row</td>
+<td style="text-align: left;">GoToPreviousRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Previous Screen</td>
+<td style="text-align: left;">GoToPreviousPage</td>
+</tr>
+<tr>
+<td style="text-align: left;">Previous Window</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">Previous Word</td>
+<td style="text-align: left;">PlaceCursorBeforeWord</td>
+</tr>
+<tr>
+<td style="text-align: left;">Printer Setup</td>
+<td style="text-align: left;">PrinterSettingsDialog</td>
+</tr>
+<tr>
+<td style="text-align: left;">Query Records</td>
+<td style="text-align: left;">SwitchToBrowseActivity</td>
+</tr>
+<tr>
+<td style="text-align: left;">Quit</td>
+<td style="text-align: left;">UndoChangesInRowAndExit</td>
+</tr>
+<tr>
+<td style="text-align: left;">Record Flush</td>
+<td style="text-align: left;">SaveCurrentRow</td>
+</tr>
+<tr>
+<td style="text-align: left;">Screen Refresh</td>
+<td style="text-align: left;">RefreshDisplayedData</td>
+</tr>
+<tr>
+<td style="text-align: left;">Select</td>
+<td style="text-align: left;">Select</td>
+</tr>
+<tr>
+<td style="text-align: left;">Select All</td>
+<td style="text-align: left;">SelectAll</td>
+</tr>
+<tr>
+<td style="text-align: left;">Set to NULL</td>
+<td style="text-align: left;">SetFocusedControlValueToNull</td>
+</tr>
+<tr>
+<td style="text-align: left;">Subform Refresh</td>
+<td style="text-align: left;">RefreshSubform</td>
+</tr>
+<tr>
+<td style="text-align: left;">To First Child</td>
+<td style="text-align: left;">GoToFirstChildNode</td>
+</tr>
+<tr>
+<td style="text-align: left;">UnMark All</td>
+<td style="text-align: left;">CancelMultiSelection</td>
+</tr>
+<tr>
+<td style="text-align: left;">Undo Editing</td>
+<td style="text-align: left;">UndoEditing</td>
+</tr>
+<tr>
+<td style="text-align: left;">View Refresh</td>
+<td style="text-align: left;">ReloadData</td>
+</tr>
+<tr>
+<td style="text-align: left;">Wide</td>
+<td style="text-align: left;">ExpandTextBox</td>
+</tr>
+<tr>
+<td style="text-align: left;">Window Hit</td>
+<td style="text-align: left;">BeforeWindowClick</td>
+</tr>
+<tr>
+<td style="text-align: left;">Window Resize</td>
+<td style="text-align: left;">WindowResize</td>
+</tr>
+<tr>
+<td style="text-align: left;">Zoom</td>
+<td style="text-align: left;">Expand</td>
+</tr>
+</tbody>
+</table>
 <h3 id="env-handlers">ENV handlers</h3>
 <pre data-line="" class="language-csdiff line-numbers"><code>Raise(Commands.ShellToOS) </code></pre>
 <table>

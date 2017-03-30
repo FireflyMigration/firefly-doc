@@ -29,11 +29,57 @@
                 </div>
                 <div class="content"><h1 id="exercise-uicontroller-relations">Exercise - UIController - Relations</h1>
 <ol>
-<li>In “ShowProducts”, add a relation to the &quot;Categories&quot; table and display the &quot;CategoryName&quot; next to the &quot;CategoryID&quot; value.</li>
+<li>In <strong>ShowProducts</strong>, drag and drop the <strong>Categories</strong> entity (located in the NorthwindBase.Models name space).</li>
+<li>Using the <strong>rel</strong> snippet Add a relation to the <strong>Categories</strong> table.</li>
+</ol>
+<p>Your <strong>ShowProducts</strong> class should look like :</p>
+<pre data-line="15,20,21" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Exercises
+{
+    public class ShowProducts : UIControllerBase
+    {
+
+        public readonly Models.Products Products = new Models.Products();
+        public readonly Models.Categories Categories = new Models.Categories();
+
+        public ShowProducts()
+        {
+            From = Products;
+            Relations.Add(Categories, RelationType.Find,
+                Categories.CategoryID.IsEqualTo(Products.CategoryID));
+
+            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
+            Where.Add(Products.UnitPrice.IsGreaterThan(25));
+
+            OrderBy = Products.SortByProductName;
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () =&gt; new Views.ShowProductsView(this);
+        }
+    }
+} </code></pre>
+<ol start="3">
+<li><strong>Build</strong> the project and then using the <strong>Class Outline</strong> open the <strong>designer</strong>.</li>
+<li>Add to the grid the <strong>CategoryName</strong> next to the <strong>CategoryID</strong> value.</li>
 <li>Build and test.</li>
 <li>While running the project, change the value of the &quot;CategoryID&quot; and verify that the &quot;CategoryName&quot; is changed.</li>
 <li>Make the &quot;CategoryName&quot; textbox readonly.</li>
-<li>Build and test</li>
+<li>Build and test
+<img src="RelationDesignerLook.png" alt="" /></li>
 </ol>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XJe4IZePjAg?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/02_UI-Controller/40_Relations/04_Relations-Exercise.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
