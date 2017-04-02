@@ -119,7 +119,7 @@ Logical names can be used in two places:
 
 ![2017 03 16 11H01 12](2017-03-16_11h01_12.png)
 
-### Using Expresssions
+### Using Expresssions for Table Name
 Using expressions for table names in DB tables (Ctrl + D). For example, a program can change the table name so that it ends with the terminal number (using the Term() function).  
 **To trace table name changes in Ctrl+D search for the text "EntityName = ".**
 ```csdiff
