@@ -9,7 +9,7 @@ In addition, the migrated .NET application is already designed to work with SQL 
 The migrated application has been designed to work in both Btrieve and in SQL with the same code base. 
 This allows you to migrate your customers to SQL gradually, while you can continue developing the application and serve both Btrieve and SQL customers.
 
-Firefly has invested a lot in making the application behave in SQL exactly the same as it was in Btrieve. This includes:
+Firefly has invested a lot in making the application behave exactly the same both in SQL and in Btrieve. This includes:
 1. Optimal SQL Schema design
 2. Object naming
 3.  Primary key violations detecting
@@ -24,7 +24,8 @@ There are special cases that are unique to your application, which may need some
 In general, anything in the application that is tied to Btrieve technology might need adjustment or at least be considered.
 
 Please find below a list of  usages that might exist in your application and need to be considered.
-If you think you have any of the following cases in your application, **please provide an example of how you use it __from the user perspective.__**
+If you think you have any of the following cases in your application, **please provide an example of how you use it __from the user perspective.__**   
+We need to see the scenario running in Btrieve, so we will be able to see the exact same results when running in SQL.  
 Firefly is here to help and guide you through this process.
 We will examine each scenario and advise about the right solution for your specific application.
 
@@ -45,7 +46,7 @@ IODel    | u.IODel(
 IOCopy   | u.IOCopy(
 IOExist  | u.IOExist(
 
-#### Migrating from UniPaas may also include the following:
+#### Migrating from uniPaaS may also include the following:
 Function    | What to search for
 ----------- |-------------------
 FileRename  | u.FileRename(          
@@ -61,7 +62,7 @@ In Visual Studio, search for "u.IO" to find all of the above functions at once, 
 4. In Look In: select 'Entire Solution'
 5. Press 'Find All'
 6. The result wll display in "Find Result #" window
-7. Click on each result to go to the code
+7. Click on each result to go to the code (ignore the cases found in the ENV namespace)
 
 ![2017 03 09 16H52 36](2017-03-09_16h52_36.png)
  
@@ -177,16 +178,12 @@ It is possible to create a second table structure for the same data file,
 Both structures will open the file and show the data in it.
 
 ## Dll calls to Btrieve (W32mkde)
-This is not very common but we have seen some applications that has calls to the Btrieve dll.
-**Search for "W32mkde"** to check if such calls exists in your application.
+This is not very common but we have seen some applications that have calls to the Btrieve dll.
+**Search for "W32mkde"** to check if such calls exists in your application.  
+When using **Pervasive** search for **"W3dbmsgr"** instead.
 
 
 # Summary
 The most important purpose of this article is to list the special cases that need to be considered when migrating the data from Btrieve to SQL.
 Now that you are aware of all them, please make sure you have use cases in your application that you can demonstrate to Firefly. Together we will decide on the best solution that you can apply to your specific application.
 Firefly will deliver a version with some adjustments to the data migration engine, based on these decisions.
-Once the application is ready for the migration, you can run the migration and start testing the application in SQL using the use cases that were prepared in advance.
-While testing the SQL version, you might find some performance differences. 
-This is because Btrieve and SQL are very different technologies designed with different approach.
-Firefly can help in improving any performance issue that might be found in the SQL version.
-As always, please prepare use cases to demo these issues and consult with us.
