@@ -22,8 +22,8 @@ protected override void OnLeaveRow()
 
 ### How can we get a more granular view of a method?
 
-We can use the Profiler `StartContext` menu, to define a context that we want to measure on it's own.
-In the following example we use the `using` statement, and to count and measure anything between the open curly brackets to the closing curly brackets.
+We can use the Profiler `StartContext` method, to define a context that we want to measure on it's own.
+In the following example we use the `using` statement to monitor anything between the open and close of the curly brackets.
 
 ```csdiff
 protected override void OnLeaveRow()
@@ -32,19 +32,13 @@ protected override void OnLeaveRow()
 +   {
         v_TotalPrice.Value = OrderDetails.UnitPrice * OrderDetails.Quantity;
 +   }
-    using (ENV.Utilities.Profiler.StartContext("Update Parent Total"))
-    {
-        _parent.TotalAmount.Value = v_TotalPrice + _parent.TotalAmount;
-        _parent.TotalItems.Value += OrderDetails.Quantity;
-    }
+     _parent.TotalAmount.Value = v_TotalPrice + _parent.TotalAmount;
+     _parent.TotalItems.Value += OrderDetails.Quantity;
 
     if (OrderDetails.ProductID == _parent.ProductID)
     {
-        using (ENV.Utilities.Profiler.StartContext("Update Parent Product Total"))
-        {
-            _parent.ProductItems.Value = _parent.ProductTotalAmount + OrderDetails.Quantity;
-            _parent.ProductTotalAmount.Value += v_TotalPrice;
-        }
+         _parent.ProductItems.Value = _parent.ProductTotalAmount + OrderDetails.Quantity;
+         _parent.ProductTotalAmount.Value += v_TotalPrice;
     }
 }
 ```
