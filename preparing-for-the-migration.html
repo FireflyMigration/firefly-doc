@@ -35,7 +35,7 @@ In addition, the migrated .NET application is already designed to work with SQL 
 <h2 id="preparing-for-sql-migration">Preparing for SQL migration</h2>
 <p>The migrated application has been designed to work in both Btrieve and in SQL with the same code base.
 This allows you to migrate your customers to SQL gradually, while you can continue developing the application and serve both Btrieve and SQL customers.</p>
-<p>Firefly has invested a lot in making the application behave in SQL exactly the same as it was in Btrieve. This includes:</p>
+<p>Firefly has invested a lot in making the application behave exactly the same both in SQL and in Btrieve. This includes:</p>
 <ol>
 <li>Optimal SQL Schema design</li>
 <li>Object naming</li>
@@ -49,7 +49,8 @@ This allows you to migrate your customers to SQL gradually, while you can contin
 <p>There are special cases that are unique to your application, which may need some manual adjustment.</p>
 <p>In general, anything in the application that is tied to Btrieve technology might need adjustment or at least be considered.</p>
 <p>Please find below a list of  usages that might exist in your application and need to be considered.
-If you think you have any of the following cases in your application, <strong>please provide an example of how you use it <strong>from the user perspective.</strong></strong>
+If you think you have any of the following cases in your application, <strong>please provide an example of how you use it <strong>from the user perspective.</strong></strong><br />
+We need to see the scenario running in Btrieve, so we will be able to see the exact same results when running in SQL.<br />
 Firefly is here to help and guide you through this process.
 We will examine each scenario and advise about the right solution for your specific application.</p>
 <p>With the delivery of the SQL version of the application, we will show you how to apply the solution
@@ -84,7 +85,7 @@ In SQL the tables are stored in SQL server database and are not accessed from th
 </tr>
 </tbody>
 </table>
-<h4 id="migrating-from-unipaas-may-also-include-the-following">Migrating from UniPaas may also include the following:</h4>
+<h4 id="migrating-from-unipaas-may-also-include-the-following">Migrating from uniPaaS may also include the following:</h4>
 <table>
 <thead>
 <tr>
@@ -120,7 +121,7 @@ In SQL the tables are stored in SQL server database and are not accessed from th
 <li>In Look In: select 'Entire Solution'</li>
 <li>Press 'Find All'</li>
 <li>The result wll display in &quot;Find Result #&quot; window</li>
-<li>Click on each result to go to the code</li>
+<li>Click on each result to go to the code (ignore the cases found in the ENV namespace)</li>
 </ol>
 <p><img src="2017-03-09_16h52_36.png" alt="2017 03 09 16H52 36" /></p>
 <h4 id="example-for-code-that-is-harmless">Example for code that is harmless</h4>
@@ -209,17 +210,13 @@ which has the following structure:</p>
 Both structures will open the file and show the data in it.</li>
 </ol>
 <h2 id="dll-calls-to-btrieve-w32mkde">Dll calls to Btrieve (W32mkde)</h2>
-<p>This is not very common but we have seen some applications that has calls to the Btrieve dll.
-<strong>Search for &quot;W32mkde&quot;</strong> to check if such calls exists in your application.</p>
+<p>This is not very common but we have seen some applications that have calls to the Btrieve dll.
+<strong>Search for &quot;W32mkde&quot;</strong> to check if such calls exists in your application.<br />
+When using <strong>Pervasive</strong> search for <strong>&quot;W3dbmsgr&quot;</strong> instead.</p>
 <h1 id="summary">Summary</h1>
 <p>The most important purpose of this article is to list the special cases that need to be considered when migrating the data from Btrieve to SQL.
 Now that you are aware of all them, please make sure you have use cases in your application that you can demonstrate to Firefly. Together we will decide on the best solution that you can apply to your specific application.
-Firefly will deliver a version with some adjustments to the data migration engine, based on these decisions.
-Once the application is ready for the migration, you can run the migration and start testing the application in SQL using the use cases that were prepared in advance.
-While testing the SQL version, you might find some performance differences.
-This is because Btrieve and SQL are very different technologies designed with different approach.
-Firefly can help in improving any performance issue that might be found in the SQL version.
-As always, please prepare use cases to demo these issues and consult with us.</p>
+Firefly will deliver a version with some adjustments to the data migration engine, based on these decisions.</p>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Migration-project/Migrating-from-Btrieve-to-SQL/01-Preparing-for-the-Migration.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->

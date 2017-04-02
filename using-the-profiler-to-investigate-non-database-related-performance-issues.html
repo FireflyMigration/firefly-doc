@@ -28,7 +28,7 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="using-the-profiler-to-investigate-non-database-related-performance-issues">Using the Profiler to investigate non database related performance issues</h1>
-<p>There are cases, where the profiler can direct us to a piece of code that is not granular enough for us to understand the root cause of a performance problem.</p>
+<p>﻿There are cases, where the profiler can direct us to a piece of code that is not granular enough for us to understand the root cause of a performance problem.</p>
 <p>For example in our case, the profiler shows that the <code>OnLeaveRow</code> is taking a long time.
 <img src="2017-03-30_18h01_34.png" alt="2017 03 30 18H01 34" /></p>
 <p>But that <code>OnLeaveRow</code> has 9 lines of code that all seem innocent.</p>
@@ -45,27 +45,21 @@
     }
 } </code></pre>
 <h3 id="how-can-we-get-a-more-granular-view-of-a-method">How can we get a more granular view of a method?</h3>
-<p>We can use the Profiler <code>StartContext</code> menu, to define a context that we want to measure on it's own.
-In the following example we use the <code>using</code> statement, and to count and measure anything between the open curly brackets to the closing curly brackets.</p>
+<p>We can use the Profiler <code>StartContext</code> method, to define a context that we want to measure on it's own.
+In the following example we use the <code>using</code> statement to monitor anything between the open and close of the curly brackets.</p>
 <pre data-line="3,4,6" class="language-csdiff line-numbers"><code>protected override void OnLeaveRow()
 {
     using (ENV.Utilities.Profiler.StartContext("Update Line Total"))
     {
         v_TotalPrice.Value = OrderDetails.UnitPrice * OrderDetails.Quantity;
     }
-    using (ENV.Utilities.Profiler.StartContext("Update Parent Total"))
-    {
-        _parent.TotalAmount.Value = v_TotalPrice + _parent.TotalAmount;
-        _parent.TotalItems.Value += OrderDetails.Quantity;
-    }
+     _parent.TotalAmount.Value = v_TotalPrice + _parent.TotalAmount;
+     _parent.TotalItems.Value += OrderDetails.Quantity;
 
     if (OrderDetails.ProductID == _parent.ProductID)
     {
-        using (ENV.Utilities.Profiler.StartContext("Update Parent Product Total"))
-        {
-            _parent.ProductItems.Value = _parent.ProductTotalAmount + OrderDetails.Quantity;
-            _parent.ProductTotalAmount.Value += v_TotalPrice;
-        }
+         _parent.ProductItems.Value = _parent.ProductTotalAmount + OrderDetails.Quantity;
+         _parent.ProductTotalAmount.Value += v_TotalPrice;
     }
 } </code></pre>
 <p>Let's apply it to the rest of the method</p>
