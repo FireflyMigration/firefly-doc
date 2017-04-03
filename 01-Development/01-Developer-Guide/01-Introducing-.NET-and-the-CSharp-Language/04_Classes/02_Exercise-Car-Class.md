@@ -46,13 +46,10 @@ namespace Northwind.Exercises.MoreOnClass
 {
     class Car
     {
-        public void Run()
-        {
 +            public string carName;
 +            public int carYear;
 +            public int CarKM;
 +            public string carType;
-        }
     }
 }
 ```
