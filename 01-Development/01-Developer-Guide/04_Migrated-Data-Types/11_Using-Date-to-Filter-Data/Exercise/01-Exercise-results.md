@@ -1,6 +1,6 @@
 ﻿# Exercise - result
 
-The **ShowProducts** class should look like :
+The **ShowOrders** class should look like :
 ```csdiff
 using System;
 using System.Collections.Generic;
@@ -12,22 +12,13 @@ using ENV.Data;
 
 namespace Northwind.Exercises
 {
-    public class ShowProducts : UIControllerBase
+    public class ShowOrders : UIControllerBase
     {
-
-        public readonly Models.Products Products = new Models.Products();
-        public readonly Models.Categories Categories = new Models.Categories();
-
-        public ShowProducts()
++       public readonly Models.Orders Orders = new Models.Orders();
+        public ShowOrders()
         {
-            From = Products;
-            Relations.Add(Categories, RelationType.Find,
-                Categories.CategoryID.IsEqualTo(Products.CategoryID));
-
-            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
-            Where.Add(Products.UnitPrice.IsGreaterThan(25));
-
-            OrderBy = Products.SortByProductName;
++           From = Orders;
++           Where.Add(Orders.OrderDate.IsBetween(new Date(1996, 1, 1), new Date(1997, 6, 30)));
         }
 
         public void Run()
@@ -37,16 +28,8 @@ namespace Northwind.Exercises
 
         protected override void OnLoad()
         {
-            View = () => new Views.ShowProductsView(this);
+            View = () => new Views.ShowOrdersView(this);
         }
-+       protected override void OnSavingRow()
-+       {
-+           if (Products.ProductName =="")
-+               System.Windows.Forms.MessageBox.Show("Take notice : Product name is empty!");
-+
-+           if (Products.UnitsInStock==0 || Products.UnitsOnOrder==0)
-+               System.Windows.Forms.MessageBox.Show("Take notice : Units in stock or Units on order is equal to zero");
-+       }
     }
 }
 ```
