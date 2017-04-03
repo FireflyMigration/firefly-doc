@@ -62,3 +62,6 @@ Profiler= c:\temp\path
 
 The result will be a file with *.prof extension.  
 Notice that a Profiler for the Web will create a file for each request
+
+The Profiler is part of the migrated solution but you can also download it from here:
+http://doc.fireflymigration.com/fireflyprofiler.html
