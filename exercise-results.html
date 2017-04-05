@@ -29,7 +29,7 @@
                 </div>
                 <div class="content"><h1 id="exercise-result">Exercise - result</h1>
 <p>The <strong>ShowProducts</strong> class should look like :</p>
-<pre data-line="38,39,40,41,42,43,44,45" class="language-csdiff line-numbers"><code>using System;
+<pre data-line="54,55" class="language-csdiff line-numbers"><code>using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
@@ -68,15 +68,26 @@ namespace Northwind.Exercises
         }
         protected override void OnSavingRow()
         {
-            if (Products.ProductName =="")
-                System.Windows.Forms.MessageBox.Show("Take notice : Product name is empty!");
-
-            if (Products.UnitsInStock==0 || Products.UnitsOnOrder==0)
-                System.Windows.Forms.MessageBox.Show("Take notice : Units in stock or Units on order is equal to zero");
+            if (Products.ProductName == "")
+                Message.ShowError("Product name is empty!");
+            if (Products.UnitsInStock == 0 || Products.UnitsOnOrder == 0)
+                System.Windows.Forms.MessageBox.Show("Units is zero");
+            if (Products.UnitsInStock &lt; 10)
+                Message.ShowWarning("Not enough units");
+            if (Products.UnitsOnOrder &gt;= 50 &amp;&amp; Products.UnitsOnOrder &lt;= 100)
+                Message.ShowError("Units on order are between 50 and 100");
+            if (u.Len(u.Trim(Products.ProductName)) &lt; 3)
+                Message.ShowError("Please enter a valid product name");
+            if (u.InStr(Products.ProductName,"%")&gt;=1|| u.InStr(Products.ProductName, "@") &gt;= 1)
+                Message.ShowError("% and @ are invalid characters in product name");
+            if (u.Left(Products.ProductName,1)=="T")
+                Message.ShowWarningInStatusBar("Product name can't start with a T");
+            if (!Relations[Categories].RowFound)
+                Message.ShowError("Please enter a valid category");
         }
     }
 } </code></pre>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/02_UI-Controller/80_Input-Validation/02_IF-Statement-Explanation/Exercise/01-Exercise-results.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/02_UI-Controller/90_verify-that-a-row-exists-in-a-relation/Exercise/01-Exercise-results.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         

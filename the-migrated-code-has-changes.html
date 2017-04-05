@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Message Class</title>
+    <title>The migrated code has changes</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,20 +27,30 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="message-class">Message Class</h1>
-<p>In this page we'll review the different methods of the <code>Message</code> class:</p>
-<ul>
-<li>ShowError</li>
-<li>ShowErrorInStatusBar</li>
-<li>ShowWarning</li>
-<li>ShowWarningInStatusBar</li>
-</ul>
+                <div class="content"><h1 id="the-migrated-code-has-changes">The migrated code has changes</h1>
+<p>In some cases the migration engine involves also the changes in the application code,<br />
+so copying the <em>ENV</em> folder and <em>Firefly.Box.Dll</em> is not enough and you also need to merge the new migrated code with your code.</p>
+<p>In order to do that you need to:</p>
+<ol>
+<li>Open the AutomaticMigration folder and launch a new migration (Change the name of Start.Done file to Start)</li>
+<li>When the migration finished download the .rar file into a temporary folder</li>
+<li>Extract it and rename the folder to [appname]_<strong>new</strong></li>
+<li>Go back to the AutomaticMigration folder, migrate to an older version of Firefly (before the fix).<br />
+You may do so by changing the &quot;Start.Done&quot; to &quot;Start.[version number]&quot; (E.g &quot;Start.26175&quot;).</li>
+<li>Download the .rar file into a temporary folder</li>
+<li>Extract it and rename the folder to [appname]_<strong>old</strong></li>
+<li>Compare the old folder and the new folder (you can use Beyond Compare)</li>
+</ol>
+<p><img src="2017-03-28_16h28_59.png" alt="" /></p>
+<ol start="8">
+<li>Merge only the differences with your code (ignore the ENV code)</li>
+<li>Copy ENV folder + Firefly.Box.Dll into your code folder</li>
+</ol>
+<p><img src="2017-03-28_11h29_38.png" alt="" /></p>
+<p>10- Run buildDebug.bat</p>
 <hr />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ogUjXIBsygI?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
-<ul>
-<li><a href="exercise-message.html">Exercise Message</a></li>
-</ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/02_UI-Controller/80_Input-Validation/05_Message-Class/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<p><img src="2017-03-28_15h29_27.png" alt="" /></p>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Upgrading-the-ENV--after-switching-to-.net/The-migrated-code-has-changes.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -85,7 +95,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'message-class.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'the-migrated-code-has-changes.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

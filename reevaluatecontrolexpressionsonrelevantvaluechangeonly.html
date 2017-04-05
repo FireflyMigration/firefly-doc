@@ -29,7 +29,7 @@
                 </div>
                 <div class="content"><h1 id="reevaluatecontrolexpressionsonrelevantvaluechangeonly">ReevaluateControlExpressionsOnRelevantValueChangeOnly</h1>
 <p>﻿This article explains the performance problem presented in the <a href="using-the-profiler-to-investigate-non-database-related-performance-issues.html">Using the Profiler to Investigate non database Related Performance Issues</a> article.</p>
-<p>Iמ application that were migrated from magic versions prior to XPA, all the expressions used on the <code>View</code> of a <code>Controller</code> were
+<p>In application that were migrated from magic versions prior to XPA, all the expressions used on the <code>View</code> of a <code>Controller</code> were
 re-evaluated after an update of <strong>any</strong> <code>Column</code> in the <code>Controller</code>.</p>
 <p>This can have a performance cost. In the example used in this article's video, we can see that the <code>BindVisible</code> method was evaluated 4314 times, just by the &quot;Update Parent Total&quot; part of the <code>OnLeaveRow</code> (while being totally irrelenat to the <code>BindVisible</code> method or values)
 <img src="2017-03-30_18h23_21.png" alt="2017 03 30 18H23 21" /></p>
