@@ -20,9 +20,15 @@ namespace Northwind.Models
         public readonly TextColumn CarName = new TextColumn("CarName","30", "Car Name");
         public readonly NumberColumn CarYear = new NumberColumn("CarYear","4", "Car Year");
         public readonly NumberColumn CarKM = new NumberColumn("CarKM","6.2C","Car KM");
+        
++       public readonly Index SortByEmployeeID = new Index();
++       public readonly Index SortByCarManufacture = new Index();
+
         public EmployeeCars()
             : base("EmployeeCars", Northwind.Shared.DataSources.Northwind1)
         {
++           SortByEmployeeID.Add(EmployeeID, CarID);
++           SortByCarManufacture.Add(CarManufacture);
         }
 
     }
