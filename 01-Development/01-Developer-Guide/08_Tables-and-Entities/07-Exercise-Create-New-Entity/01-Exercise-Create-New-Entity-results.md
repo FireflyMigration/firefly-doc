@@ -1,91 +1,31 @@
 ﻿# UI Controller Life cycle result
 
-The **ShowProducts** class should look like :
+The **EmployeeCars** class should look like :
 ```csdiff
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Drawing;
 using Firefly.Box;
-using ENV;
 using ENV.Data;
 
-namespace Northwind.Exercises
+namespace Northwind.Models
 {
-    public class ShowProducts : UIControllerBase
+    public class EmployeeCars : Entity
     {
-
-        public readonly Models.Products Products = new Models.Products();
-        public readonly Models.Categories Categories = new Models.Categories();
-
-        public ShowProducts()
+        [PrimaryKey]
+        public readonly NumberColumn EmployeeID = new NumberColumn("EmployeeID","6", "Employee ID");
+        [PrimaryKey]
+        public readonly NumberColumn CarID = new NumberColumn("CarID","6","Car ID");
+        public readonly TextColumn CarManufacture = new TextColumn("CarManufacture","30", "Car Manufacture");
+        public readonly TextColumn CarName = new TextColumn("CarName","30", "Car Name");
+        public readonly NumberColumn CarYear = new NumberColumn("CarYear","4", "Car Year");
+        public readonly NumberColumn CarKM = new NumberColumn("CarKM","6.2C","Car KM");
+        public EmployeeCars()
+            : base("EmployeeCars", Northwind.Shared.DataSources.Northwind1)
         {
-            From = Products;
-            Relations.Add(Categories, RelationType.Find,
-                Categories.CategoryID.IsEqualTo(Products.CategoryID));
-
-            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
-            Where.Add(Products.UnitPrice.IsGreaterThan(25));
-
-            OrderBy = Products.SortByProductName;
         }
 
-        public void Run()
-        {
-            Execute();
-        }
-
-        protected override void OnLoad()
-        {
-            View = () => new Views.ShowProductsView(this);
-        }
-        protected override void OnSavingRow()
-        {
--           if (Products.ProductName == "")
--               Message.ShowError("Product name is empty!");
--           if (Products.UnitsInStock == 0 || Products.UnitsOnOrder == 0)
--               System.Windows.Forms.MessageBox.Show("Units is zero");
--           if (Products.UnitsInStock < 10)
--               Message.ShowWarning("Not enough units");
--           if (Products.UnitsOnOrder >= 50 && Products.UnitsOnOrder <= 100)
--               Message.ShowError("Units on order are between 50 and 100");
--           if (u.Len(u.Trim(Products.ProductName)) < 3)
--               Message.ShowError("Please enter a valid product name");
--           if (u.InStr(Products.ProductName,"%")>=1|| u.InStr(Products.ProductName, "@") >= 1)
--               Message.ShowError("% and @ are invalid characters in product name");
--           if (u.Left(Products.ProductName,1)=="T")
--               Message.ShowWarningInStatusBar("Product name can't start with a T");
--           if (!Relations[Categories].RowFound)
--               Message.ShowError("Please enter a valid category");
-+           InputValidation();
-        }
-+        #region expressions
-+        private void InputValidation()
-+        {
-+           if (Products.ProductName == "")
-+               Message.ShowError("Product name is empty!");
-+           if (Products.UnitsInStock == 0 || Products.UnitsOnOrder == 0)
-+               System.Windows.Forms.MessageBox.Show("Units is zero");
-+           if (Products.UnitsInStock < 10)
-+               Message.ShowWarning("Not enough units");
-+           if (Products.UnitsOnOrder >= 50 && Products.UnitsOnOrder <= 100)
-+               Message.ShowError("Units on order are between 50 and 100");
-+           if (u.Len(u.Trim(Products.ProductName)) < 3)
-+               Message.ShowError("Please enter a valid product name");
-+           if (u.InStr(Products.ProductName, "%") >= 1 || u.InStr(Products.ProductName, "@") >= 1)
-+               Message.ShowError("% and @ are invalid characters in product name");
-+           if (u.Left(Products.ProductName, 1) == "T")
-+               Message.ShowWarningInStatusBar("Product name can't start with a T");
--           if (!Relations[Categories].RowFound)
-+           if (ValidateCaregoryID())
-+               Message.ShowError("Please enter a valid category");
-+        }
-+
-+        private bool ValidateCaregoryID()
-+        {
-+            return !Relations[Categories].RowFound;
-+        }
-+        #endregion
     }
 }
+
 ```
