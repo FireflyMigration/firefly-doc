@@ -1,14 +1,11 @@
 ﻿# Exercise - Types
 
-1.  Run the application.
-2.	Go to **Developer Tools** and select **Generate Entity C#**.
-3.	Choose **Northwind** database.
-4.	Double-Click on **Territories** entity.
-5.	Copy Territories:Entity class. 
-6.	Create a new Entity called **Territories**.
-7.	Replace the class of the new program with the one you copied.
-8.  Notice that since there is no primary key definition in the database, the new class do not have also.
-7.  Add **[PrimaryKey]** attribute to the **TerritoryID**.
-9.	Build and Test. 
+1.	Find the **Types** folder in the **NorthwindBase**.
+2.	Right click on the **Types** folder and **add new Item**, select the **Type** template to create two new types:
+    3.  For the EmployeeID.
+    3.  For the CarID.
+2.	In **Employees** change the code of the **EmployeeID** column to use the new **EmployeeID** type.
+4.  in **EmployeeCars** change the code of **EmployeeID** and the **CarID** to use the new types. 
+3.	Build and test.
 
 
