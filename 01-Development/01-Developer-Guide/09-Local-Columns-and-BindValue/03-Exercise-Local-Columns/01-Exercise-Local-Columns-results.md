@@ -12,68 +12,32 @@ using ENV.Data;
 
 namespace Northwind.Exercises
 {
-    public class ShowProducts : UIControllerBase
+    public class ShowOrders : UIControllerBase
     {
-
-        public readonly Models.Products Products = new Models.Products();
-        public readonly Models.Categories Categories = new Models.Categories();
-
-        public ShowProducts()
+        public readonly Models.Orders Orders = new Models.Orders();
++       public readonly DateColumn EstimatedArrivalDate = new DateColumn();
+        public ShowOrders()
         {
-            From = Products;
-            Relations.Add(Categories, RelationType.Find,
-                Categories.CategoryID.IsEqualTo(Products.CategoryID));
-
-            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
-            Where.Add(Products.UnitPrice.IsGreaterThan(25));
-
-            OrderBy = Products.SortByProductName;
+            From = Orders;
+            Where.Add(Orders.OrderDate.IsBetween(new Date(1996, 1, 1), new Date(1997, 6, 30)));
         }
 
         public void Run()
         {
             Execute();
         }
-
+        
         protected override void OnLoad()
         {
-            View = () => new Views.ShowProductsView(this);
+            View = () => new Views.ShowOrdersView(this);
         }
-        protected override void OnSavingRow()
-        {
-            InputValidation();
-        }
-        #region expressions
-        private void InputValidation()
-        {
-            if (Products.ProductName == "")
-                Message.ShowError("Product name is empty!");
-            if (Products.UnitsInStock == 0 || Products.UnitsOnOrder == 0)
-                System.Windows.Forms.MessageBox.Show("Units is zero");
-            if (Products.UnitsInStock < 10)
-                Message.ShowWarning("Not enough units");
-            if (Products.UnitsOnOrder >= 50 && Products.UnitsOnOrder <= 100)
-                Message.ShowError("Units on order are between 50 and 100");
-            if (u.Len(u.Trim(Products.ProductName)) < 3)
-                Message.ShowError("Please enter a valid product name");
-            if (u.InStr(Products.ProductName, "%") >= 1 || u.InStr(Products.ProductName, "@") >= 1)
-                Message.ShowError("% and @ are invalid characters in product name");
-            if (u.Left(Products.ProductName, 1) == "T")
-                Message.ShowWarningInStatusBar("Product name can't start with a T");
-            if (ValidateCaregoryID())
-                Message.ShowError("Please enter a valid category");
-        }
-
-        private bool ValidateCaregoryID()
-        {
-            return !Relations[Categories].RowFound;
-        }
-
-+       public Number TotalUnits()
++       protected override void OnEnterRow()
 +       {
-+           return Products.UnitsInStock + Products.UnitsOnOrder;
++           EstimatedArrivalDate.Value = Orders.OrderDate.AddDays(30);
 +       }
-        #endregion
     }
 }
 ```
+
+The run time version should look like :
+![2017-04-18_14h06_44](2017-04-18_14h06_44.png)
