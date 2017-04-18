@@ -1,14 +1,15 @@
 ﻿# Exercise - Filtering data in the BusinessProcess
 
-
-
-1.	In **ShowProducts**, add a new **TotalUnits method** inside the **expressions region**.
-2.  The **TotalUnits** method will :
-    1.  Need to be **public**.
-    2.  Return a **Number** as the return value.
-    3.  Calculate the total number of units in **stock** and **on order**.
+1.	Add new UIController name it **ShowShippers**.
+2.  Set the **Shippers** Entity to be the main table.
+2.  Add two local columns (use the mem snippet) :
+    1.  **TotalOrders** name **"Total Orders"**, format **"6"**.
+    2.  **TotalOrdersValue** name **"Total Orders Value"**,format **"6.2C"**;
+3.  Build and go to the form.
+5.  Add a **grid** with **two columns** :
+    1. **ShipperID**. 
+    2. **CompanyName**.  
+3. Add the two local columns to the screen out side the grid.
 3. Build the project.
-4. Go to the **Form**.
-5. Using the **Grid** **Column Wizard** add the **TotalUnits**.
-6. Build and test.
+
 
