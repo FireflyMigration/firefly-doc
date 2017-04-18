@@ -1,18 +1,14 @@
 ﻿# Exercise - Set the Default Value
 
-1. Add new **UIController** name it **ShowEmployees**.
-2. Set the **Employees** Entity to be the main table.
-3. Build.
-4. Add the following columns to the form grid :  
-   1. EmployeeID.
-   1. LastName.
-   1. FirstName.
-   1. Title. 
+1. In **ShowEmployeeCars**.
+2. Go to the **Form**.
+3. Find the **EmployeeID** Textboox.
+4. Change the **Allowfocus** to false.
 5. Build and test.
-6. Add a **button** on the form, name the new button **Show Cars**.
-7. Using the new **button** click event call **ShowEmployeeCars**. (use the run snippet).
+6. Go back to the class code.
+7. In the **Run** method set the **default** value of **EmployeeID** to be the receiving parameter.
 8. Build and test.
-9. In **ShowEmployeeCars** add a **Number** parameter in the Run method, name it **EmployeeID**. 
-10. Add a **Where** to show only cars that belong to the selected employee.
-11. In **ShowEmployees** code behind send the **EmployeeID**.
-12. Build and test.
+9. Change to **BindValue** instead of default value. (remember this what you will see in the migrated code).
+10. Build and test.
+11. Change from two lines of code to one using the **BindEqualTo**.
+12. Build and test
