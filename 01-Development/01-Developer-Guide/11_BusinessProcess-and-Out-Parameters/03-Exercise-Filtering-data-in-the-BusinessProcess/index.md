@@ -11,5 +11,9 @@
     2. **CompanyName**.  
 3. Add the two local columns to the screen out side the grid.
 3. Build the project.
+8. Add a new **BusinessProcess** name it **CalcOrderTotalForShipper**.
+9. Set the **Order_Details** entity to be the main table.
+10. In the **Run** method receive one parameter type **Number** name it **OrderID**.
+11. Add a **Where** limit the  **BusinessProcess** to run only on orders that  
 
 
