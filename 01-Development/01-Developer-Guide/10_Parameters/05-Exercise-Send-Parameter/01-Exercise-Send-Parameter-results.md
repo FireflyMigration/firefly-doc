@@ -1,6 +1,78 @@
 ﻿# Exercise - Send Parameter result
 
-The **ShowOrders** class should look like :
+The **ShowEmployees** class should look like :
+```csdiff
++using System;
++using System.Collections.Generic;
++using System.Text;
++using System.Drawing;
++using Firefly.Box;
++using ENV;
++using ENV.Data;
++
++namespace Northwind.Exercises
++{
++    public class ShowEmployees : UIControllerBase
++    {
++
++        public readonly Models.Employees Employees = new Models.Employees();
++
++        public ShowEmployees()
++        {
++            From = Employees;
++        }
++
++        public void Run()
++        {
++            Execute();
++        }
++
++        protected override void OnLoad()
++        {
++            View = () => new Views.ShowEmployeesView(this);
++        }
++    }
++}
+```
+
+The run time version should look like :  
+![2017-04-18_16h56_53](2017-04-18_16h56_53.png)
+
+
+The **ShowEmployees** code behind of the form should look like :
+```csdiff
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using Firefly.Box;
+using Firefly.Box.UI.Advanced;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Exercises.Views
+{
+    partial class ShowEmployeesView : Shared.Theme.Controls.Form
+    {
+        ShowEmployees _controller;
+        public ShowEmployeesView(ShowEmployees controller)
+        {
+            _controller = controller;
+            InitializeComponent();
+        }
+
++       private void btnShowCars_Click(object sender, ButtonClickEventArgs e)
++       {
++           new ShowEmployeeCars().Run(_controller.Employees.EmployeeID);
++       }
+    }
+}
+```
+
+The **ShowEmployeeCars** class should look like :
 ```csdiff
 using System;
 using System.Collections.Generic;
@@ -12,68 +84,31 @@ using ENV.Data;
 
 namespace Northwind.Exercises
 {
-    public class ShowProducts : UIControllerBase
+    public class ShowEmployeeCars : UIControllerBase
     {
 
-        public readonly Models.Products Products = new Models.Products();
-        public readonly Models.Categories Categories = new Models.Categories();
-
-        public ShowProducts()
+        public readonly Northwind.Models.EmployeeCars EmployeeCars = new Northwind.Models.EmployeeCars();
+        public readonly NumberColumn AverageKM = new NumberColumn();
+        public ShowEmployeeCars()
         {
-            From = Products;
-            Relations.Add(Categories, RelationType.Find,
-                Categories.CategoryID.IsEqualTo(Products.CategoryID));
-
-            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
-            Where.Add(Products.UnitPrice.IsGreaterThan(25));
-
-            OrderBy = Products.SortByProductName;
+            From = EmployeeCars;
+            AverageKM.BindValue(() => EmployeeCars.CarKM / (Date.Now.Year - EmployeeCars.CarYear));
         }
 
-        public void Run()
-        {
-            Execute();
-        }
+-       public void Run()
+-       {
+-           Execute();
+-       }
++       public void Run(Number EmployeeID)
++       {
++           Where.Add(EmployeeCars.EmployeeID.IsEqualTo(EmployeeID));
++           Execute();
++       }
 
         protected override void OnLoad()
         {
-            View = () => new Views.ShowProductsView(this);
-        }
-        protected override void OnSavingRow()
-        {
-            InputValidation();
-        }
-        #region expressions
-        private void InputValidation()
-        {
-            if (Products.ProductName == "")
-                Message.ShowError("Product name is empty!");
-            if (Products.UnitsInStock == 0 || Products.UnitsOnOrder == 0)
-                System.Windows.Forms.MessageBox.Show("Units is zero");
-            if (Products.UnitsInStock < 10)
-                Message.ShowWarning("Not enough units");
-            if (Products.UnitsOnOrder >= 50 && Products.UnitsOnOrder <= 100)
-                Message.ShowError("Units on order are between 50 and 100");
-            if (u.Len(u.Trim(Products.ProductName)) < 3)
-                Message.ShowError("Please enter a valid product name");
-            if (u.InStr(Products.ProductName, "%") >= 1 || u.InStr(Products.ProductName, "@") >= 1)
-                Message.ShowError("% and @ are invalid characters in product name");
-            if (u.Left(Products.ProductName, 1) == "T")
-                Message.ShowWarningInStatusBar("Product name can't start with a T");
-            if (ValidateCaregoryID())
-                Message.ShowError("Please enter a valid category");
-        }
-
-        private bool ValidateCaregoryID()
-        {
-            return !Relations[Categories].RowFound;
-        }
-
-+       public Number TotalUnits()
-+       {
-+           return Products.UnitsInStock + Products.UnitsOnOrder;
-+       }
-        #endregion
+            View = () => new Views.ShowEmployeeCarsView(this);
+        }        
     }
 }
 ```
