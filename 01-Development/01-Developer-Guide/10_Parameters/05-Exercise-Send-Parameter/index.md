@@ -1,4 +1,4 @@
-﻿# Exercise - Binding the data of a control to a method 
+﻿# Exercise - Send Parameter 
 
 
 

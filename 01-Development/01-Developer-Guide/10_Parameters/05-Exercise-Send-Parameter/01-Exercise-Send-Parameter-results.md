@@ -1,4 +1,4 @@
-﻿# Exercise - result
+﻿# Exercise - Send Parameter result
 
 The **ShowOrders** class should look like :
 ```csdiff
