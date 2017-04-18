@@ -2,13 +2,10 @@
 
 
 
-1.	In **ShowProducts**, add a new **TotalUnits method** inside the **expressions region**.
-2.  The **TotalUnits** method will :
-    1.  Need to be **public**.
-    2.  Return a **Number** as the return value.
-    3.  Calculate the total number of units in **stock** and **on order**.
-3. Build the project.
-4. Go to the **Form**.
-5. Using the **Grid** **Column Wizard** add the **TotalUnits**.
-6. Build and test.
-
+1.	In **ShowOrders** Create a local **DateColumn**, name it **EstimatedArrivalDate**. (use the **mem** snippit).
+2.  Add it to the grid next to the **OrderDate**.  
+3.  Go Back to the **controller** and Override the **OnEnterRow**.  
+4.  Update **EstimatedArrivalDate** value to the **OrderDate** plus 30 days. (use the OrderDate add days method).
+5.  Build and test.
+6.  Notice that the **EstimatedArrivalDate** value is updated only after you enter to the row.
+     
