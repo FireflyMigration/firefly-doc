@@ -48,9 +48,14 @@ Italic - add single astrike before and after the text.
 ### code
  A code section should be prefixed by 3 back-ticks and the phrase csdiff and suffixed by another 3 back-ticks
 
+
+#### Any Code
+![2017 03 20 08H38 17](2017-03-20_08h38_17.png)
+```
+xcopy aa.txt bb.txt /a
+```
+#### C# Code
 ![](Img2017-02-19_10h55_17.png)
-
-
 ```csdiff
 private void ApplicationMdi_Load(object sender, EventArgs e)
 {
@@ -114,3 +119,11 @@ Colons can be used to align columns.
 | col 3 is      | right-aligned | $1600 |
 | col 2 is      | centered      |   $12 |
 | col 1 is normal | are neat      |    $1 |
+
+
+### Note Section
+```
+> This is my note
+```
+
+  > This is my note 

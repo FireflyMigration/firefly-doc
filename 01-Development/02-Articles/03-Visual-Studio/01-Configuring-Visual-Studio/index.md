@@ -11,14 +11,14 @@ A tool that shows you a window with all the classes and inner classes in a C# co
 
 When you right click on any node, you'll see the different important methods of it, such as OnStart etc... and will also be able to go directly to the controller's view
 
-* [The official 2015 version](https://marketplace.visualstudio.com/items?itemName=Stickle.ClassOutline)  
-* [The Beta 2017 version](https://github.com/FireflyMigration/ClassOutline/releases)
+* [Download](https://marketplace.visualstudio.com/items?itemName=Stickle.ClassOutline)  
+
 
 
 ### A.2 - VS Drop Assist
 Allows for drag and drop of various objects from the solution into the code.
-* [The official 2015 version](https://marketplace.visualstudio.com/items?itemName=Stickle.VSDropAssist)  
-* [The Beta 2017 version can be found in this thread for now](https://github.com/FireflyMigration/VSDropAssist/issues/34)
+* [Download](https://marketplace.visualstudio.com/items?itemName=Stickle.VSDropAssist)  
+
 
 ## B - Templates and Snippets
 Download the latest templates-and-snippets.zip from:  [https://github.com/FireflyMigration/VisualStudioTemplates/releases](https://github.com/FireflyMigration/VisualStudioTemplates/releases)
