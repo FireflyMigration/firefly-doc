@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Improve Performance</title>
+    <title>Create new Entity result</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,20 +27,34 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="improve-performance">Improve Performance</h1>
-<ul>
-<li><a href="relation-cache.html">Relation Cache</a></li>
-<li><a href="relation-cache-scope.html">Relation Cache Scope</a></li>
-<li><a href="cache-for-entity-that-is-used-for-the-from-of-a-controller.html">Cache for Entity that is used for the From of a Controller</a></li>
-<li><a href="inmemory-the-cache-you-always-wanted.html">InMemory the Cache You Always Wanted</a></li>
-<li><a href="performance-and-table-exists.html">Performance And Table Exists</a></li>
-<li><a href="performance-and-locking.html">Performance and Locking</a></li>
-<li><a href="when-to-use-joins.html">When to use Joins</a></li>
-<li><a href="leveraging-sql-powers-to-eliminate-findrow-relation.html">Leveraging SQL Powers to Eliminate FindRow Relation</a></li>
-<li><a href="improving-performance-using-sql-inner-select.html">Improving performance using SQL inner select</a></li>
-<li><a href="using-the-profiler-to-investigate-non-database-related-performance-issues.html">Using the Profiler to investigate non database related performance issues</a></li>
-</ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Improve-Performance/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                <div class="content"><h1 id="create-new-entity-result">Create new Entity result</h1>
+<p>The <strong>EmployeeCars</strong> class should look like :</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using Firefly.Box;
+using ENV.Data;
+
+namespace Northwind.Models
+{
+    public class EmployeeCars : Entity
+    {
+        [PrimaryKey]
+        public readonly NumberColumn EmployeeID = new NumberColumn("EmployeeID","6", "Employee ID");
+        [PrimaryKey]
+        public readonly NumberColumn CarID = new NumberColumn("CarID","6","Car ID");
+        public readonly TextColumn CarManufacture = new TextColumn("CarManufacture","30", "Car Manufacture");
+        public readonly TextColumn CarName = new TextColumn("CarName","30", "Car Name");
+        public readonly NumberColumn CarYear = new NumberColumn("CarYear","4", "Car Year");
+        public readonly NumberColumn CarKM = new NumberColumn("CarKM","6.2C","Car KM");
+        public EmployeeCars()
+            : base("EmployeeCars", Northwind.Shared.DataSources.Northwind1)
+        {
+        }
+
+    }
+} </code></pre>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/08_Tables-and-Entities/07-Exercise-Create-New-Entity/01-Exercise-Create-New-Entity-results.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -85,7 +99,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'improve-performance.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'exercise-create-new-entity-results.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

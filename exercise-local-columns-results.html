@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Improve Performance</title>
+    <title>Exercise - Local Columns result</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,20 +27,46 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="improve-performance">Improve Performance</h1>
-<ul>
-<li><a href="relation-cache.html">Relation Cache</a></li>
-<li><a href="relation-cache-scope.html">Relation Cache Scope</a></li>
-<li><a href="cache-for-entity-that-is-used-for-the-from-of-a-controller.html">Cache for Entity that is used for the From of a Controller</a></li>
-<li><a href="inmemory-the-cache-you-always-wanted.html">InMemory the Cache You Always Wanted</a></li>
-<li><a href="performance-and-table-exists.html">Performance And Table Exists</a></li>
-<li><a href="performance-and-locking.html">Performance and Locking</a></li>
-<li><a href="when-to-use-joins.html">When to use Joins</a></li>
-<li><a href="leveraging-sql-powers-to-eliminate-findrow-relation.html">Leveraging SQL Powers to Eliminate FindRow Relation</a></li>
-<li><a href="improving-performance-using-sql-inner-select.html">Improving performance using SQL inner select</a></li>
-<li><a href="using-the-profiler-to-investigate-non-database-related-performance-issues.html">Using the Profiler to investigate non database related performance issues</a></li>
-</ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Improve-Performance/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                <div class="content"><h1 id="exercise-local-columns-result">Exercise - Local Columns result</h1>
+<p>The <strong>ShowOrders</strong> class should look like :</p>
+<pre data-line="14,30,31,32,33" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Exercises
+{
+    public class ShowOrders : UIControllerBase
+    {
+        public readonly Models.Orders Orders = new Models.Orders();
+        public readonly DateColumn EstimatedArrivalDate = new DateColumn();
+        public ShowOrders()
+        {
+            From = Orders;
+            Where.Add(Orders.OrderDate.IsBetween(new Date(1996, 1, 1), new Date(1997, 6, 30)));
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+        
+        protected override void OnLoad()
+        {
+            View = () =&gt; new Views.ShowOrdersView(this);
+        }
+        protected override void OnEnterRow()
+        {
+            EstimatedArrivalDate.Value = Orders.OrderDate.AddDays(30);
+        }
+    }
+} </code></pre>
+<p>The run time version should look like :
+<img src="2017-04-18_14h06_44.png" alt="2017-04-18_14h06_44" /></p>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/09-Local-Columns-and-BindValue/03-Exercise-Local-Columns/01-Exercise-Local-Columns-results.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -85,7 +111,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'improve-performance.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'exercise-local-columns-results.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

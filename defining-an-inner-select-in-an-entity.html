@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="DbReadOnly">
 
-    <title>Improve Performance</title>
+    <title>Defining an inner select in an entity</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,20 +27,18 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="improve-performance">Improve Performance</h1>
-<ul>
-<li><a href="relation-cache.html">Relation Cache</a></li>
-<li><a href="relation-cache-scope.html">Relation Cache Scope</a></li>
-<li><a href="cache-for-entity-that-is-used-for-the-from-of-a-controller.html">Cache for Entity that is used for the From of a Controller</a></li>
-<li><a href="inmemory-the-cache-you-always-wanted.html">InMemory the Cache You Always Wanted</a></li>
-<li><a href="performance-and-table-exists.html">Performance And Table Exists</a></li>
-<li><a href="performance-and-locking.html">Performance and Locking</a></li>
-<li><a href="when-to-use-joins.html">When to use Joins</a></li>
-<li><a href="leveraging-sql-powers-to-eliminate-findrow-relation.html">Leveraging SQL Powers to Eliminate FindRow Relation</a></li>
-<li><a href="improving-performance-using-sql-inner-select.html">Improving performance using SQL inner select</a></li>
-<li><a href="using-the-profiler-to-investigate-non-database-related-performance-issues.html">Using the Profiler to investigate non database related performance issues</a></li>
-</ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Improve-Performance/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                <div class="content"><h1 id="defining-an-inner-select-in-an-entity">Defining an inner select in an entity</h1>
+<p>In the <code>Orders</code> class in the <code>Models</code> namespace</p>
+<pre data-line="3,4,5,6,7" class="language-csdiff line-numbers"><code>public readonly TextColumn ShipPostalCode = new TextColumn("ShipPostalCode", "10") { NullDisplayText = "" };
+public readonly TextColumn ShipCountry = new TextColumn("ShipCountry", "15") { NullDisplayText = "" };
+public readonly NumberColumn TotalQuantity = new NumberColumn(@"isnull((
+Select sum(Quantity)
+From dbo.[Order Details] 
+Where OrderID = Orders.OrderID
+),0)", "5C", "Total Quantity") { DbReadOnly = true}; </code></pre>
+<p><strong>Remember to set the <code>DbReadOnly</code> property, so that this column will only be included in Select statement and will not be included in Update or Insert statements</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/z3p8tur0DI8?list=PL1DEQjXG2xnLKpfmZgMwU1b3fUFxCOiQG" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/01-Further-Learning/90-Inner-Select-and-SQL-Evaluated-Columns-in-depth/04-Defining an inner select in an entity.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -85,7 +83,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'improve-performance.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'defining-an-inner-select-in-an-entity.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

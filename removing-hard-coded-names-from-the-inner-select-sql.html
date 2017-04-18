@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Improve Performance</title>
+    <title>Removing hard coded names from the inner select sql</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,20 +27,22 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="improve-performance">Improve Performance</h1>
-<ul>
-<li><a href="relation-cache.html">Relation Cache</a></li>
-<li><a href="relation-cache-scope.html">Relation Cache Scope</a></li>
-<li><a href="cache-for-entity-that-is-used-for-the-from-of-a-controller.html">Cache for Entity that is used for the From of a Controller</a></li>
-<li><a href="inmemory-the-cache-you-always-wanted.html">InMemory the Cache You Always Wanted</a></li>
-<li><a href="performance-and-table-exists.html">Performance And Table Exists</a></li>
-<li><a href="performance-and-locking.html">Performance and Locking</a></li>
-<li><a href="when-to-use-joins.html">When to use Joins</a></li>
-<li><a href="leveraging-sql-powers-to-eliminate-findrow-relation.html">Leveraging SQL Powers to Eliminate FindRow Relation</a></li>
-<li><a href="improving-performance-using-sql-inner-select.html">Improving performance using SQL inner select</a></li>
-<li><a href="using-the-profiler-to-investigate-non-database-related-performance-issues.html">Using the Profiler to investigate non database related performance issues</a></li>
-</ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Improve-Performance/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                <div class="content"><h1 id="removing-hard-coded-names-from-the-inner-select-sql">Removing hard coded names from the inner select sql</h1>
+<p>Before:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>V_HasOrderDetails.Name = @"=isnull((
+Select max(1)
+From dbo.[Order Details] 
+Where OrderID = A.OrderID
+),0)"; </code></pre>
+<p>After:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>var Order_Details = new Models.Order_Details();
+V_HasOrderDetails.Name = $@"=isnull((
+Select max(1)
+From {Order_Details.EntityName} 
+Where {Order_Details.OrderID.Name} = A.{Orders.OrderID.Name}
+),0)"; </code></pre>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-m0NunIMtmw?list=PL1DEQjXG2xnLKpfmZgMwU1b3fUFxCOiQG" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/01-Further-Learning/90-Inner-Select-and-SQL-Evaluated-Columns-in-depth/06-Removing hard coded names from the inner select sql.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -85,7 +87,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'improve-performance.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'removing-hard-coded-names-from-the-inner-select-sql.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

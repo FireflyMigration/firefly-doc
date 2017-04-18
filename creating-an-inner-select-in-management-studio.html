@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Improve Performance</title>
+    <title>Creating an Inner Select in Management Studio</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,20 +27,35 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="improve-performance">Improve Performance</h1>
-<ul>
-<li><a href="relation-cache.html">Relation Cache</a></li>
-<li><a href="relation-cache-scope.html">Relation Cache Scope</a></li>
-<li><a href="cache-for-entity-that-is-used-for-the-from-of-a-controller.html">Cache for Entity that is used for the From of a Controller</a></li>
-<li><a href="inmemory-the-cache-you-always-wanted.html">InMemory the Cache You Always Wanted</a></li>
-<li><a href="performance-and-table-exists.html">Performance And Table Exists</a></li>
-<li><a href="performance-and-locking.html">Performance and Locking</a></li>
-<li><a href="when-to-use-joins.html">When to use Joins</a></li>
-<li><a href="leveraging-sql-powers-to-eliminate-findrow-relation.html">Leveraging SQL Powers to Eliminate FindRow Relation</a></li>
-<li><a href="improving-performance-using-sql-inner-select.html">Improving performance using SQL inner select</a></li>
-<li><a href="using-the-profiler-to-investigate-non-database-related-performance-issues.html">Using the Profiler to investigate non database related performance issues</a></li>
-</ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Improve-Performance/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                <div class="content"><h1 id="creating-an-inner-select-in-management-studio">Creating an Inner Select in Management Studio</h1>
+<p>In this video we'll explore SQL Inner Selects outside the context of migrated code.</p>
+<h3 id="the-main-select-statement">The main select statement:</h3>
+<pre><code>Select OrderID, CustomerID, OrderDate 
+From dbo.Orders 
+Order by OrderID
+</code></pre>
+<h3 id="the-relation-select-statement">The relation select statement:</h3>
+<p>For every row we issue the following select statement:</p>
+<pre><code>Select top 1 OrderID, ProductID 
+From dbo.[Order Details] 
+Where OrderID = @0
+Order by OrderID, ProductID
+</code></pre>
+<p>@0 is replaced with the specific Order Id for each query</p>
+<h3 id="combine-the-two-queries-into-a-single-query">Combine the two queries into a single query:</h3>
+<pre data-line="" class="language-csdiff line-numbers"><code>Select OrderID, CustomerID, OrderDate,
+isnull((
+Select max(1)
+From dbo.[Order Details] 
+Where OrderID = Orders.OrderID
+),0)
+From dbo.Orders 
+Order by OrderID </code></pre>
+<blockquote>
+<p><code>isnull</code> is used because when no rows are found, a null is returned and I don't like nulls :)</p>
+</blockquote>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mTT8p9vA0Z4?list=PL1DEQjXG2xnLKpfmZgMwU1b3fUFxCOiQG" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/01-Further-Learning/90-Inner-Select-and-SQL-Evaluated-Columns-in-depth/01-Creating an Inner Select in Management Studio.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -85,7 +100,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'improve-performance.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'creating-an-inner-select-in-management-studio.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
