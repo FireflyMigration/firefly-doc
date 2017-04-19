@@ -13,7 +13,7 @@ namespace Northwind.Models
     public class EmployeeCars : Entity
     {
         [PrimaryKey]
-        public readonly NumberColumn EmployeeID = new NumberColumn("EmployeeID","6", "Employee ID");
+        public readonly NumberColumn EmployeeID = new NumberColumn("EmployeeID","10", "Employee ID");
         [PrimaryKey]
         public readonly NumberColumn CarID = new NumberColumn("CarID","6","Car ID");
         public readonly TextColumn CarManufacture = new TextColumn("CarManufacture","30", "Car Manufacture");
