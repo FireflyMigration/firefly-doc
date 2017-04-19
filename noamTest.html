@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="[KEYWORDS]">
 
-    <title>Improve Performance</title>
+    <title>[TITLE]</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,20 +27,46 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="improve-performance">Improve Performance</h1>
-<ul>
-<li><a href="relation-cache.html">Relation Cache</a></li>
-<li><a href="relation-cache-scope.html">Relation Cache Scope</a></li>
-<li><a href="cache-for-entity-that-is-used-for-the-from-of-a-controller.html">Cache for Entity that is used for the From of a Controller</a></li>
-<li><a href="inmemory-the-cache-you-always-wanted.html">InMemory the Cache You Always Wanted</a></li>
-<li><a href="performance-and-table-exists.html">Performance And Table Exists</a></li>
-<li><a href="performance-and-locking.html">Performance and Locking</a></li>
-<li><a href="when-to-use-joins.html">When to use Joins</a></li>
-<li><a href="leveraging-sql-powers-to-eliminate-findrow-relation.html">Leveraging SQL Powers to Eliminate FindRow Relation</a></li>
-<li><a href="improving-performance-using-sql-inner-select.html">Improving performance using SQL inner select</a></li>
-<li><a href="using-the-profiler-to-investigate-non-database-related-performance-issues.html">Using the Profiler to investigate non database related performance issues</a></li>
-</ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Improve-Performance/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                <div class="content"><p><strong>Create a simple class (program) : Hello World</strong></p>
+<p>In this section we will create a new class that displays text in a message box</p>
+<p>How to:  </p>
+<ol>
+<li>Go to the northwind project, click right <strong>Add/New Folder</strong> and call it <em>Training</em>.  </li>
+<li>On this folder, right click again <strong>Add/New Item</strong><br />
+In the left panel choose  Visual C# Items,<br />
+From the Middle panel choose Class for example,<br />
+Name the class HelloWorld.cs at the bottom<br />
+Click the Add button  </li>
+<li>The Using section at the top of your code is not necessary. you can remove it.  </li>
+<li>Write the below code inside the HellowWorld class as shown below  </li>
+</ol>
+<pre><code class="csdiff language-csdiff">namespace Northwind.Training
+{
+    class HelloWorld
+    {
++       public void Run()
++       {
++           System.Windows.Forms.MessageBox.Show("Hello World");
++       }     
+    }
+}
+</code></pre>
+<ol>
+<li>The class is ready to use, let's call it from the menu<br />
+Go to Views Folder and go to ApplicationMdi.cs and double click on it<br />
+Click on an empty area on the menu bar, type <em>Training</em> and under Training type a sub-menu <em>Hello World</em><br />
+Double click on it and here we will right the code to call the new class as follows  </li>
+</ol>
+<pre><code class="csdiff language-csdiff">private void helloWorldToolStripMenuItem_Click (object sender, System.EventArgs e)
+{
++   new Training.HelloWorld().Run();    
+}
+</code></pre>
+<ol>
+<li>Build - Build menu / Build solution  </li>
+<li>Run by pressing the Start button and call the program from the menu <img src="start_button.png" alt="start button" />  </li>
+</ol>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CNElgYn_zgA?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe><br /><hr />Help us improve, <a href="[GITHUB_URL]" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -85,7 +111,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'improve-performance.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', '[CURRENT_URL]', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
