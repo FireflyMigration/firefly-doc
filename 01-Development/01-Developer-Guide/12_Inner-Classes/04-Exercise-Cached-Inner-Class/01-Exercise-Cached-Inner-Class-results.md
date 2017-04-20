@@ -16,8 +16,8 @@ namespace Northwind.Exercises
     {
 
         public readonly Models.Employees Employees = new Models.Employees();
-+       public readonly NumberColumn NumberOfCars = new NumberColumn();
-+       public readonly NumberColumn LatesModel = new NumberColumn();
+        public readonly NumberColumn NumberOfCars = new NumberColumn();
+        public readonly NumberColumn LatesModel = new NumberColumn();
 
         public ShowEmployees()
         {
@@ -34,41 +34,40 @@ namespace Northwind.Exercises
             View = () => new Views.ShowEmployeesView(this);
         }
 
-+       protected override void OnEnterRow()
-+       {
-+           new GetCarsInfo(this).Run();
-+       }
-+
-+       class GetCarsInfo : BusinessProcessBase
-+       {
-+           public readonly Models.EmployeeCars EmployeeCars = new Models.EmployeeCars();
-+
-+           ShowEmployees _parent;
-+           public GetCarsInfo(ShowEmployees parent)
-+           {
-+               _parent = parent;
-+               From = EmployeeCars;
-+               Where.Add(EmployeeCars.EmployeeID.IsEqualTo(_parent.Employees.EmployeeID));
-+           }
-+           public void Run()
-+           {
-+               _parent.NumberOfCars.Value = 0;
-+               _parent.LatesModel.Value = 0;
-+               Execute();
-+           }
-+           protected override void OnLoad()
-+           {
-+
-+           }
-+           protected override void OnEnterRow()
-+           {
-+               _parent.NumberOfCars.Value++;
-+               if (EmployeeCars.CarYear > _parent.LatesModel)
-+                   _parent.LatesModel.Value = EmployeeCars.CarYear;
-+           }
-+       }
+       protected override void OnEnterRow()
+       {
+-           new GetCarsInfo(this).Run();
++           Cached<GetCarsInfo>().Run();
+       }
+ 
+       class GetCarsInfo : BusinessProcessBase
+       {
+           public readonly Models.EmployeeCars EmployeeCars = new Models.EmployeeCars();
+ 
+           ShowEmployees _parent;
+           public GetCarsInfo(ShowEmployees parent)
+           {
+               _parent = parent;
+               From = EmployeeCars;
+               Where.Add(EmployeeCars.EmployeeID.IsEqualTo(_parent.Employees.EmployeeID));
+           }
+           public void Run()
+           {
+               _parent.NumberOfCars.Value = 0;
+               _parent.LatesModel.Value = 0;
+               Execute();
+           }
+           protected override void OnLoad()
+           {
+ 
+           }
+           protected override void OnEnterRow()
+           {
+               _parent.NumberOfCars.Value++;
+               if (EmployeeCars.CarYear > _parent.LatesModel)
+                   _parent.LatesModel.Value = EmployeeCars.CarYear;
+           }
+       }
     }
 }
 ```
-The run time version should look like :  
-![2017-04-20_17h35_51](2017-04-20_17h35_51.png)
