@@ -1,6 +1,6 @@
 ﻿# Exercise - Inner Classes result
 
-The **ShowEmployeeCars** class should look like :
+The **ShowEmployee** class should look like :
 ```csdiff
 using System;
 using System.Collections.Generic;
@@ -12,106 +12,63 @@ using ENV.Data;
 
 namespace Northwind.Exercises
 {
-    public class ShowEmployeeCars : UIControllerBase
+    public class ShowEmployees : UIControllerBase
     {
 
-        public readonly Northwind.Models.EmployeeCars EmployeeCars = new Northwind.Models.EmployeeCars();
-        public readonly NumberColumn AverageKM = new NumberColumn();
-        public ShowEmployeeCars()
+        public readonly Models.Employees Employees = new Models.Employees();
++       public readonly NumberColumn NumberOfCars = new NumberColumn();
++       public readonly NumberColumn LatesModel = new NumberColumn();
+
+        public ShowEmployees()
         {
-            From = EmployeeCars;
-            AverageKM.BindValue(() => EmployeeCars.CarKM / (Date.Now.Year - EmployeeCars.CarYear));
+            From = Employees;
         }
 
-        public void Run(Number EmployeeID)
+        public void Run()
         {
-            EmployeeCars.EmployeeID.DefaultValue = EmployeeID;
-            Where.Add(EmployeeCars.EmployeeID.IsEqualTo(EmployeeID));
             Execute();
         }
 
         protected override void OnLoad()
         {
-            View = () => new Views.ShowEmployeeCarsView(this);
-        }        
+            View = () => new Views.ShowEmployeesView(this);
+        }
+
++       protected override void OnEnterRow()
++       {
++           new GetCarsInfo(this).Run();
++       }
++
++       class GetCarsInfo : BusinessProcessBase
++       {
++           public readonly Models.EmployeeCars EmployeeCars = new Models.EmployeeCars();
++
++           ShowEmployees _parent;
++           public GetCarsInfo(ShowEmployees parent)
++           {
++               _parent = parent;
++               From = EmployeeCars;
++               Where.Add(EmployeeCars.EmployeeID.IsEqualTo(_parent.Employees.EmployeeID));
++           }
++           public void Run()
++           {
++               _parent.NumberOfCars.Value = 0;
++               _parent.LatesModel.Value = 0;
++               Execute();
++           }
++           protected override void OnLoad()
++           {
++
++           }
++           protected override void OnEnterRow()
++           {
++               _parent.NumberOfCars.Value++;
++               if (EmployeeCars.CarYear > _parent.LatesModel)
++                   _parent.LatesModel.Value = EmployeeCars.CarYear;
++           }
++       }
     }
 }
 ```
-After item **9** The **ShowEmployeeCars** class should look like :
-```csdiff
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing;
-using Firefly.Box;
-using ENV;
-using ENV.Data;
-
-namespace Northwind.Exercises
-{
-    public class ShowEmployeeCars : UIControllerBase
-    {
-
-        public readonly Northwind.Models.EmployeeCars EmployeeCars = new Northwind.Models.EmployeeCars();
-        public readonly NumberColumn AverageKM = new NumberColumn();
-        public ShowEmployeeCars()
-        {
-            From = EmployeeCars;
-            AverageKM.BindValue(() => EmployeeCars.CarKM / (Date.Now.Year - EmployeeCars.CarYear));
-        }
-
-        public void Run(Number EmployeeID)
-        {
--           EmployeeCars.EmployeeID.DefaultValue = EmployeeID;
-+           EmployeeCars.EmployeeID.BindValue(()=>EmployeeID);
-            Where.Add(EmployeeCars.EmployeeID.IsEqualTo(EmployeeID));
-            Execute();
-        }
-
-        protected override void OnLoad()
-        {
-            View = () => new Views.ShowEmployeeCarsView(this);
-        }        
-    }
-}
-```
-
-After item **11** The **ShowEmployeeCars** class should look like :
-```csdiff
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing;
-using Firefly.Box;
-using ENV;
-using ENV.Data;
-
-namespace Northwind.Exercises
-{
-    public class ShowEmployeeCars : UIControllerBase
-    {
-
-        public readonly Northwind.Models.EmployeeCars EmployeeCars = new Northwind.Models.EmployeeCars();
-        public readonly NumberColumn AverageKM = new NumberColumn();
-        public ShowEmployeeCars()
-        {
-            From = EmployeeCars;
-            AverageKM.BindValue(() => EmployeeCars.CarKM / (Date.Now.Year - EmployeeCars.CarYear));
-        }
-
-        public void Run(Number EmployeeID)
-        {
--           EmployeeCars.EmployeeID.BindValue(()=>EmployeeID);
--           Where.Add(EmployeeCars.EmployeeID.IsEqualTo(EmployeeID));
-+           Where.Add(EmployeeCars.EmployeeID.BindEqualTo(EmployeeID));
-
-            Execute();
-        }
-
-        protected override void OnLoad()
-        {
-            View = () => new Views.ShowEmployeeCarsView(this);
-        }        
-    }
-}
-```
+The run time version should look like :  
+![2017-04-20_17h35_51](2017-04-20_17h35_51.png)
