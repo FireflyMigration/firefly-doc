@@ -73,5 +73,7 @@ namespace Northwind.Exercises
     }
 }
 ```
-The Output  panel results should look like :
+
+The Output  panel results should look like :  
+
 ![2017-04-20_13h13_41](2017-04-20_13h13_41.png)
