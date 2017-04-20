@@ -2,7 +2,10 @@
 
 1. In **CalcOrderTotalForShipper** add Debug to the class constructor.
 2. Build and test. (notice that every time you change shipper in the **ShowShippers** the Debug line of the constructor show in the **output**)
-1. In **ShowShippers** change the call to **CalcOrderTotalForShipper**, and use **Cached<>**.
-2. Build and test. (notice that you get data only for the first row).
-3. 
+3. In **ShowShippers** change the call to **CalcOrderTotalForShipper**, and use **Cached<>**.
+4. Build and test, notice :
+   1. You get the same data for all rows.
+   2. The Debug message for the constructor Appears only once.
+5. In **CalcOrderTotalForShipper** Clear the Where and Zero the value of the two local variables.
+6. Build and test.
 
