@@ -28,7 +28,7 @@
 11. set **NumberOfOrders value** to increase by 1 for every row.
 12. set **TotalFreight value** to accumulate the value of **Freight** column from the **Orders** table.
 12. Build and test the **BusinessProcess** using the <kbd>Shift</kbd><kbd>F3</kbd> send **ANATR** and check the **Output** panel for the results. 
-13. Add a button to the screen, set the button text to **Get Total Orders**.
+13. In **ShowCustomers** add a button to the screen, set the button text to **Get Total Orders**.
 14. Call the **CalcTotalOrdersPerCustomer** from the button **click** event and send the paramters.
 15. Build and test, notice that **NumberOfOrders** and **TotalFreight** are update with values when clicking the button.
 16. Go back to the call from the click event in the **ShowCustomers** form **CodeBehind**.
