@@ -1,4 +1,4 @@
-﻿# Exercise - Migrated-Style-Parameters
+﻿# Exercise - Migrated Style Parameters
 
 1. Create a new UIController name it **ShowCustomers**.
 2. Set the **Customers** Entity as the main table.

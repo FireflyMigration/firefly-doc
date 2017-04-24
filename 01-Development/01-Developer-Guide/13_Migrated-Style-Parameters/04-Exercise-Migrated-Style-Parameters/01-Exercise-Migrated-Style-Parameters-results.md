@@ -1,4 +1,4 @@
-﻿# Exercise - Migrated-Style-Parameters result
+﻿# Exercise - Migrated Style Parameters result
 
 The **ShowCustomers** class should look like :
 ```csdiff
