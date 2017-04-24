@@ -2,17 +2,15 @@
 
 1. Create a new UIController name it **ShowCustomers**.
 2. Set the **Customers** Entity as the main table.
-3. Add 3 **local columns**:
-	1. type **TextColumn** name **CustomerID**.
+3. Add 2 **local columns**:
 	2. type **NumberColumn** name **NumberOfOrders**.
 	3. type **NumberColumn** name **TotalFreight**.
 4. Add this coulmns to the form :  
 	1. From **Customer** CustomerID.
 	2. From **Customer** CompanyName.
 	3. From **Customer** ContactName.
-	4. **Local** column **CustomerID**.
-	5. **Local** column **NumberOfOrders**.
-	6. **Local** column **TotalFreight**.
+	4. **Local** column **NumberOfOrders**.
+	5. **Local** column **TotalFreight**.
 4. Add a new menu entry and call **ShowCustomers**.
 5. Build and test.
 6. Add a new **BusinessProcess** name it **CalcTotalOrdersPerCustomer**.
@@ -31,5 +29,5 @@
 12. set **TotalFreight value** to accumulate the value of **Freight** column from the **Orders** table.
 12. Build and test the **BusinessProcess** using the <kbd>Shift</kbd><kbd>F3</kbd> send **ANATR** and check the **Output** panel for the results. 
 13. Add a button to the screen, set the button text to **Get Total Orders**.
-14. Call the **CalcTotalOrdersPerCustomer** from the button **click** event.
-15. 
+14. Call the **CalcTotalOrdersPerCustomer** from the button **click** event and send the paramters.
+15. Build and test, notice that **NumberOfOrders** and **TotalFreight** are update with values when clicking the button.
