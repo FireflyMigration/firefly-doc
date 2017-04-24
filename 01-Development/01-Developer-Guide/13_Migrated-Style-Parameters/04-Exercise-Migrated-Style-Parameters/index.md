@@ -31,3 +31,7 @@
 13. Add a button to the screen, set the button text to **Get Total Orders**.
 14. Call the **CalcTotalOrdersPerCustomer** from the button **click** event and send the paramters.
 15. Build and test, notice that **NumberOfOrders** and **TotalFreight** are update with values when clicking the button.
+16. Go back to the call from the click event in the **ShowCustomers** form **CodeBehind**.
+17. Try to change the secound parameters NumberOfOrders and send just the **Value** notice the error.
+18. Cancel the last item change and try to do the same for **TotalFreight** notice that you will not get an error.
+19. Build and test, notice that **TotalFreight** is not update when you click the button.
