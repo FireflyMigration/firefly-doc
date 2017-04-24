@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="Batch Task">
+    <meta name="keywords" content="">
 
-    <title>BusinessProcess and Out Parameters</title>
+    <title>Exercise - Accumulating Statistic result</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,31 +27,46 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="businessprocess-and-out-parameters">BusinessProcess and Out Parameters</h1>
-<p>In this section we'll:</p>
-<ul>
-<li>Create our first Business Process.</li>
-<li>Use out parameters to get the result of a calculation done in our BusinessProces</li>
-<li>Get Introduced to cache.</li>
-</ul>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ONZR8XF9eWo?list=PL1DEQjXG2xnKS0Zo7h-PrExXZ18hGxhvA" frameborder="0" allowfullscreen></iframe>
-<ul>
-<li><a href="setting-the-scene-for-businessprocess.html">Setting the Scene for BusinessProcess</a></li>
-<li><a href="introduction-to-businessprocess.html">Introduction to BusinessProcess</a></li>
-<li><a href="filtering-data-in-the-businessprocess.html">Filtering data in the BusinessProcess</a></li>
-<li><a href="exercise-filtering-data-in-the-businessprocess.html">Exercise Filtering data in the BusinessProcess</a></li>
-<li><a href="accumulating-statistical-information-in-the-businessprocess.html">Accumulating Statistical Information in the BusinessProcess</a></li>
-<li><a href="exercise-accumulating-statistic.html">Exercise Accumulating Statistic</a></li>
-<li><a href="in-out-parameters-using-numbercolumn.html">In Out Parameters using NumberColumn</a></li>
-<li><a href="calling-the-businessprocess-from-the-showorders-uicontroller.html">Calling the BusinessProcess from the ShowOrders UIController</a></li>
-<li><a href="exercise-in-out-and-call.html">Exercise In Out and Call</a></li>
-<li><a href="introducing-cached.html">Introducing Cached</a></li>
-<li><a href="initialize-values-before-the-execution-in-the-cached-controller.html">Initialize Values Before the Execution in the Cached Controller</a></li>
-<li><a href="exercise-cached.html">Exercise Cached</a></li>
-<li><a href="optional-parameters.html">Optional Parameters</a></li>
-<li><a href="exercise-optional-parameters.html">Exercise optional parameters</a></li>
-</ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/11_BusinessProcess-and-Out-Parameters/00-index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                <div class="content"><h1 id="exercise-accumulating-statistic-result">Exercise - Accumulating Statistic result</h1>
+<p>The <strong>CalcOrderTotalForShipper</strong> class should look like :</p>
+<pre data-line="15,16,29,30,32" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows.Forms;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+using System.Diagnostics;
+
+namespace Northwind.Exercises
+{
+    public class CalcOrderTotalForShipper : BusinessProcessBase
+    {
+        public readonly Models.Orders Orders = new Models.Orders();
+        Number _numberOfOrders = 0;
+        Number _totalValue = 0;
+
+        public CalcOrderTotalForShipper()
+        {
+            From = Orders;
+        }
+        public void Run(Number pShipperID)
+        {
+            Where.Add(Orders.ShipVia.IsEqualTo(pShipperID));
+            Execute();
+        }
+        protected override void OnLeaveRow()
+        {
+            _numberOfOrders++;
+            _totalValue += Orders.Freight;
+            Debug.WriteLine("OrderID :" + Orders.OrderID + " Shipper ID :" + Orders.ShipVia);
+            Debug.WriteLine("\t\tNumber of orders : " + _numberOfOrders + " Total value :" + _totalValue);
+        }
+    }
+} </code></pre>
+<p>The Output  panel results should look like :</p>
+<p><img src="2017-04-20_14h27_23.png" alt="2017-04-20_14h27_23" /></p>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/11_BusinessProcess-and-Out-Parameters/04-Exercise-Accumulating-Statistic/01-Exercise-Accumulating-Statistic-results.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -96,7 +111,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'businessprocess-and-out-parameters.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'exercise-accumulating-statistic-results.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
