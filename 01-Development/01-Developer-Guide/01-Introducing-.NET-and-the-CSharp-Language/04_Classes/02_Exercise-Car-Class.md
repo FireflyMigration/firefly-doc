@@ -25,8 +25,7 @@ namespace Northwind.Exercises.MoreOnClass
     }
 ```
 
-4. Add a new class name it **Car**.
-5. Add Run Method.
+5. Add a new class name it **Car**.
 6. Add This members to the Run :
    1. string carName.
    2. int carYear.
