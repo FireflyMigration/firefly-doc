@@ -1,40 +1,31 @@
-﻿# Exercise - Column Collection
+﻿# Exercise - Columns Recompute
 
-1. Run **ShowShippers**.
-2. Break to the developer using <kbd>Shift</kbd><kbd>F12</kbd>.
-3. In the **Watch** Panel add **Columns**.
-4. Notice :  
-	1. The number of **columns**.
-	2. Columns names.
-5. **Stop** the application.
-6. Add the **ShipperID** and **CompanyName** to the columns colllection.
-7. Run **ShowShippers**.
-8. Break to the developer using <kbd>Shift</kbd><kbd>F12</kbd>.
-9. Notice :  
-	1. The number of **columns**.
-	2. Columns names.
-	3. What is the missing Column?
-	4. Notice The two local columns are included.
-10. **Stop** the application.
-11. Go to the **Form** and follw this steps:
-	1. select **TotalOrders** textBox.
-	2. In the **Properties** Panel find **Data**.
-	3. Click the **...** button,
-	4. In the popup screen use the **clear** button.
-12. Run **ShowShippers**.
-13. Break to the developer using <kbd>Shift</kbd><kbd>F12</kbd>.
-14. Notic that **TotalOrders** is no longer part of the columns Collection.
-15. **Stop** the application.
-16. Go to the **Form** and follw this steps:
-	1. select **ShipperID** textBox.
-	2. In the **Properties** Panel find **Data**.
-	3. Click the **...** button,
-	4. In the popup screen use the **clear** button.
-17. Run **ShowShippers**.
-18. Break to the developer using <kbd>Shift</kbd><kbd>F12</kbd>.
-19. Notic that **ShipperID** is still part of the columns Collection.
-20. **Stop** the application.
-21. Go to the **Form** and follw this steps:
-	1. Set the **ShipperID** textBox to show the data from the **ShipperID**.
-	2. Set the **TotalOrders** textBox to show the data from the **TotalOrders**.
-22. Build and test.
+1. In **ShowProducts**.
+2. Add a new local Column, Type **NumberColumn**, Name **TotalValueInStock**.
+3. Build.
+4. Using the **Class Outline** go to the form.
+5. Use the **Grid**, **Column Wizard** and add the new column to the grid.  
+6. Go back to the **ShowProducts** controller.
+7. Add this columns to the column collection:
+	1. Products.ProductID.
+	2. Products.ProductName.
+	3. Products.CategoryID.
+	4. Products.UnitPrice.
+	5. Products.UnitsInStock.
+	6. Products.UnitsOnOrder.
+	7. Categories.CategoryID.
+    8. Categories.CategoryName.
+	9. TotalValueInStock.
+8. Use **BindValue** to set the value of **TotalValueInStock** to show **UnitPrice** * **UnitsInStock**.
+9. Build and test.	(Change the number of Units In Stock and the check that TotalValueInStock is **change**).
+10. Break into the code using the <kbd>Control</kbd> <kbd>F12</kbd>.
+11. Add **TotalValueInStock.__RecomputePath** the **Watch** panel.
+12. Expend the result and notice the result.
+13. Stop the program.
+14. Use <kbd>Alt</kbd> <kbd>arrow up</kbd> to change the **Columns.Add** of **TotalValueInStock** location to be the first one.
+15. Build and test.	(Change the number of Units In Stock and the check that TotalValueInStock is **not changing**)
+16. Break into the code using the <kbd>Control</kbd> <kbd>F12</kbd>.
+17. Check the **TotalValueInStock.__RecomputePath**.
+18. Stop the program.
+19. Use <kbd>Alt</kbd> <kbd>arrow down</kbd> to change the **Columns.Add** of **TotalValueInStock** location to be the last one.
+20. build and test.

@@ -1,4 +1,4 @@
-﻿# Exercise - Column Collection result
+﻿# Exercise - Columns Recompute result
 
 The **ShowShippers** class should look like :
 ```csdiff
