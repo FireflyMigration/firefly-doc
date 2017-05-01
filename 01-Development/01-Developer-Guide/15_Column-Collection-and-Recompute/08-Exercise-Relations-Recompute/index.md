@@ -1,31 +1,21 @@
 ﻿# Exercise - Relations Recompute
 
-1. In **ShowProducts**.
-2. Add a new local Column, Type **NumberColumn**, Name **TotalValueInStock**.
-3. Build.
-4. Using the **Class Outline** go to the form.
-5. Use the **Grid**, **Column Wizard** and add the new column to the grid.  
-6. Go back to the **ShowProducts** controller.
-7. Add this columns to the column collection:
-	1. Products.ProductID.
-	2. Products.ProductName.
-	3. Products.CategoryID.
-	4. Products.UnitPrice.
-	5. Products.UnitsInStock.
-	6. Products.UnitsOnOrder.
-	7. Categories.CategoryID.
-    8. Categories.CategoryName.
-	9. TotalValueInStock.
-8. Use **BindValue** to set the value of **TotalValueInStock** to show **UnitPrice** * **UnitsInStock**.
-9. Build and test.	(Change the number of Units In Stock and the check that TotalValueInStock is **change**).
-10. Break into the code using the <kbd>Control</kbd> <kbd>F12</kbd>.
-11. Add **TotalValueInStock.__RecomputePath** the **Watch** panel.
-12. Expend the result and notice the result.
-13. Stop the program.
-14. Use <kbd>Alt</kbd> <kbd>arrow up</kbd> to change the **Columns.Add** of **TotalValueInStock** location to be the first one.
-15. Build and test.	(Change the number of Units In Stock and the check that TotalValueInStock is **not changing**)
-16. Break into the code using the <kbd>Control</kbd> <kbd>F12</kbd>.
-17. Check the **TotalValueInStock.__RecomputePath**.
-18. Stop the program.
-19. Use <kbd>Alt</kbd> <kbd>arrow down</kbd> to change the **Columns.Add** of **TotalValueInStock** location to be the last one.
-20. build and test.
+1. Run the aplication and run **ShowProducts**.
+2. Break into the code using the <kbd>Control</kbd> <kbd>F12</kbd>.
+3. Add **Relations[Categories].__RecomputePath** to the **Watch** panel.
+4. Expend the result and notice the result.
+5. Stop the program.
+6. Use <kbd>Alt</kbd> <kbd>arrow up</kbd> to change the **Columns.Add** of **Categories.CategoryID** location to be before **Products.CategoryID**.
+7. Build and test.
+8. Break into the code using the <kbd>Control</kbd> <kbd>F12</kbd>.
+9. Notice the result of **Relations[Categories].__RecomputePath** in the **Watch** panel.
+10. Stop the program.
+11. Use <kbd>Alt</kbd> <kbd>arrow down</kbd> to restore the **Columns.Add** of **Categories.CategoryID** to it's orginal location before **Categories.CategoryName**.
+12. Build and test.
+13. Break into the code using the <kbd>Control</kbd> <kbd>F12</kbd>.
+14. Add **Columns** to the **Watch** panel.
+15. Stop the program.
+16. add **AddAllColumns**.
+17. Build and test.
+18. Break into the code using the <kbd>Control</kbd> <kbd>F12</kbd>.
+19. Add **Columns** to the **Watch** panel.
