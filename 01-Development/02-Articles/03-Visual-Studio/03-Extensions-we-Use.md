@@ -6,7 +6,8 @@ The Visual studio extensions that we think are essential are detailed in the[Con
 ## Nice To Have
 ### File Comparer
 Allows you to compare any two files in Visual Studio
-* [File Comparer](https://marketplace.visualstudio.com/items?itemName=vs-publisher-457497.FileComparer)
+* [File Comparer vs2015](https://marketplace.visualstudio.com/items?itemName=vs-publisher-457497.FileComparer)
+* [File Comparer vs2017](https://marketplace.visualstudio.com/items?itemName=vs-publisher-457497.FileComparer2017)
 
 ### Spell Checker
 * [Download](https://marketplace.visualstudio.com/items?itemName=EWoodruff.VisualStudioSpellCheckerVS2017andLater)
