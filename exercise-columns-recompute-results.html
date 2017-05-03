@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Exercise - Creating a Simple Screen</title>
+    <title>Exercise - Columns Recompute result</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,32 +27,9 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="exercise-creating-a-simple-screen">Exercise - Creating a Simple Screen</h1>
-<ol>
-<li>Under the “Exercises” folder, create a UIController named <strong>ShowProducts</strong>.</li>
-<li>Define the <strong>Products</strong> table at the beginning of the controller class.(drag and drop it, holding the <strong>Shift</strong> key just before the drop).</li>
-<li>In the <strong>constructor</strong> use the <strong>From</strong> to set the <strong>Products</strong> to be the class main table.</li>
-<li>Using the <strong>Class Outline</strong> Open the Form Designer:
-<ol>
-<li>Setup the Toolbox if you did not do that early, by right clicking on the form, select &quot;Setup Toolbox&quot;.</li>
-<li>Add a grid with the following columns:
-<ol>
-<li>ProducrID</li>
-<li>ProductName</li>
-<li>CategoryID</li>
-<li>UnitPrice</li>
-<li>UnitsInStock</li>
-<li>UnitsOnOrder</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>Expand the form width to show the entire grid.</li>
-<li>Add a new menu entry to call this screen.</li>
-<li>Build and test.</li>
-</ol>
+                <div class="content"><h1 id="exercise-columns-recompute-result">Exercise - Columns Recompute result</h1>
 <p>The <strong>ShowProducts</strong> class should look like :</p>
-<pre data-line="14,18" class="language-csdiff line-numbers"><code>using System;
+<pre data-line="" class="language-csdiff line-numbers"><code>using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
@@ -66,10 +43,28 @@ namespace Northwind.Exercises
     {
 
         public readonly Models.Products Products = new Models.Products();
-
+        public readonly Models.Categories Categories = new Models.Categories();
+        public readonly NumberColumn TotalValueInStock = new NumberColumn();
         public ShowProducts()
         {
             From = Products;
+            Relations.Add(Categories, RelationType.Find,
+                Categories.CategoryID.IsEqualTo(Products.CategoryID));
+
+            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
+            Where.Add(Products.UnitPrice.IsGreaterThan(25));
+
+            OrderBy = Products.SortByProductName;
+
+ +          Columns.Add(Products.ProductID);
+ +          Columns.Add(Products.ProductName);
+ +          Columns.Add(Products.CategoryID);
+ +          Columns.Add(Products.UnitPrice);
+ +          Columns.Add(Products.UnitsInStock);
+ +          Columns.Add(Products.UnitsOnOrder);
+ +          Columns.Add(Categories.CategoryID);
+ +          Columns.Add(Categories.CategoryName);
+ +          Columns.Add(TotalValueInStock).BindValue(()=&gt; Products.UnitPrice*Products.UnitsInStock);
         }
 
         public void Run()
@@ -81,12 +76,45 @@ namespace Northwind.Exercises
         {
             View = () =&gt; new Views.ShowProductsView(this);
         }
+
+        protected override void OnSavingRow()
+        {
+            InputValidation();
+        }
+        #region expressions
+        private void InputValidation()
+        {
+            if (Products.ProductName == "")
+                Message.ShowError("Product name is empty!");
+            if (Products.UnitsInStock == 0 || Products.UnitsOnOrder == 0)
+                System.Windows.Forms.MessageBox.Show("Units is zero");
+            if (Products.UnitsInStock &lt; 10)
+                Message.ShowWarning("Not enough units");
+            if (Products.UnitsOnOrder &gt;= 50 &amp;&amp; Products.UnitsOnOrder &lt;= 100)
+                Message.ShowError("Units on order are between 50 and 100");
+            if (u.Len(u.Trim(Products.ProductName)) &lt; 3)
+                Message.ShowError("Please enter a valid product name");
+            if (u.InStr(Products.ProductName, "%") &gt;= 1 || u.InStr(Products.ProductName, "@") &gt;= 1)
+                Message.ShowError("% and @ are invalid characters in product name");
+            if (u.Left(Products.ProductName, 1) == "T")
+                Message.ShowWarningInStatusBar("Product name can't start with a T");
+            if (ValidateCaregoryID())
+                Message.ShowError("Please enter a valid category");
+        }
+
+        private bool ValidateCaregoryID()
+        {
+            return !Relations[Categories].RowFound;
+        }
+
+        public Number TotalUnits()
+        {
+            return Products.UnitsInStock + Products.UnitsOnOrder;
+        }
+        #endregion
     }
 } </code></pre>
-<p>The <strong>ShowProducts Form Designer</strong> should look like :<br />
-<img src="ShowProductsScreen.png" alt="Show Products Screen" /></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PkikKDuWjLw?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/02_UI-Controller/03-Getting-Data-From-The-Database/04-Creating-Simple-Screen-Exercise.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/15_Column-Collection-and-Recompute/05-Exercise-Columns-Recompute/01-Exercise-Columns-Recompute-results.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -131,7 +159,7 @@ namespace Northwind.Exercises
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'creating-simple-screen-exercise.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'exercise-columns-recompute-results.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
