@@ -55,11 +55,11 @@ Visual Studio or Resharper will not be able to guess the missing assembly and wi
 ![2017 05 01 23H58 30](2017-05-01_23h58_30.png)
 
 In order to find out where this class is coming from, it is best to know the context of the code writer.
-Try Goggling the class name; if the class is popular you should easily find the framework used in the code sample:
+Try Googling the class name; if the class is popular you should easily find the framework used in the code sample:
 
 ![2017 05 02 00H00 29](2017-05-02_00h00_29.png)
 
 If you can't find the class using Google, it is probably part of the application, which the writer of the code has not included.
-If this is the case, which is fairly rare, you have no choice but to ask the writer to provide the missing code, or the continue searching for a working example.
+If this is the case, which is fairly rare, you have no choice but to ask the writer to provide the missing code, or to continue searching for a working example.
 
 
