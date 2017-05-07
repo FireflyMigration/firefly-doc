@@ -16,5 +16,7 @@
     2.	**AlternatingBackcolor** to **WhiteSmoke**.
 9.	Build and test.
 10. Notice that the grid properties override the textbox one.
+11. Change **back** the  **RowColorStyle** to **ByColumnAndControls**.
+12. Build and test.
 
 
