@@ -1,0 +1,1 @@
+﻿In this series of videos we are going to review the most basic refactorings that any developer should start doing as soon as you gain some confidence in the code.
