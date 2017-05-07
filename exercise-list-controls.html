@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Exercise - Cached</title>
+    <title>Exercise - List Controls</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,24 +27,70 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="exercise-cached">Exercise - Cached</h1>
+                <div class="content"><h1 id="exercise-list-controls">Exercise - List Controls</h1>
 <ol>
-<li>In <strong>CalcOrderTotalForShipper</strong> add <strong>Debug.WriteLine</strong> to the class constructor.</li>
-<li>Build and test. (notice that every time you change shipper in the <strong>ShowShippers</strong> the Debug line of the constructor show in the <strong>output</strong>)</li>
-<li>In <strong>ShowShippers</strong> change the call to <strong>CalcOrderTotalForShipper</strong>, and use <strong>Cached&lt;&gt;</strong>.</li>
-<li>Build and test, notice :
+<li>Add new UIController to the Exercises folder, name the new UIController <strong>ControlsDemo</strong>.</li>
+<li>Set the Orders table as the main table</li>
+<li>Add <strong>OrderID</strong>, <strong>ShipCountry</strong> to a grid on the form.</li>
+<li>Add 3 ComboBox to the grid to do so :
 <ol>
-<li>You get the same data for all rows.</li>
-<li>The Debug message for the constructor Appears only once.</li>
+<li>Add a column to the grid.</li>
+<li>Name the columns :
+<ol>
+<li><strong>Customer</strong>.</li>
+<li><strong>Employee</strong>.</li>
+<li><strong>Shipper</strong>.</li>
 </ol>
 </li>
-<li>In <strong>CalcOrderTotalForShipper</strong> Clear the Where and Zero the value of the two local variables.</li>
+<li>Drag and drop a ComboBox from the toolbox to the new column.</li>
+</ol>
+</li>
+<li>The 3 ComboBox will be show data from :
+<ol>
+<li>CustomerID.</li>
+<li>EmployeeID.</li>
+<li>ShipVia.</li>
+</ol>
+</li>
+<li>Set the <strong>Name</strong> property of the 3 ComboBoxs to :
+<ol>
+<li>cmbCustomer.</li>
+<li>cmbEmployee.</li>
+<li>cmbShipper.</li>
+</ol>
+</li>
+<li>In <strong>ControlsDemo</strong> controller define this 3 tables:
+<ol>
+<li>Customers.</li>
+<li>Employees.</li>
+<li>Shippers.</li>
+</ol>
+</li>
+<li>Go to the <strong>code behind</strong> of ControlsDemo form and set:
+<ol>
+<li>cmbCustomer ListSource to be customer table from the controller.</li>
+<li>cmbCustomer ValueColumn to be CustomerID.</li>
+<li>cmbCustomer DisplayColumn to be CompanyName.</li>
+<li>cmbEmployee ListSource to be Employees table from the controller.</li>
+<li>cmbEmployee ValueColumn to be EmployeeID.</li>
+<li>cmbEmployee DisplayColumn to be LastName.</li>
+<li>cmbShipper ListSource to be Shippers table from the controller.</li>
+<li>cmbShipper ValueColumn to be ShipperID.</li>
+<li>cmbShipper DisplayColumn to be CompanyName.</li>
+</ol>
+</li>
+<li>Build and test.</li>
+<li>Add <strong>Where</strong> To show record where the order <strong>ShipCountry</strong> equal to <strong>UK</strong>.</li>
+<li>Build and test.</li>
+<li>Set the <strong>cmbCustomer</strong> to show only <strong>UK</strong> customers.</li>
+<li>Build and test.</li>
+<li>Set the <strong>cmbEmployee</strong> to show only <strong>UK</strong> Employees.</li>
 <li>Build and test.</li>
 </ol>
 <ul>
-<li><a href="exercise-cached-results.html">Exercise Cached results</a></li>
+<li><a href="exercise-list-controls-results.html">Exercise List Controls results</a></li>
 </ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/11_BusinessProcess-and-Out-Parameters/17-Exercise-Cached/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/16-List-Controls/04-Exercise-List-Controls/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -89,7 +135,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'exercise-cached.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'exercise-list-controls.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

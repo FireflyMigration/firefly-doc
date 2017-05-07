@@ -30,28 +30,38 @@
                 <div class="content"><h1 id="exercise-large-applications-architecture">Exercise - Large Applications Architecture</h1>
 <ol>
 <li>Using the runtime <strong>Developer Tools</strong>, <strong>Generate Entity C#</strong> add the <strong>Region</strong> entity to the <strong>NorthwindBase</strong>, <strong>Models</strong>.</li>
+<li>Build <strong>NorthwindBase</strong>.</li>
 <li>Add a new <strong>UIController</strong> to the <strong>Exercises</strong> name space in <strong>Northwind</strong> project, name it <strong>ShowRegions</strong>.</li>
 <li>Set the new <strong>Region</strong> entity as the main table.</li>
-<li>Build and add all the coulmns to the form.</li>
+<li>Build and add a grid that will show all the columns in the form.</li>
 <li>Build and test.</li>
 <li>In the <strong>customer project</strong> create a new folder name it <strong>Exercises</strong>.</li>
 <li>Add a new <strong>UIController</strong> under the new folder, name it <strong>ShowCustomerPerRegion</strong>.</li>
 <li>Set the <strong>Customers</strong> entity as the main table.</li>
-<li>In the <strong>Run</strong> method add a paramter : type <strong>Number</strong> name <strong>pRegionID</strong>.</li>
-<li>Add a where to the Run method to show only customer that have the same <strong>Region</strong> hase the paramter, notice that you will need to use <strong>.ToString()</strong>.</li>
+<li>In the <strong>Run</strong> method add a parameter : type <strong>Number</strong> name <strong>pRegionID</strong>.</li>
+<li>Add a <strong>where</strong> in the <strong>Run</strong> method to show only customer that have the same <strong>Region</strong> have the parameter, notice that you will need to use <strong>.ToString()</strong>.</li>
+<li>Add the following columns to a <strong>grid</strong> on the form:
+<ol>
+<li>CustomerID.</li>
+<li>CompanyName.</li>
+<li>Address.</li>
+<li>City.</li>
+<li>Region.</li>
+</ol>
+</li>
 <li>In <strong>ShowRegions</strong>.</li>
 <li>Add a button to the screen, set the button text to <strong>Show Region Customers</strong>.</li>
 <li>Try to call the <strong>ShowCustomerPerRegion</strong> from the button <strong>click</strong> event.</li>
 <li>In <strong>NorthwindBase</strong> project, under <strong>Customers</strong> folder, create a new folder name it <strong>Exercises</strong>.</li>
 <li>Add a new interface, name it <strong>IShowCustomerPerRegion</strong>.</li>
 <li>Set the new interface to be public.</li>
-<li>Add the Run with the paramter definition.</li>
+<li>Add the Run with the same parameter definition as <strong>ShowCustomerPerRegion</strong>.(you will need to add using to Firefly.Box).</li>
 <li>build <strong>NorthwindBase</strong>.</li>
 <li>In <strong>ShowCustomerPerRegion</strong> add the interface next to the <strong>UIControllerBase</strong>.</li>
-<li>In <strong>ShowRegionsView</strong> use <strong>Create</strong> to call  IShowCustomerPerRegion remamber:
+<li>In <strong>ShowRegionsView</strong> use <strong>Create</strong> to call IShowCustomerPerRegion remember:
 <ol>
 <li>Use the full <strong>NameSpace</strong>.</li>
-<li>Send the right paramter.</li>
+<li>Send the right parameter.</li>
 </ol>
 </li>
 <li>Build and test.</li>

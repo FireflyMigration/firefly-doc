@@ -34,7 +34,7 @@
 <li>Add 2 <strong>local columns</strong>:
 2. type <strong>NumberColumn</strong> name <strong>NumberOfOrders</strong>.
 3. type <strong>NumberColumn</strong> name <strong>TotalFreight</strong>.</li>
-<li>Add this coulmns to the form :
+<li>Add this columns to the form <strong>(Do not use a grid)</strong>:
 <ol>
 <li>From <strong>Customer</strong> CustomerID.</li>
 <li>From <strong>Customer</strong> CompanyName.</li>
@@ -54,24 +54,26 @@
 <li>type <strong>NumberColumn</strong> name <strong>TotalFreight</strong>.</li>
 </ol>
 </li>
+<li>Add <strong>Whare</strong> after the <strong>From</strong>, to show only records equal to the <strong>CustomerID</strong> local column.</li>
 <li>In the <strong>Run</strong> method receive 3 Parameters and do:
 <ol>
-<li><strong>TextParameter</strong> name <strong>pCustomerID</strong> use the BindParameter method to connect the paramter and the local column <strong>CustomerID</strong>.</li>
+<li><strong>TextParameter</strong> name <strong>pCustomerID</strong> use the BindParameter method to connect the parameter and the local column <strong>CustomerID</strong>.</li>
 <li><strong>NumberColumn</strong> name <strong>pNumberOfOrders</strong>.</li>
-<li><strong>NumberParameter</strong> name <strong>pTotalFreight</strong> use the BindParameter method to connect the paramter and the local column <strong>TotalFreight</strong>.</li>
-<li>Afer the call to <strong>Execute</strong>, update the <strong>pNumberOfOrders value</strong> with the local column <strong>NumberOfOrders</strong> value.</li>
+<li><strong>NumberParameter</strong> name <strong>pTotalFreight</strong> use the BindParameter method to connect the parameter and the local column <strong>TotalFreight</strong>.</li>
+<li>After the call to <strong>Execute</strong>, update the <strong>pNumberOfOrders value</strong> with the local column <strong>NumberOfOrders</strong> value.</li>
 </ol>
 </li>
-<li>Overrid the <strong>OnLeaveRow</strong>.</li>
+<li>Override the <strong>OnLeaveRow</strong>.</li>
 <li>set <strong>NumberOfOrders value</strong> to increase by 1 for every row.</li>
 <li>set <strong>TotalFreight value</strong> to accumulate the value of <strong>Freight</strong> column from the <strong>Orders</strong> table.</li>
 <li>Build and test the <strong>BusinessProcess</strong> using the <kbd>Shift</kbd><kbd>F3</kbd> send <strong>ANATR</strong> and check the <strong>Output</strong> panel for the results.</li>
 <li>In <strong>ShowCustomers</strong> add a button to the screen, set the button text to <strong>Get Total Orders</strong>.</li>
-<li>Call the <strong>CalcTotalOrdersPerCustomer</strong> from the button <strong>click</strong> event and send the paramters.</li>
+<li>set the value of <strong>NumberOfOrders</strong> and <strong>TotalFreight</strong> to zero.</li>
+<li>Call the <strong>CalcTotalOrdersPerCustomer</strong> from the button <strong>click</strong> event and send the parameters.</li>
 <li>Build and test, notice that <strong>NumberOfOrders</strong> and <strong>TotalFreight</strong> are update with values when clicking the button.</li>
-<li>Go back to the call from the click event in the <strong>ShowCustomers</strong> form <strong>CodeBehind</strong>.</li>
-<li>Try to change the secound parameters NumberOfOrders and send just the <strong>Value</strong> notice the error.</li>
-<li>Cancel the last item change and try to do the same for <strong>TotalFreight</strong> notice that you will not get an error.</li>
+<li>In <strong>ShowCustomers</strong>, find the call to <strong>CalcTotalOrdersPerCustomer</strong>.</li>
+<li>Try to change the second parameters <strong>NumberOfOrders</strong> and send its <strong>Value</strong>, notice the error.</li>
+<li>Cancel the last item change and try to do the same for <strong>TotalFreight</strong> notice that you will <strong>not</strong> get an error.</li>
 <li>Build and test, notice that <strong>TotalFreight</strong> is not update when you click the button.</li>
 </ol>
 <ul>

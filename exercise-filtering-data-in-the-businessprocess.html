@@ -33,8 +33,8 @@
 <li>Set the <strong>Shippers</strong> Entity to be the main table.</li>
 <li>Add two local columns (use the mem snippet) :
 <ol>
-<li><strong>TotalOrders</strong> name <strong>&quot;Total Orders&quot;</strong>, format <strong>&quot;6&quot;</strong>.</li>
-<li><strong>TotalFreightValue</strong> name <strong>&quot;Total Freight Value&quot;</strong>,format <strong>&quot;6.2C&quot;</strong>;</li>
+<li><strong>TotalOrders</strong> name <strong>&quot;Total Orders&quot;</strong>,type <strong>NumberColumn</strong>, format <strong>&quot;6&quot;</strong>.</li>
+<li><strong>TotalFreightValue</strong> name <strong>&quot;Total Freight Value&quot;</strong>,type <strong>NumberColumn</strong>, format <strong>&quot;6.2C&quot;</strong>;</li>
 </ol>
 </li>
 <li>Build and go to the form.</li>
@@ -44,11 +44,11 @@
 <li><strong>CompanyName</strong>.</li>
 </ol>
 </li>
-<li>Add the <strong>two local columns</strong> to the screen <strong>out side the grid</strong>.</li>
+<li>Add the <strong>two local columns</strong> to the screen <strong>out side the grid</strong>.(use <kbd>Ctrl</kbd><kbd>arrow keys</kbd> to set them next to the grid)</li>
 <li>Build and test.</li>
 <li>Add a new <strong>BusinessProcess</strong> name it <strong>CalcOrderTotalForShipper</strong>.</li>
 <li>Set the <strong>Orders</strong> entity to be the main table.</li>
-<li>In the <strong>Run</strong> method receive one parameter type <strong>Number</strong> name it <strong>pShipperID</strong>.</li>
+<li>In the <strong>Run</strong> method receive one parameter type <strong>Number</strong> name it <strong>ShipperID</strong>.</li>
 <li>Add a <strong>Where</strong> limit the  <strong>BusinessProcess</strong> to run only where <strong>Orders ShipVia</strong> equal to the received parameter.</li>
 <li>Override the <strong>OnLeaveRow</strong></li>
 <li>Add <strong>Debug.WriteLine</strong> to show the <strong>Order ID</strong> and <strong>Shipper ID</strong>. (remember to add using System.Diagnostics; if needed)</li>
