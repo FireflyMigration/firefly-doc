@@ -77,11 +77,11 @@ namespace Northwind.Exercises
 +           if (u.Left(Products.ProductName, 1) == "T")
 +               Message.ShowWarningInStatusBar("Product name can't start with a T");
 -           if (!Relations[Categories].RowFound)
-+           if (ValidateCaregoryID())
++           if (ValidateCategoryID())
 +               Message.ShowError("Please enter a valid category");
 +        }
 +
-+        private bool ValidateCaregoryID()
++        private bool ValidateCategoryID()
 +        {
 +            return !Relations[Categories].RowFound;
 +        }
