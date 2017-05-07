@@ -49,7 +49,7 @@ namespace Northwind.Exercises
 +           if (Products.UnitsInStock < 10)
 +               Message.ShowWarning("Not enough units");
 +           if (Products.UnitsOnOrder >= 50 && Products.UnitsOnOrder <= 100)
-+               Message.ShowError("Units on order are betwee 50 and 100");
++               Message.ShowError("Units on order are between 50 and 100");
         }
     }
 }

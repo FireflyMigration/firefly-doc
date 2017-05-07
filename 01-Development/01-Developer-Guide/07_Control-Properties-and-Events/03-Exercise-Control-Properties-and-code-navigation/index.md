@@ -7,13 +7,16 @@
 5. Find the **code behind** controller parameter,Go back to the **Controller** using <kbd>F12</kbd>. 
 6. Now when we know how to navigate from the controller to the form, go to the form and change the following properties:
     1.  **ActiveRowStyle** of the grid to **Border**.
-    2.  **AllowFocus** of the **ProductName** textbox to **False**.
+    2.  **AllowFocus** of the **CategoryName** textbox to **False**.
     3.  **BackColor** of the **ProductName** textbox to **LightBlue**.
+    4.  **Font** of the **ProductName** textbox to **Bold**.
 7. build and test.
 8. Change the following properties of the grid control:  
     1.	**RowColorStyle** to **AlternatingRowBackColor**.
     2.	**AlternatingBackcolor** to **WhiteSmoke**.
 9.	Build and test.
 10. Notice that the grid properties override the textbox one.
+11. Change **back** the  **RowColorStyle** to **ByColumnAndControls**.
+12. Build and test.
 
 
