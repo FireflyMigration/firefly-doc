@@ -8,7 +8,7 @@
 1.	Using the **Class Outline** Open the Form Designer:  
     1.  Setup the Toolbox if you did not do that early, by right clicking on the form, select "Setup Toolbox".  
     1.  Add a grid with the following columns:  
-        1.  ProducrID
+        1.  ProductID
         1.  ProductName
         1.  CategoryID
         1.  UnitPrice
