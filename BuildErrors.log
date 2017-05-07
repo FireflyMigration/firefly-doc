@@ -1,6 +1,0 @@
-ERROR: url conflict: 
-OtherFile: 2017-04-13_14H_08_02.png => c:\repos\firefly-doc\01-Development\01-Developer-Guide\07_Control-Properties-and-Events\03-Exercise-Control-Properties-and-code-navigation\2017-04-13_14H_08_02.png
-OtherFile: 2017-04-13_14H_08_02.png => c:\repos\firefly-doc\01-Development\01-Developer-Guide\07_Control-Properties-and-Events\06-Exercise-Control-Events\2017-04-13_14H_08_02.png'
-ERROR: url conflict: 
-OtherFile: 2017-05-02_00h00_29.png => c:\repos\firefly-doc\01-Development\02-Articles\Getting-Help\2017-05-02_00h00_29.png
-OtherFile: 2017-05-02_00h00_29.png => c:\repos\firefly-doc\01-Development\02-Articles\Resolve-namespaces-of-code-snippets\2017-05-02_00h00_29.png'
