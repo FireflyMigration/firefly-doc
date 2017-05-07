@@ -1,7 +1,7 @@
 ﻿# Exercise - Updating Data Programmatically
  
 1. In **ShowProducts** add a new method that return **Number**, name it **TotalUnits**.
-2. **TotalUnits** return **UnitsInStock** plus **UnitsOnOrder**.
+2. **TotalUnits** return the value of **UnitsInStock** plus **UnitsOnOrder**.
 3. Go to the form.
 4. Replace the message of the **"Total units" button** with a message **"Total Units : "** + **TotalUnits** method from the **controller**.
 5. Build and test.
