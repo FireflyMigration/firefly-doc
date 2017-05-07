@@ -4,7 +4,7 @@
 2. Add two new local columns type NumberColumn:
    1. **NumberOfCars**.
    2. **LatesModel**.
-3. Build and add the two columns to the form.
+3. Build and add the two columns to the grid in the form.
 4. Build and test.
 5. Add a new inner class ,use **contrp** snippet, remember to tab after update every item in the snippet.
    1. Name = **GetCarsInfo**.
