@@ -9,11 +9,11 @@
 5.  Add a **grid** with **two columns** :
     1. **ShipperID**. 
     2. **CompanyName**.  
-3. Add the **two local columns** to the screen **out side the grid**.
+3. Add the **two local columns** to the screen **out side the grid**.(use <kbd>Ctrl</kbd><kbd>arrow keys</kbd> to set them next to the grid)
 3. Build and test.
 8. Add a new **BusinessProcess** name it **CalcOrderTotalForShipper**.
 9. Set the **Orders** entity to be the main table.
-10. In the **Run** method receive one parameter type **Number** name it **pShipperID**.
+10. In the **Run** method receive one parameter type **Number** name it **ShipperID**.
 11. Add a **Where** limit the  **BusinessProcess** to run only where **Orders ShipVia** equal to the received parameter.  
 12. Override the **OnLeaveRow**
 13. Add **Debug.WriteLine** to show the **Order ID** and **Shipper ID**. (remember to add using System.Diagnostics; if needed) 
