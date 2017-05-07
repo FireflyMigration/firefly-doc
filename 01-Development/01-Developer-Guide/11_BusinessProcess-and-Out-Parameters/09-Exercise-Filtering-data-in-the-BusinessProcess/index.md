@@ -3,8 +3,8 @@
 1.	Add new UIController name it **ShowShippers**.
 2.  Set the **Shippers** Entity to be the main table.
 2.  Add two local columns (use the mem snippet) :
-    1.  **TotalOrders** name **"Total Orders"**, format **"6"**.
-    2.  **TotalFreightValue** name **"Total Freight Value"**,format **"6.2C"**;
+    1.  **TotalOrders** name **"Total Orders"**,type **NumberColumn**, format **"6"**.
+    2.  **TotalFreightValue** name **"Total Freight Value"**,type **NumberColumn**, format **"6.2C"**;
 3.  Build and go to the form.
 5.  Add a **grid** with **two columns** :
     1. **ShipperID**. 
