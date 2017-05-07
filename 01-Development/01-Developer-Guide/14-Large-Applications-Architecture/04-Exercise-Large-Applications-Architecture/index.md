@@ -10,17 +10,23 @@
 8. Add a new **UIController** under the new folder, name it **ShowCustomerPerRegion**.
 9. Set the **Customers** entity as the main table.
 10. In the **Run** method add a parameter : type **Number** name **pRegionID**.
-11. Add a **where** to the Run method to show only customer that have the same **Region** have the parameter, notice that you will need to use **.ToString()**.
-12. In **ShowRegions**.
-13. Add a button to the screen, set the button text to **Show Region Customers**.
-14. Try to call the **ShowCustomerPerRegion** from the button **click** event.
-15. In **NorthwindBase** project, under **Customers** folder, create a new folder name it **Exercises**.
-16. Add a new interface, name it **IShowCustomerPerRegion**.
-17. Set the new interface to be public.
-18. Add the Run with the parameter definition.
-19. build **NorthwindBase**.
-20. In **ShowCustomerPerRegion** add the interface next to the **UIControllerBase**.
-21. In **ShowRegionsView** use **Create** to call  IShowCustomerPerRegion remember:  
+11. Add a **where** in the **Run** method to show only customer that have the same **Region** have the parameter, notice that you will need to use **.ToString()**.
+12. Add the following columns to a **grid** on the form:  
+    1. CustomerID.
+    2. CompanyName.
+    3. Address.
+    4. City.
+    5. Region.
+13. In **ShowRegions**.
+14. Add a button to the screen, set the button text to **Show Region Customers**.
+15. Try to call the **ShowCustomerPerRegion** from the button **click** event.
+16. In **NorthwindBase** project, under **Customers** folder, create a new folder name it **Exercises**.
+17. Add a new interface, name it **IShowCustomerPerRegion**.
+18. Set the new interface to be public.
+19. Add the Run with the same parameter definition as **ShowCustomerPerRegion**.(you will need to add using to Firefly.Box).
+20. build **NorthwindBase**.
+21. In **ShowCustomerPerRegion** add the interface next to the **UIControllerBase**.
+22. In **ShowRegionsView** use **Create** to call IShowCustomerPerRegion remember:  
 	1. Use the full **NameSpace**.  
 	2. Send the right parameter.   
-22. Build and test. 
+23. Build and test. 
