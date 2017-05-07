@@ -10,7 +10,7 @@
 8. Break into the code using the <kbd>Shift</kbd> <kbd>F12</kbd>.
 9. Notice the result of **Relations[Categories].__RecomputePath** in the **Watch** panel.
 10. Stop the program.
-11. Use <kbd>Alt</kbd> <kbd>arrow down</kbd> to restore the **Columns.Add** of **Categories.CategoryID** to it's orginal location before **Categories.CategoryName**.
+11. Use <kbd>Alt</kbd> <kbd>arrow down</kbd> to restore the **Columns.Add** of **Categories.CategoryID** to it's original location before **Categories.CategoryName**.
 12. Build and test.
 13. Break into the code using the <kbd>Control</kbd> <kbd>F12</kbd>.
 14. Add **Columns** to the **Watch** panel.
