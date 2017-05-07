@@ -1,6 +1,6 @@
 ﻿# Exercise - List Controls result
 
-After item **7** The **ShowProducts** class should look like :
+After item **9** Your **ControlsDemo** class should look like :
 ```csdiff
 using System;
 using System.Collections.Generic;
@@ -10,35 +10,22 @@ using Firefly.Box;
 using ENV;
 using ENV.Data;
 
-namespace Northwind.Exercises
+namespace Northwind.TestExercies
 {
-    public class ShowProducts : UIControllerBase
+    public class ControlsDemo : UIControllerBase
     {
 
-        public readonly Models.Products Products = new Models.Products();
-        public readonly Models.Categories Categories = new Models.Categories();
-        public readonly NumberColumn TotalValueInStock = new NumberColumn();
-        public ShowProducts()
+        public readonly Models.Orders Orders = new Models.Orders();
+        public readonly Models.Customers Customers = new Models.Customers();
+        public readonly Models.Employees Employees = new Models.Employees();
+        public readonly Models.Shippers Shippers = new Models.Shippers();
+
+
+
+
+        public ControlsDemo()
         {
-            From = Products;
-            Relations.Add(Categories, RelationType.Find,
-                Categories.CategoryID.IsEqualTo(Products.CategoryID));
-
-            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
-            Where.Add(Products.UnitPrice.IsGreaterThan(25));
-
-            OrderBy = Products.SortByProductName;
-
-            Columns.Add(Products.ProductID);
-            Columns.Add(Products.ProductName);
-+           Columns.Add(Categories.CategoryID);
-            Columns.Add(Products.CategoryID);
-            Columns.Add(Products.UnitPrice);
-            Columns.Add(Products.UnitsInStock);
-            Columns.Add(Products.UnitsOnOrder);
--           Columns.Add(Categories.CategoryID);
-            Columns.Add(Categories.CategoryName);
-            Columns.Add(TotalValueInStock).BindValue(()=> Products.UnitPrice*Products.UnitsInStock);
+            From = Orders;
         }
 
         public void Run()
@@ -48,49 +35,55 @@ namespace Northwind.Exercises
 
         protected override void OnLoad()
         {
-            View = () => new Views.ShowProductsView(this);
+            View = () => new Views.ControlsDemoView(this);
         }
-
-        protected override void OnSavingRow()
-        {
-            InputValidation();
-        }
-        #region expressions
-        private void InputValidation()
-        {
-            if (Products.ProductName == "")
-                Message.ShowError("Product name is empty!");
-            if (Products.UnitsInStock == 0 || Products.UnitsOnOrder == 0)
-                System.Windows.Forms.MessageBox.Show("Units is zero");
-            if (Products.UnitsInStock < 10)
-                Message.ShowWarning("Not enough units");
-            if (Products.UnitsOnOrder >= 50 && Products.UnitsOnOrder <= 100)
-                Message.ShowError("Units on order are between 50 and 100");
-            if (u.Len(u.Trim(Products.ProductName)) < 3)
-                Message.ShowError("Please enter a valid product name");
-            if (u.InStr(Products.ProductName, "%") >= 1 || u.InStr(Products.ProductName, "@") >= 1)
-                Message.ShowError("% and @ are invalid characters in product name");
-            if (u.Left(Products.ProductName, 1) == "T")
-                Message.ShowWarningInStatusBar("Product name can't start with a T");
-            if (ValidateCaregoryID())
-                Message.ShowError("Please enter a valid category");
-        }
-
-        private bool ValidateCaregoryID()
-        {
-            return !Relations[Categories].RowFound;
-        }
-
-        public Number TotalUnits()
-        {
-            return Products.UnitsInStock + Products.UnitsOnOrder;
-        }
-        #endregion
     }
 }
 ```
 
-After item **12** The **ShowProducts** class should look like :
+
+
+After item **9** **ControlsDemoView** class should look like :
+```csdiff
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using Firefly.Box;
+using Firefly.Box.UI.Advanced;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.TestExercies.Views
+{
+    partial class ControlsDemoView : Shared.Theme.Controls.Form
+    {
+        ControlsDemo _controller;
+        public ControlsDemoView(ControlsDemo controller)
+        {
+            _controller = controller;
+            InitializeComponent();
+
++           cmbCustomer.ListSource = _controller.Customers;
++           cmbCustomer.ValueColumn = _controller.Customers.CustomerID;
++           cmbCustomer.DisplayColumn = _controller.Customers.CompanyName;
+ 
++           cmbEmployee.ListSource = _controller.Employees;
++           cmbEmployee.ValueColumn = _controller.Employees.EmployeeID;
++           cmbEmployee.DisplayColumn = _controller.Employees.LastName;
+ 
++           cmbShipper.ListSource = _controller.Shippers;
++           cmbShipper.ValueColumn = _controller.Shippers.ShipperID;
++           cmbShipper.DisplayColumn = _controller.Shippers.CompanyName;
+        }
+    }
+}
+```
+
+After item **10** The **ControlsDemo** class should look like :
 ```csdiff
 using System;
 using System.Collections.Generic;
@@ -100,35 +93,23 @@ using Firefly.Box;
 using ENV;
 using ENV.Data;
 
-namespace Northwind.Exercises
+namespace Northwind.TestExercies
 {
-    public class ShowProducts : UIControllerBase
+    public class ControlsDemo : UIControllerBase
     {
 
-        public readonly Models.Products Products = new Models.Products();
-        public readonly Models.Categories Categories = new Models.Categories();
-        public readonly NumberColumn TotalValueInStock = new NumberColumn();
-        public ShowProducts()
+        public readonly Models.Orders Orders = new Models.Orders();
+        public readonly Models.Customers Customers = new Models.Customers();
+        public readonly Models.Employees Employees = new Models.Employees();
+        public readonly Models.Shippers Shippers = new Models.Shippers();
+
+
+
+
+        public ControlsDemo()
         {
-            From = Products;
-            Relations.Add(Categories, RelationType.Find,
-                Categories.CategoryID.IsEqualTo(Products.CategoryID));
-
-            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
-            Where.Add(Products.UnitPrice.IsGreaterThan(25));
-
-            OrderBy = Products.SortByProductName;
-
-            Columns.Add(Products.ProductID);
-            Columns.Add(Products.ProductName);
--           Columns.Add(Categories.CategoryID);
-            Columns.Add(Products.CategoryID);
-            Columns.Add(Products.UnitPrice);
-            Columns.Add(Products.UnitsInStock);
-            Columns.Add(Products.UnitsOnOrder);
-+           Columns.Add(Categories.CategoryID);
-            Columns.Add(Categories.CategoryName);
-            Columns.Add(TotalValueInStock).BindValue(()=> Products.UnitPrice*Products.UnitsInStock);
+            From = Orders;
++           Where.Add(Orders.ShipCountry.IsEqualTo("UK"));
         }
 
         public void Run()
@@ -138,134 +119,94 @@ namespace Northwind.Exercises
 
         protected override void OnLoad()
         {
-            View = () => new Views.ShowProductsView(this);
+            View = () => new Views.ControlsDemoView(this);
         }
-
-        protected override void OnSavingRow()
-        {
-            InputValidation();
-        }
-        #region expressions
-        private void InputValidation()
-        {
-            if (Products.ProductName == "")
-                Message.ShowError("Product name is empty!");
-            if (Products.UnitsInStock == 0 || Products.UnitsOnOrder == 0)
-                System.Windows.Forms.MessageBox.Show("Units is zero");
-            if (Products.UnitsInStock < 10)
-                Message.ShowWarning("Not enough units");
-            if (Products.UnitsOnOrder >= 50 && Products.UnitsOnOrder <= 100)
-                Message.ShowError("Units on order are between 50 and 100");
-            if (u.Len(u.Trim(Products.ProductName)) < 3)
-                Message.ShowError("Please enter a valid product name");
-            if (u.InStr(Products.ProductName, "%") >= 1 || u.InStr(Products.ProductName, "@") >= 1)
-                Message.ShowError("% and @ are invalid characters in product name");
-            if (u.Left(Products.ProductName, 1) == "T")
-                Message.ShowWarningInStatusBar("Product name can't start with a T");
-            if (ValidateCaregoryID())
-                Message.ShowError("Please enter a valid category");
-        }
-
-        private bool ValidateCaregoryID()
-        {
-            return !Relations[Categories].RowFound;
-        }
-
-        public Number TotalUnits()
-        {
-            return Products.UnitsInStock + Products.UnitsOnOrder;
-        }
-        #endregion
     }
 }
 ```
 
-After item **17** The **ShowProducts** class should look like :
+After item **11** **ControlsDemoView** class should look like :
 ```csdiff
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
 using Firefly.Box;
+using Firefly.Box.UI.Advanced;
 using ENV;
 using ENV.Data;
 
-namespace Northwind.Exercises
+namespace Northwind.TestExercies.Views
 {
-    public class ShowProducts : UIControllerBase
+    partial class ControlsDemoView : Shared.Theme.Controls.Form
     {
-
-        public readonly Models.Products Products = new Models.Products();
-        public readonly Models.Categories Categories = new Models.Categories();
-        public readonly NumberColumn TotalValueInStock = new NumberColumn();
-        public ShowProducts()
+        ControlsDemo _controller;
+        public ControlsDemoView(ControlsDemo controller)
         {
-            From = Products;
-            Relations.Add(Categories, RelationType.Find,
-                Categories.CategoryID.IsEqualTo(Products.CategoryID));
+            _controller = controller;
+            InitializeComponent();
 
-            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
-            Where.Add(Products.UnitPrice.IsGreaterThan(25));
-
-            OrderBy = Products.SortByProductName;
-
-            Columns.Add(Products.ProductID);
-            Columns.Add(Products.ProductName);
-            Columns.Add(Products.CategoryID);
-            Columns.Add(Products.UnitPrice);
-            Columns.Add(Products.UnitsInStock);
-            Columns.Add(Products.UnitsOnOrder);
-            Columns.Add(Categories.CategoryID);
-            Columns.Add(Categories.CategoryName);
-            Columns.Add(TotalValueInStock).BindValue(()=> Products.UnitPrice*Products.UnitsInStock);
-+			AddAllColumns();
+            cmbCustomer.ListSource = _controller.Customers;
+            cmbCustomer.ValueColumn = _controller.Customers.CustomerID;
+            cmbCustomer.DisplayColumn = _controller.Customers.CompanyName;
++           cmbCustomer.ListWhere.Add(_controller.Customers.Country.IsEqualTo("UK"));
+ 
+            cmbEmployee.ListSource = _controller.Employees;
+            cmbEmployee.ValueColumn = _controller.Employees.EmployeeID;
+            cmbEmployee.DisplayColumn = _controller.Employees.LastName;
+ 
+            cmbShipper.ListSource = _controller.Shippers;
+            cmbShipper.ValueColumn = _controller.Shippers.ShipperID;
+            cmbShipper.DisplayColumn = _controller.Shippers.CompanyName;
         }
-
-        public void Run()
-        {
-            Execute();
-        }
-
-        protected override void OnLoad()
-        {
-            View = () => new Views.ShowProductsView(this);
-        }
-
-        protected override void OnSavingRow()
-        {
-            InputValidation();
-        }
-        #region expressions
-        private void InputValidation()
-        {
-            if (Products.ProductName == "")
-                Message.ShowError("Product name is empty!");
-            if (Products.UnitsInStock == 0 || Products.UnitsOnOrder == 0)
-                System.Windows.Forms.MessageBox.Show("Units is zero");
-            if (Products.UnitsInStock < 10)
-                Message.ShowWarning("Not enough units");
-            if (Products.UnitsOnOrder >= 50 && Products.UnitsOnOrder <= 100)
-                Message.ShowError("Units on order are between 50 and 100");
-            if (u.Len(u.Trim(Products.ProductName)) < 3)
-                Message.ShowError("Please enter a valid product name");
-            if (u.InStr(Products.ProductName, "%") >= 1 || u.InStr(Products.ProductName, "@") >= 1)
-                Message.ShowError("% and @ are invalid characters in product name");
-            if (u.Left(Products.ProductName, 1) == "T")
-                Message.ShowWarningInStatusBar("Product name can't start with a T");
-            if (ValidateCaregoryID())
-                Message.ShowError("Please enter a valid category");
-        }
-
-        private bool ValidateCaregoryID()
-        {
-            return !Relations[Categories].RowFound;
-        }
-
-        public Number TotalUnits()
-        {
-            return Products.UnitsInStock + Products.UnitsOnOrder;
-        }
-        #endregion
     }
 }
 ```
+
+After item **12** **ControlsDemoView** class should look like :
+```csdiff
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using Firefly.Box;
+using Firefly.Box.UI.Advanced;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.TestExercies.Views
+{
+    partial class ControlsDemoView : Shared.Theme.Controls.Form
+    {
+        ControlsDemo _controller;
+        public ControlsDemoView(ControlsDemo controller)
+        {
+            _controller = controller;
+            InitializeComponent();
+
+            cmbCustomer.ListSource = _controller.Customers;
+            cmbCustomer.ValueColumn = _controller.Customers.CustomerID;
+            cmbCustomer.DisplayColumn = _controller.Customers.CompanyName;
+            cmbCustomer.ListWhere.Add(_controller.Customers.Country.IsEqualTo("UK"));
+ 
+            cmbEmployee.ListSource = _controller.Employees;
+            cmbEmployee.ValueColumn = _controller.Employees.EmployeeID;
+            cmbEmployee.DisplayColumn = _controller.Employees.LastName;
++           cmbEmployee.ListWhere.Add(_controller.Employees.Country.IsEqualTo("UK"));
+ 
+            cmbShipper.ListSource = _controller.Shippers;
+            cmbShipper.ValueColumn = _controller.Shippers.ShipperID;
+            cmbShipper.DisplayColumn = _controller.Shippers.CompanyName;
+        }
+    }
+}
+```
+
+The **ControlsDemo** runtime should look like :  
+![2017-05-07_17h37_02](2017-05-07_17h37_02.png)
