@@ -13,7 +13,7 @@
 6. Set the main table of **GetCarsInfo** to be **EmployeeCars**.
 7. Add a where to limit **GetCarsInfo** to the parent employee ID.
 8. In the **Run** method set the parent two local columns to zero. 
-9. Override the OnEnterRow.
+9. Override the **OnEnterRow**.
 10. Update the parent **NumberOfCars** to be accumulated by one.
 11. Update the parent **LatesModel** to the current row **CarYear** only if it's bigger. (use if)
 12.  In **ShowEmployees**.
