@@ -1,4 +1,4 @@
-﻿# Exercise - Keyboard Events result
+﻿# Exercise - Keyboard Handlers result
 
 Your **ShowRegions** class should look like :
 ```csdiff
