@@ -56,10 +56,6 @@ namespace Northwind.TestExercies
 +           };
         }
 
-        protected override void OnLeaveRow()
-        {
-            System.Windows.Forms.MessageBox.Show("Test");
-        }
         public void Run()
         {
             Execute();
@@ -69,6 +65,14 @@ namespace Northwind.TestExercies
         {
             View = () => new Views.ShowRegionsView(this);
         }
++       protected override void OnStart()
++       {
++           Raise(MySpecialCommand);
++       }
++       protected override void OnLeaveRow()
++       {
++           System.Windows.Forms.MessageBox.Show("OnLeaveRow");
++       }
     }
 }
 ```
@@ -119,3 +123,5 @@ namespace Northwind.TestExercies.Views
     }
 }
 ```
+The **ShowRegions** runtime should look like :  
+![2017-05-14_17h16_22](2017-05-14_17h16_22.png)
