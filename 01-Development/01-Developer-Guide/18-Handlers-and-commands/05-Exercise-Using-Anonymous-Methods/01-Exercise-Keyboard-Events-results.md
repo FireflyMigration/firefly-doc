@@ -20,13 +20,21 @@ namespace Northwind.TestExercies
         public ShowRegions()
         {
             From = Region;
-+           Handlers.Add(System.Windows.Forms.Keys.F9).Invokes += ShowRegions_Invokes;
+-           Handlers.Add(System.Windows.Forms.Keys.F9).Invokes += ShowRegions_Invokes;
++           Handlers.Add(System.Windows.Forms.Keys.F9).Invokes += e =>
++           {
++               System.Windows.Forms.MessageBox.Show("I am handling the F9 keyboard event!");
++           };
++           Handlers.Add(System.Windows.Forms.Keys.F10).Invokes += e =>
++           {
++               System.Windows.Forms.MessageBox.Show("I am handling the F10 keyboard event!");
++           };
         }
 
-+       private void ShowRegions_Invokes(Firefly.Box.Advanced.HandlerInvokeEventArgs e)
-+       {
-+           System.Windows.Forms.MessageBox.Show("I am handling the F9 keyboard event!");
-+       }
+-       private void ShowRegions_Invokes(Firefly.Box.Advanced.HandlerInvokeEventArgs e)
+-       {
+-           System.Windows.Forms.MessageBox.Show("I am handling the F9 keyboard event!");
+-       }
 
         public void Run()
         {
