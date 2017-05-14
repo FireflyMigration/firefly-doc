@@ -1,4 +1,4 @@
-﻿# Exercise - Handled result
+﻿# Exercise - HandlerScope result
 
 Your **ShowCustomerPerRegion** class should look like :
 ```csdiff
