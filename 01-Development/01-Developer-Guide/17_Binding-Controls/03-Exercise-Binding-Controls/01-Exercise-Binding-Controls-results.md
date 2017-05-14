@@ -40,58 +40,21 @@ namespace Northwind.TestExercies
 ```
 The **ShowEmployeesDataInTabs** runtime should look like :  
 Personal Tab :  
-![2017-05-14_13h38_06](2017-05-14_13h38_06.png)
+![2017-05-14_13h38_06](2017-05-14_13h38_06.png)  
 Address Tab :  
-![2017-05-14_13h41_30](2017-05-14_13h41_30.png)
+![2017-05-14_13h41_30](2017-05-14_13h41_30.png)  
 Contact Tab :  
-![2017-05-14_13h42_14](2017-05-14_13h42_14.png)
+![2017-05-14_13h42_14](2017-05-14_13h42_14.png)  
 Notes Tab :  
-![2017-05-14_13h42_44](2017-05-14_13h42_44.png)
+![2017-05-14_13h42_44](2017-05-14_13h42_44.png)  
 Extra Tab:  
-![2017-05-14_13h43_03](2017-05-14_13h43_03.png)
+![2017-05-14_13h43_03](2017-05-14_13h43_03.png)  
+
+After item **15** The **Notes** Tab runtime should look like :  
+![2017-05-14_13h55_04](2017-05-14_13h55_04.png)  
 
 
-After item **9** **ControlsDemoView** class should look like :
-```csdiff
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using Firefly.Box;
-using Firefly.Box.UI.Advanced;
-using ENV;
-using ENV.Data;
-
-namespace Northwind.TestExercies.Views
-{
-    partial class ControlsDemoView : Shared.Theme.Controls.Form
-    {
-        ControlsDemo _controller;
-        public ControlsDemoView(ControlsDemo controller)
-        {
-            _controller = controller;
-            InitializeComponent();
-
-+           cmbCustomer.ListSource = _controller.Customers;
-+           cmbCustomer.ValueColumn = _controller.Customers.CustomerID;
-+           cmbCustomer.DisplayColumn = _controller.Customers.CompanyName;
- 
-+           cmbEmployee.ListSource = _controller.Employees;
-+           cmbEmployee.ValueColumn = _controller.Employees.EmployeeID;
-+           cmbEmployee.DisplayColumn = _controller.Employees.LastName;
- 
-+           cmbShipper.ListSource = _controller.Shippers;
-+           cmbShipper.ValueColumn = _controller.Shippers.ShipperID;
-+           cmbShipper.DisplayColumn = _controller.Shippers.CompanyName;
-        }
-    }
-}
-```
-
-After item **10** The **ControlsDemo** class should look like :
+After item **24** **ShowEmployeesDataInTabs** class should look like :
 ```csdiff
 using System;
 using System.Collections.Generic;
@@ -103,21 +66,15 @@ using ENV.Data;
 
 namespace Northwind.TestExercies
 {
-    public class ControlsDemo : UIControllerBase
+    public class ShowEmployeesDataInTabs : UIControllerBase
     {
-
-        public readonly Models.Orders Orders = new Models.Orders();
-        public readonly Models.Customers Customers = new Models.Customers();
         public readonly Models.Employees Employees = new Models.Employees();
-        public readonly Models.Shippers Shippers = new Models.Shippers();
++       public readonly Models.Employees EmployeesReportsTo = new Models.Employees();
+        public readonly NumberColumn TabValue = new NumberColumn { DefaultValue=1};
 
-
-
-
-        public ControlsDemo()
+        public ShowEmployeesDataInTabs()
         {
-            From = Orders;
-+           Where.Add(Orders.ShipCountry.IsEqualTo("UK"));
+            From = Employees;
         }
 
         public void Run()
@@ -127,13 +84,17 @@ namespace Northwind.TestExercies
 
         protected override void OnLoad()
         {
-            View = () => new Views.ControlsDemoView(this);
+            View = () => new Views.ShowEmployeesDataInTabsView(this);
+        }
+        public Text FullName()
+        {
+            return Employees.FirstName + " " + Employees.LastName;
         }
     }
 }
 ```
 
-After item **11** **ControlsDemoView** class should look like :
+**ShowEmployeesDataInTabsView** class should look like :
 ```csdiff
 using System;
 using System.Collections.Generic;
@@ -149,72 +110,23 @@ using ENV.Data;
 
 namespace Northwind.TestExercies.Views
 {
-    partial class ControlsDemoView : Shared.Theme.Controls.Form
+    partial class ShowEmployeesDataInTabsView : Shared.Theme.Controls.Form
     {
-        ControlsDemo _controller;
-        public ControlsDemoView(ControlsDemo controller)
+        ShowEmployeesDataInTabs _controller;
+        public ShowEmployeesDataInTabsView(ShowEmployeesDataInTabs controller)
         {
             _controller = controller;
             InitializeComponent();
 
-            cmbCustomer.ListSource = _controller.Customers;
-            cmbCustomer.ValueColumn = _controller.Customers.CustomerID;
-            cmbCustomer.DisplayColumn = _controller.Customers.CompanyName;
-+           cmbCustomer.ListWhere.Add(_controller.Customers.Country.IsEqualTo("UK"));
- 
-            cmbEmployee.ListSource = _controller.Employees;
-            cmbEmployee.ValueColumn = _controller.Employees.EmployeeID;
-            cmbEmployee.DisplayColumn = _controller.Employees.LastName;
- 
-            cmbShipper.ListSource = _controller.Shippers;
-            cmbShipper.ValueColumn = _controller.Shippers.ShipperID;
-            cmbShipper.DisplayColumn = _controller.Shippers.CompanyName;
++           cmbReportsTo.ListSource = _controller.EmployeesReportsTo;
++           cmbReportsTo.ValueColumn = _controller.EmployeesReportsTo.EmployeeID;
++           cmbReportsTo.DisplayColumn = _controller.EmployeesReportsTo.FirstName;
++           cmbReportsTo.ListWhere.Add(_controller.EmployeesReportsTo.EmployeeID.IsDifferentFrom(_controller.Employees.EmployeeID));
         }
     }
 }
 ```
 
-After item **12** **ControlsDemoView** class should look like :
-```csdiff
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using Firefly.Box;
-using Firefly.Box.UI.Advanced;
-using ENV;
-using ENV.Data;
-
-namespace Northwind.TestExercies.Views
-{
-    partial class ControlsDemoView : Shared.Theme.Controls.Form
-    {
-        ControlsDemo _controller;
-        public ControlsDemoView(ControlsDemo controller)
-        {
-            _controller = controller;
-            InitializeComponent();
-
-            cmbCustomer.ListSource = _controller.Customers;
-            cmbCustomer.ValueColumn = _controller.Customers.CustomerID;
-            cmbCustomer.DisplayColumn = _controller.Customers.CompanyName;
-            cmbCustomer.ListWhere.Add(_controller.Customers.Country.IsEqualTo("UK"));
- 
-            cmbEmployee.ListSource = _controller.Employees;
-            cmbEmployee.ValueColumn = _controller.Employees.EmployeeID;
-            cmbEmployee.DisplayColumn = _controller.Employees.LastName;
-+           cmbEmployee.ListWhere.Add(_controller.Employees.Country.IsEqualTo("UK"));
- 
-            cmbShipper.ListSource = _controller.Shippers;
-            cmbShipper.ValueColumn = _controller.Shippers.ShipperID;
-            cmbShipper.DisplayColumn = _controller.Shippers.CompanyName;
-        }
-    }
-}
-```
-
-The **ControlsDemo** runtime should look like :  
-![2017-05-07_17h37_02](2017-05-07_17h37_02.png)
+The **ShowEmployeesDataInTabs** runtime should look like :  
+Extra Tab:  
+![2017-05-14_14h00_46](2017-05-14_14h00_46.png) 
