@@ -1,4 +1,4 @@
-﻿# Exercise - HandlerScope
+﻿# Exercise - BindEnables
 
 1.  In  **ShowRegions**.
 2.  set the F9  Handler, HandlerScope to be CurrentTaskOnly.

@@ -1,4 +1,4 @@
-﻿# Exercise - HandlerScope result
+﻿# Exercise - BindEnables result
 
 Your **ShowRegions** class should look like :
 ```csdiff
