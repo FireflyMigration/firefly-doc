@@ -1,6 +1,6 @@
 ﻿# Exercise - HandlerScope result
 
-Your **ShowCustomerPerRegion** class should look like :
+Your **ShowRegions** class should look like :
 ```csdiff
 using System;
 using System.Collections.Generic;
@@ -10,32 +10,36 @@ using Firefly.Box;
 using ENV;
 using ENV.Data;
 
-namespace Northwind.Customers.Exercises
+namespace Northwind.TestExercies
 {
-    public class ShowCustomerPerRegion : UIControllerBase,IShowCustomerPerRegion
+    public class ShowRegions : UIControllerBase
     {
 
-        public readonly Northwind.Models.Customers Customers = new Northwind.Models.Customers();
+        public readonly Models.Region Region = new Models.Region();
 
-        public ShowCustomerPerRegion()
+        public ShowRegions()
         {
-            From = Customers;
+            From = Region;
+-           Handlers.Add(System.Windows.Forms.Keys.F9).Invokes += e =>
++           Handlers.Add(System.Windows.Forms.Keys.F9,HandlerScope.CurrentTaskOnly).Invokes += e =>
+            {
+                System.Windows.Forms.MessageBox.Show("I am handling the F9 keyboard event!");
+            };
             Handlers.Add(System.Windows.Forms.Keys.F10).Invokes += e =>
             {
-+               e.Handled = true;
-                System.Windows.Forms.MessageBox.Show("ShowCustomerPerRegion: F10 keyboard event!");
+                System.Windows.Forms.MessageBox.Show("I am handling the F10 keyboard event!");
             };
         }
+ 
 
-        public void Run(Number pRegionID)
+        public void Run()
         {
-            Where.Add(Customers.Region.IsEqualTo(pRegionID.ToString()));
             Execute();
         }
 
         protected override void OnLoad()
         {
-            View = () => new Views.ShowCustomerPerRegionView(this);
+            View = () => new Views.ShowRegionsView(this);
         }
     }
 }
