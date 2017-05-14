@@ -1,63 +1,47 @@
 ﻿# Exercise - Raise result
 
-Your **ShowRegions** class should look like :
+Your **ShowRegionsView** class should look like :
 ```csdiff
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
 using Firefly.Box;
+using Firefly.Box.UI.Advanced;
 using ENV;
 using ENV.Data;
 
-namespace Northwind.TestExercies
+namespace Northwind.TestExercies.Views
 {
-    public class ShowRegions : UIControllerBase
+    partial class ShowRegionsView : Shared.Theme.Controls.Form
     {
-
-        public readonly Models.Region Region = new Models.Region();
-
-        public ShowRegions()
+        ShowRegions _controller;
+        public ShowRegionsView(ShowRegions controller)
         {
-            From = Region;
-            Handlers.Add(System.Windows.Forms.Keys.F9,HandlerScope.CurrentTaskOnly).Invokes += e =>
-            {
-                System.Windows.Forms.MessageBox.Show("I am handling the F9 keyboard event!");
-            };
-            Handlers.Add(System.Windows.Forms.Keys.F10).Invokes += e =>
-            {
-                System.Windows.Forms.MessageBox.Show("I am handling the F10 keyboard event!");
-            };
-            Handlers.Add(System.Windows.Forms.Keys.F5, HandlerScope.CurrentTaskOnly).Invokes += e =>
-            {
-                Create<Customers.Exercises.IShowCustomerPerRegion>().Run(Region.RegionID);
-                e.Handled = true;
-            };
-
-            var hF5 = Handlers.Add(System.Windows.Forms.Keys.F5, HandlerScope.CurrentTaskOnly);
-            hF5.Invokes += e =>
-            {
-                Create<Customers.Exercises.IShowCustomerPerRegion>().Run(Region.RegionID);
-                e.Handled = true;
-            };
-            hF5.BindEnabled(() => Region.RegionID == 1);
-
-+           Handlers.Add(Command.UndoChangesInRow, HandlerScope.CurrentTaskOnly).Invokes += e =>
-+           {
-+               e.Handled = Common.ShowYesNoMessageBox("Undo","Are you sure you want to undo current row changes",false);
-+           };
-        }
- 
-
-        public void Run()
-        {
-            Execute();
+            _controller = controller;
+            InitializeComponent();
         }
 
-        protected override void OnLoad()
+        private void button1_Click(object sender, ButtonClickEventArgs e)
         {
-            View = () => new Views.ShowRegionsView(this);
+            Create<Customers.Exercises.IShowCustomerPerRegion>().Run(_controller.Region.RegionID);
         }
+
++       private void button2_Click(object sender, ButtonClickEventArgs e)
++       {
++           e.Raise(Command.GoToNextRow);
++       }
+
++       private void button3_Click(object sender, ButtonClickEventArgs e)
++       {
++           e.Raise(Command.GoToPreviousRow);
++       }
     }
 }
 ```
+
+The **ShowRegions** runtime should look like :  
+![2017-05-14_16h50_41](2017-05-14_16h50_41.png)
