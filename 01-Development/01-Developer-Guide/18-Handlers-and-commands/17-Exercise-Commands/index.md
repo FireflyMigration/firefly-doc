@@ -1,8 +1,6 @@
-﻿# Exercise - BindEnables
+﻿# Exercise - Commands
 
 1.  In  **ShowRegions**.
-2.  Using the **hand** snippet, add handler for the F5 key that will displays the **ShowCustomerPerRegion**.
+2.  Add handler for Command **UndoChangesInRow**.
+3.  set the handler e.Handled value using Common.ShowYesNoMessageBox and displays a message "Are you sure you want to undo current row changes".
 3.	Build and test.
-4.  Change the new F5 handler to use **Var**.
-5.  Add BindEnabled limit the handler to be enabled only if RegionID is equal to one.  
-6.  Build and test.
