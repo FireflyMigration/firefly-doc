@@ -19,23 +19,29 @@
    5. BirthDate.
    6. HireDate.
 10. Add the following columns to the **Adress** tab:  
-   1. Address.
-   2. City.
-   3. Region.
-   4. PostalCode.
-   5. Country.
+    1. Address.
+    2. City.
+    3. Region.
+    4. PostalCode.
+    5. Country.
 11. Add the following columns to the **Contact** tab:  
-   1. HomePhone.
-   2. Extension.
+    1. HomePhone.
+    2. Extension.
 12. Add the following columns to the **Notes** tab: 
-   1. Notes.
+    1. Notes.
 13. Add the following columns to the **Extra** tab: 
-   1.  ReportTo.
-   2.  PhotoPath.
+    1.  ReportTo.
+    2.  PhotoPath.
 14. Build and test.
-15. Add **Where** To show record where the order **ShipCountry** equal to **UK**.
-11. Build and test.
-12. Set the **cmbCustomer** to show only **UK** customers.
-13. Build and test.
-14. Set the **cmbEmployee** to show only **UK** Employees.
-15. Build and test.
+15. In the **Notes** tab, make the Notes **TextBox** bigger, chance it's **Properites**:  
+    1. Set the **Multiline** to true.
+    2. Set the **Alignment** to "TopLeft".
+16. Build and test.
+17. Add one more instance of the employees table to the **ShowEmployeesDataInTabs** controller (Remember to name it a different name).
+18. In the **Extra** tab, change the **ReportsTo** from TextBox to ComboBox.
+19. Set the Name of the new ComboBox to be **cmbReportsTo**.
+20. Set the ListSource to the new employees table instance.
+21. set the ValueColumn to be EmployeeID.
+22. set the DisplayColumn to be FirstName.
+23. Add ListWhere to show all employees that there employeeID is not the main table employee ID.
+24. Build and test.
