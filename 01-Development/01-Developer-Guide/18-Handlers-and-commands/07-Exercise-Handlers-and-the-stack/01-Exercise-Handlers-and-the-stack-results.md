@@ -1,6 +1,6 @@
 ﻿# Exercise - Handlers and the stack result
 
-Your **ShowRegions** class should look like :
+Your **ShowCustomerPerRegion** class should look like :
 ```csdiff
 using System;
 using System.Collections.Generic;
@@ -10,40 +10,31 @@ using Firefly.Box;
 using ENV;
 using ENV.Data;
 
-namespace Northwind.TestExercies
+namespace Northwind.Customers.Exercises
 {
-    public class ShowRegions : UIControllerBase
+    public class ShowCustomerPerRegion : UIControllerBase,IShowCustomerPerRegion
     {
 
-        public readonly Models.Region Region = new Models.Region();
+        public readonly Northwind.Models.Customers Customers = new Northwind.Models.Customers();
 
-        public ShowRegions()
+        public ShowCustomerPerRegion()
         {
-            From = Region;
--           Handlers.Add(System.Windows.Forms.Keys.F9).Invokes += ShowRegions_Invokes;
-+           Handlers.Add(System.Windows.Forms.Keys.F9).Invokes += e =>
-+           {
-+               System.Windows.Forms.MessageBox.Show("I am handling the F9 keyboard event!");
-+           };
+            From = Customers;
 +           Handlers.Add(System.Windows.Forms.Keys.F10).Invokes += e =>
 +           {
-+               System.Windows.Forms.MessageBox.Show("I am handling the F10 keyboard event!");
++               System.Windows.Forms.MessageBox.Show("ShowCustomerPerRegion: F10 keyboard event!");
 +           };
         }
 
--       private void ShowRegions_Invokes(Firefly.Box.Advanced.HandlerInvokeEventArgs e)
--       {
--           System.Windows.Forms.MessageBox.Show("I am handling the F9 keyboard event!");
--       }
-
-        public void Run()
+        public void Run(Number pRegionID)
         {
+            Where.Add(Customers.Region.IsEqualTo(pRegionID.ToString()));
             Execute();
         }
 
         protected override void OnLoad()
         {
-            View = () => new Views.ShowRegionsView(this);
+            View = () => new Views.ShowCustomerPerRegionView(this);
         }
     }
 }
