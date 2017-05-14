@@ -1,4 +1,4 @@
-﻿# Exercise - Handlers and the stack result
+﻿# Exercise - Handled result
 
 Your **ShowCustomerPerRegion** class should look like :
 ```csdiff
@@ -20,10 +20,11 @@ namespace Northwind.Customers.Exercises
         public ShowCustomerPerRegion()
         {
             From = Customers;
-+           Handlers.Add(System.Windows.Forms.Keys.F10).Invokes += e =>
-+           {
-+               System.Windows.Forms.MessageBox.Show("ShowCustomerPerRegion: F10 keyboard event!");
-+           };
+            Handlers.Add(System.Windows.Forms.Keys.F10).Invokes += e =>
+            {
++               e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("ShowCustomerPerRegion: F10 keyboard event!");
+            };
         }
 
         public void Run(Number pRegionID)
