@@ -1,8 +1,8 @@
 ﻿# Exercise - add Index
 
 1.	Add two new indexes to **EmployeeCars**:
-    1. name of the index **SortByEmployeeID** us the **EmployeeID** and the **CarsID**.
-    1. name of the index **SortByCarManufacture** us the **CarManufacture**.
+    1. name of the index **SortByEmployeeID** use the **EmployeeID** and the **CarsID**.
+    1. name of the index **SortByCarManufacture** use the **CarManufacture**.
 2.  Build and test using the **Developer tools**.
 3.  Create a new UI controller and **ShowEmployeeCars**.
 4.  Set the **EmployeeCars** to be the main table.
