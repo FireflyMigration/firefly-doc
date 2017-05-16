@@ -48,6 +48,8 @@ namespace Northwind.Exercises
         {
             View = () => new Views.FlowProductsView(this);
         }
++       Number GetTotalStockValue() => Products.UnitPrice * Products.UnitsInStock;
++       Number GetTotalOnOrderValue() => Products.UnitPrice * Products.UnitsOnOrder;
     }
 }
 ```
