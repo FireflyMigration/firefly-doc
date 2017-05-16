@@ -26,14 +26,15 @@ namespace Northwind.Exercises
                 Categories.CategoryID.IsEqualTo(Products.CategoryID));
  
             Columns.Add(Products.ProductID);
--           Flow.Add(()=>MessageBox.Show("Category name is "+Categories.CategoryName));
-+           Flow.Add(()=>MessageBox.Show("Category name is "+Categories.CategoryName), FlowMode.Tab,Direction.Backward);
+            Flow.Add(()=>MessageBox.Show("Category name is "+Categories.CategoryName), FlowMode.Tab,Direction.Backward);
             Columns.Add(Products.ProductName);
             Columns.Add(Products.CategoryID);
-+           Flow.Add(() => ENV.Message.ShowError("CategoryID can not be equal to zero"), () => Products.CategoryID == 0,Direction.Forward);
+            Flow.Add(() => ENV.Message.ShowError("CategoryID can not be equal to zero"), () => Products.CategoryID == 0,Direction.Forward);
             Columns.Add(Products.UnitPrice);
++           Flow.Add(() => MessageBox.Show("Total Value of Units In Stock " + GetTotalStockValue()), FlowMode.ExpandBefore);
             Columns.Add(Products.UnitsInStock);
             Columns.Add(Products.UnitsOnOrder);
++           Flow.Add(() => MessageBox.Show("Total Value of Units on Order " + GetTotalOnOrderValue()), FlowMode.ExpandAfter);            
             Columns.Add(Categories.CategoryID);
             Columns.Add(Categories.CategoryName);
         }
