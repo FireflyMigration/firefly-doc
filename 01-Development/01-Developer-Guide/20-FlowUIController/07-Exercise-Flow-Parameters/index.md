@@ -1,15 +1,14 @@
 ﻿# Exercise - Flow Parameters
 
 1.	In **FlowProducts**.
-2.  Add relation to **Categories** entity.
-3.  **between** the **ProductID** column and the **ProductName** column:
-    1.	Using the **Flow.Add** method.
-    2.  Displays the **Categories**, **CategoryName**.
-4.	Build and test.
-5.  Add a message box with out the **Flow.Add** method.
-6.  Build and test.
-6.  Notice that this message box will run immediately when you run the program.
-8.  Remove that new message box.
-9.  Build and test.
+2.  After the **CategoryID** column Add a Flow add method, Show a **error** message and prevent the user from leaving the column, if CategoryID is equal to zero.
+2.	Build and test.
+3.	Change the code of the input validation to display the error message only when the user **navigates forward**.
+5.  Build and test.
+4.	Change the code of the message box between the **ProductID** column and the **ProductName** column to display the message only when the user **navigates backward**.
+5.	Build and test.
+6.	Change the code of the message box between the **ProductID** column and the **ProductName** column, show the message only when the user presses the <kbd>Tab</kbd> to navigate out from the **ProductID** column.
+7.	Build and test.
+
 
 
