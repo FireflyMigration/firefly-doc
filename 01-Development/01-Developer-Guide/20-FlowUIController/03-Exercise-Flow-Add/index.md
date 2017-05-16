@@ -1,4 +1,4 @@
-﻿# Exercise - FlowUIController
+﻿# Exercise - Flow Add
 
 1.	Create a **FlowUIController** named **FlowProducts**. (use the UIController template)
 2.  Set the **Products** table as you and display the following data on the screen:  

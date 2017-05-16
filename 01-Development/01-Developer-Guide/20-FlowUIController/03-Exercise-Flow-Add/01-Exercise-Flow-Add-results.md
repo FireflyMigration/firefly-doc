@@ -1,4 +1,4 @@
-﻿# Exercise - FlowUIController result
+﻿# Exercise - Flow Add result
 
 Your **FlowProducts** class should look like :
 ```csdiff
