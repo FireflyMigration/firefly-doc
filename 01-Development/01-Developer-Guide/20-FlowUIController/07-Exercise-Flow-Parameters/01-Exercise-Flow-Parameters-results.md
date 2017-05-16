@@ -17,23 +17,25 @@ namespace Northwind.Exercises
     {
 
         public readonly Models.Products Products = new Models.Products();
-+       public readonly Models.Categories Categories = new Models.Categories();
-
+        public readonly Models.Categories Categories = new Models.Categories();
+ 
         public FlowProducts()
         {
             From = Products;
-+           Relations.Add(Categories, RelationType.Find,
-+               Categories.CategoryID.IsEqualTo(Products.CategoryID));
-
+            Relations.Add(Categories, RelationType.Find,
+                Categories.CategoryID.IsEqualTo(Products.CategoryID));
+ 
             Columns.Add(Products.ProductID);
-+           Flow.Add(()=>MessageBox.Show("Category name is "+Categories.CategoryName));
+-           Flow.Add(()=>MessageBox.Show("Category name is "+Categories.CategoryName));
++           Flow.Add(()=>MessageBox.Show("Category name is "+Categories.CategoryName), FlowMode.Tab,Direction.Backward);
             Columns.Add(Products.ProductName);
             Columns.Add(Products.CategoryID);
++           Flow.Add(() => ENV.Message.ShowError("CategoryID can not be equal to zero"), () => Products.CategoryID == 0,Direction.Forward);
             Columns.Add(Products.UnitPrice);
             Columns.Add(Products.UnitsInStock);
             Columns.Add(Products.UnitsOnOrder);
-+           Columns.Add(Categories.CategoryID);
-+           Columns.Add(Categories.CategoryName);
+            Columns.Add(Categories.CategoryID);
+            Columns.Add(Categories.CategoryName);
         }
 
         public void Run()
