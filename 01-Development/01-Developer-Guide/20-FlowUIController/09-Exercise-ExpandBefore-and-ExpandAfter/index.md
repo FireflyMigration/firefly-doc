@@ -1,16 +1,14 @@
 ﻿# Exercise - ExpandBefore and ExpandAfter
 
 1.	In **FlowProducts**.
-2.	Change the code of the message box between the **ProductID** column and the **ProductName** column:
-    1.	Display the message only when the user **navigates backward**.
-    2.	Build and test.
-    3.	Show the message only when the user presses the <kbd>Tab</kbd> to navigate out from the **ProductID** column.
-3.	Build and test.
-4.  After the **CategoryID** column Add a Flow add method:
-    1.	Show a **error** message and prevent the user from leaving the column, if CategoryID is equal to zero.
-    2.	Build and test.
-    3.	Display the error message only when the user **navigates forward**.
-5.  Build and test.
+2.  Add **two** new methods :
+    1. **GetTotalStockValue** return **Number**, calculate the value of UnitPrice times UnitsInStock.
+    2. **GetTotalOnOrderValue** return **Number**, calculate the value of UnitPrice times UnitsOnOrder.
+3.  Before the **UnitsInStock** column add Flow that will show a message box with the value of **GetTotalStockValue**.
+4.  After the **UnitsOnOrder** column add Flow that will show a message box with the value of **GetTotalOnOrderValue**.
+5.	Build and test.
+6.	Notice the location of the active textBox after you zoom on this two textBoxes using the <kbd>F5</kbd>.
+
 
 
 
