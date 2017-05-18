@@ -32,6 +32,34 @@ We will examine each scenario and advise about the right solution for your speci
 With the delivery of the SQL version of the application, we will show you how to apply the solution
 and make sure that it works in SQL using the same tests cases you provide.
 
+## Dynamic names of tables 
+
+### Using Logical Names
+Logical names can be used in two places:
+
+1. Using logical names for table names in the tables repository (Shift + F2) and set the logical name in runtime using the IniPut() function or by using different ini file for different systems / users.
+![2017 03 09 17H08 35](2017-03-09_17h08_35.png)
+
+
+2. In the dabases settings, using logical name as the location
+
+![2017 03 16 11H01 12](2017-03-16_11h01_12.png)
+
+To find usages of logical names in your tables, search for "%" in the Models folders, as follows:
+![2017 05 18 12H59 40](2017-05-18_12h59_40.png)
+
+Once you have all the logical names that are used in your tables, find their optional values in the ini file and by searching for "u.IniPut("[MAGIC_LOGICAL_NAMES]yourlogicalname".
+Create a list of all the logical names and their possible values and send us, so that we will make sure that all the instances of each table will be migrated.
+
+### Using Expresssions for Table Name
+Using expressions for table names in DB tables (Ctrl + D). For example, a program can change the table name so that it ends with the terminal number (using the Term() function).  
+**To find usage of expressions in Ctrl+D search for the text "EntityName = ".**
+```csdiff
+protected override void OnLoad()
+{
++    Orders.EntityName = "Orders2016.DAT";
+}
+```
 
 ## Referencing data tables as regular files
 In Btrieve, all tables are files on disk that could be copied, renamed, deleted just like any other file. 
@@ -45,6 +73,7 @@ IORen    | u.IORen(
 IODel    | u.IODel(
 IOCopy   | u.IOCopy(
 IOExist  | u.IOExist(
+IOSize   | u.IOSize(
 
 #### Migrating from uniPaaS may also include the following:
 Function    | What to search for
@@ -53,6 +82,7 @@ FileRename  | u.FileRename(
 FileDelete  | u.FileDelete(
 FileCopy    | u.FileCopy(
 FileExist   | u.FileExist(
+FileSize    | u.FileSize(
 
 #### Searching for usages in Visual Studio
 In Visual Studio, search for "u.IO" to find all of the above functions at once, as follows:
@@ -61,7 +91,7 @@ In Visual Studio, search for "u.IO" to find all of the above functions at once, 
 3. In Find What: enter 'u.IO'
 4. In Look In: select 'Entire Solution'
 5. Press 'Find All'
-6. The result wll display in "Find Result #" window
+6. The result will be displayed in "Find Result #" window
 7. Click on each result to go to the code (ignore the cases found in the ENV namespace)
 
 ![2017 03 09 16H52 36](2017-03-09_16h52_36.png)
@@ -104,30 +134,6 @@ protected override OnStart()
 }
 ```
 
-## Dynamic names of tables 
-The table names can be changed in runtime in many ways:
-
-### Using Logical Names
-Logical names can be used in two places:
-
-1. Using logical names for table names in the tables repository (Shift + F2) and set the logical name in runtime using the IniPut() function or by using different ini file for different systems / users.
-![2017 03 09 17H08 35](2017-03-09_17h08_35.png)
-
-**Look for table with Logical Names in their DB Name in the Table Repository**
-
-2. In the dabases settings, using logical name as the location
-
-![2017 03 16 11H01 12](2017-03-16_11h01_12.png)
-
-### Using Expresssions for Table Name
-Using expressions for table names in DB tables (Ctrl + D). For example, a program can change the table name so that it ends with the terminal number (using the Term() function).  
-**To trace table name changes in Ctrl+D search for the text "EntityName = ".**
-```csdiff
-protected override void OnLoad()
-{
-+    Orders.EntityName = "Orders2016.DAT";
-}
-```
 
 ## Pervasive (a.k.a Actian) PSQL and SQL Commands (Ctrl + Q)
 If you have used PSQL to enable SQL commands (Direct SQL) to your tables via ODBC, the SQL code may need to be adjusted.
@@ -142,40 +148,23 @@ WHERE ""CustomerID""=:1";
 }
 ```
 
-### Changing Table Names
-In Magic, each table has a name (caption) and a DB Table name.
-In Btrieve the DB Table name usually refer to the file name, which might be invalid SQL name.
-In this case, we use the captions as SQL names for the table and fix them so that there will be SQL style without any spaces for example "my table name" will be changed "MyTableName".
-This can affect existing SQL Commands that use different table names
 
-### Changing Column Names
-As with table names, Btrieve has no notion of Column names. The only thing that matters in the table structure is the columns position.
-In SQL, column names are important and are based on the columns captions of the original application.
-If your application had SQL commands which uses different columns names, they could be affected.
+## Sharing the same data file by different tables
+A data file can be shared by different applications, or even be used by multiple tables of the same application.
+For example, you may use the Cities table in several applications that refer to the same physical data file.
+If a new city is added by one of the application, it will be available to all applications that use the same file.
 
-### Changing Column Storage
-Most applications store dates as char(8) in the database and store times as numbers.
-In Pervasive PSQL, there could be non-standard ways to store data values for date, time or boolean columns.
-For example, dates might be stored as number instead of char(8).
+Another example is when using the same data file by different tables:
+![2017 05 18 13H34 51](2017-05-18_13h34_51.png)
 
-## Multiple Entries in Table Repository for the same Data File
+Another version of this case may also be found in EntityName expressions, as follows:
+![2017 05 18 17H43 51](2017-05-18_17h43_51.png)
+
+
+
 ### Using the same table structure with different column names
 In Btrieve, it is possible to use the same data file with different entries in the table repository (Shift + F2) that have the same structure and differ only by the column names.
 
-### Using the same table with different structures
-In Btrieve it is possible to refer to the same data file with different table structure.
-For example, if a table has the following fields:
-1. FirstName, alpha 50
-2. LastName, alpha 50
-3. Address, alpha 100
-4. Phone, alpha 50
-
-It is possible to create a second table structure for the same data file,
- which has the following structure:
- 1. FirestName, alpha 50
- 2. LastName, alpha 50  
- 3. **Filler, alpha 150**  
-Both structures will open the file and show the data in it.
 
 ## Dll calls to Btrieve (W32mkde)
 This is not very common but we have seen some applications that have calls to the Btrieve dll.
