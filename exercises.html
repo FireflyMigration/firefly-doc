@@ -1,0 +1,2632 @@
+<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Exercises</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div role="navigation" aria-label="footer navigation">
+                    
+                </div>
+                <div >
+                    <h1 id="exercise-application-structure">Exercise Application Structure</h1>
+<p>Let us go over the main parts of the Application, using the &quot;Solution Explorer&quot;:</p>
+<ol>
+<li>Find the startup project (Marked <strong>Bold</strong>).</li>
+<li>Find the Views folder and open the ApplicationMdi.</li>
+<li>Find and open the Program.cs.</li>
+<li>Find and open the INI file.</li>
+<li>Find and open the <strong>ApplicationPrograms.cs</strong>.
+<ol>
+<li>In the <strong>ApplicationPrograms</strong> find the following programs:
+<ol>
+<li>&quot;Show Orders&quot;, what is the class name and what is the project name it is located in?</li>
+<li>What is the class name of program number 4?</li>
+<li>What is the project name of program number 4?</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Find and open the <strong>ApplicationEntities.cs</strong>.
+<ol>
+<li>In the <strong>ApplicationEntities</strong> find the following tables:
+<ol>
+<li>What is the name of table number 4?</li>
+<li>What is the name of table number 7?</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Find and open the ApplicationCore.cs.</li>
+<li>Go to the base project and look at the <strong>Model</strong> and the <strong>Types</strong> Folders notice the names of the class.</li>
+</ol>
+
+<h1 id="add-the-first-c-class">Add the first C# Class:</h1>
+<ol>
+<li>using the &quot;Solution Explorer&quot; Find the Northwind startup project.</li>
+<li>Right click on the project name and select &quot;Add&quot; then select &quot;New Folder&quot;.</li>
+<li>Change the name of the new Folder to &quot;Exercises&quot;.</li>
+<li>Right click the new folder you just created and select &quot;Add&quot; then select &quot;New Item&quot;</li>
+<li>From the &quot;Add New Item&quot; screen, select Class</li>
+<li>Name your new Class <strong>MyFirstClass</strong> and click the &quot;Add&quot; button.</li>
+</ol>
+<p>Your new Class supposed to look like this code :</p>
+<pre data-line="1,2,3,4,5,6,7,8,9,10,11,12" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Northwind.Exercises
+{
+     class MyFirstClass
+     {
+     }
+} </code></pre>
+<h3 id="add-your-first-method">Add your first Method:</h3>
+<ol>
+<li>Add to your new class A Run Method</li>
+</ol>
+<p>Your new Class supposed to look like this code:</p>
+<pre data-line="11,12,13,14" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Northwind.Exercises
+{
+    class MyFirstClass
+    {
+        public void Run()
+        {
+
+        }
+    }
+} </code></pre>
+<h3 id="add-a-message">Add a message</h3>
+<ol>
+<li>Add the code to show a &quot;Hello C#&quot; message to the end user</li>
+</ol>
+<p>Your new Class supposed to look like this code:</p>
+<pre data-line="13" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Northwind.Exercises
+{
+    class MyFirstClass
+    {
+        public void Run()
+        {
+            System.Windows.Forms.MessageBox.Show("Hello C#");
+        }
+    }
+} </code></pre>
+<h3 id="menu-item">Menu Item</h3>
+<ol>
+<li>Using the &quot;Solution Explorer&quot; open the &quot;Views&quot; folder at the startup project.</li>
+<li>open the &quot;ApplicationMdi.cs&quot;.</li>
+<li>Add a new menu called <strong>Exercises</strong>.</li>
+<li>Add a new entry called <strong>Hello C#</strong>.</li>
+<li>Double click the new entry.</li>
+<li>In the <strong>Code Behind</strong> Call the new class your just created</li>
+</ol>
+<p>Your menu enter <strong>Code Behind</strong> should look like that :</p>
+<pre data-line="1,2,3,4" class="language-csdiff line-numbers"><code>        private void helloCToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Exercises.MyFirstClass().Run();
+        } </code></pre>
+<p><strong>Build and Run</strong></p>
+
+<h1 id="exercise-hello-csharp">Exercise: Hello CSharp</h1>
+<ol>
+<li>In the Solution Explorer, find the main project (Marked in Bold).</li>
+<li>Add a folder called Exercises</li>
+<li>Add a class called &quot;HelloCSharp&quot; (don't use the # sign, it's an invalid character in a class name)</li>
+<li>Add the run method</li>
+</ol>
+<pre data-line="" class="language-csdiff line-numbers"><code>public void Run() 
+{
+} </code></pre>
+<ol start="5">
+<li>Add a call to the <code>System.Windows.Forms.Show</code> method</li>
+<li>In the Views folder find the ApplicationMdi form and open it the Visual Studio’s form designer.</li>
+<li>Add a new menu called “Exercises”</li>
+<li>Add a new entry called “Hello C#”</li>
+<li>When clicking the menu, call the &quot;HelloCSharp&quot; class we've just created.</li>
+</ol>
+<pre data-line="" class="language-csdiff line-numbers"><code>new Exercises.HelloCSharp().Run(); </code></pre>
+<ol start="10">
+<li>Add comments to describe your code.</li>
+<li>Build and run.</li>
+<li>In the beginning of the file, add using directive to <code>System.Windows.Forms</code> namespace</li>
+<li>Add another message box, using shorter syntax, to show the following message: “Shorter is better”</li>
+<li>Build and run.</li>
+<li>Using the “mbox” snippet, add another message box to show the following message: “Snippets are cool!”</li>
+<li>Build and run.</li>
+</ol>
+<hr />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/27AHai9Oygc?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
+<hr />
+
+<h1 id="exercise-adding-using-and-snippet">Exercise: Adding Using and Snippet</h1>
+<p>In <strong>&quot;MyFirstClass&quot;</strong> add to the previous Class:</p>
+<ol>
+<li>In the beginning of the file, add using directive to System.Windows.Forms namespace.</li>
+<li>Add another message box, using shorter syntax, to show the following message: “Learning C# is fun!”.</li>
+<li>Build and run.</li>
+</ol>
+<h3 id="using-snippet">Using Snippet</h3>
+<ol>
+<li>Using the “mbox” snippet, add another message box to show the following message: “Snippets are cool!”</li>
+<li>Build and run.</li>
+</ol>
+<h3 id="comments">Comments</h3>
+<ol>
+<li>Add comments to describe your code.</li>
+<li>Build and run.</li>
+</ol>
+<p>Your <strong>&quot;MyFirstClass&quot;</strong> Class supposed to look like this code:</p>
+<pre data-line="6,18,19,21,22" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises
+{
+    class MyFirstClass
+    {
+        public void Run()
+        {
+            /*This is my first Class
+             * this class will show 3 message box */
+            System.Windows.Forms.MessageBox.Show("Hello C#");
+
+            // Using using
+            MessageBox.Show("Learning C# is fun!");
+
+            // Using snippet 
+            MessageBox.Show("Snippets are cool!");
+        }
+    }
+} </code></pre>
+
+<h1 id="exercise-data-types">Exercise: Data Types</h1>
+<ol>
+<li>Create a new class called <strong>DataTypes</strong>.</li>
+<li>Define a Run() method for that class.</li>
+<li>Define the following variables:
+<ol>
+<li>string carName</li>
+<li>int carYear</li>
+<li>int carKm</li>
+<li>char carGroup (set the value to be one of this options A, B or C).</li>
+</ol>
+</li>
+<li>Display the values on a message box as below:<br />
+<img src="messagebox.png" alt="" /></li>
+<li>Add a new menu entry named “Data Types”.</li>
+<li>Call this class to display the message box from the menu</li>
+<li>Build and test.</li>
+</ol>
+<p>Your <strong>DataTypes</strong> Class supposed to look like this code:</p>
+<pre data-line="11,12,13,14,15,16,17,18" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Northwind.Exercises
+{
+    class DataTypes
+    {
+        public void Run()
+        {
+            string carName = "Mini";
+            int carYear = 2015;
+            int CarKM = 20000;
+            char carGroup = 'A';
+            System.Windows.Forms.MessageBox.Show("My car is a " + carName +"\nit's from year "+carYear+"\nI already drove it for "+CarKM );
+        }
+    }
+} </code></pre>
+<hr />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_asGbeIkEgg?list=PL1DEQjXG2xnKI3TL-gsy91eXbh3ytOt6h" frameborder="0" allowfullscreen></iframe>
+
+<h1 id="exercise-operators">Exercise: Operators</h1>
+<ol>
+<li>In <strong>DataTypes</strong> and add a new variable, name <strong>currentYear</strong>. Set its value to the current year.</li>
+<li>Add a new variable named carAvgKmPerYear that will hold the average KM per year that the car has run.</li>
+<li>Add the new variable (carAvgKmPerYear) to the message box.</li>
+<li>Build and test.
+Your <strong>DataTypes</strong> Class supposed to look like this code:</li>
+</ol>
+<pre data-line="17,18,20" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Northwind.Exercises
+{
+    class DataTypes
+    {
+        public void Run()
+        {
+            string carName = "Mini";
+            int carYear = 2015;
+            int CarKM = 20000;
+            char carGroup = 'A';
+            int currentYear = 2017;
+            int carAvgKmPerYear = CarKM/ (currentYear - carYear);
+-           System.Windows.Forms.MessageBox.Show("My car is a " + carName +"\nit's from year "+carYear+"\nI already drove it for "+CarKM );
+            System.Windows.Forms.MessageBox.Show("My car is a " + carName +"\nit's from year "+carYear+"\nI already drove it for "+CarKM +"\nI drive my car on average of "+carAvgKmPerYear+" Km per year");
+        }
+    }
+} </code></pre>
+
+<h1 id="exercise-car-class">Exercise: Car Class</h1>
+<ol>
+<li>Under the <strong>Exercises</strong> folder add new folder name it <strong>MoreOnClass</strong>.</li>
+<li>Add a new Class name it <strong>TestClass</strong>.</li>
+<li>Add Run method.</li>
+<li>Call it from the application MDI.</li>
+</ol>
+<p>Your new Class supposed to look like this code:</p>
+<pre data-line="11,12,13,14" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class TestClass
+    {
+         public void Run()
+         {
+
+         }
+    } </code></pre>
+<ol start="5">
+<li>Add a new class name it <strong>Car</strong>.</li>
+<li>Add This members to the Run :
+<ol>
+<li>string carName.</li>
+<li>int carYear.</li>
+<li>int CarKM.</li>
+<li>char carType.</li>
+</ol>
+</li>
+</ol>
+<p>Your new Class supposed to look like this code:</p>
+<pre data-line="11,12,13,14" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class Car
+    {
+             public string carName;
+             public int carYear;
+             public int CarKM;
+             public string carType;
+    }
+} </code></pre>
+<ol start="7">
+<li>In the <strong>TestClass</strong> class create 2 new instance of the Car class name it:
+<ol>
+<li>mainCar.</li>
+<li>weekendCar.</li>
+</ol>
+</li>
+<li>Set the value of your two new cars to fit your dream cars.</li>
+<li>Add message box to show the two cars info.</li>
+</ol>
+<p>Your Class supposed to look like this code:</p>
+<pre data-line="6,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class TestClass
+    {
+        public void Run()
+        {
+            Car mainCar = new Car();
+            Car weekendCar = new Car();
+
+            mainCar.carName = "BMW X6";
+            mainCar.carYear = 2015;
+            mainCar.CarKM = 20000;
+            mainCar.carType = "Main";
+
+            weekendCar.carName = "Ford mustang";
+            weekendCar.carYear = 1965;
+            weekendCar.CarKM = 160000;
+            weekendCar.carType = "Weekend";
+
+            MessageBox.Show("My "+ mainCar.carType + " car is " + mainCar.carYear +" " + mainCar.carName + "\n" +
+                " I drove it for " + mainCar.CarKM + " KM");
+
+            MessageBox.Show("My " + weekendCar.carType + " car is " + weekendCar.carYear + " " + weekendCar.carName + "\n" +
+                " I drove it for " + weekendCar.CarKM + " KM");
+        }
+    }
+} </code></pre>
+<ol start="10">
+<li>Build and test.</li>
+<li>In the <strong>Car</strong> class Add a new method <strong>CarInfo</strong>.</li>
+<li>add a message box to the new method to show the car info.</li>
+<li>In the <strong>TestClass</strong> class replace the message box to use the new method.</li>
+<li>Build and test.</li>
+</ol>
+<p>Your <strong>Car</strong> Class supposed to look like this code:</p>
+<pre data-line="6,16,17,18,19,20" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class Car
+    {
+        public string carName;
+        public int carYear;
+        public int CarKM;
+        public string carType;
+        public void CarInfo()
+        {
+            MessageBox.Show("My " + this.carType + " car is " + this.carYear + " " + this.carName + "\n" +
+                " I drove it for " + this.CarKM + " KM");
+        }
+    }
+} </code></pre>
+<p>Your <strong>TestClass</strong> Class supposed to look like this code:</p>
+<pre data-line="32,33" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class TestClass
+    {
+        public void Run()
+        {
+            Car mainCar = new Car();
+            Car weekendCar = new Car();
+
+            mainCar.carName = "BMW X6";
+            mainCar.carYear = 2015;
+            mainCar.CarKM = 20000;
+            mainCar.carType = "Main";
+
+            weekendCar.carName = "Ford mustang";
+            weekendCar.carYear = 1965;
+            weekendCar.CarKM = 160000;
+            weekendCar.carType = "Weekend";
+
+-           MessageBox.Show("My "+ mainCar.carType + " car is " + mainCar.carYear +" " + mainCar.carName + "\n" +
+-               " I drove it for " + mainCar.CarKM + " KM");
+-
+-           MessageBox.Show("My " + weekendCar.carType + " car is " + weekendCar.carYear + " " + weekendCar.carName + "\n" +
+-               " I drove it for " + weekendCar.CarKM + " KM");
+            mainCar.CarInfo();
+            weekendCar.CarInfo();
+        }
+    }
+} </code></pre>
+
+<h1 id="exercise-constructors-static-and-readonly">Exercise: Constructors Static and ReadOnly</h1>
+<h2 id="constructors">Constructors</h2>
+<ol>
+<li>Add a constructor to the <strong>Car</strong> class.</li>
+<li>Initialize the value of all the variables.</li>
+<li>In the <strong>TestClass</strong> add one more car instance.</li>
+<li>Call the <strong>CarInfo</strong> method of the new car.</li>
+<li>Build and Test.</li>
+</ol>
+<p>Your <strong>Car</strong> class supposed to look like this code:</p>
+<pre data-line="16,17,18,19,20,21,22" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class Car
+    {
+        public string carName;
+        public int carYear;
+        public int CarKM;
+        public string carType;
+        public Car()
+        {
+            carName = "No name given";
+            carYear = 0;
+            CarKM = 0;
+            carType = "No type given";
+        }
+        public void CarInfo()
+        {
+            MessageBox.Show("My " + this.carType + " car is " + this.carYear + " " + this.carName + "\n" +
+                " I drove it for " + this.CarKM + " KM");
+        }
+    }
+} </code></pre>
+<p>Your <strong>TestClass</strong> class supposed to look like this code:</p>
+<pre data-line="16,30" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class TestClass
+    {
+        public void Run()
+        {
+            Car mainCar = new Car();
+            Car weekendCar = new Car();
+            Car funCar = new Car();
+
+            mainCar.carName = "BMW X6";
+            mainCar.carYear = 2015;
+            mainCar.CarKM = 20000;
+            mainCar.carType = "Main";
+
+            weekendCar.carName = "Ford mustang";
+            weekendCar.carYear = 1965;
+            weekendCar.CarKM = 160000;
+            weekendCar.carType = "Weekend";
+
+            mainCar.CarInfo();
+            weekendCar.CarInfo();
+            funCar.CarInfo();
+        } </code></pre>
+<h2 id="static">Static</h2>
+<ol>
+<li>In the <strong>Car</strong> class:
+<ol>
+<li>Add static variable type <strong>int</strong> name it <strong>CarCounter</strong>.</li>
+<li>Add variable type <strong>int</strong> name it <strong>Id</strong>.</li>
+</ol>
+</li>
+<li>In the class <strong>constructor</strong>:
+<ol>
+<li>Set the <strong>CarCounter</strong> to increase by one.</li>
+<li>In the Class <strong>constructor</strong> set the <strong>Id</strong> value to the value of the <strong>CarCounter</strong>.</li>
+</ol>
+</li>
+<li>Change the <strong>CarInfo</strong> method to reflect the new <strong>Id</strong> in the message box.</li>
+<li>Build and Test</li>
+</ol>
+<p>Your <strong>Car</strong> class supposed to look like this code:</p>
+<pre data-line="16,17,21,22,32,33" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class Car
+    {
+        public string carName;
+        public int carYear;
+        public int CarKM;
+        public string carType;
+        static int CarCounter=0;
+        public int Id;
+
+        public Car()
+        {
+            CarCounter++;
+            Id = CarCounter;
+            carName = "No name given";
+            carYear = 0;
+            CarKM = 0;
+            carType = "No type given";
+        }
+        public void CarInfo()
+        {
+-           MessageBox.Show("My " + this.carType + " car is " + this.carYear + " " + this.carName + "\n" +
+-               " I drove it for " + this.CarKM + " KM");
+            MessageBox.Show("My number"+ this.Id + " " + this.carType + " car is " + this.carYear + " " + this.carName + "\n" +
+                " I drove it for " + this.CarKM + " KM");
+        }
+    }
+} </code></pre>
+<h2 id="readonly">ReadOnly</h2>
+<ol>
+<li>In the <strong>TestClass</strong> class Try to update the Id of one of the cars to 10.</li>
+<li>Build and test.</li>
+<li>In the <strong>car</strong> class change the <strong>Id</strong> variable to readonly.</li>
+<li>Notice the error message in the <strong>TestClass</strong> class.</li>
+<li>Delete the update of the <strong>Id</strong> from the <strong>TestClass</strong>.</li>
+<li>Build and test.</li>
+</ol>
+<p>Your <strong>Car</strong> class supposed to look like this code:</p>
+<pre data-line="17" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class Car
+    {
+        public string carName;
+        public int carYear;
+        public int CarKM;
+        public string carType;
+        static int CarCounter=0;
+        public readonly int Id;
+
+        public Car()
+        {
+            CarCounter++;
+            Id = CarCounter;
+            carName = "No name given";
+            carYear = 0;
+            CarKM = 0;
+            carType = "No type given";
+        }
+        public void CarInfo()
+        {
+            MessageBox.Show("My number"+ this.Id + " " + this.carType + " car is " + this.carYear + " " + this.carName + "\n" +
+                " I drove it for " + this.CarKM + " KM");
+        }
+    }
+} </code></pre>
+<p>Your <strong>TestClass</strong> class supposed to look like this code:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class TestClass
+    {
+        public void Run()
+        {
+            Car mainCar = new Car();
+            Car weekendCar = new Car();
+            Car funCar = new Car();
+
+            mainCar.carName = "BMW X6";
+            mainCar.carYear = 2015;
+            mainCar.CarKM = 20000;
+            mainCar.carType = "Main";
+
+            weekendCar.carName = "Ford mustang";
+            weekendCar.carYear = 1965;
+            weekendCar.CarKM = 160000;
+            weekendCar.carType = "Weekend";
+
+-           mainCar.Id = 10;
+            mainCar.CarInfo();
+            weekendCar.CarInfo();
+            funCar.CarInfo();
+        }
+    }
+} </code></pre>
+
+<h1 id="exercise-type-initializers">Exercise: Type initializers</h1>
+<ol>
+<li>In the <strong>TestClass</strong> move all the variable values update to be set as type initializer.</li>
+</ol>
+<p>Your <strong>TestClass</strong> class supposed to look like this code:</p>
+<pre data-line="14,15,16" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class TestClass
+    {
+        public void Run()
+        {
+            Car mainCar = new Car {carName = "BMW X6",carYear = 2015,CarKM = 20000,carType = "Main" };
+            Car weekendCar = new Car {carName = "Ford mustang",carYear = 1965,CarKM = 160000,carType = "Weekend" };
+            Car funCar = new Car();
+
+-           mainCar.carName = "BMW X6";
+-           mainCar.carYear = 2015;
+-           mainCar.CarKM = 20000;
+-           mainCar.carType = "Main";
+-
+-           weekendCar.carName = "Ford mustang";
+-           weekendCar.carYear = 1965;
+-           weekendCar.CarKM = 160000;
+-           weekendCar.carType = "Weekend";
+
+            mainCar.CarInfo();
+            weekendCar.CarInfo();
+            funCar.CarInfo();
+        }
+    }
+} </code></pre>
+
+<h1 id="exercise-using-vars">Exercise: Using Vars</h1>
+<ol>
+<li>In the <strong>TestClass</strong> change all the 3 declarations of your cars, use var instead of the Car type.</li>
+</ol>
+<p>Your <strong>TestClass</strong> class supposed to look like this code:</p>
+<pre data-line="18,19,20" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class TestClass
+    {
+        public void Run()
+        {
+-           Car mainCar = new Car {carName = "BMW X6",carYear = 2015,CarKM = 20000,carType = "Main" };
+-           Car weekendCar = new Car {carName = "Ford mustang",carYear = 1965,CarKM = 160000,carType = "Weekend" };
+-           Car funCar = new Car();
+
+            Var mainCar = new Car {carName = "BMW X6",carYear = 2015,CarKM = 20000,carType = "Main" };
+            Var weekendCar = new Car {carName = "Ford mustang",carYear = 1965,CarKM = 160000,carType = "Weekend" };
+            Var funCar = new Car();
+
+
+            mainCar.CarInfo();
+            weekendCar.CarInfo();
+            funCar.CarInfo();
+        }
+    }
+} </code></pre>
+
+<h1 id="exercise-short-way-to-write-a-single-line-method">Exercise: Short Way to Write a single line method</h1>
+<ol>
+<li>In the <strong>Car</strong> class change the CarInfo method to the shorer style.</li>
+</ol>
+<p>Your <strong>Car</strong> class supposed to look like this code:</p>
+<pre data-line="28" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class Car
+    {
+        public string carName;
+        public int carYear;
+        public int CarKM;
+        public string carType;
+        static int CarCounter=0;
+        public readonly int Id;
+
+        public Car()
+        {
+            CarCounter++;
+            Id = CarCounter;
+            carName = "No name given";
+            carYear = 0;
+            CarKM = 0;
+            carType = "No type given";
+        }
+        public void CarInfo() =&gt; MessageBox.Show("My number"+ this.Id + " " + this.carType + " car is " + this.carYear + " " + this.carName + "\n" + " I drove it for " + this.CarKM + " KM");
+-       public void CarInfo()
+-       {
+-           MessageBox.Show("My number"+ this.Id + " " + this.carType + " car is " + this.carYear + " " + this.carName + "\n" +
+-               " I drove it for " + this.CarKM + " KM");
+-       }
+    }
+} </code></pre>
+
+<h1 id="exercise-inheritance_basics">Exercise: Inheritance_Basics</h1>
+<ol>
+<li>Under <strong>Exercises</strong> folder and under the <strong>MoreOnClass</strong> folder Create two new class :
+<ol>
+<li><strong>Main</strong> inheriting from <strong>Car</strong>.</li>
+<li><strong>Weekend</strong> inheriting from <strong>Car</strong>.</li>
+</ol>
+</li>
+</ol>
+<p>Your new two class should look like :</p>
+<pre data-line="1,2,3,4,5,6,7,8,9,10,11,12" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+     class Main : Car
+     {
+     }
+} </code></pre>
+<pre data-line="1,2,3,4,5,6,7,8,9,10,11,12" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+     class Weekend : Car
+     {
+     }
+} </code></pre>
+<ol start="2">
+<li>Add to the <strong>Main</strong> class, a new method name it <strong>DriveFast</strong>, the new method will show a message &quot;Whoop I am fast&quot;.</li>
+<li>Add to the <strong>Weekend</strong> class, a new method name it <strong>DriveInStyle</strong>, the new method will show a message &quot;I am cruising on the highway&quot;.</li>
+</ol>
+<p>The two class should look like :</p>
+<pre data-line="6,12,13,14,15" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class Main : Car
+    {
+        public void DriveFast()
+        {
+            MessageBox.Show("Whoop I am fast");
+        }
+    }
+} </code></pre>
+<pre data-line="6,12,13,14,15" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class Weekend : Car
+    {
+        public void DriveInStyle()
+        {
+            MessageBox.Show("I am cruising on the highway");
+        }
+    }
+} </code></pre>
+<ol start="4">
+<li>Add <strong>constructor</strong> to the two class.</li>
+<li>In the <strong>constructors</strong> initialize the <strong>carType</strong>.
+The two class should look like :</li>
+</ol>
+<pre data-line="12,13,14,15" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class Main : Car
+    {
+         public Main()
+         {
+             carType = "Main";
+         }
+        public void DriveFast()
+        {
+            MessageBox.Show("Whoop I am fast");
+        }
+    }
+} </code></pre>
+<pre data-line="12,13,14,15" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class Weekend : Car
+    {
+         public Weekend()
+         {
+             carType = "Weekend";
+         }
+        public void DriveInStyle()
+        {
+            MessageBox.Show("I am cruising on the highway");
+        }
+    }
+} </code></pre>
+<ol start="6">
+<li>In the <strong>TestClass</strong> change the first 2 cars declarations to use the right class.</li>
+<li>Remove the carType update from the first 2 cars declarations.</li>
+<li>Add a call to the cars <strong>DriveFast</strong> method and the <strong>DriveInStyle</strong> method.</li>
+<li>Notice that:
+<ol>
+<li><strong>mainCar</strong> do not have the <strong>DriveInStyle</strong> method.</li>
+<li><strong>weekendCar</strong> do not have the<strong>DriveFast</strong> method.</li>
+<li><strong>funCar</strong> do not have any of the above methods.</li>
+</ol>
+</li>
+<li>Build and Test.</li>
+</ol>
+<p>The <strong>TestClass</strong> class should look like :</p>
+<pre data-line="15,17,21,23" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class TestClass
+    {
+        public void Run()
+        {
+-           var mainCar = new Car {carName = "BMW X6",carYear = 2015,CarKM = 20000,carType = "Main" };
+            var mainCar = new Main {carName = "BMW X6",carYear = 2015,CarKM = 20000};
+-           var weekendCar = new Car {carName = "Ford mustang",carYear = 1965,CarKM = 160000,carType = "Weekend" };
+            var weekendCar = new Weekend {carName = "Ford mustang",carYear = 1965,CarKM = 160000};
+            var funCar = new Car();
+
+            mainCar.CarInfo();
+            mainCar.DriveFast();
+            weekendCar.CarInfo();
+            weekendCar.DriveInStyle();
+            funCar.CarInfo();
+        }
+    }
+} </code></pre>
+
+<h1 id="exercise-virtual-method-and-override">Exercise: Virtual method and override</h1>
+<ol>
+<li>In the <strong>Car</strong> class add a new virtual method name it <strong>RoofType</strong>.</li>
+<li>In the <strong>Main</strong> class Override the <strong>RoofType</strong> show message box : <strong>&quot;Sunroofs&quot;</strong>.</li>
+<li>In the <strong>Weekend</strong> class Override the <strong>RoofType</strong> show message box : <strong>&quot;Convertible&quot;</strong>.</li>
+<li>In the <strong>TestClass</strong> class call the <strong>RoofType</strong> for the first two cars declarations.</li>
+<li>Build and test.</li>
+</ol>
+<p>The <strong>Car</strong> class should look like :</p>
+<pre data-line="29,30,31,32" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class Car
+    {
+        public string carName;
+        public int carYear;
+        public int CarKM;
+        public string carType;
+        static int CarCounter=0;
+        public readonly int Id;
+
+        public Car()
+        {
+            CarCounter++;
+            Id = CarCounter;
+            carName = "No name given";
+            carYear = 0;
+            CarKM = 0;
+            carType = "No type given";
+        }
+        public void CarInfo() =&gt; MessageBox.Show("My number"+ this.Id + " " + this.carType + " car is " + this.carYear + " " + this.carName + "\n" + " I drove it for " + this.CarKM + " KM");
+        public virtual void RoofType()
+        {
+
+        }
+    }
+} </code></pre>
+<p>The <strong>Main</strong> class should look like :</p>
+<pre data-line="20,21,22,23" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class Main : Car
+    {
+        public Main()
+        {
+            carType = "Main";
+        }
+        public void DriveFast()
+        {
+            MessageBox.Show("Whoop I am fast");
+        }
+        public override void RoofType()
+        {
+            MessageBox.Show("Sunroofs");
+        }
+    }
+} </code></pre>
+<p>The <strong>Weekend</strong> class should look like :</p>
+<pre data-line="20,21,22,23" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class Weekend : Car
+    {
+        public Weekend()
+        {
+            carType = "Weekend";
+        }
+        public void DriveInStyle()
+        {
+            MessageBox.Show("I am cruising on the highway");
+        }
+        public override void RoofType()
+        {
+            MessageBox.Show("Convertible");
+        }
+    }
+} </code></pre>
+<p>The <strong>TestClass</strong> class should look like :</p>
+<pre data-line="20,23" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Northwind.Exercises.MoreOnClass
+{
+    class TestClass
+    {
+        public void Run()
+        {
+            var mainCar = new Main {carName = "BMW X6",carYear = 2015,CarKM = 20000};
+            var weekendCar = new Weekend {carName = "Ford mustang",carYear = 1965,CarKM = 160000};
+            var funCar = new Car();
+
+            mainCar.CarInfo();
+            mainCar.DriveFast();
+            mainCar.RoofType();
+            weekendCar.CarInfo();
+            weekendCar.DriveInStyle();
+            weekendCar.RoofType();
+            funCar.CarInfo();
+        }
+    }
+} </code></pre>
+
+<h1 id="exercise-creating-a-simple-screen">Exercise - Creating a Simple Screen</h1>
+<ol>
+<li>Under the “Exercises” folder, create a UIController named <strong>ShowProducts</strong>.</li>
+<li>Define the <strong>Products</strong> table at the beginning of the controller class.(drag and drop it, holding the <strong>Shift</strong> key just before the drop).</li>
+<li>In the <strong>constructor</strong> use the <strong>From</strong> to set the <strong>Products</strong> to be the class main table.</li>
+<li>Build the <strong>Northwind</strong> Project. (in the <strong>Build</strong>pule down menu, select <strong>Build Northwind</strong>).</li>
+<li>Using the <strong>Class Outline</strong> Open the Form Designer:
+<ol>
+<li>Setup the Toolbox if you did not do that early, by right clicking on the form, select &quot;Setup Toolbox&quot;.</li>
+<li>Add a grid with the following columns:
+<ol>
+<li>ProductID</li>
+<li>ProductName</li>
+<li>CategoryID</li>
+<li>UnitPrice</li>
+<li>UnitsInStock</li>
+<li>UnitsOnOrder</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Expand the form width to show the entire grid.</li>
+<li>Add a new menu entry to call this screen.</li>
+<li>Build and test.</li>
+</ol>
+<p>The <strong>ShowProducts</strong> class should look like :</p>
+<pre data-line="14,18" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Exercises
+{
+    public class ShowProducts : UIControllerBase
+    {
+
+        public readonly Models.Products Products = new Models.Products();
+
+        public ShowProducts()
+        {
+            From = Products;
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () =&gt; new Views.ShowProductsView(this);
+        }
+    }
+} </code></pre>
+<p>The <strong>ShowProducts Form Designer</strong> should look like :<br />
+<img src="ShowProductsScreen.png" alt="Show Products Screen" /></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PkikKDuWjLw?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
+
+<h1 id="exercise-uicontroller-filtering-data">Exercise - UIController - Filtering Data</h1>
+<ol>
+<li>In <strong>ShowProducts</strong> Add a filter to shows only records where <strong>CategoryID</strong> is 2, 4 or 6 and <strong>UnitPrice</strong> is greater than 25.</li>
+<li>Build and run the application.</li>
+</ol>
+<p>The <strong>ShowProducts</strong> class should look like :</p>
+<pre data-line="19" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Exercises
+{
+    public class ShowProducts : UIControllerBase
+    {
+
+        public readonly Models.Products Products = new Models.Products();
+
+        public ShowProducts()
+        {
+            From = Products;
+            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))).And(Products.UnitPrice.IsGreaterThan(25)));
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () =&gt; new Views.ShowProductsView(this);
+        }
+    }
+} </code></pre>
+<ol start="3">
+<li>Break the condition into two separate Where.Add lines.</li>
+<li>Build and run the application.</li>
+</ol>
+<p>The <strong>ShowProducts</strong> class should look like :</p>
+<pre data-line="20,21" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Exercises
+{
+    public class ShowProducts : UIControllerBase
+    {
+
+        public readonly Models.Products Products = new Models.Products();
+
+        public ShowProducts()
+        {
+            From = Products;
+-           Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))).And(Products.UnitPrice.IsGreaterThan(25)));
+            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
+            Where.Add(Products.UnitPrice.IsGreaterThan(25));
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () =&gt; new Views.ShowProductsView(this);
+        }
+    }
+} </code></pre>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ex29Ip6q5ow?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
+
+<h1 id="exercise-uicontroller-sorting-data">Exercise - UIController - Sorting Data</h1>
+<ol>
+<li>In <strong>ShowProducts</strong> Sort the data by the <strong>CategoryID</strong> in ascending order.</li>
+<li>Build and test.</li>
+<li>Add a sort by the <strong>ProductName</strong> in descending order.</li>
+<li>Build and test.</li>
+</ol>
+<p>You <strong>ShowProducts</strong> should look like:</p>
+<pre data-line="22,23" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Exercises
+{
+    public class ShowProducts : UIControllerBase
+    {
+
+        public readonly Models.Products Products = new Models.Products();
+
+        public ShowProducts()
+        {
+            From = Products;
+            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
+            Where.Add(Products.UnitPrice.IsGreaterThan(25));
+
+             OrderBy.Add(Products.CategoryID);
+             OrderBy.Add(Products.ProductName,SortDirection.Descending);
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () =&gt; new Views.ShowProductsView(this);
+        }
+    }
+} </code></pre>
+<ol start="5">
+<li>Comment out the first two sort, and sort the data using the <strong>SortByProductName</strong> index.</li>
+<li>Build and test.</li>
+</ol>
+<p>You <strong>ShowProducts</strong> should look like:</p>
+<pre data-line="24" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Exercises
+{
+    public class ShowProducts : UIControllerBase
+    {
+
+        public readonly Models.Products Products = new Models.Products();
+
+        public ShowProducts()
+        {
+            From = Products;
+            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
+            Where.Add(Products.UnitPrice.IsGreaterThan(25));
+
+-           //OrderBy.Add(Products.CategoryID);
+-           //OrderBy.Add(Products.ProductName,SortDirection.Descending);
+            OrderBy = Products.SortByProductName;
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () =&gt; new Views.ShowProductsView(this);
+        }
+    }
+} </code></pre>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YDzp679xpeA?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
+
+<h1 id="exercise-uicontroller-relations">Exercise - UIController - Relations</h1>
+<ol>
+<li>In <strong>ShowProducts</strong>, drag and drop the <strong>Categories</strong> entity (located in the NorthwindBase.Models name space).</li>
+<li>Using the <strong>rel</strong> snippet Add a relation to the <strong>Categories</strong> table.</li>
+</ol>
+<p>Your <strong>ShowProducts</strong> class should look like :</p>
+<pre data-line="15,20,21" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Exercises
+{
+    public class ShowProducts : UIControllerBase
+    {
+
+        public readonly Models.Products Products = new Models.Products();
+        public readonly Models.Categories Categories = new Models.Categories();
+
+        public ShowProducts()
+        {
+            From = Products;
+            Relations.Add(Categories, RelationType.Find,
+                Categories.CategoryID.IsEqualTo(Products.CategoryID));
+
+            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
+            Where.Add(Products.UnitPrice.IsGreaterThan(25));
+
+            OrderBy = Products.SortByProductName;
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () =&gt; new Views.ShowProductsView(this);
+        }
+    }
+} </code></pre>
+<ol start="3">
+<li><strong>Build</strong> the project and then using the <strong>Class Outline</strong> open the <strong>designer</strong>.</li>
+<li>Add to the grid the <strong>CategoryName</strong> next to the <strong>CategoryID</strong> value.</li>
+<li>Build and test.</li>
+<li>While running the project, change the value of the &quot;CategoryID&quot; and verify that the &quot;CategoryName&quot; is changed.</li>
+<li>Make the &quot;CategoryName&quot; textbox readonly.</li>
+<li>Build and test
+<img src="RelationDesignerLook.png" alt="" /></li>
+</ol>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XJe4IZePjAg?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
+
+<h1 id="exercise-using-debug-information">Exercise - Using Debug Information</h1>
+<ol>
+<li>Run the application.</li>
+<li>Run <strong>ShowProducts</strong>.</li>
+<li>Use <kbd>Shift + F12</kbd> key combination to break into the code of <strong>ShowProducts</strong>.</li>
+<li>Open the <strong>Watch Window</strong>.</li>
+</ol>
+<p><img src="OpenWatch.png" alt="Open Watch Screen" /></p>
+<ol start="5">
+<li>In the <strong>Name</strong> column of the <strong>Watch Window</strong> add the flowing items and examine the results in the <strong>Value</strong> column:
+<ol>
+<li>Activity</li>
+<li>From</li>
+<li>Where</li>
+<li>OrderBy</li>
+<li>Relations</li>
+<li>Columns</li>
+</ol>
+</li>
+</ol>
+<p><img src="UsingWatch.png" alt="Using Watch Screen" /></p>
+
+<h1 id="exercise-creating-a-simple-screen-resolute">Exercise - Creating a Simple Screen Resolute</h1>
+<p>The <strong>showOrderDetails</strong> class should look like :</p>
+<pre data-line="14,15,19,20,21" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Exercises
+{
+    public class ShowOrderDetails : UIControllerBase
+    {
+
+        public readonly Models.Order_Details Order_Details = new Models.Order_Details();
+        public readonly Models.Products Products = new Models.Products();
+
+        public ShowOrderDetails()
+        {
+            From = Order_Details;
+            Where.Add(Order_Details.UnitPrice.IsGreaterOrEqualTo(20));
+            OrderBy.Add(Order_Details.OrderID, SortDirection.Descending);
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () =&gt; new Views.ShowOrderDetailsView(this);
+        }
+    }
+} </code></pre>
+<p>The <strong>ShowOrderDetails</strong> screen should look like :<br />
+<img src="ShowOrderDetailsScreen.png" alt="Show Order Details Screen" /></p>
+
+<h1 id="introduction-to-ui-controller-summary-exercise">Introduction to UI Controller - Summary Exercise</h1>
+<ol>
+<li>Under the <strong>Exercise folder</strong> add a new UIController named it <strong>showOrderDetails</strong>.</li>
+<li>Define the <strong>Order_Details</strong> table at the beginning of the controller class.(drag and drop it, holding the <strong>Shift</strong> key just before the drop).</li>
+<li>In the <strong>constructor</strong> use the <strong>From</strong> to set the <strong>Order_Details</strong> to be the class main table.</li>
+<li><strong>Build</strong> and open the form designer (Using the <strong>Class outline</strong> window).</li>
+<li>Add a <strong>grid</strong> with all the columns from the <strong>OrderDetails</strong> table.</li>
+<li>Add a new menu entry calling <strong>showOrderDetails</strong>.</li>
+<li><strong>Build and test</strong>.</li>
+<li>Going back the <strong>showOrderDetails</strong> controller:</li>
+<li>Filter the data to display only the rows where the <strong>UnitPrice</strong> is <strong>greater or equal</strong> to 20.</li>
+<li><strong>Build and test</strong>.</li>
+<li>Sort the rows by the <strong>OrderID</strong> in <strong>descending</strong> order.</li>
+<li><strong>Build and test</strong>.</li>
+<li>Add a relation to the <strong>Products</strong> table.</li>
+<li><strong>Build</strong> and open the form designer (Using the <strong>Class outline</strong> window).</li>
+<li>Add the <strong>ProductName</strong> next to the <strong>ProductID</strong> on the same column.</li>
+<li><strong>Build and test</strong>.</li>
+</ol>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yXLJhIwrFdY?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
+<ul>
+<li><a href="exercise-resolute.html">Exercise Resolute</a></li>
+</ul>
+
+<h1 id="ui-controller-life-cycle">UI Controller Life cycle</h1>
+<ol>
+<li>Open the <strong>ShowOrderDetails</strong> class.</li>
+<li>Add to the top of the class a <strong>using</strong> for <strong>System.Diagnostics</strong>.</li>
+<li>Override the following methods and add a Debug.WriteLine to display each method name:
+<ol>
+<li>OnLoad</li>
+<li>OnStart</li>
+<li>OnEnterRow</li>
+<li>OnLeavingRow</li>
+<li>OnSavingRow</li>
+<li>OnEnd</li>
+<li>OnUnLoad</li>
+</ol>
+</li>
+<li><strong>Build and test</strong></li>
+<li>Run the program.</li>
+<li>Open the <strong>Output window</strong> and notice the Debug information.</li>
+<li>Go to the next row.</li>
+<li>Notice the <strong>Output window</strong>.</li>
+<li>Go to the previous row.</li>
+<li>Notice the <strong>Output window</strong>.</li>
+<li>Make a change to one of the rows and go to the next row.</li>
+<li>Notice the <strong>Output window</strong>.</li>
+<li>Exit <strong>ShowOrderDetails</strong>.</li>
+<li>Notice the <strong>Output window</strong>.</li>
+</ol>
+<p>How to open the output windows:<br />
+<img src="OpenOutputWindow.png" alt="Open Output Window" /></p>
+<ul>
+<li><a href="exercise-result.html">Exercise Result</a></li>
+</ul>
+
+<h1 id="exercise-input-validation-using-if-statement">Exercise - Input Validation Using if Statement</h1>
+<ol>
+<li>In <strong>ShowProducts</strong>, override the <strong>OnSavingRow</strong> method.</li>
+<li>Using the <strong>MessageBox.Show</strong> show a message to the user if <strong>ProductName</strong> column is empty.</li>
+<li>Show a message if <strong>UnitsInStock</strong> is 0 or <strong>UnitsOnOrder</strong> is 0.</li>
+<li>Build and test.</li>
+</ol>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PEShmOEd-jI?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
+<ul>
+<li><a href="exercise-if-statement-results.html">Exercise if statement results</a></li>
+</ul>
+
+<h1 id="exercise-input-validation-using-the-message-class">Exercise - Input Validation Using the Message Class</h1>
+<ol>
+<li>In <strong>ShowProducts</strong>, make the <strong>ProductName</strong> column mandatory by adding an <strong>error</strong> message if the field is empty.</li>
+<li>Add a <strong>warning</strong> message if the <strong>UnitsInStock</strong> is less than 10.</li>
+<li>Add an <strong>error</strong> message if the <strong>UnitsOnOrder</strong> is between 50 and 100.</li>
+<li>Build and test.</li>
+</ol>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/I3akajlcREo?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
+<ul>
+<li><a href="exercise-message-results.html">Exercise message results</a></li>
+</ul>
+
+<h1 id="exercise-input-validation-using-user-methods-and-the-u-member">Exercise - Input Validation using User Methods and the u Member</h1>
+<ol>
+<li>In <strong>ShowProducts</strong>, add an <strong>error</strong> message if the <strong>ProductName</strong> has <strong>less</strong> than <strong>3 characters</strong> (using the <strong>u.Len</strong> method). Use Trim where needed.</li>
+<li>Build and test.</li>
+<li>In <strong>Run Time</strong> use the <kbd>Shift</kbd> <kbd>F12</kbd> key combination to go back to the code.</li>
+<li>Add the <strong>ProductName</strong> to the Watch screen.</li>
+<li>Add it again and add .Trim().</li>
+<li>Notice the different result.</li>
+<li>Add an <strong>error</strong> message in <strong>status bar</strong> if the <strong>ProductName</strong> contains one of the following characters: %, @.</li>
+<li>Build and test.</li>
+<li>Add a <strong>warning in status bar</strong> if the <strong>ProductName</strong> starts with <strong>&quot;T&quot;</strong> (using the u.Left method).</li>
+<li>Build and test.</li>
+</ol>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FQNAVNcdtTo?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
+<ul>
+<li><a href="exercise-usermethods-results.html">Exercise UserMethods results</a></li>
+</ul>
+
+<h1 id="exercise-row-found-validation">Exercise - Row Found Validation</h1>
+<ol>
+<li>In <strong>ShowProducts</strong>, add an <strong>error</strong> message using the <strong>RowFound</strong> relation property, if the <strong>Relation</strong> to <strong>Categories</strong> did not find a row.</li>
+<li>Build and Test.</li>
+</ol>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_e_cQOgXeUw?list=PL1DEQjXG2xnL1VKb5GvdDwxJeym7Uj6S3" frameborder="0" allowfullscreen></iframe>
+<ul>
+<li><a href="exercise-results.html">Exercise results</a></li>
+</ul>
+
+<h1 id="exercise-using-date-to-filter-data">Exercise - Using Date to Filter Data</h1>
+<ol>
+<li>Right-Click on the <strong>Exercise</strong> folder and <strong>add a new</strong> <strong>UIController</strong> named <strong>ShowOrders</strong>.</li>
+<li>Define the <strong>Orders</strong> table at the beginning of the controller class.(drag and drop it, holding the <strong>Shift</strong> key just before the drop).</li>
+<li>Using the <strong>Class Outline</strong> Open the Form Designer:</li>
+<li>Add a <strong>grid</strong> to the <strong>Form</strong>.</li>
+<li>Add the following columns to the grid:
+<ol type="a">
+<li>OrderID</li>
+</ol>
+<ol start="2">
+<li>OrderDate</li>
+</ol>
+<ol type="a" start="3">
+<li>ShipVia</li>
+<li>ShipName</li>
+<li>ShipCity</li>
+</ol>
+</li>
+<li>Build and test.</li>
+<li>Go back to the <strong>controller</strong> of <strong>ShowOrders</strong>:</li>
+<li>Add a <strong>Where</strong> to display only orders from <strong>January 1996</strong>  up to the end of  <strong>June 1997</strong>.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-date-in-filter-results.html">Exercise Date in Filter results</a></li>
+</ul>
+
+<h1 id="exercise-methods">Exercise - Methods</h1>
+<ol>
+<li>In <strong>ShowProduct</strong>:</li>
+<li>Mark the all the <strong>if</strong> statements inside the <strong>OnSavingRow</strong>.</li>
+<li>Using the <kbd>control</kbd><kbd>.</kbd> extract them to a new method, name it <strong>InputValidation</strong>.</li>
+<li>Build and test.</li>
+<li>Change the last <strong>if</strong> statement:
+<ol>
+<li>Extract the check for the <strong>Relation Row Found</strong> to a new method, name it <strong>ValidateCategoryID</strong>.</li>
+<li>Notice the <strong>bool</strong> returning value.</li>
+<li>Notice the use of <strong>return</strong> in the method.</li>
+</ol>
+</li>
+<li>Build and test.</li>
+<li>Add <strong>region</strong> around the two new methods name it <strong>expressions</strong></li>
+<li>Notice:
+<ol>
+<li>You can collapse the region and expend it back.</li>
+<li>You can hover with the mouse over the collapse region to look at the code.</li>
+</ol>
+</li>
+<li>Change the <strong>ValidateCategoryID()</strong> method to a one line method</li>
+<li>Build and test</li>
+</ol>
+<ul>
+<li><a href="exercise-methods-results.html">Exercise methods results</a></li>
+</ul>
+
+<h1 id="exercise-binding-the-data-of-a-control-to-a-method">Exercise - Binding the data of a control to a method</h1>
+<ol>
+<li>In <strong>ShowProducts</strong>, add a new <strong>TotalUnits method</strong> inside the <strong>expressions region</strong>.</li>
+<li>The <strong>TotalUnits</strong> method will :
+<ol>
+<li>Need to be <strong>public</strong>.</li>
+<li>Return a <strong>Number</strong> as the return value.</li>
+<li>Calculate the total number of units in <strong>stock</strong> and <strong>on order</strong>.</li>
+</ol>
+</li>
+<li>Build the project.</li>
+<li>Go to the <strong>Form</strong>.</li>
+<li>Using the <strong>Grid</strong> <strong>Column Wizard</strong> add the <strong>TotalUnits</strong>.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-binding-control-data-to-method-results.html">Exercise Binding Control Data To Method results</a></li>
+</ul>
+
+<h1 id="exercise-control-properties-and-code-navigation">Exercise - Control Properties and code navigation</h1>
+<ol>
+<li>Close all open tabs in visual studio. (right click on one of the tabs and select close all documents).</li>
+<li>Open <strong>ShowProducts</strong> controller. in the <strong>OnLoad()</strong> find the <strong>View = () =&gt; new Views.ShowProductsView(this);</strong> using the <kbd>F12</kbd> navigate to the <strong>code behind</strong> of the form.</li>
+<li>Go to the Form using the <kbd>Shift</kbd><kbd>F7</kbd>.</li>
+<li>Go back to the <strong>code behind</strong> using <kbd>F7</kbd>.</li>
+<li>Find the <strong>code behind</strong> controller parameter,Go back to the <strong>Controller</strong> using <kbd>F12</kbd>.</li>
+<li>Now when we know how to navigate from the controller to the form, go to the form and change the following properties:
+<ol>
+<li><strong>ActiveRowStyle</strong> of the grid to <strong>Border</strong>.</li>
+<li><strong>AllowFocus</strong> of the <strong>CategoryName</strong> textbox to <strong>False</strong>.</li>
+<li><strong>BackColor</strong> of the <strong>ProductName</strong> textbox to <strong>LightBlue</strong>.</li>
+<li><strong>Font</strong> of the <strong>ProductName</strong> textbox to <strong>Bold</strong>.</li>
+</ol>
+</li>
+<li>build and test.</li>
+<li>Change the following properties of the grid control:
+<ol>
+<li><strong>RowColorStyle</strong> to <strong>AlternatingRowBackColor</strong>.</li>
+<li><strong>AlternatingBackcolor</strong> to <strong>WhiteSmoke</strong>.</li>
+</ol>
+</li>
+<li>Build and test.</li>
+<li>Notice that the grid properties override the textbox one.</li>
+<li>Change <strong>back</strong> the  <strong>RowColorStyle</strong> to <strong>ByColumnAndControls</strong>.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-control-properties-and-code-navigation-results.html">Exercise Control Properties and code navigation results</a></li>
+</ul>
+
+<h1 id="exercise-control-properties-and-code-navigation">Exercise - Control Properties and code navigation</h1>
+<ol>
+<li>Close all open tabs in visual studio. (right click on one of the tabs and select close all documents).</li>
+<li>Open <strong>ShowProducts</strong> controller.</li>
+<li>Go to the Form.</li>
+<li>Expand the form size and drop a button by dragging it from the Toolbox.</li>
+<li>Change the Text property of the button to &quot;Total Units&quot;</li>
+<li>Create a Click event and display a message – <strong>&quot;Total Units : will be displayed soon&quot;</strong>.</li>
+<li>Build and test.</li>
+<li>Change the <strong>Gird</strong> <strong>RowColorStyle</strong> to <strong>ByColumnAndControls</strong>.</li>
+<li>Bind the back color of the <strong>UnitsOnOrder</strong> textboox to show the following colors:
+<ol>
+<li><strong>Red</strong> if <strong>UnitsOnOrder</strong> equal to zero.</li>
+<li><strong>Yello</strong> if <strong>UnitsOnOrder</strong> is greater then zero and equal or smaller then 10.</li>
+<li><strong>Green</strong> if <strong>UnitsOnOrder</strong> is greater then 10.</li>
+</ol>
+</li>
+<li>build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-control-events-results.html">Exercise Control Events results</a></li>
+</ul>
+
+<h1 id="exercise-create-new-entity">Exercise - Create new Entity</h1>
+<ol>
+<li>Find the <strong>Models</strong> folder in the <strong>NorthwindBase</strong>.</li>
+<li>Right click on the <strong>Models</strong> folder and <strong>add new Item</strong>, select the <strong>Entity</strong> template, name the new entity <strong>EmployeeCars</strong>.</li>
+<li>Set the <strong>DataSources</strong> to be <strong>Northwind1</strong>, (copy the DataSources definition from one of the excising entities);</li>
+<li>Add The following members :
+<ol>
+<li><strong>NumberColum</strong> for the <strong>EmployeeID</strong> format <strong>10</strong>.</li>
+<li><strong>NumberColum</strong> for the <strong>CarID</strong> format <strong>6</strong>.</li>
+<li><strong>TextColum</strong> for the <strong>CarManufacture</strong> format <strong>30</strong>.</li>
+<li><strong>TextColum</strong> for the <strong>CarName</strong> format <strong>30</strong>.</li>
+<li><strong>NumberColum</strong> for the <strong>CarYear</strong> format <strong>4</strong>.</li>
+<li><strong>NumberColum</strong> for the <strong>CarKM</strong> format <strong>6.2C</strong>.</li>
+</ol>
+</li>
+<li>Set the <strong>PrimaryKey</strong> to be the <strong>EmployeeID</strong> and <strong>CarID</strong></li>
+<li>Build and go to <strong>RunTime</strong>.</li>
+<li>Use the <strong>developers tolls</strong> to create the new Entity.</li>
+<li>Use <kbd>F4</kbd> to insert new records:
+<ol>
+<li>Add 2 <strong>Toyota</strong> for employee 1.</li>
+<li>Add 2 <strong>BMW</strong> for employee number 2.</li>
+<li>add 1 <strong>Lamborghini</strong> for employee number 3.</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><a href="exercise-create-new-entity-results.html">Exercise Create New Entity results</a></li>
+</ul>
+
+<h1 id="exercise-add-index">Exercise - add Index</h1>
+<ol>
+<li>Add two new indexes to <strong>EmployeeCars</strong>:
+<ol>
+<li>name of the index <strong>SortByEmployeeID</strong> use the <strong>EmployeeID</strong> and the <strong>CarsID</strong>.</li>
+<li>name of the index <strong>SortByCarManufacture</strong> use the <strong>CarManufacture</strong>.</li>
+</ol>
+</li>
+<li>Build and test using the <strong>Developer tools</strong>.</li>
+<li>Create a new UI controller and <strong>ShowEmployeeCars</strong>.</li>
+<li>Set the <strong>EmployeeCars</strong> to be the main table.</li>
+<li>Build.</li>
+<li>Go to the <strong>Form</strong>, add a <strong>grid</strong>, add all the columns to the grid.</li>
+<li>Add a call to <strong>ShowEmployeeCars</strong> from a new menu entry in the <strong>ApplicationMDI</strong>.</li>
+<li>Build and test.</li>
+<li>use <kbd>Control</kbd><kbd>K</kbd> to change the index.</li>
+<li>Test the result after you change the index.</li>
+</ol>
+<ul>
+<li><a href="exercise-add-index-results.html">Exercise Add Index results</a></li>
+</ul>
+
+<h1 id="exercise-generating-an-entity-class-base-on-existing-table-in-the-db">Exercise - Generating an Entity class base on existing table in the DB</h1>
+<ol>
+<li>Run the application.</li>
+<li>Go to <strong>Developer Tools</strong> and select <strong>Generate Entity C#</strong>.</li>
+<li>Choose <strong>Northwind</strong> database.</li>
+<li>Double-Click on <strong>Employees</strong> entity.</li>
+<li>Copy all the text of the class.</li>
+<li>Create a new Entity called <strong>Employees</strong>.</li>
+<li>Replace all the code of the new entity with the one you just copied.</li>
+<li>Build and Test.</li>
+</ol>
+<ul>
+<li><a href="exercise-generating-an-entity-class-base-on-existing-table-in-the-db-results.html">Exercise Generating an Entity class base on existing table in the DB results</a></li>
+</ul>
+
+<h1 id="exercise-types">Exercise - Types</h1>
+<ol>
+<li>Find the <strong>Types</strong> folder in the <strong>NorthwindBase</strong>.</li>
+<li>Right click on the <strong>Types</strong> folder and <strong>add new Item</strong>, select the <strong>Type</strong> template to create two new types:
+<ol>
+<li>For the EmployeeID.</li>
+<li>For the CarID.</li>
+</ol>
+</li>
+<li>In <strong>Employees</strong> change the code of the <strong>EmployeeID</strong> column to use the new <strong>EmployeeID</strong> type.</li>
+<li>in <strong>EmployeeCars</strong> change the code of <strong>EmployeeID</strong> and the <strong>CarID</strong> to use the new types.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-types-results.html">Exercise Types results</a></li>
+</ul>
+
+<h1 id="exercise-local-columns">Exercise - Local Columns</h1>
+<ol>
+<li>In <strong>ShowOrders</strong> Create a local <strong>DateColumn</strong>, name it <strong>EstimatedArrivalDate</strong>. (use the <strong>mem</strong> snippet).</li>
+<li>Add it to the grid next to the <strong>OrderDate</strong>.</li>
+<li>Go Back to the <strong>controller</strong> and Override the <strong>OnEnterRow</strong>.</li>
+<li>In the <strong>OnEnterRow</strong> Update the <strong>Value</strong> of <strong>EstimatedArrivalDate</strong> to the <strong>OrderDate</strong> value plus 30 days. (use the OrderDate add days method).</li>
+<li>Build and test.</li>
+<li>Notice that the <strong>EstimatedArrivalDate</strong> value is updated only after you enter to the row.</li>
+</ol>
+<ul>
+<li><a href="exercise-local-columns-results.html">Exercise Local Columns results</a></li>
+</ul>
+
+<h1 id="exercise-updating-data-programmatically">Exercise - Updating Data Programmatically</h1>
+<ol>
+<li>In <strong>ShowProducts</strong>.</li>
+<li>Replace the message of the <strong>&quot;Total units&quot; button</strong> with a message <strong>&quot;Total Units : &quot;</strong> + <strong>TotalUnits</strong> method from the <strong>controller</strong>.</li>
+<li>Build and test.</li>
+<li>In <strong>ShowEmployeeCars</strong> add a new <strong>NumberColumn</strong> name it <strong>AverageKM</strong> and <strong>add</strong> it to the <strong>form</strong>.</li>
+<li>Add a new <strong>method</strong> that return <strong>Number</strong>, name the new method <strong>GetAverageKM</strong>.</li>
+<li><strong>GetAverageKM</strong> return the value of <strong>CarKM</strong> divided to (<strong>Today year</strong> minus <strong>CarYear</strong>).</li>
+<li>Use the <strong>BindValue</strong> and set the <strong>AverageKM</strong> value to <strong>GetAverageKM</strong> method.</li>
+<li>Build and test.</li>
+<li>Change the <strong>GetAverageKM</strong> method to one line method. ( use =&gt; )</li>
+<li>Built and test.</li>
+<li>Change the <strong>BindValue</strong> to use Lambda Expression instead of calling the <strong>GetAverageKM</strong> method.</li>
+<li>Build and test.</li>
+<li>In <strong>ShowOrders</strong> Bind the value of <strong>EstimatedArrivalDate</strong> to <strong>OrderDate</strong> plus 30 days.(use Lambda expression).</li>
+<li>Build and test.</li>
+<li>Notice that in run time the column show the right value in all the rows.</li>
+</ol>
+<ul>
+<li><a href="exercise-updating-data-programmatically-results.html">Exercise Updating Data Programmatically results</a></li>
+</ul>
+
+<h1 id="exercise-send-parameter">Exercise - Send Parameter</h1>
+<ol>
+<li>Add new <strong>UIController</strong> name it <strong>ShowEmployees</strong>.</li>
+<li>Set the <strong>Employees</strong> Entity to be the main table.</li>
+<li>Build.</li>
+<li>Add the following columns to the form grid :
+<ol>
+<li>EmployeeID.</li>
+<li>LastName.</li>
+<li>FirstName.</li>
+<li>Title.</li>
+</ol>
+</li>
+<li>Build and test.</li>
+<li>Add a <strong>button</strong> on the form, name the new button <strong>Show Cars</strong>.</li>
+<li>Using the new <strong>button</strong> click event call <strong>ShowEmployeeCars</strong>. (use the run snippet).</li>
+<li>Build and test.</li>
+<li>In <strong>ShowEmployeeCars</strong> add a <strong>Number</strong> parameter in the Run method, name it <strong>EmployeeID</strong>.</li>
+<li>Add a <strong>Where</strong> to show only cars that belong to the selected employee.</li>
+<li>In <strong>ShowEmployees</strong> code behind send the <strong>EmployeeID</strong>.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-send-parameter-results.html">Exercise Send Parameter results</a></li>
+</ul>
+
+<h1 id="exercise-set-the-default-value">Exercise - Set the Default Value</h1>
+<ol>
+<li>In <strong>ShowEmployeeCars</strong>.</li>
+<li>Go to the <strong>Form</strong>.</li>
+<li>Find the <strong>EmployeeID</strong> Textboox.</li>
+<li>Change the <strong>Allowfocus</strong> to false.</li>
+<li>Build and test.</li>
+<li>Go back to the class code.</li>
+<li>In the <strong>Run</strong> method set the <strong>default</strong> value of <strong>EmployeeID</strong> to be the receiving parameter.</li>
+<li>Build and test.</li>
+<li>Change to <strong>BindValue</strong> instead of default value. (remember this what you will see in the migrated code).</li>
+<li>Build and test.</li>
+<li>Change from two lines of code to one using the <strong>BindEqualTo</strong>.</li>
+<li>Build and test</li>
+</ol>
+<ul>
+<li><a href="exercise-set-the-default-value-results.html">Exercise Set the Default Value results</a></li>
+</ul>
+
+<h1 id="exercise-filtering-data-in-the-businessprocess">Exercise - Filtering data in the BusinessProcess</h1>
+<ol>
+<li>Add new UIController name it <strong>ShowShippers</strong>.</li>
+<li>Set the <strong>Shippers</strong> Entity to be the main table.</li>
+<li>Add two local columns (use the mem snippet) :
+<ol>
+<li><strong>TotalOrders</strong> name <strong>&quot;Total Orders&quot;</strong>,type <strong>NumberColumn</strong>, format <strong>&quot;6&quot;</strong>.</li>
+<li><strong>TotalFreightValue</strong> name <strong>&quot;Total Freight Value&quot;</strong>,type <strong>NumberColumn</strong>, format <strong>&quot;6.2C&quot;</strong>;</li>
+</ol>
+</li>
+<li>Build and go to the form.</li>
+<li>Add a <strong>grid</strong> with <strong>two columns</strong> :
+<ol>
+<li><strong>ShipperID</strong>.</li>
+<li><strong>CompanyName</strong>.</li>
+</ol>
+</li>
+<li>Add the <strong>two local columns</strong> to the screen <strong>out side the grid</strong>.(use <kbd>Ctrl</kbd><kbd>arrow keys</kbd> to set them next to the grid)</li>
+<li>Build and test.</li>
+<li>Add a new <strong>BusinessProcess</strong> name it <strong>CalcOrderTotalForShipper</strong>.</li>
+<li>Set the <strong>Orders</strong> entity to be the main table.</li>
+<li>In the <strong>Run</strong> method receive one parameter type <strong>Number</strong> name it <strong>ShipperID</strong>.</li>
+<li>Add a <strong>Where</strong> limit the  <strong>BusinessProcess</strong> to run only where <strong>Orders ShipVia</strong> equal to the received parameter.</li>
+<li>Override the <strong>OnLeaveRow</strong></li>
+<li>Add <strong>Debug.WriteLine</strong> to show the <strong>Order ID</strong> and <strong>Shipper ID</strong>. (remember to add using System.Diagnostics; if needed)</li>
+<li>Build and test the <strong>BusinessProcess</strong> using the <kbd>Shift</kbd><kbd>F3</kbd> send <strong>2</strong> and check the <strong>Output</strong> panel for the results.</li>
+</ol>
+<ul>
+<li><a href="exercise-filtering-data-in-the-businessprocess-results.html">Exercise Filtering data in the BusinessProcess results</a></li>
+</ul>
+
+<h1 id="exercise-accumulating-statistic">Exercise - Accumulating Statistic</h1>
+<ol>
+<li>In <strong>CalcOrderTotalForShipper</strong> add two variables type <strong>Number</strong>:
+2.  _numberOfOrders.
+2.  _totalValue.</li>
+<li>Remember to set them to zero.</li>
+<li>In the <strong>OnLeaveRow</strong>, update :
+4.  _numberOfOrders to increase by 1 for every row.
+4.  _totalValue to accumulate the value of <strong>Freight</strong> column from the <strong>Orders</strong> table.</li>
+<li>add one more Debug line to reflect the two new variables to the Output.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-accumulating-statistic-results.html">Exercise Accumulating Statistic results</a></li>
+</ul>
+
+<h1 id="exercise-in-out-and-call">Exercise - In Out and Call</h1>
+<ol>
+<li>In <strong>CalcOrderTotalForShipper</strong> add to the <strong>Run</strong> method two parameters type <strong>NumberColumn</strong>:
+<ol>
+<li>TotalOrders.</li>
+<li>TotalFreightValue.</li>
+</ol>
+</li>
+<li>In the <strong>Run</strong> method  <strong>after</strong> the <strong>Execute</strong> update the two parameters with local variables value. (remember to use <strong>.Value</strong> for the NumberColumns)</li>
+<li>In <strong>ShowShippers</strong>.</li>
+<li>Override the <strong>OnEnterRow</strong>.</li>
+<li>Add a call to <strong>CalcOrderTotalForShipper</strong>. (use the <strong>run</strong> snippet)</li>
+<li>Remember to send the <strong>ShipperID</strong> and the <strong>two local columns</strong> to <strong>CalcOrderTotalForShipper</strong>.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-in-out-and-call-results.html">Exercise In Out and Call results</a></li>
+</ul>
+
+<h1 id="exercise-cached">Exercise - Cached</h1>
+<ol>
+<li>In <strong>CalcOrderTotalForShipper</strong> add <strong>Debug.WriteLine</strong> to the class constructor.</li>
+<li>Build and test. (notice that every time you change shipper in the <strong>ShowShippers</strong> the Debug line of the constructor show in the <strong>output</strong>)</li>
+<li>In <strong>ShowShippers</strong> change the call to <strong>CalcOrderTotalForShipper</strong>, and use <strong>Cached&lt;&gt;</strong>.</li>
+<li>Build and test, notice :
+<ol>
+<li>You get the same data for all rows.</li>
+<li>The Debug message for the constructor Appears only once.</li>
+</ol>
+</li>
+<li>In <strong>CalcOrderTotalForShipper</strong> Clear the Where and Zero the value of the two local variables.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-cached-results.html">Exercise Cached results</a></li>
+</ul>
+
+<h1 id="exercise-optional-parameters">Exercise - Optional parameters</h1>
+<ol>
+<li>In <strong>CalcOrderTotalForShipper</strong> change the two NumberColumns parameters to optional parameters.</li>
+<li>Add a new menu entry name its <strong>Run BP with Optional parameters</strong> and call <strong>CalcOrderTotalForShipper</strong>.</li>
+<li>Notice that Visual studio force you to send only one parameter.</li>
+<li>Hard code <strong>2</strong> as the shipper ID.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-optional-parameters-results.html">Exercise Optional parameters results</a></li>
+</ul>
+
+<h1 id="exercise-inner-classes">Exercise - Inner Classes</h1>
+<ol>
+<li>In <strong>ShowEmployees</strong>.</li>
+<li>Add two new local columns type NumberColumn:
+<ol>
+<li><strong>NumberOfCars</strong>.</li>
+<li><strong>LatesModel</strong>.</li>
+</ol>
+</li>
+<li>Build and add the two columns to the grid in the form.</li>
+<li>Build and test.</li>
+<li>Add a new inner class ,use <strong>contrp</strong> snippet, remember to tab after update every item in the snippet.
+<ol>
+<li>Name = <strong>GetCarsInfo</strong>.</li>
+<li>Inherit from <strong>BusinessProcessBase</strong>.</li>
+<li><strong>parent</strong>  = name of the parent class <strong>ShowEmployees</strong>.</li>
+</ol>
+</li>
+<li>Set the main table of <strong>GetCarsInfo</strong> to be <strong>EmployeeCars</strong>.</li>
+<li>Add a where to limit <strong>GetCarsInfo</strong> to the parent employee ID.</li>
+<li>In the <strong>Run</strong> method set the parent two local columns to zero.</li>
+<li>Override the <strong>OnEnterRow</strong>.</li>
+<li>Update the parent <strong>NumberOfCars</strong> to be accumulated by one.</li>
+<li>Update the parent <strong>LatesModel</strong> to the current row <strong>CarYear</strong> only if it's bigger. (use if)</li>
+<li>In <strong>ShowEmployees</strong>.</li>
+<li>Override the <strong>OnEnterRow</strong>.</li>
+<li>Add a call to <strong>GetCarsInfo</strong>. (notice that you need to send this as parameter to the class constructor).</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-inner-classes-results.html">Exercise Inner Classes results</a></li>
+</ul>
+
+<h1 id="exercise-cached-inner-class">Exercise - Cached Inner Class</h1>
+<ol>
+<li>In <strong>ShowEmployees</strong>.</li>
+<li>Change the call to <strong>GetCarsInfo</strong> to use Cached.</li>
+<li>notice there is no need to send <strong>this</strong> any more.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-cached-inner-class-results.html">Exercise Cached Inner Class results</a></li>
+</ul>
+
+<h1 id="exercise-migrated-style-parameters">Exercise - Migrated Style Parameters</h1>
+<ol>
+<li>Create a new UIController name it <strong>ShowCustomers</strong>.</li>
+<li>Set the <strong>Customers</strong> Entity as the main table.</li>
+<li>Add 2 <strong>local columns</strong>:
+2. type <strong>NumberColumn</strong> name <strong>NumberOfOrders</strong>.
+3. type <strong>NumberColumn</strong> name <strong>TotalFreight</strong>.</li>
+<li>Add this columns to the form <strong>(Do not use a grid)</strong>:
+<ol>
+<li>From <strong>Customer</strong> CustomerID.</li>
+<li>From <strong>Customer</strong> CompanyName.</li>
+<li>From <strong>Customer</strong> ContactName.</li>
+<li><strong>Local</strong> column <strong>NumberOfOrders</strong>.</li>
+<li><strong>Local</strong> column <strong>TotalFreight</strong>.</li>
+</ol>
+</li>
+<li>Add a new menu entry and call <strong>ShowCustomers</strong>.</li>
+<li>Build and test.</li>
+<li>Add a new <strong>BusinessProcess</strong> name it <strong>CalcTotalOrdersPerCustomer</strong>.</li>
+<li>Set the <strong>Orders</strong> Entity as the main table.</li>
+<li>Add 3 <strong>local columns</strong>:
+<ol>
+<li>type <strong>TextColumn</strong> name <strong>CustomerID</strong>.</li>
+<li>type <strong>NumberColumn</strong> name <strong>NumberOfOrders</strong>.</li>
+<li>type <strong>NumberColumn</strong> name <strong>TotalFreight</strong>.</li>
+</ol>
+</li>
+<li>Add <strong>Whare</strong> after the <strong>From</strong>, to show only records equal to the <strong>CustomerID</strong> local column.</li>
+<li>In the <strong>Run</strong> method receive 3 Parameters and do:
+<ol>
+<li><strong>TextParameter</strong> name <strong>pCustomerID</strong> use the BindParameter method to connect the parameter and the local column <strong>CustomerID</strong>.</li>
+<li><strong>NumberColumn</strong> name <strong>pNumberOfOrders</strong>.</li>
+<li><strong>NumberParameter</strong> name <strong>pTotalFreight</strong> use the BindParameter method to connect the parameter and the local column <strong>TotalFreight</strong>.</li>
+<li>After the call to <strong>Execute</strong>, update the <strong>pNumberOfOrders value</strong> with the local column <strong>NumberOfOrders</strong> value.</li>
+</ol>
+</li>
+<li>Override the <strong>OnLeaveRow</strong>.</li>
+<li>set <strong>NumberOfOrders value</strong> to increase by 1 for every row.</li>
+<li>set <strong>TotalFreight value</strong> to accumulate the value of <strong>Freight</strong> column from the <strong>Orders</strong> table.</li>
+<li>Build and test the <strong>BusinessProcess</strong> using the <kbd>Shift</kbd><kbd>F3</kbd> send <strong>ANATR</strong> and check the <strong>Output</strong> panel for the results.</li>
+<li>In <strong>ShowCustomers</strong> add a button to the screen, set the button text to <strong>Get Total Orders</strong>.</li>
+<li>set the value of <strong>NumberOfOrders</strong> and <strong>TotalFreight</strong> to zero.</li>
+<li>Call the <strong>CalcTotalOrdersPerCustomer</strong> from the button <strong>click</strong> event and send the parameters.</li>
+<li>Build and test, notice that <strong>NumberOfOrders</strong> and <strong>TotalFreight</strong> are update with values when clicking the button.</li>
+<li>In <strong>ShowCustomers</strong>, find the call to <strong>CalcTotalOrdersPerCustomer</strong>.</li>
+<li>Try to change the second parameters <strong>NumberOfOrders</strong> and send its <strong>Value</strong>, notice the error.</li>
+<li>Cancel the last item change and try to do the same for <strong>TotalFreight</strong> notice that you will <strong>not</strong> get an error.</li>
+<li>Build and test, notice that <strong>TotalFreight</strong> is not update when you click the button.</li>
+</ol>
+<ul>
+<li><a href="exercise-migrated-style-parameters-results.html">Exercise Migrated Style Parameters results</a></li>
+</ul>
+
+<h1 id="exercise-large-applications-architecture">Exercise - Large Applications Architecture</h1>
+<ol>
+<li>Using the runtime <strong>Developer Tools</strong>, <strong>Generate Entity C#</strong> add the <strong>Region</strong> entity to the <strong>NorthwindBase</strong>, <strong>Models</strong>.</li>
+<li>Build <strong>NorthwindBase</strong>.</li>
+<li>Add a new <strong>UIController</strong> to the <strong>Exercises</strong> name space in <strong>Northwind</strong> project, name it <strong>ShowRegions</strong>.</li>
+<li>Set the new <strong>Region</strong> entity as the main table.</li>
+<li>Build and add a grid that will show all the columns in the form.</li>
+<li>Build and test.</li>
+<li>In the <strong>customer project</strong> create a new folder name it <strong>Exercises</strong>.</li>
+<li>Add a new <strong>UIController</strong> under the new folder, name it <strong>ShowCustomerPerRegion</strong>.</li>
+<li>Set the <strong>Customers</strong> entity as the main table.</li>
+<li>In the <strong>Run</strong> method add a parameter : type <strong>Number</strong> name <strong>pRegionID</strong>.</li>
+<li>Add a <strong>where</strong> in the <strong>Run</strong> method to show only customer that have the same <strong>Region</strong> have the parameter, notice that you will need to use <strong>.ToString()</strong>.</li>
+<li>Add the following columns to a <strong>grid</strong> on the form:
+<ol>
+<li>CustomerID.</li>
+<li>CompanyName.</li>
+<li>Address.</li>
+<li>City.</li>
+<li>Region.</li>
+</ol>
+</li>
+<li>In <strong>ShowRegions</strong>.</li>
+<li>Add a button to the screen, set the button text to <strong>Show Region Customers</strong>.</li>
+<li>Try to call the <strong>ShowCustomerPerRegion</strong> from the button <strong>click</strong> event.</li>
+<li>In <strong>NorthwindBase</strong> project, under <strong>Customers</strong> folder, create a new folder name it <strong>Exercises</strong>.</li>
+<li>Add a new interface, name it <strong>IShowCustomerPerRegion</strong>.</li>
+<li>Set the new interface to be public.</li>
+<li>Add the Run with the same parameter definition as <strong>ShowCustomerPerRegion</strong>.(you will need to add using to Firefly.Box).</li>
+<li>build <strong>NorthwindBase</strong>.</li>
+<li>In <strong>ShowCustomerPerRegion</strong> add the interface next to the <strong>UIControllerBase</strong>.</li>
+<li>In <strong>ShowRegionsView</strong> use <strong>Create</strong> to call IShowCustomerPerRegion remember:
+<ol>
+<li>Use the full <strong>NameSpace</strong>.</li>
+<li>Send the right parameter.</li>
+</ol>
+</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-large-applications-architecture-results.html">Exercise Large Applications Architecture results</a></li>
+</ul>
+
+<h1 id="exercise-column-collection">Exercise - Column Collection</h1>
+<ol>
+<li>Run <strong>ShowShippers</strong>.</li>
+<li>Break to the developer using <kbd>Shift</kbd><kbd>F12</kbd>.</li>
+<li>In the <strong>Watch</strong> Panel add <strong>Columns</strong>.</li>
+<li>Notice :
+<ol>
+<li>The number of <strong>columns</strong>.</li>
+<li>Columns names.</li>
+</ol>
+</li>
+<li><strong>Stop</strong> the application.</li>
+<li>Add the <strong>ShipperID</strong> and <strong>CompanyName</strong> to the columns collection.</li>
+<li>Run <strong>ShowShippers</strong>.</li>
+<li>Break to the developer using <kbd>Shift</kbd><kbd>F12</kbd>.</li>
+<li>Notice :
+<ol>
+<li>The number of <strong>columns</strong>.</li>
+<li>Columns names.</li>
+<li>What is the missing Column?</li>
+<li>Notice The two local columns are included.</li>
+</ol>
+</li>
+<li><strong>Stop</strong> the application.</li>
+<li>Go to the <strong>Form</strong> and follow this steps:
+<ol>
+<li>select <strong>TotalOrders</strong> textBox.</li>
+<li>In the <strong>Properties</strong> Panel find <strong>Data</strong>.</li>
+<li>Click the <strong>...</strong> button,</li>
+<li>In the pop-up screen use the <strong>clear</strong> button.</li>
+</ol>
+</li>
+<li>Run <strong>ShowShippers</strong>.</li>
+<li>Break to the developer using <kbd>Shift</kbd><kbd>F12</kbd>.</li>
+<li>Notice that <strong>TotalOrders</strong> is no longer part of the columns Collection.</li>
+<li><strong>Stop</strong> the application.</li>
+<li>Go to the <strong>Form</strong> and follow this steps:
+<ol>
+<li>select <strong>ShipperID</strong> textBox.</li>
+<li>In the <strong>Properties</strong> Panel find <strong>Data</strong>.</li>
+<li>Click the <strong>...</strong> button,</li>
+<li>In the pop-up screen use the <strong>clear</strong> button.</li>
+</ol>
+</li>
+<li>Run <strong>ShowShippers</strong>.</li>
+<li>Break to the developer using <kbd>Shift</kbd><kbd>F12</kbd>.</li>
+<li>Notice that <strong>ShipperID</strong> is still part of the columns Collection.</li>
+<li><strong>Stop</strong> the application.</li>
+<li>Go to the <strong>Form</strong> and follow this steps:
+<ol>
+<li>Set the <strong>ShipperID</strong> textBox to show the data from the <strong>ShipperID</strong>.</li>
+<li>Set the <strong>TotalOrders</strong> textBox to show the data from the <strong>TotalOrders</strong>.</li>
+</ol>
+</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-column-collection-results.html">Exercise Column Collection results</a></li>
+</ul>
+
+<h1 id="exercise-columns-recompute">Exercise - Columns Recompute</h1>
+<ol>
+<li>In <strong>ShowProducts</strong>.</li>
+<li>Add a new local Column, Type <strong>NumberColumn</strong>, Name <strong>TotalValueInStock</strong>.</li>
+<li>Build.</li>
+<li>Using the <strong>Class Outline</strong> go to the form.</li>
+<li>Use the <strong>Grid</strong>, <strong>Column Wizard</strong> and add the new column to the grid.</li>
+<li>Go back to the <strong>ShowProducts</strong> controller.</li>
+<li>Add this columns to the column collection:
+<ol>
+<li>Products.ProductID.</li>
+<li>Products.ProductName.</li>
+<li>Products.CategoryID.</li>
+<li>Products.UnitPrice.</li>
+<li>Products.UnitsInStock.</li>
+<li>Products.UnitsOnOrder.</li>
+<li>Categories.CategoryID.</li>
+<li>Categories.CategoryName.</li>
+<li>TotalValueInStock.</li>
+</ol>
+</li>
+<li>Use <strong>BindValue</strong> to set the value of <strong>TotalValueInStock</strong> to show <strong>UnitPrice</strong> * <strong>UnitsInStock</strong>.</li>
+<li>Build and test.	(Change the number of Units In Stock and the check that TotalValueInStock is <strong>change</strong>).</li>
+<li>Break into the code using the <kbd>Shift</kbd> <kbd>F12</kbd>.</li>
+<li>Add <strong>TotalValueInStock.__RecomputePath</strong> the <strong>Watch</strong> panel.</li>
+<li>Expend the result and notice the result.</li>
+<li>Stop the program.</li>
+<li>Use <kbd>Alt</kbd> <kbd>arrow up</kbd> to change the <strong>Columns.Add</strong> of <strong>TotalValueInStock</strong> location to be the first one.</li>
+<li>Build and test.	(Change the number of Units In Stock and the check that TotalValueInStock is <strong>not changing</strong>)</li>
+<li>Break into the code using the <kbd>Shift</kbd> <kbd>F12</kbd>.</li>
+<li>Check the <strong>TotalValueInStock.__RecomputePath</strong>.</li>
+<li>Stop the program.</li>
+<li>Use <kbd>Alt</kbd> <kbd>arrow down</kbd> to change the <strong>Columns.Add</strong> of <strong>TotalValueInStock</strong> location to be the last one.</li>
+<li>build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-columns-recompute-results.html">Exercise Columns Recompute results</a></li>
+</ul>
+
+<h1 id="exercise-relations-recompute">Exercise - Relations Recompute</h1>
+<ol>
+<li>Run the application and run <strong>ShowProducts</strong>.</li>
+<li>Break into the code using the <kbd>Shift</kbd> <kbd>F12</kbd>.</li>
+<li>Add <strong>Relations[Categories].__RecomputePath</strong> to the <strong>Watch</strong> panel.</li>
+<li>Expend the result and notice the result.</li>
+<li>Stop the program.</li>
+<li>Use <kbd>Alt</kbd> <kbd>arrow up</kbd> to change the <strong>Columns.Add</strong> of <strong>Categories.CategoryID</strong> location to be before <strong>Products.CategoryID</strong>.</li>
+<li>Build and test.</li>
+<li>Break into the code using the <kbd>Shift</kbd> <kbd>F12</kbd>.</li>
+<li>Notice the result of <strong>Relations[Categories].__RecomputePath</strong> in the <strong>Watch</strong> panel.</li>
+<li>Stop the program.</li>
+<li>Use <kbd>Alt</kbd> <kbd>arrow down</kbd> to restore the <strong>Columns.Add</strong> of <strong>Categories.CategoryID</strong> to it's original location before <strong>Categories.CategoryName</strong>.</li>
+<li>Build and test.</li>
+<li>Break into the code using the <kbd>Control</kbd> <kbd>F12</kbd>.</li>
+<li>Add <strong>Columns</strong> to the <strong>Watch</strong> panel.</li>
+<li>Stop the program.</li>
+<li>add <strong>AddAllColumns</strong>.</li>
+<li>Build and test.</li>
+<li>Break into the code using the <kbd>Control</kbd> <kbd>F12</kbd>.</li>
+<li>Add <strong>Columns</strong> to the <strong>Watch</strong> panel.</li>
+</ol>
+<ul>
+<li><a href="exercise-relations-recompute-results.html">Exercise Relations Recompute results</a></li>
+</ul>
+
+<h1 id="exercise-list-controls">Exercise - List Controls</h1>
+<ol>
+<li>Add new UIController to the Exercises folder, name the new UIController <strong>ControlsDemo</strong>.</li>
+<li>Set the Orders table as the main table</li>
+<li>Add <strong>OrderID</strong>, <strong>ShipCountry</strong> to a grid on the form.</li>
+<li>Add 3 ComboBox to the grid to do so :
+<ol>
+<li>Add a column to the grid.</li>
+<li>Name the columns :
+<ol>
+<li><strong>Customer</strong>.</li>
+<li><strong>Employee</strong>.</li>
+<li><strong>Shipper</strong>.</li>
+</ol>
+</li>
+<li>Drag and drop a ComboBox from the toolbox to the new column.</li>
+</ol>
+</li>
+<li>The 3 ComboBox will be show data from :
+<ol>
+<li>CustomerID.</li>
+<li>EmployeeID.</li>
+<li>ShipVia.</li>
+</ol>
+</li>
+<li>Set the <strong>Name</strong> property of the 3 ComboBoxs to :
+<ol>
+<li>cmbCustomer.</li>
+<li>cmbEmployee.</li>
+<li>cmbShipper.</li>
+</ol>
+</li>
+<li>In <strong>ControlsDemo</strong> controller define this 3 tables:
+<ol>
+<li>Customers.</li>
+<li>Employees.</li>
+<li>Shippers.</li>
+</ol>
+</li>
+<li>Go to the <strong>code behind</strong> of ControlsDemo form and set:
+<ol>
+<li>cmbCustomer ListSource to be customer table from the controller.</li>
+<li>cmbCustomer ValueColumn to be CustomerID.</li>
+<li>cmbCustomer DisplayColumn to be CompanyName.</li>
+<li>cmbEmployee ListSource to be Employees table from the controller.</li>
+<li>cmbEmployee ValueColumn to be EmployeeID.</li>
+<li>cmbEmployee DisplayColumn to be LastName.</li>
+<li>cmbShipper ListSource to be Shippers table from the controller.</li>
+<li>cmbShipper ValueColumn to be ShipperID.</li>
+<li>cmbShipper DisplayColumn to be CompanyName.</li>
+</ol>
+</li>
+<li>Build and test.</li>
+<li>Add <strong>Where</strong> To show record where the order <strong>ShipCountry</strong> equal to <strong>UK</strong>.</li>
+<li>Build and test.</li>
+<li>Set the <strong>cmbCustomer</strong> to show only <strong>UK</strong> customers.</li>
+<li>Build and test.</li>
+<li>Set the <strong>cmbEmployee</strong> to show only <strong>UK</strong> Employees.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-list-controls-results.html">Exercise List Controls results</a></li>
+</ul>
+
+<h1 id="exercise-binding-controls">Exercise - Binding Controls</h1>
+<ol>
+<li>Add new UIController to the Exercises folder, name the new UIController <strong>ShowEmployeesDataInTabs</strong>.</li>
+<li>Set the <strong>Employees</strong> table as the main table</li>
+<li>Add local column type <strong>NumberColumn</strong>, name <strong>TabValue</strong>, set the default value to be 1 (use ).</li>
+<li>Add a method name it <strong>GetFullName</strong>, return type <strong>Text</strong>, return FirstName and LastName (remember to use trim and add empty space).</li>
+<li>Build and go to the form designer.</li>
+<li>Add <strong>Employee ID</strong> and the method <strong>GetFullName</strong> to the top left of the screen.</li>
+<li>Add a <strong>Tab control</strong> to the form.</li>
+<li>Set the Tab control <strong>Properites</strong>:
+<ol>
+<li>Set the <strong>Valuse</strong> to &quot;1,2,3,4,5&quot;.</li>
+<li>Set the <strong>DisplayValues</strong> to &quot;Personal,Address,Contact,Notes,Extra&quot;.</li>
+<li>Set the <strong>Style</strong> to <strong>Flat</strong>.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Personal</strong> tab:
+<ol>
+<li>LastName.</li>
+<li>FirstName.</li>
+<li>Title.</li>
+<li>TitleOfCourtesy.</li>
+<li>BirthDate.</li>
+<li>HireDate.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Adress</strong> tab:
+<ol>
+<li>Address.</li>
+<li>City.</li>
+<li>Region.</li>
+<li>PostalCode.</li>
+<li>Country.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Contact</strong> tab:
+<ol>
+<li>HomePhone.</li>
+<li>Extension.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Notes</strong> tab:
+<ol>
+<li>Notes.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Extra</strong> tab:
+<ol>
+<li>ReportTo.</li>
+<li>PhotoPath.</li>
+</ol>
+</li>
+<li>Build and test.</li>
+<li>In the <strong>Notes</strong> tab, make the Notes <strong>TextBox</strong> bigger, chance it's <strong>Properites</strong>:
+<ol>
+<li>Set the <strong>Multiline</strong> to true.</li>
+<li>Set the <strong>Alignment</strong> to &quot;TopLeft&quot;.</li>
+</ol>
+</li>
+<li>Build and test.</li>
+<li>Add one more instance of the employees table to the <strong>ShowEmployeesDataInTabs</strong> controller (Remember to name it a different name).</li>
+<li>In the <strong>Extra</strong> tab, change the <strong>ReportsTo</strong> from TextBox to ComboBox.</li>
+<li>Set the Name of the new ComboBox to be <strong>cmbReportsTo</strong>.</li>
+<li>Set the ListSource to the new employees table instance.</li>
+<li>set the ValueColumn to be EmployeeID.</li>
+<li>set the DisplayColumn to be FirstName.</li>
+<li>Add ListWhere to show all employees that there employeeID is not the main table employee ID.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-binding-controls-results.html">Exercise Binding Controls results</a></li>
+</ul>
+
+<h1 id="exercise-keyboard-handlers">Exercise - Keyboard Handlers</h1>
+<ol>
+<li>In “ShowRegions”, add a handler for the F9 key that displays the message &quot;I am handling the F9 keyboard event!”</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-keyboard-handlers-results.html">Exercise Keyboard Handlers results</a></li>
+</ul>
+
+<h1 id="exercise-using-anonymous-methods">Exercise - Using Anonymous Methods</h1>
+<ol>
+<li>In “ShowRegions”, change the handler for the F9 key to use the sorter anonymous method.</li>
+<li>Add one more handler for the F10 key using anonymous method syntax.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-keyboard-events-results.html">Exercise Keyboard Events results</a></li>
+</ul>
+
+<h1 id="exercise-handlers-and-the-stack">Exercise - Handlers and the stack</h1>
+<ol>
+<li>In  the **Northwind.Customers project ** under the <strong>Exercises</strong> name space open <strong>ShowCustomerPerRegion</strong>.</li>
+<li>Add handler for the F10 key that displays the message &quot;ShowCustomerPerRegion: F10 keyboard event!”</li>
+<li>Build and test.</li>
+<li>Notice that when you are in the ShowCustomerPerRegion you will get the two messages.</li>
+</ol>
+<ul>
+<li><a href="exercise-handlers-and-the-stack-results.html">Exercise Handlers and the stack results</a></li>
+</ul>
+
+<h1 id="exercise-handled">Exercise - Handled</h1>
+<ol>
+<li>In  <strong>ShowCustomerPerRegion</strong>.</li>
+<li>set Handled to <strong>true</strong>.</li>
+<li>Build and test.</li>
+<li>Notice that when you are in the ShowCustomerPerRegion you will get only the ShowCustomerPerRegion messages.</li>
+</ol>
+<ul>
+<li><a href="exercise-handled-results.html">Exercise Handled results</a></li>
+</ul>
+
+<h1 id="exercise-handlerscope">Exercise - HandlerScope</h1>
+<ol>
+<li>In  <strong>ShowRegions</strong>.</li>
+<li>set the F9  Handler, HandlerScope to be CurrentTaskOnly.</li>
+<li>Build and test.</li>
+<li>Notice that when you are in the ShowCustomerPerRegion you will no loner react to the F9 key storks.</li>
+</ol>
+<ul>
+<li><a href="exercise-handlerscope-results.html">Exercise HandlerScope results</a></li>
+</ul>
+
+<h1 id="exercise-bindenables">Exercise - BindEnables</h1>
+<ol>
+<li>In  <strong>ShowRegions</strong>.</li>
+<li>Using the <strong>hand</strong> snippet, add handler for the F5 key that will displays the <strong>ShowCustomerPerRegion</strong>.</li>
+<li>Build and test.</li>
+<li>Change the new F5 handler to use <strong>Var</strong>.</li>
+<li>Add BindEnabled limit the handler to be enabled only if RegionID is equal to one.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-bindenables-results.html">Exercise BindEnables results</a></li>
+</ul>
+
+<h1 id="exercise-commands">Exercise - Commands</h1>
+<ol>
+<li>In  <strong>ShowRegions</strong>.</li>
+<li>Add handler for Command <strong>UndoChangesInRow</strong>.</li>
+<li>set the handler e.Handled value using Common.ShowYesNoMessageBox and displays a message &quot;Are you sure you want to undo current row changes&quot;.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-commands-results.html">Exercise Commands results</a></li>
+</ul>
+
+<h1 id="exercise-raise">Exercise - Raise</h1>
+<ol>
+<li>In  <strong>ShowRegions</strong>.</li>
+<li>Add two buttons to the form:
+<ol>
+<li>Next row raising GoToNextRow.</li>
+<li>Previous row raising GoToPreviousRow.</li>
+</ol>
+</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-raise-results.html">Exercise Raise results</a></li>
+</ul>
+
+<h1 id="exercise-customcommand">Exercise - CustomCommand</h1>
+<ol>
+<li>In  <strong>ShowRegions</strong>, create a custom command named <strong>MySpecialCommand</strong>.</li>
+<li>Add a handler to the <strong>MySpecialCommand</strong> that display the message: <strong>My Special Command Handler</strong>.</li>
+<li>Raise the <strong>MySpecialCommand</strong>, using the Raise method from the OnStart.</li>
+<li>Raise the <strong>MySpecialCommand</strong>, using a button on the screen.</li>
+<li>Set a message box to the leave row to show <strong>OnLeaveRow</strong>.</li>
+<li>Set the <strong>MySpecialCommand</strong> Precondition to leave row.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-customcommand-results.html">Exercise CustomCommand results</a></li>
+</ul>
+
+<h1 id="exercise-invoke">Exercise - Invoke</h1>
+<ol>
+<li>In <strong>ShowRegions</strong>.</li>
+<li>Change the Raise of <strong>MySpecialCommand</strong> in the <strong>OnLeaveRow</strong> to Invoke.</li>
+<li>Build and test.</li>
+<li>Notice the grid will not show data until you press <strong>OK</strong> button in the message box.</li>
+<li>Try it again with Raise.</li>
+</ol>
+<ul>
+<li><a href="exercise-invoke-results.html">Exercise Invoke results</a></li>
+</ul>
+
+<h1 id="exercise-subform">Exercise - Subform</h1>
+<ol>
+<li>In <strong>ShowEmployees</strong>.</li>
+<li>Add instance of <strong>ShowEmployeeCars</strong>.(You can use drag and drop of the class).</li>
+<li>Add an action method (no return value and no parameters received) name it RunShowEmployeesCars.</li>
+<li><strong>RunShowEmployeesCars</strong> will call the new instance Run Method.</li>
+<li>Build.</li>
+<li>Open the <strong>ShowEmployees</strong> form.</li>
+<li>Redoes the size of the grid, and add a subform.</li>
+<li>Go to the code behind of the form (F7).</li>
+<li>After the <strong>InitializeComponent()</strong> set the subform controller.</li>
+<li>Build and test.</li>
+<li>Notice that you get data only for the first employee.</li>
+<li>In <strong>ShowEmployeeCars</strong>.</li>
+<li>In the <strong>Run</strong> method.</li>
+<li>Clear the where.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-subform-results.html">Exercise Subform results</a></li>
+</ul>
+
+<h1 id="exercise-flowuicontroller">Exercise - FlowUIController</h1>
+<ol>
+<li>Create a <strong>FlowUIController</strong> named <strong>FlowProducts</strong>. (use the UIController template)</li>
+<li>Set the <strong>Products</strong> table as you and display the following data on the screen:
+<ol>
+<li>ProductID</li>
+<li>ProductName</li>
+<li>CategoryID</li>
+<li>UnitPrice</li>
+<li>UnitsInStock</li>
+<li>UnitsOnOrder</li>
+</ol>
+</li>
+<li>Build and test the program.</li>
+<li>Add the columns to the columns collection in a different order.</li>
+<li>Run the program and test the tab order.</li>
+<li>Fix the tab order. Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-flowuicontroller-results.html">Exercise FlowUIController results</a></li>
+</ul>
+
+<h1 id="exercise-flow-add">Exercise - Flow Add</h1>
+<ol>
+<li>In <strong>FlowProducts</strong>.</li>
+<li>Add relation to <strong>Categories</strong> entity.</li>
+<li><strong>between</strong> the <strong>ProductID</strong> column and the <strong>ProductName</strong> column:
+<ol>
+<li>Using the <strong>Flow.Add</strong> method.</li>
+<li>Displays the <strong>Categories</strong>, <strong>CategoryName</strong>.</li>
+</ol>
+</li>
+<li>Build and test.</li>
+<li>Add a message box with out the <strong>Flow.Add</strong> method.</li>
+<li>Build and test.</li>
+<li>Notice that this message box will run immediately when you run the program.</li>
+<li>Remove that new message box.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-flow-add-results.html">Exercise Flow Add results</a></li>
+</ul>
+
+<h1 id="exercise-flow-parameters">Exercise - Flow Parameters</h1>
+<ol>
+<li>In <strong>FlowProducts</strong>.</li>
+<li>Change the code of the message box between the <strong>ProductID</strong> column and the <strong>ProductName</strong> column:
+<ol>
+<li>Display the message only when the user <strong>navigates backward</strong>.</li>
+<li>Build and test.</li>
+<li>Show the message only when the user presses the <kbd>Tab</kbd> to navigate out from the <strong>ProductID</strong> column.</li>
+</ol>
+</li>
+<li>Build and test.</li>
+<li>After the <strong>CategoryID</strong> column Add a Flow add method:
+<ol>
+<li>Show a <strong>error</strong> message and prevent the user from leaving the column, if CategoryID is equal to zero.</li>
+<li>Build and test.</li>
+<li>Display the error message only when the user <strong>navigates forward</strong>.</li>
+</ol>
+</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-flow-parameters-results.html">Exercise Flow Parameters results</a></li>
+</ul>
+
+<h1 id="exercise-expandbefore-and-expandafter">Exercise - ExpandBefore and ExpandAfter</h1>
+<ol>
+<li>In <strong>FlowProducts</strong>.</li>
+<li>Add <strong>two</strong> new methods :
+<ol>
+<li><strong>GetTotalStockValue</strong> return <strong>Number</strong>, calculate the value of UnitPrice times UnitsInStock.</li>
+<li><strong>GetTotalOnOrderValue</strong> return <strong>Number</strong>, calculate the value of UnitPrice times UnitsOnOrder.</li>
+</ol>
+</li>
+<li>Before the <strong>UnitsInStock</strong> column add Flow that will show a message box with the value of <strong>GetTotalStockValue</strong>.</li>
+<li>After the <strong>UnitsOnOrder</strong> column add Flow that will show a message box with the value of <strong>GetTotalOnOrderValue</strong>.</li>
+<li>Build and test.</li>
+<li>Notice the location of the active textBox after you zoom on this two textBoxes using the <kbd>F5</kbd>.</li>
+</ol>
+<ul>
+<li><a href="exercise-expandbefore-and-expandafter-results.html">Exercise ExpandBefore and ExpandAfter results</a></li>
+</ul>
+
+<h1 id="exercise-blocks-in-flow">Exercise - Blocks in Flow</h1>
+<ol>
+<li>In <strong>FlowProducts</strong>.</li>
+<li>After the Product Name display two message box :
+<ol>
+<li>First message box  will show &quot;Right now at the &quot; + &quot;morning&quot; or &quot;evening&quot;, according to the current time. (use Time.Now.Hour and a new method that will return the PArt of day).</li>
+<li>Second message box will show <strong>&quot;you have total value of &quot;</strong> + <strong>UnitsInStock</strong> times <strong>Units On Order</strong>. (use a new method that will return the total value)</li>
+</ol>
+</li>
+<li>Build and test.</li>
+<li>make the two message box show <strong>only</strong> if you have Units In Stock and on Order</li>
+<li>Build and test.</li>
+<li>If you <strong>do not have</strong> Units In Stock <strong>or</strong> on Order, show a message box <strong>&quot;There is an error in calculation&quot;</strong>.</li>
+</ol>
+<ul>
+<li><a href="exercise-blocks-in-flow-results.html">Exercise Blocks in Flow results</a></li>
+</ul>
+
+<h1 id="exercise-date-and-time">Exercise Date and Time</h1>
+<ol>
+<li>Add a new menu entry &quot;My Age&quot;</li>
+<li>Create data types for the following:
+<ol type="a">
+<li>myBirthDay (new Date())</li>
+<li>myBirthTime (new Time())</li>
+<li>myAge (Number)</li>
+<li>timeOfDay (Text)</li>
+</ol>
+</li>
+<li>Update timeOfDay with &quot;morning&quot; or &quot;afternoon&quot; depending on the birth hour.</li>
+<li>Display a single message with the age, year and time of birth.</li>
+<li>Build and test</li>
+</ol>
+
+<h1 id="exercise-migrated-data-types">Exercise - Migrated data types</h1>
+<ol>
+<li>Add a new menu entry &quot;Migrated Data Types&quot;</li>
+<li>Create data types for the following:
+<ol type="a">
+<li>Name (Text) – Your Name</li>
+<li>Price (Number) – Set a number</li>
+<li>Quantity (Number) – Set a number</li>
+<li>Total (Price*Quantity)</li>
+<li>Current date (Date)</li>
+<li>Current Time (Time)</li>
+<li>Membership (Bool)</li>
+</ol>
+</li>
+<li>Display a single message with the invoice information and total.</li>
+<li>Build and test.</li>
+</ol>
+
+<h1 id="lambda-exercise">Lambda Exercise</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/exQ1REKdTns?list=PL1DEQjXG2xnKdNAruM6k0XTEKJlYljYNs" frameborder="0" allowfullscreen></iframe>
+
+
+                    <br /><hr />
+                </div><!-- .content -->
+
+            </div><!-- .container-->
+
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-4806432-3', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'exercise-application-structure.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>
