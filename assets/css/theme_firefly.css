@@ -35,14 +35,21 @@ border: 1px solid #dddddd;
 	float: left;
 	overflow: hidden;
 	}
+	@media screen{
 .content {
 /*	padding: 0 0 0 380px; */
 	padding: 0px 10px 0px 370px;
 	display: block;
 }
+	}
 
 /* Left Sidebar
 -----------------------------------------------------------------------------*/
+@media print{
+	.left-sidebar{
+		visibility:collapse
+	}
+}
 .left-sidebar {
 	float: left;
 	width: 350px;
