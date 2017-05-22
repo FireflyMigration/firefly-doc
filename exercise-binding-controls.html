@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Exercise - Binding Controls</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="exercise-binding-controls">Exercise - Binding Controls</h1>
+<ol>
+<li>Add new UIController to the Exercises folder, name the new UIController <strong>ShowEmployeesDataInTabs</strong>.</li>
+<li>Set the <strong>Employees</strong> table as the main table</li>
+<li>Add local column type <strong>NumberColumn</strong>, name <strong>TabValue</strong>, set the default value to be 1 (use ).</li>
+<li>Add a method name it <strong>GetFullName</strong>, return type <strong>Text</strong>, return FirstName and LastName (remember to use trim and add empty space).</li>
+<li>Build and go to the form designer.</li>
+<li>Add <strong>Employee ID</strong> and the method <strong>GetFullName</strong> to the top left of the screen.</li>
+<li>Add a <strong>Tab control</strong> to the form.</li>
+<li>Set the Tab control <strong>Properites</strong>:
+<ol>
+<li>Set the <strong>Valuse</strong> to &quot;1,2,3,4,5&quot;.</li>
+<li>Set the <strong>DisplayValues</strong> to &quot;Personal,Address,Contact,Notes,Extra&quot;.</li>
+<li>Set the <strong>Style</strong> to <strong>Flat</strong>.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Personal</strong> tab:
+<ol>
+<li>LastName.</li>
+<li>FirstName.</li>
+<li>Title.</li>
+<li>TitleOfCourtesy.</li>
+<li>BirthDate.</li>
+<li>HireDate.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Adress</strong> tab:
+<ol>
+<li>Address.</li>
+<li>City.</li>
+<li>Region.</li>
+<li>PostalCode.</li>
+<li>Country.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Contact</strong> tab:
+<ol>
+<li>HomePhone.</li>
+<li>Extension.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Notes</strong> tab:
+<ol>
+<li>Notes.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Extra</strong> tab:
+<ol>
+<li>ReportTo.</li>
+<li>PhotoPath.</li>
+</ol>
+</li>
+<li>Build and test.</li>
+<li>In the <strong>Notes</strong> tab, make the Notes <strong>TextBox</strong> bigger, chance it's <strong>Properites</strong>:
+<ol>
+<li>Set the <strong>Multiline</strong> to true.</li>
+<li>Set the <strong>Alignment</strong> to &quot;TopLeft&quot;.</li>
+</ol>
+</li>
+<li>Build and test.</li>
+<li>Add one more instance of the employees table to the <strong>ShowEmployeesDataInTabs</strong> controller (Remember to name it a different name).</li>
+<li>In the <strong>Extra</strong> tab, change the <strong>ReportsTo</strong> from TextBox to ComboBox.</li>
+<li>Set the Name of the new ComboBox to be <strong>cmbReportsTo</strong>.</li>
+<li>Set the ListSource to the new employees table instance.</li>
+<li>set the ValueColumn to be EmployeeID.</li>
+<li>set the DisplayColumn to be FirstName.</li>
+<li>Add ListWhere to show all employees that there employeeID is not the main table employee ID.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-binding-controls-results.html">Exercise Binding Controls results</a></li>
+</ul>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/17_Binding-Controls/03-Exercise-Binding-Controls/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree"</div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4806432-3', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'exercise-binding-controls.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>

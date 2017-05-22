@@ -55,6 +55,28 @@ Firefly is here to help and guide you through this process.
 We will examine each scenario and advise about the right solution for your specific application.</p>
 <p>With the delivery of the SQL version of the application, we will show you how to apply the solution
 and make sure that it works in SQL using the same tests cases you provide.</p>
+<h2 id="dynamic-names-of-tables">Dynamic names of tables</h2>
+<h3 id="using-logical-names">Using Logical Names</h3>
+<p>Logical names can be used in two places:</p>
+<ol>
+<li><p>Using logical names for table names in the tables repository (Shift + F2) and set the logical name in runtime using the IniPut() function or by using different ini file for different systems / users.
+<img src="2017-03-09_17h08_35.png" alt="2017 03 09 17H08 35" /></p>
+</li>
+<li><p>In the dabases settings, using logical name as the location</p>
+</li>
+</ol>
+<p><img src="2017-03-16_11h01_12.png" alt="2017 03 16 11H01 12" /></p>
+<p>To find usages of logical names in your tables, search for &quot;%&quot; in the Models folders, as follows:
+<img src="2017-05-18_12h59_40.png" alt="2017 05 18 12H59 40" /></p>
+<p>Once you have all the logical names that are used in your tables, find their optional values in the ini file and by searching for &quot;u.IniPut(&quot;[MAGIC_LOGICAL_NAMES]yourlogicalname&quot;.
+Create a list of all the logical names and their possible values and send us, so that we will make sure that all the instances of each table will be migrated.</p>
+<h3 id="using-expresssions-for-table-name">Using Expresssions for Table Name</h3>
+<p>Using expressions for table names in DB tables (Ctrl + D). For example, a program can change the table name so that it ends with the terminal number (using the Term() function).<br />
+<strong>To find usage of expressions in Ctrl+D search for the text &quot;EntityName = &quot;.</strong></p>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+     Orders.EntityName = "Orders2016.DAT";
+} </code></pre>
 <h2 id="referencing-data-tables-as-regular-files">Referencing data tables as regular files</h2>
 <p>In Btrieve, all tables are files on disk that could be copied, renamed, deleted just like any other file.
 In SQL the tables are stored in SQL server database and are not accessed from the file system.</p>
@@ -83,6 +105,10 @@ In SQL the tables are stored in SQL server database and are not accessed from th
 <td>IOExist</td>
 <td>u.IOExist(</td>
 </tr>
+<tr>
+<td>IOSize</td>
+<td>u.IOSize(</td>
+</tr>
 </tbody>
 </table>
 <h4 id="migrating-from-unipaas-may-also-include-the-following">Migrating from uniPaaS may also include the following:</h4>
@@ -110,6 +136,10 @@ In SQL the tables are stored in SQL server database and are not accessed from th
 <td>FileExist</td>
 <td>u.FileExist(</td>
 </tr>
+<tr>
+<td>FileSize</td>
+<td>u.FileSize(</td>
+</tr>
 </tbody>
 </table>
 <h4 id="searching-for-usages-in-visual-studio">Searching for usages in Visual Studio</h4>
@@ -120,7 +150,7 @@ In SQL the tables are stored in SQL server database and are not accessed from th
 <li>In Find What: enter 'u.IO'</li>
 <li>In Look In: select 'Entire Solution'</li>
 <li>Press 'Find All'</li>
-<li>The result wll display in &quot;Find Result #&quot; window</li>
+<li>The result will be displayed in &quot;Find Result #&quot; window</li>
 <li>Click on each result to go to the code (ignore the cases found in the ENV namespace)</li>
 </ol>
 <p><img src="2017-03-09_16h52_36.png" alt="2017 03 09 16H52 36" /></p>
@@ -146,26 +176,6 @@ In SQL the tables are stored in SQL server database and are not accessed from th
 {
      ENV.Windows.OSCommand("cmd /C xcopy " + "Orders.DAT Orders2016.DAT");
 } </code></pre>
-<h2 id="dynamic-names-of-tables">Dynamic names of tables</h2>
-<p>The table names can be changed in runtime in many ways:</p>
-<h3 id="using-logical-names">Using Logical Names</h3>
-<p>Logical names can be used in two places:</p>
-<ol>
-<li>Using logical names for table names in the tables repository (Shift + F2) and set the logical name in runtime using the IniPut() function or by using different ini file for different systems / users.
-<img src="2017-03-09_17h08_35.png" alt="2017 03 09 17H08 35" /></li>
-</ol>
-<p><strong>Look for table with Logical Names in their DB Name in the Table Repository</strong></p>
-<ol start="2">
-<li>In the dabases settings, using logical name as the location</li>
-</ol>
-<p><img src="2017-03-16_11h01_12.png" alt="2017 03 16 11H01 12" /></p>
-<h3 id="using-expresssions-for-table-name">Using Expresssions for Table Name</h3>
-<p>Using expressions for table names in DB tables (Ctrl + D). For example, a program can change the table name so that it ends with the terminal number (using the Term() function).<br />
-<strong>To trace table name changes in Ctrl+D search for the text &quot;EntityName = &quot;.</strong></p>
-<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
-{
-     Orders.EntityName = "Orders2016.DAT";
-} </code></pre>
 <h2 id="pervasive-a.k.a-actian-psql-and-sql-commands-ctrl-q">Pervasive (a.k.a Actian) PSQL and SQL Commands (Ctrl + Q)</h2>
 <p>If you have used PSQL to enable SQL commands (Direct SQL) to your tables via ODBC, the SQL code may need to be adjusted.
 <strong>Search for “new DynamicSQL” to find all the usages in your application.</strong></p>
@@ -176,39 +186,16 @@ In SQL the tables are stored in SQL server database and are not accessed from th
 FROM ""Order Details"" 
 WHERE ""CustomerID""=:1";
 } </code></pre>
-<h3 id="changing-table-names">Changing Table Names</h3>
-<p>In Magic, each table has a name (caption) and a DB Table name.
-In Btrieve the DB Table name usually refer to the file name, which might be invalid SQL name.
-In this case, we use the captions as SQL names for the table and fix them so that there will be SQL style without any spaces for example &quot;my table name&quot; will be changed &quot;MyTableName&quot;.
-This can affect existing SQL Commands that use different table names</p>
-<h3 id="changing-column-names">Changing Column Names</h3>
-<p>As with table names, Btrieve has no notion of Column names. The only thing that matters in the table structure is the columns position.
-In SQL, column names are important and are based on the columns captions of the original application.
-If your application had SQL commands which uses different columns names, they could be affected.</p>
-<h3 id="changing-column-storage">Changing Column Storage</h3>
-<p>Most applications store dates as char(8) in the database and store times as numbers.
-In Pervasive PSQL, there could be non-standard ways to store data values for date, time or boolean columns.
-For example, dates might be stored as number instead of char(8).</p>
-<h2 id="multiple-entries-in-table-repository-for-the-same-data-file">Multiple Entries in Table Repository for the same Data File</h2>
+<h2 id="sharing-the-same-data-file-by-different-tables">Sharing the same data file by different tables</h2>
+<p>A data file can be shared by different applications, or even be used by multiple tables of the same application.
+For example, you may use the Cities table in several applications that refer to the same physical data file.
+If a new city is added by one of the application, it will be available to all applications that use the same file.</p>
+<p>Another example is when using the same data file by different tables:
+<img src="2017-05-18_13h34_51.png" alt="2017 05 18 13H34 51" /></p>
+<p>Another version of this case may also be found in EntityName expressions, as follows:
+<img src="2017-05-18_17h43_51.png" alt="2017 05 18 17H43 51" /></p>
 <h3 id="using-the-same-table-structure-with-different-column-names">Using the same table structure with different column names</h3>
 <p>In Btrieve, it is possible to use the same data file with different entries in the table repository (Shift + F2) that have the same structure and differ only by the column names.</p>
-<h3 id="using-the-same-table-with-different-structures">Using the same table with different structures</h3>
-<p>In Btrieve it is possible to refer to the same data file with different table structure.
-For example, if a table has the following fields:</p>
-<ol>
-<li>FirstName, alpha 50</li>
-<li>LastName, alpha 50</li>
-<li>Address, alpha 100</li>
-<li>Phone, alpha 50</li>
-</ol>
-<p>It is possible to create a second table structure for the same data file,
-which has the following structure:</p>
-<ol>
-<li>FirestName, alpha 50</li>
-<li>LastName, alpha 50</li>
-<li><strong>Filler, alpha 150</strong><br />
-Both structures will open the file and show the data in it.</li>
-</ol>
 <h2 id="dll-calls-to-btrieve-w32mkde">Dll calls to Btrieve (W32mkde)</h2>
 <p>This is not very common but we have seen some applications that have calls to the Btrieve dll.
 <strong>Search for &quot;W32mkde&quot;</strong> to check if such calls exists in your application.<br />
