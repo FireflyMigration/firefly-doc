@@ -50,6 +50,11 @@ border: 1px solid #dddddd;
 		visibility:collapse
 	}
 }
+@media print{
+iframe{
+	display:none
+}
+}
 .left-sidebar {
 	float: left;
 	width: 350px;
