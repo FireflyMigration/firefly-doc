@@ -2,7 +2,7 @@
 
 1.	Create a folder named “Exercises” in the main project (Right-Click on the Northwind project -> Add -> New Folder).
 2.	In the “Exercises” folder, create a UIController named “ShowProducts”.
-3.	Define the Products table at the beginning of the controller class.
+3.	Which displays data from Products.
 4.	Open the Form Designer and add a grid with the following columns:
     1.	ProductID
     2.	ProductName
