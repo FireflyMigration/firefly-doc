@@ -69,14 +69,41 @@ namespace Northwind.Exercises.KeepViewVisibleAfterExit
         {
             View = () => new Views.ShowCategoriesView(this);
         }
-+       protected override void OnEnterRow()
+    }
+}
+```
+Your **ShowCategoriesView** class should look like :
+```csdiff
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using Firefly.Box;
+using Firefly.Box.UI.Advanced;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Exercises.KeepViewVisibleAfterExit.Views
+{
+    partial class ShowCategoriesView : Shared.Theme.Controls.Form
+    {
+        ShowCategories _controller;
+        public ShowCategoriesView(ShowCategories controller)
+        {
+            _controller = controller;
+            InitializeComponent();
+        }
+
++       private void button1_Click(object sender, ButtonClickEventArgs e)
 +       {
-+           Cached<ShowProducts>().Run(Categories.CategoryID);
++           new ShowProducts().Run(_controller.Categories.CategoryID);
 +       }
     }
 }
 ```
-
 The **ShowProducts** location need to be set as :  
 ![2017-05-29_15h09_21](2017-05-29_15h09_21.png) 
   

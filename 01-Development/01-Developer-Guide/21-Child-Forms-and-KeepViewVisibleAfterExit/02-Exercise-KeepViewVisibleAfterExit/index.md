@@ -15,7 +15,7 @@
         1. Place a grid with the Categories details with the following:
            1.  CategoryID.  
            2.  CategoryName.  
-        2. Call using **Cache** to **ShowProducts** from the **OnEnterRow** method.  
+        2. Place a button name it **Products**, call the  **ShowProducts** from the click event.  
 3. Add **ShowCategories** to the **ApplicationMdi**.
 4. Build and Test 
 
