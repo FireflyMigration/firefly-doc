@@ -8,3 +8,4 @@
 7. notice the tree like structure of the classes.
 8. use the right click menu on one of the classes to navigate to the main methods of the class.
 9. Right click on one of the UIControllers and go to the form.
+10. use to navigate back to go back the class controller
