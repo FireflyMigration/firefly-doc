@@ -1,4 +1,4 @@
-﻿# Exercise - Cached Keep View Visible After Exit result
+﻿# Exercise - Clicking on the Child Controller result
 
 Your **ShowCategories** class should look like :
 ```csdiff

@@ -1,4 +1,4 @@
-﻿# Exercise - Cached Keep View Visible After Exit
+﻿# Exercise - Clicking on the Child Controller
 
 1.	In **ShowCategories**.
 2.  Refactor the click event of the **Products button** to a method in the controller.   
