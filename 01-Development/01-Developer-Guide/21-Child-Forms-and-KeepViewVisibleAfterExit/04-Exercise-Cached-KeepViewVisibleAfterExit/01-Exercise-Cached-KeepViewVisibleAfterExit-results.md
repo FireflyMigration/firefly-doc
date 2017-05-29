@@ -1,4 +1,4 @@
-﻿# Exercise - Keep View Visible After Exit result
+﻿# Exercise - Cached Keep View Visible After Exit result
 
 Your **ShowProducts** class should look like :
 ```csdiff
