@@ -20,6 +20,7 @@ namespace Northwind.Exercises.KeepViewVisibleAfterExit
         public ShowCategories()
         {
             From = Categories;
++           RegisterCachedController<ShowProducts>(CalProducts);
         }
 
         public void Run()
@@ -31,42 +32,9 @@ namespace Northwind.Exercises.KeepViewVisibleAfterExit
         {
             View = () => new Views.ShowCategoriesView(this);
         }
-+       internal void CalProducts()
-+       {
-+           Cached<ShowProducts>().Run(Categories.CategoryID); 
-+       }
-    }
-}
-```
-Your **ShowCategoriesView** class should look like :
-```csdiff
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using Firefly.Box;
-using Firefly.Box.UI.Advanced;
-using ENV;
-using ENV.Data;
-
-namespace Northwind.Exercises.KeepViewVisibleAfterExit.Views
-{
-    partial class ShowCategoriesView : Shared.Theme.Controls.Form
-    {
-        ShowCategories _controller;
-        public ShowCategoriesView(ShowCategories controller)
+        internal void CalProducts()
         {
-            _controller = controller;
-            InitializeComponent();
-        }
-
-        private void button1_Click(object sender, ButtonClickEventArgs e)
-        {
--           new ShowProducts().Run(_controller.Categories.CategoryID);
-+           _controller.CalProducts();
+            Cached<ShowProducts>().Run(Categories.CategoryID); 
         }
     }
 }

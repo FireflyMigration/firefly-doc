@@ -1,8 +1,6 @@
 ﻿# Exercise - Clicking on the Child Controller
 
-1.	In **ShowCategories**.
-2.  Refactor the click event of the **Products button** to a method in the controller.   
-3.  Change the call to use Cached.
-4. Add **ShowCategories** to the **ApplicationMdi**.
-5. Build and Test 
+1. In **ShowCategories**.
+2. Add Register Cached Controller to the constructor.   
+3. Build and Test 
 
