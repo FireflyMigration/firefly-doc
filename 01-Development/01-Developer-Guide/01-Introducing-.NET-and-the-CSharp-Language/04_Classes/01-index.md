@@ -16,15 +16,12 @@ namespace Northwind.Training
 {
     class Animal
     {
-       public void Run()
-       {
-           public string Name;
-           public string AnimalType;
-+          public void DescribeYourSelf()
-+          {
-+               MessageBox.Show(this.Name + " is a " + this.AnimalType); 
-+          }  
-       }     
+        public string Name;
+        public string AnimalType;
++       public void DescribeYourSelf()
++       {
++           MessageBox.Show(this.Name + " is a " + this.AnimalType); 
++       }  
     }
 }
 ```
