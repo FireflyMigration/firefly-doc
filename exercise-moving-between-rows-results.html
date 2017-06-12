@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>In ShowOrderDetails Controller</title>
+    <title>Exercise - moving between rows result</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,28 +27,92 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="in-showorderdetails-controller">In ShowOrderDetails Controller</h1>
-<pre data-line="2,4" class="language-csdiff line-numbers"><code>-public void Run(Number orderId)
-public void Run(Number orderId,bool exitImmediately)
-{
-     Exit(ExitTiming.BeforeRow, () =&gt; exitImmediately);
-    Where.Clear();
-    Where.Add(Order_Details.OrderID.BindEqualTo(orderId));
-    Execute();
-} </code></pre>
-<h3 id="in-showorders-controller">In ShowOrders Controller</h3>
-<pre data-line="1,2,3,4,9" class="language-csdiff line-numbers"><code>protected override void OnEnterRow()
-{
-    Cached&lt;ShowOrderDetails&gt;().Run(Orders.OrderID,true);
-}
+                <div class="content"><h1 id="exercise-moving-between-rows-result">Exercise - moving between rows result</h1>
+<p>Your <strong>ShowCategories</strong> class should look like :</p>
+<pre data-line="31,32,33,34,38" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
 
-internal void RunOrderDetails()
+namespace Northwind.Exercises.KeepViewVisibleAfterExit
 {
--   Cached&lt;ShowOrderDetails&gt;().Run(Orders.OrderID);
-    Cached&lt;ShowOrderDetails&gt;().Run(Orders.OrderID,false);
+    public class ShowCategories : UIControllerBase
+    {
+
+        public readonly Models.Categories Categories = new Models.Categories();
+
+        public ShowCategories()
+        {
+            From = Categories;
+            RegisterCachedController&lt;ShowProducts&gt;(CalProducts);
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () =&gt; new Views.ShowCategoriesView(this);
+        }
+        protected override void OnEnterRow()
+        {
+            Cached&lt;ShowProducts&gt;().Run(Categories.CategoryID, true);
+        }
+        internal void CalProducts()
+        {
+-           Cached&lt;ShowProducts&gt;().Run(Categories.CategoryID); 
+            Cached&lt;ShowProducts&gt;().Run(Categories.CategoryID,false); 
+        }
+    }
 } </code></pre>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3Sb88aYW-dA?list=PL1DEQjXG2xnKZADlPXY_P61ujx3lGsP6m" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/21-Child-Forms-and-KeepViewVisibleAfterExit/07-Refreshing-the-Child-Controller-when-moving-between-rows.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<p>Your <strong>ShowProducts</strong> class should look like :</p>
+<pre data-line="28,29,30,31,32,33,34" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Exercises.KeepViewVisibleAfterExit
+{
+    public class ShowProducts : UIControllerBase
+    {
+
+        public readonly Models.Products Products = new Models.Products();
+ 
+ 
+        public ShowProducts()
+        {
+            From = Products;
+        }
+ 
+-       public void Run(Number pCategoryID)
+-       {
+-           Where.Clear();
+-           Where.Add(Products.CategoryID.IsEqualTo(pCategoryID));
+-           Execute();
+-       }
+        public void Run(Number pCategoryID,Bool pExit)
+        {
+            Exit(ExitTiming.BeforeRow, () =&gt; pExit);
+            Where.Clear();
+            Where.Add(Products.CategoryID.IsEqualTo(pCategoryID));
+            Execute();
+        }
+        protected override void OnLoad()
+        {
+            KeepViewVisibleAfterExit = true;
+            View = () =&gt; new Views.ShowProductsView(this);
+        }
+    }
+} </code></pre>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/21-Child-Forms-and-KeepViewVisibleAfterExit/08-Exercise-moving-between-rows/01-Exercise-moving-between-rows-results.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -93,7 +157,7 @@ internal void RunOrderDetails()
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'refreshing-the-child-controller-when-moving-between-rows.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'exercise-moving-between-rows-results.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

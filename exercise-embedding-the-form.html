@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>in the ShowOrderDetails Controller</title>
+    <title>Exercise - Embedding the Form</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,24 +27,23 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="in-the-showorderdetails-controller">in the ShowOrderDetails Controller</h1>
-<pre data-line="2,12" class="language-csdiff line-numbers"><code>-public void Run(Number orderId,bool exitImmediately)
-public void Run(Number orderId)
-{
--   Exit(ExitTiming.BeforeRow, () =&gt; exitImmediately);
-    Where.Clear();
-    Where.Add(Order_Details.OrderID.BindEqualTo(orderId));
-    Execute();
-}
-
-protected override void OnLoad()
-{
-    Exit(ExitTiming.BeforeRow, () =&gt; u.Level(1) == "RP");
-    KeepViewVisibleAfterExit = true;
-    View = () =&gt; new Views.ShowOrderDetailsView(this);
-} </code></pre>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fPW2AwsACTw?list=PL1DEQjXG2xnKZADlPXY_P61ujx3lGsP6m" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/21-Child-Forms-and-KeepViewVisibleAfterExit/09-Migrated-Patterns-using-the-Level-Method.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                <div class="content"><h1 id="exercise-embedding-the-form">Exercise - Embedding the Form</h1>
+<ol>
+<li>In <strong>ShowCategories</strong>.</li>
+<li>Make the grid smaller and the form a bit bigger so you can fit the <strong>ShowProducts</strong> inside.</li>
+<li>In <strong>ShowProducts form</strong>.</li>
+<li>Set the <strong>Child Window</strong> property to true.</li>
+<li>Change the <strong>location</strong> property to fit the location inside the ShowCategories form.</li>
+<li>Build and test.</li>
+<li>Set the <strong>TitleBar</strong> property to false.</li>
+<li>Build and test.</li>
+<li>Set the <strong>Border</strong> property to None.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-embedding-the-form-results.html">Exercise Embedding the Form results</a></li>
+</ul>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/21-Child-Forms-and-KeepViewVisibleAfterExit/12-Exercise-Embedding-the-Form/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -89,7 +88,7 @@ protected override void OnLoad()
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'migrated-patterns-using-the-level-method.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'exercise-embedding-the-form.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

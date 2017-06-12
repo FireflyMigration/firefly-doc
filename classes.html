@@ -37,20 +37,17 @@
 <li>We'll add a <code>DescribeYourself</code> method to the Animal Class.</li>
 </ul>
 <h3 id="animal-class">Animal Class</h3>
-<pre data-line="1,10,11,12,13" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
+<pre data-line="1,8,9,10,11" class="language-csdiff line-numbers"><code>using System.Windows.Forms;
 namespace Northwind.Training
 {
     class Animal
     {
-       public void Run()
-       {
-           public string Name;
-           public string AnimalType;
-           public void DescribeYourSelf()
-           {
-                MessageBox.Show(this.Name + " is a " + this.AnimalType); 
-           }  
-       }     
+        public string Name;
+        public string AnimalType;
+        public void DescribeYourSelf()
+        {
+            MessageBox.Show(this.Name + " is a " + this.AnimalType); 
+        }  
     }
 } </code></pre>
 <h3 id="classesandinstances-class">ClassesAndInstances class</h3>

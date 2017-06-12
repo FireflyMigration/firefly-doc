@@ -2545,6 +2545,166 @@ namespace Northwind.Exercises
 <li><a href="exercise-blocks-in-flow-results.html">Exercise Blocks in Flow results</a></li>
 </ul>
 
+<h1 id="exercise-keep-view-visible-after-exit">Exercise - Keep View Visible After Exit</h1>
+<ol>
+<li>Under the <strong>Exercises folder</strong>, create a new folder named <strong>KeepViewVisibleAfterExit</strong>.</li>
+<li>Create two  UIControllers:
+<ol>
+<li><strong>ShowProducts</strong>
+<ol>
+<li>Place a grid with the product details with the following:
+<ol>
+<li>CategoryID.</li>
+<li>ProductID.</li>
+<li>ProductName.</li>
+</ol>
+</li>
+<li>Change the X location of the Form to 650.</li>
+<li>In the <strong>Run</strong> method receive a parameter name <strong>pCategoryID</strong> type <strong>Number</strong>.</li>
+<li>Filter with the pCategoryID</li>
+<li>Set the <strong>KeepViewVisibleAfterExit</strong> to true (in the OnLoad() method)</li>
+</ol>
+</li>
+<li><strong>ShowCategories</strong></li>
+<li>Place a grid with the Categories details with the following:
+<ol>
+<li>CategoryID.</li>
+<li>CategoryName.</li>
+</ol>
+</li>
+<li>Place a button name it <strong>Products</strong>, call the  <strong>ShowProducts</strong> from the click event.</li>
+</ol>
+</li>
+<li>Add <strong>ShowCategories</strong> to the <strong>ApplicationMdi</strong>.</li>
+<li>Build and Test</li>
+</ol>
+<ul>
+<li><a href="exercise-keepviewvisibleafterexit-results.html">Exercise KeepViewVisibleAfterExit results</a></li>
+</ul>
+
+<h1 id="exercise-cached-keep-view-visible-after-exit">Exercise - Cached Keep View Visible After Exit</h1>
+<ol>
+<li>In <strong>ShowCategories</strong>.</li>
+<li>Refactor the click event of the <strong>Products button</strong> to a method in the controller.</li>
+<li>Change the call to use Cached.</li>
+<li>Add <strong>ShowCategories</strong> to the <strong>ApplicationMdi</strong>.</li>
+<li>Build and Test</li>
+</ol>
+<ul>
+<li><a href="exercise-cached-keepviewvisibleafterexit-results.html">Exercise Cached KeepViewVisibleAfterExit results</a></li>
+</ul>
+
+<h1 id="exercise-clicking-on-the-child-controller">Exercise - Clicking on the Child Controller</h1>
+<ol>
+<li>In <strong>ShowCategories</strong>.</li>
+<li>Add Register Cached Controller to the constructor.</li>
+<li>Build and Test</li>
+</ol>
+<ul>
+<li><a href="exerciseclicking-on-the-child-controller-results.html">ExerciseClicking on the Child Controller results</a></li>
+</ul>
+
+<h1 id="exercise-moving-between-rows">Exercise - moving between rows</h1>
+<ol>
+<li>In <strong>ShowProducts</strong>.</li>
+<li>Add one more parameter to the Run method: type  Bool, name pExit.</li>
+<li>Set the Exit to be BeforeRow and when pExit is equal to true.</li>
+<li>In <strong>ShowCategories</strong>.</li>
+<li>Override the OnEnterRow.</li>
+<li>call using Cached to the <strong>ShowProducts</strong>, send true as the second parameter.</li>
+<li>Change the <strong>CalProducts</strong> method, and send false as the second parameter.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-moving-between-rows-results.html">Exercise moving between rows results</a></li>
+</ul>
+
+<h1 id="exercise-using-the-level-method">Exercise - using the Level Method</h1>
+<ol>
+<li>In <strong>ShowProducts</strong>.</li>
+<li>Remove the second parameter in the Run method and use the u.Level method.</li>
+<li>Use the debug write line and test the level names in run time.</li>
+<li>In <strong>ShowCategories</strong>.</li>
+<li>Clear the true and false values when calling the <strong>ShowProducts</strong>.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-using-the-level-method-results.html">Exercise using the Level Method results</a></li>
+</ul>
+
+<h1 id="exercise-embedding-the-form">Exercise - Embedding the Form</h1>
+<ol>
+<li>In <strong>ShowCategories</strong>.</li>
+<li>Make the grid smaller and the form a bit bigger so you can fit the <strong>ShowProducts</strong> inside.</li>
+<li>In <strong>ShowProducts form</strong>.</li>
+<li>Set the <strong>Child Window</strong> property to true.</li>
+<li>Change the <strong>location</strong> property to fit the location inside the ShowCategories form.</li>
+<li>Build and test.</li>
+<li>Set the <strong>TitleBar</strong> property to false.</li>
+<li>Build and test.</li>
+<li>Set the <strong>Border</strong> property to None.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-embedding-the-form-results.html">Exercise Embedding the Form results</a></li>
+</ul>
+
+<h1 id="exercise-standard-solution-vs-full-solution">Exercise - Standard Solution vs Full Solution</h1>
+<ol>
+<li>Open your application migrated code using the full solution bat file.</li>
+<li>Notice the time and computer resource  need.</li>
+<li>Close the full solution and open the smaller version.</li>
+<li>Notice that you can go in to run time with out loading all the projects.</li>
+<li>Add one of the existing projects.</li>
+</ol>
+
+<h1 id="exercise-large-migrated-application-structure">Exercise - Large Migrated Application Structure</h1>
+<ol>
+<li>Open the following directories in your solution and examining the content:
+<ol>
+<li>lib</li>
+<li>ENV</li>
+<li>Shared (if relevant)</li>
+<li>Base</li>
+<li>One or two of your projects</li>
+<li>The main project</li>
+</ol>
+</li>
+</ol>
+
+<h1 id="exercise-finding-a-controller-using-the-developer-tools-and-find-type">Exercise - Finding a Controller using the Developer Tools and Find Type</h1>
+<ol>
+<li>Run your application.</li>
+<li>Using the developer tolls find 4 programs, copy there path and go back to Visual studio.</li>
+<li>Use <kbd>Ctrl</kbd><kbd>,</kbd> and the pass the program path.</li>
+<li>open the program.</li>
+<li>make sure to peek 2 programs that there project is not loaded, try it before the project is loaded and after.</li>
+</ol>
+
+<h1 id="exercise-looking-at-a-large-migrated-program-for-the-first-time">Exercise - Looking at a Large Migrated Program for the First Time</h1>
+<ol>
+<li>Run your application.</li>
+<li>Using the developer tolls find 2 programs, copy there path and go back to Visual studio.</li>
+<li>Use <kbd>Ctrl</kbd><kbd>,</kbd> and the pass the program path.</li>
+<li>open the program.</li>
+<li>using  <kbd>Ctrl</kbd><kbd>m</kbd><kbd>o</kbd> collapse the code.</li>
+<li>go over the code and notice the event that we talked about during the training.</li>
+</ol>
+
+<h1 id="exercise-using-class-outline-to-read-large-controller-trees">Exercise - Using Class Outline to Read Large Controller Trees</h1>
+<ol>
+<li>Run your application.</li>
+<li>Using the developer tolls find one of your major programs, copy there path and go back to Visual studio.</li>
+<li>Use <kbd>Ctrl</kbd><kbd>,</kbd> and the pass the program path.</li>
+<li>open the program.</li>
+<li>using  <kbd>Ctrl</kbd><kbd>m</kbd><kbd>o</kbd> collapse the code.</li>
+<li>Open the class out line panel.</li>
+<li>notice the tree like structure of the classes.</li>
+<li>use the right click menu on one of the classes to navigate to the main methods of the class.</li>
+<li>Right click on one of the UIControllers and go to the form.</li>
+<li>use to navigate back to go back the class controller</li>
+</ol>
+
 <h1 id="exercise-date-and-time">Exercise Date and Time</h1>
 <ol>
 <li>Add a new menu entry &quot;My Age&quot;</li>

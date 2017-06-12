@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>in the ShowOrderDetails Controller</title>
+    <title>Exercise - Cached Keep View Visible After Exit result</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,24 +27,75 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="in-the-showorderdetails-controller">in the ShowOrderDetails Controller</h1>
-<pre data-line="2,12" class="language-csdiff line-numbers"><code>-public void Run(Number orderId,bool exitImmediately)
-public void Run(Number orderId)
-{
--   Exit(ExitTiming.BeforeRow, () =&gt; exitImmediately);
-    Where.Clear();
-    Where.Add(Order_Details.OrderID.BindEqualTo(orderId));
-    Execute();
-}
+                <div class="content"><h1 id="exercise-cached-keep-view-visible-after-exit-result">Exercise - Cached Keep View Visible After Exit result</h1>
+<p>Your <strong>ShowCategories</strong> class should look like :</p>
+<pre data-line="30,31,32,33" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
 
-protected override void OnLoad()
+namespace Northwind.Exercises.KeepViewVisibleAfterExit
 {
-    Exit(ExitTiming.BeforeRow, () =&gt; u.Level(1) == "RP");
-    KeepViewVisibleAfterExit = true;
-    View = () =&gt; new Views.ShowOrderDetailsView(this);
+    public class ShowCategories : UIControllerBase
+    {
+
+        public readonly Models.Categories Categories = new Models.Categories();
+
+        public ShowCategories()
+        {
+            From = Categories;
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () =&gt; new Views.ShowCategoriesView(this);
+        }
+        internal void CalProducts()
+        {
+            Cached&lt;ShowProducts&gt;().Run(Categories.CategoryID); 
+        }
+    }
 } </code></pre>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fPW2AwsACTw?list=PL1DEQjXG2xnKZADlPXY_P61ujx3lGsP6m" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/21-Child-Forms-and-KeepViewVisibleAfterExit/09-Migrated-Patterns-using-the-Level-Method.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<p>Your <strong>ShowCategoriesView</strong> class should look like :</p>
+<pre data-line="27" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using Firefly.Box;
+using Firefly.Box.UI.Advanced;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Exercises.KeepViewVisibleAfterExit.Views
+{
+    partial class ShowCategoriesView : Shared.Theme.Controls.Form
+    {
+        ShowCategories _controller;
+        public ShowCategoriesView(ShowCategories controller)
+        {
+            _controller = controller;
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, ButtonClickEventArgs e)
+        {
+-           new ShowProducts().Run(_controller.Categories.CategoryID);
+            _controller.CalProducts();
+        }
+    }
+} </code></pre>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/21-Child-Forms-and-KeepViewVisibleAfterExit/04-Exercise-Cached-KeepViewVisibleAfterExit/01-Exercise-Cached-KeepViewVisibleAfterExit-results.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -89,7 +140,7 @@ protected override void OnLoad()
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'migrated-patterns-using-the-level-method.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'exercise-cached-keepviewvisibleafterexit-results.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
