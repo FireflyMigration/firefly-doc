@@ -19,7 +19,7 @@
 	1. type **TextColumn** name **CustomerID**.
 	2. type **NumberColumn** name **NumberOfOrders**.
 	3. type **NumberColumn** name **TotalFreight**.
-10. Add **Whare** after the **From**, to show only records equal to the **CustomerID** local column.
+10. Add **Where** after the **From**, to show only records equal to the **CustomerID** local column.
 11. In the **Run** method receive 3 Parameters and do:  
 	1. **TextParameter** name **pCustomerID** use the BindParameter method to connect the parameter and the local column **CustomerID**.
 	2. **NumberColumn** name **pNumberOfOrders**.  
