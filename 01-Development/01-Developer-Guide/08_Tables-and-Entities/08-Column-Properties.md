@@ -1,4 +1,4 @@
-﻿* Column Prperties can be set using it's type initializer, for example:
+﻿* Column property can be set using it's type initializer, for example:
 ```csdiff
 using System;
 using System.Collections.Generic;
