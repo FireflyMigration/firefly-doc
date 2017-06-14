@@ -17,10 +17,13 @@ namespace Northwind.Training
 {
     class MoreOnStrings
     {
-        MessageBox.Show("I'm a simple string");
-+       MessageBox.Show("I'm a quote\"");
-+       MessageBox.Show("Line one\r\nLine Two");
-    }
+        public void Run()
+        {
+            MessageBox.Show("I'm a simple string");
++           MessageBox.Show("I'm a quote\"");
++           MessageBox.Show("Line one\r\nLine Two");
+        }
+     }
 }
 ```
 
