@@ -20,6 +20,8 @@ namespace Northwind.Exercises
 
         public readonly Models.Products Products = new Models.Products();
         public readonly Models.Categories Categories = new Models.Categories();
++       public readonly NumberColumn TotallItemsPerCategory = new NumberColumn();
++       public readonly NumberColumn TotalValuePerCategory = new NumberColumn();
  
         public ProductsReport()
         {
