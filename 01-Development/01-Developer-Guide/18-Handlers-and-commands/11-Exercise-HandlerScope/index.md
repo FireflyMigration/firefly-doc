@@ -1,6 +1,6 @@
 ﻿# Exercise - HandlerScope
 
 1.  In  **ShowRegions**.
-2.  set the F9  Handler, HandlerScope to be CurrentTaskOnly.
+2.  set the **F9  Handler**, **HandlerScope** to **CurrentTaskOnly**.
 3.	Build and test.
-4.  Notice that when you are in the ShowCustomerPerRegion you will no loner react to the F9 key storks.
+4.  Notice that when focus on **ShowCustomerPerRegion**, the F9 Keystrokes will no longer be reacted to.

@@ -30,7 +30,7 @@ namespace Northwind.Exercises.MoreOnClass
    1. string carName.
    2. int carYear.
    3. int CarKM.
-   4. char carType. 
+   4. string carType. 
  
 Your new Class supposed to look like this code:
 
