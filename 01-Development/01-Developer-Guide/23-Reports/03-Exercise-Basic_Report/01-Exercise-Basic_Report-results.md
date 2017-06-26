@@ -1,6 +1,6 @@
 ﻿# Exercise - Basic Report result
 
-Your **FlowProducts** class should look like :
+Your **ProductsReport** class should look like :
 ```csdiff
 using System;
 using System.Collections.Generic;
@@ -9,34 +9,42 @@ using System.Drawing;
 using Firefly.Box;
 using ENV;
 using ENV.Data;
+using ENV.Printing;
 
 namespace Northwind.Exercises
 {
--   public class FlowProducts : UIControllerBase
-+   public class FlowProducts : FlowUIControllerBase
+    public class ProductsReport : BusinessProcessBase
     {
+        PrinterWriter _printer;
+        Printing.ProductsReportLayout _layout;
 
 +       public readonly Models.Products Products = new Models.Products();
++       public readonly Models.Categories Categories = new Models.Categories();
 
-        public FlowProducts()
+        public ProductsReport()
         {
 +           From = Products;
-+           Columns.Add(Products.ProductID);
-+           Columns.Add(Products.ProductName);
-+           Columns.Add(Products.CategoryID);
-+           Columns.Add(Products.UnitPrice);
-+           Columns.Add(Products.UnitsInStock);
-+           Columns.Add(Products.UnitsOnOrder);
++           Relations.Add(Categories, RelationType.Find,
++               Categories.CategoryID.IsEqualTo(Products.CategoryID));
++
++           OrderBy.Add(Products.ProductName);
+        }
+
+        protected override void OnLoad()
+        {
+            _layout = new Printing.ProductsReportLayout(this);
+            _printer = new PrinterWriter { PrintPreview = true };
+            Streams.Add(_printer);
+        }
+
+        protected override void OnLeaveRow()
+        {
+            _layout.Body.WriteTo(_printer);
         }
 
         public void Run()
         {
             Execute();
-        }
-
-        protected override void OnLoad()
-        {
-            View = () => new Views.FlowProductsView(this);
         }
     }
 }
