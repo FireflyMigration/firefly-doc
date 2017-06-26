@@ -18,16 +18,16 @@ namespace Northwind.Exercises
         PrinterWriter _printer;
         Printing.ProductsReportLayout _layout;
 
-+       public readonly Models.Products Products = new Models.Products();
-+       public readonly Models.Categories Categories = new Models.Categories();
-
+        public readonly Models.Products Products = new Models.Products();
+        public readonly Models.Categories Categories = new Models.Categories();
+ 
         public ProductsReport()
         {
-+           From = Products;
-+           Relations.Add(Categories, RelationType.Find,
-+               Categories.CategoryID.IsEqualTo(Products.CategoryID));
-+
-+           OrderBy.Add(Products.ProductName);
+            From = Products;
+            Relations.Add(Categories, RelationType.Find,
+                Categories.CategoryID.IsEqualTo(Products.CategoryID));
+ 
+            OrderBy.Add(Products.ProductName);
         }
 
         protected override void OnLoad()
@@ -46,9 +46,11 @@ namespace Northwind.Exercises
         {
             Execute();
         }
++       internal Date GetCurrentDate() => Date.Now;
++       internal Number GetCureentPage() => _printer.Page;
     }
 }
 ```
 
 The layout should look like :  
-![2017-06-26_11h44_24.](2017-06-26_11h44_24.png) 
+![2017-06-26_12h00_38](2017-06-26_12h00_38.png) 
