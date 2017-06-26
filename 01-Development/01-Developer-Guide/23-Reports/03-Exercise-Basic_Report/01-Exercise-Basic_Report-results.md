@@ -49,3 +49,6 @@ namespace Northwind.Exercises
     }
 }
 ```
+
+The layout should look like :  
+![2017-06-26_11h44_24.](2017-06-26_11h44_24.png) 
