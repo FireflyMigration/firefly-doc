@@ -6,9 +6,9 @@ You have started to write your code and you need import the last migrated code w
 2- When the migration finished take the folder, copy the .rar file paste it to temporary folder  
 3- Extract it  
 4- Copy ENV folder + Firefly.Box.Dll and paste on your code folder  
-![](2017-03-28_11h29_38.png)  
+![](2017-03-28_11h29_38_1.png)  
 5- Run buildDebug.bat 
 
 ---
  
- ![](2017-03-28_11h49_11.png)
+ ![](2017-03-28_11h49_11_1.png)

@@ -9,15 +9,15 @@
 6- Extract it and rename as folder_**old**  
 7- Compare the old folder and the new folder (you can use Beyond Compare)  
 
-![](2017-03-28_16h28_59.png)  
+![](2017-03-28_16h28_59_1.png)  
 
 8- Merge only the compare result with your code  
 9- Copy ENV folder + Firefly.Box.Dll and paste on your code folder   
 
-![](2017-03-28_11h29_38.png)  
+![](2017-03-28_11h29_38_1.png)  
 
 10- Run buildDebug.bat  
 
 ---
 
-![](2017-03-28_15h29_27.png)
+![](2017-03-28_15h29_27_1.png) 
