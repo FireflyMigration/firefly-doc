@@ -26,7 +26,7 @@ public class ShowOrdersToDemoInnerClasses : UIControllerBase
 }
 ```
 * To quickly create an inner class, we'll use the "Inner Controller Class" snippet (`contr` in short)  
-![2017 02 27 11H01 57](../12_Inner-Classes/2017-02-27_11h01_57.png)
+![2017 02 27 11H01 57](2017-02-27_11h01_57.png)
 * Will determine:
   * The name of the inner class - in our case "GetTotals"
   * The base class - on our case `BusinessProcessBase` which is the default
