@@ -32,8 +32,11 @@
 <li>Create a new UIController name it <strong>ShowCustomers</strong>.</li>
 <li>Set the <strong>Customers</strong> Entity as the main table.</li>
 <li>Add 2 <strong>local columns</strong>:
-2. type <strong>NumberColumn</strong> name <strong>NumberOfOrders</strong>.
-3. type <strong>NumberColumn</strong> name <strong>TotalFreight</strong>.</li>
+<ol>
+<li>type <strong>NumberColumn</strong> name <strong>NumberOfOrders</strong>.</li>
+<li>type <strong>NumberColumn</strong> name <strong>TotalFreight</strong>.</li>
+</ol>
+</li>
 <li>Add this columns to the form <strong>(Do not use a grid)</strong>:
 <ol>
 <li>From <strong>Customer</strong> CustomerID.</li>
@@ -54,7 +57,7 @@
 <li>type <strong>NumberColumn</strong> name <strong>TotalFreight</strong>.</li>
 </ol>
 </li>
-<li>Add <strong>Whare</strong> after the <strong>From</strong>, to show only records equal to the <strong>CustomerID</strong> local column.</li>
+<li>Add <strong>Where</strong> after the <strong>From</strong>, to show only records equal to the <strong>CustomerID</strong> local column.</li>
 <li>In the <strong>Run</strong> method receive 3 Parameters and do:
 <ol>
 <li><strong>TextParameter</strong> name <strong>pCustomerID</strong> use the BindParameter method to connect the parameter and the local column <strong>CustomerID</strong>.</li>

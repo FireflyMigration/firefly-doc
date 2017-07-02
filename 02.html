@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>ReevaluateControlExpressionsOnRelevantValueChangeOnly</title>
+    <title>02</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,22 +27,8 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="reevaluatecontrolexpressionsonrelevantvaluechangeonly">ReevaluateControlExpressionsOnRelevantValueChangeOnly</h1>
-<p>﻿This article explains the performance problem presented in the <a href="using-the-profiler-to-investigate-non-database-related-performance-issues.html">Using the Profiler to Investigate non database Related Performance Issues</a> article.</p>
-<p>In application that were migrated from magic versions prior to XPA, all the expressions used on the <code>View</code> of a <code>Controller</code> were
-re-evaluated after an update of <strong>any</strong> <code>Column</code> in the <code>Controller</code>.</p>
-<p>This can have a performance cost. In the example used in this article's video, we can see that the <code>BindVisible</code> method was evaluated 4314 times, just by the &quot;Update Parent Total&quot; part of the <code>OnLeaveRow</code> (while being totally irrelenat to the <code>BindVisible</code> method or values)
-<img src="2017-03-30_18h23_21.png" alt="2017 03 30 18H23 21" /></p>
-<p>We can control this behavior, by changing the <code>Form</code> property called <code>ReevaluateControlExpressionsOnRelevantValueChangeOnly</code> to <code>true</code><br />
-<img src="2017-03-30_18h19_33.png" alt="2017 03 30 18H19 33" /></p>
-<p>This property means that an <code>Expression</code> for a <code>Control</code> on the <code>Form</code> will only be re-evaluated if a column that was used in that expression was changed.</p>
-<p>This has a positive affect on the process, essentially removing thousands of expression evaluations, improving our process by a factor of 10.<br />
-<img src="2017-03-30_18h22_44.png" alt="2017 03 30 18H22 44" /></p>
-<blockquote>
-<p>Note that this property might also have side effects. If you have an expression that is based on a Column from another <code>Controller</code>, or not based on a column at all (ie <code>GetParam</code> or <code>Time</code>) it will not get evaluated.</p>
-</blockquote>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/wxJfeSuRRqc?list=PL1DEQjXG2xnJYzlRYRjwUfqSc4Kx0yarM" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Improve-Performance/21-Using-the-Profiler-to-investigate-non-database-related-performance-issues/02-ReevaluateControlExpressionsOnRelevantValueChangeOnly.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                <div class="content"><h1 id="section">02</h1>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Improve-Performance/10-Using-Basic-and-non-so-basic-sql-to-Dramatically-Improve-Performance/02.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -87,7 +73,7 @@ re-evaluated after an update of <strong>any</strong> <code>Column</code> in the 
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'reevaluatecontrolexpressionsonrelevantvaluechangeonly.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', '02.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
