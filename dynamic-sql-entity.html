@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>index   Copy</title>
+    <title>Dynamic SQL Entity</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,7 +27,7 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="index-copy">index   Copy</h1>
+                <div class="content"><h1 id="dynamic-sql-entity">Dynamic SQL Entity</h1>
 <ol>
 <li>The best way to access the data from the database is using the entities classes. However, sometimes, we need to write our own SQL, especially if we need to execute a stored procedure or use special SQL functions like Count, Sum etc.</li>
 </ol>
@@ -57,42 +57,12 @@ select orderid, shipName, shipcity
             View = () =&gt; new Views.DemoCustomSQLView(this);
         }
     } </code></pre>
-<ol start="3">
-<li>Note that the order of the <code>AddParameter</code> methods is respectively with the parameters indexes in the SQL statement.</li>
-<li>The need of quotes (' ') is for strings and to any parameter value that is converted to string.</li>
-<li>Place a grid on the screen with all the local columns.</li>
-<li>Add Program to the menu</li>
-<li>Run the program.</li>
-<li>Add another parameter and run the program:</li>
-</ol>
-<pre data-line="7,11" class="language-csdiff line-numbers"><code> public SQLEntityDemo()
-{
-    sqlEntity = new DynamicSQLEntity(Models.DataSources.Northwind1,
-        @"SELECT OrderID, ShipName, ShipCity
-            FROM Orders  
--           WHERE ShipCity= ':1'");
-            WHERE ShipCity= ':1' and OrderID= :2 ");
-
-    sqlEntity.Columns.Add(OrderID, ShipName, ShipCity);
-    sqlEntity.AddParameter(() =&gt; "London"); //param :1
-     sqlEntity.AddParameter(() =&gt; 10532); //param :2
-    From = sqlEntity;
-    Columns.Add(OrderID, ShipName, ShipCity);
-} </code></pre>
-<ol start="9">
-<li>Notice that this creates in memory a result set, so the data is <strong>read only</strong>.</li>
-<li>Make the program read only:</li>
-</ol>
-<pre data-line="3,4" class="language-csdiff line-numbers"><code>protected override void OnLoad()
-{
-    Activity = Activities.Browse;
-    AllowUpdate = false;
-    View = () =&gt; new Views.SQLEntityDemoView(this);
-} </code></pre>
-<ol start="11">
-<li>Exercise: SQL Entity</li>
-</ol>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/26-Dynamic-SQL-Entity/01-index - Copy.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/muKY65lzr2g?list=PL1DEQjXG2xnKbJ9yhOVbOitJaBbC1fgZg" frameborder="0" allowfullscreen></iframe>
+<ul>
+<li><a href="using-parameters.html">using parameters</a></li>
+<li><a href="dynamic-sql-entity-exercise.html">Dynamic SQL Entity exercise</a></li>
+</ul>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/26-Dynamic-SQL-Entity/01-index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -137,7 +107,7 @@ select orderid, shipName, shipcity
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'index---copy.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'dynamic-sql-entity.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
