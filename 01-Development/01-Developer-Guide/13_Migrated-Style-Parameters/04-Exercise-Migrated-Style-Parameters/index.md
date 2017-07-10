@@ -33,7 +33,7 @@
 17. set the value of **NumberOfOrders** and **TotalFreight** to zero.  
 18. Call the **CalcTotalOrdersPerCustomer** from the button **click** event and send the parameters.  
 19. Build and test, notice that **NumberOfOrders** and **TotalFreight** are update with values when clicking the button.  
-20. In **ShowCustomers**, find the call to **CalcTotalOrdersPerCustomer**.  
+20. In **ShowCustomers** view, find the call to **CalcTotalOrdersPerCustomer**.  
 21. Try to change the second parameters **NumberOfOrders** and send its **Value**, notice the error.  
 22. Cancel the last item change and try to do the same for **TotalFreight** notice that you will **not** get an error.
 23. Build and test, notice that **TotalFreight** is not update when you click the button.
