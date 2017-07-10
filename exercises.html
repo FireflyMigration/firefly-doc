@@ -1992,7 +1992,7 @@ namespace Northwind.Exercises
 <li>set the value of <strong>NumberOfOrders</strong> and <strong>TotalFreight</strong> to zero.</li>
 <li>Call the <strong>CalcTotalOrdersPerCustomer</strong> from the button <strong>click</strong> event and send the parameters.</li>
 <li>Build and test, notice that <strong>NumberOfOrders</strong> and <strong>TotalFreight</strong> are update with values when clicking the button.</li>
-<li>In <strong>ShowCustomers</strong>, find the call to <strong>CalcTotalOrdersPerCustomer</strong>.</li>
+<li>In <strong>ShowCustomers</strong> view, find the call to <strong>CalcTotalOrdersPerCustomer</strong>.</li>
 <li>Try to change the second parameters <strong>NumberOfOrders</strong> and send its <strong>Value</strong>, notice the error.</li>
 <li>Cancel the last item change and try to do the same for <strong>TotalFreight</strong> notice that you will <strong>not</strong> get an error.</li>
 <li>Build and test, notice that <strong>TotalFreight</strong> is not update when you click the button.</li>
@@ -2707,6 +2707,70 @@ namespace Northwind.Exercises
 <li>Right click on one of the UIControllers and go to the form.</li>
 <li>use to navigate back to go back the class controller</li>
 </ol>
+
+<h1 id="exercise-basic-report">Exercise - Basic Report</h1>
+<ol>
+<li>Using the <strong>Basic Report</strong> template create a new report and name it <strong>ProductsReport</strong>.</li>
+<li>Set the <strong>Products</strong> table as the main data source.</li>
+<li>Add relation to the <strong>Categories</strong> table.</li>
+<li>In the OnLoad find the layout and navigate to the layout code behind the form using <kbd>F12</kbd>.</li>
+<li>Using <kbd>Shift</kbd><kbd>F7</kbd>, navigate to the layout form.</li>
+<li>Add a nice title at the top of the report.</li>
+<li>Add the following columns to a grid:
+<ol>
+<li>ProductID</li>
+<li>ProductName</li>
+<li>CategoryID</li>
+<li>CategoryName ( in the same column with CategoryID)</li>
+<li>UnitPrice</li>
+<li>UnitsInStock</li>
+<li>UnitsOnOrder</li>
+</ol>
+</li>
+<li>Sort the report by the <strong>ProductName</strong>.</li>
+<li>Add the new report to the main menu.</li>
+<li>
+<pre><code>d and test.  
+</code></pre>
+</li>
+</ol>
+<ul>
+<li><a href="exercise-basic_report-results.html">Exercise Basic_Report results</a></li>
+</ul>
+
+<h1 id="exercise-basic-report">Exercise - Basic Report</h1>
+<ol>
+<li>In <strong>ProductsReport</strong>.</li>
+<li>Add two methods:
+<ol>
+<li><strong>GetCurrentDate</strong> return data type <strong>Date</strong>.</li>
+<li><strong>GetCureentPage</strong> return data type <strong>Number</strong>.</li>
+</ol>
+</li>
+<li>Display the new methods on the report layout.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-date-and-page-number-results.html">Exercise Date and Page Number results</a></li>
+</ul>
+
+<h1 id="exercise-using-groups">Exercise - Using Groups</h1>
+<ol>
+<li>In <strong>ProductsReport</strong>.</li>
+<li>Reorder the report by the <strong>CategoryID</strong>.</li>
+<li>Add 4 new sections :
+<ol>
+<li><strong>ReportHeader</strong> Display the title current Date.</li>
+<li><strong>ReportFooter</strong> Display the page number.</li>
+<li><strong>CategoryHeader</strong> display <strong>CategoryName</strong> for each group of rows with the same <strong>Category</strong>.</li>
+<li><strong>CategoryFooter</strong> display summery  at the end of each category, showing the total items in the category and the total unit price.</li>
+</ol>
+</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-using-groups-results.html">Exercise Using Groups results</a></li>
+</ul>
 
 <h1 id="sql-entity">SQL Entity</h1>
 <ol>
