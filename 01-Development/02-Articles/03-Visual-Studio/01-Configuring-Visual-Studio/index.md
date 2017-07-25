@@ -94,11 +94,12 @@ In the "Solution Explorer" window make sure that the "Preview Selected Item" Ico
 ![2017 03 08 10H47 38](2017-03-08_10h47_38.png)
 
 ### F - Add the parameter information toolbar item
-1. On the toolbar
-2. Click on the icon highlighted in the image as 2  
+1. Open any class 
+2. On the toolbar
+3. Click on the icon highlighted in the image as 2  
 ![2017 03 08 10H49 18](2017-03-08_10h49_18.png)
-3. Select "Add or Remove Button"
-4. Select the "Parameter Info" Tool box item.
+4. Select "Add or Remove Button"
+5. Select the "Parameter Info" Tool box item.
 
 This adds the following toolbox item, that will show you the parameter information for a method you are parked on
 
