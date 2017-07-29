@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Using Temporary In Memory Database</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="using-temporary-in-memory-database">Using Temporary In Memory Database</h1>
+<p>Add to the <code>SQLHelper</code> class, a method that based on a parameter will return a memory database, or a real database.</p>
+<pre data-line="1,2,3,4,5,6,7" class="language-csdiff line-numbers"><code>public static IEntityDataProvider GetMemoryOrReal(bool useMemory)
+{
+     if (useMemory)
+         return ENV.Data.DataProvider.MemoryDatabase.Instance;
+     else
+         return Shared.DataSources.Northwind1;
+} </code></pre>
+<p>In the <code>CategorySales</code> entity class constructor use the <code>GetMemoryOrReal</code> method from the <code>SQLHelper</code> class</p>
+<pre data-line="9,14,15,16" class="language-csdiff line-numbers"><code>public readonly Types.Amount Nov = new Types.Amount { Caption = "Nov", Name = "Nov" };
+public readonly Types.Amount Dec = new Types.Amount { Caption = "Dec", Name = "Dec" };
+#endregion
+#region Indexes
+/// &lt;summary&gt;By Year and Category (#1)&lt;/summary&gt;
+public readonly Index SortByYearAndCategory = new Index { Caption = "By Year and Category", Name = "By_Year_and_Prod", AutoCreate = true, Unique = true };
+#endregion
+-public CategorySales() : base("CategorySales", Northwind.Shared.DataSources.Northwind1)
+public CategorySales(bool useMemory) : base("CategorySales", SQLHelper.GetMemoryOrReal(useMemory))
+{
+    AutoCreateTable = true;
+    InitializeIndexes();
+}
+public CategorySales() : this(false)
+{
+}
+void InitializeIndexes()
+{
+    SortByYearAndCategory.Add(Year, CategoryID);
+} </code></pre>
+<p>Add a method that copies data from one Entity to another to the <code>SQLHelper</code> class</p>
+<pre data-line="1,2,3,4,5,6,7,8,9,10,11,12,13,14" class="language-csdiff line-numbers"><code>public static void CopyData(Entity sourceTable,Entity targetTable)
+{
+     var bp = new BusinessProcess { From = sourceTable };
+     bp.Relations.Add(targetTable, RelationType.Insert);
+     bp.ForEachRow(() =&gt; {
+         foreach (var column in targetTable.Columns)
+         {
+             if (!column.DbReadOnly)
+             {
+                 column.Value = sourceTable.Columns[column.Name];
+             }
+         }
+     });
+} </code></pre>
+<h2 id="in-the-collectorderdetails-controller-class">In the <code>CollectOrderDetails</code> Controller Class</h2>
+<p>Change the <code>CategorySales</code> member to use the InMemory database</p>
+<pre data-line="7" class="language-csdiff line-numbers"><code>#region Models
+readonly Models.Order_Details Order_Details = new Models.Order_Details { AllowRowLocking = true };
+readonly Models.Products Products = new Models.Products { AllowRowLocking = true,Cached = true };
+readonly Models.Orders Orders = new Models.Orders { ReadOnly = true };
+readonly Models.ExchangeRates ExchangeRates = new Models.ExchangeRates { ReadOnly = true };
+-readonly Models.CategorySales CategorySales = new Models.CategorySales { AllowRowLocking = true };
+readonly Models.CategorySales CategorySales = new Models.CategorySales(true) { AllowRowLocking = true };
+#endregion </code></pre>
+<p>In the run method, delete the memory table before the <code>Execute</code> and call the <code>CopyData</code> method after the <code>Execute</code></p>
+<pre data-line="4,5,7" class="language-csdiff line-numbers"><code>/// &lt;summary&gt;Collect Order Details(P#13.2)&lt;/summary&gt;
+internal void Run()
+{
+    if (CategorySales.Exists())
+        CategorySales.Drop();
+    Execute();
+    SQLHelper.CopyData(CategorySales, new Models.CategorySales());
+} </code></pre>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SHGamJfJhXY?list=PL1DEQjXG2xnJNtUHwUvmwYKay85F3WYMg" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/01-Improve-Performance/00-Improving-Performance-by-reducing-calls-to-the-database/07-Improving-InsertIfNotFound-Relation-using-InMemory-Database/02-Using-Temporary-In-Memory-Database.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree"</div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4806432-3', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'using-temporary-in-memory-database.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>

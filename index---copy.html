@@ -28,71 +28,11 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="index-copy">index   Copy</h1>
-<ol>
-<li>The best way to access the data from the database is using the entities classes. However, sometimes, we need to write our own SQL, especially if we need to execute a stored procedure or use special SQL functions like Count, Sum etc.</li>
-</ol>
-<pre data-line="3,4,5,7,10,11,12,13,14" class="language-csdiff line-numbers"><code> public class DemoCustomSQL : UIControllerBase
-    {
-        public readonly NumberColumn OrderId = new NumberColumn("OrderId","6");
-        public readonly TextColumn ShipName = new TextColumn("ShipName","50");
-        public readonly TextColumn ShipCity = new TextColumn("ShipCity","50");
-
-        DynamicSQLEntity dynamicSql;
-        public DemoCustomSQL()
-        {
-            dynamicSql = new DynamicSQLEntity(Shared.DataSources.Northwind1, @"
-select orderid, shipName, shipcity
-  from Orders");
-            From = dynamicSql;
-            dynamicSql.Columns.Add(OrderId, ShipName, ShipCity);
-        }
-
-        public void Run()
-        {
-            Execute();
-        }
-
-        protected override void OnLoad()
-        {
-            View = () =&gt; new Views.DemoCustomSQLView(this);
-        }
-    } </code></pre>
-<ol start="3">
-<li>Note that the order of the <code>AddParameter</code> methods is respectively with the parameters indexes in the SQL statement.</li>
-<li>The need of quotes (' ') is for strings and to any parameter value that is converted to string.</li>
-<li>Place a grid on the screen with all the local columns.</li>
-<li>Add Program to the menu</li>
-<li>Run the program.</li>
-<li>Add another parameter and run the program:</li>
-</ol>
-<pre data-line="7,11" class="language-csdiff line-numbers"><code> public SQLEntityDemo()
-{
-    sqlEntity = new DynamicSQLEntity(Models.DataSources.Northwind1,
-        @"SELECT OrderID, ShipName, ShipCity
-            FROM Orders  
--           WHERE ShipCity= ':1'");
-            WHERE ShipCity= ':1' and OrderID= :2 ");
-
-    sqlEntity.Columns.Add(OrderID, ShipName, ShipCity);
-    sqlEntity.AddParameter(() =&gt; "London"); //param :1
-     sqlEntity.AddParameter(() =&gt; 10532); //param :2
-    From = sqlEntity;
-    Columns.Add(OrderID, ShipName, ShipCity);
-} </code></pre>
-<ol start="9">
-<li>Notice that this creates in memory a result set, so the data is <strong>read only</strong>.</li>
-<li>Make the program read only:</li>
-</ol>
-<pre data-line="3,4" class="language-csdiff line-numbers"><code>protected override void OnLoad()
-{
-    Activity = Activities.Browse;
-    AllowUpdate = false;
-    View = () =&gt; new Views.SQLEntityDemoView(this);
-} </code></pre>
-<ol start="11">
-<li>Exercise: SQL Entity</li>
-</ol>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/01-Developer-Guide/26-Dynamic-SQL-Entity/01-index - Copy.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<p>Intro:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aD6jJIAkMOg?list=PL1DEQjXG2xnJNtUHwUvmwYKay85F3WYMg" frameborder="0" allowfullscreen></iframe>
+<p>Implementation:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SHGamJfJhXY?list=PL1DEQjXG2xnJNtUHwUvmwYKay85F3WYMg" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Improve-Performance/00-Improving-Performance-by-reducing-calls-to-the-database/07-Improving-InsertIfNotFound-Relation-using-InMemory-Database/01-index - Copy.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
