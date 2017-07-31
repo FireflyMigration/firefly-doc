@@ -28,7 +28,7 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="integrating-the-sql-statement-into-the-code">Integrating the sql statement into the code</h1>
-<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnStart()
+<pre data-line="5,6,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40" class="language-csdiff line-numbers"><code>protected override void OnStart()
 {
     start.Value = u.mTime();
     Cached&lt;Delete1&gt;().Run();
@@ -38,7 +38,7 @@
     }
     else
     {
-        Shared.DataSources.Northwind1.Execute(@"Insert into CategorySales (Year, CategoryID, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec) 
+        Shared.DataSources.Northwind1.Execute(@"Insert into CategorySales (Year, CategoryID, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, +Oct, Nov, Dec) 
             select year,CategoryID,
             sum(case when month=1 then  rowTotal else 0 end) Jan,
             sum(case when month=2 then  rowTotal else 0 end) Feb,
@@ -54,7 +54,7 @@
             sum(case when month=12 then  rowTotal else 0 end) Dec
 
             from
-            (select od.OrderID,p.CategoryID , year(o.OrderDate) year, month(o.OrderDate) month,
+            (select od.OrderID,p.CategoryID , year(o.OrderDate) year, month+(o.OrderDate) month,
             round(od.UnitPrice * od.Quantity
             *isnull( (select top 1 rate from ExchangeRate er 
             where er.Currency = 'USD' and er.EffectiveDate &lt;=o.OrderDate
