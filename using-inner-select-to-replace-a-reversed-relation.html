@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Using Basic and not so basic sql to Dramatically Improve Performance</title>
+    <title>Using inner select to replace a reversed relation</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,28 +27,19 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="using-basic-and-not-so-basic-sql-to-dramatically-improve-performance">Using Basic and not so basic sql to Dramatically Improve Performance</h1>
-<p>In this set of videos we'll take a real case from one of our customers where we were able to improve a process that takes 5 minutes, into one second using the powers of SQL.</p>
-<p>We use the internal visual studio sql editor - as explained in:
-<a href="writing-sqls-from-within-visual-studio.html">Writing sqls from within Visual Studio</a></p>
-<p>We'll start with an intro where we explain the controller's functionality which is the target of our performance improvement.
-We'll then explain basic SQL and move through the steps, through not so basic SQL, until we reach the target of our improvement.</p>
-<p>To download the code of the Controller being tuned, <a href="CategorySalesCode.zip">Click Here</a></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/L53pH5fn-8U?list=PL1DEQjXG2xnLgvHTh1MJvWScqgyqvsxSu" frameborder="0" allowfullscreen></iframe>
-<ul>
-<li><a href="the-very-basics-of-sql.html">the very basics of sql</a></li>
-<li><a href="using-left-outer-join.html">using left outer join</a></li>
-<li><a href="intro-to-inner-select-in-sql.html">Intro to inner select in sql</a></li>
-<li><a href="getting-the-year-and-month-from-orders.html">Getting the year and month from Orders</a></li>
-<li><a href="using-inner-select-to-replace-a-reversed-relation.html">Using inner select to replace a reversed relation</a></li>
-<li><a href="using-round-and-is-null.html">using round and is null</a></li>
-<li><a href="using-a-select-statement-as-the-source-for-another-select-statement.html">using a select statement as the source for another select statement</a></li>
-<li><a href="using-group-by.html">Using group by</a></li>
-<li><a href="creating-a-different-column-for-each-month.html">Creating a different column for each month</a></li>
-<li><a href="inserting-data-to-a-table-based-on-a-select-statement.html">Inserting data to a table based on a select statement</a></li>
-<li><a href="integrating-the-sql-statement-into-the-code.html">Integrating the sql statement into the code</a></li>
-</ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/01-Improve-Performance/16-Using-Basic-and-not-so-basic-sql-to-Dramatically-Improve-Performance/01-index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                <div class="content"><h1 id="using-inner-select-to-replace-a-reversed-relation">Using inner select to replace a reversed relation</h1>
+<pre data-line="2,3,4,5,6" class="language-csdiff line-numbers"><code>select od.OrderID,p.CategoryID , year(o.OrderDate) year, month(o.OrderDate) month,
+od.UnitPrice * od.Quantity
+* (select top 1 rate from ExchangeRate er 
+where er.Currency = 'USD' and er.EffectiveDate &lt;=o.OrderDate
+order by er.EffectiveDate desc)
+rowTotal
+
+from [Order Details] od 
+	left outer join Products p on p.ProductID = od.ProductID
+	left outer join Orders o on o.OrderID = od.OrderID </code></pre>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/iqGEy0u9FNQ?list=PL1DEQjXG2xnLgvHTh1MJvWScqgyqvsxSu" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/01-Improve-Performance/16-Using-Basic-and-not-so-basic-sql-to-Dramatically-Improve-Performance/06-Using inner select to replace a reversed relation.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -93,7 +84,7 @@ We'll then explain basic SQL and move through the steps, through not so basic SQ
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'using-basic-and-not-so-basic-sql-to-dramatically-improve-performance.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'using-inner-select-to-replace-a-reversed-relation.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
