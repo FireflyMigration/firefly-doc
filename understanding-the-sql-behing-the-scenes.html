@@ -28,18 +28,17 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="understanding-the-sql-behing-the-scenes">Understanding the SQL behing the Scenes</h1>
-<pre><code>Select A.OrderID, A.ProductID, A.UnitPrice, A.Quantity,
+<pre data-line="3,4,5,6" class="language-csdiff line-numbers"><code>Select A.OrderID, A.ProductID, A.UnitPrice, A.Quantity,
 
- isnull((select top 1 Rate 
-		   from ExchangeRate 
-		  where Currency = 'USD' And EffectiveDate &lt;= B.OrderDate 
-		  Order By Currency desc, EffectiveDate desc),0),
-		  
-B.OrderID, B.OrderDate 
+isnull((select top 1 Rate 
+	from ExchangeRate 
+	where Currency = 'USD' And EffectiveDate &lt;= B.OrderDate 
+	Order By Currency desc, EffectiveDate desc),0)
+
+,B.OrderID, B.OrderDate 
 From dbo.[Order Details] A 
   left outer join dbo.Orders B on B.OrderID = A.OrderID 
-Order by A.OrderID, A.ProductID
-</code></pre>
+Order by A.OrderID, A.ProductID </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Z28xIYbGQ-M?list=PL1DEQjXG2xnJNtUHwUvmwYKay85F3WYMg" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/01-Improve-Performance/00-Reduce-calls-to-the-database/06-Using-GetValue-Inner-Select/04-Understanding-the-SQL-behing-the-Scenes.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 

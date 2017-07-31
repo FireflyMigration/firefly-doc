@@ -28,6 +28,49 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="integrating-the-sql-statement-into-the-code">Integrating the sql statement into the code</h1>
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnStart()
+{
+    start.Value = u.mTime();
+    Cached&lt;Delete1&gt;().Run();
+    if (ENV.Data.DataProvider.BtrieveMigration.UseBtrieve)
+    {
+        Cached&lt;CollectOrderDetails&gt;().Run();
+    }
+    else
+    {
+        Shared.DataSources.Northwind1.Execute(@"Insert into CategorySales (Year, CategoryID, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec) 
+            select year,CategoryID,
+            sum(case when month=1 then  rowTotal else 0 end) Jan,
+            sum(case when month=2 then  rowTotal else 0 end) Feb,
+            sum(case when month=3 then  rowTotal else 0 end) Mar,
+            sum(case when month=4 then  rowTotal else 0 end) Apr,
+            sum(case when month=5 then  rowTotal else 0 end) May,
+            sum(case when month=6 then  rowTotal else 0 end) Jun,
+            sum(case when month=7 then  rowTotal else 0 end) Jul,
+            sum(case when month=8 then  rowTotal else 0 end) Aug,
+            sum(case when month=9 then  rowTotal else 0 end) Sep,
+            sum(case when month=10 then  rowTotal else 0 end) Oct,
+            sum(case when month=11 then  rowTotal else 0 end) Nov,
+            sum(case when month=12 then  rowTotal else 0 end) Dec
+
+            from
+            (select od.OrderID,p.CategoryID , year(o.OrderDate) year, month(o.OrderDate) month,
+            round(od.UnitPrice * od.Quantity
+            *isnull( (select top 1 rate from ExchangeRate er 
+            where er.Currency = 'USD' and er.EffectiveDate &lt;=o.OrderDate
+            order by er.EffectiveDate desc),1),2)
+            rowTotal
+
+            from [Order Details] od 
+            left outer join Products p on p.ProductID = od.ProductID
+            left outer join Orders o on o.OrderID = od.OrderID) rawData
+
+            group by year,CategoryID
+            order by year,CategoryID");
+    }
+    Message.ShowWarning(u.Str((u.mTime() - start) / 1000, "3.3"));
+    new Browse_CategorySales().Run();
+} </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/T98mpFur26s?list=PL1DEQjXG2xnLgvHTh1MJvWScqgyqvsxSu" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/01-Improve-Performance/16-Using-Basic-and-not-so-basic-sql-to-Dramatically-Improve-Performance/12-Integrating the sql statement into the code.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 

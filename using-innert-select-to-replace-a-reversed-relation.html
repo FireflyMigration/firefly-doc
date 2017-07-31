@@ -28,6 +28,16 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="using-innert-select-to-replace-a-reversed-relation">Using innert select to replace a reversed relation</h1>
+<pre data-line="2,3,4,5,6" class="language-csdiff line-numbers"><code>select od.OrderID,p.CategoryID , year(o.OrderDate) year, month(o.OrderDate) month,
+od.UnitPrice * od.Quantity
+* (select top 1 rate from ExchangeRate er 
+where er.Currency = 'USD' and er.EffectiveDate &lt;=o.OrderDate
+order by er.EffectiveDate desc)
+rowTotal
+
+from [Order Details] od 
+	left outer join Products p on p.ProductID = od.ProductID
+	left outer join Orders o on o.OrderID = od.OrderID </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/iqGEy0u9FNQ?list=PL1DEQjXG2xnLgvHTh1MJvWScqgyqvsxSu" frameborder="0" allowfullscreen></iframe>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/01-Improve-Performance/16-Using-Basic-and-not-so-basic-sql-to-Dramatically-Improve-Performance/06-Using innert select to replace a reversed relation.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
