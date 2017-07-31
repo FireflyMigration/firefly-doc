@@ -1,12 +1,12 @@
-﻿```
+﻿```csdiff
 Select A.OrderID, A.ProductID, A.UnitPrice, A.Quantity,
 
- isnull((select top 1 Rate 
-		   from ExchangeRate 
-		  where Currency = 'USD' And EffectiveDate <= B.OrderDate 
-		  Order By Currency desc, EffectiveDate desc),0),
-		  
-B.OrderID, B.OrderDate 
++isnull((select top 1 Rate 
++	from ExchangeRate 
++	where Currency = 'USD' And EffectiveDate <= B.OrderDate 
++	Order By Currency desc, EffectiveDate desc),0)
+
+,B.OrderID, B.OrderDate 
 From dbo.[Order Details] A 
   left outer join dbo.Orders B on B.OrderID = A.OrderID 
 Order by A.OrderID, A.ProductID
