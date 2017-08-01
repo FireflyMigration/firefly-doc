@@ -3,7 +3,7 @@ Name in Magic: **Locate**
 Name in the Migrated Code **StartOnRowWhere.Add Method**
 ***
 
-The Where.Add method is written at the beginning of the **InitializeDataView Method**, using the Where.Add syntax.
+The StartOnRowWhere.Add method is written at the beginning of the **InitializeDataView Method**, using the StartOnRowWhere.Add syntax.
 
 Example:  
 ````
