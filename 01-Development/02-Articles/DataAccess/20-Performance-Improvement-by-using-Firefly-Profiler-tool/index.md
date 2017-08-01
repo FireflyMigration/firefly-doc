@@ -63,5 +63,10 @@ Profiler= c:\temp\path
 The result will be a file with *.prof extension.  
 Notice that a Profiler for the Web will create a file for each request
 
+7) Profiler for Parallel programs   
+To start profiling parallel context stand on the window of the context you would like to debug and press Ctrl+Shift+P, that will start profiling.
+To end profiling press Ctrl+Shift+P again.  
+
+
 The Profiler is part of the migrated solution but you can also download it from here:
 http://doc.fireflymigration.com/fireflyprofiler.html
