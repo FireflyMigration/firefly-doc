@@ -1,4 +1,5 @@
-﻿In this article we'll review the migrated solution and it's different parts
+keywords: Migrated solution overview
+In this article we'll review the migrated solution and it's different parts
 
 **Solution Structure**
 
@@ -9,14 +10,15 @@
 	- **Working area** - where you can edit your code  
 	- **Tool box** - displays icons for controls and other items that you can add to Visual Studio projects  
      
-
+## Migrated solution overview
 3. In the solution explorer,  
 	- *ENV* project - is the generic source code common to all migrated application.  
-       ENV has a reference to the **Firefly.box.dll** which is also common code supplied by firefly    
-	- *[Solution name]* - solution   
-	- *[Solution name].[moduleName]* - The solution is split to several projects. 
+       ENV has a reference to the Firefly.box.dll which is also generic and shared by all migrated application. (It's source code is vailable to you when the migration project is concluded)
+	- *[ProjectName] (Northwind) - this is the entry point to the application, and it compiles to an `exe` file.
+	- *[ProjectName].[ModuleName] (Northwind.Customers) - Several project that holds the migrated `Controllers` (used to be called **programs** in magic). Each project should hold controllers from a similar domain or module.
+	In it you'll find the `Views` Folder that has all the screens for programs in this module, and `Printing` folder that has all the layouts of the reports within this module.
        Every module has its controllers, views (screens),  
-	- *[Solution name]Base* - contains the migrated tables under the Models folder, migrated Models under the Types folder and other objects which are shared by the whole solution.  
+	- *[ProjectName]Base* - contains the migrated tables under the` Models` folder, migrated Models under the `Types` folder and other objects which are shared by the whole solution.  
 
 4. The startup project is the one in Bold and is the first to run when we runt he application.  
    The startup project includes several parts:
