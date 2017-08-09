@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="InnerSelectHelper">
+    <meta name="keywords" content="">
 
-    <title>Using SQL inner select</title>
+    <title>Getting assistance with SQL performance issues</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,36 +27,26 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="using-sql-inner-select">Using SQL inner select</h1>
-<p>When approaching performance problems, a lot of time I hear developers talking about moving the code to SQL stored procedures to solve them.<br />
-Usually I disagree, many of the powers of SQL can be available easily in your code without the cost of rewriting the code in Store procedure, or even worth, maintaining the code in stored procedure.</p>
-<p>The most effective tool is &quot;Inner Selects&quot;.</p>
-<p>In this two videos we'll use the <code>InnerSelectHelper</code> class to reduce 1660 SQL queries to 1, and improve performance by 75%.</p>
-<p>To Learn more about the inner workings of using Inner Selects in the code see <a href="Inner-Select-and-SQL-Evaluated-Columns-in-depth.html">Inner Select and SQL Evaluated Columns in depth</a></p>
-<h3 id="using-the-innerselecthelper">Using the InnerSelectHelper</h3>
+                <div class="content"><h1 id="getting-assistance-with-sql-performance-issues">Getting assistance with SQL performance issues</h1>
+<p>Btrieve and SQL work differently and as a result of that sometimes tuning is necessary.</p>
+<p>Below are set of Articles which you might find useful.
+<a href="http://doc.fireflymigration.com/improve-performance.html">http://doc.fireflymigration.com/improve-performance.html</a></p>
+<p>In case you have a specific case which you would like us to guide and assist, please open a ticket and include the following:</p>
 <ul>
-<li>Define the InnerSelectHelper class in the code</li>
+<li>.NET SQL Profiler</li>
+<li>.NET Btrieve Profiler</li>
 </ul>
-<pre data-line="" class="language-csdiff line-numbers"><code>var h = new ENV.Data.InnerSelectHelper(this); </code></pre>
-<h4 id="create-an-exist-inner-select">Create an Exist Inner Select</h4>
-<p>Parameters:</p>
-<ol>
-<li>The column that will be used as the result</li>
-<li>The Child entity to check in (in our case, the Order_Details entity)</li>
-<li>The Where to use in that entity (in our case, the OrderID should match)</li>
-</ol>
-<pre data-line="" class="language-csdiff line-numbers"><code>h.TurnToExist(V_HasOrderDetails, Order_Details, Order_Details.OrderID.IsEqualTo(Orders.OrderID)); </code></pre>
-<h4 id="create-a-sum-inner-select">Create a Sum Inner Select</h4>
-<p>Parameters:</p>
-<ol>
-<li>The column that will be used as the result.</li>
-<li>The column to sum in the Child entity (in our case, Quantity).</li>
-<li>The Where to use in that entity (in our case, the OrderID should match)</li>
-</ol>
-<pre data-line="" class="language-csdiff line-numbers"><code>h.TurnToSum(TotalQuantity, Order_Details.Quantity, Order_Details.OrderID.IsEqualTo(Orders.OrderID)); </code></pre>
-<hr />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/kOT8WViZVoI?list=PL1DEQjXG2xnKhg_Tj9SMezkmm9mzpy4to" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/01-Improve-Performance/08-Using-SQL-inner-select/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<p>If you would like us to investigate the issue, please also provide:</p>
+<ul>
+<li>Updated environment
+<ul>
+<li>Latest Data</li>
+<li>Latest .NET code</li>
+</ul>
+</li>
+<li>Clear steps to reproduce the behavior. Please make sure that the process takes no longer than one minute.</li>
+</ul>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//02-Migration-project/Getting assistance with SQL performance issues/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -101,7 +91,7 @@ Usually I disagree, many of the powers of SQL can be available easily in your co
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'using-sql-inner-select.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'getting-assistance-with-sql-performance-issues.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="InnerSelectHelper">
+    <meta name="keywords" content="">
 
-    <title>Using SQL inner select</title>
+    <title>Reducing Inner Controller tree to Improve Performance</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,36 +27,26 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="using-sql-inner-select">Using SQL inner select</h1>
-<p>When approaching performance problems, a lot of time I hear developers talking about moving the code to SQL stored procedures to solve them.<br />
-Usually I disagree, many of the powers of SQL can be available easily in your code without the cost of rewriting the code in Store procedure, or even worth, maintaining the code in stored procedure.</p>
-<p>The most effective tool is &quot;Inner Selects&quot;.</p>
-<p>In this two videos we'll use the <code>InnerSelectHelper</code> class to reduce 1660 SQL queries to 1, and improve performance by 75%.</p>
-<p>To Learn more about the inner workings of using Inner Selects in the code see <a href="Inner-Select-and-SQL-Evaluated-Columns-in-depth.html">Inner Select and SQL Evaluated Columns in depth</a></p>
-<h3 id="using-the-innerselecthelper">Using the InnerSelectHelper</h3>
+                <div class="content"><h1 id="reducing-inner-controller-tree-to-improve-performance">Reducing Inner Controller tree to Improve Performance</h1>
+<p>In this set of videos we take a deep inner controller tree and improve it's performance using joins and group by.</p>
+<p><img src="2017-08-07_18h08_25.png" alt="2017 08 07 18H08 25" /></p>
+<p>The scenario we've tested, which had 250,000 was taking one minute when we started.</p>
+<p>Improving it with joins, reduced the time to 15 seconds.</p>
+<p>Improving that with Group By reduced the time to 1/2 a second.</p>
+<p>Here's the code of the controller before we optimize it. <a href="ProductSalesInfo.zip">ProductSalesInfo.zip</a></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Zx--di4qOeg?list=PL1DEQjXG2xnLp-A7typjUccfykKPenrer" frameborder="0" allowfullscreen></iframe>
+---
+<h2 id="the-profiler-we-used-in-this-process">the profiler we used in this process</h2>
+<p><img src="2017-08-07_18h09_16.png" alt="2017 08 07 18H09 16" /></p>
+<p><a href="ProductSalesInfo.pptx">Power Point slide used in this video</a></p>
 <ul>
-<li>Define the InnerSelectHelper class in the code</li>
+<li><a href="using-joins-to-merge-the-orders-and-order-details-controllers.html">Using joins to merge the Orders and Order Details Controllers</a></li>
+<li><a href="merging-the-orders-and-customers-controllers-with-joins.html">Merging the Orders and Customers Controllers with Joins</a></li>
+<li><a href="using-group-by-in-an-sql-statement.html">Using Group By in an SQL Statement</a></li>
+<li><a href="using-sqlgroupby-class.html">Using SQLGroupBy Class</a></li>
+<li><a href="merge-the-display-data-and-collect-data-controllers.html">Merge the Display Data and Collect Data Controllers</a></li>
 </ul>
-<pre data-line="" class="language-csdiff line-numbers"><code>var h = new ENV.Data.InnerSelectHelper(this); </code></pre>
-<h4 id="create-an-exist-inner-select">Create an Exist Inner Select</h4>
-<p>Parameters:</p>
-<ol>
-<li>The column that will be used as the result</li>
-<li>The Child entity to check in (in our case, the Order_Details entity)</li>
-<li>The Where to use in that entity (in our case, the OrderID should match)</li>
-</ol>
-<pre data-line="" class="language-csdiff line-numbers"><code>h.TurnToExist(V_HasOrderDetails, Order_Details, Order_Details.OrderID.IsEqualTo(Orders.OrderID)); </code></pre>
-<h4 id="create-a-sum-inner-select">Create a Sum Inner Select</h4>
-<p>Parameters:</p>
-<ol>
-<li>The column that will be used as the result.</li>
-<li>The column to sum in the Child entity (in our case, Quantity).</li>
-<li>The Where to use in that entity (in our case, the OrderID should match)</li>
-</ol>
-<pre data-line="" class="language-csdiff line-numbers"><code>h.TurnToSum(TotalQuantity, Order_Details.Quantity, Order_Details.OrderID.IsEqualTo(Orders.OrderID)); </code></pre>
-<hr />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/kOT8WViZVoI?list=PL1DEQjXG2xnKhg_Tj9SMezkmm9mzpy4to" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/01-Improve-Performance/08-Using-SQL-inner-select/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/01-Improve-Performance/15-Reducing-Inner-Controller-tree-to-Improve-Performance/01-index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -101,7 +91,7 @@ Usually I disagree, many of the powers of SQL can be available easily in your co
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'using-sql-inner-select.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'reducing-inner-controller-tree-to-improve-performance.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Using joins to merge the Orders and Order Details Controllers</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="using-joins-to-merge-the-orders-and-order-details-controllers">Using joins to merge the Orders and Order Details Controllers</h1>
+<p>Here are the steps we used when merging these two Controllers:</p>
+<h2 id="move-the-models-section-from-the-collectorderdetails-controller-to-the-collectorders-controller">1. Move the models section from the <code>CollectOrderDetails</code> controller to the <code>CollectOrders</code> controller</h2>
+<pre data-line="7,8" class="language-csdiff line-numbers"><code>/// &lt;summary&gt;CollectOrders(P#13.1.1)&lt;/summary&gt;
+/// &lt;remark&gt;Last change before Migration: 07/08/2017 12:13:58&lt;/remark&gt;
+class CollectOrders : BusinessProcessBase 
+{
+    #region Models
+    readonly Models.Orders Orders = new Models.Orders ();
+    readonly Models.Order_Details Order_Details = new Models.Order_Details ();
+    readonly Models.ProductSalesInfo ProductSalesInfo1 = new Models.ProductSalesInfo ();
+    #endregion
+    CollectData _parent;
+    public CollectOrders(CollectData parent)
+    {
+...
+
+
+    /// &lt;summary&gt;CollectOrder Details(P#13.1.1.1)&lt;/summary&gt;
+    /// &lt;remark&gt;Last change before Migration: 07/08/2017 12:15:39&lt;/remark&gt;
+    class CollectOrderDetails : BusinessProcessBase 
+    {
+-       #region Models
+-       readonly Models.Order_Details Order_Details = new Models.Order_Details ();
+-       readonly Models.ProductSalesInfo ProductSalesInfo1 = new Models.ProductSalesInfo ();
+-       #endregion
+        CollectOrders _parent;
+        public CollectOrderDetails(CollectOrders parent)
+        {
+            _parent = parent;
+            Title = "CollectOrder Details";
+            InitializeDataView();
+        }
+... </code></pre>
+<h2 id="change-the-from-property-of-the-collectorders-controller-to-order_details-and-add-a-relation-to-the-orders-entity">2. Change the <code>From</code> property of the <code>CollectOrders</code> controller to <code>Order_Details</code> and add a relation to the <code>Orders</code>  Entity</h2>
+<pre data-line="10,11" class="language-csdiff line-numbers"><code>public CollectOrders(CollectData parent)
+{
+    _parent = parent;
+    Title = "CollectOrders";
+    InitializeDataView();
+}
+void InitializeDataView()
+{
+-   From = Orders;
+    From = Order_Details;
+    Relations.Add( Orders, RelationType.Join,Orders.OrderID.IsEqualTo(Order_Details.OrderID));
+
+
+    Where.Add(Orders.CustomerID.IsEqualTo(_parent.Customers.CustomerID));
+    Where.Add(CndRangeBetween(Orders.OrderDate, () =&gt; _parent._parent.FromDate != Date.Empty, _parent._parent.FromDate, () =&gt; _parent._parent.ToDate != Date.Empty, _parent._parent.ToDate));
+     ...
+class CollectOrderDetails : BusinessProcessBase 
+{
+...
+    void InitializeDataView()
+    {
+-       From = Order_Details;
+                        
+        Relations.Add(ProductSalesInfo1, RelationType.InsertIfNotFound, ProductSalesInfo1.ProdID.BindEqualTo(Order_Details.ProductID), ProductSalesInfo1.SortByProdID);
+                        
+-       Where.Add(Order_Details.OrderID.IsEqualTo(_parent.Orders.OrderID));
+                        
+        OrderBy = Order_Details.SortByPK_Order_Details; </code></pre>
+<h2 id="move-the-insertifnotfound-relation-to-the-productsalesinfo1-to-collectorders-controller">3. Move the InsertIfNotFound relation to the <code>ProductSalesInfo1</code> to <code>CollectOrders</code> controller</h2>
+<pre data-line="12" class="language-csdiff line-numbers"><code>public CollectOrders(CollectData parent)
+{
+    _parent = parent;
+    Title = "CollectOrders";
+    InitializeDataView();
+}
+void InitializeDataView()
+{
+    From = Order_Details;
+    Relations.Add( Orders, RelationType.Join,Orders.OrderID.IsEqualTo(Order_Details.OrderID));
+
+    Relations.Add(ProductSalesInfo1, RelationType.InsertIfNotFound, ProductSalesInfo1.ProdID.BindEqualTo(Order_Details.ProductID), ProductSalesInfo1.SortByProdID);
+
+    Where.Add(Orders.CustomerID.IsEqualTo(_parent.Customers.CustomerID));
+    Where.Add(CndRangeBetween(Orders.OrderDate, () =&gt; _parent._parent.FromDate != Date.Empty, _parent._parent.FromDate, () =&gt; _parent._parent.ToDate != Date.Empty, _parent._parent.ToDate));
+     ...
+class CollectOrderDetails : BusinessProcessBase 
+{
+...
+    void InitializeDataView()
+    {
+-       Relations.Add(ProductSalesInfo1, RelationType.InsertIfNotFound, ProductSalesInfo1.ProdID.BindEqualTo(Order_Details.ProductID), ProductSalesInfo1.SortByProdID);
+                        
+        OrderBy = Order_Details.SortByPK_Order_Details; </code></pre>
+<h2 id="move-the-columns-from-the-collectorderdetails-controller-to-the-collectorders">4. Move the Columns from the <code>CollectOrderDetails</code> controller to the <code>CollectOrders</code></h2>
+<pre data-line="22,23,24,25,26,27,28,29" class="language-csdiff line-numbers"><code>public CollectOrders(CollectData parent)
+{
+    _parent = parent;
+    Title = "CollectOrders";
+    InitializeDataView();
+}
+void InitializeDataView()
+{
+    From = Order_Details;
+    Relations.Add( Orders, RelationType.Join,Orders.OrderID.IsEqualTo(Order_Details.OrderID));
+
+    Relations.Add(ProductSalesInfo1, RelationType.InsertIfNotFound, ProductSalesInfo1.ProdID.BindEqualTo(Order_Details.ProductID), ProductSalesInfo1.SortByProdID);
+
+    Where.Add(Orders.CustomerID.IsEqualTo(_parent.Customers.CustomerID));
+    Where.Add(CndRangeBetween(Orders.OrderDate, () =&gt; _parent._parent.FromDate != Date.Empty, _parent._parent.FromDate, () =&gt; _parent._parent.ToDate != Date.Empty, _parent._parent.ToDate));
+                        
+    OrderBy = Orders.SortByCustomerID;
+    #region Column Selection
+    Columns.Add(Orders.OrderID);
+    Columns.Add(Orders.CustomerID);
+    Columns.Add(Orders.OrderDate);
+    Columns.Add(Order_Details.OrderID);
+    Columns.Add(Order_Details.ProductID);
+    Columns.Add(Order_Details.UnitPrice);
+    Columns.Add(Order_Details.Quantity);
+    Columns.Add(Order_Details.Discount);
+    Columns.Add(ProductSalesInfo1.ProdID);
+    Columns.Add(ProductSalesInfo1.Quantity);
+    Columns.Add(ProductSalesInfo1.Amount);
+    #endregion
+}
+
+     ...
+class CollectOrderDetails : BusinessProcessBase 
+{
+...
+    void InitializeDataView()
+    {
+                        
+        OrderBy = Order_Details.SortByPK_Order_Details;
+-       #region Column Selection
+-       Columns.Add(Order_Details.OrderID);
+-       Columns.Add(Order_Details.ProductID);
+-       Columns.Add(Order_Details.UnitPrice);
+-       Columns.Add(Order_Details.Quantity);
+-       Columns.Add(Order_Details.Discount);
+-       Columns.Add(ProductSalesInfo1.ProdID);
+-       Columns.Add(ProductSalesInfo1.Quantity);
+-       Columns.Add(ProductSalesInfo1.Amount);
+-       #endregion </code></pre>
+<h2 id="move-the-onleaverow-logic-from-collectorderdetails-to-collectorders">5. Move the <code>OnLeaveRow</code> logic from  <code>CollectOrderDetails</code> to <code>CollectOrders</code></h2>
+<pre data-line="7,8" class="language-csdiff line-numbers"><code>class CollectOrders : BusinessProcessBase 
+{
+...
+protected override void OnLeaveRow()
+{
+-   Cached&lt;CollectOrderDetails&gt;().Run();
+    ProductSalesInfo1.Quantity.Value += Order_Details.Quantity;
+    ProductSalesInfo1.Amount.Value += Order_Details.UnitPrice * Order_Details.Quantity;
+
+}
+...
+class CollectOrderDetails : BusinessProcessBase 
+{
+...
+    protected override void OnLeaveRow()
+    {
+-       ProductSalesInfo1.Quantity.Value += Order_Details.Quantity;
+-       ProductSalesInfo1.Amount.Value += Order_Details.UnitPrice * Order_Details.Quantity;
+    }
+...
+} </code></pre>
+<h2 id="delete-the-collectorderdetails-since-youre-no-longer-using-it">6. Delete the <code>CollectOrderDetails</code> Since you're no longer using it.</h2>
+<h2 id="thats-it-youre-done">That's it, you're done.</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9v2oRRAbEoE?list=PL1DEQjXG2xnLp-A7typjUccfykKPenrer" frameborder="0" allowfullscreen></iframe>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/01-Improve-Performance/15-Reducing-Inner-Controller-tree-to-Improve-Performance/02-Using joins to merge the Orders and Order Details Controllers.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree"</div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4806432-3', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'using-joins-to-merge-the-orders-and-order-details-controllers.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>

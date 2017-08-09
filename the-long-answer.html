@@ -29,6 +29,32 @@
                 </div>
                 <div class="content"><h1 id="the-long-answer">The long answer</h1>
 <p>Let’s start with a simpler question to explain the basics, and then face the original question.</p>
+<h2 id="the-simpler-question-how-do-i-create-my-own-in-statement">The simpler question, how do I create my own “In” statement?</h2>
+<p>Let’s say that we would like to count the orders of specific customers.</p>
+<p>The basic to it will be:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>var o = new Orders();
+return o.CountRows(o.CustomerID.IsEqualTo("TOMSP")
+       .Or(o.CustomerID.IsEqualTo("HANAR"))); </code></pre>
+<p>We’re using the “CountRows” method, that receives a “FilterBase” object – just like any other filter that is used in the application.</p>
+<p>This is a bit cumbersome, and is tolerable when I have two customers, but what if I have more?</p>
+<p>Let’s evolve this by creating our own “In” function.</p>
+<p>First, instead of sending the “IsEqualTo” filter, directly to the “CountRows” method, let’s use a “FilterCollection”</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>var o = new Orders();
+var where = new FilterCollection();
+where.Add(o.CustomerID.IsEqualTo("TOMSP")
+      .Or(o.CustomerID.IsEqualTo("HANAR")));
+return o.CountRows(where); </code></pre>
+<p>Now that we have the filter collection, we can use all of the power of the regular where, that we are used to, and send our own SQL commands to the where:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>var o = new Orders();
+var where = new FilterCollection();
+where.Add("{0}={1} or {0}={2}", o.CustomerID, "TOMSP", "HANAR");
+return o.CountRows(where); </code></pre>
+<p>Note that the token “{0}” will be replaced by the “Name” of the CustomerID column, and the tokens “{1}” and “{2}” will be replaced by the values “TOMSP” and “HANAR” respectively.</p>
+<p>Next let’s use the SQL in statement, instead of the or statement:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>var o = new Orders();
+var where = new FilterCollection();
+where.Add("{0} in ({1},{2})", o.CustomerID, "TOMSP", "HANAR");
+return o.CountRows(where); </code></pre>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/DataAccess/27-Making-the-most-out-of-Where/03-The-long-answer.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
