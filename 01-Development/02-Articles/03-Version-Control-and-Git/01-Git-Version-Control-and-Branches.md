@@ -4,3 +4,6 @@ In this video we review the usage of Git version controls system from within Vis
 
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7PvtjJwMXYo?list=PL1DEQjXG2xnJytCf0EkMYxwdOegOgrB9H" frameborder="0" allowfullscreen></iframe>
+
+Here is a diagram that explain the branching and releasing flow:
+![2017 09 05 17H44 09](2017-09-05_17h44_09.png)
