@@ -1,6 +1,6 @@
 ﻿# Getting the code for the first time
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cqMe4SoLVzY1" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cqMe4SoLVzY" frameborder="0" allowfullscreen></iframe>
 
 
 1.	Download the source code folder (Dotnet) from the FTP Site
