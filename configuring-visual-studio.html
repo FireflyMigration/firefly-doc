@@ -43,75 +43,40 @@
 <ul>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=Stickle.VSDropAssist">Download</a></li>
 </ul>
-<h2 id="b-templates-and-snippets">B - Templates and Snippets</h2>
-<p>Download the latest templates-and-snippets.zip from:  <a href="https://github.com/FireflyMigration/VisualStudioTemplates/releases">https://github.com/FireflyMigration/VisualStudioTemplates/releases</a></p>
-<p>In that zip you'll find two folders:</p>
+<h3 id="a.3-visual-studio-templates">A.3 - Visual Studio Templates</h3>
+<p>Install item templates, snippets and help tune up Visual Studio.</p>
 <ul>
-<li>Templates</li>
-<li>Shortcuts</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=sefi1.VisualStudioTemplates">Download</a></li>
 </ul>
-<h3 id="b.1-placing-the-templates-folder">B.1 - Placing the Templates folder</h3>
-<p>In Visual Studio:</p>
-<ol>
-<li>Open the &quot;Tools\Options&quot; menu<br />
-<img src="2017-03-08_09h59_27.png" alt="2017 03 08 09H59 27" /></li>
-<li>Select &quot;Project and Solutions&quot;</li>
-<li>Copy the path under &quot;User item templates location&quot; and open it in your file explorer<br />
-<img src="2017-03-08_10h00_46.png" alt="2017 03 08 10H00 46" /></li>
-<li>Open the &quot;Visual C#&quot; folder<br />
-<img src="2017-03-08_10h01_11.png" alt="2017 03 08 10H01 11" /></li>
-<li>Place the Templates folder from the downloaded zip file, in this directory<br />
-<img src="2017-03-08_10h03_09.png" alt="2017 03 08 10H03 09" /></li>
-</ol>
-<h3 id="b.2-placing-the-shortcuts-folder">B.2 - Placing the Shortcuts folder</h3>
-<p>You can place the shortcuts folder anywhere on your local machine - you'll just need to tell Visual Studio where to find it.</p>
-<ol>
-<li>Goto the &quot;Tools\Code Snippets Manager...&quot; Menu
-<img src="2017-03-08_10h04_29.png" alt="2017 03 08 10H04 29" /></li>
-<li>In the Language Combo select &quot;csharp&quot;</li>
-<li>Click the Add... button</li>
-<li>Select the &quot;Shortcuts&quot; folder that you've downloaded
-<img src="2017-03-08_10h05_26.png" alt="2017 03 08 10H05 26" /></li>
-</ol>
-<h2 id="c-other-important-settings-that-improve-the-performance-and-experience-in-visual-studio">C - Other important settings that improve the performance and experience in Visual Studio</h2>
+<p>After installing the extension, open Visual Studio and under the Tools menu, select &quot;Tuneup Visual Studio&quot; and click Yes
+In case you can't install the extension, follow the manual instructions <a href="http://doc.fireflymigration.com/Manually-install-Templates-and-Snippets.html">here</a></p>
+<h2 id="b-other-important-settings-that-improve-the-performance-and-experience-in-visual-studio">B - Other important settings that improve the performance and experience in Visual Studio</h2>
 <p>The following settings are in the  &quot;Tools\Options&quot; menu
 <img src="2017-03-08_09h59_27.png" alt="2017 03 08 09H59 27" /></p>
-<h3 id="c.1-set-automatically-populate-toolbox-to-false">C.1 set &quot;Automatically Populate Toolbox&quot; to False</h3>
-<p>In the &quot;Windows Forms Designer&quot; tab
-<img src="2017-03-08_10h31_14.png" alt="2017 03 08 10H31 14" />
-<strong>Improves performance</strong> after each build</p>
-<h3 id="c.2-debugging-tab">C.2 - &quot;Debugging&quot; Tab</h3>
-<h4 id="c.2.1-uncheck-warn-if-no-user-code-on-launch-managed-only">C.2.1 - Uncheck &quot;Warn if no user code on launch (Managed only)&quot;</h4>
-<p><img src="2017-02-21_07h32_11.png" alt="2017 02 21 07H32 11" />
-Eliminates the &quot;Symbols for the module 'ENV.dll' were not loaded&quot; message you get every time you run the code
-<img src="ENV_message.png" alt="ENV Message" /></p>
-<h4 id="c.2.2-uncheck-enable-edit-and-continue">C.2.2 - Uncheck &quot;Enable Edit and Continue&quot;</h4>
-<p><img src="2017-02-21_06h55_05.png" alt="2017 02 21 06H55 05" />
-Allows you to edit your code, while the application is running</p>
-<h4 id="c.2.3-uncheck-enable-diagnostic-tools-while-debugging">C.2.3 - Uncheck &quot;Enable Diagnostic Tools while debugging&quot;</h4>
+<h4 id="b.1-uncheck-enable-diagnostic-tools-while-debugging">B.1 - Uncheck &quot;Enable Diagnostic Tools while debugging&quot;</h4>
 <p><img src="2017-02-21_06h54_22.png" alt="2017 02 21 06H54 22" />
 <strong>Improves performance</strong> when running in Debug</p>
-<h3 id="c.3-disable-intellitrace">C.3 Disable IntelliTrace</h3>
+<h3 id="b.2-disable-intellitrace">B.2 Disable IntelliTrace</h3>
 <ol>
 <li>Go to the &quot;IntelliTrace&quot; Tab</li>
 <li>Uncheck the &quot;Enable IntelliTrace&quot; checkbox
 <img src="2017-03-08_10h33_43.png" alt="2017 03 08 10H33 43" />
 <strong>Improves performance</strong> when running in Debug</li>
 </ol>
-<h3 id="c.4-check-collapse-regions-when-collapsing-to-definition">C.4 Check &quot;Collapse #regions when collapsing to definition&quot;</h3>
+<h3 id="b.3-check-collapse-regions-when-collapsing-to-definition">B.3 Check &quot;Collapse #regions when collapsing to definition&quot;</h3>
 <ol>
 <li>Go to the &quot;Text Editor\C#\Advanced&quot; Tab</li>
 <li>Check the &quot;Collapse #regions when collapsing to definition&quot; check box, under &quot;Outlining&quot;<br />
 <img src="2017-03-12_18h01_23.png" alt="2017 03 12 18H01 23" /></li>
 </ol>
-<h3 id="c.5-disable-full-solution-analysis">C.5 Disable &quot;full solution analysis&quot;</h3>
+<h3 id="b.4-disable-full-solution-analysis">B.4 Disable &quot;full solution analysis&quot;</h3>
 <ol>
 <li>Go to the &quot;Text Editor\C#\Advanced&quot; Tab</li>
 <li>Uncheck the &quot;Enable full solution analysis&quot; check box, under &quot;Editor Help&quot;<br />
 <img src="2017-03-08_10h38_50.png" alt="2017 03 08 10H38 50" />
 <strong>Improves performance</strong></li>
 </ol>
-<h3 id="d-configure-the-error-list.window">D - Configure the &quot;Error List...&quot; Window</h3>
+<h3 id="c-configure-the-error-list.window">C - Configure the &quot;Error List...&quot; Window</h3>
 <ol>
 <li>Go to &quot;View\Error List&quot; menu<br />
 <img src="2017-03-08_10h43_55.png" alt="2017 03 08 10H43 55" /></li>
@@ -120,10 +85,10 @@ Allows you to edit your code, while the application is running</p>
 <li>Set the combo to &quot;Build Only&quot;<br />
 <img src="2017-03-08_10h45_18.png" alt="2017 03 08 10H45 18" /></li>
 </ol>
-<h3 id="e-disable-preview-selected-item">E - Disable &quot;Preview Selected Item&quot;</h3>
+<h3 id="d-disable-preview-selected-item">D - Disable &quot;Preview Selected Item&quot;</h3>
 <p>In the &quot;Solution Explorer&quot; window make sure that the &quot;Preview Selected Item&quot; Icon is not checked (highlighted)<br />
 <img src="2017-03-08_10h47_38.png" alt="2017 03 08 10H47 38" /></p>
-<h3 id="f-add-the-parameter-information-toolbar-item">F - Add the parameter information toolbar item</h3>
+<h3 id="e-add-the-parameter-information-toolbar-item">E - Add the parameter information toolbar item</h3>
 <ol>
 <li>Open any class</li>
 <li>On the toolbar</li>
@@ -137,7 +102,7 @@ Allows you to edit your code, while the application is running</p>
 <li><img src="2017-03-08_10h51_00.png" alt="2017 03 08 10H51 00" /></li>
 <li><img src="2017-03-08_10h51_55.png" alt="2017 03 08 10H51 55" /></li>
 </ol>
-<h3 id="g-configure-the-goto-window">G - Configure the &quot;GoTo&quot; window</h3>
+<h3 id="f-configure-the-goto-window">F - Configure the &quot;GoTo&quot; window</h3>
 <p>Go To the &quot;Edit\Go To\Go To All...&quot; menu item<br />
 <img src="2017-03-08_10h56_02.png" alt="2017 03 08 10H56 02" /></p>
 <ol>
@@ -146,6 +111,9 @@ Allows you to edit your code, while the application is running</p>
 <li>Uncheck the &quot;Use Preview Tab&quot; CheckBox</li>
 <li>Check the &quot;Show details&quot; CheckBox</li>
 </ol>
+<ul>
+<li><a href="manually-install-templates-and-snippets.html">Manually Install Templates and Snippets</a></li>
+</ul>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/04-Visual-Studio/01-Configuring-Visual-Studio/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
