@@ -17,7 +17,7 @@ MVC.NET, REST Api and the migrated code.
 3. Angular2 - as the application framework
 4. Typescript - as the coding language
 
-## This toturial
+## This tutorial
 In this tutorial we'll cover a few basic development tasks all the way from creating the server side API to developing the front end with Typescript and Angular.
 
 Let's get started.
