@@ -1,0 +1,1 @@
+﻿In this section of the Tutorial we'll cover Angular and TypeScript basics. If you are already experienced with it, just skip to the next episode: [automatically creating an interface using the dataApi documentation](automatically-creating-an-interface-using-the-dataApi-documentation.html)
