@@ -31,14 +31,14 @@
 <ol>
 <li>Create a new ViewModel based on the <code>ViewModelHelper</code> template in the ENV.Web Templates folder.</li>
 </ol>
-<pre data-line="3" class="language-csdiff line-numbers"><code>class OrdersViewModel : ViewModelHelper
+<pre data-line="3,7,8" class="language-csdiff line-numbers"><code>class OrdersViewModel : ViewModelHelper
 {
     public readonly Northwind.Models.Orders Orders = new Northwind.Models.Orders();
 
     public OrdersViewModel()
     {
- +      From = Orders;
- +      AllowUpdate = true;
+       From = Orders;
+       AllowUpdate = true;
     }
 } </code></pre>
 <ol start="2">
