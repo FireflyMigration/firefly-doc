@@ -28,6 +28,73 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="client-side-validation">Client Side Validation</h1>
+<ol>
+<li>Basic Validation</li>
+</ol>
+<pre data-line="13,14,15,16" class="language-csdiff line-numbers"><code>export class Orders {
+
+    title = 'Orders';
+    orders = new utils.DataSettings&lt;models.order&gt;(
+        {
+            restUrl: apiUrl + 'orders',
+            columnSettings: [
+                { key: "id", caption: "OrderID", inputType: "number" },
+                { key: "customerID", caption: "CustomerID" },
+                { key: "orderDate", caption: "OrderDate", inputType: "date" },
+                { key: "shipVia", caption: "ShipVia", inputType: "number" },
+            ],
+            onSavingRow: modelState =&gt; {
+                if (modelState.row.orderDate &lt; "1990-01-01")
+                    modelState.addError("orderDate", "invalid date");
+            },
+            allowUpdate: true,
+            get: {
+                limit: 5,
+                isEqualTo: {
+                    shipVia: 2,
+                    customerID:"HANAR"
+                },
+                isGreaterOrEqualTo: {
+                    orderDate:"1997-01-01"
+                },
+                orderBy:'orderDate'
+            }
+        });
+} </code></pre>
+<ol start="2">
+<li>Built in required validation</li>
+</ol>
+<pre data-line="14" class="language-csdiff line-numbers"><code>export class Orders {
+
+    title = 'Orders';
+    orders = new utils.DataSettings&lt;models.order&gt;(
+        {
+            restUrl: apiUrl + 'orders',
+            columnSettings: [
+                { key: "id", caption: "OrderID", inputType: "number" },
+                { key: "customerID", caption: "CustomerID" },
+                { key: "orderDate", caption: "OrderDate", inputType: "date" },
+                { key: "shipVia", caption: "ShipVia", inputType: "number" },
+            ],
+            onSavingRow: modelState =&gt; {
+                modelState.required('shipVia');
+                if (modelState.row.orderDate &lt; "1990-01-01")
+                    modelState.addError("orderDate", "invalid date");
+            },
+            allowUpdate: true,
+            get: {
+                limit: 5,
+                isEqualTo: {
+                    shipVia: 2,
+                    customerID:"HANAR"
+                },
+                isGreaterOrEqualTo: {
+                    orderDate:"1997-01-01"
+                },
+                orderBy:'orderDate'
+            }
+        });
+} </code></pre>
 <pre data-line="13,14,15,16,17,18" class="language-csdiff line-numbers"><code>export class Orders {
 
     title = 'Orders';
@@ -58,9 +125,7 @@
                 },
                 orderBy:'orderDate'
             }
-
         });
-
 } </code></pre>
 <p><a href="https://github.com/FireflyMigration/ENV.Web/commit/a09ebc1d44232ccfd795b40f48f3677acff73e12">Commit info on GitHub</a></p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Nom2T8G0YkI?list=PL1DEQjXG2xnJOSQf2421r1S040NkvCApp" frameborder="0" allowfullscreen></iframe>

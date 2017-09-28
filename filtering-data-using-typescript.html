@@ -28,7 +28,10 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="filtering-data-using-typescript">Filtering Data using TypeScript</h1>
-<pre data-line="11,12,13,14,15,16,17,18,19,20,21" class="language-csdiff line-numbers"><code>@Injectable()
+<ol>
+<li>Limit the number of rows</li>
+</ol>
+<pre data-line="10,11,12" class="language-csdiff line-numbers"><code>@Injectable()
 export class Orders {
 
     title = 'Orders';
@@ -36,7 +39,96 @@ export class Orders {
         {
             restUrl: apiUrl + 'orders',
             columnKeys: ["id", "customerID", "orderDate", "shipVia"],
-            allowUpdate: true
+            allowUpdate: true,
+            get: {
+                limit: 5
+            }
+        });
+
+} </code></pre>
+<ol start="2">
+<li>Filter on First Value</li>
+</ol>
+<pre data-line="12,13,14" class="language-csdiff line-numbers"><code>@Injectable()
+export class Orders {
+
+    title = 'Orders';
+    orders = new utils.DataSettings&lt;models.order&gt;(
+        {
+            restUrl: apiUrl + 'orders',
+            columnKeys: ["id", "customerID", "orderDate", "shipVia"],
+            allowUpdate: true,
+            get: {
+                limit: 5,
+                isEqualTo: {
+                    shipVia: 2
+                },
+            }
+
+        });
+
+} </code></pre>
+<ol start="3">
+<li>Filtering on second value</li>
+</ol>
+<pre data-line="14" class="language-csdiff line-numbers"><code>@Injectable()
+export class Orders {
+
+    title = 'Orders';
+    orders = new utils.DataSettings&lt;models.order&gt;(
+        {
+            restUrl: apiUrl + 'orders',
+            columnKeys: ["id", "customerID", "orderDate", "shipVia"],
+            allowUpdate: true,
+            get: {
+                limit: 5,
+                isEqualTo: {
+                    shipVia: 2,
+                    customerID:"HANAR"
+                }
+            }
+
+        });
+
+} </code></pre>
+<ol start="4">
+<li>IsGreaterOrEqualTo</li>
+</ol>
+<pre data-line="16,17,18" class="language-csdiff line-numbers"><code>@Injectable()
+export class Orders {
+
+    title = 'Orders';
+    orders = new utils.DataSettings&lt;models.order&gt;(
+        {
+            restUrl: apiUrl + 'orders',
+            columnKeys: ["id", "customerID", "orderDate", "shipVia"],
+            allowUpdate: true,
+            get: {
+                limit: 5,
+                isEqualTo: {
+                    shipVia: 2,
+                    customerID:"HANAR"
+                },
+                isGreaterOrEqualTo: {
+                    orderDate:"1997-01-01"
+                }
+
+            }
+
+        });
+
+} </code></pre>
+<ol start="5">
+<li>Order By</li>
+</ol>
+<pre data-line="19" class="language-csdiff line-numbers"><code>@Injectable()
+export class Orders {
+
+    title = 'Orders';
+    orders = new utils.DataSettings&lt;models.order&gt;(
+        {
+            restUrl: apiUrl + 'orders',
+            columnKeys: ["id", "customerID", "orderDate", "shipVia"],
             allowUpdate: true,
             get: {
                 limit: 5,
