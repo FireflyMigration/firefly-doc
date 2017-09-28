@@ -1,4 +1,5 @@
 ﻿
+1. Limit the number of rows
 ```csdiff
 @Injectable()
 export class Orders {
@@ -8,19 +9,108 @@ export class Orders {
         {
             restUrl: apiUrl + 'orders',
             columnKeys: ["id", "customerID", "orderDate", "shipVia"],
-            allowUpdate: true
             allowUpdate: true,
 +           get: {
-+               limit: 5,
++               limit: 5
++           }
+        });
+
+}
+```
+2. Filter on First Value
+```csdiff
+@Injectable()
+export class Orders {
+
+    title = 'Orders';
+    orders = new utils.DataSettings<models.order>(
+        {
+            restUrl: apiUrl + 'orders',
+            columnKeys: ["id", "customerID", "orderDate", "shipVia"],
+            allowUpdate: true,
+            get: {
+                limit: 5,
 +               isEqualTo: {
-+                   shipVia: 2,
-+                   customerID:"HANAR"
++                   shipVia: 2
 +               },
+            }
+
+        });
+
+}
+``` 
+3. Filtering on second value
+```csdiff
+@Injectable()
+export class Orders {
+
+    title = 'Orders';
+    orders = new utils.DataSettings<models.order>(
+        {
+            restUrl: apiUrl + 'orders',
+            columnKeys: ["id", "customerID", "orderDate", "shipVia"],
+            allowUpdate: true,
+            get: {
+                limit: 5,
+                isEqualTo: {
+                    shipVia: 2,
++                   customerID:"HANAR"
+                }
+            }
+
+        });
+
+}
+```
+4. IsGreaterOrEqualTo
+```csdiff
+@Injectable()
+export class Orders {
+
+    title = 'Orders';
+    orders = new utils.DataSettings<models.order>(
+        {
+            restUrl: apiUrl + 'orders',
+            columnKeys: ["id", "customerID", "orderDate", "shipVia"],
+            allowUpdate: true,
+            get: {
+                limit: 5,
+                isEqualTo: {
+                    shipVia: 2,
+                    customerID:"HANAR"
+                },
 +               isGreaterOrEqualTo: {
 +                   orderDate:"1997-01-01"
-+               },
++               }
+
+            }
+
+        });
+
+}
+```
+5. Order By
+```csdiff
+@Injectable()
+export class Orders {
+
+    title = 'Orders';
+    orders = new utils.DataSettings<models.order>(
+        {
+            restUrl: apiUrl + 'orders',
+            columnKeys: ["id", "customerID", "orderDate", "shipVia"],
+            allowUpdate: true,
+            get: {
+                limit: 5,
+                isEqualTo: {
+                    shipVia: 2,
+                    customerID:"HANAR"
+                },
+                isGreaterOrEqualTo: {
+                    orderDate:"1997-01-01"
+                },
 +               orderBy:'orderDate'
-+           }
+            }
 
         });
 

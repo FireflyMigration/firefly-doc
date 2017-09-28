@@ -7,8 +7,8 @@ class OrdersViewModel : ViewModelHelper
 
     public OrdersViewModel()
     {
- +      From = Orders;
- +      AllowUpdate = true;
++      From = Orders;
++      AllowUpdate = true;
     }
 }
 ```
