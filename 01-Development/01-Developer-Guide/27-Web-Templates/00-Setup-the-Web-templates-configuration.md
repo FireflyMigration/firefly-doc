@@ -14,5 +14,16 @@
 2. AppServerConfig : set up the environment variables and load the ini file  
 ![2017-10-08_16h20_11.png](2017-10-08_16h20_11.png)
 
+######  Project Properties:
+The server project properties can be access by right click on the project and select properties  
+Make sure that you are in the Web section of the project properties  
+You can select what IIS to use to test your project :  
+* IIS Express, Visual Studio IIS.  
+* Local IIS, the windows build in IIS.  
+* External Host  
+
+![2017-10-08_16h36_34.png](2017-10-08_16h36_34.png)  
+
+
 ````
 
