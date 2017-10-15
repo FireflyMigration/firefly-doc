@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>working with areas</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="working-with-areas">working with areas</h1>
+<p>An area is a way to display several controls outside of a grid and group them together.</p>
+<p>By default a grid has an area below it with all the columns that did not fit in the grid. Let's disable it and add our own area.</p>
+<h3 id="disable-the-default-area-under-the-grid">Disable the default area under the grid</h3>
+<p><code>Scripts\App\Orders.ts</code></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>shippers = new models.shippers();
+orders = new models.orders(
+    {
+        numOfColumnsInGrid: 4,
+        get: { limit: 4 },
+-       hideDataArea: true,
+        allowUpdate: true,
+        allowInsert: true,
+        allowDelete: true, </code></pre>
+<p><img src="Grid-without-default-area.png" alt="Grid Without Default Area" /></p>
+<h3 id="add-ship-info-area-into-tab-1">Add ship info area into tab 1</h3>
+<ul>
+<li>We'll use the add area function to define the are, and move some columns from the main to that area</li>
+</ul>
+<pre data-line="30,31,32,33,34,35,36" class="language-csdiff line-numbers"><code>    shippers = new models.shippers();
+    orders = new models.orders(
+        {
+            numOfColumnsInGrid: 4,
+            get: { limit:4 },
+            allowUpdate: true,
+            allowInsert: true,
+            allowDelete: true,
+            columnSettings: [
+                { key: "id", caption: "Order ID", readonly: true },
+                {
+                    key: "customerID",
+                    getValue: o =&gt;
+                        this.customers.lookup.get({ id: o.customerID }).companyName,
+                    click: o =&gt; this.customers.showSelectPopup(c =&gt; o.customerID = c.id)
+                },
+                { key: "orderDate", inputType: "date" },
+                {
+                    key: "shipVia",
+                    dropDown: { source: this.shippers },
+                    cssClass: 'col-sm-3'
+                },
+-               { key: "requiredDate", inputType: "date" },
+-               { key: "shippedDate", inputType: "date" },
+-               { key: "shipAddress" },
+-               { key: "shipCity" },
+            ]
+        }
+    );
+    shipInfoArea = this.orders.addArea({
+        columnSettings: [
+            { key: "requiredDate", inputType: "date" },
+            { key: "shippedDate", inputType: "date" },
+            { key: "shipAddress" },
+            { key: "shipCity" },
+        ]}); </code></pre>
+<p><code>Scripts\App\Orders.html</code></p>
+<pre data-line="13" class="language-csdiff line-numbers"><code>  &lt;h1&gt;Orders&lt;/h1&gt;
+  &lt;data-grid [settings]="orders"&gt;&lt;/data-grid&gt;
+  &lt;select-popup [settings]="customers"&gt;&lt;/select-popup&gt;
+  &lt;div&gt;
+      &lt;!-- Nav tabs --&gt;
+      &lt;ul class="nav nav-tabs" role="tablist"&gt;
+          &lt;li class="active"&gt;&lt;a href="#tab1" data-toggle="tab"&gt;Tab 1&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#tab2" data-toggle="tab"&gt;Tab 2&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;!-- Tab panes --&gt;
+      &lt;div class="tab-content"&gt;
+          &lt;div class="tab-pane active" id="tab1"&gt;
+              &lt;data-area [settings]="shipInfoArea"&gt;&lt;/data-area&gt;
+          &lt;/div&gt;
+          &lt;div  class="tab-pane" id="tab2"&gt;
+              Tab 2 Info
+          &lt;/div&gt;
+      &lt;/div&gt;
+  &lt;/div&gt; </code></pre>
+<p><img src="Tab-with-area.png" alt="Tab With Area" /></p>
+<p>By default all the data column are displayed one after the other. We can split them into more columns:
+<code>Scripts\App\Orders.ts</code></p>
+<pre data-line="2" class="language-csdiff line-numbers"><code>shipInfoArea = this.orders.addArea({
+    numberOfColumnAreas:2,
+    columnSettings: [
+        { key: "requiredDate", inputType: "date" },
+        { key: "shippedDate", inputType: "date" },
+        { key: "shipAddress" },
+        { key: "shipCity" },
+    ]}); </code></pre>
+<p><img src="Area-with-two-columns.png" alt="Area With Two Columns" /></p>
+<p>Finally, let's fix the tab name and id
+<code>Scripts\App\Orders.html</code></p>
+<pre data-line="8,14" class="language-csdiff line-numbers"><code> &lt;h1&gt;Orders&lt;/h1&gt;
+ &lt;data-grid [settings]="orders"&gt;&lt;/data-grid&gt;
+ &lt;select-popup [settings]="customers"&gt;&lt;/select-popup&gt;
+ &lt;div&gt;
+     &lt;!-- Nav tabs --&gt;
+     &lt;ul class="nav nav-tabs" role="tablist"&gt;
+-        &lt;li class="active"&gt;&lt;a href="#tab1" data-toggle="tab"&gt;Tab 1&lt;/a&gt;&lt;/li&gt;
+         &lt;li class="active"&gt;&lt;a href="#shipInfo" data-toggle="tab"&gt;Ship Info&lt;/a&gt;&lt;/li&gt;
+         &lt;li&gt;&lt;a href="#tab2" data-toggle="tab"&gt;Tab 2&lt;/a&gt;&lt;/li&gt;
+     &lt;/ul&gt;
+     &lt;!-- Tab panes --&gt;
+     &lt;div class="tab-content"&gt;
+-        &lt;div class="tab-pane active" id="tab1"&gt;
+         &lt;div class="tab-pane active" id="shipInfo"&gt;
+             &lt;data-area [settings]="shipInfoArea"&gt;&lt;/data-area&gt;
+         &lt;/div&gt;
+         &lt;div  class="tab-pane" id="tab2"&gt;
+             Tab 2 Info
+         &lt;/div&gt;
+     &lt;/div&gt;
+ &lt;/div&gt; </code></pre>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/01-Web Development Tutorial/ENV Web/16-working with areas.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree"</div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4806432-3', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'working-with-areas.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>

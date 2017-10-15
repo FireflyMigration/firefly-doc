@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Server Side Validation</title>
+    <title>Server side Validation</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,48 +27,48 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="server-side-validation">Server Side Validation</h1>
-<pre data-line="22,23,24,25,26" class="language-csdiff line-numbers"><code>class OrdersViewModel : ViewModelHelper
-{
-    public readonly Northwind.Models.Orders Orders = new Northwind.Models.Orders();
-    public readonly Northwind.Models.Shippers Shippers = new Northwind.Models.Shippers();
-
-    public OrdersViewModel()
-    {
-        From = Orders;
-
-        Relations.Add(Shippers, Shippers.ShipperID.IsEqualTo(Orders.ShipVia));
-
-        AllowUpdate = true;
-        Where.Add(Orders.OrderDate.IsGreaterOrEqualTo(1997, 1, 1));
-        Shippers.CompanyName.Caption = "Shipper Name";
-        MapColumn(Orders.OrderID,
-            Orders.CustomerID,
-            Orders.OrderDate,
-            Orders.ShipVia,
-            Shippers.CompanyName);
-        MapExperssion("ServerSideDayOfWeek", () =&gt; u.NDOW(u.DOW(Orders.OrderDate)));
-    }
-    protected override void OnSavingRow()
-    {
-        if (Orders.OrderDate.Year &lt; 1995)
-            Message.ShowError("Please enter valid date");
-    }
-} </code></pre>
-<p><a href="https://github.com/FireflyMigration/ENV.Web/commit/0a5daa27e9ec5c6fd2a97c53f0d336dde686b33c">Commit info on GitHub</a></p>
-<h3 id="server-side-validation-using-modelstate">Server side validation using ModelState</h3>
+                <div class="content"><h1 id="server-side-validation">Server side Validation</h1>
+<p>We want to validate the data on the server in <code>ViewModels\OrdersViewModel.cs</code></p>
+<h2 id="basic-required-validation">Basic Required Validation</h2>
 <pre data-line="5" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
 {
--   if (Orders.OrderDate.Year &lt; 1995)
--       Message.ShowError("Please enter valid date");
-    ModelState.AddError(Orders.OrderDate, "invalid date");
-
-
-    ModelState.Required(Orders.OrderID);
+    if (Activity == Activities.Insert)
+        Orders.OrderID.Value = Orders.Max(Orders.OrderID) + 1;
+    ModelState.Required(Orders.CustomerID);
 } </code></pre>
-<p><a href="https://github.com/FireflyMigration/ENV.Web/commit/6bc10abf9604dbdca7f88e424a55a13a33af8de2">Commit info on GitHub</a></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qCyGlMEyNLU?list=PL1DEQjXG2xnJOSQf2421r1S040NkvCApp" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/01-Web Development Tutorial/25-DataApi and ViewModels/30-Server Side Validation.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<h2 id="custom-validation">Custom Validation</h2>
+<pre data-line="6,7" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
+{
+    if (Activity == Activities.Insert)
+        Orders.OrderID.Value = Orders.Max(Orders.OrderID) + 1;
+    ModelState.Required(Orders.CustomerID);
+    if (Orders.OrderDate.Year &lt; 1990)
+        ModelState.AddError(Orders.OrderDate, "Invalid Date");
+} </code></pre>
+<h2 id="basic-exist-in-table-validation">Basic exist in table validation</h2>
+<pre data-line="8" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
+{
+    if (Activity == Activities.Insert)
+        Orders.OrderID.Value = Orders.Max(Orders.OrderID) + 1;
+    ModelState.Required(Orders.CustomerID);
+    if (Orders.OrderDate.Year &lt; 1990)
+        ModelState.AddError(Orders.OrderDate, "Invalid Date");
+    ModelState.Exists(Orders.CustomerID, new Northwind.Models.Customers().CustomerID);
+} </code></pre>
+<h3 id="one-more-for-shipvia">one more for ShipVia</h3>
+<pre data-line="9" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
+{
+    if (Activity == Activities.Insert)
+        Orders.OrderID.Value = Orders.Max(Orders.OrderID) + 1;
+    ModelState.Required(Orders.CustomerID);
+    if (Orders.OrderDate.Year &lt; 1990)
+        ModelState.AddError(Orders.OrderDate, "Invalid Date");
+    ModelState.Exists(Orders.CustomerID, new Northwind.Models.Customers().CustomerID);
+    ModelState.Exists(Orders.ShipVia, new Northwind.Models.Shippers().ShipperID);
+} </code></pre>
+<h2 id="the-user-experiance">the User Experiance</h2>
+<p><img src="2017-10-15_08h43_25.gif" alt="2017 10 15 08H43 25" /></p>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/01-Web Development Tutorial/ENV Web/11-Server side Validation.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
