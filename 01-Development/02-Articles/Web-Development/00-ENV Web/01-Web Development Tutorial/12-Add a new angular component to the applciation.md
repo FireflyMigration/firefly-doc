@@ -1,4 +1,11 @@
-﻿1. Goto the `Scripts\App` folder
+﻿In this demo we use Angular and Type Script.
+
+For a brief introduction to Angular and type script please visit: [introduction-to-angular-and-typescript.html](introduction-to-angular-and-typescript.html)
+
+
+### Add a new Angular component
+
+1. Goto the `Scripts\App` folder
 2. Add new item and use the `Angular2Component` template found in the `ENV.Web` folder. Call it `Orders.ts`
 
 ```csdiff

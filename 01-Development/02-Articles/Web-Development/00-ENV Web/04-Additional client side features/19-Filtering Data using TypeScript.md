@@ -119,4 +119,4 @@ export class Orders {
 
 [Commit info on GitHub](https://github.com/FireflyMigration/ENV.Web/commit/5181b5c93111a3819b280cd3bf9d39b875ae2dbb)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8dr5Z2LGxro?list=PL1DEQjXG2xnJOSQf2421r1S040NkvCApp" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8dr5Z2LGxro" frameborder="0" allowfullscreen></iframe>

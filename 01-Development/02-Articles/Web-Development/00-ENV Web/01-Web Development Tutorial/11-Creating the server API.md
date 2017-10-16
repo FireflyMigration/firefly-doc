@@ -34,3 +34,7 @@ _dataApi.Register(typeof(Northwind.Models.Customers));
 _dataApi.Register(typeof(Northwind.Models.Shippers));
 
 ```
+
+
+##Brief review of the Data Api
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lMVPcf-OCj0" frameborder="0" allowfullscreen></iframe>
