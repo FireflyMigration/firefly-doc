@@ -17,6 +17,7 @@ export class Orders  {
 ```
 
 Here is the result:
+
 ![2017 10 13 08H29 23](../2017-10-13_08h29_23.png)
 
 By default the grid will display the first 5 columns on a grid, and all other columns below the grid in a `data-area`

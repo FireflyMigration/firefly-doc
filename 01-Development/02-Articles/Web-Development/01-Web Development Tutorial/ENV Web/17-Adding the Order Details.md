@@ -26,7 +26,7 @@ orders = new models.orders(
               <data-area [settings]="shipInfoArea"></data-area>
           </div>
           <div  class="tab-pane" id="tab2">
-_             Tab 2 Info
+-             Tab 2 Info
 +             <data-grid [settings]="orderDetails"></data-grid>
           </div>
       </div>

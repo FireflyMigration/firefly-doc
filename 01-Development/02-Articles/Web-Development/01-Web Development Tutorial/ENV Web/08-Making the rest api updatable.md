@@ -1,4 +1,5 @@
 ﻿Currently our Rest API is readonly, as it only support get operations for Orders and orderDetails:
+
 ![Rest Is Readonly](Rest-is-readonly.png)
 
 To change that we'll instruct the DataApi to make then public.
@@ -19,6 +20,7 @@ static DataApiController()
 ```
 
 Now when we'll refresh the dataApi help page we'll see that the API current support also, Post, Put and Delete
+
 ![Data Api Supports Post Put And Delete](DataApi-supports-post-put-and-delete.png)
 
 Now when we'll update data using the application, that data will be saved to the server.

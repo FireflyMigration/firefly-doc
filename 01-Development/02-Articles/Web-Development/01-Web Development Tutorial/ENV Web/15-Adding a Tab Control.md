@@ -16,9 +16,9 @@ We'll use bootstrap tab controls. See:
 
 In the `Scripts\App\Orders.html`
 ```csdiff
-<h1>Orders</h1>
-<data-grid [settings]="orders"></data-grid>
-<select-popup [settings]="customers"></select-popup>
+ <h1>Orders</h1>
+ <data-grid [settings]="orders"></data-grid>
+ <select-popup [settings]="customers"></select-popup>
 + <div>
 +     <!-- Nav tabs -->
 +     <ul class="nav nav-tabs" role="tablist">

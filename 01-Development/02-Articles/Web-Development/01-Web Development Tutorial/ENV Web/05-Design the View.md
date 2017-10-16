@@ -1,5 +1,7 @@
 ﻿You can visually design the view by adding `?design=y` to the url and then copy the result `typescript` code into the orders class.
+
 ![2017 10 13 08H38 37](../2017-10-13_08h38_37.gif)
+
 We'll make the following changes:
 1.  Rename `id` column to be `Order Id` and make it `readonly`
 2.  Change the `orderDate` column to be of input type `date`

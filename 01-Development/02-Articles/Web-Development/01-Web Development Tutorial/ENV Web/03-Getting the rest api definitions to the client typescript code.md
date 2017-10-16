@@ -1,5 +1,6 @@
-﻿Go to the `dataApi` help page and copy the TypeScript interfaces and classes for each api into the `Scripts\App\models.ts' file.
-*Do it for all the apis we need, `orders`, `orderDetails`, `customers`, `shippers` and `products`*
+﻿Go to the `dataApi` help page and copy the TypeScript interfaces and classes for each api into the `Scripts\App\models.ts` file.
+* Do it for all the apis we need, `orders`, `orderDetails`, `customers`, `shippers` and `products`
+
 ![2017 10 13 08H19 37](../2017-10-13_08h19_37.gif)
 
 `Scripts\App\models.ts`

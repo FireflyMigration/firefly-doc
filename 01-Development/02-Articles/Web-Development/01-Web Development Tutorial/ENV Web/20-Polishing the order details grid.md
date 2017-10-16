@@ -11,7 +11,7 @@ orderDetails = new models.orderDetails({
     allowInsert: true,
     allowDelete: true,
 +   columnSettings: [
-+       { key: "productID", caption="Product", dropDown: { source: this.products } },
++       { key: "productID", caption: "Product", dropDown: { source: this.products } },
 +       { key: "unitPrice", inputType: "number" },
 +       { key: "quantity", inputType: "number" }
 +   ],
@@ -23,5 +23,5 @@ orderDetails = new models.orderDetails({
 orders = new models.orders(
 ```
 
-![Order Details Info](Order Details info.png)
+![Polishing The Order Detail Grid](Polishing-the-order-detail-grid.png)
 

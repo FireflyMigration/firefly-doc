@@ -8,7 +8,7 @@ import * as models from './models';
 
 @Component({
     template:`
-<h1>Orders</h1>
+ <h1>Orders</h1>
 `
 })
 export class Orders  {
