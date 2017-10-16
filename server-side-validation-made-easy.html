@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Polishing the order details grid</title>
+    <title>Server side Validation made easy</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,32 +27,48 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="polishing-the-order-details-grid">Polishing the order details grid</h1>
-<ul>
-<li>Select only the columns we want</li>
-<li>Set the caption, and drop down for product id</li>
-<li>set the input type for unitPrice and quantity</li>
-</ul>
-<p><code>Scripts\App\Orders.ts</code></p>
-<pre data-line="1,7,8,9,10,11" class="language-csdiff line-numbers"><code>shippers = new models.shippers();
-products = new models.products();
-orderDetails = new models.orderDetails({
-    allowUpdate: true,
-    allowInsert: true,
-    allowDelete: true,
-    columnSettings: [
-        { key: "productID", caption: "Product", dropDown: { source: this.products } },
-        { key: "unitPrice", inputType: "number" },
-        { key: "quantity", inputType: "number" }
-    ],
-    onNewRow: od =&gt; {
-        od.orderID = this.orders.currentRow.id;
-        od.quantity = 1;
-    }
-});
-orders = new models.orders( </code></pre>
-<p>![Order Details Info](Order Details info.png)</p>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/01-Web Development Tutorial/ENV Web/20-Polishing the order details grid.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                <div class="content"><h1 id="server-side-validation-made-easy">Server side Validation made easy</h1>
+<p>We want to validate the data on the server in <code>ViewModels\OrdersViewModel.cs</code></p>
+<h2 id="basic-required-validation">Basic Required Validation</h2>
+<pre data-line="5" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
+{
+    if (Activity == Activities.Insert)
+        Orders.OrderID.Value = Orders.Max(Orders.OrderID) + 1;
+    ModelState.Required(Orders.CustomerID);
+} </code></pre>
+<h2 id="custom-validation">Custom Validation</h2>
+<pre data-line="6,7" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
+{
+    if (Activity == Activities.Insert)
+        Orders.OrderID.Value = Orders.Max(Orders.OrderID) + 1;
+    ModelState.Required(Orders.CustomerID);
+    if (Orders.OrderDate.Year &lt; 1990)
+        ModelState.AddError(Orders.OrderDate, "Invalid Date");
+} </code></pre>
+<h2 id="basic-exist-in-table-validation">Basic exist in table validation</h2>
+<pre data-line="8" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
+{
+    if (Activity == Activities.Insert)
+        Orders.OrderID.Value = Orders.Max(Orders.OrderID) + 1;
+    ModelState.Required(Orders.CustomerID);
+    if (Orders.OrderDate.Year &lt; 1990)
+        ModelState.AddError(Orders.OrderDate, "Invalid Date");
+    ModelState.Exists(Orders.CustomerID, new Northwind.Models.Customers().CustomerID);
+} </code></pre>
+<h3 id="one-more-for-shipvia">one more for ShipVia</h3>
+<pre data-line="9" class="language-csdiff line-numbers"><code>protected override void OnSavingRow()
+{
+    if (Activity == Activities.Insert)
+        Orders.OrderID.Value = Orders.Max(Orders.OrderID) + 1;
+    ModelState.Required(Orders.CustomerID);
+    if (Orders.OrderDate.Year &lt; 1990)
+        ModelState.AddError(Orders.OrderDate, "Invalid Date");
+    ModelState.Exists(Orders.CustomerID, new Northwind.Models.Customers().CustomerID);
+    ModelState.Exists(Orders.ShipVia, new Northwind.Models.Shippers().ShipperID);
+} </code></pre>
+<h2 id="the-user-experiance">the User Experiance</h2>
+<p><img src="2017-10-15_08h43_25.gif" alt="2017 10 15 08H43 25" /></p>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/01-Web Development Tutorial/ENV Web/11-Server side Validation made easy.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -97,7 +113,7 @@ orders = new models.orders( </code></pre>
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'polishing-the-order-details-grid.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'server-side-validation-made-easy.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Polishing the order details grid</title>
+    <title>Value expression, add a row total</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,15 +27,9 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="polishing-the-order-details-grid">Polishing the order details grid</h1>
-<ul>
-<li>Select only the columns we want</li>
-<li>Set the caption, and drop down for product id</li>
-<li>set the input type for unitPrice and quantity</li>
-</ul>
+                <div class="content"><h1 id="value-expression-add-a-row-total">Value expression, add a row total</h1>
 <p><code>Scripts\App\Orders.ts</code></p>
-<pre data-line="1,7,8,9,10,11" class="language-csdiff line-numbers"><code>shippers = new models.shippers();
-products = new models.products();
+<pre data-line="10,11,12,13" class="language-csdiff line-numbers"><code>products = new models.products();
 orderDetails = new models.orderDetails({
     allowUpdate: true,
     allowInsert: true,
@@ -43,7 +37,11 @@ orderDetails = new models.orderDetails({
     columnSettings: [
         { key: "productID", caption: "Product", dropDown: { source: this.products } },
         { key: "unitPrice", inputType: "number" },
-        { key: "quantity", inputType: "number" }
+        { key: "quantity", inputType: "number" },
+        {
+            caption: "total",
+            getValue: o =&gt; (o.quantity * o.unitPrice).toFixed(2)
+        }
     ],
     onNewRow: od =&gt; {
         od.orderID = this.orders.currentRow.id;
@@ -51,8 +49,8 @@ orderDetails = new models.orderDetails({
     }
 });
 orders = new models.orders( </code></pre>
-<p>![Order Details Info](Order Details info.png)</p>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/01-Web Development Tutorial/ENV Web/20-Polishing the order details grid.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<p><img src="2017-10-16_06h16_56.gif" alt="2017 10 16 06H16 56" /></p>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/01-Web Development Tutorial/ENV Web/21-Value expression, add a row total.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -97,7 +95,7 @@ orders = new models.orders( </code></pre>
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'polishing-the-order-details-grid.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'value-expression,-add-a-row-total.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Adding a class expression</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+<body class="markdown-body" role="document">
+
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="adding-a-class-expression">Adding a class expression</h1>
+<p>Let's say that we don't like Mondays, and we want that the date column will display a different background for Mondays</p>
+<h3 id="css-expression-for-a-column">css expression for a column</h3>
+<p>'Scripts\App\Orders.ts'</p>
+<pre data-line="19" class="language-csdiff line-numbers"><code>orders = new models.orders(
+    {
+        numOfColumnsInGrid: 4,
+        get: { limit: 4 },
+        onEnterRow: o =&gt; this.orderDetails.get({ isEqualTo: { orderID: o.id } }),
+        allowUpdate: true,
+        allowInsert: true,
+        allowDelete: true,
+        columnSettings: [
+            { key: "id", caption: "Order ID", readonly: true },
+            {
+                key: "customerID",
+                getValue: o =&gt;
+                    this.customers.lookup.get({ id: o.customerID }).companyName,
+                click: o =&gt; this.customers.showSelectPopup(c =&gt; o.customerID = c.id)
+            },
+            {
+                key: "orderDate", inputType: "date",
+                cssClass: o =&gt; new Date(o.orderDate).getDay()==1?"danger":""
+            },
+            {
+                key: "shipVia",
+                dropDown: { source: this.shippers },
+                cssClass: 'col-sm-3'
+            }
+        ],
+        rowButtons: [
+            {
+                click: o =&gt; window.open('home/print/' + o.id),
+                cssClass: 'btn btn-primary glyphicon glyphicon-print'
+            }
+        ]
+    }
+); </code></pre>
+<p>We're using bootstrap's <code>danger</code> css style to highlight Mondays</p>
+<p><img src="mondays-are-danger.png" alt="Mondays Are Danger" /></p>
+<h3 id="css-expression-for-the-entire-row">css expression for the entire row</h3>
+<p><code>Scripts\App\Orders.ts</code></p>
+<pre data-line="27" class="language-csdiff line-numbers"><code>orders = new models.orders(
+    {
+        numOfColumnsInGrid: 4,
+        get: { limit: 4 },
+        onEnterRow: o =&gt; this.orderDetails.get({ isEqualTo: { orderID: o.id } }),
+        allowUpdate: true,
+        allowInsert: true,
+        allowDelete: true,
+        columnSettings: [
+            { key: "id", caption: "Order ID", readonly: true },
+            {
+                key: "customerID",
+                getValue: o =&gt;
+                    this.customers.lookup.get({ id: o.customerID }).companyName,
+                click: o =&gt; this.customers.showSelectPopup(c =&gt; o.customerID = c.id)
+            },
+            {
+                key: "orderDate", inputType: "date",
+-               cssClass: o =&gt; new Date(o.orderDate).getDay()==1?"danger":""
+            },
+            {
+                key: "shipVia",
+                dropDown: { source: this.shippers },
+                cssClass: 'col-sm-3'
+            }
+        ],
+        rowCssClass: o =&gt; new Date(o.orderDate).getDay() == 1 ? "danger" : "",
+        rowButtons: [
+            {
+                click: o =&gt; window.open('home/print/' + o.id),
+                cssClass: 'btn btn-primary glyphicon glyphicon-print'
+            }
+        ]
+    }
+); </code></pre>
+<p><img src="css-style-for-the-row.png" alt="Css Style For The Row" /></p>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/01-Web Development Tutorial/ENV Web/26-Adding a class expression.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                
+            </div><!-- .container-->
+        
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">  <img src="assets/img/logo-big.png"></a>
+                </div><div id="menuTree"</div>
+            </aside><!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside><!-- .right-sidebar -->
+
+        </div><!-- .middle-->
+
+
+
+    </div>
+
+
+    <script src="assets/js/mermaid.js"></script>
+    <script src="assets/js/prism-start.js"></script>
+    <script src="assets/js/prism-clike.js"></script>
+    <script src="assets/js/prism-markup.js"></script>
+    <script src="assets/js/prism-css.js"></script>
+    <script src="assets/js/prism-javascript.js"></script>
+
+    <script src="assets/js/prism-diff.js"></script>
+    <script src="assets/js/prism-csdiff.js"></script>
+    <script src="assets/js/prism-function.js"></script>
+
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4806432-3', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+    <script src="assets/js/tree.js"></script>
+    <script language="javascript">
+        buildTree('menuTree', 'adding-a-class-expression.html', 'previousButton', 'nextButton');
+    </script>
+</body>
+</html>

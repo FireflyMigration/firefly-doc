@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Polishing the order details grid</title>
+    <title>Exposing a migrated report to the web</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,32 +27,41 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="polishing-the-order-details-grid">Polishing the order details grid</h1>
+                <div class="content"><h1 id="exposing-a-migrated-report-to-the-web">Exposing a migrated report to the web</h1>
+<p>We want to reuse the migrated report called PrintOrder from the Northwind.Order project.</p>
 <ul>
-<li>Select only the columns we want</li>
-<li>Set the caption, and drop down for product id</li>
-<li>set the input type for unitPrice and quantity</li>
+<li>First we'll add a reference to the <code>Northwind.Order.dll</code> that is in the <code>bin</code> directory</li>
+<li>We'll add a call to it in the <code>Controllers\HomeController.cs</code></li>
 </ul>
-<p><code>Scripts\App\Orders.ts</code></p>
-<pre data-line="1,7,8,9,10,11" class="language-csdiff line-numbers"><code>shippers = new models.shippers();
-products = new models.products();
-orderDetails = new models.orderDetails({
-    allowUpdate: true,
-    allowInsert: true,
-    allowDelete: true,
-    columnSettings: [
-        { key: "productID", caption: "Product", dropDown: { source: this.products } },
-        { key: "unitPrice", inputType: "number" },
-        { key: "quantity", inputType: "number" }
-    ],
-    onNewRow: od =&gt; {
-        od.orderID = this.orders.currentRow.id;
-        od.quantity = 1;
-    }
-});
-orders = new models.orders( </code></pre>
-<p>![Order Details Info](Order Details info.png)</p>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/01-Web Development Tutorial/ENV Web/20-Polishing the order details grid.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<pre data-line="6,7,8,9,10" class="language-csdiff line-numbers"><code>public ActionResult Index()
+{
+    return View();
+}
+
+[ENV.Web.PrintToPDF]
+public void Print(int id)
+{
+     new Northwind.Orders.Print_Order().Run(id);
+}
+
+public ActionResult About()
+{
+    ViewBag.Message = "Your application description page.";
+
+    return View();
+} </code></pre>
+<ul>
+<li>We've added the <code>Print</code> method, that receives an <code>id</code> and in that method we called the migrated <code>Print_Order</code> code, and sent it the <code>id</code></li>
+<li>We've used the <code>[ENV.Web.PrintToPDF]</code> attribute, which will hijack any printing that happens within the <code>Print</code> method, and create a pdf file and return it to the browser when we're done.</li>
+</ul>
+<h3 id="the-structure-of-the-url">The structure of the url</h3>
+<p>The url structure that will be used here is as follow: <code>{controller}/{method}/{id}?param1={param1}&amp;param2={param2}</code>
+In our case that will be <code>Home/Print/10249</code>, where Home is the controller, Print is the method and id is 10249.
+If the method would have received more parameters, it would use their name and values after the <code>?</code> sign in the url.</p>
+<p>We can use this method to expose any business process as an easy api that can be used from the browser</p>
+<p>Here's the result:</p>
+<p><img src="2017-10-16_06h33_25.gif" alt="2017 10 16 06H33 25" /></p>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/01-Web Development Tutorial/ENV Web/23-Exposing a migrated report to the web.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -97,7 +106,7 @@ orders = new models.orders( </code></pre>
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'polishing-the-order-details-grid.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'exposing-a-migrated-report-to-the-web.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

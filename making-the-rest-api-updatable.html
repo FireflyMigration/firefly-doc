@@ -28,8 +28,8 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="making-the-rest-api-updatable">Making the rest api updatable</h1>
-<p>Currently our Rest API is readonly, as it only support get operations for Orders and orderDetails:
-<img src="Rest-is-readonly.png" alt="Rest Is Readonly" /></p>
+<p>Currently our Rest API is readonly, as it only support get operations for Orders and orderDetails:</p>
+<p><img src="Rest-is-readonly.png" alt="Rest Is Readonly" /></p>
 <p>To change that we'll instruct the DataApi to make then public.</p>
 <p>In the <code>Controllers\DataApiController.cs</code> file, we'll send <code>true</code> to the last parameter of the <code>Register</code> method, which is called:<code>allowInsertUpdateDelete</code></p>
 <pre data-line="5,7" class="language-csdiff line-numbers"><code>static DataApiController()
@@ -42,8 +42,8 @@
     _dataApi.Register(typeof(Northwind.Models.Customers));
     _dataApi.Register(typeof(Northwind.Models.Shippers));
     _dataApi.Register(typeof(Northwind.Models.Products)); </code></pre>
-<p>Now when we'll refresh the dataApi help page we'll see that the API current support also, Post, Put and Delete
-<img src="DataApi-supports-post-put-and-delete.png" alt="Data Api Supports Post Put And Delete" /></p>
+<p>Now when we'll refresh the dataApi help page we'll see that the API current support also, Post, Put and Delete</p>
+<p><img src="DataApi-supports-post-put-and-delete.png" alt="Data Api Supports Post Put And Delete" /></p>
 <p>Now when we'll update data using the application, that data will be saved to the server.</p>
 <br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/01-Web Development Tutorial/ENV Web/08-Making the rest api updatable.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Polishing the order details grid</title>
+    <title>Add a button to the grid.md</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,32 +27,45 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="polishing-the-order-details-grid">Polishing the order details grid</h1>
-<ul>
-<li>Select only the columns we want</li>
-<li>Set the caption, and drop down for product id</li>
-<li>set the input type for unitPrice and quantity</li>
-</ul>
+                <div class="content"><h1 id="add-a-button-to-the-grid.md">Add a button to the grid.md</h1>
 <p><code>Scripts\App\Orders.ts</code></p>
-<pre data-line="1,7,8,9,10,11" class="language-csdiff line-numbers"><code>shippers = new models.shippers();
-products = new models.products();
-orderDetails = new models.orderDetails({
-    allowUpdate: true,
-    allowInsert: true,
-    allowDelete: true,
-    columnSettings: [
-        { key: "productID", caption: "Product", dropDown: { source: this.products } },
-        { key: "unitPrice", inputType: "number" },
-        { key: "quantity", inputType: "number" }
-    ],
-    onNewRow: od =&gt; {
-        od.orderID = this.orders.currentRow.id;
-        od.quantity = 1;
+<pre data-line="24,25,26,27,28,29" class="language-csdiff line-numbers"><code>orders = new models.orders(
+    {
+        numOfColumnsInGrid: 4,
+        get: { limit: 4 },
+        onEnterRow: o =&gt; this.orderDetails.get({ isEqualTo: { orderID: o.id } }),
+        allowUpdate: true,
+        allowInsert: true,
+        allowDelete: true,
+        columnSettings: [
+            { key: "id", caption: "Order ID", readonly: true },
+            {
+                key: "customerID",
+                getValue: o =&gt;
+                    this.customers.lookup.get({ id: o.customerID }).companyName,
+                click: o =&gt; this.customers.showSelectPopup(c =&gt; o.customerID = c.id)
+            },
+            { key: "orderDate", inputType: "date" },
+            {
+                key: "shipVia",
+                dropDown: { source: this.shippers },
+                cssClass: 'col-sm-3'
+            }
+        ],
+        rowButtons: [
+            {
+                click: o =&gt; window.open('home/print/' + o.id),
+                cssClass: 'btn btn-primary glyphicon glyphicon-print'
+            }
+        ]
     }
-});
-orders = new models.orders( </code></pre>
-<p>![Order Details Info](Order Details info.png)</p>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/01-Web Development Tutorial/ENV Web/20-Polishing the order details grid.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+); </code></pre>
+<ul>
+<li>We've added the <code>rowButtons</code> array to the settings of the <code>orders</code> object</li>
+<li>We've added a button, and handled the <code>click</code> event - that received an <code>order</code> object, and printed based on that <code>order</code> <code>id</code></li>
+<li>We've used bootstrap's <code>btn btn-primary glyphicon glyphicon-print</code> css classes to style the button and display it's printer icon, based on the icons that come with bootstrap, as explained in <a href="https://getbootstrap.com/docs/3.3/components/">https://getbootstrap.com/docs/3.3/components/</a></li>
+</ul>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/01-Web Development Tutorial/ENV Web/25-Add a button to the grid.md.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -97,7 +110,7 @@ orders = new models.orders( </code></pre>
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'polishing-the-order-details-grid.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'add-a-button-to-the-grid.md.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

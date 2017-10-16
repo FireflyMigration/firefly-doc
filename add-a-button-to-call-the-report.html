@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Polishing the order details grid</title>
+    <title>Add a button to call the report</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,32 +27,48 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="polishing-the-order-details-grid">Polishing the order details grid</h1>
+                <div class="content"><h1 id="add-a-button-to-call-the-report">Add a button to call the report</h1>
+<p><code>Scripts\App\Orders.html</code></p>
+<pre data-line="23" class="language-csdiff line-numbers"><code> &lt;h1&gt;Orders&lt;/h1&gt;
+ &lt;data-grid [settings]="orders"&gt;&lt;/data-grid&gt;
+ &lt;select-popup [settings]="customers"&gt;&lt;/select-popup&gt;
+ &lt;div&gt;
+     &lt;!-- Nav tabs --&gt;
+     &lt;ul class="nav nav-tabs" role="tablist"&gt;
+         &lt;li class="active"&gt;&lt;a href="#shipInfo" data-toggle="tab"&gt;Ship Info&lt;/a&gt;&lt;/li&gt;
+         &lt;li&gt;
+             &lt;a href="#orderDetailsTab" data-toggle="tab"&gt;
+                 Order Details, Total:{{getOrderTotal()}}
+             &lt;/a&gt;
+         &lt;/li&gt;
+     &lt;/ul&gt;
+     &lt;!-- Tab panes --&gt;
+     &lt;div class="tab-content"&gt;
+         &lt;div class="tab-pane active" id="shipInfo"&gt;
+             &lt;data-area [settings]="shipInfoArea"&gt;&lt;/data-area&gt;
+         &lt;/div&gt;
+         &lt;div class="tab-pane" id="orderDetailsTab"&gt;
+             &lt;data-grid [settings]="orderDetails" *ngIf="orders.currentRow &amp;&amp; orders.currentRow.id"&gt;&lt;/data-grid&gt;
+         &lt;/div&gt;
+     &lt;/div&gt;
+     &lt;button class="btn btn-primary" (click)="printCurrentOrder()"&gt;Print&lt;/button&gt;
+ &lt;/div&gt; </code></pre>
 <ul>
-<li>Select only the columns we want</li>
-<li>Set the caption, and drop down for product id</li>
-<li>set the input type for unitPrice and quantity</li>
+<li>We use the <code>btn</code> and <code>btn-primary</code> bootstrap classes to style our button,</li>
+<li>We use the angular '(click)<code>event registration to call our</code>printCurrentOrder<code>on the</code>Order.ts`</li>
 </ul>
-<p><code>Scripts\App\Orders.ts</code></p>
-<pre data-line="1,7,8,9,10,11" class="language-csdiff line-numbers"><code>shippers = new models.shippers();
-products = new models.products();
-orderDetails = new models.orderDetails({
-    allowUpdate: true,
-    allowInsert: true,
-    allowDelete: true,
-    columnSettings: [
-        { key: "productID", caption: "Product", dropDown: { source: this.products } },
-        { key: "unitPrice", inputType: "number" },
-        { key: "quantity", inputType: "number" }
-    ],
-    onNewRow: od =&gt; {
-        od.orderID = this.orders.currentRow.id;
-        od.quantity = 1;
-    }
-});
+<pre data-line="7,8,9" class="language-csdiff line-numbers"><code>getOrderTotal() {
+    let result = 0;
+    this.orderDetails.items.forEach(od =&gt;
+        result += od.unitPrice * od.quantity);
+    return result;
+}
+printCurrentOrder() {
+     window.open('home/print/' + this.orders.currentRow.id);
+}
 orders = new models.orders( </code></pre>
-<p>![Order Details Info](Order Details info.png)</p>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/01-Web Development Tutorial/ENV Web/20-Polishing the order details grid.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<p><img src="2017-10-16_06h39_47.gif" alt="2017 10 16 06H39 47" /></p>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/01-Web Development Tutorial/ENV Web/24-Add a button to call the report.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -97,7 +113,7 @@ orders = new models.orders( </code></pre>
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'polishing-the-order-details-grid.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'add-a-button-to-call-the-report.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
