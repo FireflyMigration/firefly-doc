@@ -7,7 +7,7 @@ This tutorial shows how you can develop a rich front-end for your web/mobile app
 * User filtering and sorting of millions of rows
 * Updating and validating data
 * Data lookups and select lists
-* Web and Mobile compatability
+* Web and Mobile compatibility
 
 Let's get started.
 
