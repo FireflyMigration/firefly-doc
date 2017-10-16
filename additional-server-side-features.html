@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Filtering data on the server</title>
+    <title>Additional server side features</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,27 +27,16 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="filtering-data-on-the-server">Filtering data on the server</h1>
-<pre data-line="9" class="language-csdiff line-numbers"><code> class OrdersViewModel : ViewModelHelper
-{
-    public readonly Northwind.Models.Orders Orders = new Northwind.Models.Orders();
-
-    public OrdersViewModel()
-    {
-        From = Orders;
-        AllowUpdate = true;
-        Where.Add(Orders.OrderDate.IsGreaterOrEqualTo(1997, 1, 1));
-
-        MapColumn(Orders.OrderID,
-            Orders.CustomerID,
-            Orders.OrderDate,
-            Orders.ShipVia);
-        MapExperssion("ServerSideDayOfWeek", () =&gt; u.NDOW(u.DOW(Orders.OrderDate)));
-    }
-} </code></pre>
-<p><a href="https://github.com/FireflyMigration/ENV.Web/commit/925b75842f60bdfcf7ab80efa8a9851f7dc508ac">Commit info on GitHub</a></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5bhjKww1dcM?list=PL1DEQjXG2xnJOSQf2421r1S040NkvCApp" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/00-ENV Web/03-Additional server side features/28-Filtering data on the server.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+                <div class="content"><h1 id="additional-server-side-features">Additional server side features</h1>
+<ul>
+<li><a href="controlling-which-columns-are-included-in-the-api.html">Controlling which columns are included in the api</a></li>
+<li><a href="server-side-expression.html">Server Side Expression</a></li>
+<li><a href="filtering-data-on-the-server.html">Filtering data on the server</a></li>
+<li><a href="server-side-relation.html">Server side Relation</a></li>
+<li><a href="server-side-validation.html">Server Side Validation</a></li>
+<li><a href="restricting-which-columns-can-be-updated-in-the-web-api.html">Restricting which columns can be updated in the web api</a></li>
+</ul>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/00-ENV Web/03-Additional server side features/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -92,7 +81,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'filtering-data-on-the-server.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'additional-server-side-features.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

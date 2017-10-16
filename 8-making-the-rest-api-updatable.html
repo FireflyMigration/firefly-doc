@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Filtering data on the server</title>
+    <title>8 Making the rest api updatable</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,27 +27,25 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="filtering-data-on-the-server">Filtering data on the server</h1>
-<pre data-line="9" class="language-csdiff line-numbers"><code> class OrdersViewModel : ViewModelHelper
+                <div class="content"><h1 id="making-the-rest-api-updatable">8 Making the rest api updatable</h1>
+<p>Currently our Rest API is readonly, as it only support get operations for Orders and orderDetails:</p>
+<p><img src="Rest-is-readonly.png" alt="Rest Is Readonly" /></p>
+<p>To change that we'll instruct the DataApi to make then public.</p>
+<p>In the <code>Controllers\DataApiController.cs</code> file, we'll send <code>true</code> to the last parameter of the <code>Register</code> method, which is called:<code>allowInsertUpdateDelete</code></p>
+<pre data-line="5,7" class="language-csdiff line-numbers"><code>static DataApiController()
 {
-    public readonly Northwind.Models.Orders Orders = new Northwind.Models.Orders();
-
-    public OrdersViewModel()
-    {
-        From = Orders;
-        AllowUpdate = true;
-        Where.Add(Orders.OrderDate.IsGreaterOrEqualTo(1997, 1, 1));
-
-        MapColumn(Orders.OrderID,
-            Orders.CustomerID,
-            Orders.OrderDate,
-            Orders.ShipVia);
-        MapExperssion("ServerSideDayOfWeek", () =&gt; u.NDOW(u.DOW(Orders.OrderDate)));
-    }
-} </code></pre>
-<p><a href="https://github.com/FireflyMigration/ENV.Web/commit/925b75842f60bdfcf7ab80efa8a9851f7dc508ac">Commit info on GitHub</a></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5bhjKww1dcM?list=PL1DEQjXG2xnJOSQf2421r1S040NkvCApp" frameborder="0" allowfullscreen></iframe>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/00-ENV Web/03-Additional server side features/28-Filtering data on the server.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+    _dataApi.Register(typeof(Northwind.Models.Categories),true);
+-   _dataApi.Register(typeof(Northwind.Models.Orders));
+    _dataApi.Register(typeof(Northwind.Models.Orders),true);
+-   _dataApi.Register("orderDetails",typeof(Northwind.Models.Order_Details));
+    _dataApi.Register("orderDetails",typeof(Northwind.Models.Order_Details),true);
+    _dataApi.Register(typeof(Northwind.Models.Customers));
+    _dataApi.Register(typeof(Northwind.Models.Shippers));
+    _dataApi.Register(typeof(Northwind.Models.Products)); </code></pre>
+<p>Now when we'll refresh the dataApi help page we'll see that the API current support also, Post, Put and Delete</p>
+<p><img src="DataApi-supports-post-put-and-delete.png" alt="Data Api Supports Post Put And Delete" /></p>
+<p>Now when we'll update data using the application, that data will be saved to the server.</p>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/00-ENV Web/01-Web Development Tutorial/ENV Web/8-Making the rest api updatable.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -92,7 +90,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'filtering-data-on-the-server.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', '8-making-the-rest-api-updatable.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

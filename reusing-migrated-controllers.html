@@ -28,31 +28,7 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="reusing-migrated-controllers">Reusing Migrated Controllers</h1>
-<p>In the HomeController class</p>
-<pre data-line="7,8,9,10,11" class="language-csdiff line-numbers"><code>public class HomeController : Controller
-{
-    public ActionResult Index()
-    {
-        return View();
-    }
-    [ENV.Web.PrintToPDF]
-    public void Print(int id)
-    {
-        new Northwind.Orders.Print_Order().Run(id);
-    }
-
-    public ActionResult About()
-    {
-        ViewBag.Message = "Your application description page.";
-
-        return View();
-    } </code></pre>
-<p><a href="https://github.com/FireflyMigration/ENV.Web/commit/f70ee9992f02a814ea7bc67149bbe91fa4de1b25">Commit info on GitHub</a></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/KMiPQ4zSBdM?list=PL1DEQjXG2xnJOSQf2421r1S040NkvCApp" frameborder="0" allowfullscreen></iframe>
-<ul>
-<li><a href="calling-the-migrated-report-from-the-client-side-typescript.html">Calling the migrated report from the client side typescript</a></li>
-</ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/01-Web Development Tutorial/32-Reusing Migrated Controllers/01-index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/00-ENV Web/01-Web Development Tutorial/32-Reusing Migrated Controllers/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
