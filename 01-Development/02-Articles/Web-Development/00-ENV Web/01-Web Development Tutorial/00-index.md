@@ -1,17 +1,17 @@
 ﻿
-In this tutorial we'll create a complex order & order detail form, and cover the day to day development tasks all the way from creating the server side API to developing the front end with Typescript and Angular.
+In this tutorial we'll create a complex order & order detail form by exposing the appropriate server-side API and developing the front-end with Typescript and Angular.
 
-We'll show you how with relatively little effort you can develop a great web/mobile front end for your application, and cover the following development tasks (among others)
-1. Displaying data, including a master detail display
-2. User filtering, and sorting of millions of rows
-2. Updating and validating data
-3. Data lookups and select lists
-4. Web and Mobile execution
+This tutorial shows how you can develop a rich front-end for your web/mobile application with little effort, by covering common use cases, such as:
 
+* Viewing master-detail data
+* User filtering and sorting of millions of rows
+* Updating and validating data
+* Data lookups and select lists
+* Web and Mobile compatability
 
 Let's get started.
 
-* Note that this tutorial is based on articles and not videos at this time
+_- Note that this tutorial is based on articles and not videos at this time_
 
 ### Introduction video
 
