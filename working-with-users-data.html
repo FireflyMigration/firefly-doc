@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="user, role, group, security, right">
 
-    <title>Articles</title>
+    <title>Working with Users Data</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -27,35 +27,38 @@
                 <div class="content" role="navigation" aria-label="footer navigation">
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a> <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="articles">Articles</h1>
+                <div class="content"><h1 id="working-with-users-data">Working with Users Data</h1>
+<p>Once the migration is completed you may want to access the security data or manipulate users information.
+This article explains how to work with the models under ENV.Security namespace.</p>
+<p>Note: the actual data is stored and encrypted in the security file, which is usually located in the working directory.</p>
+<p>All the logic code of users and roles can be found in the ENV project, under the Security namespace. The main class that is used to manipulate users data is the UserManager.
+Assuming that we want to export all the usernames to a text file, let's add a new method to the UserManager class.</p>
+<pre><code class="language-cs">public static void MyExport()
+{
+    using (var sw = new StreamWriter(@&quot;c:\temp\users.txt&quot;))
+    {
+        ChangeUserFile(storage =&gt;
+        {
+            var users = new Entities.Users(storage.GetDb());
+            var bp = new BusinessProcess { From = users };
+            bp.ForEachRow(() =&gt;
+            {
+                sw.WriteLine(users.UserName);
+            });
+
+            return false;
+        });
+    }
+}
+</code></pre>
+<p>Notice:</p>
 <ul>
-<li><a href="common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-net.html">Common migrated code patterns and how to improve on them in new code in NET</a></li>
-<li><a href="improve-performance.html">Improve Performance</a></li>
-<li><a href="further-learning.html">Further Learning</a></li>
-<li><a href="version-control-and-git.html">Version Control and Git</a></li>
-<li><a href="visual-studio.html">Visual Studio</a></li>
-<li><a href="access-developer-tools-and-users-management-menu.html">Access Developer Tools and Users management menu</a></li>
-<li><a href="large-applications-architecture-for-projects-migrated-up-to-2016.html">Large Applications Architecture for Projects Migrated up to 2016</a></li>
-<li><a href="cool-.net-open-source-library.html">Cool .NET open source library</a></li>
-<li><a href="misc.html">Misc</a></li>
-<li><a href="advanced-topics.html">Advanced Topics</a></li>
-<li><a href="basics.html">Basics</a></li>
-<li><a href="cool-csharp-tutorial.html">Cool CSharp Tutorial</a></li>
-<li><a href="creating-windows-services-and-using-migrated-code.html">Creating Windows Services and using Migrated Code</a></li>
-<li><a href="dataaccess.html">DataAccess</a></li>
-<li><a href="import-security-file.html">Import Security file</a></li>
-<li><a href="investigating-memory-issues.html">Investigating memory issues</a></li>
-<li><a href="other-types-of-where.html">Other Types Of Where</a></li>
-<li><a href="resolve-namespaces-of-code-snippets.html">Resolve namespaces of code snippets</a></li>
-<li><a href="sql-migration.html">SQL Migration</a></li>
-<li><a href="unit-tests-and-migrated-code.html">Unit Tests and Migrated Code</a></li>
-<li><a href="upgrading-the-env--after-switching-to-.net.html">Upgrading the ENV  after switching to .net</a></li>
-<li><a href="user-interface.html">User Interface</a></li>
-<li><a href="web-development.html">Web Development</a></li>
-<li><a href="why-migrated-application-is-case-sensitive-when-comparing-text.html">Why Migrated Application is Case Sensitive when Comparing Text</a></li>
-<li><a href="working-with-users-data.html">Working with Users Data</a></li>
+<li>When creating the instance of the Users entity, we should provide the database.</li>
+<li>Using the ChangeUserFile method gives us access to the Database of the security entities.</li>
+<li>At the end of our code we return false. This means we don't want to save any changes to the database. In case you make changes that need to be saved, you should return true.</li>
 </ul>
-<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
+<p>Using the same approach you can work with any other entity in the security namespace, i.e. Groups, Roles.</p>
+<br /><hr />Help us improve, <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Working-with-Users-Data/index.md" target="_blank">Edit this page on GitHub</a><br /> or email us at <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a></div><!-- .content -->
                 
             </div><!-- .container-->
         
@@ -100,7 +103,7 @@
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'articles.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'working-with-users-data.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
