@@ -35,8 +35,17 @@
 <li>Visual studio 2017 version 15.3.5 or later</li>
 <li>Make sure that both &quot;ASP.NET and web development&quot; and &quot;Node.js development&quot; options checked in Visual studio features configuration
 <img src="2017-10-16_10h13_01.png" alt="2017 10 16 10H13 01" /></li>
+</ul>
+<h2 id="setup-typescript">Setup Typescript</h2>
+<ul>
 <li><a href="https://www.microsoft.com/en-us/download/details.aspx?id=55258">Typescript sdk for Visual Studio</a></li>
 </ul>
+<h2 id="setting-up-the-sql-server-user">Setting up the SQL Server user</h2>
+<p>Open file WebDemo/Global.asax.cs</p>
+<p>Locate the following line of code:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>ConnectionManager.SetDefaultUserAndPassword("sa", "MASTERKEY"); </code></pre>
+<p>Please change the user to any SQL user that has access to your database.
+Since this code runs under IIS, and not the current windows user, an SQL user is required.</p>
 <h2 id="the-code-used-in-this-demo">The code used in this demo</h2>
 <p>You can download the files that are used for this tutorial on <a href="https://github.com/FireflyMigration/ENV.Web/releases/tag/v0.0.2-pre-alpha">https://github.com/FireflyMigration/ENV.Web/releases/tag/v0.0.2-pre-alpha</a></p>
 <p>Please use the 2017-10 version</p>
