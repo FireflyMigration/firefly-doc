@@ -34,3 +34,5 @@ Notice:
 * When creating the instance of the Users entity, we should provide the database.
 * Using the ChangeUserFile method gives us access to the Database of the security entities.
 * At the end of our code we return false. This means we don't want to save any changes to the database. In case you make changes that need to be saved, you should return true.
+
+Using the same approach you can work with any other entity in the security namespace, i.e. Groups, Roles.
