@@ -13,6 +13,8 @@ It is recommended to use SSD for best performance and shortest migration time.
    2. SQLMigDatabase = ***your database name***
    3. SQLMigUser = ***your username***
    4. SQLMigPassword = ***your password***
+   
+  For Windows Authentication, the SQLMigUser and SQLMigPassword should be empty or removed.
 
 
 ## Creating the Database
