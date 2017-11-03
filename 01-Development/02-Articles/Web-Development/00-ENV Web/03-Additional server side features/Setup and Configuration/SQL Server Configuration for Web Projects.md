@@ -1,4 +1,6 @@
-﻿Most SQL server application use Windows Authentication to login to the SQL Server.
+﻿keywords:error opening connection login failed, Windows Authentication
+
+Most SQL server application use Windows Authentication to login to the SQL Server.
 
 You do that by not specifying the user and password in the configuration, in that case, SQL uses the user OS login to authenticate the user.
 

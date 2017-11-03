@@ -9,6 +9,8 @@
 9. Click on the `XML` shortcut, to see the categories in their `XML` format.
 10. When you see the results in `XML` you know that everything is configured correctly, including the connection to the SQL server.
 
+If you run into a 'login failed error', please see:[SQL Server Configuration for Web Projects](sql-server-configuration-for-web-projects.html)
+
 ![Run And Test The Charp Server](Run-and-Test-the-Charp-Server.gif)
 
 ## That's it
