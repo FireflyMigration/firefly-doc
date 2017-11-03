@@ -1,7 +1,7 @@
 ﻿Add the customers member:
 ```csdiff
 ...
-export class Orders  {
+export class AppComponent {
 +   customers = new models.customers();
     orders = new models.orders(
         {
@@ -24,7 +24,7 @@ Note how we have intellisense in every step of the way - that's `TypeScript`
 
 ```csdiff
 ...
-export class Orders  {
+export class AppComponent {
 +   customers = new models.customers();
     orders = new models.orders(
         {

@@ -1,6 +1,6 @@
 ﻿1. Basic Validation
 ```csdiff
-export class Orders {
+export class AppComponent {
 
     title = 'Orders';
     orders = new utils.DataSettings<models.order>(
@@ -33,7 +33,7 @@ export class Orders {
 ```
 2. Built in required validation
 ```csdiff
-export class Orders {
+export class AppComponent {
 
     title = 'Orders';
     orders = new utils.DataSettings<models.order>(
@@ -67,7 +67,7 @@ export class Orders {
 ```
 
 ```csdiff
-export class Orders {
+export class AppComponent {
 
     title = 'Orders';
     orders = new utils.DataSettings<models.order>(

@@ -1,7 +1,7 @@
 ﻿Let's say that we don't like Mondays, and we want that the date column will display a different background for Mondays
 
 ### css expression for a column
-'Scripts\App\Orders.ts'
+'src/app/app.component.ts'
 ```csdiff
 orders = new models.orders(
     {
@@ -44,7 +44,7 @@ We're using bootstrap's `danger` css style to highlight Mondays
 ![Mondays Are Danger](mondays-are-danger.png)
 
 ### css expression for the entire row
-`Scripts\App\Orders.ts`
+`src/app/app.component.ts`
 ```csdiff
 orders = new models.orders(
     {

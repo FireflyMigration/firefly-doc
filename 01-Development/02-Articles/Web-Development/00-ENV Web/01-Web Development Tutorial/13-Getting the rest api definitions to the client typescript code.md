@@ -1,14 +1,16 @@
-﻿Go to the `dataApi` help page and copy the TypeScript interfaces and classes for each api into the `Scripts\App\models.ts` file.
+﻿Go to the `dataApi` help page and copy the TypeScript interfaces and classes for each api into the `src/app/models.ts` file.
 * Do it for all the apis we need, `orders`, `orderDetails`, `customers`, `shippers` and `products`
 
 ![2017 10 13 08H19 37](../2017-10-13_08h19_37.gif)
 
-`Scripts\App\models.ts`
+`src/app/models.ts`
 ```csdiff
-import * as utils from './lib/utils';
-export class categories extends utils.DataSettings<category>{
-    constructor(settings?: utils.IDataSettings<category>) {
-        super('/dataapi/categories', settings);
+import { environment } from './../environments/environment';
+import * as radweb from 'radweb';
+
+export class categories extends radweb.DataSettings<category>{
+    constructor(settings?: radweb.IDataSettings<category>) {
+        super(environment.apiUrl + '/dataapi/categories', settings);
     }
 }
 export interface category {
@@ -16,9 +18,9 @@ export interface category {
     categoryName?: string;
     description?: string;
 }
-+export class orders extends utils.DataSettings<order>{
-+    constructor(settings?: utils.IDataSettings<order>) {
-+        super('/dataapi/orders', settings);
++export class orders extends radweb.DataSettings<order>{
++    constructor(settings?: radweb.IDataSettings<order>) {
++        super(environment.apiUrl + '/dataapi/orders', settings);
 +    }
 +}
 +export interface order {
@@ -37,9 +39,9 @@ export interface category {
 +    shipPostalCode?: string;
 +    shipCountry?: string;
 +}
-+export class orderDetails extends utils.DataSettings<orderDetail>{
-+    constructor(settings?: utils.IDataSettings<orderDetail>) {
-+        super('/dataapi/orderDetails', settings);
++export class orderDetails extends radweb.DataSettings<orderDetail>{
++    constructor(settings?: radweb.IDataSettings<orderDetail>) {
++        super(environment.apiUrl + '/dataapi/orderDetails', settings);
 +    }
 +}
 +export interface orderDetail {
@@ -50,9 +52,9 @@ export interface category {
 +    discount?: number;
 +    id?: string;
 +}
-+export class customers extends utils.DataSettings<customer>{
-+    constructor(settings?: utils.IDataSettings<customer>) {
-+        super('/dataapi/customers', settings);
++export class customers extends radweb.DataSettings<customer>{
++    constructor(settings?: radweb.IDataSettings<customer>) {
++        super(environment.apiUrl + '/dataapi/customers', settings);
 +    }
 +}
 +export interface customer {
@@ -68,9 +70,9 @@ export interface category {
 +    phone?: string;
 +    fax?: string;
 +}
-+export class shippers extends utils.DataSettings<shipper>{
-+    constructor(settings?: utils.IDataSettings<shipper>) {
-+        super('/dataapi/shippers', settings);
++export class shippers extends radweb.DataSettings<shipper>{
++    constructor(settings?: radweb.IDataSettings<shipper>) {
++        super(environment.apiUrl + '/dataapi/shippers', settings);
 +    }
 +}
 +export interface shipper {
@@ -78,9 +80,9 @@ export interface category {
 +    companyName?: string;
 +    phone?: string;
 +}
-+export class products extends utils.DataSettings<product>{
-+    constructor(settings?: utils.IDataSettings<product>) {
-+        super('/dataapi/products', settings);
++export class products extends radweb.DataSettings<product>{
++    constructor(settings?: radweb.IDataSettings<product>) {
++        super(environment.apiUrl + '/dataapi/products', settings);
 +    }
 +}
 +export interface product {

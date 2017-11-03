@@ -19,9 +19,9 @@ class OrdersViewModel : ViewModel
 ```
 
 That's it for the server code, now let's allow insert and delete on the grid.
-`Scripts\App\Orders.ts`
+`src/app/app.component.ts`
 ```csdiff
-export class Orders {
+export class AppComponent {
     customers = new models.customers();
     orders = new models.orders(
         {

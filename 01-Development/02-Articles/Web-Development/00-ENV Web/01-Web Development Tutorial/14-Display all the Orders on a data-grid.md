@@ -1,19 +1,24 @@
-﻿`Scripts\App\Orders.ts` 
+﻿`src/app/app.component.ts` 
 
 ```csdiff
 import { Component } from '@angular/core';
-import * as utils from './lib/utils';
 import * as models from './models';
 
 @Component({
-    template:`
-  <h1>Orders</h1>
-+ <data-grid [settings]="orders"></data-grid>
-`
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-export class Orders  {
+export class AppComponent {
 +   orders = new models.orders();
+- title = 'app';
 }
+```
+
+`src/app/app.component.html` 
+```csdiff
++ <h1>Orders</h1>
++ <data-grid [settings]="orders"></data-grid>
 ```
 
 Here is the result:

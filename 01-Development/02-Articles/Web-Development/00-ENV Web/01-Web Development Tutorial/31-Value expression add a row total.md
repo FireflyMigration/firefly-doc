@@ -1,4 +1,4 @@
-﻿`Scripts\App\Orders.ts`
+﻿`src/app/app.component.ts`
 ```csdiff
 products = new models.products();
 orderDetails = new models.orderDetails({

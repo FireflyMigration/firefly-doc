@@ -2,7 +2,7 @@
 * Set the caption, and drop down for product id
 * set the input type for unitPrice and quantity
 
-`Scripts\App\Orders.ts`
+`src/app/app.component.ts`
 ```csdiff
 +shippers = new models.shippers();
 products = new models.products();
