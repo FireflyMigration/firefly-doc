@@ -1,10 +1,11 @@
-﻿"use strict";
+"use strict";
 
 function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
 
     var root = document.getElementById(id);
-    var backBtn = document.getElementById(backButtonId);
-    var nextBtn = document.getElementById(nextButtonId);
+    var backBtn = document.querySelectorAll("#" + backButtonId);
+    var nextBtn = document.querySelectorAll("#" + nextButtonId);
+
     function foreach(array, action) {
         if (array != undefined)
             for (var i = 0; i < array.length; i++)
@@ -12,7 +13,8 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
     };
 
     function buttonHide(b) {
-        b.style.visibility = 'hidden';
+        b.forEach(x => x
+            .style.visibility = 'hidden');
     }
     function nodeShow(n) {
         n.style.display = 'block';
@@ -24,8 +26,10 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
     buttonHide(nextBtn);
 
     function buttonUrl(b, url) {
-        b.style.visibility = 'visible';
-        b.href = url;
+        b.forEach(x => {
+            x.style.visibility = 'visible';
+            x.href = url;
+        });
     }
 
     var prevUrl = '/';
@@ -248,7 +252,7 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
                     reset(data.nodes);
                 else
                     if (!search(data.nodes, searchInput.value.toLowerCase()))
-                        ga('send','event', 'searchFailed', searchInput.value);
+                        ga('send', 'event', 'searchFailed', searchInput.value);
             };
             if (currentPageUrl == '404.html') {
                 if (window.location.href.toLowerCase() != window.location.href)
