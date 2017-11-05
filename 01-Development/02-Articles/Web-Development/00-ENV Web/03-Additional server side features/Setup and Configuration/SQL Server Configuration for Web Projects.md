@@ -4,7 +4,7 @@ Most SQL server application use Windows Authentication to login to the SQL Serve
 
 You do that by not specifying the user and password in the configuration, in that case, SQL uses the user OS login to authenticate the user.
 
-When you are running from a production web server, you are using IIS, and if you don't do anyh special configuration you'll get an "error opening connection login failed" error.
+When you are running from a production web server, you are using IIS, and if you don't do any special configuration you'll get an "error opening connection login failed" error.
 
 To solve that, you can:
 1. Add the iis user to the trusted users of the sql server.
@@ -17,7 +17,7 @@ ConnectionManager.SetDefaultUserAndPassword("sa", "YOURPASSWORD");
 ```
 
 
-## Using SQL Express
-In our demo we use SQL express, and as such we can run using Windows Authentication just by setting the `Windows Authentication` property, in the project properties, to enabled.
+## Using IIS Express
+In our demo we use IIS express, and as such we can run using Windows Authentication just by setting the `Windows Authentication` property, in the project properties, to enabled.
 
 ![Project Properties](2017-11-03_12h10_14.png)
