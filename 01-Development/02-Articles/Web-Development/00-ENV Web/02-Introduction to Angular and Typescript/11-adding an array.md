@@ -16,7 +16,7 @@
 })
 
 @Injectable()
-export class Orders {
+export class AppComponent {
 
     title = 'Orders';
 -   order = {

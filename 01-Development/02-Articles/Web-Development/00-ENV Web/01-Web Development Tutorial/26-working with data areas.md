@@ -42,7 +42,7 @@
 +       ]});
 
 ```
-`Scripts\App\Orders.html`
+`src/app/app.component.html`
 ```csdiff
   <h1>Orders</h1>
   <data-grid [settings]="orders"></data-grid>
@@ -69,7 +69,7 @@
 ![Tab With Area](Tab-with-area.png)
 
 By default all the data column are displayed one after the other. We can split them into more columns:
-`Scripts\App\Orders.ts`
+`src/app/app.component.ts`
 ```csdiff
 shipInfoArea = this.orders.addArea({
 +   numberOfColumnAreas:2,
@@ -85,7 +85,7 @@ shipInfoArea = this.orders.addArea({
 ![Area With Two Columns](Area-with-two-columns.png)
 
 Finally, let's fix the tab name and id
-`Scripts\App\Orders.html`
+`src/app/app.component.html`
 ```csdiff
  <h1>Orders</h1>
  <data-grid [settings]="orders"></data-grid>

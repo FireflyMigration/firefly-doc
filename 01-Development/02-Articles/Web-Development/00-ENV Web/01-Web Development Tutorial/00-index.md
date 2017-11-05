@@ -13,6 +13,7 @@ Let's get started.
 
 _- Note that this tutorial is based on articles and not videos at this time_
 
+
 ### Introduction video
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cYMktlwwwAs" frameborder="0" allowfullscreen></iframe>

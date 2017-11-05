@@ -1,5 +1,5 @@
 ﻿First let's reduce the number of Order rows in the grid:
-`Scripts\App\Orders.ts`
+`src/app/app.component.ts`
 ```csdiff
 orders = new models.orders(
         {
@@ -14,7 +14,7 @@ orders = new models.orders(
 We'll use bootstrap tab controls. See: 
 [Bootstrap tabs](https://getbootstrap.com/docs/3.3/javascript/#tabs)
 
-In the `Scripts\App\Orders.html`
+In the `src/app/app.component.html`
 ```csdiff
  <h1>Orders</h1>
  <data-grid [settings]="orders"></data-grid>

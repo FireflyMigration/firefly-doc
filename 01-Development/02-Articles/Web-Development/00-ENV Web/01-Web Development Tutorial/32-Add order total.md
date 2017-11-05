@@ -1,4 +1,4 @@
-﻿`Scripts\App\Orders.ts`
+﻿`src/app/app.component.ts`
 ```csdiff
 products = new models.products();
 orderDetails = new models.orderDetails({
@@ -29,7 +29,7 @@ orders = new models.orders(
 
 ```
 
-`Scripts\App\Orders.html`
+`src/app/app.component.html`
 ```csdiff
  <h1>Orders</h1>
  <data-grid [settings]="orders"></data-grid>

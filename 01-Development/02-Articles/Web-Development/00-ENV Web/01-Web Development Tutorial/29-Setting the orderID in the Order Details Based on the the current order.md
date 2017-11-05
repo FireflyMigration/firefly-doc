@@ -1,5 +1,5 @@
 ﻿Let's start by allowing insert, update and delete for `orderDetails`
-`Scripts\App\Orders.ts`
+`src/app/app.component.ts`
 ```csdiff
 shippers = new models.shippers();
 orderDetails = new models.orderDetails({

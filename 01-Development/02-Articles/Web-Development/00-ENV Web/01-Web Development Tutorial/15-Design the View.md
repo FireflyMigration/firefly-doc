@@ -9,10 +9,10 @@ We'll make the following changes:
 
 We'll copy the code into our typescript code and run it.
 It should look like this:
-`Scripts\App\Orders.ts`
+`src/app/app.component.ts`
 
 ```csdiff
-export class Orders  {
+export class AppComponent {
     orders = new models.orders(
 +       {
 +           columnSettings: [
@@ -42,7 +42,7 @@ export class Orders  {
 2. We'll move `shipVia` to be the 3rd column
 3. we'll remove columns that we don't need (you can do it in the designer or the code)
 ```csdiff
-export class Orders  {
+export class AppComponent {
     orders = new models.orders(
         {
 +           numOfColumnsInGrid:4,
@@ -69,7 +69,7 @@ export class Orders  {
 ```
 4. We'll also change the `requiredDate` and `shippedDate` to be of type `date`
 ```csdiff
-export class Orders  {
+export class AppComponent {
     orders = new models.orders(
         {
             numOfColumnsInGrid:4,

@@ -1,18 +1,9 @@
 ﻿* Add the `<select-popup>` definition to the template
 * Add a handler for the `click` of the column - in which we'll call the `showSelectPopup` method, and send it an arrow function so when the user selects, it'll update the `customerID` column in the `order` object based on the `id` of the selected `customer` object.
-```csdiff
-import { Component } from '@angular/core';
-import * as utils from './lib/utils';
-import * as models from './models';
 
-@Component({
-    template: `
-  <h1>Orders</h1>
-  <data-grid [settings]="orders"></data-grid>
-+ <select-popup [settings]="customers"></select-popup>
-`
-})
-export class Orders {
+`src/app/app.component.ts`
+```csdiff
+export class AppComponent {
     customers = new models.customers();
     shippers = new models.shippers();
     orders = new models.orders(
@@ -46,11 +37,20 @@ export class Orders {
     );
 }
 ```
+`src/app/app.component.html`
+```csdiff
+  <h1>Orders</h1>
+  <data-grid [settings]="orders"></data-grid>
++ <select-popup [settings]="customers"></select-popup>
+`
+})
+
+```
 
 ## Customise the select popup info
 
 ```csdiff
-export class Orders {
+export class AppComponent {
     customers = new models.customers({
 +       numOfColumnsInGrid:4,
 +       columnSettings: [
