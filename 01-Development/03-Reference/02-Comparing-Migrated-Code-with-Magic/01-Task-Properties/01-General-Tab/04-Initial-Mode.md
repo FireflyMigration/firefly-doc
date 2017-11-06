@@ -1,4 +1,5 @@
-﻿# Initial Mode
+﻿keywords:Activity, u.ActivityOfParent, u.TranslateTaskActivity, Query, Modify, Create, Delete, Browse, Update, Insert
+# Initial Mode
 
 Name in Migrated Code: **Activity**  
 Location in Migrated Code: **OnLoad Method**
