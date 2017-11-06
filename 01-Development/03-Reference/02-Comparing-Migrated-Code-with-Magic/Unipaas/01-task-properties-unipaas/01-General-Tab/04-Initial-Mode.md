@@ -1,7 +1,6 @@
 ﻿# Initial Mode
 
-Name in Migrated Code: **Activity**
-
+Name in Migrated Code: **Activity**  
 Location in Migrated Code: **OnLoad Method**
 
 Values:
