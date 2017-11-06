@@ -246,13 +246,32 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
             searchDiv.appendChild(searchInput);
             root.appendChild(searchDiv);
             buildNodes(data.nodes, root);
+            var notFoundLink = document.createElement("a");
+            { 
+                var notFoundDiv = document.createElement('div');
+                
+                notFoundDiv.className = 'TreeItem';
+                notFoundLink.style.display = 'none';
+                notFoundLink.href = 'asdf';
+                notFoundLink.innerText = "Couldn't find !!!";
+                root.appendChild (notFoundDiv);
+                notFoundDiv.appendChild(notFoundLink);
+                
+            }
 
             searchInput.oninput = function () {
                 if (searchInput.value == '')
                     reset(data.nodes);
                 else
-                    if (!search(data.nodes, searchInput.value.toLowerCase()))
+                    if (!search(data.nodes, searchInput.value.toLowerCase())) {
+
                         ga('send', 'event', 'searchFailed', searchInput.value);
+                        notFoundLink.style.display = 'block';
+                        notFoundLink.innerHTML = `Sorry, we couldn't find a match for <strong>"${searchInput.value}"</strong>.<br/><br/> Please click here to send us an email about what you were searching for, and we'll get back to you shortly with an answer`;
+                        notFoundLink.href = `mailto:info@fireflymigration.com?subject=` + encodeURI(`Missing info in documentation "${searchInput.value}"`);
+                        notFoundLink.target = '_blank';
+                    }
+                else notFoundLink.style.display = 'none';
             };
             if (currentPageUrl == '404.html') {
                 if (window.location.href.toLowerCase() != window.location.href)
