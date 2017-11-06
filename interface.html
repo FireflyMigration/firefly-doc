@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="UIController, BusinessProcess,FlowUIController">
+    <meta name="keywords" content="">
 
-    <title>Task Type</title>
+    <title>Advanced Tab</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,31 +29,15 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="task-type">Task Type</h1>
-<p>The Task Type in Magic is either Online or Batch. In the migrated code, online Tasks convert to Classes which inherit from the UIController Class, while Batch tasks convert to Classes which inherit from the BusinessProcess Class.</p>
-<p>Name in Migrated Code: <strong>UIController, BusinessProcess</strong><br />
-Location in Migrated Code: <strong>Class</strong></p>
-<p>Example: UIController:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>internal class Orders1 :UIControllerBase 
-{
-} </code></pre>
-<p>Example: BusinessProcess:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>internal class Print_Order : BusinessProcessBase 
-{
-} </code></pre>
-<p>Note: The FlowUIController Class is used for Magic Code from Online tasks that have code in the Record Main. For such Code, The migrated code will inherit from the FlowUIController Class:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>internal class Orders1 : FlowUIControllerBase 
-{
-} </code></pre>
-<hr />
-<p><strong>See Also:</strong></p>
+                <div class="content"><h1 id="advanced-tab">Advanced Tab</h1>
+<p>A screen shot of eDeveloper's Advanced Properties tab appears below:</p>
+<p><img src="edevadvancedpropertytab.jpg" alt="" /></p>
+<p>The following notes explain the equivalent to these properties in the migrated code.</p>
 <ul>
-<li><a href="http://fireflymigration.com/reference/html/T_Firefly_Box_UIController.htm.htm">UIController Class</a></li>
-<li><a href="http://fireflymigration.com/reference/html/T_Firefly_Box_BusinessProcess.htm">BusinessProcess Class</a></li>
-<li><a href="http://www.fireflymigration.com/reference/html/AllMembers_T_Firefly_Box_UIController.htm">UIController Class Members</a></li>
-<li><a href="http://www.fireflymigration.com/reference/html/AllMembers_T_Firefly_Box_BusinessProcess.htm">Business Process Class Members</a></li>
+<li><a href="selection-table-(advanced-tab).html">Selection Table (Advanced Tab)</a></li>
+<li><a href="resident-task-(advanced-tab).html">Resident Task (Advanced Tab)</a></li>
+<li><a href="main-display.html">Main Display</a></li>
 </ul>
-<hr />
 
 
 
@@ -61,7 +45,7 @@ Location in Migrated Code: <strong>Class</strong></p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/03-Reference/02-Comparing-Migrated-Code-with-Magic/01-Task-Properties/01-General-Tab/03-Task-Type.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/03-Reference/02-Comparing-Migrated-Code-with-Magic/01-Task-Properties/03-Interface/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -123,7 +107,7 @@ Location in Migrated Code: <strong>Class</strong></p>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'task-type.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'interface.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

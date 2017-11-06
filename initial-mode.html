@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Activity, u.ActivityOfParent, u.TranslateTaskActivity, Query, Modify, Create, Delete, Browse, Update, Insert">
 
     <title>Initial Mode</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -30,9 +30,9 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="initial-mode">Initial Mode</h1>
-<p>Name in Migrated Code: <strong>Activity</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Values:</p>
+<p>Name in Migrated Code: <strong>Activity</strong><br />
+Location in Migrated Code: <strong>OnLoad Method</strong></p>
+<p>Values:</p>
 <table>
 <thead>
 <tr>
@@ -70,13 +70,13 @@ Values:</p>
 <p>Example: Browse:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>Activity = Activities.Browse; </code></pre>
 <p>Example: By Parent:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>public ShowOrders()
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override OnLoad()
 {   //... other code
     Activity = u.ActivityOfParent;
     // other code
 } </code></pre>
 <p>Example: By Expression:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>public ShowOrders()
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override OnLoad()
 {   //... other code
     Activity =  u.TranslateTaskActivity(u.if(1==1,"Q","M")); 
     // other code
@@ -96,7 +96,7 @@ Values:</p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/03-Reference/02-Comparing-Migrated-Code-with-Magic/Unipaas/01-task-properties-unipaas/01-General-Tab/04-Initial-Mode.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/03-Reference/02-Comparing-Migrated-Code-with-Magic/01-Task-Properties/01-General-Tab/04-Initial-Mode.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>

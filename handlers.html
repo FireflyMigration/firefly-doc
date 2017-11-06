@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="UIController, BusinessProcess,FlowUIController">
+    <meta name="keywords" content="">
 
-    <title>Task Type</title>
+    <title>Introduction</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,31 +29,52 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="task-type">Task Type</h1>
-<p>The Task Type in Magic is either Online or Batch. In the migrated code, online Tasks convert to Classes which inherit from the UIController Class, while Batch tasks convert to Classes which inherit from the BusinessProcess Class.</p>
-<p>Name in Migrated Code: <strong>UIController, BusinessProcess</strong><br />
-Location in Migrated Code: <strong>Class</strong></p>
-<p>Example: UIController:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>internal class Orders1 :UIControllerBase 
-{
-} </code></pre>
-<p>Example: BusinessProcess:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>internal class Print_Order : BusinessProcessBase 
-{
-} </code></pre>
-<p>Note: The FlowUIController Class is used for Magic Code from Online tasks that have code in the Record Main. For such Code, The migrated code will inherit from the FlowUIController Class:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>internal class Orders1 : FlowUIControllerBase 
-{
-} </code></pre>
-<hr />
-<p><strong>See Also:</strong></p>
-<ul>
-<li><a href="http://fireflymigration.com/reference/html/T_Firefly_Box_UIController.htm.htm">UIController Class</a></li>
-<li><a href="http://fireflymigration.com/reference/html/T_Firefly_Box_BusinessProcess.htm">BusinessProcess Class</a></li>
-<li><a href="http://www.fireflymigration.com/reference/html/AllMembers_T_Firefly_Box_UIController.htm">UIController Class Members</a></li>
-<li><a href="http://www.fireflymigration.com/reference/html/AllMembers_T_Firefly_Box_BusinessProcess.htm">Business Process Class Members</a></li>
-</ul>
-<hr />
+                <div class="content"><h1 id="introduction">Introduction</h1>
+<p>This article is one of a series of articles aimed at providing further orientation with the migrated code for Magic programmers. This time we will look at Handlers as they appear in eDeveloper (version 9) and show the equivalent representation of each setting in the migrated code.</p>
+<h2 id="defining-an-event">Defining an Event</h2>
+<p>The following displays eDeveloper's ctrl-K or Handlers screen:</p>
+<p><img src="events.jpg" alt="Handlers screen" /></p>
+<p>Name in Migrated Code: <strong>Handlers.Add</strong> and the <strong>Handlers</strong> region of code<br />
+Location in Migrated Code: <strong>Constructor</strong> in the <strong>Event Handlers</strong> section (directly after the constructor<br />
+Example: In the constructor</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>   var PrintHandler = Handlers.Add(Print);
+   PrintHandler.Invokes += PrintHandler_Invokes; </code></pre>
+<p>Example: In the Handler Section:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>  void PrintHandler_Invokes(Firefly.Box.Advanced.HandlerInvokeEventArgs e)
+  {
+     e.Handled = true;
+     // send range of this order
+     v_Printed.Value = new Print_Order().Run(Orders.OrderID, new UI.ShowOrders_UI(this));
+  } </code></pre>
+<p>The following sections describe the migrated code equivalent for all the event options.</p>
+<h3 id="description">Description</h3>
+<p>Name in Migrated Code: In the name of the parameter of the <strong>Handlers.Add</strong> method.<br />
+Location in Migrated Code: <strong>Constructor</strong><br />
+Example: In the constructor</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>   var PrintHandler = Handlers.Add(Print);
+   PrintHandler.Invokes += PrintHandler_Invokes; </code></pre>
+<h3 id="trigger-type">Trigger Type</h3>
+<p>There are many ways in which a Handler can be triggered and the follwoing sub sections show the equivalent migrated code for each Trigger option.</p>
+<h4 id="system">System</h4>
+<p>Name in Migrated Code: <strong>Keys</strong><br />
+Location in Migrated Code: <strong>Constructor</strong><br />
+This defines a handler triggered by a keyboard shortcut.<br />
+Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>var h = Handlers.Add(Keys.Shift | Keys.F3); </code></pre>
+<p>####Internal</p>
+<p>Name in Migrated Code: <strong>Command</strong><br />
+Location in Migrated Code: <strong>Constructor</strong><br />
+This defines a handler triggered by an internal event command
+Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>var Expand_vMyField_CopyFromHandler = Handlers.Add(Command.Expand, "Copy From"); </code></pre>
+<p>Timer</p>
+<h4 id="expression">Expression</h4>
+<h4 id="none">None</h4>
+<h3 id="trigger">Trigger</h3>
+<h3 id="force-exit">Force Exit</h3>
+<h2 id="defining-a-handler">Defining a Handler</h2>
+<p>The following displays some Handlers as seen in eDeveloper:</p>
+<p><img src="handlers.jpg" alt="Handlers Screen" /></p>
 
 
 
@@ -61,7 +82,7 @@ Location in Migrated Code: <strong>Class</strong></p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/03-Reference/02-Comparing-Migrated-Code-with-Magic/01-Task-Properties/01-General-Tab/03-Task-Type.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/03-Reference/02-Comparing-Migrated-Code-with-Magic/09-Handlers/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -123,7 +144,7 @@ Location in Migrated Code: <strong>Class</strong></p>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'task-type.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'handlers.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

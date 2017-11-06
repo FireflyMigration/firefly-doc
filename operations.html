@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Operations</title>
+    <title>Introduction</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,14 +29,317 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="operations">Operations</h1>
-<ul>
-<li><a href="block-end-block.html">Block End Block</a></li>
-<li><a href="call.html">Call</a></li>
-<li><a href="evaluate.html">Evaluate</a></li>
-<li><a href="update.html">Update</a></li>
-<li><a href="verify.html">Verify</a></li>
-</ul>
+                <div class="content"><h1 id="introduction">Introduction</h1>
+<p>This article is one of a series of articles aimed at providing further orientation with the migrated code for Magic programmers. This time we will look at the List of Operations as they appear in eDeveloper (version 9) and show the equivalent representation of each setting in the migrated code.</p>
+<p>Let's look at the screen displaying the List of Operations:</p>
+<p><img src="operations1.jpg" alt="List of Operations" /></p>
+<p>The following sections describe the equivalent migrated code syntax for each operation.</p>
+<hr />
+<h2 id="select">Select</h2>
+<p>Name in Migrated Code: <strong>Columns.Add Method</strong><br />
+Location in Migrated Code: <strong>InitializeDataView Method</strong><br />
+The following examples relate to Select:</p>
+<h3 id="real-field">Real Field</h3>
+<p><code>Columns.Add(Orders.OrderId);</code></p>
+<h3 id="virtual-field">Virtual Field</h3>
+<pre data-line="" class="language-csdiff line-numbers"><code>Columns.Add(v_Total); </code></pre>
+<h3 id="init-expression">Init Expression</h3>
+<pre data-line="" class="language-csdiff line-numbers"><code>v_RowTotal.BindValue(() =&gt; Orders.UnitPrice * Orders.Quantity - Orders.Discount); </code></pre>
+<p>Note: When the same expression in Magic is used for the Range and Init expression, use the BindEqualTo Method instead of the IsEqualTo Method and BindValue Method. Without this, we would have to write the following 2 lines of code:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Where.Add(Orders.OrderId.IsEqualTo(3));
+Orders.OrderId.BindValue(()=&gt;3); </code></pre>
+<p>Instead of the above 2 lines, Write one line using BindEqualTo:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Where.Add(Orders.OrderId.BindEqualTo(3)); </code></pre>
+<h3 id="range">Range</h3>
+<p>Range is written at the beginning of the <strong>InitializeDataView</strong> Method, using the Where.Add syntax.</p>
+<p>Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Where.Add(Orders.OrderId.IsBetween(1,3)); </code></pre>
+<p>Note: When the same expression in Magic is used for the Range and Init expression, use the BindEqualTo Method instead of the IsEqualTo Method and BindValue Method. Instead of writing the following 2 lines of code:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Where.Add(Orders.OrderId.IsEqualTo(3));
+Orders.OrderId.BindValue(()=&gt;3); </code></pre>
+<p>..write one line using BindEqualTo:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Where.Add(Orders.OrderId.BindEqualTo(3)); </code></pre>
+<h3 id="locate">Locate</h3>
+<p>Locate is used in the context of the main table<br />
+Locate is written at the beginning of the <strong>InitializeDataView</strong> Method using the <strong>StartOnRowWhere.Add</strong> syntax.<br />
+Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>StartOnRowWhere.Add(Orders.OrderId.IsEqualTo(2)); </code></pre>
+<hr />
+<p>For the Select operation, See Also:<br />
+<a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_Columns.htm">UIController Columns Add Method and examples</a><br />
+<a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_Columns.htm">Business Process Columns Add Method and examples</a></p>
+<hr />
+<h2 id="verify">Verify</h2>
+<p>Verify can be either an Error message or a Warning message:</p>
+<h3 id="error">Error</h3>
+<p>For Display = Error, use the <strong>Error</strong> Method.
+Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Error("Order exceeds the maximum"); </code></pre>
+<p>For Display = Box, use the <strong>ErrorInStatusBar</strong> method
+Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>ErrorInStatusBar("Order exceeds the maximum"); </code></pre>
+<h3 id="warning">Warning</h3>
+<p>For Display = Error, use the <strong>Warning</strong> Method.
+Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Warning("Order exceeds the maximum"); </code></pre>
+<p>For Display = Box, use the <strong>WarningInStatusBar</strong> method
+Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>WarningInStatusBar("Order exceeds the maximum"); </code></pre>
+<hr />
+<h2 id="linkend-link">Link/End Link</h2>
+<p>Name in Migrated Code: <strong>Relations.Add Method</strong><br />
+Location in Migrated Code: <strong>InitializeDataView Method</strong></p>
+<h3 id="link-type">Link Type</h3>
+<p>The following table shows the .Net equivalents for Magic link types.</p>
+<table>
+<thead>
+<tr>
+<th>Magic Name</th>
+<th>Migrated Code Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Query</td>
+<td>Find</td>
+</tr>
+<tr>
+<td>Write</td>
+<td>InsertIfNotFound</td>
+</tr>
+<tr>
+<td>Create</td>
+<td>Insert</td>
+</tr>
+<tr>
+<td>InnerJoin</td>
+<td>InnerJoin</td>
+</tr>
+<tr>
+<td>L.O.Join</td>
+<td>Join</td>
+</tr>
+</tbody>
+</table>
+<p>Example Link Find:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Relations.Add(Customers, RelationType.Find, Customers.CustomerID.IsEqualTo(Orders.CustomerID); </code></pre>
+<p>See also: <a href="http://www.fireflymigration.com/reference/html/T_Firefly_Box_RelationType.htm">Relations Enum</a></p>
+<h3 id="init">Init</h3>
+<p>Name in Migrated Code: <strong>BindEqualTo</strong></p>
+<p>For InsertIfNotFound (Link Write), use the BindEqualTo method instead of IsEqualTo to initialize a new linked record with the linked value.</p>
+<p>Example Link Write:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Relations.Add(Customers,Customers.CustomerID.BindEqualTo(Orders.CustomerID); </code></pre>
+<h3 id="locate-expression">Locate Expression</h3>
+<p>For each locate value, the migrated code will show an expression.
+Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Relations.Add(Customers, RelationType.Find, Customers.CustomerID.IsEqualTo(Orders.CustomerID).And
+   Customers.City.IsequalTo("Madrid"); </code></pre>
+<h3 id="index">Index</h3>
+<p>Use the appropriate Relations.Add overload which supports an index parameter.
+Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code> Relations.Add(Customers, RelationType.Find, 
+  Customers.CustomerID.IsEqualTo(Orders.CustomerID), Customers.SortByCustomerID); </code></pre>
+<h3 id="ret">Ret:</h3>
+<p>Name in Migrated Code: <strong>NotifyRowWasFoundTo</strong>
+Use an object of type var to Return a variable<br />
+Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code> readonly BoolColumn nRowFound = new BoolColumn();
+// other code
+var r = Relations.Add(Customers, RelationType.Find,
+   Customers.CustomerID.IsEqualTo(Orders.CustomerID), Customers.SortByCustomerID);
+r.NotifyRowWasFoundTo(nRowFound) </code></pre>
+<h3 id="cnd">Cnd</h3>
+<p>Name in Migrated Code: <strong>BindEnabled</strong><br />
+Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>var r = Relations.Add(Customers, RelationType.Find, 
+      Customers.CustomerID.IsEqualTo(Orders.CustomerID), Customers.SortByCustomerID);
+// other code
+var r = relation.add
+r.BindEnabled( ()= &gt;Exp_1() </code></pre>
+<hr />
+<p>For further examples of how to use Relations, see also:</p>
+<p><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_Relations.htm">UIController Find Relation and examples</a><br />
+<a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_Relations.htm">Business Process Find Relation and examples</a></p>
+<hr />
+<h2 id="blockend-block">Block/End Block</h2>
+<h3 id="block-if-block-else">Block If, Block Else</h3>
+<p>Name in Migrated Code: <strong>if, else</strong><br />
+Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>if(Exp_3())
+{
+    new GetTotalForOrderID().Run(vOrderID);
+}
+else 
+{
+    new GetTotalForAllOrders().Run();
+} </code></pre>
+<h3 id="block-loop">Block Loop</h3>
+<p>Name in Migrated Code: <strong>u.StartBlockLoop</strong><br />
+Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLeaveRow()
+        {
+            u.StartBlockLoop();
+            while(u.AdvanceBlockLoop() &amp;&amp;(vNumerator &lt; 5))
+            {
+                Categories.CategoryName.Value = u.Trim(Categories.CategoryName);
+                vNumerator.Value++;
+            }
+            u.EndBlockLoop(); </code></pre>
+<hr />
+<h2 id="call">Call</h2>
+<h3 id="call-task-call-program">Call Task, Call Program</h3>
+<p>Examples:<br />
+Example of calling a Program:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>new OrderDetails().Run(); </code></pre>
+<p>In the migrated code, a call to a task will appear as a method call, passing an instance of itself as a parameter.<br />
+Example of calling a Task:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>new OrderDetails(this).Run(); </code></pre>
+<p>The following properties are available when calling a task or a program:</p>
+<h4 id="args">Args</h4>
+<p>Arguments are passed in the migrated code in the standard .Net way, for example, the following code passes OrderID as an argument:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>new Print_Order().Run(Orders.OrderID); </code></pre>
+<p>In the receiving program, the Run method receives the argument/s, for example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>/// &lt;summary&gt;Print - Order&lt;/summary&gt;
+/// &lt;param name="ppi_OrderID"&gt;pi.Order ID&lt;/param&gt;
+public void Run(NumberParameter ppi_OrderID)
+{
+  BindParameter(pi_OrderID, ppi_OrderID);
+  Execute();
+} </code></pre>
+<p>Note: For backward compatibility reasons, Migrated code will use parameter types such as NumberParameter, TextParameter etc, as opposed to NumberColumn, TextColumn. This allows the .Net code to behave like Magic, so that, like in Magic, expressions can be passed as parameters too.</p>
+<h4 id="frm">Frm</h4>
+<p>This property, determining which GUI screen will be displayed, is passed in the migrated code as a parameter, when calling the Method. An example of this implementation is as follows:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code> new Print_Order().Run(Orders.OrderID, new UI.ShowOrders_UI(this)); </code></pre>
+<p>In the called Method, the code will look like this:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>public void Run(NumberParameter ppi_OrderID, Firefly.Box.UI.Form view)
+{
+    BindParameter(pi_OrderID, ppi_OrderID);
+    BindView(view);
+    Execute();
+} </code></pre>
+<h4 id="ret-1">Ret</h4>
+<p>The migrated code will define a variable of type Bool, called _taskResult, that will return the required value to the calling Method. The callng Method receives this value.</p>
+<p>For example, in the calling Method, a value is returned to v.Done, defined as a Bool:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>v_Printed.Value = new Print_Order().Run(Orders.OrderID, new UI.ShowOrders_UI(this)); </code></pre>
+<p>In the called Method, for example, a Bool variable defined in the Class:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Bool _taskResult; </code></pre>
+<p>The variable is returned, as follows:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>vDone.Value = true;
+_taskResult = vDone; </code></pre>
+<h4 id="exp">Exp</h4>
+<pre data-line="" class="language-csdiff line-numbers"><code>Application.AllPrograms.RunByIndex(1,asdfds) </code></pre>
+<h4 id="lock">Lock</h4>
+<p>This property is equivalent to the Lock property in Magic, seen when pressing ctrl+P as displayed below:</p>
+<p>The migrated code supports this option by adding the LockCurrentRow() Method before calling the method, for example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>LockCurrentRow();
+new Print_Order().Run(); </code></pre>
+<p>See also:<a href="http://www.fireflymigration.com/reference/html/M_Firefly_Box_UIController_LockCurrentRow.htm">LockCurrentRow Method for UIController</a>, <a href="http://www.fireflymigration.com/reference/html/M_Firefly_Box_BusinessProcess_LockCurrentRow.htm">LockCurrentRow Method for BusinessProcess</a></p>
+<h3 id="call-public">Call Public</h3>
+<h3 id="call-udp">Call UDP</h3>
+<p>In .Net, Use the UDF User Method defined in ENV.UserMethods.cs Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>u.UDF("get.get_env", "CLIENTNAME", V_ComputerName); </code></pre>
+<h3 id="call-com">Call COM</h3>
+<p>As an example of the usage of COM, in the Class, define a Column as follows:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>readonly ComColumn&lt;MMSERVVBLib.OutgoingMessage&gt; FAX = new ComColumn&lt;MMSERVVBLib.OutgoingMessage&gt;("FAX")
+{
+    CreateInstance = true,
+    InstanceType = typeof(MMSERVVBLib.OutgoingMessageClass)
+}; </code></pre>
+<p>Then, Call COM as in the following example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>FAX.CallCom(comObj =&gt; comObj.Connect(u.ToStringForCom("efax")),vReturnCode); </code></pre>
+<h3 id="call-remote">Call Remote</h3>
+<h3 id="call-webs">Call WebS</h3>
+<hr />
+<h2 id="evaluate">Evaluate</h2>
+<p>Name in Migrated Code: Call a Method
+Example: The following DBDEL Evaluate expression in Magic, appears in the migrated .Net code as:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>u.DBDel(typeof(Model.Orders), "") </code></pre>
+<h3 id="ret-2">Ret</h3>
+<hr />
+<h2 id="update">Update</h2>
+<p>Name in Migrated Code: Expression
+Location in Migrated Code: Override Methods and Handlers</p>
+<h3 id="how">How</h3>
+<h4 id="normal">Normal</h4>
+<p>Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>v_LineTotal.Value = OrderDetails.UnitPrice * OrderDetails.Quantity - OrderDetails.Discount; </code></pre>
+<h4 id="incremental">Incremental</h4>
+<pre data-line="" class="language-csdiff line-numbers"><code>v_LineTotal.Value += DeltaOf(OrderDetails.UnitPrice * OrderDetails.Quantity - OrderDetails.Discount); </code></pre>
+<h4 id="und">Und</h4>
+<p>Forgot disable Undo etc…</p>
+<p><strong>UpdateValueWithoutMarkingRowAsChanged</strong><br />
+In magic, in an online task when updating a variable from the record prefix or an handle, that update doesn't constitute a change to the row, which means that it'll not cause the RecordSuffix to run and the row will not be updated to the database unless another more meaningfull change have happened. To better represent this behaviour, these updates in the migrated code look as following:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>v_Total.UpdateRowWithoutMarkingRowAsChanged(a+b-c); </code></pre>
+<hr />
+<h2 id="output-form">Output Form</h2>
+<p>Name in Migrated Code: Expression
+Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code> _layout.Customer.WriteTo(_ioPrint_Order);
+ ```
+For a discussion on working with system files in .Net
+
+For a discussion on how to print a report in .Net
+
+### I/O
+
+### Page
+
+#### Auto
+
+#### Skip
+
+#### Top
+
+
+## Input Form
+Name in Migrated Code: **ReadFrom Method**  
+Example: </code></pre>
+<p>_viewReadLine.ReadFrom(_ioImportFile);</p>
+<pre><code>
+### I/O
+
+### Dlm
+
+For a discussion on working with system files in .Net
+
+---
+
+## Browse
+Name in Migrated Code: FileViewer  
+Browse has the following properties:
+
+### Expression
+
+Example: Browse file
+&lt;pre data-line=&quot;&quot; class=&quot;language-csdiff line-numbers&quot;&gt;&lt;code&gt;new ENV.Utilities.FileViewer(&quot;c:\\temp\\test.txt&quot;,new UI.Print_Orders_UI(this)).View(); &lt;/code&gt;&lt;/pre&gt;
+
+### Edt
+
+For Viewing a file, use the View() Method, as in the above example. For editing, use the Edit method. Example:
+
+&lt;pre data-line=&quot;&quot; class=&quot;language-csdiff line-numbers&quot;&gt;&lt;code&gt;new ENV.Utilities.FileViewer(&quot;c:\\temp\\test.txt&quot;,new UI.Print_Orders_Browse(this)).Edit(); &lt;/code&gt;&lt;/pre&gt;
+
+## Exit
+Name in Migrated Code: StartRun  
+Example: dir command
+&lt;pre data-line=&quot;&quot; class=&quot;language-csdiff line-numbers&quot;&gt;&lt;code&gt;  StartRun(&quot;dir&quot;, false, System.Diagnostics.ProcessWindowStyle.Normal); &lt;/code&gt;&lt;/pre&gt;
+
+## Raise Event
+The Event type can be system, internal, user defined or public
+
+Example:
+&lt;pre data-line=&quot;&quot; class=&quot;language-csdiff line-numbers&quot;&gt;&lt;code&gt;Invoke(myEvent); &lt;/code&gt;&lt;/pre&gt;
+## Remark  
+Remarks made in Magic are maintained in migrated code using the .Net syntax for comments  
+Example:
+&lt;pre data-line=&quot;&quot; class=&quot;language-csdiff line-numbers&quot;&gt;&lt;code&gt;// Update the total value for the order &lt;/code&gt;&lt;/pre&gt;
+
+* [Block End Block](block-end-block.html)
+* [Call](call.html)
+* [Evaluate](evaluate.html)
+* [Update](update.html)
+* [Verify](verify.html)
+</code></pre>
 
 
 
