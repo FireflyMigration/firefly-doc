@@ -6,4 +6,4 @@
 
 These are my changes
 
-I have another suggestion. 
+I have another suggestion.  
