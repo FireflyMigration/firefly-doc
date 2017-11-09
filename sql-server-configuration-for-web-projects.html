@@ -32,7 +32,7 @@
                 <div class="content"><h1 id="sql-server-configuration-for-web-projects">SQL Server Configuration for Web Projects</h1>
 <p>Most SQL server application use Windows Authentication to login to the SQL Server.</p>
 <p>You do that by not specifying the user and password in the configuration, in that case, SQL uses the user OS login to authenticate the user.</p>
-<p>When you are running from a production web server, you are using IIS, and if you don't do anyh special configuration you'll get an &quot;error opening connection login failed&quot; error.</p>
+<p>When you are running from a production web server, you are using IIS, and if you don't do any special configuration you'll get an &quot;error opening connection login failed&quot; error.</p>
 <p>To solve that, you can:</p>
 <ol>
 <li>Add the iis user to the trusted users of the sql server.</li>
@@ -41,8 +41,8 @@
 </ol>
 <p>Locate and uncomment the following line of code:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>ConnectionManager.SetDefaultUserAndPassword("sa", "YOURPASSWORD"); </code></pre>
-<h2 id="using-sql-express">Using SQL Express</h2>
-<p>In our demo we use SQL express, and as such we can run using Windows Authentication just by setting the <code>Windows Authentication</code> property, in the project properties, to enabled.</p>
+<h2 id="using-iis-express">Using IIS Express</h2>
+<p>In our demo we use IIS express, and as such we can run using Windows Authentication just by setting the <code>Windows Authentication</code> property, in the project properties, to enabled.</p>
 <p><img src="2017-11-03_12h10_14.png" alt="Project Properties" /></p>
 
 
@@ -51,7 +51,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/02-Articles/Web-Development/00-ENV Web/03-Additional server side features/Setup and Configuration/SQL Server Configuration for Web Projects.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/00-ENV Web/03-Additional server side features/Setup and Configuration/SQL Server Configuration for Web Projects.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>

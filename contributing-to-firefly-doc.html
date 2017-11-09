@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="md, markdown,mark down">
+
+    <title>Contributing to Firefly doc</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="contributing-to-firefly-doc">Contributing to Firefly doc</h1>
+<p>Here is a short video on how to contribute to the doc.fireflymigration.com web site:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yX9qum4tDAQ" frameborder="0" allowfullscreen></iframe>
+<hr />
+<p>The documents in our documentation site are written with the <strong>Markdown</strong> language.</p>
+<p>Here are some guide lines to help you edit the content affectively:</p>
+<h3 id="file-name">File name</h3>
+<p>The file name cannot contains spaces, instead use the hyphen sign to separate between the words.<br />
+for example: Column-Collection-and-Recompute.md</p>
+<h3 id="document-title">Document Title</h3>
+<p>Do not specify a title to the file as by default the title is taken from the file name. The hyphen are replaced with spaces.</p>
+<h3 id="internal-titles">Internal titles</h3>
+<p>To display titles inside the document use '###' before the text.</p>
+<pre><code>### My Internal Title
+</code></pre>
+<h3 id="my-internal-title">My Internal Title</h3>
+<h3 id="new-line">New line</h3>
+<p>To force new line add 2 spaces at the end of the line.</p>
+<h3 id="keywords">Keywords</h3>
+<p>Keywords are used to make the document searchable also based on text that doesn’t appear in the document itself.
+Keywords are added at the top of the document using this syntax:</p>
+<pre><code>keywords: text1, text2, text2 
+</code></pre>
+<h3 id="emphasis">Emphasis</h3>
+<p>Bold - add 2 asterisks before and after the text.<br />
+Italic - add single astrike before and after the text.</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>**Bold text**</code></td>
+<td><strong>Bold text</strong></td>
+</tr>
+<tr>
+<td><code>*Italic text*</code></td>
+<td><em>Italic text</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="code">code</h3>
+<p>A code section should be prefixed by 3 back-ticks and the phrase csdiff and suffixed by another 3 back-ticks</p>
+<h4 id="any-code">Any Code</h4>
+<p><img src="2017-03-20_08h38_17.png" alt="2017 03 20 08H38 17" /></p>
+<pre><code>xcopy aa.txt bb.txt /a
+</code></pre>
+<h4 id="c-code">C# Code</h4>
+<p><img src="Img2017-02-19_10h55_17.png" alt="" /></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>private void ApplicationMdi_Load(object sender, EventArgs e)
+{
+    new Training.SimpleScreen.ShowOrders().Run();
+} </code></pre>
+<h3 id="code-change-highlighting">code change highlighting</h3>
+<p><strong>new code line</strong> – should start with the sign + (plus);<br />
+<strong>removed code line</strong> - should start with the - (minus) sign.</p>
+<p><img src="Img2017-02-19_10h50_30.png" alt="" /></p>
+<pre data-line="4" class="language-csdiff line-numbers"><code>private void ApplicationMdi_Load(object sender, EventArgs e)
+{
+-    new Training.SimpleScreen.ShowOrders().Run()
+     new Training.SimpleScreen.ShowOrders().Run();
+} </code></pre>
+<h3 id="youtube-video-link">Youtube video Link</h3>
+<p>Use the Embed option in youtube share button, copy the link and paste it in the document.</p>
+<h3 id="image">Image</h3>
+<p>Make sure to upload the image and use the bellow syntax:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>![FireflyLogo](FireflyLogo.png)</code></td>
+<td><img src="FireflyLogo.png" alt="FireflyLogo" /></td>
+</tr>
+</tbody>
+</table>
+<h3 id="link">Link</h3>
+<p>To add a link use the below syntax</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[Firefly migration](www.Fireflymigration.com)</code></td>
+<td><a href="www.Fireflymigration.com">Firefly migration</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tables">Tables</h3>
+<pre><code>Colons can be used to align columns.
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| col 1 is normal | are neat      |    $1 |
+
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th style="text-align: center;">Are</th>
+<th style="text-align: right;">Cool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>col 3 is</td>
+<td style="text-align: center;">right-aligned</td>
+<td style="text-align: right;">$1600</td>
+</tr>
+<tr>
+<td>col 2 is</td>
+<td style="text-align: center;">centered</td>
+<td style="text-align: right;">$12</td>
+</tr>
+<tr>
+<td>col 1 is normal</td>
+<td style="text-align: center;">are neat</td>
+<td style="text-align: right;">$1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="note-section">Note Section</h3>
+<pre><code>&gt; This is my note
+</code></pre>
+<blockquote>
+<p>This is my note</p>
+</blockquote>
+
+
+
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//60-Contributing-to-Firefly-doc/index.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'contributing-to-firefly-doc.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>
