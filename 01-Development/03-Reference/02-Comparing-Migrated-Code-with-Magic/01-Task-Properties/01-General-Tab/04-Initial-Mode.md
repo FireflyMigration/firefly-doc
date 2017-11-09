@@ -1,7 +1,9 @@
-﻿# Initial Mode
+﻿keywords:Activity, u.ActivityOfParent, u.TranslateTaskActivity, Query, Modify, Create, Delete, Browse, Update, Insert
+# Initial Mode
 
-Name in Migrated Code: **Activity**
+Name in Migrated Code: **Activity**  
 Location in Migrated Code: **OnLoad Method**
+
 Values:
 
 | Magic Name | Migrated Code Name      |
@@ -19,7 +21,7 @@ Activity = Activities.Browse;
 ```
 Example: By Parent:
 ```csdiff
-public ShowOrders()
+protected override OnLoad()
 {   //... other code
     Activity = u.ActivityOfParent;
     // other code
@@ -27,7 +29,7 @@ public ShowOrders()
 ```
 Example: By Expression:
 ```csdiff
-public ShowOrders()
+protected override OnLoad()
 {   //... other code
     Activity =  u.TranslateTaskActivity(u.if(1==1,"Q","M")); 
     // other code

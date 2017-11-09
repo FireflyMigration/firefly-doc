@@ -2,7 +2,7 @@
 1. Limit the number of rows
 ```csdiff
 @Injectable()
-export class Orders {
+export class AppComponent {
 
     title = 'Orders';
     orders = new utils.DataSettings<models.order>(
@@ -20,7 +20,7 @@ export class Orders {
 2. Filter on First Value
 ```csdiff
 @Injectable()
-export class Orders {
+export class AppComponent {
 
     title = 'Orders';
     orders = new utils.DataSettings<models.order>(
@@ -42,7 +42,7 @@ export class Orders {
 3. Filtering on second value
 ```csdiff
 @Injectable()
-export class Orders {
+export class AppComponent {
 
     title = 'Orders';
     orders = new utils.DataSettings<models.order>(
@@ -65,7 +65,7 @@ export class Orders {
 4. IsGreaterOrEqualTo
 ```csdiff
 @Injectable()
-export class Orders {
+export class AppComponent {
 
     title = 'Orders';
     orders = new utils.DataSettings<models.order>(
@@ -92,7 +92,7 @@ export class Orders {
 5. Order By
 ```csdiff
 @Injectable()
-export class Orders {
+export class AppComponent {
 
     title = 'Orders';
     orders = new utils.DataSettings<models.order>(

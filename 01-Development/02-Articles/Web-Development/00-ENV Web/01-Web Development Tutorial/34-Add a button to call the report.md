@@ -1,4 +1,4 @@
-﻿`Scripts\App\Orders.html`
+﻿`src/app/app.component.html`
 ```csdiff
  <h1>Orders</h1>
  <data-grid [settings]="orders"></data-grid>

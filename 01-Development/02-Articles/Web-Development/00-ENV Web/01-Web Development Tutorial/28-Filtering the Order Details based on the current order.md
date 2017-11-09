@@ -1,5 +1,5 @@
 ﻿We'll use the `onEnterRow` event, that is set to an Arrow Function that receives an  `order` object of the specfic order. We'll use that order to filter the `orderDetails` `orderID` column.
-`Scripts\App\Orders.ts`
+`src/app/app.component.ts`
 ```csdiff
 orderDetails = new models.orderDetails();
 orders = new models.orders(
@@ -14,7 +14,7 @@ orders = new models.orders(
 ```
 
 We'll also only show the order details grid, if an order exists and has an ID
-`Scripts\App\Orders.html`
+`src/app/app.component.html`
 ```csdiff
     <!-- Tab panes -->
     <div class="tab-content">

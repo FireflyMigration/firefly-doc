@@ -1,6 +1,6 @@
-﻿`Scripts\App\Orders.ts`
+﻿`src/app/app.component.ts`
 ```csdiff
-export class Orders {
+export class AppComponent {
     customers = new models.customers();
 +   shippers = new models.shippers();
     orders = new models.orders(
@@ -32,7 +32,7 @@ export class Orders {
 ```
 ### We'll also make the column a bit wider by using bootstrap css classes
 ```csdiff
-export class Orders {
+export class AppComponent {
     customers = new models.customers();
     shippers = new models.shippers();
     orders = new models.orders(

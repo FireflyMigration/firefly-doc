@@ -1,4 +1,5 @@
-﻿# Task Type
+﻿keywords:UIController, BusinessProcess,FlowUIController
+# Task Type
 
 The Task Type in Magic is either Online or Batch. In the migrated code, online Tasks convert to Classes which inherit from the UIController Class, while Batch tasks convert to Classes which inherit from the BusinessProcess Class.
 
