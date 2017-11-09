@@ -14,6 +14,7 @@ Install it from: https://nodejs.org/en/
 
 ## Visual Studio Code
 1. Install it from: https://code.visualstudio.com/
+2. During the installation wizard check all the checkboxes in the "Select Additional Tasks" screen
 2. Download the Angular extension at: https://github.com/angular/vscode-ng-language-service/releases and follow the instructions carefully
 3. If you run into trouble installing it, see instructions at:https://stackoverflow.com/questions/47015263/typescript-angular-intelisense-in-html-template 
 
