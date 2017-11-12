@@ -1,4 +1,6 @@
-﻿In some cases the migration engine involves also the changes in the application code,   
+keywords:latest, new, env, firefly, final migration
+
+In some cases the migration engine involves also the changes in the application code,   
 so copying the *ENV* folder and *Firefly.Box.Dll* is not enough and you also need to merge the new migrated code with your code. 
 
 In order to do that you need to:
