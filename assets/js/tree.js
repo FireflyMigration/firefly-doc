@@ -13,8 +13,10 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
     };
 
     function buttonHide(b) {
-        b.forEach(x => x
-            .style.visibility = 'hidden');
+        for (var i = 0; i < b.length; i++) {
+            b[i].style.visibility = 'hidden';
+        }
+
     }
     function nodeShow(n) {
         n.style.display = 'block';
@@ -26,10 +28,10 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
     buttonHide(nextBtn);
 
     function buttonUrl(b, url) {
-        b.forEach(x => {
-            x.style.visibility = 'visible';
-            x.href = url;
-        });
+        for (var i = 0; i < b.length; i++) {
+            b[i].style.visibility = 'visible';
+            b[i].href = url;
+        }
     }
 
     var prevUrl = '/';
@@ -247,16 +249,16 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
             root.appendChild(searchDiv);
             buildNodes(data.nodes, root);
             var notFoundLink = document.createElement("a");
-            { 
+            {
                 var notFoundDiv = document.createElement('div');
-                
+
                 notFoundDiv.className = 'TreeItem';
                 notFoundLink.style.display = 'none';
                 notFoundLink.href = 'asdf';
                 notFoundLink.innerText = "Couldn't find !!!";
-                root.appendChild (notFoundDiv);
+                root.appendChild(notFoundDiv);
                 notFoundDiv.appendChild(notFoundLink);
-                
+
             }
 
             searchInput.oninput = function () {
@@ -267,11 +269,12 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
 
                         ga('send', 'event', 'searchFailed', searchInput.value);
                         notFoundLink.style.display = 'block';
-                        notFoundLink.innerHTML = `Sorry, we couldn't find a match for <strong>"${searchInput.value}"</strong>.<br/><br/> Please click here to send us an email about what you were searching for, and we'll get back to you shortly with an answer`;
-                        notFoundLink.href = `mailto:info@fireflymigration.com?subject=` + encodeURI(`Missing info in documentation "${searchInput.value}"`);
+                        notFoundLink.innerHTML = "Sorry, we couldn't find a match for <strong>" +
+                            searchInput.value + "</strong>.<br/><br/> Please click here to send us an email about what you were searching for, and we'll get back to you shortly with an answer";
+                        notFoundLink.href = "mailto:info@fireflymigration.com?subject=" + encodeURI("Missing info in documentation " + searchInput.value);
                         notFoundLink.target = '_blank';
                     }
-                else notFoundLink.style.display = 'none';
+                    else notFoundLink.style.display = 'none';
             };
             if (currentPageUrl == '404.html') {
                 if (window.location.href.toLowerCase() != window.location.href)
