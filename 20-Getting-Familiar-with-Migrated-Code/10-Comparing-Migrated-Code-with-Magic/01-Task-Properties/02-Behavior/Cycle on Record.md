@@ -2,7 +2,7 @@
 
 ![2017 11 13 16H01 06](2017-11-13_16h01_06.png)
 
-## Migrated Code Exapmle
+## Migrated Code Example
 ```csdiff   
 protected override void OnLoad()
 {
