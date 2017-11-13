@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Task Properties, OnLoad, Task Settings">
 
-    <title>Comparison with Magic's Task Control Dialog Box</title>
+    <title>Behavior Tab</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,260 +29,11 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="comparison-with-magics-task-control-dialog-box">Comparison with Magic's Task Control Dialog Box</h1>
-<h2 id="introduction">Introduction</h2>
-<p>This article is one of a series of articles aimed at providing further orientation with the migrated code for Magic programmers. This time we will look at the 'Task Control' (Control-C) screens as they appear in eDeveloper (version 9) and show the equivalent representation of its properties in the migrated code. Many of the properties have various options and we will also look at the different representations in the migrated code for each option.</p>
-<p>There are two tabs for the Task Control dialog boxes in eDeveloper, with the following tags: Modes and Behavior. Let's look at each Tab separately.</p>
-<h2 id="modes-tab">Modes Tab</h2>
-<p>A screen shot of eDeveloper's Modes tab appears below:</p>
-<p><img src="modes.jpg" alt="" /></p>
-<p>The following notes explain the equivalent to these properties in the migrated code.</p>
-<hr />
-<h3 id="allow-options">Allow Options</h3>
-<p>Name in Migrated Code: <strong>AllowActivitySwitch</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Example:</p>
-<p><code>AllowActivitySwitch = true;</code></p>
-<p>Example with expression:</p>
-<p><code>BindAllowActivitySwitch(()=&gt;Exp_1());</code></p>
-<h4 id="see-also">See Also :</h4>
+                <div class="content"><h1 id="behavior-tab">Behavior Tab</h1>
+<p><img src="2017-11-13_15h45_15.png" alt="2017 11 13 15H45 15" /></p>
 <ul>
-<li><a href="http://fireflymigration.com/reference/html/P_Firefly_Box_UIController_AllowActivitySwitch.htm">AllowActivitySwitch Property</a></li>
-<li><a href="http://fireflymigration.com/reference/html/M_Firefly_Box_UIController_BindAllowActivitySwitch.htm">BindAllowActivitySwitch Method</a></li>
+<li><a href="cycle-on-record.html">Cycle on Record</a></li>
 </ul>
-<hr />
-<h3 id="allow-modify">Allow Modify</h3>
-<p>Name in Migrated Code: <strong>AllowUpdate</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Example:</p>
-<p><code>AllowUpdate = true;</code></p>
-<p>Example with Expression:</p>
-<p><code>BindAllowUpdate(()=&gt;Exp_1());</code></p>
-<h4 id="see-also-1">See Also :</h4>
-<ul>
-<li><a href="http://fireflymigration.com/reference/html/P_Firefly_Box_UIController_AllowUpdate.htm">AllowUpdate Property + example</a></li>
-<li><a href="http://fireflymigration.com//reference/html/M_Firefly_Box_UIController_BindAllowUpdate.htm">BindAllowUpdate Method</a></li>
-</ul>
-<hr />
-<h3 id="allow-create">Allow Create</h3>
-<p>Name in Migrated Code: <strong>AllowInsert</strong>
-Location in Migrated Code:OnLoad Method
-Example:</p>
-<p><code>AllowInsert = true;</code></p>
-<p>Example with Expression:</p>
-<p><code>BindAllowInsert(()=&gt;Exp_1());</code></p>
-<h4 id="see-also-2">See Also :</h4>
-<ul>
-<li><a href="http://fireflymigration.com/reference/html/P_Firefly_Box_UIController_AllowInsert.htm">AllowInsert Property + example</a></li>
-<li><a href="http://fireflymigration.com/reference/html/M_Firefly_Box_UIController_BindAllowInsert.htm">BindAllowInsert Method</a></li>
-</ul>
-<hr />
-<h3 id="allow-delete">Allow Delete</h3>
-<p>Name in Migrated Code: <strong>AllowDelete</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Example:</p>
-<p><code>AllowDelete = true;</code></p>
-<p>Example with Expression:</p>
-<p><code>BindAllowDelete(()=&gt; Exp_1());</code></p>
-<h4 id="see-also-3">See Also :</h4>
-<ul>
-<li><a href="http://fireflymigration.com/reference/html/P_Firefly_Box_UIController_AllowDelete.htm">AllowDelete Property + example</a></li>
-<li><a href="http://fireflymigration.com/reference/html/M_Firefly_Box_UIController_BindAllowDelete.htm">BindAllowDelete Method</a></li>
-</ul>
-<hr />
-<h3 id="allow-query">Allow Query</h3>
-<p>Name in Migrated Code: <strong>AllowBrowse</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Example:</p>
-<p><code>AllowBrowse = true;</code></p>
-<p>Example with Expression:</p>
-<p><code>BindAllowBrowse(()=&gt;Exp_1());</code></p>
-<h4 id="see-also-4">See Also :</h4>
-<ul>
-<li><a href="http://fireflymigration.com/reference/html/P_Firefly_Box_UIController_AllowBrowse.htm">AllowBrowse Property + example</a></li>
-<li><a href="http://fireflymigration.com/reference/html/M_Firefly_Box_UIController_BindAllowBrowse.htm">BindAllowBrowse Method</a></li>
-</ul>
-<hr />
-<h3 id="allow-locate">Allow Locate</h3>
-<p>Name in Migrated Code: <strong>AllowFindRow</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Example:</p>
-<p><code>AllowFindRow = true;</code></p>
-<p>Example with Expression:</p>
-<p><code>BindAllowFindRow(()=&gt;Exp_1());</code></p>
-<hr />
-<h3 id="allow-range">Allow Range</h3>
-<p>Name in Migrated Code: <strong>AllowFilterRows</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Example:</p>
-<p><code>AllowFilterRows = true;</code></p>
-<p>Example with Expression:</p>
-<p><code>BindAllowFilterRows(()=&gt;Exp_1());</code></p>
-<hr />
-<h3 id="allow-index-change">Allow Index Change</h3>
-<p>Name in Migrated Code: <strong>AllowSelectOrderBy</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong></p>
-<p><code>AllowSelectOrderBy = true;</code></p>
-<p>Example with Expression:</p>
-<p><code>BindAllowSelectOrderBy(()=&gt;Exp_1());</code></p>
-<hr />
-<h3 id="allow-sorting">Allow Sorting</h3>
-<p>Name in Migrated Code: <strong>AllowCustomOrderBy</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Example:</p>
-<p><code>AllowCustomOrderBy = true;</code></p>
-<p>Example with Expression:</p>
-<p><code>BindAllowCustomOrderBy(()=&gt;Exp_1());</code></p>
-<hr />
-<h3 id="allow-index-optimization">Allow Index Optimization</h3>
-<p>Name in Migrated Code: <strong>SortOnIncrementalSearch</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Example:</p>
-<p><code>SortOnIncrementalSearch = true;</code></p>
-<p>Example with Expression:</p>
-<p><code>BindSortOnIncrementalSearch(()=&gt;Exp_1());</code></p>
-<h4 id="see-also-5">See Also :</h4>
-<ul>
-<li><a href="http://fireflymigration.com/reference/html/P_Firefly_Box_UIController_SortOnIncrementalSearch.htm">SortOnIncrementalSearch Property and example</a></li>
-<li><a href="http://fireflymigration.com/reference/html/M_Firefly_Box_UIController_BindSortOnIncrementalSearch.htm">BindSortOnIncrementalSearch Method</a></li>
-</ul>
-<hr />
-<h3 id="allow-locate-in-query">Allow Locate in Query</h3>
-<p>Name in Migrated Code: <strong>AllowIncrementalSearch</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Example:</p>
-<p><code>AllowIncrementalSearch = true;</code></p>
-<p>Example with Expression:</p>
-<p><code>BindAllowIncrementalSearch(()=&gt;Exp_1());</code></p>
-<h4 id="see-also-6">See Also :</h4>
-<ul>
-<li><a href="http://fireflymigration.com/reference/html/P_Firefly_Box_UIController_AllowIncrementalSearch.htm">AllowIncrementalSearch Property and example</a></li>
-<li><a href="http://fireflymigration.com/reference/html/M_Firefly_Box_UIController_BindAllowIncrementalSearch.htm">BindAllowIncrementalSearch Method</a></li>
-</ul>
-<hr />
-<h3 id="allow-printing-data">Allow Printing Data</h3>
-<p>Name in Migrated Code: <strong>AllowExportData</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Example:</p>
-<p><code>AllowExportData = true;</code></p>
-<p>Example with Expression:</p>
-<p><code>BindAllowExportData(()=&gt; Exp_1());</code></p>
-<hr />
-<h2 id="behavior-tab">Behavior Tab</h2>
-<p>A screen shot of eDeveloper's Behavior tab appears below:</p>
-<p><img src="behavior.jpg" alt="" /></p>
-<p>The following notes explain the equivalent to these properties in the migrated code.</p>
-<hr />
-<h3 id="close-task-window">Close Task Window</h3>
-<p>Name in Migrated Code: <strong>KeepViewVisibleAfterExit</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>    KeepViewVisibleAfterExit = true;
-                if(NewViewRequired)
-                {
-                    View = new UI.ShowOrders_Details_UI(this);
-                } </code></pre>
-<p>Example with Expression:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code> BindKeepViewVisibleAfterExit(()=&gt;Exp_1());
-                if(NewViewRequired)
-                {
-                    View = new UI.ShowOrders_Details_UI(this);
-                } </code></pre>
-<p>Note: This property works best in conjunction with CachedUIController To maintain the behavior of a window that is open for a task that is closed and the option to revisit the task.</p>
-<h4 id="see-also-7">See Also :</h4>
-<ul>
-<li><a href="http://fireflymigration/reference/html/P_Firefly_Box_UIController_KeepViewVisibleAfterExit.htm">KeepViewVisibleAfterExit Property</a></li>
-<li><a href="http://fireflymigration/reference/html/M_Firefly_Box_BusinessProcess_BindKeepViewVisibleAfterExit.htm">BindKeepViewVisibleAfterExit Method</a></li>
-</ul>
-<hr />
-<h3 id="foreground-window">Foreground Window</h3>
-<p>Name in Migrated Code: <strong>OnLoadSendToBack</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code> if(NewViewRequired)
-            {
-                View = new UI.ShowProducts_UI(this);
-                View.OnLoadSendToBack = true;
-            } </code></pre>
-<p>Example with Expression:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>if(NewViewRequired)
-            {
-                View = new UI.ShowProducts_UI(this);
-                View.BindOnLoadSendToBack (()=&gt;Exp_1());
-            } </code></pre>
-<h4 id="see-also-8">See Also :</h4>
-<ul>
-<li><a href="http://fireflymigration/reference/html//P_Firefly_Box_UI_Form_OnLoadSendToBack.htm">OnLoadSendToBack Property</a></li>
-</ul>
-<hr />
-<h3 id="refresh-task-window">Refresh Task Window</h3>
-<p>Name in Migrated Code: <strong>ReloadDataAfterSavingRow</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Example:</p>
-<p><code>ReloadDataAfterSavingRow = true;</code></p>
-<p>Example with Expression:</p>
-<p><code>BindReloadDataAfterSavingRow(()=&gt;Exp_1());</code></p>
-<h4 id="see-also-9">See Also :</h4>
-<ul>
-<li><a href="http://fireflymigration/reference/html/P_Firefly_Box_UIController_ReloadDataAfterSavingRow.htm">ReloadDataAfterSavingRow Property and Example Code</a></li>
-<li><a href="http://fireflymigration/reference/html/M_Firefly_Box_UIController_BindReloadDataAfterSavingRow.htm">BindReloadDataAfterSavingRow Method</a></li>
-</ul>
-<hr />
-<h3 id="cycle-record-main">Cycle Record Main</h3>
-<p>Name in Migrated Code: <strong>GoToToNextRowAfterLastControl</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Example:</p>
-<p><code>GoToToNextRowAfterLastControl = true;</code></p>
-<p>Example with Expression:</p>
-<p><code>BindGoToToNextRowAfterLastControl(() =&gt;!(Exp_1());</code></p>
-<h4 id="see-also-10">See Also :</h4>
-<ul>
-<li><a href="http://fireflymigration/reference/html/P_Firefly_Box_UIController_GoToToNextRowAfterLastControl.htm">GoToToNextRowAfterLastControl Property and Example Code</a></li>
-<li><a href="http://fireflymigration/reference/html/M_Firefly_Box_UIController_BindGoToToNextRowAfterLastControl.htm">BindFoToToNextRowAfterLastControl Method</a></li>
-</ul>
-<hr />
-<h3 id="confirm-update">Confirm Update</h3>
-<p>Name in Migrated Code: <strong>ConfirmUpdate</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Example:</p>
-<p><code>ConfirmUpdate = true;</code></p>
-<p>Example with Expression:</p>
-<p><code>BindConfirmUpdate(() =&gt; !(Exp_1());</code>
-Note: Not many people know that in Magic to disable the Confirm Delete message box, you need to set the Confirm Update property to a false expression (1=0) as opposed to setting the Confirm Update to No, which will only disable the update message box. In the migrated code, the Confirm Delete message box is controlled by the ConfirmDelete Property and BindConfirmDelete Method .</p>
-<hr />
-<h3 id="confirm-cancel">Confirm Cancel</h3>
-<p>Name in Migrated Code: <strong>ConfirmCancel</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Example:</p>
-<p><code>ConfirmCancel = true;</code></p>
-<p>Example with Expression:</p>
-<p><code>BindConfirmCancel(()=&gt;!(Exp_1());</code></p>
-<hr />
-<h3 id="force-record-suffix">Force Record Suffix</h3>
-<p>Name in Migrated Code: <strong>ForceSaveRow</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Example:</p>
-<p><code>ForceSaveRow=true;</code></p>
-<p>Example with Expression:</p>
-<p><code>BindForceSaveRow(()=&gt;Exp_1());</code></p>
-<h4 id="see-also-11">See Also :</h4>
-<ul>
-<li><a href="http://fireflymigration/reference/html/P_Firefly_Box_UIController_ForceSaveRow.htm">ForceSaveRow Property and Example Code</a></li>
-<li><a href="http://fireflymigration/reference/html/M_Firefly_Box_UIController_BindForceSaveRow.htm">BindForceSaveRow Method</a></li>
-</ul>
-<hr />
-<h3 id="force-record-delete">Force Record Delete</h3>
-<p>Name in Migrated Code: <strong>DeleteRowAfterLeavingIt</strong> method
-Location in Migrated Code: <strong>OnLoad Method</strong>
-Example:</p>
-<p><code>DeleteRowAfterLeavingItIf(()=&gt;true);</code></p>
-<p>Example with Expression:</p>
-<p><code>DeleteRowAfterLeavingItIf(()=&gt;Exp_1());</code></p>
-<h4 id="see-also-12">See Also :</h4>
-<ul>
-<li><a href="http://fireflymigration.com/reference/html/M_Firefly_Box_UIController_DeleteRowAfterLeavingItIf.htm">DeleteRowAfterLeavingIt Method</a></li>
-</ul>
-<hr />
 
 
 
@@ -290,7 +41,7 @@ Example:</p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//01-Development/03-Reference/02-Comparing-Migrated-Code-with-Magic/01-Task-Properties/02-Behavior/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/02-Behavior/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
