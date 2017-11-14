@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Replacing the Tnsnames.ora file with INI setting</title>
+    <title>How to set Oracle Connection</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,47 +29,32 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="replacing-the-tnsnames.ora-file-with-ini-setting">Replacing the Tnsnames.ora file with INI setting</h1>
-<h3 id="general">General</h3>
-<p>Magic is using Oracle client to access Oracle DB.<br />
-The client reads the Tnsnames.ora file to get details
-of the relevant Oracle data location (server, user).</p>
-<p>The location of this file can be set using various methods -
-you can read more about it <a href="http://www.dba-oracle.com/t_windows_tnsnames.ora_file_location.htm">here</a>.</p>
-<h3 id="in.net">in .Net</h3>
-<p>The migrated code is not using Oracle client but rather
-ODP (Oracle Data Provider for .NET) - you can read about
-it <a href="http://www.oracle.com/technetwork/topics/dotnet/index-085163.html">here</a>.<br />
-Because of that it is not aware of the location of the Tnsnames.ora
-file - this has to be copied next to the EXE file
-or be places in the path.</p>
-<h3 id="the-alternative">The alternative</h3>
-<p>You can easily replace the use of the Tnsnames.ora file
-by placing the connection details in the INI.</p>
-<h3 id="how-to-do-it">How to do it</h3>
+                <div class="content"><h1 id="how-to-set-oracle-connection">How to set Oracle Connection</h1>
+<p>.NET does not require the workstation to have Oracle client installed.
+The connection is done by using Oracle Data Provider for .NET (ODP.NET, Managed Driver). It is an Oracle dll which we provide during the migration (Oracle.ManagedDataAccess.dll)</p>
+<p>The connection configuration file is called tnsnames.ora.
+The .NET application needs that file in order to communicate with ODP.net and there are 3 ways for the application to find this file:</p>
+<h4 id="tns_admin">TNS_ADMIN</h4>
+<p>TNS_ADMIN is an environment variable that points to the directory where the tnsnames.ora is located</p>
+<p><img src="ora.jpg" alt="" /></p>
+<h4 id="bin-folder">Bin folder</h4>
+<p>When the application starts, it first searches for the tnsnames.ora in the bin folder. If the file is there, the application uses it.</p>
+<h4 id="ini-file">INI file</h4>
+<p>You can use the connection string from inside tnsnames.ora in the INI file as follows:</p>
 <ol>
-<li>Open the DB settings in Magic</li>
-<li>Open relevant DB properties screen</li>
-<li>Remove the Database Server value</li>
-<li>Specify a logical name in the Connect String</li>
-<li>Add the matching logical name - it will contain the connection string copied from the Tnsnames.ora in a one line format</li>
+<li>Create a logical name, for example &quot;myOraConnection&quot;</li>
+<li>Set this logical to be equal to the connection string as one line (Important as one line):</li>
 </ol>
-<p>After the change the DB properties should look like this:<br />
-<img src="INIAfterTheChange.jpg" alt="AfterTheChange" title="After the change" />
-(alternatively you can change the INI manually)</p>
-<p>This is the matching entry in the Tnsnames.ora:<br />
-Northwind =
-(DESCRIPTION =
-(ADDRESS_LIST =
-(ADDRESS = (PROTOCOL = TCP)(HOST = 1.2.3.4)(PORT = 1521))
-)
-(CONNECT_DATA =
-(SERVICE_NAME = orcl)
-)
-)</p>
-<p>So the logical name should look like this:<br />
-[MAGIC_LOGICAL_NAMES]<br />
-Northwind = (DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 1.2.3.4)(PORT = 1521))) (CONNECT_DATA = (SERVICE_NAME = orcl)))</p>
+<p>myOraConnection = (DESCRIPTION =(ADDRESS_LIST =(ADDRESS = (PROTOCOL = TCP)(HOST = XXXXXXXX )(PORT = XXXXX)))(CONNECT_DATA =(SERVICE_NAME = orcl)))</p>
+<ol start="3">
+<li>Set the server name in the INI to use this logical name  - %myOraConnection%</li>
+</ol>
+<p>This option is useful in case you do not want to install or configure anything on the workstation.</p>
+<h4 id="misc">misc</h4>
+<p>Oracle Data Provider for .NET <br>
+<a href="http://www.oracle.com/technetwork/topics/dotnet/index-085163.html">http://www.oracle.com/technetwork/topics/dotnet/index-085163.html</a></p>
+<p>tnsnames.ora <br>
+<a href="http://www.orafaq.com/wiki/Tnsnames.ora">http://www.orafaq.com/wiki/Tnsnames.ora</a></p>
 
 
 
@@ -77,7 +62,7 @@ Northwind = (DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 1.
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/20-Alpha-Testing/40-Oracle-Connection/10-Replacing-TNS-with-INI/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/20-Alpha-Testing/40-Oracle-Connection/How-to-set-Oracle-Connection.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -139,7 +124,7 @@ Northwind = (DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 1.
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'replacing-tns-with-ini.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'how-to-set-oracle-connection.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
