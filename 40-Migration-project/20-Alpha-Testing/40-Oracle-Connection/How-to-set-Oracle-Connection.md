@@ -1,4 +1,4 @@
-﻿# How to set Oracle connection
+﻿# How to set Oracle Connection
 
 .NET does not require the workstation to have Oracle client installed.
 The connection is done by using Oracle Data Provider for .NET (ODP.NET, Managed Driver). It is an Oracle dll which we provide during the migration (Oracle.ManagedDataAccess.dll)
