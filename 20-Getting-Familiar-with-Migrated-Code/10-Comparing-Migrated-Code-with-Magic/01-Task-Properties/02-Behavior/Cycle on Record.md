@@ -9,6 +9,16 @@ protected override void OnLoad()
 +    GoToToNextRowAfterLastControl = true;
 }
 ```        
+Condition as an expression:
+
+```csdiff   
+protected override void OnLoad()
+{
++     BindGoToToNextRowAfterLastControl(() => !(ENV.Security.UserManager.CurrentUser.Name == "SUPERVISOR"));
+}
+```        
+
+
 
 ## Property Values
 True or false. The default is **false** which is Cycle on record = Yes in Magic
