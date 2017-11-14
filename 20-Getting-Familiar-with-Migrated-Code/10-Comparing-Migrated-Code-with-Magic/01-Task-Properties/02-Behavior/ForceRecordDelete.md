@@ -1,5 +1,8 @@
 ﻿keywords: Task Properties, Behavior Tab, Force,Force Record delete, Force Delete
 
+Name in migrated code: **DeleteRowAfterLeavingItIf**  
+Location in migrated code: **OnLoad**
+
 ![](ForceRecordDelete.png)
 
 ## Migrated Code Example

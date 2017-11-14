@@ -1,5 +1,9 @@
 ﻿keywords: Task Properties, Behavior Tab, Refresh,Refresh task window, Reload Data
 
+Name in migrated code: **ReloadDataAfterSavingRow**  
+Location in migrated code: **OnLoad**
+
+
 ![](RefreshTask.png)
 
 ## Migrated Code Example

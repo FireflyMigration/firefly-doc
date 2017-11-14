@@ -1,5 +1,9 @@
 ﻿keywords: Task Properties, Behavior Tab, Allow events
 
+Name in migrated code: **AllowUserAbort**  
+Location in migrated code: **OnLoad**
+
+
 ![](allowevents.png)
 
 ## Migrated Code Example

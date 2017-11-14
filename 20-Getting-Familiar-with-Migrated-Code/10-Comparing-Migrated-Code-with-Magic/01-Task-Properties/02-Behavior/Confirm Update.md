@@ -1,5 +1,8 @@
 ﻿keywords: Task Properties, Behavior Tab, Confirm update
 
+Name in migrated code: **ConfirmUpdate**  
+Location in migrated code: **OnLoad**
+
 ![](Confirm.png)
 
 ## Migrated Code Example

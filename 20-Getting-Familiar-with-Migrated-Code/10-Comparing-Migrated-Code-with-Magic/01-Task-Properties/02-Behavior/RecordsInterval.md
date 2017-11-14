@@ -1,5 +1,8 @@
 ﻿keywords: Task Properties, Behavior Tab, Records interval, Interval
 
+Name in migrated code: **UserInterfaceRefreshRowsInterval**  
+Location in migrated code: **OnLoad**
+
 ![](RecordsInterval.png)
 
 ## Migrated Code Example

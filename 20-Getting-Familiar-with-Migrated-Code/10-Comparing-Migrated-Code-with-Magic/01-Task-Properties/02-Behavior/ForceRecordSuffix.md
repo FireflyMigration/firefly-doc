@@ -1,5 +1,9 @@
 ﻿keywords: Task Properties, Behavior Tab, Force,Force Record suffix, Force Save
 
+Name in migrated code: **ForceSaveRow**  
+Location in migrated code: **OnLoad**
+
+
 ![](ForceRecordSuffix.png)
 
 ## Migrated Code Example

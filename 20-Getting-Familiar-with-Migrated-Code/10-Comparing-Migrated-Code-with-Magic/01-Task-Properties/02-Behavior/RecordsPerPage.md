@@ -1,5 +1,7 @@
 ﻿keywords: Task Properties, Behavior Tab, Records per page,
 
+Location in migrated code: **OnLoad**
+
 ![](RecordsPerPage.png)
 
 ## Migrated Code Example
