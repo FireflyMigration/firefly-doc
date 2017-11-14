@@ -59,11 +59,44 @@ In the Breakpoint Settings window, check the Actions box. You can print any stri
 See https://docs.microsoft.com/en-us/visualstudio/debugger/using-breakpoints for more information.
 
 ### Debugging Navigation ###
-Run to Cursor
-Restart application
-Set next Statement 
+#### Run to Cursor ####
+When you debug the application, you can use F10 to step over the code line by line or F11 to step into the code of the method being called.
+Sometime you want to skip a part of the code and break on a specific line. In this case, set the cursor at the line of code you wish to stop on, right click and select **Run to Cursor** or press Ctrl+F10
+
+![2017 11 14 13H47 56](2017-11-14_13h47_56.png)
+
+#### Step into Specific ####
+When you have a conplex code line that has more than one method call in it, you can select the specific method you want to step into.  
+Right click the line of code and select **Step into Specific**
+
+![2017 11 14 13H55 54](2017-11-14_13h55_54.png)
+
+#### Set next Statement ####
+This option allow you to continue the debugging from any statement you want, even going back a few lines and execute them again. Notice that this will not undo the last execution but will allow you to rexecute the code again.  
+Right click the line you want to execute next and select **Set Next Statement** or press Ctrl+Shift+F10
+
+![2017 11 14 13H58 20](2017-11-14_13h58_20.png)
 
 ### Debug Windows ###
+#### Call Stack ####
+The Call Stack window display a list of methods calls that leads to the current program. It is a good way to examine and understadnd the execution flow of the application.  
+Double clicking on any of the lines in the call stack will jump to the code of that method.
+By default, the call stack displays a lot of information, which are usaully not needed, so it is recommended to right click any where and uncheck all the "Show..." entries at the bottom of the context menu.
 
-### Controling the Debugger by Code ###
+![2017 11 14 14H03 09](2017-11-14_14h03_09.png)
+
+#### Watch ####
+While debugging, you can use the **Watch** window (Debug > Windows > Watch (1, 2, 3, 4)) to watch variables and expressoins values. 
+Inside the watch window you can also change the value of any variable and continue debugging using the new value. This is usefull when you need to get inside an if statement or pass througe some validaton code.
+
+![2017 11 14 15H22 18](2017-11-14_15h22_18.png)
+
+#### Autos and Locals ####
+The **Autos** window (Debug > Windows > Autos) and the **Local** window (Debig > Windows > Locals) are quite useful when you want to see variable values while you are debugging.
+The **Locals** windows displays the variables that are defined in the local scope, which are the variable that are in use at the current line of code or variable that are part of the current method.
+The **Autos** window displays variables used around the current line and try to guess which variables are more relavent for this specific debug session.
+These windows somtimes save the need to add variable to the **Watch** window manually.
+
+![2017 11 14 15H28 56](2017-11-14_15h28_56.png)
+
 
