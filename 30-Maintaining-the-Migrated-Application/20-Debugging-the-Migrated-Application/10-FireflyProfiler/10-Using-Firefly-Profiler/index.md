@@ -1,6 +1,4 @@
-﻿# Performance Improvement by using Firefly Profiler tool
-
-In order to improve the application’s performance, we provide a Profiler tool which helps to analyze the application code and find performance bottlenecks.
+﻿Firefly provides a Profiler tool which helps to analyze the application execution and find issue and performance bottlenecks.
 
 1) Starting the Profiler  
 While the application is open, Right-Click on the status bar:  

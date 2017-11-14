@@ -8,4 +8,4 @@ This file can be placed at your code snippets folder, for example at:
 The shortcut for surround with is Ctrl+K, S. 
 Another shortcut is typing prof and double TAB for an empty "using profiler" block.
 
-![2017 07 04 12H52 27](../../../../../Users/Sefi/Pictures/Screenpresso/2017-07-04_12h52_27.gif)
+![2017 07 04 12H52 27](2017-07-04_12h52_27.gif)
