@@ -13,7 +13,7 @@ In case the problem is reproducible using this version as well, please report it
 2. In case the problem is not manifested using the latest version from the migration server,
 please try migrating using your "final migration" version.
 The version is indicated in the status bar (the last 5 digits) - on the FTP rename the Start.Done file
-to Start.[version]
+to Start.[version] - [this](http://doc.fireflymigration.com/automatic-migration-using-ftp.html) article explains it.
 3. In case the problem is reproduced using the final migration, it means the problem is in the ENV / Firefly.Box  
 code but was already fixed, so all you need to do is replace the copies of ENV and Firefly.Box with a fresh one.
 In order to do that just follow the instructions in [this](http://doc.fireflymigration.com/getting-the-update-migrated-code.html) article. 
