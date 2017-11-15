@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="Task Properties, Behavior Tab, Cycle on record, Cycle record main">
+    <meta name="keywords" content="">
 
-    <title>Cycle on Record</title>
+    <title>Reporting an issue after the final migration</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,26 +29,36 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="cycle-on-record">Cycle on Record</h1>
-<p>Name in migrated code: <strong>GoToToNextRowAfterLastControl</strong><br />
-Location in migrated code: <strong>OnLoad</strong></p>
-<p>Name in migrated code: <strong>GoToToNextRowAfterLastControl</strong><br />
-Location in migrated code: <strong>OnLoad</strong></p>
-<p><img src="2017-11-13_16h01_06.png" alt="2017 11 13 16H01 06" /></p>
-<h2 id="migrated-code-example">Migrated Code Example</h2>
-<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
-{
-     GoToToNextRowAfterLastControl = true;
-} </code></pre>
-<p>Condition as an expression:</p>
-<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
-{
-      BindGoToToNextRowAfterLastControl(() =&gt; !(ENV.Security.UserManager.CurrentUser.Name == "SUPERVISOR"));
-} </code></pre>
-<h2 id="property-values">Property Values</h2>
-<p>True or false. The default is <strong>false</strong> which is Cycle on record = Yes in Magic</p>
-<h2 id="see-also">See Also</h2>
-<p><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_GoToToNextRowAfterLastControl.htm">UIController GoToNextRowAfterLastControl</a></p>
+                <div class="content"><h1 id="reporting-an-issue-after-the-final-migration">Reporting an issue after the final migration</h1>
+<p>Once the application is deployed and you have switched to .Net,<br />
+the users might come across new issues.<br />
+Some of them might stem from new code added to the application,<br />
+and some might be differences between Magic and .Net that<br />
+were not tested in the Alpha / Beta phases.</p>
+<p>In order to report such an issue please check the following:</p>
+<ol>
+<li>Test the same scenario using the code straight out of the migration server.
+In case the problem is reproducible using this version as well, please report it using the issue tracker
+(don't forget to mention that you are using the latest version from the migration server)</li>
+<li>In case the problem is not manifested using the latest version from the migration server,
+please try migrating using your &quot;final migration&quot; version.
+The version is indicated in the status bar (the last 5 digits) - on the FTP rename the Start.Done file
+to Start.[version] - <a href="http://doc.fireflymigration.com/automatic-migration-using-ftp.html">this</a> article explains it.</li>
+<li>In case the problem is reproduced using the final migration, it means the problem is in the ENV / Firefly.Box<br />
+code but was already fixed, so all you need to do is replace the copies of ENV and Firefly.Box with a fresh one.
+In order to do that just follow the instructions in <a href="http://doc.fireflymigration.com/getting-the-update-migrated-code.html">this</a> article.
+In case it is not reproduced using the code from the migration server (with the &quot;final migration&quot; version)<br />
+it means that changes made in the code are manifesting this problem.</li>
+</ol>
+<p>Options you might consider when investigating this issue:</p>
+<ol>
+<li>Using a comparing tool (for example <a href="https://www.scootersoftware.com/">Beyond Compare</a>)
+to track down the differences in your code between the version from the migration server<br />
+and the version you have. To narrow down the search, just compare the pieces of code that actually take part
+of the problematic scenario.</li>
+<li>In case you are using a version control, return to previos versions<br />
+of the code until the problem is not manifested anymore.</li>
+</ol>
 
 
 
@@ -56,7 +66,7 @@ Location in migrated code: <strong>OnLoad</strong></p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/02-Behavior/Cycle on Record.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/Reporting-an-issue-after-the-final-migration.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -118,7 +128,7 @@ Location in migrated code: <strong>OnLoad</strong></p>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'cycle-on-record.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'reporting-an-issue-after-the-final-migration.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
