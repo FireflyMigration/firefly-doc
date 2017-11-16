@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="Task Properties, Behavior Tab, Records per page,">
+    <meta name="keywords" content="Task Properties, OnLoad, Task Settings">
 
-    <title>RecordsPerPage</title>
+    <title>Behavior Tab</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,29 +29,19 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="recordsperpage">RecordsPerPage</h1>
-<p>Location in migrated code: <strong>OnLoad</strong></p>
-<p><img src="RecordsPerPage.png" alt="" /></p>
-<h2 id="migrated-code-example">Migrated Code Example</h2>
-<p>The <strong>Batch Tasks</strong> group is enabled in a BusinessProcess class (Batch task)</p>
-<pre data-line="3,4,8,12,13,15,17" class="language-csdiff line-numbers"><code>protected override void OnEnterRow()
-{
-     if (Counter &gt;1 &amp;&amp; (Counter - 1) % 20 == 0)
-        _ioPrint_Customers.EndCurrentPage();
-}
-protected override void OnLeaveRow()
-{
-     _layout.Print_Customers1.WriteTo(_ioPrint_Customers);
-}
-protected override void OnEnd()
-{
-     _layout.Print_Customers1.SuspendDataControls();
-     for (var i = Counter % 20; i &lt; 20; i++)
-     {
-    _layout.Print_Customers1.WriteTo(_ioPrint_Customers);
-     }
-    _layout.Print_Customers1.ResumeDataControls();
-} </code></pre>
+                <div class="content"><h1 id="behavior-tab">Behavior Tab</h1>
+<p><img src="2017-11-13_15h45_15.png" alt="2017 11 13 15H45 15" /></p>
+<ul>
+<li><a href="allowevents.html">AllowEvents</a></li>
+<li><a href="confirm-cancel.html">Confirm Cancel</a></li>
+<li><a href="confirm-update.html">Confirm Update</a></li>
+<li><a href="cycle-on-record.html">Cycle on Record</a></li>
+<li><a href="forcerecorddelete.html">ForceRecordDelete</a></li>
+<li><a href="forcerecordsuffix.html">ForceRecordSuffix</a></li>
+<li><a href="recordsinterval.html">RecordsInterval</a></li>
+<li><a href="recordsperpage.html">RecordsPerPage</a></li>
+<li><a href="refreshtaskwindow.html">RefreshTaskWindow</a></li>
+</ul>
 
 
 
@@ -59,7 +49,7 @@ protected override void OnEnd()
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/02-Behavior-Tab/RecordsPerPage.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/02-Behavior-Tab/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -121,7 +111,7 @@ protected override void OnEnd()
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'recordsperpage.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'behavior-tab.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

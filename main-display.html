@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Task Properties, Interface Tab, Main display">
 
     <title>Main Display</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -30,24 +30,36 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="main-display">Main Display</h1>
-<p>This Option determines which screen to display based on a numeric value obtained by an expression.</p>
-<p>Name in Migrated Code: <strong>See example</strong>
-Location in Migrated Code: <strong>OnLoad Method</strong></p>
-<p>Example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLoad() {
-
-   // other code
-   switch ((int)(u.If(vEnglish, 2, 1)))
-   {
-       case 1:
-            View = new UI.OtherLang_UI(this);
-            SetMainDisplayIndex(1);
-            break;
-        case 2:
-            View = new UI.English(this);
-            SetMainDisplayIndex(2);
-            break;
-    }
+<p>Name in migrated code: <strong>View</strong><br />
+Location in migrated code: <strong>OnLoad</strong></p>
+<p><img src="MainDisplay.png" alt="Main Display" /></p>
+<h2 id="migrated-code-example">Migrated Code Example</h2>
+<p>'2'Form in Magic:</p>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+     switch ((int)(2))
+            {
+                default:
+                    View = () =&gt; new Views.MyMainDispDisplay1(this);
+                    break;
+                case 3:
+                    View = () =&gt; new Views.MyMainDispDisplay2(this);
+                    break;
+            }
+} </code></pre>
+<p>Condition as an expression:</p>
+<p>IF(User(0)='SUPERVISOR',2,3) in Magic:</p>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+      switch ((int)(u.If(ENV.Security.UserManager.CurrentUser.Name == "SUPERVISOR", 2, 3)))
+            {
+                default:
+                    View = () =&gt; new Views.MyMainDispExpDisplay1(this);
+                    break;
+                case 3:
+                    View = () =&gt; new Views.MyMainDispExpDisplay2(this);
+                    break;
+            }
 } </code></pre>
 
 
@@ -56,7 +68,7 @@ Location in Migrated Code: <strong>OnLoad Method</strong></p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/03-Interface/04-Main-Display.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/03-Interface-Tab/30-Main-Display.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
