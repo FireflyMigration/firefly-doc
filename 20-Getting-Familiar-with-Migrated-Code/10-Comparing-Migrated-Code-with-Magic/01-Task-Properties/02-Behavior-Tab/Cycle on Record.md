@@ -1,8 +1,5 @@
 ﻿keywords: Task Properties, Behavior Tab, Cycle on record, Cycle record main
  
- Name in migrated code: **GoToToNextRowAfterLastControl**  
- Location in migrated code: **OnLoad**
-
 Name in migrated code: **GoToToNextRowAfterLastControl**  
 Location in migrated code: **OnLoad**
 
