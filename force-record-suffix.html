@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Task Properties, Behavior Tab, Force,Force Record suffix, Force Save">
 
-    <title>Enhanced Tab</title>
+    <title>Force Record Suffix</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,16 +29,24 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="enhanced-tab">Enhanced Tab</h1>
-<p>The following notes explain the equivalent to these properties in the migrated code.</p>
-<p><img src="edevenhancedpropertytab.jpg" alt="" /></p>
-<ul>
-<li><a href="transaction-begin.html">Transaction Begin</a></li>
-<li><a href="locking-strategy.html">Locking Strategy</a></li>
-<li><a href="cache-strategy.html">Cache Strategy</a></li>
-<li><a href="error-behavior-strategy.html">Error Behavior Strategy</a></li>
-<li><a href="main-table.html">Main Table</a></li>
-</ul>
+                <div class="content"><h1 id="force-record-suffix">Force Record Suffix</h1>
+<p>Name in migrated code: <strong>ForceSaveRow</strong><br />
+Location in migrated code: <strong>OnLoad</strong></p>
+<p><img src="ForceRecordSuffix.png" alt="" /></p>
+<h2 id="migrated-code-example">Migrated Code Example</h2>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+     ForceSaveRow = true;
+} </code></pre>
+<p>Condition as an expression:</p>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+      BindForceSaveRow(() =&gt; ENV.Security.UserManager.CurrentUser.Name == "SUPERVISOR");
+} </code></pre>
+<h2 id="property-values">Property Values</h2>
+<p>True or false. The default is <strong>false</strong> which is Force record suffix = No in Magic</p>
+<h2 id="see-also">See Also</h2>
+<p><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_ForceSaveRow.htm">UIController ForceSaveRow</a></p>
 
 
 
@@ -46,7 +54,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/04-Data/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/02-Behavior-Tab/40-Force-Record-Suffix.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -108,7 +116,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'data.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'force-record-suffix.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
