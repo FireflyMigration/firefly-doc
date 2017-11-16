@@ -3,7 +3,7 @@
 Name in migrated code: **ConfirmUpdate**  
 Location in migrated code: **OnLoad**
 
-![](Confirm.png)
+![](ConfirmUpdate.png)
 
 ## Migrated Code Example
 ```csdiff   
