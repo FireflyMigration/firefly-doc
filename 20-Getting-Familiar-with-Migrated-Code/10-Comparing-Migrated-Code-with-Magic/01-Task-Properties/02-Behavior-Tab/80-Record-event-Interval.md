@@ -1,4 +1,4 @@
-﻿keywords: Task Properties, Behavior Tab, Records interval, Interval
+﻿keywords: Task Properties, Behavior Tab, Record event interval, Interval
 
 Name in migrated code: **UserInterfaceRefreshRowsInterval**  
 Location in migrated code: **OnLoad**
