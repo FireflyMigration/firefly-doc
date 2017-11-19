@@ -1,6 +1,6 @@
-﻿# Advanced Tab
-A screen shot of eDeveloper's Advanced Properties tab appears below:
+﻿# Interface Tab Tab
+A screen shot of Magic's Interface Properties tab appears below:
 
-![](edevadvancedpropertytab.jpg)
 
+![Magic Interface Tab](MagicInterfaceTab.png)
 The following notes explain the equivalent to these properties in the migrated code.
