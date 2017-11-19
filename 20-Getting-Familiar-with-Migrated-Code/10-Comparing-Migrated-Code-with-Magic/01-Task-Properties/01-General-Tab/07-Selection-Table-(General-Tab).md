@@ -1,4 +1,5 @@
-﻿# Selection Table
+﻿keywords: onload,task properties
+# Selection Table
 
 Name in Migrated Code: **AllowSelect**  
 Location in Migrated Code: **OnLoad Method**  
