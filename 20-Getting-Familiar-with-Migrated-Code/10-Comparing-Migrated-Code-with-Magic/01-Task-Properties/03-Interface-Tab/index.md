@@ -1,4 +1,4 @@
-﻿# Interface Tab Tab
+﻿# Interface Tab 
 A screen shot of Magic's Interface Properties tab appears below:
 
 
