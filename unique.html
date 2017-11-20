@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="Task Properties, Data Tab, Allow empty dataview, OnLoad">
+    <meta name="keywords" content="Task Properties, Sort, OrderBy, Unique">
 
-    <title>The Sort</title>
+    <title>Unique</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,11 +29,23 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="the-sort">The Sort</h1>
-<p><img src="2017-11-20_12h22_33.png" alt="" /></p>
+                <div class="content"><h1 id="unique">Unique</h1>
+<p>Name in Migrated Code: <strong>OrderBy</strong><br />
+Location in Migrated Code: <strong>InitializeDataView method</strong></p>
+<p><img src="2017-11-20_12h24_07.png" alt="" /></p>
+<h2 id="migrated-code-example">Migrated Code Example</h2>
+<pre data-line="6" class="language-csdiff line-numbers"><code>void InitializeDataView()
+{
+    From = Products;
+    OrderBy.Add(Products.ProductName);
+    OrderBy.Add(Products.UnitPrice, SortDirection.Descending);
+    OrderBy.Unique = true;
+} </code></pre>
+<h2 id="property-values">Property Values</h2>
+<p>Indicates that the columns used in the sort are unique</p>
+<h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="unique.html">Unique</a></li>
-<li><a href="according-to-index.html">According To Index</a></li>
+<li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_OrderBy.htm">UIController OrderBy Property</a></li>
 </ul>
 
 
@@ -42,7 +54,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/06-The-Sort/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/06-The-Sort/10-Unique.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -104,7 +116,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'the-sort.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'unique.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
