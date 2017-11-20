@@ -1,4 +1,4 @@
-﻿keywords: Task Properties, Data Tab, Allow empty dataview
+﻿keywords: Task Properties, Data Tab, Allow empty dataview, OnLoad
 
 Name in migrated Code: **SwitchToInsertWhenNoRows**  
 Location in migrated Code: **OnLoad**  
@@ -11,16 +11,15 @@ Location in migrated Code: **OnLoad**
 ```csdiff   
 protected override void OnLoad()
 {
-+    SwitchToInsertWhenNoRows = true;
-    View = () => new Views.VirgView(this);
++   SwitchToInsertWhenNoRows = true;
+    View = () => new Views.ShowOrdersView(this);
 }
 ```  
 
 ## Property Values
 
-True or false. The default is false which is Allow empty dataview = Yes in Magic
+True or false. The default is false which is Allow empty dataview = **Yes** in Magic
 
-## Note 
 
 ## See Also
-* [SwitchToInsertWhenNoRows](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_SwitchToInsertWhenNoRows.htm) 
+* [UIController.SwitchToInsertWhenNoRows](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_SwitchToInsertWhenNoRows.htm) 

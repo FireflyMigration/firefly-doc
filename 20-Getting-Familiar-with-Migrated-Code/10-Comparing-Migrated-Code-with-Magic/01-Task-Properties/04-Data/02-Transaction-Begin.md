@@ -1,14 +1,18 @@
-﻿keywords: Task Properties, Data Tab, Transaction Begin
+﻿keywords: Task Properties, Data Tab, Transaction Begin, OnLoad
 
 Name in Migrated Code: **Transaction Scope**  
 Location in Migrated Code: **OnLoad Method**  
 
 ![](2017-11-15_15h44_04.png) 
 
-## Migrated Code Eample 
+## Migrated Code Example 
 
 ```csdiff
-TransactionScope = TransactionScopes.RowLocking; 
+protected override void OnLoad()
+{
++   TransactionScope = TransactionScopes.RowLocking; 
+    View = () => new Views.ShowOrdersView(this);
+}
 ```
 
 ## Property Values 
@@ -23,12 +27,14 @@ TransactionScope = TransactionScopes.RowLocking;
 | None                | None               | 
 | Group               | Group              | 
 
+The default is Transaction begin = **None** in Magic
+
 ## Note
 The Group option is only applicable for BusinessProcess. The migrated code will not write the `TransactionScope` property if no transaction is required.
 The `TransactionScope` property will be written whenever a transaction was set - even if it was the default in magic. 
 It does that to explicitly indicate that there is a transaction.
 
 ## See Also: 
-* [UIController TransactionScope Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_TransactionScope.htm) 
-* [BusinessProcess TransactionScope Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_TransactionScope.htm) 
+* [UIController TransactionScope](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_TransactionScope.htm) 
+* [BusinessProcess TransactionScope ](http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_TransactionScope.htm) 
 * [TransactionScope Enum](http://fireflymigration.com/reference/html/T_Firefly_Box_TransactionScopes.htm) 

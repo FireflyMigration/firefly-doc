@@ -1,15 +1,30 @@
-﻿keywords: Task Properties, Data Tab, Locking Strategy 
+﻿keywords: Task Properties, Data Tab, Locking Strategy, Rowlocking, OnLoad 
 
 Name in Migrated Code: **Rowlocking**  
 Location in Migrated Code: **OnLoad Method**  
 
-![](2017-11-15_15h48_39.png) 
+![](2017-11-19_15h07_28.png) 
 
 
 ## Migrated Code Example 
 
+Immediate example :    
 ```csdiff
-RowLocking = LockingStrategy.OnRowSaving; 
+protected override void OnLoad()
+{
++   RowLocking = LockingStrategy.OnRowLoading; 
++   ReevaluateBindValueAndRelationsOnEnterRow = true;
+    View = () => new Views.ShowOrdersView(this);
+}
+
+```
+On Modify example:
+```csdiff
+protected override void OnLoad()
+{
+    RowLocking = LockingStrategy.OnUserEdit;
+    View = () => new Views.ShowOrdersView(this);
+}
 ```
 
 
@@ -22,6 +37,7 @@ RowLocking = LockingStrategy.OnRowSaving;
 | Before Update       | OnRowSaving        | 
 | On Modify           | OnUserEdit         | 
 
+The default is Locking strategy = **No Lock** in Magic
 
 
 ## Note

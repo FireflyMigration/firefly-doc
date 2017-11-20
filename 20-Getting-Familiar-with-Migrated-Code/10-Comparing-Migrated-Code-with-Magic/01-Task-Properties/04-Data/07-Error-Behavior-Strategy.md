@@ -1,4 +1,4 @@
-﻿keywords: Task Properties, Data Tab, Error behavior strategy
+﻿keywords: Task Properties, Data Tab, Error behavior strategy, OnLoad
 
 Name in Migrated Code: **OnDatabaseErrorRetry**  
 Location in Migrated Code: **OnLoad Method**  
@@ -11,17 +11,15 @@ Error behavior strategy = abort
 ```csdiff 
 OnDatabaseErrorRetry = false; 
 ```
-Error behavior strategy = recover 
-```csdiff 
-OnDatabaseErrorRetry = true; 
-```
 
 ## Property Values
 
 | Magic Name          | Migrated Code Name | 
 |---------------------|--------------------|
-| Recover             |                    | 
-| Abort               |                    |
+| Recover             | true               | 
+| Abort               | false              |
+
+The default is false which is Error behavior strategy = **Abort** in Magic
 
 ## See Also:
 * [UIController OnDatabaseError Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_OnDatabaseErrorRetry.htm) 
