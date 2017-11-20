@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="task properties, onunload">
 
     <title>Return Value</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -50,13 +50,13 @@ Example:</p>
             Execute();
             return _taskResult;
       }
-      protected override void OnEnd()
+      protected override void OnUnLoad()
       {
             _taskResult = var1 + var2;
       }
     }
 } </code></pre>
-<p>The migrated code will calculate the return expression in the onEnd method and will set it to a member called _taskResult, which will be used as the return value of the Run method.</p>
+<p>The migrated code will calculate the return expression in the onUnLoad method and will set it to a member called _taskResult, which will be used as the return value of the Run method.</p>
 <hr />
 
 

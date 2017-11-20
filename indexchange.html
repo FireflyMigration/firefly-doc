@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="select operation">
+    <meta name="keywords" content="Task Properties, Options Tab, Index change,">
 
-    <title>Select</title>
+    <title>IndexChange</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,26 +29,17 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="select">Select</h1>
-<p>Name in Magic: <strong>Select</strong><br />
-Name in the Migrated Code <strong>Columns.Add Method</strong></p>
-<hr />
-<p>Example:<br />
-<strong>Select Real / Select Column</strong></p>
-<pre><code>Columns.Add(Orders.OrderId);
-</code></pre>
-<p>where Orders is the table and the OrderId is the selected column from the table.</p>
-<p><strong>Select Virtual</strong></p>
-<pre><code>Columns.Add(v_Total);
-</code></pre>
-<p>For the Select operation, See Also:<br />
-<a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_Columns.htm">UIController Columns Add Method and examples</a><br />
-<a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_Columns.htm">Business Process Columns Add Method and examples</a></p>
-<ul>
-<li><a href="init.html">Init</a></li>
-<li><a href="column-range.html">Column Range</a></li>
-<li><a href="column-locate.html">Column Locate</a></li>
-</ul>
+                <div class="content"><h1 id="indexchange">IndexChange</h1>
+<p>Name in migrated code: <strong>AllowSelectOrderBy</strong><br />
+Location in migrated code: <strong>OnLoad</strong></p>
+<p><img src="IndexChange.png" alt="Index Change" /></p>
+<h2 id="migrated-code-example">Migrated Code Example</h2>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+     AllowSelectOrderBy = false;
+} </code></pre>
+<h2 id="property-values">Property Values</h2>
+<p>True or false. The default is <strong>True</strong> which is Allow Index change = Yes in Magic</p>
 
 
 
@@ -56,7 +47,7 @@ Name in the Migrated Code <strong>Columns.Add Method</strong></p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/DataView/Select/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/05-Options-Tab/80-IndexChange.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -118,7 +109,7 @@ Name in the Migrated Code <strong>Columns.Add Method</strong></p>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'select.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'indexchange.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
