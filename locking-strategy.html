@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="lockcurrentrow">
+    <meta name="keywords" content="Task Properties, Data Tab, Locking Strategy, Rowlocking, OnLoad">
 
     <title>Locking Strategy</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -31,8 +31,23 @@
                 </div>
                 <div class="content"><h1 id="locking-strategy">Locking Strategy</h1>
 <p>Name in Migrated Code: <strong>Rowlocking</strong><br />
-Location in Migrated Code: <strong>OnLoad Method</strong><br />
-Values:</p>
+Location in Migrated Code: <strong>OnLoad Method</strong></p>
+<p><img src="2017-11-19_15h07_28.png" alt="" /></p>
+<h2 id="migrated-code-example">Migrated Code Example</h2>
+<p>Immediate example :</p>
+<pre data-line="3,4" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+    RowLocking = LockingStrategy.OnRowLoading; 
+    ReevaluateBindValueAndRelationsOnEnterRow = true;
+    View = () =&gt; new Views.ShowOrdersView(this);
+} </code></pre>
+<p>On Modify example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+    RowLocking = LockingStrategy.OnUserEdit;
+    View = () =&gt; new Views.ShowOrdersView(this);
+} </code></pre>
+<h2 id="property-values">Property Values</h2>
 <table>
 <thead>
 <tr>
@@ -59,35 +74,32 @@ Values:</p>
 </tr>
 </tbody>
 </table>
-<p>Example: OnRowSaving:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>RowLocking = LockingStrategy.OnRowSaving; </code></pre>
-<hr />
-<p><strong>See Also:</strong></p>
+<p>The default is Locking strategy = <strong>No Lock</strong> in Magic</p>
+<h2 id="note">Note</h2>
+<p>Note: The migrated code will not write the <code>RowLocking</code> property if no locking is required.<br />
+The <code>RowLocking</code> property will be written whenever a locking is used - even if it was the default in magic.<br />
+It does that to explicitly indicate that there is locking.</p>
+<h2 id="see-also">See Also:</h2>
 <ul>
 <li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_RowLocking.htm">UIController LockingStrategy Property</a></li>
 <li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_RowLocking.htm">BusinessProcess LockingStrategy Property</a></li>
 <li><a href="http://www.fireflymigration.com/reference/html/T_Firefly_Box_LockingStrategy.htm">LockingStrategy Enum</a></li>
 </ul>
-<hr />
-<p>Note: The migrated code will not write the <code>RowLocking</code> property if no locking is required.
-The <code>RowLocking</code> property will be written whenever a locking is used - even if it was the default in magic.
-It does that to explicitly indicate that there is locking.</p>
 <h3 id="lockcurrentrow">LockCurrentRow</h3>
-<p>Note: If the Locking Strategy is “On Modify” in Magic (LockingSTrategy.OnUserEdit) then it may be necessary when calling a task or program to specify that the current record with all its links must be locked.<br />
+<h4 id="note-1">Note</h4>
+<p>If the Locking Strategy is “On Modify” in Magic (LockingSTrategy.OnUserEdit) then it may be necessary when calling a task or program to specify that the current record with all its links must be locked.<br />
 This may be specified in Magic by clicking Ctrl+P on the call task or call program line, and specifying the lock as 'Yes' in the dialog that appears. To support this functionality, the LockCurrentRow method is employed.</p>
-<p>As an example:</p>
+<h4 id="migrated-code-example-1">Migrated Code Example</h4>
 <pre data-line="" class="language-csdiff line-numbers"><code>if(V_counter == 1) 
 { 
     LockCurrentRow(); 
     new ProgramName(this).Run(); 
 } </code></pre>
-<hr />
-<p><strong>See Also:</strong></p>
+<h4 id="see-also-1">See Also:</h4>
 <ul>
 <li><a href="http://www.fireflymigration.com/reference/html/M_Firefly_Box_UIController_LockCurrentRow.htm">UIController LockCurrentRow Method</a></li>
 <li><a href="http://www.fireflymigration.com/reference/html/M_Firefly_Box_BusinessProcess_LockCurrentRow.htm">BusinessProcess LockCurrentRow Method</a></li>
 </ul>
-<hr />
 
 
 
@@ -95,7 +107,7 @@ This may be specified in Magic by clicking Ctrl+P on the call task or call progr
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/04-Data/03-Locking-Strategy.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/04-Data/06-Locking-Strategy.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>

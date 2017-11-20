@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Task Properties, Data Tab, Transaction Begin, OnLoad">
 
     <title>Transaction Begin</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -31,8 +31,15 @@
                 </div>
                 <div class="content"><h1 id="transaction-begin">Transaction Begin</h1>
 <p>Name in Migrated Code: <strong>Transaction Scope</strong><br />
-Location in Migrated Code: <strong>OnLoad Method</strong><br />
-Values:</p>
+Location in Migrated Code: <strong>OnLoad Method</strong></p>
+<p><img src="2017-11-15_15h44_04.png" alt="" /></p>
+<h2 id="migrated-code-example">Migrated Code Example</h2>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+    TransactionScope = TransactionScopes.RowLocking; 
+    View = () =&gt; new Views.ShowOrdersView(this);
+} </code></pre>
+<h2 id="property-values">Property Values</h2>
 <table>
 <thead>
 <tr>
@@ -71,20 +78,17 @@ Values:</p>
 </tr>
 </tbody>
 </table>
-<p>Note: The Group option is only applicable for BusinessProcess.</p>
-<p>Example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>TransactionScope = TransactionScopes.RowLocking; </code></pre>
-<p>Note: The migrated code will not write the <code>TransactionScope</code> property if no transaction is required.
+<p>The default is Transaction begin = <strong>None</strong> in Magic</p>
+<h2 id="note">Note</h2>
+<p>The Group option is only applicable for BusinessProcess. The migrated code will not write the <code>TransactionScope</code> property if no transaction is required.
 The <code>TransactionScope</code> property will be written whenever a transaction was set - even if it was the default in magic.
 It does that to explicitly indicate that there is a transaction.</p>
-<hr />
-<p><strong>See Also:</strong></p>
+<h2 id="see-also">See Also:</h2>
 <ul>
-<li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_TransactionScope.htm">UIController TransactionScope Property</a></li>
-<li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_TransactionScope.htm">BusinessProcess TransactionScope Property</a></li>
+<li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_TransactionScope.htm">UIController TransactionScope</a></li>
+<li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_TransactionScope.htm">BusinessProcess TransactionScope </a></li>
 <li><a href="http://fireflymigration.com/reference/html/T_Firefly_Box_TransactionScopes.htm">TransactionScope Enum</a></li>
 </ul>
-<hr />
 
 
 

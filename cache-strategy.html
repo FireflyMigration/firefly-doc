@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Task Properties, Data Tab, Cache Strategy, Cached">
 
     <title>Cache Strategy</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -30,9 +30,44 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="cache-strategy">Cache Strategy</h1>
-<p>The cache strategy that will be used for any specific table is determined by the property defined with the entity definition in the Class.<br />
-See: From. * As a reminder, here is the code for a table definition in a Class that will switch the cache on.</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>readonly Model.Categories _categories = new Model.Categories { Cached = true }; </code></pre>
+<p>Location in Migrated Code: <strong>Models</strong></p>
+<p><img src="2017-11-15_16h03_33.png" alt="" /></p>
+<h2 id="migrated-code-example">Migrated Code Example</h2>
+<pre data-line="1" class="language-csdiff line-numbers"><code>  readonly Models.Products Products = new Models.Products { Cached = true}; </code></pre>
+<h2 id="property-values">Property Values</h2>
+<table>
+<thead>
+<tr>
+<th>Magic Name</th>
+<th>Migrated Code Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Position</td>
+<td>ReuseSelectResultOnPaging = true</td>
+</tr>
+<tr>
+<td>Position and Data</td>
+<td>Cached = true</td>
+</tr>
+<tr>
+<td>None</td>
+<td>Cached = false</td>
+</tr>
+<tr>
+<td>As Main source</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>The default is Cached Strategy= <strong>As Main Source</strong> in Magic</p>
+<h2 id="note">Note</h2>
+<p>The cache strategy that will be used for any specific table is determined by the property defined with the entity definition in the Class.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_Entity_Cached.htm">Entity.Cached</a></li>
+</ul>
 
 
 
@@ -40,7 +75,7 @@ See: From. * As a reminder, here is the code for a table definition in a Class t
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/04-Data/04-Cache-Strategy.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/04-Data/05-Cache-Strategy.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
