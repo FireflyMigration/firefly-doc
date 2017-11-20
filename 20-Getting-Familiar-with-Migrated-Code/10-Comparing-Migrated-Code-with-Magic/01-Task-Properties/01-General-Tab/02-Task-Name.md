@@ -1,4 +1,4 @@
-﻿keywords: Title
+﻿keywords: Title, task properties
 # Task Name
 
 Name in Migrated Code: **Title**   

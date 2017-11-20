@@ -1,4 +1,5 @@
-﻿# Return Value
+﻿keywords:task properties, onunload
+# Return Value
 
 Name in Migrated Code: **return _taskresult**  
 Location in Migrated Code: **Run Method**  
@@ -21,13 +22,13 @@ class batchToCalculateSum : BusinessProcessBase
             Execute();
             return _taskResult;
       }
-      protected override void OnEnd()
+      protected override void OnUnLoad()
       {
             _taskResult = var1 + var2;
       }
     }
 }
 ```
-The migrated code will calculate the return expression in the onEnd method and will set it to a member called _taskResult, which will be used as the return value of the Run method.
+The migrated code will calculate the return expression in the onUnLoad method and will set it to a member called _taskResult, which will be used as the return value of the Run method.
 
 ---

@@ -1,4 +1,4 @@
-﻿keywords:Activity, u.ActivityOfParent, u.TranslateTaskActivity, Query, Modify, Create, Delete, Browse, Update, Insert
+﻿keywords:Activity, u.ActivityOfParent, u.TranslateTaskActivity, Query, Modify, Create, Delete, Browse, Update, Insert, onload, task properties
 # Initial Mode
 
 Name in Migrated Code: **Activity**  

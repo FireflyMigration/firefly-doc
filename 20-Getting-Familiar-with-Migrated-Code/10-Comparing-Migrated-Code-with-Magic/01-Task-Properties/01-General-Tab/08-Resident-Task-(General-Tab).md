@@ -1,4 +1,5 @@
-﻿# Resident Task
+﻿keywords: task properties, onload
+# Resident Task
 
 Name in Migrated Code: **KeepChildRelationCacheAlive**   
 Location in Migrated Code: **OnLoad Method**   
