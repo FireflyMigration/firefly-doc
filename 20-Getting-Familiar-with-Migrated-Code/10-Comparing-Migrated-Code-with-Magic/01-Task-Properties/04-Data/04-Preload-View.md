@@ -3,7 +3,7 @@
 Name in migrated Code: **PreloadData**  
 Location in migrated Code: **OnLoad**  
 
-![](2017-11-15_15h58_55.png) 
+![](2017-11-20_13h45_46.png) 
 
 
 ## Migrated Code Example
@@ -11,13 +11,12 @@ Location in migrated Code: **OnLoad**
 ```csdiff   
 protected override void OnLoad()
 {
-+   PreloadData = Products.ProductID == 2041;
     View = () => new Views.ShowOrdersView(this);
 }
 ```  
 ## Property Values
 
-No or Expression Rules. The default is false which is Preload view = **No** in Magic
+True or False (or expression). The default is false which is Preload view = **No** in Magic
 
 
 ## See Also
