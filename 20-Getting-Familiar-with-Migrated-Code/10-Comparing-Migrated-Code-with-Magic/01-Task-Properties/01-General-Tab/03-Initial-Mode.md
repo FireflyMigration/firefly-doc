@@ -4,6 +4,8 @@
 Name in Migrated Code: **Activity**  
 Location in Migrated Code: **OnLoad Method**
 
+![Task properties initial-mode](Task-properties-initial-mode.jpg)
+
 Values:
 
 | Magic Name | Migrated Code Name      |
