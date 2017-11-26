@@ -3,6 +3,9 @@
 
 Name in Migrated Code: **return _taskresult**  
 Location in Migrated Code: **Run Method**  
+
+![Task properties return-value](Task-properties-return-value.jpg)
+
 Example:
 ```csdiff
 class batchToCalculateSum : BusinessProcessBase 

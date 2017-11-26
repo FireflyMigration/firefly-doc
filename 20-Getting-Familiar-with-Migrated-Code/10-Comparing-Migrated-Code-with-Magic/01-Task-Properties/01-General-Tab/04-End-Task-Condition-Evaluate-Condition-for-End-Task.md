@@ -3,6 +3,9 @@
 
 Name in Migrated Code: **Exit**  
 Location in Migrated Class: **OnLoad Method**  
+
+![Task properties end-task](Task-properties-end-task.jpg)
+
 Values:  
 
 | Magic Name                            | Migrated Code Name |

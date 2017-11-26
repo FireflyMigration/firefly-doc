@@ -6,6 +6,8 @@ The Task Type in Magic is either Online or Batch. In the migrated code, online T
 Name in Migrated Code: **UIController, BusinessProcess**  
 Location in Migrated Code: **Class**  
 
+![Task properties task-type](Task-properties-task-type.jpg)
+
 Example: UIController:
 ```csdiff
 internal class Orders1 :UIControllerBase 
