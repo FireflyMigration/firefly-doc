@@ -36,12 +36,12 @@ Location in migrated code: <strong>OnLoad</strong></p>
 <h2 id="migrated-code-example">Migrated Code Example</h2>
 <pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
 {
-     View = () =&gt; new Views.ProgBatchView(this);
+     View = () =&gt; new Views.OrdersViewthis);
 } </code></pre>
-<p>When the property is set to No - View is not defined</p>
-<h2 id="property-default-value">Property default Value</h2>
-<p>For UIControllerBase (Online program in Magic) - The view property defined by default<br />
-For BusinessProcessBase (Batch program in Magic) - View property by defualt not defined</p>
+<p>When the property is set to No - the View property is not defined</p>
+<h2 id="notes">Notes</h2>
+<p>In UIController (Online program in Magic) - The View property is defined by default<br />
+In BusinessProcess (Batch program in Magic) - The View property is not defined by degault</p>
 
 
 
