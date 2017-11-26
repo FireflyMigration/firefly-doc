@@ -27,3 +27,6 @@ protected override void OnLoad()
 
 ## Property Values
 True or false. The default is **True** which is Close task window = Yes in Magic
+
+## See Also
+[UIController KeepViewVisibleAfterExit](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_KeepViewVisibleAfterExit.htm)
