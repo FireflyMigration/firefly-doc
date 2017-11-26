@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Task Properties, Sort, OrderBy, Unique">
 
-    <title>Analyzing the migration log – a different approach</title>
+    <title>Direction</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,25 +29,23 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="analyzing-the-migration-log-a-different-approach">Analyzing the migration log – a different approach</h1>
-<p>When analyzing the migration log, one would like to be able to aggregate the number of issues per program, just to get the larger picture of the amount of issues that require attention.</p>
-<p>Opening the .xml file in Excel and using a Pivot table can help – simply press the
-“Summarize with Pivot Table” in the Design tab.</p>
-<p><img src="excel_design.png" alt="" /></p>
-<p>In order to see the aggregated values choose the following:</p>
+                <div class="content"><h1 id="direction">Direction</h1>
+<p>Name in Migrated Code: <strong>SortDirection</strong><br />
+Location in Migrated Code: <strong>InitializeDataView method</strong></p>
+<p><img src="2017-11-21_13h39_13.png" alt="" /></p>
+<h2 id="migrated-code-example">Migrated Code Example</h2>
+<pre data-line="5" class="language-csdiff line-numbers"><code>void InitializeDataView()
+{
+    From = Products;
+    OrderBy.Add(Products.ProductName);
+    OrderBy.Add(Products.UnitPrice, SortDirection.Descending);
+} </code></pre>
+<h2 id="property-values">Property Values</h2>
+<p>Descending or ascending. The default is Ascending</p>
+<h2 id="see-also">See Also</h2>
 <ul>
-<li>MessageGroup as the Columns</li>
-<li>Program as the Rows</li>
-<li>Message (which will become Count of Message) as the Values</li>
+<li><a href="http://www.fireflymigration.com/reference/html/T_Firefly_Box_SortDirection.htm">SortDirection Enumeration</a></li>
 </ul>
-<p><img src="excel_PivotTable_fields.png" alt="" /></p>
-<p>By filtering the columns to show only Errors, Not Used and Warnings you can see the amount of messages per program:</p>
-<p><img src="excel_filtering.png" alt="" /></p>
-<p>This is an example of the result:</p>
-<p><img src="example_analyze_migration.png" alt="" /></p>
-<p>Lately we added one more type of message to the log – Program not used.<br />
-By selecting it in the filter you can see if the program is used or not – this might save some time by deciding not fix issues in non-used programs (or simply deleting them), like in the following example:</p>
-<p><img src="example_analyze_migration2.png" alt="" /></p>
 
 
 
@@ -55,7 +53,7 @@ By selecting it in the filter you can see if the program is used or not – this
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/20-Using-the-Migration-Reports/19-Analyzing-the-migration-log-a-different-approach/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/06-The-Sort/30-Direction.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -117,7 +115,7 @@ By selecting it in the filter you can see if the program is used or not – this
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'analyzing-the-migration-log-a-different-approach.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'direction.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
