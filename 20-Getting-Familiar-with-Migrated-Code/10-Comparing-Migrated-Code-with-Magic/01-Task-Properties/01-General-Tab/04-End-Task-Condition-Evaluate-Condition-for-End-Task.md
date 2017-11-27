@@ -6,7 +6,7 @@ Location in Migrated Class: **OnLoad Method**
 
 ![Task properties end-task](Task-properties-end-task.jpg)
 
-Values:  
+## Evaluate condition Values:  
 
 | Magic Name                            | Migrated Code Name |
 |---------------------------------------|--------------------|
@@ -14,58 +14,47 @@ Values:
 | After Updating Record                 | AfterRow           |
 | Immediately when condition is Changed | AsSoonAsPossible   |
 
-Example: Exit:
-```csdiff
-Exit();
-```
-Example: Exit Before Row:
-```csdiff
-Exit(ExitTiming.BeforeRow, () => u.EOF(0, 1));
-```
-Example: Exit After Row
-```csdiff
-Exit(ExitTiming.AfterRow, () => Counter == 10);
-```
-
-
-
-### "Immediately when condition is Changed" - ExitTiming.AsSoonAsPossible
-
-#### BindExitAsSoonAsPossible
-In most cases this exit condition will be translated to:
-
-```csdiff
-BindExitAsSoonAsPossible(() => Orders.ShipCity == "London", Orders.ShipCity);
-```
-
-* The first argument is the condition, and the other arguments are columns that on their change, the controller should reevaluate the Exit Condition.
-
-
-
-#### CheckExit
-As stated, the 'Immediately when condition is changed' option, translates in the migrated code to ExitTiming.AsSoonAsPossible. In this scenario, magic evaluates the end condition after each operation in the code. 
-
-To support this behaviour in most cases we migrate it to `BindExitAsSoonAsPossible` is indicated above. 
-In all other cases  migrated code with this option will place the `CheckExit()` Method between each line of code.  
-Example:
+## Example: Exit Before Row with no expression:
 ```csdiff
 protected override void OnLoad()
 {
-   Exit(ExitTiming.AsSoonAsPossible,() => u.GetParam("exit"));
-}
-
-protected override void OnLeaveRow()
-{
-+   CheckExit();
-    numerator.Value = 1;
-+   CheckExit();
-    Warning("Message to User");
-+   CheckExit();
-    numerator.Value = 2;
++    Exit(ExitTiming.BeforeRow);
 }
 ```
-In this example, the task will end, even though at the end of the OnLeaveRow the numerator value was 2, because in second row it was set to 1, and then the CheckExit method was called, and the condition evaluated to true.
+## Example: Exit Before Row with an expression:
+```csdiff
+protected override void OnLoad()
+{
++    Exit(ExitTiming.BeforeRow, () => Orders.ShipCity == "London");
+}
+```
+## Example: Exit After Row with no expression:
+```csdiff
+protected override void OnLoad()
+{
++    Exit(ExitTiming.AfterRow);
+}
+```
+## Example: Exit After Row with an expression:
+```csdiff
+protected override void OnLoad()
+{
++    Exit(ExitTiming.AfterRow, () => Orders.ShipCity == "London"));
+}
+```
 
+## Example: BindExitAsSoonAsPossible
+In most cases this exit condition will be translated to:
+
+```csdiff
+protected override void OnLoad()
+{
++    BindExitAsSoonAsPossible(() => Orders.ShipCity == "London", Orders.ShipCity);
+}
+
+```
+
+* The first argument is the condition, the other arguments are columns that on their change, the controller should reevaluate the Exit Condition.
 ---
 **See Also:**
 

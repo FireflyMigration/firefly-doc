@@ -8,21 +8,32 @@ Location in Migrated Code: **Class**
 
 ![Task properties task-type](Task-properties-task-type.jpg)
 
-Example: UIController:
+## Values:
+
+| Magic Name | Migrated Code Name      |
+|------------|-------------------------|
+| Batch                    | BusinessProcessBase |
+| Online (no record main)  | UIControllerBase    |
+| Online (with record main)| FlowUIControllerBase|
+| Browser                  | NA                  |
+| Rich Client              | NA                  |
+
+
+## Example BusinessProcess:
 ```csdiff
-internal class Orders1 :UIControllerBase 
++internal class Print_Order : BusinessProcessBase 
 {
 }
 ```
-Example: BusinessProcess:
+## Example UIController:
 ```csdiff
-internal class Print_Order : BusinessProcessBase 
++internal class Show_Order :UIControllerBase 
 {
 }
 ```
-Note: The FlowUIController Class is used for Magic Code from Online tasks that have code in the Record Main. For such Code, The migrated code will inherit from the FlowUIController Class:
+## Example FlowUIController:
 ```csdiff
-internal class Orders1 : FlowUIControllerBase 
++internal class Show_Order : FlowUIControllerBase 
 {
 }
 ```
