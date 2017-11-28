@@ -33,8 +33,8 @@
 <p>Name in Migrated Code: <strong>return _taskresult</strong><br />
 Location in Migrated Code: <strong>Run Method</strong></p>
 <p><img src="Task-properties-return-value.jpg" alt="Task properties return-value" /></p>
-<p>Example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>class batchToCalculateSum : BusinessProcessBase 
+<h2 id="example">Example:</h2>
+<pre data-line="14,18" class="language-csdiff line-numbers"><code>class batchToCalculateSum : BusinessProcessBase 
 {
    readonly NumberColumn var1 = new NumberColumn("var1", "2");
    readonly NumberColumn var2 = new NumberColumn("var2", "2");
@@ -44,16 +44,14 @@ Location in Migrated Code: <strong>Run Method</strong></p>
      Columns.Add(var1);
      Columns.Add(var2);
  
-     public Number Run(NumberParameter pvar1, NumberParameter pvar2)
+     public Number Run()
      {
-            BindParameter(var1, pvar1);
-            BindParameter(var2, pvar2);
             Execute();
-            return _taskResult;
+             return _taskResult;
       }
       protected override void OnUnLoad()
       {
-            _taskResult = var1 + var2;
+             _taskResult = var1 + var2;
       }
     }
 } </code></pre>

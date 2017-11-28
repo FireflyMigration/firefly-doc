@@ -33,7 +33,7 @@
 <p>Name in Migrated Code: <strong>Activity</strong><br />
 Location in Migrated Code: <strong>OnLoad Method</strong></p>
 <p><img src="Task-properties-initial-mode.jpg" alt="Task properties initial-mode" /></p>
-<p>Values:</p>
+<h2 id="values">Values:</h2>
 <table>
 <thead>
 <tr>
@@ -68,19 +68,20 @@ Location in Migrated Code: <strong>OnLoad Method</strong></p>
 </tr>
 </tbody>
 </table>
-<p>Example: Browse:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Activity = Activities.Browse; </code></pre>
-<p>Example: By Parent:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>protected override OnLoad()
-{   //... other code
-    Activity = u.ActivityOfParent;
-    // other code
+<h2 id="example-browse">Example: Browse:</h2>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override OnLoad()
+{   
+    Activity = Activities.Browse;
 } </code></pre>
-<p>Example: By Expression:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>protected override OnLoad()
-{   //... other code
-    Activity =  u.TranslateTaskActivity(u.if(1==1,"Q","M")); 
-    // other code
+<h2 id="example-by-parent">Example: By Parent:</h2>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override OnLoad()
+{   
+     Activity = u.ActivityOfParent;    
+} </code></pre>
+<h2 id="example-by-expression">Example: By Expression:</h2>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override OnLoad()
+{   
+     Activity =  u.TranslateTaskActivity(u.if(1==1,"Q","M"));     
 } </code></pre>
 <hr />
 <p><strong>See Also:</strong></p>

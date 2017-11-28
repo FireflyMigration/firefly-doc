@@ -33,7 +33,7 @@
 <p>Name in Migrated Code: <strong>Exit</strong><br />
 Location in Migrated Class: <strong>OnLoad Method</strong></p>
 <p><img src="Task-properties-end-task.jpg" alt="Task properties end-task" /></p>
-<p>Values:</p>
+<h2 id="evaluate-condition-values">Evaluate condition Values:</h2>
 <table>
 <thead>
 <tr>
@@ -56,39 +56,35 @@ Location in Migrated Class: <strong>OnLoad Method</strong></p>
 </tr>
 </tbody>
 </table>
-<p>Example: Exit:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Exit(); </code></pre>
-<p>Example: Exit Before Row:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Exit(ExitTiming.BeforeRow, () =&gt; u.EOF(0, 1)); </code></pre>
-<p>Example: Exit After Row</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Exit(ExitTiming.AfterRow, () =&gt; Counter == 10); </code></pre>
-<h3 id="immediately-when-condition-is-changed-exittiming.assoonaspossible">&quot;Immediately when condition is Changed&quot; - ExitTiming.AsSoonAsPossible</h3>
-<h4 id="bindexitassoonaspossible">BindExitAsSoonAsPossible</h4>
-<p>In most cases this exit condition will be translated to:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>BindExitAsSoonAsPossible(() =&gt; Orders.ShipCity == "London", Orders.ShipCity); </code></pre>
-<ul>
-<li>The first argument is the condition, and the other arguments are columns that on their change, the controller should reevaluate the Exit Condition.</li>
-</ul>
-<h4 id="checkexit">CheckExit</h4>
-<p>As stated, the 'Immediately when condition is changed' option, translates in the migrated code to ExitTiming.AsSoonAsPossible. In this scenario, magic evaluates the end condition after each operation in the code.</p>
-<p>To support this behaviour in most cases we migrate it to <code>BindExitAsSoonAsPossible</code> is indicated above.
-In all other cases  migrated code with this option will place the <code>CheckExit()</code> Method between each line of code.<br />
-Example:</p>
-<pre data-line="8,10,12" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+<h2 id="example-exit-before-row-with-no-expression">Example: Exit Before Row with no expression:</h2>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
 {
-   Exit(ExitTiming.AsSoonAsPossible,() =&gt; u.GetParam("exit"));
-}
-
-protected override void OnLeaveRow()
-{
-    CheckExit();
-    numerator.Value = 1;
-    CheckExit();
-    Warning("Message to User");
-    CheckExit();
-    numerator.Value = 2;
+     Exit(ExitTiming.BeforeRow);
 } </code></pre>
-<p>In this example, the task will end, even though at the end of the OnLeaveRow the numerator value was 2, because in second row it was set to 1, and then the CheckExit method was called, and the condition evaluated to true.</p>
+<h2 id="example-exit-before-row-with-an-expression">Example: Exit Before Row with an expression:</h2>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+     Exit(ExitTiming.BeforeRow, () =&gt; Orders.ShipCity == "London");
+} </code></pre>
+<h2 id="example-exit-after-row-with-no-expression">Example: Exit After Row with no expression:</h2>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+     Exit(ExitTiming.AfterRow);
+} </code></pre>
+<h2 id="example-exit-after-row-with-an-expression">Example: Exit After Row with an expression:</h2>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+     Exit(ExitTiming.AfterRow, () =&gt; Orders.ShipCity == "London"));
+} </code></pre>
+<h2 id="example-bindexitassoonaspossible">Example: BindExitAsSoonAsPossible</h2>
+<p>In most cases this exit condition will be translated to:</p>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+     BindExitAsSoonAsPossible(() =&gt; Orders.ShipCity == "London", Orders.ShipCity);
+} </code></pre>
+<ul>
+<li>The first argument is the condition, the other arguments are columns that on their change, the controller should reevaluate the Exit Condition.</li>
+</ul>
 <hr />
 <p><strong>See Also:</strong></p>
 <ul>

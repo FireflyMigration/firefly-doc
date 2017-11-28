@@ -33,10 +33,14 @@
 <p>Name in Migrated Code: <strong>KeepChildRelationCacheAlive</strong><br />
 Location in Migrated Code: <strong>OnLoad Method</strong></p>
 <p><img src="Task-properties-resident-task.jpg" alt="Task properties resident-task" /></p>
-<p>Notes: This option allows the cache for relations to be stored even when exiting the class. Use this option for scenarios where it is very likely or definite that the class will execute again, requiring the relation cache from before to continue to be available.<br />
+<h3 id="notes">Notes</h3>
+<p>This option allows the cache for relations to be stored even when exiting the class. Use this option for scenarios where it is very likely or definite that the class will execute again, requiring the relation cache from before to continue to be available.<br />
 The option is used together with CachedUIController and or Lazy. It is meant solely for the purposes of backward compatibility and should not be used when writing new code.</p>
-<p>Example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>KeepChildRelationCacheAlive = true; </code></pre>
+<h2 id="example">Example:</h2>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+     KeepChildRelationCacheAlive = true;
+} </code></pre>
 <h2 id="property-values">Property Values</h2>
 <p>The values could be true or false (default).</p>
 

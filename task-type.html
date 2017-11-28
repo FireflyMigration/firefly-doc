@@ -34,16 +34,47 @@
 <p>Name in Migrated Code: <strong>UIController, BusinessProcess</strong><br />
 Location in Migrated Code: <strong>Class</strong></p>
 <p><img src="Task-properties-task-type.jpg" alt="Task properties task-type" /></p>
-<p>Example: UIController:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>internal class Orders1 :UIControllerBase 
+<h2 id="values">Values:</h2>
+<table>
+<thead>
+<tr>
+<th>Magic Name</th>
+<th>Migrated Code Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Batch</td>
+<td>BusinessProcessBase</td>
+</tr>
+<tr>
+<td>Online (no record main)</td>
+<td>UIControllerBase</td>
+</tr>
+<tr>
+<td>Online (with record main)</td>
+<td>FlowUIControllerBase</td>
+</tr>
+<tr>
+<td>Browser</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>Rich Client</td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example-businessprocess">Example BusinessProcess:</h2>
+<pre data-line="1" class="language-csdiff line-numbers"><code>internal class Print_Order : BusinessProcessBase 
 {
 } </code></pre>
-<p>Example: BusinessProcess:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>internal class Print_Order : BusinessProcessBase 
+<h2 id="example-uicontroller">Example UIController:</h2>
+<pre data-line="1" class="language-csdiff line-numbers"><code>internal class Show_Order :UIControllerBase 
 {
 } </code></pre>
-<p>Note: The FlowUIController Class is used for Magic Code from Online tasks that have code in the Record Main. For such Code, The migrated code will inherit from the FlowUIController Class:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>internal class Orders1 : FlowUIControllerBase 
+<h2 id="example-flowuicontroller">Example FlowUIController:</h2>
+<pre data-line="1" class="language-csdiff line-numbers"><code>internal class Show_Order : FlowUIControllerBase 
 {
 } </code></pre>
 <hr />
