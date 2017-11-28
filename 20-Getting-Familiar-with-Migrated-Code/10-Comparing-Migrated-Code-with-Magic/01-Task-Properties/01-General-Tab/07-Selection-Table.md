@@ -6,13 +6,11 @@ Location in Migrated Code: **OnLoad Method**
 
 ![Task properties selection-table](Task-properties-selection-table.jpg)
 
-Example:
+## Example:
 ```csdiff
 protected override void OnLoad()
 {
-    // other code
-    AllowSelect = true;
-    // other code
++    AllowSelect = true;
 }
 ```
 

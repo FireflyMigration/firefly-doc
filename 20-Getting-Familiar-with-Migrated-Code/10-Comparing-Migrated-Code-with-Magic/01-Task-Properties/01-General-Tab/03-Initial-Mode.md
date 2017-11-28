@@ -6,7 +6,7 @@ Location in Migrated Code: **OnLoad Method**
 
 ![Task properties initial-mode](Task-properties-initial-mode.jpg)
 
-Values:
+## Values:
 
 | Magic Name | Migrated Code Name      |
 |------------|-------------------------|
@@ -17,24 +17,26 @@ Values:
 | As Parent  | u.ActivityOfParent      |
 | By Exp     | u.TranslateTaskActivity |
 
-Example: Browse:
-```csdiff
-Activity = Activities.Browse;
-```
-Example: By Parent:
+## Example: Browse:
 ```csdiff
 protected override OnLoad()
-{   //... other code
-    Activity = u.ActivityOfParent;
-    // other code
+{   
++   Activity = Activities.Browse;
+}
+
+```
+## Example: By Parent:
+```csdiff
+protected override OnLoad()
+{   
++    Activity = u.ActivityOfParent;    
 }
 ```
-Example: By Expression:
+## Example: By Expression:
 ```csdiff
 protected override OnLoad()
-{   //... other code
-    Activity =  u.TranslateTaskActivity(u.if(1==1,"Q","M")); 
-    // other code
+{   
++    Activity =  u.TranslateTaskActivity(u.if(1==1,"Q","M"));     
 }
 ```
 
