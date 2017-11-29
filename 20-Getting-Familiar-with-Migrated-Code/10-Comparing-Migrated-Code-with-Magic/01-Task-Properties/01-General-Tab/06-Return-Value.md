@@ -30,6 +30,5 @@ class batchToCalculateSum : BusinessProcessBase
     }
 }
 ```
+## Note:
 The migrated code will calculate the return expression in the onUnLoad method and will set it to a member called _taskResult, which will be used as the return value of the Run method.
-
----

@@ -1,9 +1,7 @@
 ﻿keywords:UIController, BusinessProcess,FlowUIController, task properties
 # Task Type
 
-The Task Type in Magic is either Online or Batch. In the migrated code, online Tasks convert to Classes which inherit from the UIController Class, while Batch tasks convert to Classes which inherit from the BusinessProcess Class.
-
-Name in Migrated Code: **UIController, BusinessProcess**  
+Name in Migrated Code: **UIController, BusinessProcess**, **FlowUIControllerBase**   
 Location in Migrated Code: **Class**  
 
 ![Task properties task-type](Task-properties-task-type.jpg)
@@ -37,6 +35,11 @@ Location in Migrated Code: **Class**
 {
 }
 ```
+
+## Note:
+The Task Type in Magic is either Online or Batch. In the migrated code, a tasks is convert to a class 
+which inherits from the corresponding class type.
+
 ---
 **See Also:**
 - [UIController Class](http://fireflymigration.com/reference/html/T_Firefly_Box_UIController.htm.htm)
