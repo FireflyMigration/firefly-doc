@@ -54,7 +54,9 @@ protected override void OnLoad()
 
 ```
 
-* The first argument is the condition, the other arguments are columns that on their change, the controller should reevaluate the Exit Condition.
+## Notes:
+* The first argument is the condition.
+* The other arguments are columns that upon their change, the controller should reevaluate the Exit Condition.
 ---
 **See Also:**
 

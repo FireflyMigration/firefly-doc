@@ -6,8 +6,6 @@ Location in Migrated Code: **Constructor**
 
 ![Task properties task-name](Task-properties-task-name.jpg)
 
-Notes  
-  The task name is migrated to a Class Name. In the migrated code, the original name is also preserved for backward compatibility reasons (Such as the Prog function) in the Title Property.
 
 ## Example :
 ```csdiff
@@ -16,6 +14,8 @@ public ShowOrders()
 +    Title = "ShowOrders";  
 }
 ```
+## Notes:
+The task name is migrated to a Class Name. In the migrated code, the original name is also preserved for backward compatibility reasons (Such as the Prog function) in the Title Property.
 
 ---
 ## See Also
