@@ -16,7 +16,7 @@ internal readonly Models.Customers Customers = new Models.Customers
 };
 ```
 ## Property Values
-Yes or no. The default is **false** which is Cached = Yes in Magic
+True or false. The default is **false** which is Cached = Yes in Magic
 
 ## See Also :
 * [Cached Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_Entity_Cached.htm)
