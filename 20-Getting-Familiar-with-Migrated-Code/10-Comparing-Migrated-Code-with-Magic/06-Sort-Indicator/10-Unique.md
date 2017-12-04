@@ -3,7 +3,7 @@
 Name in Migrated Code: **OrderBy**  
 Location in Migrated Code: **InitializeDataView method**  
 
-![](2017-11-20_12h24_07.png)
+![](2017-11-20_12h37_13.png)
 
 ## Migrated Code Example
 
@@ -18,7 +18,9 @@ void InitializeDataView()
 ```  
 
 ## Property Values
-Indicates that the columns used in the sort are unique
+True or false. The default is **false** when Sort type is According To Index
 
 ## See Also
 * [UIController OrderBy Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_OrderBy.htm)  
+
+
