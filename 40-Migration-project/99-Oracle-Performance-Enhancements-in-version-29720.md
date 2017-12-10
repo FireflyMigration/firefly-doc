@@ -17,7 +17,7 @@ You can disable it by setting the `DisableUIControllerHint = Y` in the `ORACLE_T
 
 You can do that in the command line like this:
 ```
-/[ORACLE_TEST]DisableIUControllerHint=Y
+/[ORACLE_TEST]DisableUIControllerHint=Y
 ```
 
 ## Relations
