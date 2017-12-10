@@ -1,5 +1,5 @@
 ﻿keywords: task properties, range, locate
-# Range tab
+# Range Tab
 A screen shot of Magic's Range tab of the Range/Locate task properties appears below:
 
 ![Range-Locate-Range](Range-Locate-Range.jpg)
