@@ -30,8 +30,7 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="task-type">Task Type</h1>
-<p>The Task Type in Magic is either Online or Batch. In the migrated code, online Tasks convert to Classes which inherit from the UIController Class, while Batch tasks convert to Classes which inherit from the BusinessProcess Class.</p>
-<p>Name in Migrated Code: <strong>UIController, BusinessProcess</strong><br />
+<p>Name in Migrated Code: <strong>UIController, BusinessProcess</strong>, <strong>FlowUIControllerBase</strong><br />
 Location in Migrated Code: <strong>Class</strong></p>
 <p><img src="Task-properties-task-type.jpg" alt="Task properties task-type" /></p>
 <h2 id="values">Values:</h2>
@@ -77,6 +76,9 @@ Location in Migrated Code: <strong>Class</strong></p>
 <pre data-line="1" class="language-csdiff line-numbers"><code>internal class Show_Order : FlowUIControllerBase 
 {
 } </code></pre>
+<h2 id="note">Note:</h2>
+<p>The Task Type in Magic is either Online or Batch. In the migrated code, a tasks is convert to a class
+which inherits from the corresponding class type.</p>
 <hr />
 <p><strong>See Also:</strong></p>
 <ul>

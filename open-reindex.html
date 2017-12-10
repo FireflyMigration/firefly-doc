@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="task properties, onunload">
+    <meta name="keywords" content="Datasource, Model , Table, Open, Reindex">
 
-    <title>Return Value</title>
+    <title>Open Reindex</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,34 +29,18 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="return-value">Return Value</h1>
-<p>Name in Migrated Code: <strong>return _taskresult</strong><br />
-Location in Migrated Code: <strong>Run Method</strong></p>
-<p><img src="Task-properties-return-value.jpg" alt="Task properties return-value" /></p>
-<h2 id="example">Example:</h2>
-<pre data-line="14,18" class="language-csdiff line-numbers"><code>class batchToCalculateSum : BusinessProcessBase 
-{
-   readonly NumberColumn var1 = new NumberColumn("var1", "2");
-   readonly NumberColumn var2 = new NumberColumn("var2", "2");
-   Number _taskResult;
-   public batchToCalculateSum()
-   {
-     Columns.Add(var1);
-     Columns.Add(var2);
- 
-     public Number Run()
-     {
-            Execute();
-             return _taskResult;
-      }
-      protected override void OnUnLoad()
-      {
-             _taskResult = var1 + var2;
-      }
-    }
-} </code></pre>
+                <div class="content"><h1 id="open-reindex">Open Reindex</h1>
+<p>Name in Migrated Code: <strong>OpenMode</strong><br />
+Location in Migrated Code: <strong>Class</strong> (in Model region)</p>
+<p><img src="2017-11-28_16h23_05.png" alt="" /></p>
+<h2 id="migrated-code-example">Migrated Code Example</h2>
+<p>Example:</p>
+<pre data-line="3" class="language-csdiff line-numbers"><code>internal readonly Models.Customers Customers = new Models.Customers
+{ 
+         OpenMode = ENV.Data.DataProvider.BtrieveOpenMode.Reindex
+}; </code></pre>
 <h2 id="note">Note:</h2>
-<p>The migrated code will calculate the return expression in the onUnLoad method and will set it to a member called _taskResult, which will be used as the return value of the Run method.</p>
+<p>Relevant only for Btrieve</p>
 
 
 
@@ -64,7 +48,7 @@ Location in Migrated Code: <strong>Run Method</strong></p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/01-General-Tab/06-Return-Value.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/04-DB-Tables/70-Open-Reindex.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -126,7 +110,7 @@ Location in Migrated Code: <strong>Run Method</strong></p>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'return-value.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'open-reindex.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

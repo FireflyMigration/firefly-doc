@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="task properties, onunload">
+    <meta name="keywords" content="">
 
-    <title>Return Value</title>
+    <title>Oracle Performance Enhancements in version 29720</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,34 +29,35 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="return-value">Return Value</h1>
-<p>Name in Migrated Code: <strong>return _taskresult</strong><br />
-Location in Migrated Code: <strong>Run Method</strong></p>
-<p><img src="Task-properties-return-value.jpg" alt="Task properties return-value" /></p>
-<h2 id="example">Example:</h2>
-<pre data-line="14,18" class="language-csdiff line-numbers"><code>class batchToCalculateSum : BusinessProcessBase 
-{
-   readonly NumberColumn var1 = new NumberColumn("var1", "2");
-   readonly NumberColumn var2 = new NumberColumn("var2", "2");
-   Number _taskResult;
-   public batchToCalculateSum()
-   {
-     Columns.Add(var1);
-     Columns.Add(var2);
- 
-     public Number Run()
-     {
-            Execute();
-             return _taskResult;
-      }
-      protected override void OnUnLoad()
-      {
-             _taskResult = var1 + var2;
-      }
-    }
-} </code></pre>
-<h2 id="note">Note:</h2>
-<p>The migrated code will calculate the return expression in the onUnLoad method and will set it to a member called _taskResult, which will be used as the return value of the Run method.</p>
+                <div class="content"><h1 id="oracle-performance-enhancements-in-version-29720">Oracle Performance Enhancements in version 29720</h1>
+<p>In  version 29720 we implemented some performance related oracle tuning strategies that we've been using for a while now with MSSQL succesfully. Oour internal testing showed that they'll translate to a significant improvement in Oracle based applications.</p>
+<p>We've enabled these enhancements by default, but since it's early release we allow disabling them via ini settings.</p>
+<p>We ask that you try these features and if you run into a performance problem, you can disable them using the ini - but please let us know so that we can investigate the cause of the problem you ran into and improve these enhancements.</p>
+<h1 id="first-rows">First Rows</h1>
+<p>According to Oracle documentation, when you issue a select statement Oracle assumes that you would like to recieve all the rows.</p>
+<p>Oracle expects you to let it know if you are only looking for the first rows by adding the <code>FIRST_ROWS</code> hint.</p>
+<h2 id="uicontrollers">UIControllers</h2>
+<p>In UIController (online tasks in magic) you want the first rows that feel the grid fast and the other rows later.
+So from this verison, queries that are issued for UIControllers's From entity will include the <code>FIRST_ROWS</code> hint.</p>
+<p>You can disable it by setting the <code>DisableIUControllerHint = Y</code> in the <code>ORACLE_TEST</code> section.</p>
+<p>You can do that in the command line like this:</p>
+<pre><code>/[ORACLE_TEST]DisableIUControllerHint=Y
+</code></pre>
+<h2 id="relations">Relations</h2>
+<p>When performing a relation (link in magic), that is not based on a unique filter, you only want the first row. In this version we added the <code>FIRST_ROWS</code> hint for these situations.</p>
+<p>You can disable it by setting the <code>DisableRelationHint = Y</code> in the <code>ORACLE_TEST</code> section.</p>
+<p>You can do that in the command line like this:</p>
+<pre><code>/[ORACLE_TEST]DisableRelationHint=Y
+</code></pre>
+<h1 id="improve-string-data-types">Improve string data types</h1>
+<p>In previous versions, all oracle statement bound parameters used <code>Char</code> instead of <code>varchar2</code>. This was done due to a bug in early Oracle .NET clients.</p>
+<p>In this version sends <code>Char</code> and <code>Varchar2</code> according to the field storage.</p>
+<p>You can disable it by setting the <code>AlwaysUseChars = Y</code> in the <code>ORACLE_TEST</code> section.</p>
+<p>You can do that in the command line like this:</p>
+<pre><code>/[ORACLE_TEST]AlwaysUseChars=Y
+</code></pre>
+<h1 id="improve-date-data-types">Improve Date data types</h1>
+<p>In previous version bound paramers that related to dates were sent as <code>timestamp</code> due a to a .NET Default. From this version <code>Date</code> will be used instead.</p>
 
 
 
@@ -64,7 +65,7 @@ Location in Migrated Code: <strong>Run Method</strong></p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/01-General-Tab/06-Return-Value.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/99-Oracle-Performance-Enhancements-in-version-29720.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -126,7 +127,7 @@ Location in Migrated Code: <strong>Run Method</strong></p>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'return-value.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'oracle-performance-enhancements-in-version-29720.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
