@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="task properties, range, locate, SQL where, expressions">
+    <meta name="keywords" content="Task Properties, OnLoad, Task Settings">
 
-    <title>Range Order</title>
+    <title>Data Tab</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,17 +29,17 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="range-order">Range Order</h1>
-<p>Name in Migrated Code: <strong>OrderBy.Reversed</strong><br />
-Location in Migrated Code: <strong>InitializeDataView()</strong></p>
-<p><img src="Range-Locate-Expressions-range-order.jpg" alt="Range-Locate-Expressions-range-order" /></p>
-<p>Only in case where the <em>Range Order</em> is <em>Descending</em> this property will appear in the migrated code</p>
-<p>Example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>void InitializeDataView()
-{
-    From = OrderDetails;
-    NonDbWhere.Add(() =&gt; OrderDetails.Quantity &gt; 0);
-    OrderBy.Reversed = true; </code></pre>
+                <div class="content"><h1 id="data-tab">Data Tab</h1>
+<p>The following notes explain the equivalent to these properties in the migrated code.</p>
+<p><img src="2017-11-15_15h29_10.png" alt="" /></p>
+<ul>
+<li><a href="transaction-begin.html">Transaction Begin</a></li>
+<li><a href="allow-empty-data-view.html">Allow Empty Data View</a></li>
+<li><a href="preload-view.html">Preload View</a></li>
+<li><a href="cache-strategy.html">Cache Strategy</a></li>
+<li><a href="locking-strategy.html">Locking Strategy</a></li>
+<li><a href="error-behavior-strategy.html">Error Behavior Strategy</a></li>
+</ul>
 
 
 
@@ -47,7 +47,7 @@ Location in Migrated Code: <strong>InitializeDataView()</strong></p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/10-Range-Locate/03-Expressions-Tab/02-Range-Order.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/04-Data-Tab/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -109,7 +109,7 @@ Location in Migrated Code: <strong>InitializeDataView()</strong></p>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'range-order.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'data-tab.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

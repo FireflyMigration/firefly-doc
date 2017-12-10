@@ -1,6 +1,6 @@
 ERROR: url conflict: 
-MarkDownFile: Range.html => c:\repos\firefly-doc\20-Getting-Familiar-with-Migrated-Code\10-Comparing-Migrated-Code-with-Magic\01-Task-Properties\05-Options-Tab\70-Range.md
-MarkDownFile: Range.html => c:\repos\firefly-doc\20-Getting-Familiar-with-Migrated-Code\10-Comparing-Migrated-Code-with-Magic\10-Range-Locate\01-Range\index.md'
+MarkDownFile: Range-Tab.html => c:\repos\firefly-doc\20-Getting-Familiar-with-Migrated-Code\10-Comparing-Migrated-Code-with-Magic\10-Range-Locate\01-Range-Tab\index.md
+MarkDownFile: Range-Tab.html => c:\repos\firefly-doc\20-Getting-Familiar-with-Migrated-Code\10-Comparing-Migrated-Code-with-Magic\10-Range-Locate\01-Range-Tab\Range-Tab.md'
 ERROR: url conflict: 
-MarkDownFile: Locate-Expression.html => c:\repos\firefly-doc\20-Getting-Familiar-with-Migrated-Code\10-Comparing-Migrated-Code-with-Magic\10-Range-Locate\03-Expressions\03-Locate-Expression.md
-MarkDownFile: Locate-Expression.html => c:\repos\firefly-doc\20-Getting-Familiar-with-Migrated-Code\10-Comparing-Migrated-Code-with-Magic\DataView\Link\03-Locate-Expression.md'
+MarkDownFile: Locate.html => c:\repos\firefly-doc\20-Getting-Familiar-with-Migrated-Code\10-Comparing-Migrated-Code-with-Magic\01-Task-Properties\05-Options-Tab\60-Locate.md
+MarkDownFile: Locate.html => c:\repos\firefly-doc\20-Getting-Familiar-with-Migrated-Code\10-Comparing-Migrated-Code-with-Magic\DataView\Link\03-Locate.md'

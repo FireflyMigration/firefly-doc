@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="link,relations">
+    <meta name="keywords" content="task properties, range, locate, SQL where, expressions">
 
     <title>Locate Expression</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -30,17 +30,14 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="locate-expression">Locate Expression</h1>
-<p>Name in Magic: <strong>Link</strong><br />
-Name in the Migrated Code: <strong>RelationsType property</strong><br />
-Location in the Migrated code: <strong>Sent as parameter to the Relations.Add()</strong> method</p>
-<hr />
-<p>The Locate expression for the relation is sent as parameter to the Relations.Add() method.<br />
-For each locate value, the migrated code will show an expression.<br />
-For example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Relations.Add(Customers, RelationType.Find, 
-              Customers.CustomerID.IsEqualTo(Orders.CustomerID).And
-              Customers.City.IsequalTo("Madrid"); </code></pre>
-<p>The above code has locate on 2 fields.</p>
+<p>Name in Migrated Code: <strong>StartOnRowWhere.Add</strong><br />
+Location in Migrated Code: <strong>InitializeDataView()</strong></p>
+<p><img src="Range-Locate-Expressions-locate-expression.jpg" alt="Range-Locate-Expressions-locate-expression" /></p>
+<p>Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>void InitializeDataView()
+{
+    From = OrderDetails;
+    StartOnRowWhere.Add(() =&gt; OrderDetails.Quantity &gt; 0); </code></pre>
 
 
 
@@ -48,7 +45,7 @@ For example:</p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/DataView/Link/03-Locate-Expression.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/10-Range-Locate/03-Expressions-Tab/03-Locate-Expression.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
