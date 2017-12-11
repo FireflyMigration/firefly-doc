@@ -9,7 +9,7 @@ Location in Migrated Code: **Asynch class constructor**
 In case this checkbox is not checked in the source code, 
 this property will appear in the migrated code.
 
-Example :
+## Example:
 ```csdiff
     public class MyProgram2Async : AsyncHelperBase 
     {

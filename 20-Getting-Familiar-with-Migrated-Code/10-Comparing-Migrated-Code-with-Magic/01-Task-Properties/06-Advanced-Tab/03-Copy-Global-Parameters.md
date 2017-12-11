@@ -6,7 +6,7 @@ Location in Migrated Code: **Asynch class constructor**
 
 ![Task-Properties-Advanced-copy-global-parameters](Task-Properties-Advanced-copy-global-parameters.jpg)
 
-Example :
+## Example:
 ```csdiff
     public class MyProgram2Async : AsyncHelperBase 
     {
