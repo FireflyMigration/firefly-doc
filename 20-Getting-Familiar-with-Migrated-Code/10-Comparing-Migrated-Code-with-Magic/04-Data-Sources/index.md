@@ -1,6 +1,6 @@
 keywords: Data Source, models
 
-# Datasource (Ctrl+D)
+# Data Source (Ctrl+D)
 
 The following notes explain the equivalent to these properties in the migrated code.   
 
