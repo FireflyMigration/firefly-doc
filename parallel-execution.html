@@ -33,16 +33,7 @@
 <p>Name in Migrated Code: <strong>[className]Async</strong><br />
 Location in Migrated Code: <strong>a separate class</strong></p>
 <p><img src="Task-Properties-Advanced-parallel-execution.jpg" alt="Task properties advanced screen parallel-execution" /></p>
-<p>Whenever a program (batch / online) is defined as Parallel in Magic,<br />
-the migrated code will have two classes for the same program:</p>
-<ol>
-<li>The class representing the migrated code (the program logic)</li>
-<li>A class with the same name + <strong>Async</strong>, representing the fact that<br />
-this class is executed in parallel (Asynchronously).
-Every call to this program will be done via this class.
-The program iself is called in the Run() method.</li>
-</ol>
-<p>Example :</p>
+<h2 id="example">Example :</h2>
 <pre data-line="" class="language-csdiff line-numbers"><code>    public class MyProgramAsync : AsyncHelperBase 
     {
         public MyProgramAsync()
@@ -55,6 +46,16 @@ The program iself is called in the Run() method.</li>
         }
     } </code></pre>
 <hr />
+<h2 id="notes">Notes:</h2>
+<p>Whenever a program is defined as Parallel in Magic,<br />
+the migrated code will have two classes for the same program:</p>
+<ol>
+<li>The class representing the migrated code (the program logic)</li>
+<li>A class with the same name + <strong>Async</strong>, representing the fact that<br />
+this class is executed in parallel (Asynchronously).
+Every call to this program will be done via this class.
+The program itself is called in the Run() method.</li>
+</ol>
 
 
 
@@ -62,7 +63,7 @@ The program iself is called in the Run() method.</li>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/06-Advanced/01-Parallel-Execution.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/06-Advanced-Tab/01-Parallel-Execution.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>

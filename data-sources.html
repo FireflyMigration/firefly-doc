@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="Task Properties, Sort, OrderBy, According to Index">
+    <meta name="keywords" content="Data Sources, models, DB Tables">
 
-    <title>According To Index</title>
+    <title>Data Sources (Ctrl+D)</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,22 +29,19 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="according-to-index">According To Index</h1>
-<p>Name in Migrated Code: <strong>OrderBy</strong><br />
-Location in Migrated Code: <strong>InitializeDataView method</strong></p>
-<p><img src="2017-11-20_12h37_13.png" alt="" /></p>
-<h2 id="migrated-code-example">Migrated Code Example</h2>
-<pre data-line="4,5" class="language-csdiff line-numbers"><code>void InitializeDataView()
-{
-    From = Products;
-    OrderBy.Add(Products.ProductName);
-    OrderBy.Add(Products.UnitPrice, SortDirection.Descending);
-} </code></pre>
-<h2 id="property-values">Property Values</h2>
-<p>By Default, the sort will be defined as non-unique.</p>
-<h2 id="see-also">See Also</h2>
+                <div class="content"><h1 id="data-sources-ctrld">Data Sources (Ctrl+D)</h1>
+<p>The following notes explain the equivalent to these properties in the migrated code.</p>
+<p><img src="2017-11-28_15h32_01.png" alt="" /></p>
 <ul>
-<li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_OrderBy.htm">UIController OrderBy Property</a></li>
+<li><a href="access-read.html">Access Read</a></li>
+<li><a href="access-write.html">Access Write</a></li>
+<li><a href="share-write---copy.html">Share Write   Copy</a></li>
+<li><a href="share-read.html">Share Read</a></li>
+<li><a href="share-none.html">Share None</a></li>
+<li><a href="open-normal.html">Open Normal</a></li>
+<li><a href="open-reindex.html">Open Reindex</a></li>
+<li><a href="name.html">Name</a></li>
+<li><a href="cached.html">Cached</a></li>
 </ul>
 
 
@@ -53,7 +50,7 @@ Location in Migrated Code: <strong>InitializeDataView method</strong></p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/06-Sort-Indicator/20-According-To-Index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/04-Data-Sources/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -115,7 +112,7 @@ Location in Migrated Code: <strong>InitializeDataView method</strong></p>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'according-to-index.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'data-sources.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
