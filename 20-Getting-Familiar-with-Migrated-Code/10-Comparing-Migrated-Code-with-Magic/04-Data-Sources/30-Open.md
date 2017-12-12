@@ -2,7 +2,7 @@
 
 
 Name in Migrated Code: **OpenMode**  
-Location in Migrated Code: **Class** (in Model region)  
+Location in Migrated Code: **Model Initializer** 
 
 ![](2017-11-28_16h23_05.png)
 

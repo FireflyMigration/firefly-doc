@@ -1,14 +1,12 @@
 ﻿keywords: Datasource, Model , Table, Cached
 
-
 Name in Migrated Code: **Cached**  
-Location in Migrated Code: **Class** (in Model region)
+Location in Migrated Code: **Model Initializer** 
 
 ![](2017-11-28_15h19_18.png)
 
 ## Migrated Code Example 
 
-Example cache = No:
 ```csdiff
 internal readonly Models.Customers Customers = new Models.Customers 
 { 
@@ -16,7 +14,7 @@ internal readonly Models.Customers Customers = new Models.Customers
 };
 ```
 ## Property Values
-True or false. The default is **false** which is Cached = Yes in Magic
+True or false. The default is **false** 
 
 ## See Also :
 * [Cached Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_Entity_Cached.htm)
