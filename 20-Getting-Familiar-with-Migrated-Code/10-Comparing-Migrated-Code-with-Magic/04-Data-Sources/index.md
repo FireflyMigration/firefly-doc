@@ -1,6 +1,6 @@
-keywords: Data Sources, models, DB Tables
+keywords: Data Source, models
 
-# Data Sources (Ctrl+D)
+# Data sources (Ctrl+D)
 
 The following notes explain the equivalent to these properties in the migrated code.   
 

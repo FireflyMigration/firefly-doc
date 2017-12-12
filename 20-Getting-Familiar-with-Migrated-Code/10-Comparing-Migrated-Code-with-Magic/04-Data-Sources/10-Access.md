@@ -1,8 +1,8 @@
 ﻿keywords: Datasource, Model , Table, Access, Read, Write
 
 ## Read 
-Name in Migrated Code: **ReadOnly** / **AllowRowLocking** 
-Location in Migrated Code: **Class** (in Model region)  
+Name in Migrated Code: **ReadOnly** / **AllowRowLocking**  
+Location in Migrated Code: **Model Initializer** 
 
 ![](2017-11-28_15h01_43.png)  
 
@@ -27,12 +27,12 @@ readonly Models.Customers Customers = new Models.Customers
 
 ## Property Values
 
-| Magic Name | Migrated Code Name      |
-|------------|-------------------------|
-| Write      | AllowRowLocking         |
-| Read       | ReadOnly                |
+| Magic               | Migrated Code           |
+|---------------------|-------------------------|
+| Access = Write      | AllowRowLocking = true  |
+| Access = Read       | ReadOnly = true         |
 
-The default is Access = Write in Magic
+
 
 ## See Also :
 * [ReadOnly Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_Entity_ReadOnly.htm) 

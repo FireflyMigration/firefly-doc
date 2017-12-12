@@ -18,12 +18,12 @@ internal readonly Models.Customers Customers = new Models.Customers
 
 ## Property Values
 
-| Magic Name | Migrated Code Name      |
+| Magic Value| Migrated Code Value     |
 |------------|-------------------------|
-| Normal     | Normal                  |
-| Reindex    | Reindex                 |
+| Normal     | BtrieveOpenMode.Normal  |
+| Reindex    | BtrieveOpenMode.Reindex |
 
-The default is Open = Normal in Magic
+The default is BtrieveOpenMode.Normal
 
 ## Note :
 Relevant only for Btrieve

@@ -2,13 +2,12 @@
 
 
 Name in Migrated Code: **FileSharing**  
-Location in Migrated Code: **Class** (in Model region)  
+Location in Migrated Code: **Model Initializer** 
 
 ![](2017-11-28_16h05_24.png)
 
 ## Migrated Code Example 
 
-Example:
 ```csdiff
 readonly Models.Customers Customers = new Models.Customers
 { 
@@ -18,13 +17,13 @@ readonly Models.Customers Customers = new Models.Customers
 
 ## Property Values
 
-| Magic Name | Migrated Code Name      |
+| Magic Value| Migrated Code Value     |
 |------------|-------------------------|
-| Write      | Write                   |
-| Read       | Read                    |
-| None       | None                    |
+| Write      | BtrieveFileSharing.Write|
+| Read       | BtrieveFileSharing.Read |
+| None       | BtrieveFileSharing.None |
 
-The default is Share = Write in Magic
+The default is BtrieveFileSharing.Write
 
 
 
