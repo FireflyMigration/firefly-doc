@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="Data Source, models">
+    <meta name="keywords" content="Datasource, Model , Table, Access, Read, Write">
 
-    <title>Data sources (Ctrl+D)</title>
+    <title>Read</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,15 +29,44 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="data-sources-ctrld">Data sources (Ctrl+D)</h1>
-<p>The following notes explain the equivalent to these properties in the migrated code.</p>
-<p><img src="2017-11-28_15h32_01.png" alt="" /></p>
+                <div class="content"><h1 id="read">Read</h1>
+<p>Name in Migrated Code: <strong>ReadOnly</strong> / <strong>AllowRowLocking</strong><br />
+Location in Migrated Code: <strong>Model Initializer</strong></p>
+<p><img src="2017-11-28_15h01_43.png" alt="" /></p>
+<h2 id="migrated-code-example">Migrated Code Example</h2>
+<p>Example Read:</p>
+<pre data-line="3" class="language-csdiff line-numbers"><code>readonly Models.Customers Customers = new Models.Customers 
+{ 
+         ReadOnly = true 
+}; </code></pre>
+<p>Example Write:</p>
+<pre data-line="3" class="language-csdiff line-numbers"><code>readonly Models.Customers Customers = new Models.Customers 
+{ 
+         AllowRowLocking = true
+}; </code></pre>
+<h2 id="property-values">Property Values</h2>
+<table>
+<thead>
+<tr>
+<th>Magic</th>
+<th>Migrated Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access = Write</td>
+<td>AllowRowLocking = true</td>
+</tr>
+<tr>
+<td>Access = Read</td>
+<td>ReadOnly = true</td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">See Also :</h2>
 <ul>
-<li><a href="access.html">Access</a></li>
-<li><a href="share.html">Share</a></li>
-<li><a href="open.html">Open</a></li>
-<li><a href="name.html">Name</a></li>
-<li><a href="cached.html">Cached</a></li>
+<li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_Entity_ReadOnly.htm">ReadOnly Property</a></li>
+<li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_Entity_AllowRowLocking.htm">AllowRowLocking Property</a></li>
 </ul>
 
 
@@ -46,7 +75,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/04-Data-Sources/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/04-Data-Sources/10-Access.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -108,7 +137,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'data-sources.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'access.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
