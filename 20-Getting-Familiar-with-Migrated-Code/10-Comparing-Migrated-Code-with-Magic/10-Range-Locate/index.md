@@ -1,1 +1,1 @@
-﻿![Range-Locate-Range](Range-Locate-Range.jpg)
+﻿![Range Locate Range](01-Range-Tab/Range-Locate-Range.jpg)
