@@ -1,5 +1,7 @@
 ﻿keywords: Task Properties, Options Tab, Range, Allow Range
 
+# Range
+
 Name in migrated code: **AllowFilterRows**  
 Location in migrated code: **OnLoad**
 

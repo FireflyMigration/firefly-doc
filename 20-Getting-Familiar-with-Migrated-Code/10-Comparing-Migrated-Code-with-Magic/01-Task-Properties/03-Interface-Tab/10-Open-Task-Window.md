@@ -12,15 +12,15 @@ Location in migrated code: **OnLoad**
 ```csdiff   
 protected override void OnLoad()
 {
-+    View = () => new Views.ProgBatchView(this);
++    View = () => new Views.OrdersViewthis);
 }
 ``` 
 
-When the property is set to No - View is not defined    
+When the property is set to No - the View property is not defined    
 
 
 
-## Property Values
-For UIControllerBase (Online program in Magic) - View is defined
-For BusinessProcessBase (Batch program in Magic) - View is not defined
+## Notes
+In UIController (Online program in Magic) - The View property is defined by default  
+In BusinessProcess (Batch program in Magic) - The View property is not defined by degault
        

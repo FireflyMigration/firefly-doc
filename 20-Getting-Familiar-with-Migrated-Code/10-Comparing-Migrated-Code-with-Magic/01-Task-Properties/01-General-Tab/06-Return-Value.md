@@ -3,7 +3,10 @@
 
 Name in Migrated Code: **return _taskresult**  
 Location in Migrated Code: **Run Method**  
-Example:
+
+![Task properties return-value](Task-properties-return-value.jpg)
+
+## Example:
 ```csdiff
 class batchToCalculateSum : BusinessProcessBase 
 {
@@ -15,20 +18,17 @@ class batchToCalculateSum : BusinessProcessBase
      Columns.Add(var1);
      Columns.Add(var2);
  
-     public Number Run(NumberParameter pvar1, NumberParameter pvar2)
+     public Number Run()
      {
-            BindParameter(var1, pvar1);
-            BindParameter(var2, pvar2);
             Execute();
-            return _taskResult;
++            return _taskResult;
       }
       protected override void OnUnLoad()
       {
-            _taskResult = var1 + var2;
++            _taskResult = var1 + var2;
       }
     }
 }
 ```
+## Note:
 The migrated code will calculate the return expression in the onUnLoad method and will set it to a member called _taskResult, which will be used as the return value of the Run method.
-
----

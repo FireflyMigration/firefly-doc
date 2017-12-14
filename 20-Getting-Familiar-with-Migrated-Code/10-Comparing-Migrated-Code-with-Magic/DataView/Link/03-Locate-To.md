@@ -1,4 +1,7 @@
 ﻿keywords: link,relations  
+
+# Locate
+
 Name in Magic: **Link**  
 Name in the Migrated Code: **RelationsType property**  
 Location in the Migrated code: **Sent as parameter to the Relations.Add()** method
