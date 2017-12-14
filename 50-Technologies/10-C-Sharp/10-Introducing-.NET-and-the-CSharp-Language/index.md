@@ -3,7 +3,7 @@
 This section is intended for developers who are new to .NET and the C# Language.
 
 We recommend that you start with this great Microsoft C# training prior to going over this course.
-[C# Fundamentals for Absolute Beginners by Bob Tabor](https://mva.microsoft.com/en-US/training-courses/c-fundamentals-for-absolute-beginners-16169?l=Lvld4EQIC_2706218949)
+<a href="https://mva.microsoft.com/en-US/training-courses/c-fundamentals-for-absolute-beginners-16169?l=Lvld4EQIC_2706218949" target="_blank">C# Fundamentals for Absolute Beginners by Bob Tabor</a>
 
 
 
