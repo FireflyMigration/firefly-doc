@@ -31,15 +31,15 @@
                 </div>
                 <div class="content"><h1 id="position-range">Position Range</h1>
 <p>Name in Migrated Code: <strong>Where.Add</strong><br />
-Location in Migrated Code: <strong>InitializeDataView()</strong></p>
+Location in Migrated Code: <strong>InitializeDataView</strong></p>
 <p><img src="Range-Locate-Expressions-poition.jpg" alt="Range-Locate-Expressions-poition" /></p>
 <p>The migrated code uses a function named CreatePrimaryKeyFilter for this type of range
 using the blob containing the position information.</p>
-<p>Example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>void InitializeDataView()
+<h2 id="example">Example:</h2>
+<pre data-line="4" class="language-csdiff line-numbers"><code>void InitializeDataView()
 {
     From = OrderDetails;
-    Where.Add(u.CreatePrimaryKeyFilter(From, MyPositionBlob)); </code></pre>
+     Where.Add(u.CreatePrimaryKeyFilter(From, MyPositionBlob)); </code></pre>
 
 
 

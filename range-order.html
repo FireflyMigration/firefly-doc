@@ -31,15 +31,15 @@
                 </div>
                 <div class="content"><h1 id="range-order">Range Order</h1>
 <p>Name in Migrated Code: <strong>OrderBy.Reversed</strong><br />
-Location in Migrated Code: <strong>InitializeDataView()</strong></p>
+Location in Migrated Code: <strong>InitializeDataView</strong></p>
 <p><img src="Range-Locate-Expressions-range-order.jpg" alt="Range-Locate-Expressions-range-order" /></p>
 <p>Only in case where the <em>Range Order</em> is <em>Descending</em> this property will appear in the migrated code</p>
-<p>Example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>void InitializeDataView()
+<h2 id="example">Example:</h2>
+<pre data-line="5" class="language-csdiff line-numbers"><code>void InitializeDataView()
 {
     From = OrderDetails;
     NonDbWhere.Add(() =&gt; OrderDetails.Quantity &gt; 0);
-    OrderBy.Reversed = true; </code></pre>
+     OrderBy.Reversed = true; </code></pre>
 
 
 

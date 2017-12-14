@@ -31,13 +31,13 @@
                 </div>
                 <div class="content"><h1 id="locate-expression">Locate Expression</h1>
 <p>Name in Migrated Code: <strong>StartOnRowWhere.Add</strong><br />
-Location in Migrated Code: <strong>InitializeDataView()</strong></p>
+Location in Migrated Code: <strong>InitializeDataView</strong></p>
 <p><img src="Range-Locate-Expressions-locate-expression.jpg" alt="Range-Locate-Expressions-locate-expression" /></p>
-<p>Example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>void InitializeDataView()
+<h2 id="example">Example:</h2>
+<pre data-line="4" class="language-csdiff line-numbers"><code>void InitializeDataView()
 {
     From = OrderDetails;
-    StartOnRowWhere.Add(() =&gt; OrderDetails.Quantity &gt; 0); </code></pre>
+     StartOnRowWhere.Add(() =&gt; OrderDetails.Quantity &gt; 0); </code></pre>
 
 
 

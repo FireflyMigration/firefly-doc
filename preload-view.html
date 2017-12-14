@@ -32,15 +32,14 @@
                 <div class="content"><h1 id="preload-view">Preload View</h1>
 <p>Name in migrated Code: <strong>PreloadData</strong><br />
 Location in migrated Code: <strong>OnLoad</strong></p>
-<p><img src="2017-11-15_15h58_55.png" alt="" /></p>
+<p><img src="2017-11-20_13h45_46.png" alt="" /></p>
 <h2 id="migrated-code-example">Migrated Code Example</h2>
-<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLoad()
 {
-    PreloadData = Products.ProductID == 2041;
     View = () =&gt; new Views.ShowOrdersView(this);
 } </code></pre>
 <h2 id="property-values">Property Values</h2>
-<p>No or Expression Rules. The default is false which is Preload view = <strong>No</strong> in Magic</p>
+<p>True or False (or expression). The default is false which is Preload view = <strong>No</strong> in Magic</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_PreloadData.htm">UIController.PreloadData</a></li>
