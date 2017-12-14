@@ -1,14 +1,23 @@
-﻿keywords: function
-In the Migrated Code: Call a method 
+﻿keywords: Evaluate Expression
 
-***
+![2017 12 14 11H39 15](2017-12-14_11h39_15.png)
 
-Example: 
+## Migrated Code Examples:
 
-The following DBDEL Evaluate expression in Magic, appears in the migrated .Net code as:
+### Simple Call
+
 ```csdiff
-u.DBDel(typeof(Model.Orders), "")
+u.FileDelete(@"c:\temp\log.txt");
 ```
 
-For more information about method and user methods see
-[Methods](Methods.html)
+### Using Result
+
+```csdiff
+MyColumn.Value = u.FileDelete(@"c:\temp\log.txt");
+```  
+
+## Notes
+In the migrated code, an expression is a method that can be called directly.
+
+## See Also
+[User Methods](user-methods-and-u-class.html)
