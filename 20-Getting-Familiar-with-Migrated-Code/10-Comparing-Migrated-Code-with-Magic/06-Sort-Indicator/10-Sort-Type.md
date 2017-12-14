@@ -1,7 +1,7 @@
 ﻿keywords: Task Properties, Sort, OrderBy, Unique
 
-Name in Migrated Code: **OrderBy**  
-Location in Migrated Code: **InitializeDataView method**  
+Name in Migrated Code: **OrderBy.Unique**  
+Location in Migrated Code: **InitializeDataView**  
 
 ![](2017-11-20_12h37_13.png)
 
