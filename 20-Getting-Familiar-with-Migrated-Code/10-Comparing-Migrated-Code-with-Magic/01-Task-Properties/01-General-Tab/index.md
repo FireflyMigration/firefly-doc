@@ -1,5 +1,6 @@
-﻿# General Tab
-A screen shot of UniPaas's General tab appears below:
+﻿keywords: task properties
+# General Tab
+A screen shot of Magic's General tab appears below:
 
 ![Task properties screen](Task-properties-screen.jpg)
 
