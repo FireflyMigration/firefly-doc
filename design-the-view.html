@@ -101,28 +101,6 @@ It should look like this:
     }
   );
 } </code></pre>
-<ol start="4">
-<li>We'll also change the <code>requiredDate</code> and <code>shippedDate</code> to be of type <code>date</code></li>
-</ol>
-<pre data-line="11,13" class="language-csdiff line-numbers"><code>export class AppComponent {
-    orders = new models.orders(
-        {
-            numOfColumnsInGrid:4,
-            columnSettings: [
-                { key: "id", caption: "Order ID", readonly: true },
-                { key: "customerID" },
-                { key: "orderDate", inputType: "date" },
-                { key: "shipVia" },
--               { key: "requiredDate" },
-                { key: "requiredDate", inputType:"date" },
--               { key: "shippedDate" },
-                { key: "shippedDate" , inputType:"date" },
-                { key: "shipAddress" },
-                { key: "shipCity" },
-            ]
-        }
-    );
-} </code></pre>
 <p>It should now look like this:
 <img src="../2017-10-13_08h53_10.png" alt="2017 10 13 08H53 10" /></p>
 
