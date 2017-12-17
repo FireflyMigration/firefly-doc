@@ -1,26 +1,30 @@
 ﻿`src/app/app.component.ts`
 ```csdiff
-products = new models.products();
-orderDetails = new models.orderDetails({
-    allowUpdate: true,
-    allowInsert: true,
-    allowDelete: true,
-    columnSettings: [
-        { key: "productID", caption: "Product", dropDown: { source: this.products } },
-        { key: "unitPrice", inputType: "number" },
-        { key: "quantity", inputType: "number" },
+  orderDetailsGrid = new radweb.GridSettings(new models.Order_details(),
+    {
+      allowUpdate: true,
+      allowDelete: true,
+      allowInsert: true,
+      onNewRow: orderDetail => {
+        orderDetail.orderID.value = this.ordersGrid.currentRow.id.value;
+        orderDetail.quantity.value = 1;
+      },
+      columnSettings: order_details => [
+        {
+          column: order_details.productID,
+          dropDown: {
+            source: new models.Products()
+          }
+        },
+        order_details.unitPrice,
+        order_details.quantity,
 +       {
-+           caption: "total",
-+           getValue: o => (o.quantity * o.unitPrice).toFixed(2)
++         caption: 'Total',
++         getValue: orderDetails =>
++           orderDetails.quantity.value * orderDetails.unitPrice.value
 +       }
-    ],
-    onNewRow: od => {
-        od.orderID = this.orders.currentRow.id;
-        od.quantity = 1;
-    }
-});
-orders = new models.orders(
-
+      ]
+    })
 ```
 
 ![2017 10 16 06H16 56](2017-10-16_06h16_56.gif)

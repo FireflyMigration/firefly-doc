@@ -1,61 +1,35 @@
 ﻿`src/app/app.component.ts`
 ```csdiff
-shippers = new models.shippers();
-+orderDetails = new models.orderDetails();
-orders = new models.orders(
-    {
-        numOfColumnsInGrid: 4,
-        get: { limit:4 },
-
+export class AppComponent {
+...
+  shipInfoArea = this.ordersGrid.addArea({
+    numberOfColumnAreas:2,
+    columnSettings: orders => [
+      orders.requiredDate,
+      orders.shippedDate,
+      orders.shipAddress,
+      orders.shipCity
+    ]
+  });
++ orderDetailsGrid = new radweb.GridSettings(new models.Order_details());
 }
 ```
 `src/app/app.component.html`
 ```csdiff
   <h1>Orders</h1>
-  <data-grid [settings]="orders"></data-grid>
-  <select-popup [settings]="customers"></select-popup>
-  <div>
-      <!-- Nav tabs -->
-      <ul class="nav nav-tabs" role="tablist">
-          <li class="active"><a href="#shipInfo" data-toggle="tab">Ship Info</a></li>
-          <li><a href="#tab2" data-toggle="tab">Tab 2</a></li>
-      </ul>
-      <!-- Tab panes -->
-      <div class="tab-content">
-          <div class="tab-pane active" id="shipInfo">
-              <data-area [settings]="shipInfoArea"></data-area>
-          </div>
-          <div  class="tab-pane" id="tab2">
--             Tab 2 Info
-+             <data-grid [settings]="orderDetails"></data-grid>
-          </div>
-      </div>
-  </div>
+  <data-grid [settings]="ordersGrid"></data-grid>
+  <select-popup [settings]="selectCustomerGrid"></select-popup>
+  <tabset>
+    <tab heading='Ship Info'>
+      <data-area [settings]="shipInfoArea"></data-area>
+    </tab>
+-   <tab heading='Tab 2'>
+-     Tab 2 content
++   <tab heading='Order Details'>
++     <data-grid [settings]="orderDetailsGrid"></data-grid>
+    </tab>
+  </tabset>
 ```
 
-### Fix the Tab Name
-`src/app/app.component.html`
-```csdiff
-  <h1>Orders</h1>
-  <data-grid [settings]="orders"></data-grid>
-  <select-popup [settings]="customers"></select-popup>
-  <div>
-      <!-- Nav tabs -->
-      <ul class="nav nav-tabs" role="tablist">
-          <li class="active"><a href="#shipInfo" data-toggle="tab">Ship Info</a></li>
--         <li><a href="#tab2" data-toggle="tab">Tab 2</a></li>
-+         <li><a href="#orderDetailsTab" data-toggle="tab">Order Details</a></li>
-      </ul>
-      <!-- Tab panes -->
-      <div class="tab-content">
-          <div class="tab-pane active" id="shipInfo">
-              <data-area [settings]="shipInfoArea"></data-area>
-          </div>
--         <div  class="tab-pane" id="tab2">
-+         <div  class="tab-pane" id="orderDetailsTab">
-              <data-grid [settings]="orderDetails"></data-grid>
-          </div>
-      </div>
-  </div>
-```
+
 ![Order Details](Order-details.png)

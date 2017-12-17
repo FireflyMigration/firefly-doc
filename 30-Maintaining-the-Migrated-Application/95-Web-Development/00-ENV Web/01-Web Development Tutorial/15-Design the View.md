@@ -13,27 +13,31 @@ It should look like this:
 
 ```csdiff
 export class AppComponent {
-    orders = new models.orders(
+  ordersGrid = new radweb.GridSettings(new models.Orders()
++ ,
++   {
++     columnSettings: orders => [
 +       {
-+           columnSettings: [
-+               { key: "id", caption: "Order ID", readonly: true },
-+               { key: "customerID" },
-+               { key: "orderDate", inputType: "date" },
-+               { key: "requiredDate" },
-+               { key: "shippedDate" },
-+               { key: "shipVia" },
-+               { key: "freight" },
-+               { key: "shipName" },
-+               { key: "shipAddress" },
-+               { key: "shipCity" },
-+               { key: "shipRegion" },
-+               { key: "shipPostalCode" },
-+               { key: "shipCountry" },
-+           ]
-+       }
-+   );
++         column: orders.id,
++         readonly: true
++       },
++       orders.customerID,
++       orders.employeeID,
++       orders.orderDate,
++       orders.requiredDate,
++       orders.shippedDate,
++       orders.shipVia,
++       orders.freight,
++       orders.shipName,
++       orders.shipAddress,
++       orders.shipCity,
++       orders.shipRegion,
++       orders.shipPostalCode,
++       orders.shipCountry
++     ]
++   }
+  );
 }
-
 ```
 ![2017 10 13 08H47 16](../2017-10-13_08h47_16.png)
 
@@ -43,51 +47,33 @@ export class AppComponent {
 3. we'll remove columns that we don't need (you can do it in the designer or the code)
 ```csdiff
 export class AppComponent {
-    orders = new models.orders(
+  ordersGrid = new radweb.GridSettings(new models.Orders(),
+    {
++     numOfColumnsInGrid:4,
+      columnSettings: orders => [
         {
-+           numOfColumnsInGrid:4,
-            columnSettings: [
-                { key: "id", caption: "Order ID", readonly: true },
-                { key: "customerID" },
-                { key: "orderDate", inputType: "date" },
-+               { key: "shipVia" },
-                { key: "requiredDate" },
-                { key: "shippedDate" },
--               { key: "shipVia" },
--               { key: "freight" },
--               { key: "shipName" },
-                { key: "shipAddress" },
-                { key: "shipCity" },
--               { key: "shipRegion" },
--               { key: "shipPostalCode" },
--               { key: "shipCountry" },
-            ]
-        }
-    );
+          column: orders.id,
+          readonly: true
+        },
+        orders.customerID,
+-       orders.employeeID,
+        orders.orderDate,
++       orders.shipVia,
+        orders.requiredDate,
+        orders.shippedDate,
+-       orders.shipVia,
+-       orders.freight,
+-       orders.shipName,
+        orders.shipAddress,
+        orders.shipCity,
+-       orders.shipRegion,
+-       orders.shipPostalCode,
+-       orders.shipCountry
+      ]
+    }
+  );
 }
+```
 
-```
-4. We'll also change the `requiredDate` and `shippedDate` to be of type `date`
-```csdiff
-export class AppComponent {
-    orders = new models.orders(
-        {
-            numOfColumnsInGrid:4,
-            columnSettings: [
-                { key: "id", caption: "Order ID", readonly: true },
-                { key: "customerID" },
-                { key: "orderDate", inputType: "date" },
-                { key: "shipVia" },
--               { key: "requiredDate" },
-+               { key: "requiredDate", inputType:"date" },
--               { key: "shippedDate" },
-+               { key: "shippedDate" , inputType:"date" },
-                { key: "shipAddress" },
-                { key: "shipCity" },
-            ]
-        }
-    );
-}
-```
 It should now look like this:
 ![2017 10 13 08H53 10](../2017-10-13_08h53_10.png)

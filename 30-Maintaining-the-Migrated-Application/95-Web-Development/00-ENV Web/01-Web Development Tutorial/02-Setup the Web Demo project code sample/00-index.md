@@ -24,9 +24,9 @@ If you have a version older than 9/2017, please contact us to get a recent versi
 
 
 ## The code used in this demo
-You can download the files that are used for this tutorial on https://github.com/FireflyMigration/ENV.Web/releases/tag/v0.0.3-pre-alpha
+You can download the files that are used for this tutorial on https://github.com/FireflyMigration/ENV.Web/releases/tag/v0.0.4-pre-alpha
 
-Please use the 2017-10 version
+Please use the 2017-12 version
 
 # Setup
 These are the steps you'll need to follow to setup the project, it may be a bit long but we tried to make it as simple as we can :)

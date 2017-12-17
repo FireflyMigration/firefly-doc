@@ -1,14 +1,16 @@
 ﻿Set the `allowUpdate` property to true, and the grid is now updatable.
 ```csdiff
-    orders = new models.orders(
+export class AppComponent {
+  ordersGrid = new radweb.GridSettings(new models.Orders(),
+    {
+      numOfColumnsInGrid: 4,
++     allowUpdate:true,
+      columnSettings: orders => [
         {
-            numOfColumnsInGrid: 4,
-+           allowUpdate:true,
-            columnSettings: [
-                { key: "id", caption: "Order ID", readonly: true },
-                {
-                    key: "customerID",
-                    getValue: o =>
+          column: orders.id,
+          readonly: true
+        },
+
  
 ```
 

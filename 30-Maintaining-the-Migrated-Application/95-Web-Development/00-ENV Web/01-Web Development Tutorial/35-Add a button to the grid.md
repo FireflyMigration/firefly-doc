@@ -1,36 +1,31 @@
 ﻿`src/app/app.component.ts`
 ```csdiff
-orders = new models.orders(
+  ordersGrid = new radweb.GridSettings(new models.Orders(),
     {
-        numOfColumnsInGrid: 4,
-        get: { limit: 4 },
-        onEnterRow: o => this.orderDetails.get({ isEqualTo: { orderID: o.id } }),
-        allowUpdate: true,
-        allowInsert: true,
-        allowDelete: true,
-        columnSettings: [
-            { key: "id", caption: "Order ID", readonly: true },
-            {
-                key: "customerID",
-                getValue: o =>
-                    this.customers.lookup.get({ id: o.customerID }).companyName,
-                click: o => this.customers.showSelectPopup(c => o.customerID = c.id)
-            },
-            { key: "orderDate", inputType: "date" },
-            {
-                key: "shipVia",
-                dropDown: { source: this.shippers },
-                cssClass: 'col-sm-3'
-            }
-        ],
-+       rowButtons: [
-+           {
-+               click: o => window.open('home/print/' + o.id),
-+               cssClass: 'btn btn-primary glyphicon glyphicon-print'
-+           }
-+       ]
-    }
-);
+      numOfColumnsInGrid: 4,
+      get: { limit: 4 },
+      allowUpdate: true,
+      onEnterRow: orders =>
+        this.orderDetailsGrid.get({
+          where: orderDetails =>
+            orderDetails.orderID.isEqualTo(orders.id)
+        }),
++     rowButtons: [
++       {
++         click: orders =>
++           window.open(
++             environment.serverUrl + 'home/print/' + orders.id.value),
++         cssClass: 'btn btn-primary glyphicon glyphicon-print'
++       }
++     ],
+      columnSettings: orders => [
+        {
+          column: orders.id,
+          readonly: true
+        },
+        {
+          column: orders.customerID,
+          getValue: orders =>
 ```
 * We've added the `rowButtons` array to the settings of the `orders` object
 * We've added a button, and handled the `click` event - that received an `order` object, and printed based on that `order` `id`

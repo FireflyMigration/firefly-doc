@@ -1,31 +1,66 @@
 ﻿We'll use the `onEnterRow` event, that is set to an Arrow Function that receives an  `order` object of the specfic order. We'll use that order to filter the `orderDetails` `orderID` column.
 `src/app/app.component.ts`
 ```csdiff
-orderDetails = new models.orderDetails();
-orders = new models.orders(
+export class AppComponent {
+  selectCustomerGrid = new radweb.GridSettings(new models.Customers(),
     {
-        numOfColumnsInGrid: 4,
-        get: { limit: 4 },
-+       onEnterRow: o => this.orderDetails.get({ isEqualTo: { orderID: o.id } }),
-        allowUpdate: true,
-        allowInsert: true,
-        allowDelete: true,
-
+      numOfColumnsInGrid: 4,
+      columnSettings: customers => [
+        customers.id,
+        customers.companyName,
+        customers.contactName,
+        customers.country,
+        customers.address,
+        customers.city
+      ]
+    });
+  ordersGrid = new radweb.GridSettings(new models.Orders(),
+    {
+      numOfColumnsInGrid: 4,
+      get: { limit: 4 },
+      allowUpdate: true,
++     onEnterRow: orders =>
++       this.orderDetailsGrid.get({
++         where: orderDetails =>
++           orderDetails.orderID.isEqualTo(orders.id)
++       }),
+      columnSettings: orders => [
+        {
+          column: orders.id,
+          readonly: true
+        },
+        {
+          column: orders.customerID,
+          getValue: orders =>
+            orders.lookup(new models.Customers(), orders.customerID).companyName,
+          click: orders =>
+            this.selectCustomerGrid.showSelectPopup(
+              selectedCustomer =>
+                orders.customerID.value = selectedCustomer.id.value)
+        },
+        orders.orderDate,
+        {
+          column: orders.shipVia,
+          dropDown: {
+            source: new models.Shippers()
+          },
+          cssClass: 'col-sm-3'
+        }
+      ]
+    }
+  );
+  shipInfoArea = this.ordersGrid.addArea({
+    numberOfColumnAreas:2,
+    columnSettings: orders => [
+      orders.requiredDate,
+      orders.shippedDate,
+      orders.shipAddress,
+      orders.shipCity
+    ]
+  });
+  orderDetailsGrid = new radweb.GridSettings(new models.Order_details());
+}
 ```
 
-We'll also only show the order details grid, if an order exists and has an ID
-`src/app/app.component.html`
-```csdiff
-    <!-- Tab panes -->
-    <div class="tab-content">
-        <div class="tab-pane active" id="shipInfo">
-            <data-area [settings]="shipInfoArea"></data-area>
-        </div>
-        <div  class="tab-pane" id="orderDetailsTab">
--           <data-grid [settings]="orderDetails"></data-grid>
-+           <data-grid [settings]="orderDetails" *ngIf="orders.currentRow && orders.currentRow.id"></data-grid>
-        </div>
-    </div>
 
-```
 ![2017 10 15 11H01 47](2017-10-15_11h01_47.gif)

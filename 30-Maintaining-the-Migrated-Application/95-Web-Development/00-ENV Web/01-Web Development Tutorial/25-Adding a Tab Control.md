@@ -1,39 +1,39 @@
 ﻿First let's reduce the number of Order rows in the grid:
 `src/app/app.component.ts`
 ```csdiff
-orders = new models.orders(
-        {
-            numOfColumnsInGrid: 4,
-+           get: { limit:4 },
-            allowUpdate: true,
-            allowInsert: true,
-            allowDelete: true,
+export class AppComponent {
+  selectCustomerGrid = new radweb.GridSettings(new models.Customers(),
+    {
+      numOfColumnsInGrid: 4,
+      columnSettings: customers => [
+        customers.id,
+        customers.companyName,
+        customers.contactName,
+        customers.country,
+        customers.address,
+        customers.city
+      ]
+    });
+  ordersGrid = new radweb.GridSettings(new models.Orders(),
+    {
+      numOfColumnsInGrid: 4,
++     get: { limit: 4 },
+      allowUpdate: true,
+...
 ```
 
-### Bootstrap
-We'll use bootstrap tab controls. See: 
-[Bootstrap tabs](https://getbootstrap.com/docs/3.3/javascript/#tabs)
+### ngx-bootstrap
+We'll use ngx-bootstrap tab controls. See: 
+[ngx-bootstrap tabs](https://valor-software.com/ngx-bootstrap/#/tabs)
 
 In the `src/app/app.component.html`
 ```csdiff
  <h1>Orders</h1>
- <data-grid [settings]="orders"></data-grid>
- <select-popup [settings]="customers"></select-popup>
-+ <div>
-+     <!-- Nav tabs -->
-+     <ul class="nav nav-tabs" role="tablist">
-+         <li class="active"><a href="#tab1" data-toggle="tab">Tab 1</a></li>
-+         <li><a href="#tab2" data-toggle="tab">Tab 2</a></li>
-+     </ul>
-+     <!-- Tab panes -->
-+     <div class="tab-content">
-+         <div class="tab-pane active" id="tab1">
-+             Tab 1 info
-+         </div>
-+         <div  class="tab-pane" id="tab2">
-+             Tab 2 Info
-+         </div>
-+     </div>
-+ </div>
+ <data-grid [settings]="ordersGrid"></data-grid>
+ <select-popup [settings]="selectCustomerGrid"></select-popup>
++ <tabset>
++   <tab heading='Tab 1'>Tab 1 content</tab>
++   <tab heading='Tab 2'>Tab 2 content</tab>
++ </tabset>
 ```
 ![Basic Tabs](Basic-Tabs.png)

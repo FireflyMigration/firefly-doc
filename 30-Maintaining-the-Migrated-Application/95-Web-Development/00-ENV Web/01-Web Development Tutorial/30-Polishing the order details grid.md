@@ -4,23 +4,26 @@
 
 `src/app/app.component.ts`
 ```csdiff
-+shippers = new models.shippers();
-products = new models.products();
-orderDetails = new models.orderDetails({
-    allowUpdate: true,
-    allowInsert: true,
-    allowDelete: true,
-+   columnSettings: [
-+       { key: "productID", caption: "Product", dropDown: { source: this.products } },
-+       { key: "unitPrice", inputType: "number" },
-+       { key: "quantity", inputType: "number" }
-+   ],
-    onNewRow: od => {
-        od.orderID = this.orders.currentRow.id;
-        od.quantity = 1;
-    }
-});
-orders = new models.orders(
+  orderDetailsGrid = new radweb.GridSettings(new models.Order_details(),
+    {
+      allowUpdate: true,
+      allowDelete: true,
+      allowInsert: true,
+      onNewRow: orderDetail => {
+        orderDetail.orderID.value = this.ordersGrid.currentRow.id.value;
+        orderDetail.quantity.value = 1;
+      },
++     columnSettings: order_details => [
++       {
++         column: order_details.productID,
++         dropDown: {
++           source: new models.Products()
++         }
++       },
++       order_details.unitPrice,
++       order_details.quantity
++     ]
+    });
 ```
 
 ![Polishing The Order Detail Grid](Polishing-the-order-detail-grid.png)

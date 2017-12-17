@@ -1,85 +1,36 @@
 ﻿Let's say that we don't like Mondays, and we want that the date column will display a different background for Mondays
-
-### css expression for a column
-'src/app/app.component.ts'
 ```csdiff
-orders = new models.orders(
+  ordersGrid = new radweb.GridSettings(new models.Orders(),
     {
-        numOfColumnsInGrid: 4,
-        get: { limit: 4 },
-        onEnterRow: o => this.orderDetails.get({ isEqualTo: { orderID: o.id } }),
-        allowUpdate: true,
-        allowInsert: true,
-        allowDelete: true,
-        columnSettings: [
-            { key: "id", caption: "Order ID", readonly: true },
-            {
-                key: "customerID",
-                getValue: o =>
-                    this.customers.lookup.get({ id: o.customerID }).companyName,
-                click: o => this.customers.showSelectPopup(c => o.customerID = c.id)
-            },
-            {
-                key: "orderDate", inputType: "date",
-+               cssClass: o => new Date(o.orderDate).getDay()==1?"danger":""
-            },
-            {
-                key: "shipVia",
-                dropDown: { source: this.shippers },
-                cssClass: 'col-sm-3'
-            }
-        ],
-        rowButtons: [
-            {
-                click: o => window.open('home/print/' + o.id),
-                cssClass: 'btn btn-primary glyphicon glyphicon-print'
-            }
-        ]
-    }
-);
+      numOfColumnsInGrid: 4,
+      get: { limit: 4 },
+      allowUpdate: true,
+      onEnterRow: orders =>
+        this.orderDetailsGrid.get({
+          where: orderDetails =>
+            orderDetails.orderID.isEqualTo(orders.id)
+        }),
+      rowButtons: [
+        {
+          click: orders =>
+            window.open(
+              environment.serverUrl + 'home/print/' + orders.id.value),
+          cssClass: 'btn btn-primary glyphicon glyphicon-print'
+        }
+      ],
++     rowCssClass: orders =>
++       orders.orderDate.getDayOfWeek() == 1 ? "danger" : "",
+      columnSettings: orders => [
+        {
+          column: orders.id,
+          readonly: true
+        },
+        {
+          column: orders.customerID,
+          getValue: orders =>
+            orders.lookup(new models.Customers(), orders.customerID).companyName,
+          click: orders =>
 ```
 
-We're using bootstrap's `danger` css style to highlight Mondays
-
-![Mondays Are Danger](mondays-are-danger.png)
-
-### css expression for the entire row
-`src/app/app.component.ts`
-```csdiff
-orders = new models.orders(
-    {
-        numOfColumnsInGrid: 4,
-        get: { limit: 4 },
-        onEnterRow: o => this.orderDetails.get({ isEqualTo: { orderID: o.id } }),
-        allowUpdate: true,
-        allowInsert: true,
-        allowDelete: true,
-        columnSettings: [
-            { key: "id", caption: "Order ID", readonly: true },
-            {
-                key: "customerID",
-                getValue: o =>
-                    this.customers.lookup.get({ id: o.customerID }).companyName,
-                click: o => this.customers.showSelectPopup(c => o.customerID = c.id)
-            },
-            {
-                key: "orderDate", inputType: "date",
--               cssClass: o => new Date(o.orderDate).getDay()==1?"danger":""
-            },
-            {
-                key: "shipVia",
-                dropDown: { source: this.shippers },
-                cssClass: 'col-sm-3'
-            }
-        ],
-+       rowCssClass: o => new Date(o.orderDate).getDay() == 1 ? "danger" : "",
-        rowButtons: [
-            {
-                click: o => window.open('home/print/' + o.id),
-                cssClass: 'btn btn-primary glyphicon glyphicon-print'
-            }
-        ]
-    }
-);
-```
+you can also do the same with a column
 ![Css Style For The Row](css-style-for-the-row.png)

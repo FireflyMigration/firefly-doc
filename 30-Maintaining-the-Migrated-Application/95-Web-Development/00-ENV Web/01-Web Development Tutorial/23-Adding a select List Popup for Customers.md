@@ -4,44 +4,47 @@
 `src/app/app.component.ts`
 ```csdiff
 export class AppComponent {
-    customers = new models.customers();
-    shippers = new models.shippers();
-    orders = new models.orders(
++ selectCustomerGrid = new radweb.GridSettings(new models.Customers());
+  ordersGrid = new radweb.GridSettings(new models.Orders(),
+    {
+      numOfColumnsInGrid: 4,
+      allowUpdate: true,
+      columnSettings: orders => [
         {
-            numOfColumnsInGrid: 4,
-            allowUpdate: true,
-            allowInsert: true,
-            allowDelete: true,
-            columnSettings: [
-                { key: "id", caption: "Order ID", readonly: true },
-                {
-                    key: "customerID",
-                    getValue: o =>
-                        this.customers.lookup.get({ id: o.customerID }).companyName,
-+                   click: o => this.customers.showSelectPopup(c => o.customerID = c.id)
-                },
-                { key: "orderDate", inputType: "date" },
-                {
-                    key: "shipVia",
-                    dropDown: { source: this.shippers },
-                    cssClass:'col-sm-3'
-                    cssClass: 'col-sm-3'
-
-                },
-                { key: "requiredDate", inputType: "date" },
-                { key: "shippedDate", inputType: "date" },
-                { key: "shipAddress" },
-                { key: "shipCity" },
-            ]
-        }
-    );
+          column: orders.id,
+          readonly: true
+        },
+        {
+          column: orders.customerID,
+          getValue: orders =>
+            orders.lookup(new models.Customers(), orders.customerID).companyName,
++         click: orders =>
++           this.selectCustomerGrid.showSelectPopup(
++             selectedCustomer =>
++               orders.customerID.value = selectedCustomer.id.value)
+        },
+        orders.orderDate,
+        {
+          column: orders.shipVia,
+          dropDown: {
+            source: new models.Shippers()
+          },
+          cssClass:'col-sm-3'
+        },
+        orders.requiredDate,
+        orders.shippedDate,
+        orders.shipAddress,
+        orders.shipCity
+      ]
+    }
+  );
 }
 ```
 `src/app/app.component.html`
 ```csdiff
   <h1>Orders</h1>
-  <data-grid [settings]="orders"></data-grid>
-+ <select-popup [settings]="customers"></select-popup>
+  <data-grid [settings]="ordersGrid"></data-grid>
++ <select-popup [settings]="selectCustomerGrid"></select-popup>
 `
 })
 
@@ -51,18 +54,23 @@ export class AppComponent {
 
 ```csdiff
 export class AppComponent {
-    customers = new models.customers({
-+       numOfColumnsInGrid:4,
-+       columnSettings: [
-+           { key: "id" },
-+           { key: "companyName" },
-+           { key: "contactName" },
-+           { key: "country" },
-+           { key: "address" },
-+           { key: "city" },
-        ]});
-    shippers = new models.shippers();
-    orders = new models.orders(
+  selectCustomerGrid = new radweb.GridSettings(new models.Customers(),
++   {
++     numOfColumnsInGrid:4,
++     columnSettings: customers => [
++       customers.id,
++       customers.companyName,
++       customers.contactName,
++       customers.country,
++       customers.address,
++       customers.city
++     ]
++   });
+  ordersGrid = new radweb.GridSettings(new models.Orders(),
+    {
+      numOfColumnsInGrid: 4,
+      allowUpdate: true,
+
 ```
 
 ## The user experiance

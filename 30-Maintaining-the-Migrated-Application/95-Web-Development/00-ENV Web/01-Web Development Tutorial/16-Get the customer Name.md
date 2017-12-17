@@ -1,51 +1,39 @@
-﻿Add the customers member:
-```csdiff
-...
-export class AppComponent {
-+   customers = new models.customers();
-    orders = new models.orders(
-        {
-            numOfColumnsInGrid:4,
-            columnSettings: [
-                { key: "id", caption: "Order ID", readonly: true },
-                { key: "customerID" },
-...
-```
-
-Get the value from customers:
-
-![2017 10 13 09H08 32](../2017-10-13_09h08_32.gif)
-
-1. we set the `getValue` of the `customerID` column with an `Arrow Function`.
-2. This function receives a parameter of type `order`, the order for which we want to find the customer.
-3. We then call the `lookup.get` function, and search for a customer who's `id` equals the `customerID` or the current `order` (we can filter on any column)
+﻿
+1. We replace the `customerID` column with a column definition, and set it's `column` to `customer.id`
+2. we set the `getValue` of the column with an `Arrow Function`.
+2. This function receives a parameter of type `Orders`, the order for which we want to find the customer.
+3. We then call the `lookup` function, and search for a customer who's `id` equals the `customerID` or the current `Orders` (we can filter on any column)
 4. Then we return the `companyName` column.
 Note how we have intellisense in every step of the way - that's `TypeScript`
 
 ```csdiff
 ...
 export class AppComponent {
-+   customers = new models.customers();
-    orders = new models.orders(
+  ordersGrid = new radweb.GridSettings(new models.Orders(),
+    {
+      numOfColumnsInGrid:4,
+      columnSettings: orders => [
         {
-            numOfColumnsInGrid:4,
-            columnSettings: [
-                { key: "id", caption: "Order ID", readonly: true },
-                {
-                    key: "customerID",
-+                   getValue: o =>
-+                       this.customers.lookup.get({ id: o.customerID }).companyName
-                },
-                { key: "orderDate", inputType: "date" },
-                { key: "shipVia" },
-                { key: "requiredDate", inputType:"date" },
-                { key: "shippedDate" , inputType:"date" },
-                { key: "shipAddress" },
-                { key: "shipCity" },
-            ]
-        }
-    );
+          column: orders.id,
+          readonly: true
+        },
+-       orders.customerID,
++       {
++         column: orders.customerID,
++         getValue: orders => 
++           orders.lookup(new models.Customers(),orders.customerID).companyName,
++       },
+        orders.orderDate,
+        orders.shipVia,
+        orders.requiredDate,
+        orders.shippedDate,
+        orders.shipAddress,
+        orders.shipCity
+      ]
+    }
+  );
 }
+
 ...
 ```
 

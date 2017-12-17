@@ -1,24 +1,26 @@
 ﻿`src/app/app.component.ts` 
 
 ```csdiff
+import { environment } from './../environments/environment';
 import { Component } from '@angular/core';
 import * as models from './models';
+import * as radweb from 'radweb';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+
 })
 export class AppComponent {
-+   orders = new models.orders();
-- title = 'app';
++ ordersGrid = new radweb.GridSettings(new models.Orders());
 }
 ```
 
 `src/app/app.component.html` 
 ```csdiff
 + <h1>Orders</h1>
-+ <data-grid [settings]="orders"></data-grid>
++ <data-grid [settings]="ordersGrid"></data-grid>
 ```
 
 Here is the result:

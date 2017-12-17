@@ -1,66 +1,69 @@
 ﻿`src/app/app.component.ts`
 ```csdiff
 export class AppComponent {
-    customers = new models.customers();
-+   shippers = new models.shippers();
-    orders = new models.orders(
+  ordersGrid = new radweb.GridSettings(new models.Orders(),
+    {
+      numOfColumnsInGrid: 4,
+      allowUpdate: true,
+      columnSettings: orders => [
         {
-            numOfColumnsInGrid: 4,
-            allowUpdate: true,
-            allowInsert: true,
-            allowDelete: true,
-            columnSettings: [
-                { key: "id", caption: "Order ID", readonly: true },
-                {
-                    key: "customerID",
-                    getValue: o =>
-                        this.customers.lookup.get({ id: o.customerID }).companyName
-                },
-                { key: "orderDate", inputType: "date" },
-                {
-                    key: "shipVia",
-+                   dropDown: { source : this.shippers }
-                },
-                { key: "requiredDate", inputType: "date" },
-                { key: "shippedDate", inputType: "date" },
-                { key: "shipAddress" },
-                { key: "shipCity" },
-            ]
-        }
-    );
+          column: orders.id,
+          readonly: true
+        },
+        {
+          column: orders.customerID,
+          getValue: orders =>
+            orders.lookup(new models.Customers(), orders.customerID).companyName,
+        },
+        orders.orderDate,
+-       orders.shipVia,
++       {
++         column: orders.shipVia,
++         dropDown: {
++           source: new models.Shippers()
++         }
++       },
+        orders.requiredDate,
+        orders.shippedDate,
+        orders.shipAddress,
+        orders.shipCity
+      ]
+    }
+  );
 }
 ```
 ### We'll also make the column a bit wider by using bootstrap css classes
 ```csdiff
 export class AppComponent {
-    customers = new models.customers();
-    shippers = new models.shippers();
-    orders = new models.orders(
+  ordersGrid = new radweb.GridSettings(new models.Orders(),
+    {
+      numOfColumnsInGrid: 4,
+      allowUpdate: true,
+      columnSettings: orders => [
         {
-            numOfColumnsInGrid: 4,
-            allowUpdate: true,
-            allowInsert: true,
-            allowDelete: true,
-            columnSettings: [
-                { key: "id", caption: "Order ID", readonly: true },
-                {
-                    key: "customerID",
-                    getValue: o =>
-                        this.customers.lookup.get({ id: o.customerID }).companyName
-                },
-                { key: "orderDate", inputType: "date" },
-                {
-                    key: "shipVia",
-                    dropDown: { source: this.shippers },
-+                   cssClass:'col-sm-3'
-                },
-                { key: "requiredDate", inputType: "date" },
-                { key: "shippedDate", inputType: "date" },
-                { key: "shipAddress" },
-                { key: "shipCity" },
-            ]
-        }
-    );
+          column: orders.id,
+          readonly: true
+        },
+        {
+          column: orders.customerID,
+          getValue: orders =>
+            orders.lookup(new models.Customers(), orders.customerID).companyName,
+        },
+        orders.orderDate,
+        {
+          column: orders.shipVia,
+          dropDown: {
+            source: new models.Shippers()
+          },
++         cssClass:'col-sm-3'
+        },
+        orders.requiredDate,
+        orders.shippedDate,
+        orders.shipAddress,
+        orders.shipCity
+      ]
+    }
+  );
 }
 
 ```
