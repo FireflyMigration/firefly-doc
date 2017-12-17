@@ -31,26 +31,31 @@
                 </div>
                 <div class="content"><h1 id="value-expression-add-a-row-total">Value expression add a row total</h1>
 <p><code>src/app/app.component.ts</code></p>
-<pre data-line="10,11,12,13" class="language-csdiff line-numbers"><code>products = new models.products();
-orderDetails = new models.orderDetails({
-    allowUpdate: true,
-    allowInsert: true,
-    allowDelete: true,
-    columnSettings: [
-        { key: "productID", caption: "Product", dropDown: { source: this.products } },
-        { key: "unitPrice", inputType: "number" },
-        { key: "quantity", inputType: "number" },
+<pre data-line="19,20,21,22,23" class="language-csdiff line-numbers"><code>  orderDetailsGrid = new radweb.GridSettings(new models.Order_details(),
+    {
+      allowUpdate: true,
+      allowDelete: true,
+      allowInsert: true,
+      onNewRow: orderDetail =&gt; {
+        orderDetail.orderID.value = this.ordersGrid.currentRow.id.value;
+        orderDetail.quantity.value = 1;
+      },
+      columnSettings: order_details =&gt; [
         {
-            caption: "total",
-            getValue: o =&gt; (o.quantity * o.unitPrice).toFixed(2)
+          column: order_details.productID,
+          dropDown: {
+            source: new models.Products()
+          }
+        },
+        order_details.unitPrice,
+        order_details.quantity,
+        {
+          caption: 'Total',
+          getValue: orderDetails =&gt;
+            orderDetails.quantity.value * orderDetails.unitPrice.value
         }
-    ],
-    onNewRow: od =&gt; {
-        od.orderID = this.orders.currentRow.id;
-        od.quantity = 1;
-    }
-});
-orders = new models.orders( </code></pre>
+      ]
+    }) </code></pre>
 <p><img src="2017-10-16_06h16_56.gif" alt="2017 10 16 06H16 56" /></p>
 
 

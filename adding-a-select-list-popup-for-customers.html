@@ -35,59 +35,66 @@
 <li>Add a handler for the <code>click</code> of the column - in which we'll call the <code>showSelectPopup</code> method, and send it an arrow function so when the user selects, it'll update the <code>customerID</code> column in the <code>order</code> object based on the <code>id</code> of the selected <code>customer</code> object.</li>
 </ul>
 <p><code>src/app/app.component.ts</code></p>
-<pre data-line="16" class="language-csdiff line-numbers"><code>export class AppComponent {
-    customers = new models.customers();
-    shippers = new models.shippers();
-    orders = new models.orders(
+<pre data-line="2,16,17,18,19" class="language-csdiff line-numbers"><code>export class AppComponent {
+  selectCustomerGrid = new radweb.GridSettings(new models.Customers());
+  ordersGrid = new radweb.GridSettings(new models.Orders(),
+    {
+      numOfColumnsInGrid: 4,
+      allowUpdate: true,
+      columnSettings: orders =&gt; [
         {
-            numOfColumnsInGrid: 4,
-            allowUpdate: true,
-            allowInsert: true,
-            allowDelete: true,
-            columnSettings: [
-                { key: "id", caption: "Order ID", readonly: true },
-                {
-                    key: "customerID",
-                    getValue: o =&gt;
-                        this.customers.lookup.get({ id: o.customerID }).companyName,
-                    click: o =&gt; this.customers.showSelectPopup(c =&gt; o.customerID = c.id)
-                },
-                { key: "orderDate", inputType: "date" },
-                {
-                    key: "shipVia",
-                    dropDown: { source: this.shippers },
-                    cssClass:'col-sm-3'
-                    cssClass: 'col-sm-3'
-
-                },
-                { key: "requiredDate", inputType: "date" },
-                { key: "shippedDate", inputType: "date" },
-                { key: "shipAddress" },
-                { key: "shipCity" },
-            ]
-        }
-    );
+          column: orders.id,
+          readonly: true
+        },
+        {
+          column: orders.customerID,
+          getValue: orders =&gt;
+            orders.lookup(new models.Customers(), orders.customerID).companyName,
+          click: orders =&gt;
+            this.selectCustomerGrid.showSelectPopup(
+              selectedCustomer =&gt;
+                orders.customerID.value = selectedCustomer.id.value)
+        },
+        orders.orderDate,
+        {
+          column: orders.shipVia,
+          dropDown: {
+            source: new models.Shippers()
+          },
+          cssClass:'col-sm-3'
+        },
+        orders.requiredDate,
+        orders.shippedDate,
+        orders.shipAddress,
+        orders.shipCity
+      ]
+    }
+  );
 } </code></pre>
 <p><code>src/app/app.component.html</code></p>
 <pre data-line="3" class="language-csdiff line-numbers"><code>  &lt;h1&gt;Orders&lt;/h1&gt;
-  &lt;data-grid [settings]="orders"&gt;&lt;/data-grid&gt;
-  &lt;select-popup [settings]="customers"&gt;&lt;/select-popup&gt;
+  &lt;data-grid [settings]="ordersGrid"&gt;&lt;/data-grid&gt;
+  &lt;select-popup [settings]="selectCustomerGrid"&gt;&lt;/select-popup&gt;
 `
 }) </code></pre>
 <h2 id="customise-the-select-popup-info">Customise the select popup info</h2>
-<pre data-line="3,4,5,6,7,8,9,10" class="language-csdiff line-numbers"><code>export class AppComponent {
-    customers = new models.customers({
-        numOfColumnsInGrid:4,
-        columnSettings: [
-            { key: "id" },
-            { key: "companyName" },
-            { key: "contactName" },
-            { key: "country" },
-            { key: "address" },
-            { key: "city" },
-        ]});
-    shippers = new models.shippers();
-    orders = new models.orders( </code></pre>
+<pre data-line="3,4,5,6,7,8,9,10,11,12,13" class="language-csdiff line-numbers"><code>export class AppComponent {
+  selectCustomerGrid = new radweb.GridSettings(new models.Customers(),
+    {
+      numOfColumnsInGrid:4,
+      columnSettings: customers =&gt; [
+        customers.id,
+        customers.companyName,
+        customers.contactName,
+        customers.country,
+        customers.address,
+        customers.city
+      ]
+    });
+  ordersGrid = new radweb.GridSettings(new models.Orders(),
+    {
+      numOfColumnsInGrid: 4,
+      allowUpdate: true, </code></pre>
 <h2 id="the-user-experiance">The user experiance</h2>
 <p><img src="2017-10-15_09h13_21.gif" alt="2017 10 15 09H13 21" /></p>
 

@@ -32,36 +32,36 @@
                 <div class="content"><h1 id="adding-a-tab-control">Adding a Tab Control</h1>
 <p>First let's reduce the number of Order rows in the grid:
 <code>src/app/app.component.ts</code></p>
-<pre data-line="4" class="language-csdiff line-numbers"><code>orders = new models.orders(
-        {
-            numOfColumnsInGrid: 4,
-            get: { limit:4 },
-            allowUpdate: true,
-            allowInsert: true,
-            allowDelete: true, </code></pre>
-<h3 id="bootstrap">Bootstrap</h3>
-<p>We'll use bootstrap tab controls. See:
-<a href="https://getbootstrap.com/docs/3.3/javascript/#tabs">Bootstrap tabs</a></p>
+<pre data-line="17" class="language-csdiff line-numbers"><code>export class AppComponent {
+  selectCustomerGrid = new radweb.GridSettings(new models.Customers(),
+    {
+      numOfColumnsInGrid: 4,
+      columnSettings: customers =&gt; [
+        customers.id,
+        customers.companyName,
+        customers.contactName,
+        customers.country,
+        customers.address,
+        customers.city
+      ]
+    });
+  ordersGrid = new radweb.GridSettings(new models.Orders(),
+    {
+      numOfColumnsInGrid: 4,
+      get: { limit: 4 },
+      allowUpdate: true,
+... </code></pre>
+<h3 id="ngx-bootstrap">ngx-bootstrap</h3>
+<p>We'll use ngx-bootstrap tab controls. See:
+<a href="https://valor-software.com/ngx-bootstrap/#/tabs">ngx-bootstrap tabs</a></p>
 <p>In the <code>src/app/app.component.html</code></p>
-<pre data-line="4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19" class="language-csdiff line-numbers"><code> &lt;h1&gt;Orders&lt;/h1&gt;
- &lt;data-grid [settings]="orders"&gt;&lt;/data-grid&gt;
- &lt;select-popup [settings]="customers"&gt;&lt;/select-popup&gt;
-  &lt;div&gt;
-      &lt;!-- Nav tabs --&gt;
-      &lt;ul class="nav nav-tabs" role="tablist"&gt;
-          &lt;li class="active"&gt;&lt;a href="#tab1" data-toggle="tab"&gt;Tab 1&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href="#tab2" data-toggle="tab"&gt;Tab 2&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;!-- Tab panes --&gt;
-      &lt;div class="tab-content"&gt;
-          &lt;div class="tab-pane active" id="tab1"&gt;
-              Tab 1 info
-          &lt;/div&gt;
-          &lt;div  class="tab-pane" id="tab2"&gt;
-              Tab 2 Info
-          &lt;/div&gt;
-      &lt;/div&gt;
-  &lt;/div&gt; </code></pre>
+<pre data-line="4,5,6,7" class="language-csdiff line-numbers"><code> &lt;h1&gt;Orders&lt;/h1&gt;
+ &lt;data-grid [settings]="ordersGrid"&gt;&lt;/data-grid&gt;
+ &lt;select-popup [settings]="selectCustomerGrid"&gt;&lt;/select-popup&gt;
+  &lt;tabset&gt;
+    &lt;tab heading='Tab 1'&gt;Tab 1 content&lt;/tab&gt;
+    &lt;tab heading='Tab 2'&gt;Tab 2 content&lt;/tab&gt;
+  &lt;/tabset&gt; </code></pre>
 <p><img src="Basic-Tabs.png" alt="Basic Tabs" /></p>
 
 

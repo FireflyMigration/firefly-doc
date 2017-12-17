@@ -36,97 +36,100 @@
 </ul>
 <p><img src="../2017-10-13_08h19_37.gif" alt="2017 10 13 08H19 37" /></p>
 <p><code>src/app/models.ts</code></p>
-<pre data-line="14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92" class="language-csdiff line-numbers"><code>import { environment } from './../environments/environment';
+<pre data-line="4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96" class="language-csdiff line-numbers"><code>import { environment } from './../environments/environment';
 import * as radweb from 'radweb';
 
-export class categories extends radweb.DataSettings&lt;category&gt;{
-    constructor(settings?: radweb.IDataSettings&lt;category&gt;) {
-        super(environment.apiUrl + '/dataapi/categories', settings);
-    }
+export class Categories extends radweb.Entity&lt;number&gt; {
+   id = new radweb.NumberColumn('CategoryID');
+   categoryName = new radweb.StringColumn();
+   description = new radweb.StringColumn();
+
+   constructor() {
+       super(() =&gt; new Categories(), environment.dataSource, 'Categories');
+       this.initColumns();
+   }
 }
-export interface category {
-    id?: number;
-    categoryName?: string;
-    description?: string;
+export class Orders extends radweb.Entity&lt;number&gt; {
+   id = new radweb.NumberColumn('OrderID');
+   customerID = new radweb.StringColumn();
+   employeeID = new radweb.NumberColumn();
+   orderDate = new radweb.DateColumn();
+   requiredDate = new radweb.DateColumn();
+   shippedDate = new radweb.DateColumn();
+   shipVia = new radweb.NumberColumn();
+   freight = new radweb.NumberColumn();
+   shipName = new radweb.StringColumn();
+   shipAddress = new radweb.StringColumn();
+   shipCity = new radweb.StringColumn();
+   shipRegion = new radweb.StringColumn();
+   shipPostalCode = new radweb.StringColumn();
+   shipCountry = new radweb.StringColumn();
+
+   constructor() {
+       super(() =&gt; new Orders(), environment.dataSource, 'Orders');
+       this.initColumns();
+   }
 }
-export class orders extends radweb.DataSettings&lt;order&gt;{
-     constructor(settings?: radweb.IDataSettings&lt;order&gt;) {
-         super(environment.apiUrl + '/dataapi/orders', settings);
-     }
+
+export class Order_details extends radweb.Entity&lt;string&gt; {
+   orderID = new radweb.NumberColumn();
+   productID = new radweb.NumberColumn();
+   unitPrice = new radweb.NumberColumn();
+   quantity = new radweb.NumberColumn();
+   discount = new radweb.NumberColumn();
+   id = new radweb.StringColumn();
+
+   constructor() {
+       super(() =&gt; new Order_details(), environment.dataSource, 'Order_details');
+       this.initColumns();
+   }
 }
-export interface order {
-     id?: number;
-     customerID?: string;
-     employeeID?: number;
-     orderDate?: string;
-     requiredDate?: string;
-     shippedDate?: string;
-     shipVia?: number;
-     freight?: number;
-     shipName?: string;
-     shipAddress?: string;
-     shipCity?: string;
-     shipRegion?: string;
-     shipPostalCode?: string;
-     shipCountry?: string;
+
+export class Customers extends radweb.Entity&lt;string&gt; {
+   id = new radweb.StringColumn('CustomerID');
+   companyName = new radweb.StringColumn();
+   contactName = new radweb.StringColumn();
+   contactTitle = new radweb.StringColumn();
+   address = new radweb.StringColumn();
+   city = new radweb.StringColumn();
+   region = new radweb.StringColumn();
+   postalCode = new radweb.StringColumn();
+   country = new radweb.StringColumn();
+   phone = new radweb.StringColumn();
+   fax = new radweb.StringColumn();
+
+   constructor() {
+       super(() =&gt; new Customers(), environment.dataSource, 'Customers');
+       this.initColumns();
+   }
 }
-export class orderDetails extends radweb.DataSettings&lt;orderDetail&gt;{
-     constructor(settings?: radweb.IDataSettings&lt;orderDetail&gt;) {
-         super(environment.apiUrl + '/dataapi/orderDetails', settings);
-     }
+export class Products extends radweb.Entity&lt;number&gt; {
+   id = new radweb.NumberColumn('ProductID');
+   productName = new radweb.StringColumn();
+   supplierID = new radweb.NumberColumn();
+   categoryID = new radweb.NumberColumn();
+   quantityPerUnit = new radweb.StringColumn();
+   unitPrice = new radweb.NumberColumn();
+   unitsInStock = new radweb.NumberColumn();
+   unitsOnOrder = new radweb.NumberColumn();
+   reorderLevel = new radweb.NumberColumn();
+   discontinued = new radweb.BoolColumn();
+
+   constructor() {
+       super(() =&gt; new Products(), environment.dataSource, 'Products');
+       this.initColumns();
+   }
 }
-export interface orderDetail {
-     orderID?: number;
-     productID?: number;
-     unitPrice?: number;
-     quantity?: number;
-     discount?: number;
-     id?: string;
-}
-export class customers extends radweb.DataSettings&lt;customer&gt;{
-     constructor(settings?: radweb.IDataSettings&lt;customer&gt;) {
-         super(environment.apiUrl + '/dataapi/customers', settings);
-     }
-}
-export interface customer {
-     id?: string;
-     companyName?: string;
-     contactName?: string;
-     contactTitle?: string;
-     address?: string;
-     city?: string;
-     region?: string;
-     postalCode?: string;
-     country?: string;
-     phone?: string;
-     fax?: string;
-}
-export class shippers extends radweb.DataSettings&lt;shipper&gt;{
-     constructor(settings?: radweb.IDataSettings&lt;shipper&gt;) {
-         super(environment.apiUrl + '/dataapi/shippers', settings);
-     }
-}
-export interface shipper {
-     id?: number;
-     companyName?: string;
-     phone?: string;
-}
-export class products extends radweb.DataSettings&lt;product&gt;{
-     constructor(settings?: radweb.IDataSettings&lt;product&gt;) {
-         super(environment.apiUrl + '/dataapi/products', settings);
-     }
-}
-export interface product {
-     id?: number;
-     productName?: string;
-     supplierID?: number;
-     categoryID?: number;
-     quantityPerUnit?: string;
-     unitPrice?: number;
-     unitsInStock?: number;
-     unitsOnOrder?: number;
-     reorderLevel?: number;
-     discontinued?: boolean;
+
+export class Shippers extends radweb.Entity&lt;number&gt; {
+   id = new radweb.NumberColumn('ShipperID');
+   companyName = new radweb.StringColumn();
+   phone = new radweb.StringColumn();
+
+   constructor() {
+       super(() =&gt; new Shippers(), environment.dataSource, 'Shippers');
+       this.initColumns();
+   }
 } </code></pre>
 
 

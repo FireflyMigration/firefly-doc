@@ -31,15 +31,16 @@
                 </div>
                 <div class="content"><h1 id="make-the-grid-updatable">Make the grid updatable</h1>
 <p>Set the <code>allowUpdate</code> property to true, and the grid is now updatable.</p>
-<pre data-line="4" class="language-csdiff line-numbers"><code>    orders = new models.orders(
+<pre data-line="5" class="language-csdiff line-numbers"><code>export class AppComponent {
+  ordersGrid = new radweb.GridSettings(new models.Orders(),
+    {
+      numOfColumnsInGrid: 4,
+      allowUpdate:true,
+      columnSettings: orders =&gt; [
         {
-            numOfColumnsInGrid: 4,
-            allowUpdate:true,
-            columnSettings: [
-                { key: "id", caption: "Order ID", readonly: true },
-                {
-                    key: "customerID",
-                    getValue: o =&gt; </code></pre>
+          column: orders.id,
+          readonly: true
+        }, </code></pre>
 <p>The screen should look like this:</p>
 <p><img src="img07-Updatable-Orders-Screen.png" alt="07 Updatable Orders Screen" /></p>
 <ul>

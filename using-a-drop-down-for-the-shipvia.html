@@ -31,65 +31,68 @@
                 </div>
                 <div class="content"><h1 id="using-a-drop-down-for-the-shipvia">Using a drop down for the ShipVia</h1>
 <p><code>src/app/app.component.ts</code></p>
-<pre data-line="3,20" class="language-csdiff line-numbers"><code>export class AppComponent {
-    customers = new models.customers();
-    shippers = new models.shippers();
-    orders = new models.orders(
+<pre data-line="18,19,20,21,22,23" class="language-csdiff line-numbers"><code>export class AppComponent {
+  ordersGrid = new radweb.GridSettings(new models.Orders(),
+    {
+      numOfColumnsInGrid: 4,
+      allowUpdate: true,
+      columnSettings: orders =&gt; [
         {
-            numOfColumnsInGrid: 4,
-            allowUpdate: true,
-            allowInsert: true,
-            allowDelete: true,
-            columnSettings: [
-                { key: "id", caption: "Order ID", readonly: true },
-                {
-                    key: "customerID",
-                    getValue: o =&gt;
-                        this.customers.lookup.get({ id: o.customerID }).companyName
-                },
-                { key: "orderDate", inputType: "date" },
-                {
-                    key: "shipVia",
-                    dropDown: { source : this.shippers }
-                },
-                { key: "requiredDate", inputType: "date" },
-                { key: "shippedDate", inputType: "date" },
-                { key: "shipAddress" },
-                { key: "shipCity" },
-            ]
-        }
-    );
+          column: orders.id,
+          readonly: true
+        },
+        {
+          column: orders.customerID,
+          getValue: orders =&gt;
+            orders.lookup(new models.Customers(), orders.customerID).companyName,
+        },
+        orders.orderDate,
+-       orders.shipVia,
+        {
+          column: orders.shipVia,
+          dropDown: {
+            source: new models.Shippers()
+          }
+        },
+        orders.requiredDate,
+        orders.shippedDate,
+        orders.shipAddress,
+        orders.shipCity
+      ]
+    }
+  );
 } </code></pre>
 <h3 id="well-also-make-the-column-a-bit-wider-by-using-bootstrap-css-classes">We'll also make the column a bit wider by using bootstrap css classes</h3>
-<pre data-line="21" class="language-csdiff line-numbers"><code>export class AppComponent {
-    customers = new models.customers();
-    shippers = new models.shippers();
-    orders = new models.orders(
+<pre data-line="22" class="language-csdiff line-numbers"><code>export class AppComponent {
+  ordersGrid = new radweb.GridSettings(new models.Orders(),
+    {
+      numOfColumnsInGrid: 4,
+      allowUpdate: true,
+      columnSettings: orders =&gt; [
         {
-            numOfColumnsInGrid: 4,
-            allowUpdate: true,
-            allowInsert: true,
-            allowDelete: true,
-            columnSettings: [
-                { key: "id", caption: "Order ID", readonly: true },
-                {
-                    key: "customerID",
-                    getValue: o =&gt;
-                        this.customers.lookup.get({ id: o.customerID }).companyName
-                },
-                { key: "orderDate", inputType: "date" },
-                {
-                    key: "shipVia",
-                    dropDown: { source: this.shippers },
-                    cssClass:'col-sm-3'
-                },
-                { key: "requiredDate", inputType: "date" },
-                { key: "shippedDate", inputType: "date" },
-                { key: "shipAddress" },
-                { key: "shipCity" },
-            ]
-        }
-    );
+          column: orders.id,
+          readonly: true
+        },
+        {
+          column: orders.customerID,
+          getValue: orders =&gt;
+            orders.lookup(new models.Customers(), orders.customerID).companyName,
+        },
+        orders.orderDate,
+        {
+          column: orders.shipVia,
+          dropDown: {
+            source: new models.Shippers()
+          },
+          cssClass:'col-sm-3'
+        },
+        orders.requiredDate,
+        orders.shippedDate,
+        orders.shipAddress,
+        orders.shipCity
+      ]
+    }
+  );
 } </code></pre>
 <h3 id="the-user-experiance">the User Experiance</h3>
 <ul>

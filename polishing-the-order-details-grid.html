@@ -36,23 +36,26 @@
 <li>set the input type for unitPrice and quantity</li>
 </ul>
 <p><code>src/app/app.component.ts</code></p>
-<pre data-line="1,7,8,9,10,11" class="language-csdiff line-numbers"><code>shippers = new models.shippers();
-products = new models.products();
-orderDetails = new models.orderDetails({
-    allowUpdate: true,
-    allowInsert: true,
-    allowDelete: true,
-    columnSettings: [
-        { key: "productID", caption: "Product", dropDown: { source: this.products } },
-        { key: "unitPrice", inputType: "number" },
-        { key: "quantity", inputType: "number" }
-    ],
-    onNewRow: od =&gt; {
-        od.orderID = this.orders.currentRow.id;
-        od.quantity = 1;
-    }
-});
-orders = new models.orders( </code></pre>
+<pre data-line="10,11,12,13,14,15,16,17,18,19" class="language-csdiff line-numbers"><code>  orderDetailsGrid = new radweb.GridSettings(new models.Order_details(),
+    {
+      allowUpdate: true,
+      allowDelete: true,
+      allowInsert: true,
+      onNewRow: orderDetail =&gt; {
+        orderDetail.orderID.value = this.ordersGrid.currentRow.id.value;
+        orderDetail.quantity.value = 1;
+      },
+      columnSettings: order_details =&gt; [
+        {
+          column: order_details.productID,
+          dropDown: {
+            source: new models.Products()
+          }
+        },
+        order_details.unitPrice,
+        order_details.quantity
+      ]
+    }); </code></pre>
 <p><img src="Polishing-the-order-detail-grid.png" alt="Polishing The Order Detail Grid" /></p>
 
 

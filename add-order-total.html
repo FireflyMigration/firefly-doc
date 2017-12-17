@@ -31,57 +31,52 @@
                 </div>
                 <div class="content"><h1 id="add-order-total">Add order total</h1>
 <p><code>src/app/app.component.ts</code></p>
-<pre data-line="20,21,22,23,24,25" class="language-csdiff line-numbers"><code>products = new models.products();
-orderDetails = new models.orderDetails({
-    allowUpdate: true,
-    allowInsert: true,
-    allowDelete: true,
-    columnSettings: [
-        { key: "productID", caption: "Product", dropDown: { source: this.products } },
-        { key: "unitPrice", inputType: "number" },
-        { key: "quantity", inputType: "number" },
+<pre data-line="26,27,28,29,30,31,32" class="language-csdiff line-numbers"><code>  orderDetailsGrid = new radweb.GridSettings(new models.Order_details(),
+    {
+      allowUpdate: true,
+      allowDelete: true,
+      allowInsert: true,
+      onNewRow: orderDetail =&gt; {
+        orderDetail.orderID.value = this.ordersGrid.currentRow.id.value;
+        orderDetail.quantity.value = 1;
+      },
+      columnSettings: order_details =&gt; [
         {
-            caption: "total",
-            getValue: o =&gt; (o.quantity * o.unitPrice).toLocaleString()
+          column: order_details.productID,
+          dropDown: {
+            source: new models.Products()
+          }
+        },
+        order_details.unitPrice,
+        order_details.quantity,
+        {
+          caption: 'Total',
+          getValue: orderDetails =&gt;
+            orderDetails.quantity.value * orderDetails.unitPrice.value
         }
-    ],
-    onNewRow: od =&gt; {
-        od.orderID = this.orders.currentRow.id;
-        od.quantity = 1;
-    }
-});
-getOrderTotal() {
-     let result = 0;
-     this.orderDetails.items.forEach(od =&gt;
-         result += od.unitPrice * od.quantity);
-     return result.toFixed(2);
-}
-orders = new models.orders( </code></pre>
+      ]
+    });
+  getOrderTotal() {
+    let result = 0;
+    this.orderDetailsGrid.items.forEach(
+      orderDetail =&gt;
+        result += orderDetail.quantity.value * orderDetail.unitPrice.value);
+    return result.toFixed(2);
+  }
+} </code></pre>
 <p><code>src/app/app.component.html</code></p>
-<pre data-line="11" class="language-csdiff line-numbers"><code> &lt;h1&gt;Orders&lt;/h1&gt;
- &lt;data-grid [settings]="orders"&gt;&lt;/data-grid&gt;
- &lt;select-popup [settings]="customers"&gt;&lt;/select-popup&gt;
- &lt;div&gt;
-     &lt;!-- Nav tabs --&gt;
-     &lt;ul class="nav nav-tabs" role="tablist"&gt;
-         &lt;li class="active"&gt;&lt;a href="#shipInfo" data-toggle="tab"&gt;Ship Info&lt;/a&gt;&lt;/li&gt;
-         &lt;li&gt;
-             &lt;a href="#orderDetailsTab" data-toggle="tab"&gt;
--                Order Details
-                 Order Details, Total:{{getOrderTotal()}}
-             &lt;/a&gt;
-         &lt;/li&gt;
-     &lt;/ul&gt;
-     &lt;!-- Tab panes --&gt;
-     &lt;div class="tab-content"&gt;
-         &lt;div class="tab-pane active" id="shipInfo"&gt;
-             &lt;data-area [settings]="shipInfoArea"&gt;&lt;/data-area&gt;
-         &lt;/div&gt;
-         &lt;div class="tab-pane" id="orderDetailsTab"&gt;
-             &lt;data-grid [settings]="orderDetails" *ngIf="orders.currentRow &amp;&amp; orders.currentRow.id"&gt;&lt;/data-grid&gt;
-         &lt;/div&gt;
-     &lt;/div&gt;
- &lt;/div&gt; </code></pre>
+<pre data-line="9" class="language-csdiff line-numbers"><code> &lt;h1&gt;Orders&lt;/h1&gt;
+ &lt;data-grid [settings]="ordersGrid"&gt;&lt;/data-grid&gt;
+ &lt;select-popup [settings]="selectCustomerGrid"&gt;&lt;/select-popup&gt;
+ &lt;tabset&gt;
+   &lt;tab heading='Ship Info'&gt;
+     &lt;data-area [settings]="shipInfoArea"&gt;&lt;/data-area&gt;
+   &lt;/tab&gt;
+-  &lt;tab heading='Order Details'&gt;
+   &lt;tab heading='Order Details {{getOrderTotal()}}'&gt;
+     &lt;data-grid [settings]="orderDetailsGrid"&gt;&lt;/data-grid&gt;
+   &lt;/tab&gt;
+ &lt;/tabset&gt; </code></pre>
 <p><img src="2017-10-16_06h22_50.gif" alt="2017 10 16 06H22 50" /></p>
 
 

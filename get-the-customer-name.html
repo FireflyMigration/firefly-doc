@@ -30,49 +30,41 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="get-the-customer-name">Get the customer Name</h1>
-<p>Add the customers member:</p>
-<pre data-line="3" class="language-csdiff line-numbers"><code>...
-export class AppComponent {
-    customers = new models.customers();
-    orders = new models.orders(
-        {
-            numOfColumnsInGrid:4,
-            columnSettings: [
-                { key: "id", caption: "Order ID", readonly: true },
-                { key: "customerID" },
-... </code></pre>
-<p>Get the value from customers:</p>
-<p><img src="../2017-10-13_09h08_32.gif" alt="2017 10 13 09H08 32" /></p>
 <ol>
-<li>we set the <code>getValue</code> of the <code>customerID</code> column with an <code>Arrow Function</code>.</li>
-<li>This function receives a parameter of type <code>order</code>, the order for which we want to find the customer.</li>
-<li>We then call the <code>lookup.get</code> function, and search for a customer who's <code>id</code> equals the <code>customerID</code> or the current <code>order</code> (we can filter on any column)</li>
+<li>We replace the <code>customerID</code> column with a column definition, and set it's <code>column</code> to <code>customer.id</code></li>
+<li>we set the <code>getValue</code> of the column with an <code>Arrow Function</code>.</li>
+<li>This function receives a parameter of type <code>Orders</code>, the order for which we want to find the customer.</li>
+<li>We then call the <code>lookup</code> function, and search for a customer who's <code>id</code> equals the <code>customerID</code> or the current <code>Orders</code> (we can filter on any column)</li>
 <li>Then we return the <code>companyName</code> column.
 Note how we have intellisense in every step of the way - that's <code>TypeScript</code></li>
 </ol>
-<pre data-line="3,11,12" class="language-csdiff line-numbers"><code>...
+<pre data-line="12,13,14,15,16" class="language-csdiff line-numbers"><code>...
 export class AppComponent {
-    customers = new models.customers();
-    orders = new models.orders(
+  ordersGrid = new radweb.GridSettings(new models.Orders(),
+    {
+      numOfColumnsInGrid:4,
+      columnSettings: orders =&gt; [
         {
-            numOfColumnsInGrid:4,
-            columnSettings: [
-                { key: "id", caption: "Order ID", readonly: true },
-                {
-                    key: "customerID",
-                    getValue: o =&gt;
-                        this.customers.lookup.get({ id: o.customerID }).companyName
-                },
-                { key: "orderDate", inputType: "date" },
-                { key: "shipVia" },
-                { key: "requiredDate", inputType:"date" },
-                { key: "shippedDate" , inputType:"date" },
-                { key: "shipAddress" },
-                { key: "shipCity" },
-            ]
-        }
-    );
+          column: orders.id,
+          readonly: true
+        },
+-       orders.customerID,
+        {
+          column: orders.customerID,
+          getValue: orders =&gt; 
+            orders.lookup(new models.Customers(),orders.customerID).companyName,
+        },
+        orders.orderDate,
+        orders.shipVia,
+        orders.requiredDate,
+        orders.shippedDate,
+        orders.shipAddress,
+        orders.shipCity
+      ]
+    }
+  );
 }
+
 ... </code></pre>
 <p>Here is the result:</p>
 <p><img src="../2017-10-13_09h06_36.png" alt="2017 10 13 09H06 36" /></p>

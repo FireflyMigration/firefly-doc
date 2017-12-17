@@ -31,21 +31,23 @@
                 </div>
                 <div class="content"><h1 id="display-all-the-orders-on-a-data-grid">Display all the Orders on a data grid</h1>
 <p><code>src/app/app.component.ts</code></p>
-<pre data-line="10" class="language-csdiff line-numbers"><code>import { Component } from '@angular/core';
+<pre data-line="13" class="language-csdiff line-numbers"><code>import { environment } from './../environments/environment';
+import { Component } from '@angular/core';
 import * as models from './models';
+import * as radweb from 'radweb';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+
 })
 export class AppComponent {
-    orders = new models.orders();
-- title = 'app';
+  ordersGrid = new radweb.GridSettings(new models.Orders());
 } </code></pre>
 <p><code>src/app/app.component.html</code></p>
 <pre data-line="1,2" class="language-csdiff line-numbers"><code>  &lt;h1&gt;Orders&lt;/h1&gt;
-  &lt;data-grid [settings]="orders"&gt;&lt;/data-grid&gt; </code></pre>
+  &lt;data-grid [settings]="ordersGrid"&gt;&lt;/data-grid&gt; </code></pre>
 <p>Here is the result:</p>
 <p><img src="../2017-10-13_08h29_23.png" alt="2017 10 13 08H29 23" /></p>
 <p>By default the grid will display the first 5 columns on a grid, and all other columns below the grid in a <code>data-area</code></p>

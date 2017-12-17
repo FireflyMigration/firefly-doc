@@ -32,34 +32,25 @@
                 <div class="content"><h1 id="setting-the-orderid-in-the-order-details-based-on-the-the-current-order">Setting the orderID in the Order Details Based on the the current order</h1>
 <p>Let's start by allowing insert, update and delete for <code>orderDetails</code>
 <code>src/app/app.component.ts</code></p>
-<pre data-line="3,4,5" class="language-csdiff line-numbers"><code>shippers = new models.shippers();
-orderDetails = new models.orderDetails({
-        allowUpdate: true,
-        allowInsert: true,
-        allowDelete: true
+<pre data-line="2,3,4,5,6" class="language-csdiff line-numbers"><code>  orderDetailsGrid = new radweb.GridSettings(new models.Order_details(),
+    {
+      allowUpdate: true,
+      allowDelete: true,
+      allowInsert:true
     });
-orders = new models.orders( </code></pre>
-<p>Now lets use the <code>onNewRow</code> event to set the default for order id</p>
-<pre data-line="6" class="language-csdiff line-numbers"><code>shippers = new models.shippers();
-orderDetails = new models.orderDetails({
-    allowUpdate: true,
-    allowInsert: true,
-    allowDelete: true,
-    onNewRow: od =&gt; od.orderID = this.orders.currentRow.id
-});
-orders = new models.orders( </code></pre>
-<p>Let's extend that to also set the default for quantity to 1. We'll change the arrow function to be a multi line one.</p>
-<pre data-line="6,7,8,9" class="language-csdiff line-numbers"><code>orderDetails = new models.orderDetails({
-    allowUpdate: true,
-    allowInsert: true,
-    allowDelete: true,
--   onNewRow: od =&gt; od.orderID = this.orders.currentRow.id
-    onNewRow: od =&gt; {
-        od.orderID = this.orders.currentRow.id;
-        od.quantity = 1;
-    }
-});
-orders = new models.orders( </code></pre>
+} </code></pre>
+<p>Now lets use the <code>onNewRow</code> event to set the default for order id
+Let's extend that to also set the default for quantity to 1. We'll change the arrow function to be a multi line one.</p>
+<pre data-line="6,7,8,9" class="language-csdiff line-numbers"><code>orderDetailsGrid = new radweb.GridSettings(new models.Order_details(),
+    {
+      allowUpdate: true,
+      allowDelete: true,
+      allowInsert: true,
+      onNewRow: orderDetail =&gt; {
+        orderDetail.orderID.value = this.ordersGrid.currentRow.id.value;
+        orderDetail.quantity.value = 1;
+      }
+    }); </code></pre>
 
 
 
