@@ -16,6 +16,14 @@ protected override void OnLoad()
 }
 ``` 
 
+Condition as an expression:
+
+```csdiff   
+protected override void OnLoad()
+{
++     AllowSelectOrderBy = ENV.Security.UserManager.CurrentUser.Name == "SUPERVISOR";
+}
+```        
     
 
 
