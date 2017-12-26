@@ -17,6 +17,14 @@ protected override void OnLoad()
 ``` 
 
     
+Condition as an expression:
+
+```csdiff   
+protected override void OnLoad()
+{
++     BindAllowUpdate(() => ENV.Security.UserManager.CurrentUser.Name == "SUPERVISOR");
+}
+```        
 
 
 
