@@ -38,6 +38,11 @@ Location in migrated code: <strong>OnLoad</strong></p>
 {
      AllowIncrementalSearch = false;
 } </code></pre>
+<p>Condition as an expression:</p>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+      BindAllowIncrementalSearch(() =&gt; ENV.Security.UserManager.CurrentUser.Name == "SUPERVISOR");
+} </code></pre>
 <h2 id="property-values">Property Values</h2>
 <p>True or false. The default is <strong>True</strong> which is Allow Locate in query = Yes in Magic</p>
 
