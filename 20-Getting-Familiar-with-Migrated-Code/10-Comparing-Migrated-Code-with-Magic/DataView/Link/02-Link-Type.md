@@ -9,10 +9,15 @@ The Relation type in the migrated code is sent as parameter to the Relations.Add
 For example:  
 
 ```csdiff
-Relations.Add(Customers, RelationType.Find, Customers.CustomerID.IsEqualTo(Orders.CustomerID);
+   void InitializeDataView()
+   {
+     From = Orders;
+ 
+     Relations.Add(Customers, RelationType.Find, Customers.CustomerID.IsEqualTo(Orders.CustomerID);
+   }
 ```
-```
-```
+
+
 
 The following table shows the .Net equivalents for Magic link types.
 
