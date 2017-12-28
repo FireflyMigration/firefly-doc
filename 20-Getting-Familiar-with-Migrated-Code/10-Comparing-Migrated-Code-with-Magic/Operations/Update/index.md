@@ -1,9 +1,24 @@
-﻿Name in Magic: **Update**  
-***
+﻿keywords: Update operation
 
-In Magic we used updated operation in the migrated code you will find a field assignment
+![Update](Update.png)
 
-Example:
-````
-v_LineTotal.Value = OrderDetails.UnitPrice * OrderDetails.Quantity - OrderDetails.Discount;
-````
+
+### Migrated Code Examples:
+
+**Simple update**
+```csdiff
+Num1.SilentSet(Num1 + Num2);
+```
+
+
+**Using Force update = Yes**
+```csdiff
+Num1.Value = 3;
+DenyUndoForCurrentRow();
+```
+
+**Using Incremental update = Yes**
+```csdiff
+Num1.AddDeltaOf(() => 5);
+```
+
