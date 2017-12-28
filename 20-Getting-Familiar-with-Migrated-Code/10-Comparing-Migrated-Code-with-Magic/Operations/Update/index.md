@@ -19,6 +19,7 @@ DenyUndoForCurrentRow();
 
 **Using Incremental update = Yes**
 ```csdiff
-Num1.AddDeltaOf(() => 5);
+Num1.Value = 3;
+DenyUndoForCurrentRow();
 ```
 
