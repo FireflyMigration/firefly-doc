@@ -13,9 +13,13 @@ For example:
 
 
 ```csdiff
-Relations.Add(Customers, RelationType.Find, 
+
+void InitializeDataView()
+{
+   Relations.Add(Customers, RelationType.Find, 
               Customers.CustomerID.IsEqualTo(Orders.CustomerID).And
               Customers.City.IsequalTo("Madrid");
+}
 ```
 
 The above code has locate on 2 fields.  
