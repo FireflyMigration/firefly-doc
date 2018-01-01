@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="Task Properties, Sort, OrderBy, Unique">
+    <meta name="keywords" content="link,relations,direction">
 
-    <title>Direction</title>
+    <title>Relations condition</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,23 +29,20 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="direction">Direction</h1>
-<p>Name in Migrated Code: <strong>SortDirection</strong><br />
+                <div class="content"><h1 id="relations-condition">Relations condition</h1>
+<p>Name in Migrated Code: <strong>Reversed</strong><br />
 Location in Migrated Code: <strong>InitializeDataView</strong></p>
-<p><img src="2017-11-21_13h39_13.png" alt="" /></p>
-<h2 id="migrated-code-example">Migrated Code Example</h2>
-<pre data-line="5" class="language-csdiff line-numbers"><code>void InitializeDataView()
+<p><img src="relationDirective.png" alt="" /></p>
+<hr />
+<h2 id="example">Example:</h2>
+<pre data-line="7" class="language-csdiff line-numbers"><code>void InitializeDataView()
 {
-    From = Products;
-    OrderBy.Add(Products.ProductName);
-    OrderBy.Add(Products.UnitPrice, SortDirection.Descending);
+    From = Orders;
+            
+    Relations.Add(Customers, Customers.CustomerID.IsEqualTo(Orders.CustomerID), Customers.SortByPK_Customers);
+    Relations[Customers].BindEnabled(() =&gt; Orders.CustomerID != "");
+    Relations[Customers].OrderBy.Reversed = true;
 } </code></pre>
-<h2 id="property-values">Property Values</h2>
-<p>SortDirection.Ascending or SortDirection.Descending . The default is SortDirection.Ascending</p>
-<h2 id="see-also">See Also</h2>
-<ul>
-<li><a href="http://www.fireflymigration.com/reference/html/T_Firefly_Box_SortDirection.htm">SortDirection Enumeration</a></li>
-</ul>
 
 
 
@@ -53,7 +50,7 @@ Location in Migrated Code: <strong>InitializeDataView</strong></p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/06-Sort-Indicator/30-Direction.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/DataView/Link/06-Direction.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>

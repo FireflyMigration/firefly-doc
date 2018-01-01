@@ -30,13 +30,23 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="column-locate">Column Locate</h1>
-<p>Name in Magic: <strong>Locate</strong><br />
-Name in the Migrated Code <strong>StartOnRowWhere.Add Method</strong></p>
-<hr />
-<p>The StartOnRowWhere.Add method is written at the beginning of the <strong>InitializeDataView Method</strong>, using the StartOnRowWhere.Add syntax.</p>
-<p>Example:</p>
-<pre><code>StartOnRowWhere.Add(Orders.OrderId.IsEqualTo(2));
-</code></pre>
+<p>Name in Migrated Code: <strong>StartOnRowWhere.Add</strong><br />
+Location in Migrated Class: <strong>InitializeDataView</strong></p>
+<p><img src="locate.png" alt="" /></p>
+<h2 id="examples">Examples:</h2>
+<p>Products.ProductID - ProductID column from Products table<br>
+pi_ProdID - Parameter</p>
+<p>Locate From and To are equal</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>StartOnRowWhere.Add(Products.ProductID.IsEqualTo(pi_ProdID)); </code></pre>
+<p>Locate To only</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>StartOnRowWhere.Add(Products.ProductID.IsLessOrEqualTo(pi_ProdID)); </code></pre>
+<p>Locate From only</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>StartOnRowWhere.Add(Products.ProductID.IsGreaterOrEqualTo(pi_ProdID)); </code></pre>
+<p><strong>See Also:</strong></p>
+<ul>
+<li><a href="http://doc.fireflymigration.com/range-locate.html">Range-Locate</a></li>
+<li><a href="http://www.fireflymigration.com/reference/html/T_Firefly_Box_Data_Advanced_FilterCollection.htm">FilterCollection Class</a></li>
+</ul>
 
 
 

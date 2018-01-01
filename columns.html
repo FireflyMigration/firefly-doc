@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="link,relations">
+    <meta name="keywords" content="column,real,virtual,parameter">
 
-    <title>Link</title>
+    <title>Columns and Parameters</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,25 +29,49 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="link">Link</h1>
-<p>Name in Magic: <strong>Link</strong><br />
-Name in the Migrated Code <strong>Relations.Add Method</strong><br />
-Location in the Migrated code <strong>InitializeDataView Method</strong></p>
+                <div class="content"><h1 id="columns-and-parameters">Columns and Parameters</h1>
+<p>Name in Migrated Code: <strong>Columns.Add / BindParameter</strong><br />
+Location in Migrated Class: <strong>InitializeDataView / Run method</strong></p>
+<p><img src="Columns.png" alt="" /></p>
+<h2 id="columns-example">Columns example:</h2>
+<pre data-line="" class="language-csdiff line-numbers"><code>readonly TextColumn OkButton = new TextColumn("Ok Button", "10"); </code></pre>
+<pre data-line="8,12" class="language-csdiff line-numbers"><code>    void InitializeDataView()
+        {
+            From = Products;
+            OrderBy = Products.SortByPK_Products;
+            #region Column Selection
+            Columns.Add(pi_ProdID);
+            
+            Columns.Add(Products.ProductID);
+            Columns.Add(Products.ProductName);
+            Columns.Add(Products.UnitPrice);
+            
+             Columns.Add(OkButton).BindValue(() =&gt; "Ok");
+            MarkParameterColumns(pi_ProdID);
+            #endregion
+        } </code></pre>
+<ol>
+<li>Column (Real) - Columns.Add(<strong>Products.ProductID</strong>); notice that the column is based on ProductID column from the Products table</li>
+<li>Local Column (Virtual) - Columns.Add(<strong>OkButton</strong>) - Since this is not a database column it is declared above the constructor inside the Columns #region</li>
+</ol>
+<h2 id="parameter-example">Parameter example:</h2>
+<pre data-line="" class="language-csdiff line-numbers"><code>    public void Run(NumberParameter ppi_ProdID = null)
+        {
+          + BindParameter(pi_ProdID, ppi_ProdID);
+            Execute();
+        } </code></pre>
+<ol start="3">
+<li>Parameter - <strong>BindParameter(pi_ProdID, ppi_ProdID);</strong></li>
+</ol>
+<p>The parameter is received via the <em>Run</em> method where a variable with the same type is declared (ppi_ProdID)</p>
 <hr />
-<p>Sample code:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code> public ShowOrders()
- {
-    From = Orders;
-    Relations.Add(Shippers, RelationType.Find, Shippers.ShipperID.IsEqualTo(Orders.ShipVia));
- } </code></pre>
-<p>See also:  <a href="Relations.html">Relations</a></p>
+<p><strong>See Also:</strong></p>
 <ul>
-<li><a href="link-type.html">Link Type</a></li>
-<li><a href="locate-to.html">Locate To</a></li>
-<li><a href="condition.html">Condition</a></li>
-<li><a href="success-indication.html">Success Indication</a></li>
-<li><a href="direction.html">Direction</a></li>
+<li><a href="http://www.fireflymigration.com/reference/html/T_Firefly_Box_Data_Advanced_ColumnBase.htm">ColumnBase Class</a></li>
+<li><a href="http://doc.fireflymigration.com/local-columns-and-bindvalue.html">Local Columns and BindValue</a></li>
+<li><a href="http://doc.fireflymigration.com/parameters.html">Parameters</a></li>
 </ul>
+<hr />
 
 
 
@@ -55,7 +79,7 @@ Location in the Migrated code <strong>InitializeDataView Method</strong></p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/DataView/Link/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/DataView/Columns.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -117,7 +141,7 @@ Location in the Migrated code <strong>InitializeDataView Method</strong></p>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'link.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'columns.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

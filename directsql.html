@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="link,relations">
+    <meta name="keywords" content="direct sql,dsql, sql">
 
-    <title>Link</title>
+    <title>Direct SQL</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,25 +29,30 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="link">Link</h1>
-<p>Name in Magic: <strong>Link</strong><br />
-Name in the Migrated Code <strong>Relations.Add Method</strong><br />
-Location in the Migrated code <strong>InitializeDataView Method</strong></p>
+                <div class="content"><h1 id="direct-sql">Direct SQL</h1>
+<p>Name in Migrated Code: <strong>sqlEntity</strong><br />
+Location in Migrated Class: <strong>InitializeDataView</strong></p>
+<p><img src="dsql.png" alt="" /></p>
+<h2 id="example">Example:</h2>
+<pre data-line="" class="language-csdiff line-numbers"><code>   void InitializeDataView()
+   {
+       sqlEntity = new DynamicSQLEntity(Shared.DataSources.Northwind1, "select * from customers where customerID=':1'");
+       sqlEntity.AddParameter(_parent.CustomerID); //:1;
+       sqlEntity.Columns.Add(CustomerID, CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Fax);
+       From = sqlEntity;
+   } </code></pre>
+<ol>
+<li>The Main source - <strong>From = sqlEntity;</strong></li>
+<li>SQL Command - <strong>new DynamicSQLEntity</strong></li>
+<li>Input Arguments- <strong>sqlEntity.AddParameter</strong></li>
+<li>Output Arguments - <strong>sqlEntity.Columns.Add</strong></li>
+</ol>
 <hr />
-<p>Sample code:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code> public ShowOrders()
- {
-    From = Orders;
-    Relations.Add(Shippers, RelationType.Find, Shippers.ShipperID.IsEqualTo(Orders.ShipVia));
- } </code></pre>
-<p>See also:  <a href="Relations.html">Relations</a></p>
+<p><strong>See Also:</strong></p>
 <ul>
-<li><a href="link-type.html">Link Type</a></li>
-<li><a href="locate-to.html">Locate To</a></li>
-<li><a href="condition.html">Condition</a></li>
-<li><a href="success-indication.html">Success Indication</a></li>
-<li><a href="direction.html">Direction</a></li>
+<li><a href="http://doc.fireflymigration.com/dynamic-sql-entity.html">Dynamic SQL Entity</a></li>
 </ul>
+<hr />
 
 
 
@@ -55,7 +60,7 @@ Location in the Migrated code <strong>InitializeDataView Method</strong></p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/DataView/Link/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/DataView/DIrectSQL.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -117,7 +122,7 @@ Location in the Migrated code <strong>InitializeDataView Method</strong></p>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'link.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'directsql.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

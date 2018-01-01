@@ -30,22 +30,23 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="column-range">Column Range</h1>
-<p>Name in Magic: <strong>Range</strong><br />
-Name in the Migrated Code <strong>Where.Add Method</strong></p>
-<hr />
-<p>The Where.Add method is written at the beginning of the <strong>InitializeDataView Method</strong>, using the Where.Add syntax.</p>
-<p>Example:</p>
-<pre><code>Where.Add(Orders.OrderId.IsBetween(1,3));
-</code></pre>
-<p>Note:<br />
-When the same expression in Magic is used for the Range and for the Init,
-use the BindEqualTo Method instead of the IsEqualTo Method for the range and BindValue Method for the Init.</p>
-<pre><code>Where.Add(Orders.OrderId.BindEqualTo(3));
-</code></pre>
-<p>Without this, we would have to write the following 2 lines of code:</p>
-<pre><code>Columns.Add(Orders.OrderId).BindValue(()=&gt;3); 
-Where.Add(Orders.OrderId.IsEqualTo(3));
-</code></pre>
+<p>Name in Migrated Code: <strong>Where.Add</strong><br />
+Location in Migrated Class: <strong>InitializeDataView</strong></p>
+<p><img src="range.png" alt="" /></p>
+<h2 id="examples">Examples:</h2>
+<p>Products.ProductID - ProductID column from Products table<br>
+pi_ProdID - Parameter</p>
+<p>Range From and To are equal</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Where.Add(Products.ProductID.IsEqualTo(pi_ProdID)); </code></pre>
+<p>Range To only</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Where.Add(Products.ProductID.IsLessOrEqualTo(pi_ProdID)); </code></pre>
+<p>Range From only</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Where.Add(Products.ProductID.IsGreaterOrEqualTo(pi_ProdID)); </code></pre>
+<p><strong>See Also:</strong></p>
+<ul>
+<li><a href="http://doc.fireflymigration.com/range-locate.html">Range-Locate</a></li>
+<li><a href="http://www.fireflymigration.com/reference/html/T_Firefly_Box_Data_Advanced_FilterCollection.htm">FilterCollection Class</a></li>
+</ul>
 
 
 

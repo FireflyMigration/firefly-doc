@@ -1,0 +1,9 @@
+ERROR: url conflict: 
+MarkDownFile: Direction.html => c:\repos\firefly-doc\20-Getting-Familiar-with-Migrated-Code\10-Comparing-Migrated-Code-with-Magic\06-Sort-Indicator\30-Direction.md
+MarkDownFile: Direction.html => c:\repos\firefly-doc\20-Getting-Familiar-with-Migrated-Code\10-Comparing-Migrated-Code-with-Magic\DataView\Link\06-Direction.md'
+ERROR: url conflict: 
+OtherFile: Locate.png => c:\repos\firefly-doc\20-Getting-Familiar-with-Migrated-Code\10-Comparing-Migrated-Code-with-Magic\01-Task-Properties\05-Options-Tab\Locate.png
+OtherFile: locate.png => c:\repos\firefly-doc\20-Getting-Familiar-with-Migrated-Code\10-Comparing-Migrated-Code-with-Magic\DataView\Select\locate.png'
+ERROR: url conflict: 
+OtherFile: Range.png => c:\repos\firefly-doc\20-Getting-Familiar-with-Migrated-Code\10-Comparing-Migrated-Code-with-Magic\01-Task-Properties\05-Options-Tab\Range.png
+OtherFile: range.png => c:\repos\firefly-doc\20-Getting-Familiar-with-Migrated-Code\10-Comparing-Migrated-Code-with-Magic\DataView\Select\range.png'

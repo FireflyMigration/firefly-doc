@@ -37,9 +37,13 @@ Location in the Migrated code: <strong>Sent as parameter to the Relations.Add()<
 <p>The Locate expression for the relation is sent as parameter to the Relations.Add() method.<br />
 For each locate value, the migrated code will show an expression.<br />
 For example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Relations.Add(Customers, RelationType.Find, 
+<pre data-line="" class="language-csdiff line-numbers"><code>
+void InitializeDataView()
+{
+   Relations.Add(Customers, RelationType.Find, 
               Customers.CustomerID.IsEqualTo(Orders.CustomerID).And
-              Customers.City.IsequalTo("Madrid"); </code></pre>
+              Customers.City.IsequalTo("Madrid");
+} </code></pre>
 <p>The above code has locate on 2 fields.</p>
 
 
