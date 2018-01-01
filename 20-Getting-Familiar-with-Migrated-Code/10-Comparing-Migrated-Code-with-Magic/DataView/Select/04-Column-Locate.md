@@ -2,7 +2,7 @@
 Name in Migrated Code: **StartOnRowWhere.Add**  
 Location in Migrated Class: **InitializeDataView**  
 
-![](locate.png)
+![](Selectlocate.png)
 
 ## Examples:
 
