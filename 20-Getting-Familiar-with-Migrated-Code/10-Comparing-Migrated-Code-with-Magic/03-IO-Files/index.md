@@ -1,7 +1,7 @@
 ﻿# Comparison with eDeveloper's I/O Files Dialog Box
 
 ## Introduction
-This article is one of a series of articles aimed at providing further orientation with the migrated code for Magic programmers. This time we will look at the 'I/O Files' screen as it appears in eDeveloper (version 9) and show the equivalent representation of each setting and property in the migrated code.
+In this article we will look at the 'I/O Files' screen as it appears in eDeveloper (version 9) and show the equivalent representation of each setting and property in the migrated code.
 
 Let's look at the eDeveloper I/O Files screen, used for defining I/O for printing to a printer device or for reading and writing to a file:
 
@@ -37,14 +37,13 @@ The following sub sections describe the migrated code usage for the options and 
 
 ### Name
 
-Name in Migrated Code: **Name** 
-Location in Migrated Code: **OnLoad Method** 
-Example:
+Name in Migrated Code: **Name** <br>
+Location in Migrated Code: **OnLoad Method** <br>
+###### Example:
 ```csdiff
 _ioPrint_Order = new ENV.Printing.PrinterWriter()
 {
     Name = "PrintOrders",
-    //other code
 };
 ```
 ##### See Also :
@@ -52,15 +51,14 @@ _ioPrint_Order = new ENV.Printing.PrinterWriter()
 
 ### Printer
 
-Name in Migrated Code: **PrinterName** 
+Name in Migrated Code: **PrinterName** <br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 
 ```csdiff
 _ioPrint_Order = new ENV.Printing.PrinterWriter()
 {   
     PrinterName = Shared.Printing.Printers.Mdpst1.PrinterName,
-    //other code
 };
 ```
 ##### See Also :
@@ -68,9 +66,9 @@ _ioPrint_Order = new ENV.Printing.PrinterWriter()
 
 ### Exp/Var
 
-Name in Migrated Code: Name of a File is passed in the PrinterWriter constructor 
+Name in Migrated Code: Name of a File is passed in the PrinterWriter constructor <br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioPrint_Order = new ENV.Printing.PrinterWriter(vFileName)
 {
@@ -86,14 +84,13 @@ _ioPrint_Order = new ENV.Printing.PrinterWriter(vFileName)
 
 #### PDLG
 
-Name in Migrated Code: **PrintDialog**
+Name in Migrated Code: **PrintDialog**<br>
 Location in Migrated Code: **OnLoad Method**
-Example:
+###### Example:
 ```csdiff
 _ioPrint_Order = new ENV.Printing.PrinterWriter()
 {
     PrintDialog = true,
-    //other code
 };
 ```
 
@@ -103,14 +100,13 @@ _ioPrint_Order = new ENV.Printing.PrinterWriter()
 
 #### Paper Size
 
-Name in Migrated Code: **PaperKind** 
+Name in Migrated Code: **PaperKind** <br>
 Location in Migrated Code: **OnLoad Method**
-Example:
+###### Example:
 ```csdiff
 _ioPrint_Order = new ENV.Printing.PrinterWriter()
 {
     PaperKind = System.Drawing.Printing.PaperKind.A4,
-    //other code
 };
 ```
 ##### See Also :
@@ -119,14 +115,13 @@ _ioPrint_Order = new ENV.Printing.PrinterWriter()
 
 #### Page Header Form
 
-Name in Migrated Code: **PageHeader** 
+Name in Migrated Code: **PageHeader** <br>
 Location in Migrated Code: **OnLoad Method**
-Example:
+###### Example:
 ```csdiff
 _ioPrint_Order = new ENV.Printing.PrinterWriter()
 {
     PageHeader = _layout.HeaderLayout,
-    //other code
 };
 ```
 
@@ -138,9 +133,9 @@ Note: For more information regarding _layout, see:[ReportLayout Class](http://ww
 
 #### Page Footer Form
 
-Name in Migrated Code: **PageFooter** 
+Name in Migrated Code: **PageFooter** <br>
 Location in Migrated Code: **OnLoad Method**
-Example:
+###### Example:
 ```csdiff
 _ioPrint_Order = new ENV.Printing.PrinterWriter()
 {
@@ -156,22 +151,20 @@ Note: For more information regarding _layout, see:[ReportLayout Class](http://ww
 
 #### Copies and Copies Expression
 
-Name in Migrated Code: **Copies** 
+Name in Migrated Code: **Copies** <br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioPrint_Order = new ENV.Printing.PrinterWriter()
 {
     Copies = 1,
-    //other code
 };
 ```
-Example Expression:
+###### Example Expression:
 ```csdiff
 _ioPrint_Order = new ENV.Printing.PrinterWriter()
 {
     Copies = Exp_1(),
-    //other code
 };
 ```
 ##### See Also :
@@ -179,14 +172,13 @@ _ioPrint_Order = new ENV.Printing.PrinterWriter()
 
 #### Orientation
 
-Name in Migrated Code: **Landscape** 
+Name in Migrated Code: **Landscape** <br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioPrint_Order = new ENV.Printing.PrinterWriter()
 {
     LandScape = true,
-    //other code
 };
 ```
 ##### See Also :
@@ -195,14 +187,13 @@ _ioPrint_Order = new ENV.Printing.PrinterWriter()
 
 #### Print Preview
 
-Name in Migrated Code: **PrintPreview** 
+Name in Migrated Code: **PrintPreview** <br>
 Location in Migrated Code: **OnLoad Method**
-Example:
+###### Example:
 ```csdiff
 _ioPrint = new ENV.Printing.PrinterWriter()
 {
     PrintPreview = true,
-    //other code
 };
 ```
 
@@ -213,7 +204,6 @@ _ioPrint = new ENV.Printing.PrinterWriter()
 
 ## Printer
 
-
 Example: IN the Class, define an object:
 
 ```ENV.Printing.TextPrinterWriter _ioText;```
@@ -222,40 +212,37 @@ The following lists the migrated code equivalents for the Printer Options and Pr
 
 ### Name
 
-Name in Migrated Code: **Name**
+Name in Migrated Code: **Name** <br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioPrint_Order = new ENV.Printing.TextPrinterWriter()
 {
     Name = "PrintFormattedOrders",
-    //other code
 };
 ```
 
 ### Printer
 
-Name in Migrated Code: **Printer** 
+Name in Migrated Code: **Printer** <br>
 Location in Migrated Code: **OnLoad Method**
-Example:
+###### Example:
 ```csdiff
 _ioPrint_Order = new ENV.Printing.TextPrinterWriter()
 {
     Printer = Shared.Printing.Printers.Printer1,
-    //other code
 };
 ```
 
 ### Format
 
-Name in Migrated Code: **IgnoreNewPage**
+Name in Migrated Code: **IgnoreNewPage**<br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioPrint_Order = new ENV.Printing.TextPrinterWriter()
 {
     IgnoreNewPage = true,
-    //other code
 };
 ```
 
@@ -263,9 +250,9 @@ _ioPrint_Order = new ENV.Printing.TextPrinterWriter()
 
 ### Exp/Var
 
-Name in Migrated Code: Name of a File is passed in the TextPrinterWriter constructor 
+Name in Migrated Code: Name of a File is passed in the TextPrinterWriter constructor  <br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioTextPrint = new ENV.Printing.TextPrinterWriter("%TextPrinterFileName%")
 {
@@ -275,15 +262,14 @@ _ioTextPrint = new ENV.Printing.TextPrinterWriter("%TextPrinterFileName%")
 
 ### Rows
 
-Name in Migrated Code: **LinesPerPage**
+Name in Migrated Code: **LinesPerPage**<br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioTextPrint = new ENV.Printing.TextPrinterWriter("%PRN_PORT%")
 {
 	Printer = Shared.Printing.Printers.Printer1,
 	LinesPerPage = 60,
-        //other code
 };
 _ioTextPrint.Open();
 ```
@@ -292,24 +278,23 @@ _ioTextPrint.Open();
 
 #### Flip Lines
 
-Name in Migrated Code: **PerformRightToLeftManipulations** 
+Name in Migrated Code: **PerformRightToLeftManipulations** <br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioTextPrint = new ENV.Printing.TextPrinterWriter("%PRN_PORT%")
 {
 	Printer = Shared.Printing.Printers.Printer1,
 	PerformRightToLeftManipulations = true;
-        //other code
 };
 _ioTextPrint.Open();
 ```
 
 #### I/O name to Use
 
-Name in Migrated Code: **FindIOByName** 
+Name in Migrated Code: **FindIOByName** <br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioTextPrint = ENV.IO.TextFileWriter.FindIOByName(u.Trim(pFilename));
 if(_ioTextPrint==null)
@@ -337,22 +322,21 @@ The following sub sections describe the migrated code usage for the options and 
 
 ### Name
 
-Name in Migrated Code: **Name** 
+Name in Migrated Code: **Name** <br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioFileWrite = new ENV.IO.FileWriter()
 {
     Name = "PrintOrdersToFile",
-    //other code
 };
 ```
 
 ### Format
 
-Name in Migrated Code: **AutoNewLine** 
+Name in Migrated Code: **AutoNewLine** <br>
 Location in Migrated Code: **OnLoad Method**
-Example:
+###### Example:
 ```csdiff
 _ioFileWrite = new ENV.IO.FileWriter()
 {     
@@ -363,9 +347,9 @@ _ioFileWrite = new ENV.IO.FileWriter()
 
 ### Exp/Var
 
-Name in Migrated Code: FileName passed in Constructor 
+Name in Migrated Code: FileName passed in Constructor <br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioFileWrite = new ENV.IO.FileWriter("FileName.Txt")
 {     
@@ -375,9 +359,9 @@ _ioFileWrite = new ENV.IO.FileWriter("FileName.Txt")
 
 ### Append
 
-Name in Migrated Code: **Append**
+Name in Migrated Code: **Append**<br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 
 ```csdiff
 _ioFileWrite = new ENV.IO.FileWriter("FileName.Txt")
@@ -391,9 +375,9 @@ Note: This appears as one of the Access options
 
 #### Character set to use
 
-Name in Migrated Code: **Oem**
+Name in Migrated Code: **Oem**<br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioFileWrite = new ENV.IO.FileWriter("FileName.Txt")
 {     
@@ -403,9 +387,9 @@ _ioFileWrite = new ENV.IO.FileWriter("FileName.Txt")
 
 #### Flip Lines
 
-Name in Migrated Code: **PerformRightToLeftManipulations** 
+Name in Migrated Code: **PerformRightToLeftManipulations** <br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioFileWrite = new ENV.IO.FileWriter("FileName.txt")
 {
@@ -417,9 +401,9 @@ _ioFileWrite.Open();
 
 #### I/O name to Use
 
-Name in Migrated Code: **FindIOByName** 
+Name in Migrated Code: **FindIOByName** <br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioFileWrite = ENV.IO.TextFileWriter.FindIOByName(u.Trim(pFilename));
 if(_ioFileWrite==null)
@@ -435,7 +419,7 @@ Streams.Add(_ioFileWrite);
 
 ## File with Read Access
 To read from a File in migrated code, use the ENV.IO.FileReader class. 
-Example: Define the following object in the Class:
+###### Example: Define the following object in the Class:
 
 ```ENV.IO.FileReader _ioInput ```
 
@@ -443,9 +427,9 @@ The following sub sections describe the migrated code usage for the options and 
 
 ### Name
 
-Name in Migrated Code: **Name** 
+Name in Migrated Code: **Name** <br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioInput = new ENV.IO.FileReader()
 {
@@ -456,9 +440,9 @@ _ioInput = new ENV.IO.FileReader()
 
 ### Format
 
-Name in Migrated Code: **AutoNewLine** 
+Name in Migrated Code: **AutoNewLine** <br>
 Location in Migrated Code: **OnLoad Method**
-Example:
+###### Example:
 ```csdiff
 _ioInput = new ENV.IO.FileReader()
 {     
@@ -469,9 +453,9 @@ _ioInput = new ENV.IO.FileReader()
 
 ### Exp/Var
 
-Name in Migrated Code: FileName passed in Constructor 
+Name in Migrated Code: FileName passed in Constructor <br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioInput = new ENV.IO.FileReader("FileName.Txt")
 {     
@@ -483,9 +467,9 @@ _ioInput = new ENV.IO.FileReader("FileName.Txt")
 
 ##### Character set to use
 
-Name in Migrated Code: **Oem**
+Name in Migrated Code: **Oem**<br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioInPut = new ENV.IO.FileReader("FileName.Txt")
 {     
@@ -495,16 +479,16 @@ _ioInPut = new ENV.IO.FileReader("FileName.Txt")
 
 ## Requester
 For call remote or internet activity, use the ENV.IO.WebWriter class. 
-Example: Define the following object in the Class:
+###### Example: Define the following object in the Class:
 
 ```ENV.IO.WebWriter _ioWeb ```
 The following sub sections describe the migrated code usage for the options and properties of Requester.
 
 ### Name
 
-Name in Migrated Code: **Name** 
+Name in Migrated Code: **Name** <br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioWeb = new ENV.IO.WebWriter()
 {
@@ -515,9 +499,9 @@ _ioWeb = new ENV.IO.WebWriter()
 
 ### Exp/Var
 
-Name in Migrated Code: FileName passed in Constructor 
+Name in Migrated Code: FileName passed in Constructor <br>
 Location in Migrated Code: **OnLoad Method** 
-Example:
+###### Example:
 ```csdiff
 _ioWebOutput = new ENV.IO.WebWriter("FileName.htm")
 {     
