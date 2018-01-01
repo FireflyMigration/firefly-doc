@@ -1,11 +1,31 @@
 ﻿keywords: locate,startonrowwhere
-Name in Magic: **Locate**  
-Name in the Migrated Code **StartOnRowWhere.Add Method**
-***
+Name in Migrated Code: **StartOnRowWhere.Add**  
+Location in Migrated Class: **InitializeDataView**  
 
-The StartOnRowWhere.Add method is written at the beginning of the **InitializeDataView Method**, using the StartOnRowWhere.Add syntax.
+![](locate.png)
 
-Example:  
+## Examples:
+
+Products.ProductID - ProductID column from Products table<br>
+pi_ProdID - Parameter
+
+
+Locate From and To are equal
+```csdiff
+StartOnRowWhere.Add(Products.ProductID.IsEqualTo(pi_ProdID));
 ````
-StartOnRowWhere.Add(Orders.OrderId.IsEqualTo(2));
+
+Locate To only
+```csdiff
+StartOnRowWhere.Add(Products.ProductID.IsLessOrEqualTo(pi_ProdID));
 ````
+
+Locate From only
+```csdiff
+StartOnRowWhere.Add(Products.ProductID.IsGreaterOrEqualTo(pi_ProdID));
+````
+
+**See Also:**
+* [Range-Locate](http://doc.fireflymigration.com/range-locate.html)
+* [FilterCollection Class](http://www.fireflymigration.com/reference/html/T_Firefly_Box_Data_Advanced_FilterCollection.htm)
+

@@ -1,26 +1,31 @@
 ﻿keywords: range,filtering data, where
-Name in Magic: **Range**  
-Name in the Migrated Code **Where.Add Method**
-***
 
-The Where.Add method is written at the beginning of the **InitializeDataView Method**, using the Where.Add syntax.
+Name in Migrated Code: **Where.Add**  
+Location in Migrated Class: **InitializeDataView**  
 
-Example:  
-````
-Where.Add(Orders.OrderId.IsBetween(1,3));
-````
+![](range.png)
 
-Note:   
-When the same expression in Magic is used for the Range and for the Init, 
-use the BindEqualTo Method instead of the IsEqualTo Method for the range and BindValue Method for the Init.  
+## Examples:
 
-````
-Where.Add(Orders.OrderId.BindEqualTo(3));
+Products.ProductID - ProductID column from Products table<br>
+pi_ProdID - Parameter
+
+
+Range From and To are equal
+```csdiff
+Where.Add(Products.ProductID.IsEqualTo(pi_ProdID));
 ````
 
-Without this, we would have to write the following 2 lines of code:  
+Range To only
+```csdiff
+Where.Add(Products.ProductID.IsLessOrEqualTo(pi_ProdID));
+````
 
+Range From only
+```csdiff
+Where.Add(Products.ProductID.IsGreaterOrEqualTo(pi_ProdID));
 ````
-Columns.Add(Orders.OrderId).BindValue(()=>3); 
-Where.Add(Orders.OrderId.IsEqualTo(3));
-````
+
+**See Also:**
+* [Range-Locate](http://doc.fireflymigration.com/range-locate.html)
+* [FilterCollection Class](http://www.fireflymigration.com/reference/html/T_Firefly_Box_Data_Advanced_FilterCollection.htm)
