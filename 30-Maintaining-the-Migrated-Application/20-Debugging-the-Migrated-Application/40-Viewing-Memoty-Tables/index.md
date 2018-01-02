@@ -15,5 +15,4 @@ In order to do that you need to:
 6. In case you have more than one memory table, you can choose a different one from the combo
 
 This is how it looks:
-![MemoryTables](memorytables.gif "Viewing Memory Tables")
-
+![Memory Tables](MemoryTables.gif "Viewing Memory Tables")
