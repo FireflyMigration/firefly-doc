@@ -1,9 +1,4 @@
-﻿# Where to go from here
-
-For a comparison with Magic's Task Control Screen, go to: Comparison with Magic's Task Control Properties
-For further comparison articles, go to: Comparing migrated code with Magic
-
-## Index
+﻿## Index
 
 Name in Migrated Code: **OrderBy**  
 Location in Migrated Code: **InitializeDataView Method**  
@@ -13,7 +8,7 @@ Examples:
 void InitializeDataViewAndUserFlow()
 {
         From = Customers;
-        OrderBy = Customers.SortByCustomerID;
++        OrderBy = Customers.SortByCustomerID;
 }
 ```
 ---
