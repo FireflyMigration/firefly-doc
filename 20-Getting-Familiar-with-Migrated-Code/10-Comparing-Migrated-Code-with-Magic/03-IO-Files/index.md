@@ -1,4 +1,5 @@
-﻿# I/O Devices
+﻿keywords: io,i/o,io devices
+# I/O Devices
 
 ## Introduction
 The I/O Devices has several Media options.

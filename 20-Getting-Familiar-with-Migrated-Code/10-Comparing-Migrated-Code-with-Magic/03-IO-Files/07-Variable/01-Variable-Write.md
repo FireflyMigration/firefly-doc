@@ -1,4 +1,5 @@
-﻿## Blob Variable-Write Access
+﻿keywords: Variable, Blob Variable
+## Blob Variable-Write Access
 Name in Migrated Code: **ENV.IO.ByteArrayWriter** <br>
 Location in Migrated Code: **OnLoad Method** 
 

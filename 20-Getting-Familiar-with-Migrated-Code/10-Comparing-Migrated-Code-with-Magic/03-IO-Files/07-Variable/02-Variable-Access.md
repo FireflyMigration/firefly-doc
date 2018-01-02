@@ -1,4 +1,5 @@
-﻿## Blob Variable-Read Access
+﻿keywords: Variable, Blob Variable
+## Blob Variable-Read Access
 Name in Migrated Code: **ENV.IO.ByteArrayReader** <br>
 Location in Migrated Code: **OnLoad Method** 
 

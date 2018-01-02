@@ -1,4 +1,5 @@
-﻿## Graphic Printer
+﻿keywords: Printer, Graphic Printer
+## Graphic Printer
 Name in Migrated Code: **ENV.Printing.TextPrinterWriter** <br>
 Location in Migrated Code: **OnLoad Method** 
 

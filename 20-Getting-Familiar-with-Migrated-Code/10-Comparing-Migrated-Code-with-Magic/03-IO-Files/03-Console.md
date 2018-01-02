@@ -1,4 +1,5 @@
-﻿## Console
+﻿keywords: Console
+## Console
 
 Same as 'Printer' but with PrintPreview = true and Landscape = true
 

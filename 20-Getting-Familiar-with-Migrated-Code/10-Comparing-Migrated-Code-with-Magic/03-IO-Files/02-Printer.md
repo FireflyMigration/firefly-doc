@@ -1,4 +1,5 @@
-﻿## Printer
+﻿keywords: Printer, Text Printer
+## Printer
 
 Name in Migrated Code: **ENV.Printing.TextPrinterWriter** <br>
 Location in Migrated Code: **OnLoad Method** 

@@ -1,4 +1,5 @@
-﻿## File with Read Access
+﻿keywords: File,File reader
+## File with Read Access
 
 Name in Migrated Code: **ENV.IO.FileReader** <br>
 Location in Migrated Code: **OnLoad Method** 
