@@ -3,7 +3,7 @@
 Name in Migrated Code: **Where.Add**  
 Location in Migrated Class: **InitializeDataView**  
 
-![](range.png)
+![](Selectrange.png)
 
 ## Examples:
 
