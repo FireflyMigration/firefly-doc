@@ -1,19 +1,35 @@
-﻿keywords: 
-Name in Magic: **Call Program, Call Subtask**  
-Name in the Migrated Code **new ClassName().Run()**
+﻿keywords: Call Program, Call Sub task 
 
-***  
+![Call Prog](CallProg.png)
 
-**Call Program**  
-In the migrated code a call to a program (class) is done by using the new keyword and calling the Run() method of the Class.  
-For example:
-````
-new OrderDetails().Run();
-````
+### Migrated Code Examples:
 
-**Call Subtask**  
-In the migrated code, a call to a task will appear as a method call, passing an instance of itself as a parameter.  
-For example:
-````
-new OrderDetails(this).Run();
-````
+**Simple Call program / Subtask**
+
+```csdiff
+new CalledProg().Run();
+new SubTask().Run();
+```
+
+**Call program with Arguments**
+
+```csdiff
+new CalledProg().Run("AAA", v_Num1);
+
+```
+
+
+**Using Result**
+
+```csdiff
+var tempFormat = ReturnVal.Format;
+ReturnVal.Format = "";
+new CalledProg2().Run("AAA", 5);
+ReturnVal.Format = tempFormat;
+```
+
+**Using Form**
+```csdiff
+new Browse_TableA().Run(view: new Views.CallForm(this));
+
+```
