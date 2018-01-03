@@ -1,4 +1,4 @@
-﻿keywords: Update operation
+﻿keywords: Update operation, Incremental, Force update, AddDeltaOf, DeltaOf
 
 ![Update](Update.png)
 
