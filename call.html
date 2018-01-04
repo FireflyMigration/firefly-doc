@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Call Program, Call Sub task">
 
     <title>Call</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -30,25 +30,25 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="call">Call</h1>
-<p>Name in Magic: <strong>Call Program, Call Subtask</strong><br />
-Name in the Migrated Code <strong>new ClassName().Run()</strong></p>
-<hr />
-<p><strong>Call Program</strong><br />
-In the migrated code a call to a program (class) is done by using the new keyword and calling the Run() method of the Class.<br />
-For example:</p>
-<pre><code>new OrderDetails().Run();
-</code></pre>
-<p><strong>Call Subtask</strong><br />
-In the migrated code, a call to a task will appear as a method call, passing an instance of itself as a parameter.<br />
-For example:</p>
-<pre><code>new OrderDetails(this).Run();
-</code></pre>
+<p><img src="CallProg.png" alt="Call Prog" /></p>
+<h3 id="migrated-code-examples">Migrated Code Examples:</h3>
+<p><strong>Simple Call program / Subtask</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>new CalledProg().Run();
+new SubTask().Run(); </code></pre>
+<p><strong>Call program with Arguments</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>new CalledProg().Run("AAA", v_Num1); </code></pre>
+<p><strong>Using Result</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>var tempFormat = ReturnVal.Format;
+ReturnVal.Format = "";
+new CalledProg2().Run("AAA", 5);
+ReturnVal.Format = tempFormat; </code></pre>
+<p><strong>Using Form</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>new Browse_TableA().Run(view: new Views.CallForm(this)); </code></pre>
 <ul>
-<li><a href="arguments.html">Arguments</a></li>
-<li><a href="form.html">Form</a></li>
-<li><a href="result.html">Result</a></li>
-<li><a href="lock.html">Lock</a></li>
-<li><a href="call-by-expression.html">Call by Expression</a></li>
+<li><a href="call-exp.html">Call Exp</a></li>
+<li><a href="call-remote.html">Call Remote</a></li>
+<li><a href="call-by-name.html">Call By Name</a></li>
+<li><a href="call-to-parallel.html">Call to parallel</a></li>
 </ul>
 
 

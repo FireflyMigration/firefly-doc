@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>How to set Oracle connection</title>
+    <title>File</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,32 +29,11 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="how-to-set-oracle-connection">How to set Oracle connection</h1>
-<p>.NET does not require the workstation to have Oracle client installed.
-The connection is done by using Oracle Data Provider for .NET (ODP.NET, Managed Driver). It is an Oracle dll which we provide during the migration (Oracle.ManagedDataAccess.dll)</p>
-<p>The connection configuration file is called tnsnames.ora.
-The .NET application needs that file in order to communicate with ODP.net and there are 3 ways for the application to find this file:</p>
-<h4 id="tns_admin">TNS_ADMIN</h4>
-<p>TNS_ADMIN is an environment variable that points to the directory where the tnsnames.ora is located</p>
-<p><img src="ora.jpg" alt="" /></p>
-<h4 id="bin-folder">Bin folder</h4>
-<p>When the application starts, it first searches for the tnsnames.ora in the bin folder. If the file is there, the application uses it.</p>
-<h4 id="ini-file">INI file</h4>
-<p>You can use the connection string from inside tnsnames.ora in the INI file as follows:</p>
-<ol>
-<li>Create a logical name, for example &quot;myOraConnection&quot;</li>
-<li>Set this logical to be equal to the connection string as one line (Important as one line):</li>
-</ol>
-<p>myOraConnection = (DESCRIPTION =(ADDRESS_LIST =(ADDRESS = (PROTOCOL = TCP)(HOST = XXXXXXXX )(PORT = XXXXX)))(CONNECT_DATA =(SERVICE_NAME = orcl)))</p>
-<ol start="3">
-<li>Set the server name in the INI to use this logical name  - %myOraConnection%</li>
-</ol>
-<p>This option is useful in case you do not want to install or configure anything on the workstation.</p>
-<h4 id="misc">misc</h4>
-<p>Oracle Data Provider for .NET <br>
-<a href="http://www.oracle.com/technetwork/topics/dotnet/index-085163.html">http://www.oracle.com/technetwork/topics/dotnet/index-085163.html</a></p>
-<p>tnsnames.ora <br>
-<a href="http://www.orafaq.com/wiki/Tnsnames.ora">http://www.orafaq.com/wiki/Tnsnames.ora</a></p>
+                <div class="content"><h1 id="file">File</h1>
+<ul>
+<li><a href="file-write.html">File Write</a></li>
+<li><a href="file-read.html">File Read</a></li>
+</ul>
 
 
 
@@ -62,7 +41,7 @@ The .NET application needs that file in order to communicate with ODP.net and th
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/20-Alpha-Testing/40-Oracle-Connection/file.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/03-IO-Files/04-File/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
