@@ -1,5 +1,4 @@
 ﻿keywords: link,relations  
-Name in Magic: **Link**  
 Name in the Migrated Code: **RelationsType property**  
 Location in the Migrated code: **Sent as parameter to the Relations.Add()** method
 
@@ -12,7 +11,6 @@ For example:
    void InitializeDataView()
    {
      From = Orders;
- 
      Relations.Add(Customers, RelationType.Find, Customers.CustomerID.IsEqualTo(Orders.CustomerID);
    }
 ```

@@ -9,7 +9,6 @@ Example:
 ```csdiff
 protected override void OnLoad()
 {
-    // other code
     OrderBy = Customers.Indexes[u.If(v_Indicator == 1,
         Category.Indexes.IndexOf(Category.SortByCategoryID), 
         Category.Indexes.IndexOf(Category.SortByCategoryName))];

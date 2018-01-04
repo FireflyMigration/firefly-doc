@@ -1,6 +1,6 @@
 ﻿Name in Migrated Code: **NotifyRowWasFound**  
-Name in older magic versions: **Ret**  
 Location in Migrated Code: **InitializeDataView Method**  
+
 Examples:  
 ```csdiff 
 void InitializeDataView()

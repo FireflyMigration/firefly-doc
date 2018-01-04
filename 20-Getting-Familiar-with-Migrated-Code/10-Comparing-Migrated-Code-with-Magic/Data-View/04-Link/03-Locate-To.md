@@ -2,7 +2,6 @@
 
 # Locate
 
-Name in Magic: **Link**  
 Name in the Migrated Code: **RelationsType property**  
 Location in the Migrated code: **Sent as parameter to the Relations.Add()** method
 ****
@@ -17,8 +16,8 @@ For example:
 void InitializeDataView()
 {
    Relations.Add(Customers, RelationType.Find, 
-              Customers.CustomerID.IsEqualTo(Orders.CustomerID).And
-              Customers.City.IsequalTo("Madrid");
++             Customers.CustomerID.IsEqualTo(Orders.CustomerID).And
++              Customers.City.IsequalTo("Madrid");
 }
 ```
 
