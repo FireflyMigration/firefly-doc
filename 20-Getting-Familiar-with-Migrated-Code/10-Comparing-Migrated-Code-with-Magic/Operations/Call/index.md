@@ -19,6 +19,13 @@ new CalledProg().Run("AAA", v_Num1);
 ```
 
 
+**Using Lock**
+```csdiff
+ LockCurrentRow();
+ Cached<CalledProg>().Run(TableA.Code);
+
+```
+
 **Using Result**
 
 ```csdiff
