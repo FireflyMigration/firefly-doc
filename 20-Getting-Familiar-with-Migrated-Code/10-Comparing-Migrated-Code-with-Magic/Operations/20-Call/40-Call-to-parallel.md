@@ -15,5 +15,6 @@
 
 ```
 
-The parallel program has an additional class having the same name as the original class with the suffixed by 'Async'
-This class is being called by the caller
+The parallel program has an additional class having the same name as the original class suffixed by 'Async'.
+
+This class is the one called when calling the program as parallel.
