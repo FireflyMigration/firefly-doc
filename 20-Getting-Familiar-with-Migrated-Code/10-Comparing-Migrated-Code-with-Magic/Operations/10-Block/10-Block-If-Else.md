@@ -22,3 +22,6 @@ else if (Num1 < 2)
     Message.ShowWarning("Insdie Else with Expression");
 
 ```
+
+For more information about if see: 
+[IF Statement Explanation](02_IF-Statement-Explanation.md)
