@@ -33,3 +33,17 @@ ReturnVal.Format = tempFormat;
 new Browse_TableA().Run(view: new Views.CallForm(this));
 
 ```
+
+**Using Lock**
+```csdiff
+ LockCurrentRow();
+ Cached<CalledProg>().Run(TableA.Code);
+
+```
+
+
+See also:  
+[LockCurrentRow Method for UIController](http://www.fireflymigration.com/reference/html/M_Firefly_Box_UIController_LockCurrentRow.htm)  
+[LockCurrentRow Method for BusinessProcess](http://www.fireflymigration.com/reference/html/M_Firefly_Box_BusinessProcess_LockCurrentRow.htm)  
+
+
