@@ -11,6 +11,7 @@ Location in migrated Code: **OnLoad**
 ```csdiff   
 protected override void OnLoad()
 {
+    PreloadData = Products.ProductID == 2046;
     View = () => new Views.ShowOrdersView(this);
 }
 ```  
