@@ -44,6 +44,12 @@ new CalledProg2().Run("AAA", 5);
 ReturnVal.Format = tempFormat; </code></pre>
 <p><strong>Using Form</strong></p>
 <pre data-line="" class="language-csdiff line-numbers"><code>new Browse_TableA().Run(view: new Views.CallForm(this)); </code></pre>
+<p><strong>Using Lock</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code> LockCurrentRow();
+ Cached&lt;CalledProg&gt;().Run(TableA.Code); </code></pre>
+<p>See also:<br />
+<a href="http://www.fireflymigration.com/reference/html/M_Firefly_Box_UIController_LockCurrentRow.htm">LockCurrentRow Method for UIController</a><br />
+<a href="http://www.fireflymigration.com/reference/html/M_Firefly_Box_BusinessProcess_LockCurrentRow.htm">LockCurrentRow Method for BusinessProcess</a></p>
 <ul>
 <li><a href="call-exp.html">Call Exp</a></li>
 <li><a href="call-remote.html">Call Remote</a></li>
@@ -57,7 +63,7 @@ ReturnVal.Format = tempFormat; </code></pre>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/Operations/Call/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/Operations/20-Call/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>

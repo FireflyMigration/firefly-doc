@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="Call Remote">
+    <meta name="keywords" content="Task Properties, Variable , OrderBy.Add, Unique">
 
-    <title>Call Remote</title>
+    <title>Variables</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,45 +29,22 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="call-remote">Call Remote</h1>
-<p><img src="CallRemote.png" alt="Call Remote" /></p>
-<h3 id="migrated-code-examples">Migrated Code Examples:</h3>
-<p><strong>Simple Call remote</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService().Run("MyProgName"); </code></pre>
-<p><strong>Call remote based on expression</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService().Run(u.If(TableB.Name1 == "", "MyprogName2", "MyprogName1")); </code></pre>
-<p><strong>Call remote with Argument</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService().Run("MyProgName", TableB.Code); </code></pre>
-<p><strong>Using Result</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Result.Value = u.CastToNumber(new Shared.Remoting.DefaultService().Run("MyProgName", TableB.Code)); </code></pre>
-<p><strong>Using Wait = No</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService().RunAsync("MyProgName", TableB.Code); </code></pre>
-<p><strong>Using Result File name</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService
+                <div class="content"><h1 id="variables">Variables</h1>
+<p>Name in Migrated Code: <strong>OrderBy.Add</strong><br />
+Location in Migrated Code: <strong>InitializeDataView</strong></p>
+<p><img src="2018-01-08_16h57_30.png" alt="" /></p>
+<h2 id="migrated-code-example">Migrated Code Example</h2>
+<pre data-line="4,5" class="language-csdiff line-numbers"><code>void InitializeDataView()
 {
-    ResultFileName = @"C:\Temp\file.txt"
-}.Run("MyProgName", "aaa"); </code></pre>
-<p><strong>Using Return code</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService
-{
-    ResultFileName = @"C:\Temp\file.txt",
-    ReturnCodeColumn = ReturnCode
-}.Run("MyProgName", "aaa"); </code></pre>
-<p><strong>Using Reason code</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService
-{
-    ResultFileName = @"C:\Temp\file.txt",
-    ReturnCodeColumn = ReturnCode,
-    ErrorCodeColumn = Reason
-}.Run("MyProgName", "aaa"); </code></pre>
-<p><strong>Using Message ID</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService
-{
-    ResultFileName = @"C:\Temp\file.txt",
-    ReturnCodeColumn = ReturnCode,
-    ErrorCodeColumn = Reason,
-    MessageIDColumn = MessageID
-}.Run("MyProgName", "aaa"); </code></pre>
+    From = Products;
+     OrderBy.Add(Products.ProductID);
+     OrderBy.Add(Products.ProductName);
+} </code></pre>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_OrderBy.htm">UIController OrderBy Property</a></li>
+<li><a href="http://doc.fireflymigration.com/sorting-data.html">UIController Sorting Data</a></li>
+</ul>
 
 
 
@@ -75,7 +52,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/Operations/20-Call/20-Call-Remote.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/06-The-Sort/10-Variables.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -137,7 +114,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'call-remote.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'variables.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

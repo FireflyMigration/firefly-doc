@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Task Properties, Sort indicator, direction, Data Tab, Allow empty dataview, OnLoad">
 
-    <title>Introduction</title>
+    <title>The Sort</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,36 +29,12 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="introduction">Introduction</h1>
-<p>This article is one of a series of articles aimed at providing further orientation with the migrated code for Magic programmers. This time we will look at the 'Sort' screen as it appears in eDeveloper (version 9) and show the equivalent representation of this form of sorting in the migrated code.</p>
-<hr />
-<h2 id="the-sort-screen">The Sort Screen</h2>
-<p>A screen shot of eDeveloper's Sort screen appears below:</p>
-<p><img src="sort2.jpg" alt="Sort Screen" /></p>
-<p>The following explains the equivalent to the Sort Screen in the migrated code.</p>
-<p>Name in Migrated Code: <strong>OrderBy</strong><br />
-Location in Migrated Code: <strong>InitializeDataView method</strong></p>
-<p>Example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>void InitializeDataView()
-{
-    From = Categories;
-    OrderBy.Add(Categories.CategoryName, SortDirection.Descending);
-    OrderBy.Add(Categories.Description);
-} </code></pre>
-<p>Notes:<br />
-For an index specified in the Task Properties Screen, see: <a href="Task-Properties.html">Task Properties Screen - Index</a><br />
-If the 'Unique' radio button is selected in Magic, this is reflected in the migrated code in the example below.<br />
-Example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>void InitializeDataView()
-{
-     From = Categories;
-     OrderBy.Add(Categories.CategoryName, SortDirection.Descending);
-     OrderBy.Add(Categories.Description);
-     OrderBy.Unique = true;
-} </code></pre>
-<h3 id="see-also">See Also:</h3>
+                <div class="content"><h1 id="the-sort">The Sort</h1>
+<p><img src="2018-01-08_17h00_52.png" alt="" /></p>
 <ul>
-<li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_OrderBy.htm">UIController OrderBy Property</a></li>
+<li><a href="variables.html">Variables</a></li>
+<li><a href="sort-type.html">Sort Type</a></li>
+<li><a href="direction.html">Direction</a></li>
 </ul>
 
 

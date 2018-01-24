@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="error,messagebox">
+    <meta name="keywords" content="Verify, Error, Message box">
 
     <title>Verify</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -30,20 +30,50 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="verify">Verify</h1>
-<p>Name in Magic: <strong>Verify</strong><br />
-Name in the Migrated Code <strong>Message class</strong></p>
-<hr />
-<p>Verify can be either an Error a Warning message that can be displayed either on the status bar or as a window.</p>
-<p><strong>Error</strong></p>
-<pre><code> Message.ShowError(&quot;Error&quot;);  
- Message.ShowErrorInStatusBar(&quot;Error on the Status Bar&quot;);
-</code></pre>
-<p><strong>Warning</strong></p>
-<pre><code>Message.ShowWarning(&quot;BoxWarning&quot;);  
-Message.ShowWarningInStatusBar(&quot;StstusWarning&quot;);
-</code></pre>
-<p>for more information see:<br />
-<a href="More-About-The-Message-Class.html">More About The Message Class</a></p>
+<p><img src="Verify.png" alt="Verify" /></p>
+<h3 id="migrated-code-examples">Migrated Code Examples:</h3>
+<p><br />
+<strong>Warning</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Message.ShowWarning("Text to display as Warning in Box");
+Message.ShowWarningInStatusBar("Text to display as Warning on Status"); </code></pre>
+<p><br />
+<strong>Error</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Message.ShowError("Text to display as Error in Box");
+Message.ShowErrorInStatusBar("Text to display as Error on Status"); </code></pre>
+<p><br />
+<strong>Text as expression</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Message.ShowWarning("Good " + u.If(Time.Now &lt; new Time(12,00,00), "Morning", "Afternoon")); </code></pre>
+<p><br />
+<strong>Using Title</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Message.ShowWarning("Text", "New Title");
+Message.ShowWarning("Text", "Date " + u.DStr(Date.Now, "DD/MM/YYYY")); </code></pre>
+<p><br />
+<strong>Using Images</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Message.ShowWarning("Text", MessageBoxIcon.Question);
+
+Message.ShowWarning("Text", MessageBoxIcon.Asterisk);
+
+// Image = None
+Message.ShowWarning("Text", MessageBoxIcon.None); </code></pre>
+<p><br />
+<strong>Using Buttons</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Message.ShowWarning("Text", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question); </code></pre>
+<p><br />
+<strong>Using Default button</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Message.ShowWarning("Text", MessageBoxButtons.YesNoCancel, MessageBoxDefaultButton.Button2); </code></pre>
+<p><br />
+<strong>Using Return value</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>vReturnValue.Value = Message.ShowWarning("Text"); </code></pre>
+<p><br />
+<strong>Using Append to error log</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Message.ShowWarning("Text", true); </code></pre>
+<p><br />
+<strong>Full Sample</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>vReturnValue.Value = Message.ShowWarning ("Text", "Warning", 
+                                           MessageBoxButtons.YesNoCancel, 
+                                           MessageBoxIcon.Question, 
+                                           MessageBoxDefaultButton.Button2, 
+                                           true); </code></pre>
 
 
 
@@ -51,7 +81,7 @@ Message.ShowWarningInStatusBar(&quot;StstusWarning&quot;);
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/Operations/Verify/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/Operations/80-Verify/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>

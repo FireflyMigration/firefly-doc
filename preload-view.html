@@ -36,6 +36,7 @@ Location in migrated Code: <strong>OnLoad</strong></p>
 <h2 id="migrated-code-example">Migrated Code Example</h2>
 <pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLoad()
 {
+    PreloadData = Products.ProductID == 2046;
     View = () =&gt; new Views.ShowOrdersView(this);
 } </code></pre>
 <h2 id="property-values">Property Values</h2>

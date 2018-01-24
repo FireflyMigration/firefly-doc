@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="Call Remote">
+    <meta name="keywords" content="Invoke, Com, Call Com, OLE, ActiveX">
 
-    <title>Call Remote</title>
+    <title>Invoke com</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,45 +29,32 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="call-remote">Call Remote</h1>
-<p><img src="CallRemote.png" alt="Call Remote" /></p>
+                <div class="content"><h1 id="invoke-com">Invoke com</h1>
+<p><img src="InvokeCom.png" alt="Invoke Com" /></p>
 <h3 id="migrated-code-examples">Migrated Code Examples:</h3>
-<p><strong>Simple Call remote</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService().Run("MyProgName"); </code></pre>
-<p><strong>Call remote based on expression</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService().Run(u.If(TableB.Name1 == "", "MyprogName2", "MyprogName1")); </code></pre>
-<p><strong>Call remote with Argument</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService().Run("MyProgName", TableB.Code); </code></pre>
-<p><strong>Using Result</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Result.Value = u.CastToNumber(new Shared.Remoting.DefaultService().Run("MyProgName", TableB.Code)); </code></pre>
-<p><strong>Using Wait = No</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService().RunAsync("MyProgName", TableB.Code); </code></pre>
-<p><strong>Using Result File name</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService
+<p><strong>Column definition</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>internal readonly ComColumn&lt;Microsoft.Vbe.Interop.Forms.TextBox&gt; MyTextBox = new ComColumn&lt;Microsoft.Vbe.Interop.Forms.TextBox&gt;("MyTextBox") 
+{ CreateInstance = true, 
+  InstanceType = typeof(Microsoft.Vbe.Interop.Forms.TextBoxClass) 
+}; </code></pre>
+<p><strong>Set Property</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Try(() =&gt; MyTextBox.Value.BackColor = 255); </code></pre>
+<p><strong>Use Return Value</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Try(() =&gt; MyTextBox.Value.BackColor = 255, v_ReturnCode); </code></pre>
+<p><strong>Get Property</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Try(() =&gt; myAlpha.Value = MyTextBox.Value.Text); </code></pre>
+<p><strong>Invoke Method</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Try(() =&gt; MyTextBox.Value.Copy()); </code></pre>
+<p><strong>Invoke Method with Arguments</strong></p>
+<p>The below code uses Documents.Add method of Word application com object to open a new document and sends 4 arguments</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Try(() =&gt; 
 {
-    ResultFileName = @"C:\Temp\file.txt"
-}.Run("MyProgName", "aaa"); </code></pre>
-<p><strong>Using Return code</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService
-{
-    ResultFileName = @"C:\Temp\file.txt",
-    ReturnCodeColumn = ReturnCode
-}.Run("MyProgName", "aaa"); </code></pre>
-<p><strong>Using Reason code</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService
-{
-    ResultFileName = @"C:\Temp\file.txt",
-    ReturnCodeColumn = ReturnCode,
-    ErrorCodeColumn = Reason
-}.Run("MyProgName", "aaa"); </code></pre>
-<p><strong>Using Message ID</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService
-{
-    ResultFileName = @"C:\Temp\file.txt",
-    ReturnCodeColumn = ReturnCode,
-    ErrorCodeColumn = Reason,
-    MessageIDColumn = MessageID
-}.Run("MyProgName", "aaa"); </code></pre>
+    object Template = u.ToObject(@"c:\Word\MyTemplate.tpl");
+    object NewTemplate = false;
+    object DocumentType = 1;
+    object Visible = true;
+    Documents.Value = WordApp.Value.Documents.Add(ref Template, ref NewTemplate, ref DocumentType, ref Visible);
+}); </code></pre>
 
 
 
@@ -75,7 +62,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/Operations/20-Call/20-Call-Remote.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/Operations/60-Invoke/10-Invoke-com.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -137,7 +124,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'call-remote.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'invoke-com.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

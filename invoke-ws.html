@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="Call Remote">
+    <meta name="keywords" content="Invoke, Invke WebS, Web service">
 
-    <title>Call Remote</title>
+    <title>Invoke WS</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,45 +29,13 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="call-remote">Call Remote</h1>
-<p><img src="CallRemote.png" alt="Call Remote" /></p>
+                <div class="content"><h1 id="invoke-ws">Invoke WS</h1>
+<p><img src="InvokeWS.png" alt="Invoke W S" /></p>
 <h3 id="migrated-code-examples">Migrated Code Examples:</h3>
-<p><strong>Simple Call remote</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService().Run("MyProgName"); </code></pre>
-<p><strong>Call remote based on expression</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService().Run(u.If(TableB.Name1 == "", "MyprogName2", "MyprogName1")); </code></pre>
-<p><strong>Call remote with Argument</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService().Run("MyProgName", TableB.Code); </code></pre>
-<p><strong>Using Result</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Result.Value = u.CastToNumber(new Shared.Remoting.DefaultService().Run("MyProgName", TableB.Code)); </code></pre>
-<p><strong>Using Wait = No</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService().RunAsync("MyProgName", TableB.Code); </code></pre>
-<p><strong>Using Result File name</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService
-{
-    ResultFileName = @"C:\Temp\file.txt"
-}.Run("MyProgName", "aaa"); </code></pre>
-<p><strong>Using Return code</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService
-{
-    ResultFileName = @"C:\Temp\file.txt",
-    ReturnCodeColumn = ReturnCode
-}.Run("MyProgName", "aaa"); </code></pre>
-<p><strong>Using Reason code</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService
-{
-    ResultFileName = @"C:\Temp\file.txt",
-    ReturnCodeColumn = ReturnCode,
-    ErrorCodeColumn = Reason
-}.Run("MyProgName", "aaa"); </code></pre>
-<p><strong>Using Message ID</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService
-{
-    ResultFileName = @"C:\Temp\file.txt",
-    ReturnCodeColumn = ReturnCode,
-    ErrorCodeColumn = Reason,
-    MessageIDColumn = MessageID
-}.Run("MyProgName", "aaa"); </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>var wsResult = new ATPITest.Shared.WebServices.CalculatorWS().Run("Add", XML_toSend, XML_Result);
+Fault.Value = Fault.FromString(wsResult.ErrorText); </code></pre>
+<p>More about consuming Web service see
+<a href="consuming-a-webservice.html">Consuming web services</a></p>
 
 
 
@@ -75,7 +43,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/Operations/20-Call/20-Call-Remote.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/Operations/60-Invoke/50-Invoke-WS.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -137,7 +105,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'call-remote.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'invoke-ws.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

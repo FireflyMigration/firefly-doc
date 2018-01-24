@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="Call Remote">
+    <meta name="keywords" content="Form Input operation, Import, Delimiter">
 
-    <title>Call Remote</title>
+    <title>Form intput</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,45 +29,24 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="call-remote">Call Remote</h1>
-<p><img src="CallRemote.png" alt="Call Remote" /></p>
+                <div class="content"><h1 id="form-intput">Form intput</h1>
+<p><img src="FormInput.png" alt="Form Input" /></p>
 <h3 id="migrated-code-examples">Migrated Code Examples:</h3>
-<p><strong>Simple Call remote</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService().Run("MyProgName"); </code></pre>
-<p><strong>Call remote based on expression</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService().Run(u.If(TableB.Name1 == "", "MyprogName2", "MyprogName1")); </code></pre>
-<p><strong>Call remote with Argument</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService().Run("MyProgName", TableB.Code); </code></pre>
-<p><strong>Using Result</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Result.Value = u.CastToNumber(new Shared.Remoting.DefaultService().Run("MyProgName", TableB.Code)); </code></pre>
-<p><strong>Using Wait = No</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService().RunAsync("MyProgName", TableB.Code); </code></pre>
-<p><strong>Using Result File name</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService
+<p><strong>Simple Form intput</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLeaveRow()
 {
-    ResultFileName = @"C:\Temp\file.txt"
-}.Run("MyProgName", "aaa"); </code></pre>
-<p><strong>Using Return code</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService
+     _layout.Import_TableB.ReadFrom(_ioImport_TableB);
+} </code></pre>
+<p><strong>Using Delimiter = Single</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLeaveRow()
 {
-    ResultFileName = @"C:\Temp\file.txt",
-    ReturnCodeColumn = ReturnCode
-}.Run("MyProgName", "aaa"); </code></pre>
-<p><strong>Using Reason code</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService
+     _layout.Import_TableB.ReadSeparated(_ioImport_TableB, ';');
+} </code></pre>
+<p><strong>Using Delimiter = Double</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLeaveRow()
 {
-    ResultFileName = @"C:\Temp\file.txt",
-    ReturnCodeColumn = ReturnCode,
-    ErrorCodeColumn = Reason
-}.Run("MyProgName", "aaa"); </code></pre>
-<p><strong>Using Message ID</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService
-{
-    ResultFileName = @"C:\Temp\file.txt",
-    ReturnCodeColumn = ReturnCode,
-    ErrorCodeColumn = Reason,
-    MessageIDColumn = MessageID
-}.Run("MyProgName", "aaa"); </code></pre>
+     _layout.Import_TableB.ReadDoubleSeperated(_ioImport_TableB, '%');
+} </code></pre>
 
 
 
@@ -75,7 +54,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/Operations/20-Call/20-Call-Remote.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/Operations/50-Form/20-Form-intput.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -137,7 +116,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'call-remote.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'form-intput.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
