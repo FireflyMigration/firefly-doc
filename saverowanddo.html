@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Maintaining the Migrated Application</title>
+    <title>SaveRowAndDo()</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,28 +29,33 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="maintaining-the-migrated-application">Maintaining the Migrated Application</h1>
-<ul>
-<li><a href="common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-net.html">Common migrated code patterns and how to improve on them in new code in NET</a></li>
-<li><a href="debugging-the-migrated-application.html">Debugging the Migrated Application</a></li>
-<li><a href="unit-tests-and-migrated-code.html">Unit Tests and Migrated Code</a></li>
-<li><a href="refactoring-migrated-code.html">Refactoring Migrated Code</a></li>
-<li><a href="improve-performance.html">Improve Performance</a></li>
-<li><a href="working-with-users-data.html">Working with Users Data</a></li>
-<li><a href="further-learning.html">Further Learning</a></li>
-<li><a href="user-interface.html">User Interface</a></li>
-<li><a href="adding-a-new-database-to-the-application.html">Adding a new database to the application</a></li>
-<li><a href="define-a-calculated-entity-column.html">Define a calculated entity column</a></li>
-<li><a href="getting-the-update-migrated-code.html">Getting the update migrated code</a></li>
-<li><a href="reporting-an-issue-after-the-final-migration.html">Reporting an issue after the final migration</a></li>
-<li><a href="web-development.html">Web Development</a></li>
-<li><a href="enabling-the-developer-tools-based-on-application-logic.html">Enabling the developer tools based on application logic</a></li>
-<li><a href="how-to-make-an-application-multilingual.html">How to make an application multilingual</a></li>
-<li><a href="moving-from-oracle-to-sql-basics.html">Moving from Oracle to SQL Basics</a></li>
-<li><a href="resolve-missing-namespaces-in-code-samples.html">Resolve Missing Namespaces in Code Samples</a></li>
-<li><a href="saverowanddo.html">SaveRowAndDo</a></li>
-<li><a href="using-user-methods-class-in-non-migrated-code.html">Using user methods class in non migrated code</a></li>
-</ul>
+                <div class="content"><h1 id="saverowanddo">SaveRowAndDo()</h1>
+<hr />
+<p>SaveRowAndDo() method saves the current row to the database and then performs the action sent as
+parameter to the method.<br />
+If the method fails to save the data to the DB the action will not be performed.</p>
+<p>With Magic, we used to have a ‘Manager program’ we had to use , or use another way to commit the data to the database before proceeding to the next logic operation.</p>
+<p>SaveRowAndDo() method do them both – saves the data and if succeeds, executes the next logic operation.</p>
+<p>For example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>void MyMethod()
+{
+    SaveRowAndDo(o=&gt; PrintDoc() );
+} </code></pre>
+<p>With the above example</p>
+<ol>
+<li>The OnLeaveRow() and OnSavingRow() methods are executed.</li>
+<li>The data is saved to the Database.</li>
+<li>If the data successfully saved
+<ol type="a">
+<li>The method PrintDoc() is executed</li>
+<li>Data is reloaded - OnEnterRow() is executed</li>
+</ol>
+</li>
+<li>If the data fail to be saved to the DB the action sent as parameter is not executed.</li>
+</ol>
+<p>The SaveRowAndDo() method is designed to leave the current row, save it to the DB and then to perform the
+action sent to it as parameter.
+It designed to make sure data is saved to the DB before any operation is executed.</p>
 
 
 
@@ -58,7 +63,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/SaveRowAndDo.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -120,7 +125,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'maintaining-the-migrated-application.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'saverowanddo.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
