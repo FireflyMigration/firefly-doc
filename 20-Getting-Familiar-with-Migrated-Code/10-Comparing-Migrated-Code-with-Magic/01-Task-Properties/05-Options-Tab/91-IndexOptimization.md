@@ -29,3 +29,11 @@ protected override void OnLoad()
 
 ## Property Values
 True or false. The default is **True** which is Allow Sorting = Yes in Magic
+
+
+---
+**See Also**  
+[SortOnIncrementalSearch ](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_SortOnIncrementalSearch.htm)  
+[BindSortOnIncrementalSearch ](http://www.fireflymigration.com/reference/html/M_Firefly_Box_UIController_BindSortOnIncrementalSearch.htm)
+
+---    
