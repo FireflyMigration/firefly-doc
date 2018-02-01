@@ -156,6 +156,10 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
                         var before = item.keywords.substring(0, indexInKeywords);
                         var middle = item.keywords.substr(indexInKeywords, what.length);
                         var after = item.keywords.substr(indexInKeywords + what.length, item.keywords.length - indexInKeywords - what.length);
+                        if (before.length > 20)
+                            before = before.substring(before.length - 20);
+                        if (after.length > 20)
+                            after = after.substring(after.length - 20);
                         keywords.innerHTML = 'keywords: ' + before + '<strong>' + middle + '</strong>' + after;
                         nodeShow(keywords);
                         found = true;
@@ -260,8 +264,39 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
                 notFoundDiv.appendChild(notFoundLink);
 
             }
+            var searchButtonDiv = document.createElement("div");
+
+            
 
             searchInput.oninput = function () {
+                {
+                    searchButtonDiv.innerHTML = '';
+                    if (searchInput.value != '') {
+                        var searchBtn = document.createElement("a");
+                        var searchReference = document.createElement("a");
+
+
+                        searchButtonDiv.className = 'searchButtonsDiv';
+                        searchDiv.appendChild(searchButtonDiv);
+
+                        searchBtn.innerText = 'Search';
+                        searchBtn.className = "btn btn-neutral";
+                        searchBtn.href = "asdfsadfas";
+                        searchButtonDiv.appendChild(searchBtn);
+
+                        searchReference.innerText = "Search in API";
+                        searchReference.href = '123';
+                        searchReference.className = "btn btn-neutral";
+                        searchReference.style.cssFloat = 'right';
+                        searchButtonDiv.appendChild(searchReference);
+                        searchBtn.href = 'http://www.google.com/search?q=site:doc.fireflymigration.com ' + encodeURI(searchInput.value);
+                        searchBtn.target='_blank';
+                        searchReference.href = 'http://www.google.com/search?q=site:www.fireflymigration.com/reference ' + encodeURI(searchInput.value);
+                        searchReference.target = '_blank';
+                    }
+                }
+
+
                 if (searchInput.value == '')
                     reset(data.nodes);
                 else
