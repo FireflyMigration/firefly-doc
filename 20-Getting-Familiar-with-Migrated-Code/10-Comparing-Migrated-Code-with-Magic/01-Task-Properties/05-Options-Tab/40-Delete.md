@@ -30,3 +30,10 @@ protected override void OnLoad()
 ## Property Values
 True or false. The default is **True** which is Allow Delete = Yes in Magic
        
+
+---
+**See Also**  
+[AllowDelete ](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_AllowDelete.htm)  
+[BindAllowDelete ](http://www.fireflymigration.com/reference/html/M_Firefly_Box_UIController_BindAllowDelete.htm)
+
+---   
