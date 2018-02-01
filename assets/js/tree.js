@@ -283,6 +283,7 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
                         searchBtn.className = "btn btn-neutral";
                         searchBtn.href = "asdfsadfas";
                         searchButtonDiv.appendChild(searchBtn);
+                        searchBtn.title = 'Search doc.fireflymigration.com using Google Search';
 
                         searchReference.innerText = "Search in API";
                         searchReference.href = '123';
@@ -290,6 +291,8 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
                         searchReference.style.cssFloat = 'right';
                         searchButtonDiv.appendChild(searchReference);
                         searchBtn.href = 'http://www.google.com/search?q=site:doc.fireflymigration.com ' + encodeURI(searchInput.value);
+                        searchBtn.title = "Search the API Documentation using Google Search";
+                        
                         searchBtn.target='_blank';
                         searchReference.href = 'http://www.google.com/search?q=site:www.fireflymigration.com/reference ' + encodeURI(searchInput.value);
                         searchReference.target = '_blank';
@@ -305,7 +308,7 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
                         ga('send', 'event', 'searchFailed', searchInput.value);
                         notFoundLink.style.display = 'block';
                         notFoundLink.innerHTML = "Sorry, we couldn't find a match for <strong>" +
-                            searchInput.value + "</strong>.<br/><br/> Please click here to send us an email about what you were searching for, and we'll get back to you shortly with an answer";
+                            searchInput.value + "</strong>.<br/><br/>You can click search or search API to find more options.<br/></br> Please click here to send us an email about what you were searching for, and we'll get back to you shortly with an answer";
                         notFoundLink.href = "mailto:info@fireflymigration.com?subject=" + encodeURI("Missing info in documentation " + searchInput.value);
                         notFoundLink.target = '_blank';
                     }
