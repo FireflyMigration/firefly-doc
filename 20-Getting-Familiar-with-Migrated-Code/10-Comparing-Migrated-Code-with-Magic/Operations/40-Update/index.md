@@ -7,7 +7,7 @@
 
 **Simple update**
 ```csdiff
-Num1.SilentSet(Num1 + Num2);
+Num1.Value = Num2 + Num3;
 ```
 
 
