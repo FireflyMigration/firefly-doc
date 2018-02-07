@@ -14,6 +14,7 @@ As oppose to Magic, .NET handles the request using only two layers
 
 .NET uses the IIS as a standard application server.
 
+#### Configuration
 
 ##### .NET and ASP extensions
 
