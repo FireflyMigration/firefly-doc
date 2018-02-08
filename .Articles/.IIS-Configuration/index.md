@@ -13,6 +13,9 @@ As oppose to Magic, .NET handles the request using only two layers
 -	Application code
 
 .NET uses the IIS as a standard application server.
+In case you do want to have an extra layer between the IIS and the application, please refer to the article below:
+https://blogs.msdn.microsoft.com/friis/2016/08/25/setup-iis-with-url-rewrite-as-a-reverse-proxy-for-real-world-apps/
+
 
 #### Configuration
 
@@ -46,9 +49,19 @@ Since Magic is a 32-bit application, the migrated code is also a 32-bit applicat
 
 #### User identity 
 
-IIS is running under the build-in user (who logged to the server) or a custom user. Make sure to add sufficient rights to the relevant user.
+IIS is running under the build-in user (who logged to the server) or a custom user. Make sure to add sufficient rights to the user you choose.
 
 ![](IIS_ID.png)
+
+
+#### Remote request
+
+You can monitor the remote requests using the link below:
+
+http://localhost/[ProjectName].Server/services.aspx
+
+
+
 
 
 
