@@ -30,7 +30,9 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="using-issuetracker">Using IssueTracker</h1>
-<p>This article explains how to report issues to Firefly using Firefly's IssueTracker website. The IssueTracker is used to report any issue that was found in the migrated application and that cannot be reproduced in the magic version of the application.</p>
+<p>This article explains how to report issues to Firefly using Firefly's IssueTracker website.<br />
+The IssueTracker is used to report any differnce that was found in the application between the Magic code and the migrated code.<br />
+Behavior, expected results, values, messages, crashes, performance - a difference found in any one of these categories is considered an issue and should be reported.</p>
 <h2 id="login-to-issuetracker">Login to IssueTracker</h2>
 <p>Login to <a href="http://www.fireflybox.com/issuetracker/">IssueTracker</a> website, using the account details provided by Firefly.</p>
 <p><img src="issuetrackerlogin.png" alt="" /></p>
@@ -45,44 +47,97 @@
 <p>Each list can be easily filtered or sorted, using the headers and textboxes at the beginning of the table.</p>
 <p><img src="issuetrackermainscreen.png" alt="" /></p>
 <h2 id="opening-a-new-issue">Opening a New Issue</h2>
-<p>Once an issue was found in the migrated code, please make sure that the issue does not exist in the magic version.</p>
-<p>Clicking on the “Open New Issue” button will show the “Open Issue” screen. In this screen, you can provide information about the issue, by filling in the following fields:</p>
+<p>As mentioned above, an issue is considered as a difference between Magic and the migrated code, so please double check
+to ensure that the behavior when using the migrated code is not the same as in Magic.
+Furthermore - an issue found by you might have been already fixed (as a report from another customer, so it is best
+to migrate again and use the latest version using the same scenario, to make sure the difference still exists.</p>
+<p>Clicking the <strong>Open New Issue</strong> button will show the <strong>Open Issue</strong> screen.<br />
+In this screen, you can provide information about the issue, by filling in the following fields:</p>
 <ol>
 <li>Select the application the issue is related to. (For users who have more than one application).</li>
 <li>Select the Module where the issue was found. (For an application that has modules information).</li>
 <li>Select the Environment the issue was reproduced in. (For an application that has more than one environment).</li>
-<li>Add a description</li>
-<li>Explain how to reproduce the issue, using short and clear instructions, like “Go to this menu”, “click that button” etc. Please include all the steps necessary to replicate the issue and all the data that was entered or selected. Also, make sure that the issue can be replicated on the test environment that was provided to Firefly.</li>
-<li>Enter the number of the version that the issue was found in. This number is shown in the application status bar.</li>
+<li>Add a description - this should be a one line describing the difference. Please refrain from using a general description.</li>
+<li>Specify the reproduction steps that will demonstrate the difference:</li>
+</ol>
+<ul>
+<li>Use short and clear instructions (e.g “Use menu XXX”, “Click the YYY button”, &quot;Specify ZZZ in the textbox&quot;, &quot;Choose ABC from the Combo&quot;, etc.)</li>
+<li>Please include all the steps necessary to replicate the issue. Do not assume we are familiar with the application and, therefore, know how to get to a specific program. Be as detailed as possible - don't spare any detail.</li>
+<li>Provide all the data / values that was entered or selected.</li>
+<li>Make sure that the issue can be replicated on the test environment that was provided to Firefly.</li>
+<li>The difference should be reproduced at will, as many times as required. In case certain operation are required for that - please indicate them.</li>
+<li>The steps should be numbered - this way, in case of any problem in the reproduction, we can refer to a step number.</li>
+</ul>
+<ol start="6">
+<li>Enter the number of the version that the issue was found in. This number is shown in the application status bar. (we only need the last 5 digits)</li>
 <li>Select the severity of the issue, according to the following guidelines:
 <ul>
-<li><strong>Critical</strong> - Describe Issues that completely prevent you from continue testing, or crucial issues in production.</li>
+<li><strong>Critical</strong> - Describe Issues that completely prevent you from continuing testing the entire application or a main part of it, or crucial issues in production.</li>
 <li><strong>High</strong> - Describers a crash or data compromising issue that has a workaround.</li>
-<li><strong>Medium</strong> - The migrated application behaves different from the original version.</li>
-<li><strong>Low</strong> - Describes minor ui issues.</li>
+<li><strong>Medium</strong> - The migrated application behaves different from the original version. This should be the default severity.</li>
+<li><strong>Low</strong> - Describes issues you consider as minor / less important.</li>
 </ul>
 </li>
-<li>The Error Details field is used for providing the error details in case of a crash or for providing logs in case of database related issues or other helpful log information. In any other case press CTRL+F12 in the migrated application to get the callstack of the current location. This info should be copied to the Error Details field.</li>
-<li>Additional Customer Info - A free text field that you can use for your own information</li>
+</ol>
+<blockquote>
+<p>We treat the Critical issues with the utmost urgency and, as such, expect you to do the same. So response time is of an essence.</p>
+</blockquote>
+<ol start="8">
+<li>The Error Details field is used for providing additional information in case of a crash or for providing logs in case of database related issues. In any other case press CTRL+F12 (or use the Developer Toold context menu from the status bar) in the migrated application to get the callstack of the current location. This info should be copied to the Error Details field.</li>
+</ol>
+<blockquote>
+<p>This information is highly important - in most cases it saves valuable time during the investigation process.</p>
+</blockquote>
+<ol start="9">
+<li>Additional Customer Info - A free text field that you can use for your own information (e.g the issue number in your ALM system)</li>
 <li>Files - Used for uploading screenshots (Preferred) or videos that emphasizes the issue.</li>
-<li>Click on the save button.</li>
+</ol>
+<ul>
+<li>Add as many screenshots as possible - it helps us find what we need in complex screens / understand what is the exact difference.</li>
+<li>We recommend using <a href="https://www.screenpresso.com/">Screenpresso</a> for the screenshots - is has useful tools (arrows, area marking, numbering) that will help illuminate the difference</li>
+<li>You can name the files as the correlating step</li>
+<li>Adding a video (also can be done using Screenpresso) does <strong>not</strong> replace the need for the reproduction steps.</li>
+<li>Adding a document with the reproduction steps and screenshots can also be <strong>added</strong> to the reproduction steps.</li>
+<li>In case there are more files to add you can zip them and upload the zip file</li>
+<li>When reporting performance differences, please be sure to add the profiler. You can read about it <a href="http://doc.fireflymigration.com/using-firefly-profiler.html">here</a></li>
+</ul>
+<ol start="11">
+<li>When done click the <strong>Save</strong> button.</li>
 </ol>
 <p><img src="issuetrackerissue.png" alt="" /></p>
 <h2 id="updating-an-issue">Updating an Issue</h2>
-<p>If the issue report is missing needed information for replicating it, the issue will be on the “Issues that are waiting for me” list, with and appropriate message in the “Status” field. You can update the issue and add the needed information by clicking on the issue line in the list, which will open the following screen:</p>
+<p>If we return the issue back to you, the issue will be on the <strong>Issues that are waiting for me</strong> list, with and appropriate message in the <strong>Status</strong> field.<br />
+You can update the issue with the missing information - clicking the issue line in the list will open the following screen:</p>
 <p><img src="issuetrackeriupdateissue.png" alt="" /></p>
-<p>In this screen you can add the information in the “Status Update Info” field and then to change the status of the issue to “Return to Firefly”.</p>
+<p>In this screen you can add the information in the <strong>Status Update Info</strong> field and then change the <strong>Update Status</strong> of the issue to <strong>Return to Firefly</strong>.</p>
 <p>Here are the possible statuses for issues that are in this list:</p>
 <ul>
-<li><strong>Further Details Required</strong> - The replication procedure is missing steps or other information needed for replicating the issue.</li>
-<li><strong>Couldn't Reproduce</strong> - The Issue could not reproduced in Firefly's environment and the application behaves as the original application.</li>
-<li><strong>Reproduced in Magic</strong> - The issue exists in the magic version as well.</li>
-<li><strong>To be Fixed by Customer</strong> - The issue is a result of something that need to be fixed in the original application.</li>
+<li><strong>Further Details Required</strong> - The replication procedure is missing steps or other information required for replicating the issue.</li>
+<li><strong>Couldn't Reproduce</strong> - The Issue could not be reproduced in Firefly's environment and the application behaves as the original application.</li>
+<li><strong>Reproduced in Magic</strong> - We see the same behavior when using the magic version.</li>
+<li><strong>To be Fixed by Customer</strong> - The issue is a result of something that needs to be fixed in the original application.</li>
+</ul>
+<blockquote>
+<p>In such cases we will provide all the information explaining the reason we believe this is the best option. In case there are any doubts / concerns, a meeting will be scheduled to discuss it.</p>
+</blockquote>
+<ul>
 <li><strong>Will not be Fixed</strong> - This is an intended difference (usually an improvement behavior or look and feel of the .net version).</li>
+</ul>
+<blockquote>
+<p>In such <strong>rare</strong> cases we will provide all the information explaining the reason. In case there are any doubts / concerns, a meeting will be scheduled to discuss it.</p>
+</blockquote>
+<ul>
 <li><strong>Checked</strong> - The issue was fixed and tested by Firefly and is pending for delivery.</li>
 </ul>
+<blockquote>
+<p>Do not attempt to test the application yet, as the fix is still not available.</p>
+</blockquote>
+<p>When done click the <strong>Save</strong> button.</p>
+<p><em>Once you get an email from us regarding an issue, please do not reply to it - updates of issues should be done <strong>only</strong> using the issue IssueTracker system.</em></p>
 <h2 id="closing-an-issue">Closing an Issue</h2>
-<p>Once an issue has been fixed and ready to be tested by you, it will be marked with the “Delivered” status and will be listed under the “Delivered” tab. A fixed issue will have the number of the version that it was fixed in updated in the issue ticket. Once the issue is tested and resolved, you should close it by changing its status to “Closed Issue”.</p>
+<p>Once an issue has been fixed and ready to be tested by you, it will be marked with the <strong>Delivered</strong> status and will be listed under the <strong>Delivered</strong> tab. A fixed issue will have the number of the version in which it was fixed in (indicated in the issue). Once you receive the update email from Firefly, you will need to re-migrate and test the provided scenario.
+In case you confirm the issue is resolved, please close it by changing its status to <strong>Close Issue</strong> - otherwise update it to <strong>Return to Firefly</strong> and state the status of the issue.</p>
+<p>When done click the <strong>Save</strong> button.</p>
 
 
 

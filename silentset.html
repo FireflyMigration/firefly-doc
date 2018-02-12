@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Update operation, ForceUpdate, Undo">
 
     <title>SilentSet</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -30,10 +30,12 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="silentset">SilentSet</h1>
-<p>Name in Magic: <strong>Undo</strong><br />
-Name in uniPaaS and later versions: <strong>Force Update</strong></p>
-<hr />
-<p>Example:</p>
+<p>SilentSet is an update that doesn't force the OnSavingRow
+(does not mark the row as changed).</p>
+<p>If the SilentSet is the only change to the row, nothing will be saved.<br />
+However, if the SilentSet is done together with another regular update of any other column, both changes will be saved.</p>
+<h3 id="migrated-code-examples">Migrated Code Examples:</h3>
+<pre data-line="" class="language-csdiff line-numbers"><code>TableA.Name1.SilentSet("new name"); </code></pre>
 
 
 
@@ -41,7 +43,7 @@ Name in uniPaaS and later versions: <strong>Force Update</strong></p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/Operations/Update/SilentSet.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/Operations/40-Update/02-SilentSet.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>

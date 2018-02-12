@@ -33,12 +33,17 @@
 <p><img src="Update.png" alt="Update" /></p>
 <h3 id="migrated-code-examples">Migrated Code Examples:</h3>
 <p><strong>Simple update</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Num1.SilentSet(Num1 + Num2); </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>Num1.Value = Num2 + Num3; </code></pre>
+<p><strong>Using Incremental update = Yes</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Num1.AddDeltaOf(() =&gt; 5); </code></pre>
 <p><strong>Using Force update = Yes</strong></p>
 <pre data-line="" class="language-csdiff line-numbers"><code>Num1.Value = 3;
 DenyUndoForCurrentRow(); </code></pre>
-<p><strong>Using Incremental update = Yes</strong></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Num1.AddDeltaOf(() =&gt; 5); </code></pre>
+<h3 id="see-also">See Also</h3>
+<p><a href="02-SilentSet.html">SilentSet</a></p>
+<ul>
+<li><a href="silentset.html">SilentSet</a></li>
+</ul>
 
 
 
