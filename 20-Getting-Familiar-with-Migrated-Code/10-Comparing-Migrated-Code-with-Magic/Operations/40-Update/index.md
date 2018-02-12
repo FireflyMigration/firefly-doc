@@ -7,9 +7,15 @@
 
 **Simple update**
 ```csdiff
-Num1.SilentSet(Num1 + Num2);
+Num1.Value = Num2 + Num3;
 ```
 
+
+
+**Using Incremental update = Yes**
+```csdiff
+Num1.AddDeltaOf(() => 5);
+```
 
 **Using Force update = Yes**
 ```csdiff
@@ -17,8 +23,6 @@ Num1.Value = 3;
 DenyUndoForCurrentRow();
 ```
 
-**Using Incremental update = Yes**
-```csdiff
-Num1.AddDeltaOf(() => 5);
-```
 
+### See Also
+[SilentSet](02-SilentSet.html)
