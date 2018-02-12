@@ -63,7 +63,15 @@ Clicking on the desired statement will copy it to the SQL commands area so you c
 ![](history.png)
 
 
+## Profiler SQL statement
+
+You can copy an SQL statement from the Firefly profiler "AS IS" with the parameters and the SQL editor will execute it
+
+![](sqlbind.png)
+
 ---
 **See Also:**
 * [Developer Tools](http://doc.fireflymigration.com/access-developer-tools-and-users-management-menu.html)
+* [Firefly Profiler](http://doc.fireflymigration.com/fireflyprofiler.html)
+
 ---
