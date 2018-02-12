@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="where,range,range expression, sql where,DB sql,magic sql,dynamic where">
+    <meta name="keywords" content="">
 
-    <title>basic condition</title>
+    <title>Integrating DevExpress PivotGrid with Migrated Application</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,88 +29,8 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="basic-condition">basic condition</h1>
-<pre data-line="8" class="language-csdiff line-numbers"><code>public class ShowOrders : UIControllerBase
-{
-
-    public readonly Models.Orders Orders = new Models.Orders();
-    public ShowOrders()
-    {
-        From = Orders;
-        Where.Add(Orders.ShipCity.IsEqualTo("London"));
-    }
-} </code></pre>
-<h3 id="using-or">Using or</h3>
-<pre data-line="8,9" class="language-csdiff line-numbers"><code>public class ShowOrders : UIControllerBase
-{
-
-    public readonly Models.Orders Orders = new Models.Orders();
-    public ShowOrders()
-    {
-        From = Orders;
-        Where.Add(Orders.ShipCity.IsEqualTo("London").Or(
-            Orders.ShipCity.IsEqualTo("Madrid")));
-    }
-} </code></pre>
-<h3 id="using-an-in-memory-expression">Using an in memory expression</h3>
-<h4 id="example-1">Example 1</h4>
-<pre data-line="8" class="language-csdiff line-numbers"><code>public class ShowOrders : UIControllerBase
-{
-
-    public readonly Models.Orders Orders = new Models.Orders();
-    public ShowOrders()
-    {
-        From = Orders;
-        Where.Add(() =&gt; Orders.ShipCity=="London");
-    }
-} </code></pre>
-<h4 id="example-2">Example 2</h4>
-<pre data-line="8" class="language-csdiff line-numbers"><code>public class ShowOrders : UIControllerBase
-{
-
-    public readonly Models.Orders Orders = new Models.Orders();
-    public ShowOrders()
-    {
-        From = Orders;
-        Where.Add(() =&gt; Orders.ShipCity.Contains("o"));
-    }
-} </code></pre>
-<h3 id="sql-where">SQL Where</h3>
-<pre data-line="8" class="language-csdiff line-numbers"><code>public class ShowOrders : UIControllerBase
-{
-
-    public readonly Models.Orders Orders = new Models.Orders();
-    public ShowOrders()
-    {
-        From = Orders;
-        Where.Add("{0} = {1}", Orders.ShipCity, "London");
-    }
-} </code></pre>
-<h3 id="sql-where-using-prebuilt-functions">SQL Where using prebuilt functions</h3>
-<h4 id="example-1-1">Example 1</h4>
-<pre data-line="8" class="language-csdiff line-numbers"><code>public class ShowOrders : UIControllerBase
-{
-
-    public readonly Models.Orders Orders = new Models.Orders();
-    public ShowOrders()
-    {
-        From = Orders;
-        Where.Add(db.In(Orders.ShipCity, "London", "Madrid"));
-
-    }
-} </code></pre>
-<h4 id="example-2-1">Example 2</h4>
-<pre data-line="8" class="language-csdiff line-numbers"><code>public class ShowOrders : UIControllerBase
-{
-
-    public readonly Models.Orders Orders = new Models.Orders();
-    public ShowOrders()
-    {
-        From = Orders;
-        Where.Add("{0} = {1} or {2}", Orders.ShipCity, "London",db.In(Orders.ShipCity,"Madrid", "Berlin"));
-
-    }
-} </code></pre>
+                <div class="content"><h1 id="integrating-devexpress-pivotgrid-with-migrated-application">Integrating DevExpress PivotGrid with Migrated Application</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lfOZgjkeCfI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
 
@@ -118,7 +38,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/20-Making-the-most-out-of-Where/90-Other-Types-Of-Where.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/70-User Interface/10-Integrating-DevExpress-PivotGrid-with-Migrated-Application.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -180,7 +100,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'other-types-of-where.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'integrating-devexpress-pivotgrid-with-migrated-application.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
