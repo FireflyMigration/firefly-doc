@@ -21,7 +21,9 @@ https://blogs.msdn.microsoft.com/friis/2016/08/25/setup-iis-with-url-rewrite-as-
 
 ##### .NET and ASP extensions
 
-Make sure .NET and ASP are installed on the IIS server
+Make sure .NET and ASP are installed on the IIS server.
+Open the  ‘Turn on or off Windows features’ by using 
+*Run -> optionalfeatures*
 
 ![](NETASPExt.png)
 
@@ -35,7 +37,7 @@ name].Server (Northwind.Server) and point it to its folder (physical directory)
 The main files in this folder are:
 -	Bin folder – the .NET binaries (migrated code)
 -	Request.aspx – the requester
--	Services.aspx  - for Remote requests (Web Services, CMD and etc)
+-	Services.aspx  - for Remote requests (Web Services, CMD and etc) see below: [Remote request][]
 -  INI file (Northwind.Server.ini)
 
 
@@ -59,6 +61,8 @@ IIS is running under the build-in user (who logged to the server) or a custom us
 You can monitor the remote requests using the link below:
 
 http://localhost/[ProjectName].Server/services.aspx
+
+
 
 
 
