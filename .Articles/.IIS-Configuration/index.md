@@ -56,7 +56,7 @@ IIS is running under the build-in user (who logged to the server) or a custom us
 ![](IIS_ID.png)
 
 
-#### Remote request
+#### Remote requests
 
 You can monitor the remote requests using the link below:
 
