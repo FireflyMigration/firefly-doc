@@ -29,7 +29,7 @@ Open the  ‘Turn on or off Windows features’ by using
 
 ##### Application
 
-Under the Web site, add an application with the alias name of the [project 
+Under the Web site, add an application with the alias name of [project 
 name].Server (Northwind.Server) and point it to its folder (physical directory)
 
 ![](AddApplication.png)
