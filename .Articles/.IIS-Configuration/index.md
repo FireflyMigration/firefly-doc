@@ -1,6 +1,6 @@
 ﻿# IIS Configuration
 
-This article covers the configuration needed to implement .NET migrated web application in IIS.
+This article covers the configuration needed to implement .NET migrated web application in IIS.  
 First, let’s explain the architecture of .NET web comparing to the Magic web.
 
 When a request is received from the Web, Magic handles it using three layers:
@@ -12,7 +12,7 @@ As oppose to Magic, .NET handles the request using only two layers
 -	Application Server (IIS)
 -	Application code
 
-.NET uses the IIS as a standard application server.
+.NET uses the IIS as a standard application server.  
 In case you do want to have an extra layer between the IIS and the application, please refer to the article below:
 https://blogs.msdn.microsoft.com/friis/2016/08/25/setup-iis-with-url-rewrite-as-a-reverse-proxy-for-real-world-apps/
 
