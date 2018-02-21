@@ -10,7 +10,7 @@ In some cases, the recompute engine may enter an unstable state.
 
 
 ### Resolution ###
-The issue is fixed in version 30124 (Feb 21st 2018). Updating to this version or later will fix the issue. 
+Updating to version 30124 (Feb 21st 2018) or later resolves the issue. 
 
 If you need to apply the fix to your current source code of the Firefy.Box.dll, the changes are in the Engine\ManyToOneRelatino.cs. Please follow the changes below:
 
