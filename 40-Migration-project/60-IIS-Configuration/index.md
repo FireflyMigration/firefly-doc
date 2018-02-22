@@ -13,7 +13,7 @@ As oppose to Magic, .NET handles the request using only two layers
 -	Application code
 
 .NET uses the IIS as a standard application server.  
-In case you do want to have an extra layer between the IIS and the application, please refer to the article below:
+In case you do want to have an extra layer between the IIS and the application, please refer to the article below:  
 https://blogs.msdn.microsoft.com/friis/2016/08/25/setup-iis-with-url-rewrite-as-a-reverse-proxy-for-real-world-apps/
 
 
@@ -37,7 +37,7 @@ name].Server (Northwind.Server) and point it to its folder (physical directory)
 The main files in this folder are:
 -	Bin folder – the .NET binaries (migrated code)
 -	Request.aspx – the requester
--	Services.aspx  - for Remote requests (Web Services, CMD and etc) see below: [Remote request][]
+-	Services.aspx  - for Remote requests (Web Services, CMD and etc) see below: [Remote requests][]
 -  INI file (Northwind.Server.ini)
 
 
