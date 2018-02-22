@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Migration project</title>
+    <title>IIS Configuration</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,18 +29,49 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="migration-project">Migration project</h1>
+                <div class="content"><h1 id="iis-configuration">IIS Configuration</h1>
+<p>This article covers the configuration needed to implement .NET migrated web application in IIS.<br />
+First, let’s explain the architecture of .NET web comparing to the Magic web.</p>
+<p>When a request is received from the Web, Magic handles it using three layers:</p>
 <ul>
-<li><a href="automatic-migration-using-ftp.html">Automatic Migration Using FTP</a></li>
-<li><a href="using-the-migration-reports.html">Using the Migration Reports</a></li>
-<li><a href="alpha-testing.html">Alpha Testing</a></li>
-<li><a href="getting-the-code-for-the-first-time.html">Getting the code for the first time</a></li>
-<li><a href="symbols-for-the-module-env.dll-were-not-loaded.html">Symbols for the module ENV.dll were not loaded</a></li>
-<li><a href="splitting-an-application-into-smaller-parts.html">Splitting an application into smaller parts</a></li>
-<li><a href="data-migration-from-btrieve-to-sql.html">Data Migration from Btrieve To SQL</a></li>
-<li><a href="iis-configuration.html">IIS Configuration</a></li>
-<li><a href="oracle-performance-enhancements-in-version-29720.html">Oracle Performance Enhancements in version 29720</a></li>
+<li>Requester (mgriqispi.dll)</li>
+<li>Application Server (Broker)</li>
+<li>Application code</li>
 </ul>
+<p>As oppose to Magic, .NET handles the request using only two layers</p>
+<ul>
+<li>Application Server (IIS)</li>
+<li>Application code</li>
+</ul>
+<p>.NET uses the IIS as a standard application server.<br />
+In case you do want to have an extra layer between the IIS and the application, please refer to the article below:
+<a href="https://blogs.msdn.microsoft.com/friis/2016/08/25/setup-iis-with-url-rewrite-as-a-reverse-proxy-for-real-world-apps/">https://blogs.msdn.microsoft.com/friis/2016/08/25/setup-iis-with-url-rewrite-as-a-reverse-proxy-for-real-world-apps/</a></p>
+<h4 id="configuration">Configuration</h4>
+<h5 id="net-and-asp-extensions">.NET and ASP extensions</h5>
+<p>Make sure .NET and ASP are installed on the IIS server.
+Open the  ‘Turn on or off Windows features’ by using
+<em>Run -&gt; optionalfeatures</em></p>
+<p><img src="NETASPExt.png" alt="" /></p>
+<h5 id="application">Application</h5>
+<p>Under the Web site, add an application with the alias name of [project
+name].Server (Northwind.Server) and point it to its folder (physical directory)</p>
+<p><img src="AddApplication.png" alt="" /></p>
+<p>The main files in this folder are:</p>
+<ul>
+<li>Bin folder – the .NET binaries (migrated code)</li>
+<li>Request.aspx – the requester</li>
+<li>Services.aspx  - for Remote requests (Web Services, CMD and etc) see below: [Remote request][]</li>
+<li>INI file (Northwind.Server.ini)</li>
+</ul>
+<h5 id="bit-application">32-bit application</h5>
+<p>Since Magic is a 32-bit application, the migrated code is also a 32-bit application so make sure that the Application Pool of the Web site Enables 32-bit applications</p>
+<p><img src="32bit.png" alt="" /></p>
+<h4 id="user-identity">User identity</h4>
+<p>IIS is running under the build-in user (who logged to the server) or a custom user. Make sure to add sufficient rights to the user you choose.</p>
+<p><img src="IIS_ID.png" alt="" /></p>
+<h4 id="remote-requests">Remote requests</h4>
+<p>You can monitor the remote requests using the link below:</p>
+<p><a href="http://localhost/%5BProjectName%5D.Server/services.aspx">http://localhost/[ProjectName].Server/services.aspx</a></p>
 
 
 
@@ -48,7 +79,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/60-IIS-Configuration/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -110,7 +141,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'migration-project.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'iis-configuration.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
