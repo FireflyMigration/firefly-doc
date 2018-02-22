@@ -37,7 +37,7 @@ name].Server (Northwind.Server) and point it to its folder (physical directory)
 The main files in this folder are:
 -	Bin folder – the .NET binaries (migrated code)
 -	Request.aspx – the requester
--	Services.aspx  - for Remote requests (Web Services, CMD and etc) see below: [Remote request][]
+-	Services.aspx  - for Remote requests (Web Services, CMD and etc) see below: [Remote requests][]
 -  INI file (Northwind.Server.ini)
 
 
