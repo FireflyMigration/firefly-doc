@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="link,relations,RelationType">
+    <meta name="keywords" content="">
 
-    <title>Link Type</title>
+    <title>Creating Complex JSON and XML structures and using them in a Rest API and MVC .NET</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,51 +29,8 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="link-type">Link Type</h1>
-<p>Name in the Migrated Code: <strong>RelationsType property</strong><br />
-Location in the Migrated code: <strong>Sent as parameter to the Relations.Add()</strong> method</p>
-<hr />
-<p>The Relation type in the migrated code is sent as parameter to the Relations.Add() method.
-For example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>   void InitializeDataView()
-   {
-     From = Orders;
-     Relations.Add(Customers, RelationType.Find, Customers.CustomerID.IsEqualTo(Orders.CustomerID);
-   } </code></pre>
-<p>The following table shows the .Net equivalents for Magic link types.</p>
-<table>
-<thead>
-<tr>
-<th>Magic Name</th>
-<th>Migrated Code Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Query</td>
-<td>Find</td>
-</tr>
-<tr>
-<td>Write</td>
-<td>InsertIfNotFound</td>
-</tr>
-<tr>
-<td>Create</td>
-<td>Insert</td>
-</tr>
-<tr>
-<td>InnerJoin</td>
-<td>InnerJoin</td>
-</tr>
-<tr>
-<td>L.O.Join</td>
-<td>Join</td>
-</tr>
-</tbody>
-</table>
-<pre><code></code></pre>
-<p>See also:<br />
-<a href="http://www.fireflymigration.com/reference/html/T_Firefly_Box_RelationType.htm">Relations Enum</a></p>
+                <div class="content"><h1 id="creating-complex-json-and-xml-structures-and-using-them-in-a-rest-api-and-mvc.net">Creating Complex JSON and XML structures and using them in a Rest API and MVC .NET</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5imnY-Y-qSg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
 
@@ -81,7 +38,7 @@ For example:</p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/Data-View/04-Link/02-Link-Type.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/00-ENV Web/03-Additional server side features/50-Creating Complex JSON and XML in Rest API.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -143,7 +100,7 @@ For example:</p>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'link-type.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'creating-complex-json-and-xml-in-rest-api.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
