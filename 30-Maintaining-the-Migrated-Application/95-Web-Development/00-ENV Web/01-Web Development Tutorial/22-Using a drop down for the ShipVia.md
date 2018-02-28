@@ -67,7 +67,7 @@ export class AppComponent {
 }
 
 ```
-### the User Experiance
+### the User Experience
 * The user selects from a drop down
 * The filter also uses a drop down
 * When the column is readonly, the correct description is presented
