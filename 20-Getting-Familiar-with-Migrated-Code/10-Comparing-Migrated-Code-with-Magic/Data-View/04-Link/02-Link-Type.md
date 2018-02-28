@@ -1,4 +1,4 @@
-﻿keywords: link,relations,RelationsType,RelationType
+﻿keywords: link,relations,RelationType
 Name in the Migrated Code: **RelationsType property**  
 Location in the Migrated code: **Sent as parameter to the Relations.Add()** method
 
