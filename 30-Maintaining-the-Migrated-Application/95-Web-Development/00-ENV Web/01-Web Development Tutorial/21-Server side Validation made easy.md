@@ -52,5 +52,5 @@ protected override void OnSavingRow()
 
 ```
 
-## the User Experiance
+## the User Experience
 ![2017 10 15 08H43 25](2017-10-15_08h43_25.gif)
