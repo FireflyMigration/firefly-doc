@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="task properties, range, locate, SQL where, expression, DB SQL">
 
-    <title>SQL Where Tab</title>
+    <title>SQL Where</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,9 +29,24 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="sql-where-tab">SQL Where Tab</h1>
+                <div class="content"><h1 id="sql-where">SQL Where</h1>
+<p>Name in Migrated Code: <strong>Where.Add</strong><br />
+Location in Migrated Code: <strong>InitializeDataView</strong></p>
+<p><img src="2018-02-25_11h44_03.jpg" alt="2018 02 25 11H44 03" /></p>
+<h2 id="expression-db-sql">Expression / DB SQL</h2>
+<p>By deafult this screen shows the summary of the ranges as they were defined in the Data View part.
+In the migrated code this is represented by the <code>Where.Add</code></p>
+<p>The next items descirbe the expression and DB SQL.</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>void InitializeDataView()
+    {
+        From = Order;
+        Where.Add(Orders.OrderID.IsBetween(1,5)); </code></pre>
+<blockquote>
+<p>More samples of Where are found <a href="http://doc.fireflymigration.com/other-types-of-where.html">here</a></p>
+</blockquote>
 <ul>
-<li><a href="expression-db-sql.html">Expression DB SQL</a></li>
+<li><a href="sql-where-db-sql.html">SQL Where DB SQL</a></li>
+<li><a href="sql-where-expression.html">SQL Where expression</a></li>
 </ul>
 
 

@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="Console">
+    <meta name="keywords" content="task properties, range, locate, SQL where, expression, DB SQL">
 
-    <title>Console</title>
+    <title>SQL Where</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,15 +29,19 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="console">Console</h1>
-<p>Same as 'Printer' but with PrintPreview = true and Landscape = true</p>
-<pre data-line="4,5" class="language-csdiff line-numbers"><code>_ioPrint_Customers = new ENV.Printing.PrinterWriter()
-{
-  Name = "Print - Customers",
-  PrintPreview = true,
-  Landscape = true
-};
-Streams.Add(_ioPrint_Customers); </code></pre>
+                <div class="content"><h1 id="sql-where">SQL Where</h1>
+<p>Name in Migrated Code: <strong>Where.Add</strong><br />
+Location in Migrated Code: <strong>InitializeDataView</strong></p>
+<p><img src="2018-02-25_11h40_13.jpg" alt="2018 02 25 11H40 13" /></p>
+<h2 id="sql-where-expression">SQL Where Expression</h2>
+<p>The SQL Where expression allowed the developer to add a uniPaaS expression that will be translated to the corresponding SQL Where statement.
+Same is done in the migrated code - all the functions supporting this behavior reside not in the ENV.UserMethods class but rather in the ENV.Data.UserDbMethods, resulting in a slight difference in the <code>Where.Add</code>
+So in the following example the expression is <code>InStr(CustomerID,'a')&gt;0</code> - note the &quot;db&quot; prefix to the function (method):</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>void InitializeDataView()
+    {
+        From = Orders;
+        Where.Add("{0} &gt; 0", db.InStr(Orders.CustomerID, "a"));
+    } </code></pre>
 
 
 
@@ -45,7 +49,7 @@ Streams.Add(_ioPrint_Customers); </code></pre>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/03-IO-Devices/03-Console.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/10-Range-Locate/02-SQL-Where-Tab/SQL Where expression.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -107,7 +111,7 @@ Streams.Add(_ioPrint_Customers); </code></pre>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'console.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'sql-where-expression.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

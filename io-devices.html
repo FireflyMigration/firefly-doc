@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="Console">
+    <meta name="keywords" content="io,i/o,io devices">
 
-    <title>Console</title>
+    <title>I/O Devices</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,15 +29,79 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="console">Console</h1>
-<p>Same as 'Printer' but with PrintPreview = true and Landscape = true</p>
-<pre data-line="4,5" class="language-csdiff line-numbers"><code>_ioPrint_Customers = new ENV.Printing.PrinterWriter()
-{
-  Name = "Print - Customers",
-  PrintPreview = true,
-  Landscape = true
-};
-Streams.Add(_ioPrint_Customers); </code></pre>
+                <div class="content"><h1 id="io-devices">I/O Devices</h1>
+<h2 id="introduction">Introduction</h2>
+<p>The I/O Devices has several Media options.</p>
+<p><img src="iodevice.png" alt="" /></p>
+<p>The properties section of each Media looks like this:</p>
+<p><img src="ioproperties.png" alt="" /></p>
+<p>The actual output or input device is determined in Magic by the Media property. The following table specifies the different Media defined in Magic and their .Net counterparts in the migrated code.</p>
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>Media Type</th>
+<th>Name in migrated code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.</td>
+<td>Graphic Printer</td>
+<td>PrinterWriter</td>
+</tr>
+<tr>
+<td>2.</td>
+<td>Printer</td>
+<td>TextPrinterWriter</td>
+</tr>
+<tr>
+<td>3.</td>
+<td>Console</td>
+<td>PrinterWriter with PrintPreview set to true</td>
+</tr>
+<tr>
+<td>4.</td>
+<td>File with Access Write</td>
+<td>FileWriter</td>
+</tr>
+<tr>
+<td>5.</td>
+<td>File with Access Read</td>
+<td>FileReader</td>
+</tr>
+<tr>
+<td>6.</td>
+<td>Requester</td>
+<td>WebWriter</td>
+</tr>
+<tr>
+<td>7.</td>
+<td>XML Direct Access</td>
+<td>XML</td>
+</tr>
+<tr>
+<td>8.</td>
+<td>Variable with Access Write</td>
+<td>ByteArrayWriter</td>
+</tr>
+<tr>
+<td>9.</td>
+<td>Variable with Access Read</td>
+<td>ByteArrayReader</td>
+</tr>
+</tbody>
+</table>
+<p>Each section below will list the relevant Methods and Properties for each Media type:</p>
+<ul>
+<li><a href="graphic-printer.html">Graphic Printer</a></li>
+<li><a href="printer.html">Printer</a></li>
+<li><a href="console.html">Console</a></li>
+<li><a href="file.html">File</a></li>
+<li><a href="requester.html">Requester</a></li>
+<li><a href="xml-direct-access.html">XML Direct Access</a></li>
+<li><a href="variable.html">Variable</a></li>
+</ul>
 
 
 
@@ -45,7 +109,7 @@ Streams.Add(_ioPrint_Customers); </code></pre>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/03-IO-Devices/03-Console.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/03-IO-Devices/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -107,7 +171,7 @@ Streams.Add(_ioPrint_Customers); </code></pre>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'console.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'io-devices.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
