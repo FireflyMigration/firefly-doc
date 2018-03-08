@@ -1,0 +1,6 @@
+ERROR: url conflict: 
+MarkDownFile: Index.html => c:\repos\firefly-doc\20-Getting-Familiar-with-Migrated-Code\10-Comparing-Migrated-Code-with-Magic\02-Forms\Index.md
+MarkDownFile: Index.html => c:\repos\firefly-doc\20-Getting-Familiar-with-Migrated-Code\10-Comparing-Migrated-Code-with-Magic\10-Range-Locate\02-SQL-Where-Tab\Index.md'
+ERROR: url conflict: 
+MarkDownFile: Index.html => c:\repos\firefly-doc\20-Getting-Familiar-with-Migrated-Code\10-Comparing-Migrated-Code-with-Magic\02-Forms\Index.md
+MarkDownFile: index.html => c:\repos\firefly-doc\index.md'
