@@ -18,7 +18,7 @@
        Every module has its controllers, views (screens),  
 	- *[Solution name]Base* - contains the migrated tables under the Models folder, migrated Models under the Types folder and other objects which are shared by the whole solution.  
 
-4. The startup project is the one in Bold and is the first to run when we runt he application.  
+4. The startup project is the one in Bold and is the first to run when we run the application.  
    The startup project includes several parts:
 	 - .ini file - the configuration file use to run the application  
 	 - The Views folder which contains all the menus  
