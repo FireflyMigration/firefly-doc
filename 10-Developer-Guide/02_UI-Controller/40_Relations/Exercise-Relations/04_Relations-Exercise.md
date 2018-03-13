@@ -1,8 +1,4 @@
-﻿# Exercise - UIController - Relations
-
-
-1.	In **ShowProducts**, drag and drop the **Categories** entity (located in the NorthwindBase.Models name space).
-2.  Using the **rel** snippet Add a relation to the **Categories** table.
+﻿# Exercise - UIController - Relations results
 
 Your **ShowProducts** class should look like :
 ```csdiff
@@ -47,12 +43,6 @@ namespace Northwind.Exercises
 }
 ```
 
-3.  **Build** the project and then using the **Class Outline** open the **designer**.
-4.  Add to the grid the **CategoryName** next to the **CategoryID** value.
-2.	Build and test.
-3.	While running the project, change the value of the "CategoryID" and verify that the "CategoryName" is changed.
-4.	Make the "CategoryName" textbox readonly.
-5.	Build and test
-![](RelationDesignerLook.png)  
+![Relation Designer Look](RelationDesignerLook.png)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XJe4IZePjAg?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
