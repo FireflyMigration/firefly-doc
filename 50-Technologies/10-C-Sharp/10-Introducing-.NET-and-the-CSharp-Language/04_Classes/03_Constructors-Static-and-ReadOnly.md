@@ -95,11 +95,11 @@ let's see example for that
 In the Animal class a new static member from type int is added:  
 static int LastUsedId =0;  
 
-We also added a new member (which is not public) called Id:  
+We also added a new member called Id:  
 public int Id;   
 
 In the constructor we will increase the value of the static member by 1 -   
-so every type a new instance of the Animal class is created the value of the static member is increased by 1.  
+so every time a new instance of the Animal class is created the value of the static member is increased by 1.  
 
 Then, we set the value of the LastUsedId (the static member) to the Id.  
 That way - every new instance of the class will receive a new and unique id.  
