@@ -1,4 +1,4 @@
-﻿# Exercise - Creating a Simple Screen Resolute
+﻿# Exercise - Creating a Simple Screen Result
 
 The **showOrderDetails** class should look like :
 ```csdiff
