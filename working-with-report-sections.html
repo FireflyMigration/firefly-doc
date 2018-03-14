@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="batch, businessprocess, report, sections">
 
-    <title>Working with Report Sections</title>
+    <title>Working with report sections</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,9 +29,30 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="working-with-report-sections">Working with Report Sections</h1>
-<hr />
+                <div class="content"><h1 id="working-with-report-sections">Working with report sections</h1>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/v6vGggwVyUg?list=PL1DEQjXG2xnLss44EgCJq1bAM-Blgf2jd" frameborder="0" allowfullscreen></iframe>
+<hr />
+<h4 id="adding-a-report-section">Adding a report section</h4>
+<p>When in the layout designer:</p>
+<ol>
+<li>Click on the existing section - a small arrow will appear in the top-right corner - click it
+<img src="2018-03-06_15h22_39.jpg" alt="2018 03 06 15H22 39" />
+You can see that you can specify the section's name</li>
+<li>Press the <em>Add Section</em> and provide it with a meaningful name</li>
+<li>You can move any section by pressing the <em>Move Down</em> or <em>Move Up</em></li>
+</ol>
+<h4 id="designing-a-report-section">Designing a report section</h4>
+<p>This is done pretty much like you did so far.
+So, for example, you can create two new sections, name them PageHeader and PageFooter.
+Then drag the title, page number and date to the PageHeader.</p>
+<h4 id="use-the-added-sections-in-the-report-controller">Use the added sections in the report controller</h4>
+<p>In the PrinterWriter , add the <em>PageHeader</em> and <em>PageFooter</em> properties, indicating the appropriate sections in the layout:</p>
+<pre data-line="4,5" class="language-csdiff line-numbers"><code>_Printer = new PrinterWriter 
+    { 
+    PrintPreview = true,
+    PageHeader = _layout.PageHeader,
+    PageFooter = _layout.PageFooter
+    }; </code></pre>
 
 
 

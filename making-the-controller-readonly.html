@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="online, uicontroller, selection, select, zoom">
 
-    <title>Making the Controller Readonly</title>
+    <title>Setting the allowed activities of the controller</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,9 +29,40 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="making-the-controller-readonly">Making the Controller Readonly</h1>
-<hr />
+                <div class="content"><h1 id="setting-the-allowed-activities-of-the-controller">Setting the allowed activities of the controller</h1>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Dt5P7dBmtSk?list=PL1DEQjXG2xnKzD8ASzFC1KFYHRQKVk2nC" frameborder="0" allowfullscreen></iframe>
+<hr />
+<p>So now we have a SelectShipper UIController, that will be used as the selection list.
+One more thing we need to do is to make sure the user cannot modify / delete / update records.
+In order to do that we need to:</p>
+<ol>
+<li>Set the Activity (initial mode) to <em>Browse</em> (Query). The default is <em>Update</em> (Modify).</li>
+<li>Make sure all the other activities are not allowed (using the <em>Allow</em> for each activity).</li>
+</ol>
+<p>In the code it will look like this:</p>
+<pre data-line="3,4,5,6" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+    Activity = Activities.Browse;
+    AllowDelete = false;
+    AllowInsert = false;
+    AllowUpdate = false;
+    RowLocking = LockingStrategy.OnRowSaving;
+    TransactionScope = TransactionScopes.SaveToDatabase;
+    View = () =&gt; new Views.ShowOrdersView(this);
+} </code></pre>
+<p>Another option would be to prevent the user from swithing activities. This is done using the <em>AllowActivitySwitch</em>.
+In the code it will look like this:</p>
+<pre data-line="7" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+    Activity = Activities.Browse;
+-   AllowDelete = false;
+-   AllowInsert = false;
+-   AllowUpdate = false;
+    AllowActivitySwitch = false;
+    RowLocking = LockingStrategy.OnRowSaving;
+    TransactionScope = TransactionScopes.SaveToDatabase;
+    View = () =&gt; new Views.ShowOrdersView(this);
+} </code></pre>
 
 
 

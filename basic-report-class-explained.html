@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="batch, businessprocess, report">
 
-    <title>Basic Report Class Explained</title>
+    <title>Basic report class explained</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,8 +29,37 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="basic-report-class-explained">Basic Report Class Explained</h1>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UYy7R-_3RIk?list=PL1DEQjXG2xnLss44EgCJq1bAM-Blgf2jd" frameborder="0" allowfullscreen></iframe>
+                <div class="content"><h1 id="basic-report-class-explained">Basic report class explained</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UYy7R-_3RIk?list=PL1DEQjXG2xnLss44EgCJq1bAM-Blgf2jd" frameborder="0" allowfullscreen></iframe>  
+<hr />
+<p>In the controller class we defined the Orders table as our main table:</p>
+<pre data-line="1,9" class="language-csdiff line-numbers"><code>Public readonly Models.Orders Orders = new Models.Orders();
+
+PrinterWriter _Printer;
+
+Printing.Print_OrdersC1 _layout;
+
+public Print_Orders()
+{
+    From = Orders1;
+}
+protected override void OnLoad()
+{
+    _layout = new Printing.Print_OrdersC1(this);
+    _Printer = new PrinterWriter { PrintPreview = true };
+    Streams.Add(_ioPrint_Order);
+}
+protected override void OnLeaveRow()
+{
+    _layout.Body.WriteTo(_Printer);
+} </code></pre>
+<h4 id="automatically-added-lines">Automatically added lines</h4>
+<p>The <strong>PrinterWriter</strong> is a class within ENV.Printing which is in charge of printing to a printer or to a pdf file.<br />
+It is initiated in the OnLoad method, providing it with some properties (for example the print preview).</p>
+<p>The <strong>Streams.add</strong> makes sure that all the resources of the report are cleard when the controller execution is done.
+(this is true for any type of IO)</p>
+<p>The <strong>_layout</strong> is the report view that will be printed - it is initiated in the OnLoad.</p>
+<p>In the <strong>OnLeaveRow</strong> you can see the <strong>WriteTo</strong> command which performs the actuall writting of the report, indicating the layout to be used, the section, and the PrinterWriter.</p>
 
 
 

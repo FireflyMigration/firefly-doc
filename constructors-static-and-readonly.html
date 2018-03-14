@@ -105,10 +105,10 @@ usually to count the number of instances or to share a value between all instanc
 <p>let's see example for that<br />
 In the Animal class a new static member from type int is added:<br />
 static int LastUsedId =0;</p>
-<p>We also added a new member (which is not public) called Id:<br />
+<p>We also added a new member called Id:<br />
 public int Id;</p>
 <p>In the constructor we will increase the value of the static member by 1 -<br />
-so every type a new instance of the Animal class is created the value of the static member is increased by 1.</p>
+so every time a new instance of the Animal class is created the value of the static member is increased by 1.</p>
 <p>Then, we set the value of the LastUsedId (the static member) to the Id.<br />
 That way - every new instance of the class will receive a new and unique id.</p>
 <p>The code below also display the id in the DescribeYouSlef() method:</p>

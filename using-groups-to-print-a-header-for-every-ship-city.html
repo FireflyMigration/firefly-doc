@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="batch, businessprocess, report, sections, groups">
 
-    <title>Using Groups to Print a Header for every Ship City</title>
+    <title>Using report sections with groups</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,9 +29,28 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="using-groups-to-print-a-header-for-every-ship-city">Using Groups to Print a Header for every Ship City</h1>
-<hr />
+                <div class="content"><h1 id="using-report-sections-with-groups">Using report sections with groups</h1>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/YLe2IfL5dOM?list=PL1DEQjXG2xnLss44EgCJq1bAM-Blgf2jd" frameborder="0" allowfullscreen></iframe>
+<hr />
+<h4 id="lets-design-our-report-so-every-ship-city-will-have-its-own-title">Let's design our report, so every Ship City will have its own title:</h4>
+<ol>
+<li>Add a new sections, named ShipCityHeader</li>
+<li>Copy the ShipCity from the grid in the details section to the new ShipCityHeader section</li>
+<li>Set it with an appropriate font</li>
+</ol>
+<h4 id="in-the-report-controller">In the report controller</h4>
+<ol>
+<li>In the contructor add the required OrderBy</li>
+<li>Add a group usign the <em>gro</em> snippet</li>
+<li>Specify the column that, upon changing, will display the new section</li>
+<li>Specify which section to write whenever a new ShipCity is reached</li>
+</ol>
+<pre data-line="" class="language-csdiff line-numbers"><code>OrderBy.Add(Orders.SortByCustomerID;
+
+Groups[Orders.ShipCity].Enter += () =&gt; 
+{
+    _layout.ShipCityHeader.WriteTo(_Printer);
+}; </code></pre>
 
 
 

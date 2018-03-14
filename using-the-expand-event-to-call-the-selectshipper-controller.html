@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="online, uicontroller, selection, select, zoom">
 
-    <title>Using the Expand event to call the SelectShipper Controller</title>
+    <title>Using the Exapnd event to call the SelectShippers</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,9 +29,23 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="using-the-expand-event-to-call-the-selectshipper-controller">Using the Expand event to call the SelectShipper Controller</h1>
-<hr />
+                <div class="content"><h1 id="using-the-exapnd-event-to-call-the-selectshippers">Using the Exapnd event to call the SelectShippers</h1>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cVMOgw0AHRE?list=PL1DEQjXG2xnKzD8ASzFC1KFYHRQKVk2nC" frameborder="0" allowfullscreen></iframe>
+<hr />
+<p>Calling the SelectShippers controller is done by configuring the <em>Expand</em> event of the column on the view:</p>
+<ol>
+<li>Park on the Shipper column in the ShowOrders controller and press F4 to display its properties</li>
+<li>Go to the <em>Events</em> tab of the properties and look for the <em>Expand</em> event. Double click it will create a method in the code begind the view.</li>
+<li>In this method call the SelectShippers controller, sending it the appropriate parameter</li>
+</ol>
+<p>The code behind the view will look like this:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>private void txtShipVia_Expand()
+{
+    new SelectShippers().Run(_controller.Shippers.ShipperID);
+} </code></pre>
+<blockquote>
+<p>Once an <em>_Expand</em> event is defined, a <strong>Zoom</strong> indication will be shown in the status bar, allowing you to either press F5, double click on the column or click the <strong>Zoom</strong> indication to call the SelectShippers controller.</p>
+</blockquote>
 
 
 

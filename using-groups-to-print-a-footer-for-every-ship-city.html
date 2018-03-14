@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="batch, businessprocess, report, sections, groups">
 
-    <title>Using Groups to Print a Footer for every Ship City</title>
+    <title>Printing group footer for every ship city</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,8 +29,36 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="using-groups-to-print-a-footer-for-every-ship-city">Using Groups to Print a Footer for every Ship City</h1>
+                <div class="content"><h1 id="printing-group-footer-for-every-ship-city">Printing group footer for every ship city</h1>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/hqnUAz_GO_c?list=PL1DEQjXG2xnLss44EgCJq1bAM-Blgf2jd" frameborder="0" allowfullscreen></iframe>
+<hr />
+<p>Now that we have seen how to print a group header and control its printing, let's add a group footer that will display the number of orders from each city. We need to:</p>
+<ol>
+<li>Add a &quot;OrdersPerCity&quot; NumberColumn that will store the number of orders
+This column will be updated with 0 in the <em>GroupEnter</em> and accumulate its value in the <em>OnLeaveRow</em></li>
+<li>Add a <em>CitySuffix</em> layout section and place the &quot;OrdersPerCity&quot; column</li>
+<li>Add the <em>GroupLeave</em> and add the WriteTo of the new section</li>
+</ol>
+<pre data-line="1,7,9,10,11,12,16" class="language-csdiff line-numbers"><code>public readonly NumberColumn OrdersPerCity = new NumberColumn("Orders Per City");
+public Print_Orders()
+{
+    Groups[Orders1.ShipCity].Enter += () =&gt;
+    {
+        _layout.Customer.WriteTo(_ioPrint_Order);
+        OrdersPerCity.Value = 0;
+    };
+    Groups[Orders1.ShipCity].Leave += () =&gt;
+    {
+        _layout.GroupLeave.WriteTo(_ioPrint_Order);
+    };
+}
+protected override void OnLeaveRow()
+{
+    OrdersPerCity.Value++;
+    _layout.Body.WriteTo(_ioPrint_Order);
+} </code></pre>
+<p>And this is the result:<br />
+<img src="2018-03-07_10h18_09.jpg" alt="2018 03 07 10H18 09" /></p>
 
 
 

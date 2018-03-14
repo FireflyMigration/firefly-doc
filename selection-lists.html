@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="online, uicontroller, selection, select, zoom">
 
     <title>Selection Lists</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -30,8 +30,21 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="selection-lists">Selection Lists</h1>
-<hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/JI4VyFsso-w?list=PL1DEQjXG2xnKzD8ASzFC1KFYHRQKVk2nC" frameborder="0" allowfullscreen></iframe>
+<hr />
+<p>Selection list allows the user to select values from a pre-defined set of values (usually a table).</p>
+<p>In this set of articles we will learn how to:</p>
+<ol>
+<li>Create a selection list controller</li>
+<li>Set the allowed activities of a controller</li>
+<li>Learn about the AllowSelect</li>
+<li>Pass the parameter</li>
+<li>Determine which row should the program park on</li>
+<li>Use the Expand event</li>
+<li>Use a generic SelectionList utility</li>
+</ol>
+<p>For this example, let's create a SelectShippers controller that will allow the user to select a shipper from the shippers entity.
+Basically we can start with a regular UIController class that uses the shippers entity as its main table and place the ShipperID and CompanyName columns on the view.</p>
 <ul>
 <li><a href="making-the-controller-readonly.html">Making the Controller Readonly</a></li>
 <li><a href="allowselect-property.html">AllowSelect Property</a></li>

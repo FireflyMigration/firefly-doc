@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="online, uicontroller, selection, select, zoom">
 
-    <title>Returning the Selected Value</title>
+    <title>Returning the selected value</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,9 +29,35 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="returning-the-selected-value">Returning the Selected Value</h1>
-<hr />
+                <div class="content"><h1 id="returning-the-selected-value">Returning the selected value</h1>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/fvazOqYXmV4?list=PL1DEQjXG2xnKzD8ASzFC1KFYHRQKVk2nC" frameborder="0" allowfullscreen></iframe>
+<hr />
+<p>Naturally a selection list receives an incoming parameter (the column that should be updated) and is updates it upon selecting a new value.</p>
+<p>So in the code we need to have:</p>
+<ol>
+<li>A parameter in the Run method the is both received and updated. In this case a NumberColumn</li>
+<li>Another member with the same type as the parameter, that is available to all the class and not just the Run method.
+This member will later be updated with the selected value.</li>
+</ol>
+<blockquote>
+<p>This member will have the pointer to the parameter, so whenever we update it, we actually updating the parameter as well.</p>
+</blockquote>
+<ol start="3">
+<li>Update the member with the current row in the OnSavingRow.</li>
+</ol>
+<p>So the code will look like this:</p>
+<pre data-line="1,4,6,9,10,11,12" class="language-csdiff line-numbers"><code>    internal NumberColumn _ShipperID = new NumberColumn();
+
+-public void Run()
+public void Run(NumberColumn shipperID)
+{
+     _shipperID = shipperID;
+    Execute();
+}
+protected override void OnSavingRow()
+{
+     _shipperID.Value = Shippers.ShipperID;
+} </code></pre>
 
 
 

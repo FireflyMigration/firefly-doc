@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="online, uicontroller, selection, select, zoom">
 
-    <title>Determine the Parked Row</title>
+    <title>Determine the parked row</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,9 +29,19 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="determine-the-parked-row">Determine the Parked Row</h1>
-<hr />
+                <div class="content"><h1 id="determine-the-parked-row">Determine the parked row</h1>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/89HADtTSQ4U?list=PL1DEQjXG2xnKzD8ASzFC1KFYHRQKVk2nC" frameborder="0" allowfullscreen></iframe>
+<hr />
+<p>Now that we have a functioning selection list controller, there is one more thing we need to add to it - the parked row.<br />
+Keeping in mind that in most cases we call this controller when parked on a record containing a value - so natually we would like the controller to being by parking on the relevant row.
+This is done using the <em>StartOnRowWhere.Add</em> indicating, like we did in the <em>Where.Add</em> the criteria (or values) that will determing the parked row.</p>
+<p>This is how it is done in the code:</p>
+<pre data-line="4" class="language-csdiff line-numbers"><code>public void Run(NumberColumn shipperID)
+{
+    _shipperID = shipperID;
+    StartOnRowWhere.Add(Shippers.ShipperID.IsEqualTo(shipperID));
+    Execute();
+} </code></pre>
 
 
 

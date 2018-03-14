@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="Task Properties, Data Tab, Transaction Begin, OnLoad, TransactionScope, On record lock, RowLocking, Before record rrefix, Before task prefix, Before record update, SaveToDatabase">
+    <meta name="keywords" content="">
 
-    <title>Transaction Begin</title>
+    <title>Exercise - Creating a Simple Screen Result</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,66 +29,44 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="transaction-begin">Transaction Begin</h1>
-<p>Name in Migrated Code: <strong>Transaction Scope</strong><br />
-Location in Migrated Code: <strong>OnLoad Method</strong></p>
-<p><img src="2017-11-15_15h44_04.png" alt="" /></p>
-<h2 id="migrated-code-example">Migrated Code Example</h2>
-<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+                <div class="content"><h1 id="exercise-creating-a-simple-screen-result">Exercise - Creating a Simple Screen Result</h1>
+<p>The <strong>showOrderDetails</strong> class should look like :</p>
+<pre data-line="14,15,19,20,21" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Exercises
 {
-    TransactionScope = TransactionScopes.RowLocking; 
-    View = () =&gt; new Views.ShowOrdersView(this);
+    public class ShowOrderDetails : UIControllerBase
+    {
+
+        public readonly Models.Order_Details Order_Details = new Models.Order_Details();
+        public readonly Models.Products Products = new Models.Products();
+
+        public ShowOrderDetails()
+        {
+            From = Order_Details;
+            Where.Add(Order_Details.UnitPrice.IsGreaterOrEqualTo(20));
+            OrderBy.Add(Order_Details.OrderID, SortDirection.Descending);
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () =&gt; new Views.ShowOrderDetailsView(this);
+        }
+    }
 } </code></pre>
-<h2 id="property-values">Property Values</h2>
-<table>
-<thead>
-<tr>
-<th>Magic Name</th>
-<th>Migrated Code Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Before Task Prefix</td>
-<td>Task</td>
-</tr>
-<tr>
-<td>OnRecordLock</td>
-<td>RowLocking</td>
-</tr>
-<tr>
-<td>BeforeRecordPrefix</td>
-<td>Row</td>
-</tr>
-<tr>
-<td>BeforeRecordSuffix</td>
-<td>LeaveRow</td>
-</tr>
-<tr>
-<td>Before Record Update</td>
-<td>SaveToDataBase</td>
-</tr>
-<tr>
-<td>None</td>
-<td>None</td>
-</tr>
-<tr>
-<td>Group</td>
-<td>Group</td>
-</tr>
-</tbody>
-</table>
-<p>The default is Transaction begin = <strong>None</strong> in Magic</p>
-<h2 id="note">Note</h2>
-<p>The Group option is only applicable for BusinessProcess. The migrated code will not write the <code>TransactionScope</code> property if no transaction is required.
-The <code>TransactionScope</code> property will be written whenever a transaction was set - even if it was the default in magic.
-It does that to explicitly indicate that there is a transaction.</p>
-<h2 id="see-also">See Also:</h2>
-<ul>
-<li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_TransactionScope.htm">UIController TransactionScope</a></li>
-<li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_TransactionScope.htm">BusinessProcess TransactionScope </a></li>
-<li><a href="http://fireflymigration.com/reference/html/T_Firefly_Box_TransactionScopes.htm">TransactionScope Enum</a></li>
-</ul>
+<p>The <strong>ShowOrderDetails</strong> screen should look like :<br />
+<img src="ShowOrderDetailsScreen.png" alt="Show Order Details Screen" /></p>
 
 
 
@@ -96,7 +74,7 @@ It does that to explicitly indicate that there is a transaction.</p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/01-Task-Properties/04-Data-Tab/02-Transaction-Begin.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/02_UI-Controller/60_UI-Controller-Summary-Exercise/Summary-Exercise-Result/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -158,7 +136,7 @@ It does that to explicitly indicate that there is a transaction.</p>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'transaction-begin.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'summary-exercise-result.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

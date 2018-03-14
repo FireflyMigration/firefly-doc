@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Control, model, type, gui">
 
-    <title>Creating and Using a Control Model</title>
+    <title>Creating and using a Control Model</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,7 +29,22 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="creating-and-using-a-control-model">Creating and Using a Control Model</h1>
+                <div class="content"><h1 id="creating-and-using-a-control-model">Creating and using a Control Model</h1>
+<p>Same as you have controls from the migrated code, you can add controls of your own.<br />
+In order to do that you need to:</p>
+<ol>
+<li>Go to the Base/Views/Controls folder</li>
+<li>Right click / add new item and choose the <em>BaseControl</em> template</li>
+<li>Specify a name - for example <em>ExitButton</em>*</li>
+<li>The class will be opened in the designer. Press F7 to go to the code</li>
+<li>Note the type from which your class inherits from - by default it is <em>TextBox</em> - you can change it any control from the <em>Shared.Theme.Controls</em> namespace. In our sample choose <em>Button</em></li>
+<li>Setting its properties is done from the designer - so open it (double click on the class) and press F4.<br />
+In our sample you can change the <em>Format</em> to display <em>Exit</em> and handle its <em>Click</em> event to raise the <em>Command.Exit</em></li>
+<li>Build the <em>Base</em> project and then the startup project</li>
+<li>Now if you will choose the <em>Add controls to toolbox</em> option and select the <em>Base</em> dll again, you will see the newly added control<br />
+<img src="2018-03-08_14h01_08.jpg" alt="2018 03 08 14H01 08" /></li>
+</ol>
+<hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/uWX025ElpMA?list=PL1DEQjXG2xnKZtXegLpuyGsdaxGh9dr9n" frameborder="0" allowfullscreen></iframe>
 
 

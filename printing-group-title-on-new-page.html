@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="batch, businessprocess, report, sections, groups">
 
-    <title>Printing Group Title on New Page</title>
+    <title>Printing group title on a new page</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,9 +29,20 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="printing-group-title-on-new-page">Printing Group Title on New Page</h1>
-<hr />
+                <div class="content"><h1 id="printing-group-title-on-a-new-page">Printing group title on a new page</h1>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/e9S7fhAe1ZQ?list=PL1DEQjXG2xnLss44EgCJq1bAM-Blgf2jd" frameborder="0" allowfullscreen></iframe>
+<hr />
+<p>In some cases a group might be printed on more than one page - we need to make sure that the group title is printed on every page. In order to do that, all you need to do is set the section <em>PageHeader</em> property to true
+<img src="2018-03-06_16h40_09.jpg" alt="2018 03 06 16H40 09" /></p>
+<p>Whenever a section will be printed in a new page, the report will search upwards for any section which is has the <em>PageHeader</em> property set to true and print it as well.</p>
+<p>But what if you want to differentiate between the start of the a new group and a group which detail lines are continued to the next page ?
+In order to achieve that you can have two sections, one for the <em>Group Enter</em> and the other for the <em>Group Continued</em> -
+both will have the group title, the 2nd one will include a <em>Continued</em> indication.<br />
+In this case the 1st one will have the <em>PageHeader</em> property set to false (as it is printed explicitly in the <em>Group Enter</em>),
+and the 2nd one will have the <em>PageHeader</em> property set to true.<br />
+<img src="2018-03-06_17h32_22.jpg" alt="2018 03 06 17H32 22" /><br />
+This will result in a clear distinction between the group start and the group continued:<br />
+<img src="2018-03-06_17h23_42.jpg" alt="2018 03 06 17H23 42" /></p>
 
 
 

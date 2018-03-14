@@ -85,47 +85,12 @@
 <li>Add a new menu entry to call this screen.</li>
 <li>Build and test.</li>
 </ol>
-<p>The <strong>ShowProducts</strong> class should look like :</p>
-<pre data-line="14,18" class="language-csdiff line-numbers"><code>using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing;
-using Firefly.Box;
-using ENV;
-using ENV.Data;
+<ul>
+<li><a href="creating-simple-screen-exercise-results.html">Creating Simple Screen Exercise Results</a></li>
+</ul>
 
-namespace Northwind.Exercises
-{
-    public class ShowProducts : UIControllerBase
-    {
-
-        public readonly Models.Products Products = new Models.Products();
-
-        public ShowProducts()
-        {
-            From = Products;
-        }
-
-        public void Run()
-        {
-            Execute();
-        }
-
-        protected override void OnLoad()
-        {
-            View = () =&gt; new Views.ShowProductsView(this);
-        }
-    }
-} </code></pre>
-<p>The <strong>ShowProducts Form Designer</strong> should look like :<br />
-<img src="ShowProductsScreen.png" alt="Show Products Screen" /></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PkikKDuWjLw?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
-
-<h1 id="exercise-uicontroller-filtering-data">Exercise - UIController - Filtering Data</h1>
-<ol>
-<li>In <strong>ShowProducts</strong> Add a filter to shows only records where <strong>CategoryID</strong> is 2, 4 or 6 and <strong>UnitPrice</strong> is greater than 25.</li>
-<li>Build and run the application.</li>
-</ol>
+<h1 id="exercise-uicontroller-filtering-data-results">Exercise - UIController - Filtering Data results</h1>
+<h3 id="first-part">First part</h3>
 <p>The <strong>ShowProducts</strong> class should look like :</p>
 <pre data-line="19" class="language-csdiff line-numbers"><code>using System;
 using System.Collections.Generic;
@@ -159,10 +124,7 @@ namespace Northwind.Exercises
         }
     }
 } </code></pre>
-<ol start="3">
-<li>Break the condition into two separate Where.Add lines.</li>
-<li>Build and run the application.</li>
-</ol>
+<h3 id="second-part">Second part</h3>
 <p>The <strong>ShowProducts</strong> class should look like :</p>
 <pre data-line="20,21" class="language-csdiff line-numbers"><code>using System;
 using System.Collections.Generic;
@@ -200,13 +162,23 @@ namespace Northwind.Exercises
 } </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ex29Ip6q5ow?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
 
-<h1 id="exercise-uicontroller-sorting-data">Exercise - UIController - Sorting Data</h1>
+<h1 id="exercise-uicontroller-filtering-data">Exercise - UIController - Filtering Data</h1>
 <ol>
-<li>In <strong>ShowProducts</strong> Sort the data by the <strong>CategoryID</strong> in ascending order.</li>
-<li>Build and test.</li>
-<li>Add a sort by the <strong>ProductName</strong> in descending order.</li>
-<li>Build and test.</li>
+<li><p>In <strong>ShowProducts</strong> Add a filter to shows only records where <strong>CategoryID</strong> is 2, 4 or 6 and <strong>UnitPrice</strong> is greater than 25.</p>
+</li>
+<li><p>Build and run the application.</p>
+</li>
+<li><p>Break the condition into two separate Where.Add lines.</p>
+</li>
+<li><p>Build and run the application.</p>
+</li>
 </ol>
+<ul>
+<li><a href="filtering-data-exercise.html">Filtering Data Exercise</a></li>
+</ul>
+
+<h1 id="exercise-uicontroller-sorting-data-result">Exercise - UIController - Sorting Data result</h1>
+<h3 id="first-part">First part</h3>
 <p>You <strong>ShowProducts</strong> should look like:</p>
 <pre data-line="22,23" class="language-csdiff line-numbers"><code>using System;
 using System.Collections.Generic;
@@ -244,10 +216,7 @@ namespace Northwind.Exercises
         }
     }
 } </code></pre>
-<ol start="5">
-<li>Comment out the first two sort, and sort the data using the <strong>SortByProductName</strong> index.</li>
-<li>Build and test.</li>
-</ol>
+<h3 id="second-part">Second part</h3>
 <p>You <strong>ShowProducts</strong> should look like:</p>
 <pre data-line="24" class="language-csdiff line-numbers"><code>using System;
 using System.Collections.Generic;
@@ -288,11 +257,26 @@ namespace Northwind.Exercises
 } </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/YDzp679xpeA?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
 
-<h1 id="exercise-uicontroller-relations">Exercise - UIController - Relations</h1>
+<h1 id="exercise-uicontroller-sorting-data">Exercise - UIController - Sorting Data</h1>
 <ol>
-<li>In <strong>ShowProducts</strong>, drag and drop the <strong>Categories</strong> entity (located in the NorthwindBase.Models name space).</li>
-<li>Using the <strong>rel</strong> snippet Add a relation to the <strong>Categories</strong> table.</li>
+<li><p>In <strong>ShowProducts</strong> Sort the data by the <strong>CategoryID</strong> in ascending order.</p>
+</li>
+<li><p>Build and test.</p>
+</li>
+<li><p>Add a sort by the <strong>ProductName</strong> in descending order.</p>
+</li>
+<li><p>Build and test.</p>
+</li>
+<li><p>Comment out the first two sort, and sort the data using the <strong>SortByProductName</strong> index.</p>
+</li>
+<li><p>Build and test.</p>
+</li>
 </ol>
+<ul>
+<li><a href="sorting-data-exercise.html">Sorting Data Exercise</a></li>
+</ul>
+
+<h1 id="exercise-uicontroller-relations-results">Exercise - UIController - Relations results</h1>
 <p>Your <strong>ShowProducts</strong> class should look like :</p>
 <pre data-line="15,20,21" class="language-csdiff line-numbers"><code>using System;
 using System.Collections.Generic;
@@ -333,16 +317,23 @@ namespace Northwind.Exercises
         }
     }
 } </code></pre>
-<ol start="3">
+<p><img src="RelationDesignerLook.png" alt="Relation Designer Look" /></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XJe4IZePjAg?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
+
+<h1 id="exercise-uicontroller-relations">Exercise - UIController - Relations</h1>
+<ol>
+<li>In <strong>ShowProducts</strong>, drag and drop the <strong>Categories</strong> entity (located in the NorthwindBase.Models name space).</li>
+<li>Using the <strong>rel</strong> snippet Add a relation to the <strong>Categories</strong> table.</li>
 <li><strong>Build</strong> the project and then using the <strong>Class Outline</strong> open the <strong>designer</strong>.</li>
 <li>Add to the grid the <strong>CategoryName</strong> next to the <strong>CategoryID</strong> value.</li>
 <li>Build and test.</li>
 <li>While running the project, change the value of the &quot;CategoryID&quot; and verify that the &quot;CategoryName&quot; is changed.</li>
 <li>Make the &quot;CategoryName&quot; textbox readonly.</li>
-<li>Build and test
-<img src="RelationDesignerLook.png" alt="" /></li>
+<li>Build and test</li>
 </ol>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XJe4IZePjAg?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
+<ul>
+<li><a href="relations-exercise.html">Relations Exercise</a></li>
+</ul>
 
 <h1 id="exercise-using-debug-information">Exercise - Using Debug Information</h1>
 <ol>
@@ -366,45 +357,6 @@ namespace Northwind.Exercises
 </ol>
 <p><img src="UsingWatch.png" alt="Using Watch Screen" /></p>
 
-<h1 id="exercise-creating-a-simple-screen-resolute">Exercise - Creating a Simple Screen Resolute</h1>
-<p>The <strong>showOrderDetails</strong> class should look like :</p>
-<pre data-line="14,15,19,20,21" class="language-csdiff line-numbers"><code>using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing;
-using Firefly.Box;
-using ENV;
-using ENV.Data;
-
-namespace Northwind.Exercises
-{
-    public class ShowOrderDetails : UIControllerBase
-    {
-
-        public readonly Models.Order_Details Order_Details = new Models.Order_Details();
-        public readonly Models.Products Products = new Models.Products();
-
-        public ShowOrderDetails()
-        {
-            From = Order_Details;
-            Where.Add(Order_Details.UnitPrice.IsGreaterOrEqualTo(20));
-            OrderBy.Add(Order_Details.OrderID, SortDirection.Descending);
-        }
-
-        public void Run()
-        {
-            Execute();
-        }
-
-        protected override void OnLoad()
-        {
-            View = () =&gt; new Views.ShowOrderDetailsView(this);
-        }
-    }
-} </code></pre>
-<p>The <strong>ShowOrderDetails</strong> screen should look like :<br />
-<img src="ShowOrderDetailsScreen.png" alt="Show Order Details Screen" /></p>
-
 <h1 id="introduction-to-ui-controller-summary-exercise">Introduction to UI Controller - Summary Exercise</h1>
 <ol>
 <li>Under the <strong>Exercise folder</strong> add a new UIController named it <strong>showOrderDetails</strong>.</li>
@@ -426,7 +378,7 @@ namespace Northwind.Exercises
 </ol>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/yXLJhIwrFdY?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
 <ul>
-<li><a href="exercise-resolute.html">Exercise Resolute</a></li>
+<li><a href="summary-exercise-result.html">Summary Exercise Result</a></li>
 </ul>
 
 <h1 id="ui-controller-life-cycle">UI Controller Life cycle</h1>

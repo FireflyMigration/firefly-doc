@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="online, uicontroller, selection, select, zoom, expand, column, type">
 
-    <title>Defining the Expand event at the Column Level</title>
+    <title>Defining the Expand event outside of the controller</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,9 +29,26 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="defining-the-expand-event-at-the-column-level">Defining the Expand event at the Column Level</h1>
-<hr />
+                <div class="content"><h1 id="defining-the-expand-event-outside-of-the-controller">Defining the Expand event outside of the controller</h1>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lHCkgwszacM?list=PL1DEQjXG2xnKzD8ASzFC1KFYHRQKVk2nC" frameborder="0" allowfullscreen></iframe>
+<hr />
+<p>There is another way to set a selection list controller - either in a column of an entity or in a type.
+This is achieved by registering to the Exand event of that type / column.<br />
+For example, the CustomerID type code looks like this:</p>
+<pre data-line="10" class="language-csdiff line-numbers"><code>using Firefly.Box;
+using ENV.Data;
+namespace Northwind.Types
+{
+    /// &lt;summary&gt;Customer ID(T#1)&lt;/summary&gt;
+    public class CustomerID : TextColumn 
+    {
+        public CustomerID() : base("Customer ID", "5")
+        {
+             Expand += () =&gt; Create&lt;Customers.IShowCustomers&gt;().Run(this);
+        }
+    }
+} </code></pre>
+<p>This way, whenever this type is used in a UIController, the <em>Expand</em> (Zoom) will be available to the user.</p>
 
 
 

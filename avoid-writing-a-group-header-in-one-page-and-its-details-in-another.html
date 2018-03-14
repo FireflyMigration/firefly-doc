@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="batch, businessprocess, report, sections, groups">
 
-    <title>Avoid Writing a Group Header in One Page and its Details in Another</title>
+    <title>Polishing the group footer printing</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,9 +29,25 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="avoid-writing-a-group-header-in-one-page-and-its-details-in-another">Avoid Writing a Group Header in One Page and its Details in Another</h1>
-<hr />
+                <div class="content"><h1 id="polishing-the-group-footer-printing">Polishing the group footer printing</h1>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0er_5obH2Zg?list=PL1DEQjXG2xnLss44EgCJq1bAM-Blgf2jd" frameborder="0" allowfullscreen></iframe>
+<hr />
+<p>There might be cases in which a group header is printed in one page but the details begins in a new page, because there was not room for the details order.<br />
+For example:<br />
+<img src="2018-03-07_12h19_05.jpg" alt="2018 03 07 12H19 05" /></p>
+<p>In order to avoid it you can ask the code to check if there is enough room to print - we need to make sure that both the details and the page footer have enough space.<br />
+In the code it will look like this:</p>
+<pre data-line="5,6" class="language-csdiff line-numbers"><code>public Print_Orders()
+{
+    Groups[Orders1.ShipCity].Enter += () =&gt;
+    {
+        if (_Printer.HeightUntilEndOfPage &lt; _layout.Body.Height + _layout.GroupLeave.Height)
+            _ioPrint_Order.NewPage();
+        _layout.Customer.WriteTo(_Printer);
+        OrdersPerCity.Value = 0;
+    }; </code></pre>
+<p>And this is the result:<br />
+<img src="2018-03-07_13h55_03.jpg" alt="2018 03 07 13H55 03" /></p>
 
 
 

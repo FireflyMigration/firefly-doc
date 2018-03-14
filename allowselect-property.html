@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="online, uicontroller, selection, select, zoom">
 
-    <title>AllowSelect Property</title>
+    <title>The AllowSelect property</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,9 +29,27 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="allowselect-property">AllowSelect Property</h1>
-<hr />
+                <div class="content"><h1 id="the-allowselect-property">The AllowSelect property</h1>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3kE5eL8cSWM?list=PL1DEQjXG2xnKzD8ASzFC1KFYHRQKVk2nC" frameborder="0" allowfullscreen></iframe>
+<hr />
+<p>We need to indicate to the controller that it will be used as a selection list controller. This is done using teh <em>AllowSelect</em> property.</p>
+<pre data-line="7" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+    Activity = Activities.Browse;
+    AllowDelete = false;
+    AllowInsert = false;
+    AllowUpdate = false;
+    AllowSelect = true;
+    RowLocking = LockingStrategy.OnRowSaving;
+    TransactionScope = TransactionScopes.SaveToDatabase;
+    View = () =&gt; new Views.ShowOrdersView(this);
+} </code></pre>
+<p>This will trigger the <em>OnSavingRow</em> and end the controller execution whenever the user:</p>
+<ol>
+<li>Presses Enter</li>
+<li>Double Click the row</li>
+<li>Triggers the <em>Select</em> command</li>
+</ol>
 
 
 
