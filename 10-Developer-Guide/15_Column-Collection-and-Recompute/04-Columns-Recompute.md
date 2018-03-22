@@ -28,7 +28,7 @@ Let's review the columns collection and it's role in the Recompute
         }
     }
 ```
-* ADd a BindValue for the `EndOfMonth` column
+* Add a BindValue for the `EndOfMonth` column
 ```csdiff
     public class DemoColumnsCollection : UIControllerBase
     {
