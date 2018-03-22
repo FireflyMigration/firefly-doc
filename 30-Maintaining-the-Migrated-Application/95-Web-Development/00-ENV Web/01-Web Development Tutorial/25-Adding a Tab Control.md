@@ -1,5 +1,5 @@
 ﻿First let's reduce the number of Order rows in the grid:
-`src/app/app.component.ts`
+`src/app/home/home.component.ts`
 ```csdiff
 export class AppComponent {
   selectCustomerGrid = new radweb.GridSettings(new models.Customers(),
@@ -26,7 +26,7 @@ export class AppComponent {
 We'll use ngx-bootstrap tab controls. See: 
 [ngx-bootstrap tabs](https://valor-software.com/ngx-bootstrap/#/tabs)
 
-In the `src/app/app.component.html`
+In the `src/app/home/home.component.html`
 ```csdiff
  <h1>Orders</h1>
  <data-grid [settings]="ordersGrid"></data-grid>

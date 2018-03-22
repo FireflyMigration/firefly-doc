@@ -1,4 +1,4 @@
-﻿`src/app/app.component.html`
+﻿`src/app/home/home.component.html`
 ```csdiff
   <h1>Orders</h1>
   <data-grid [settings]="ordersGrid"></data-grid>

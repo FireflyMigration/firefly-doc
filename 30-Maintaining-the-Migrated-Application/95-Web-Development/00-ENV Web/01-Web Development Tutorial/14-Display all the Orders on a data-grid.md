@@ -1,15 +1,14 @@
-﻿`src/app/app.component.ts` 
+﻿`src/app/home/home.component.ts` 
 
 ```csdiff
-import { environment } from './../environments/environment';
 import { Component } from '@angular/core';
-import * as models from './models';
+import * as models from './../models';
 import * as radweb from 'radweb';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
 
 })
 export class AppComponent {
@@ -17,7 +16,7 @@ export class AppComponent {
 }
 ```
 
-`src/app/app.component.html` 
+`src//home/home.component.html` 
 ```csdiff
 + <h1>Orders</h1>
 + <data-grid [settings]="ordersGrid"></data-grid>
