@@ -864,12 +864,12 @@ namespace Northwind.Exercises
 <li>Add two new local columns type NumberColumn:
 <ol>
 <li><strong>NumberOfCars</strong>.</li>
-<li><strong>LatesModel</strong>.</li>
+<li><strong>LatestModel</strong>.</li>
 </ol>
 </li>
 <li>Build and add the two columns to the grid in the form.</li>
 <li>Build and test.</li>
-<li>Add a new inner class ,use <strong>contrp</strong> snippet, remember to tab after update every item in the snippet.
+<li>Add a new inner class ,use <strong>contr</strong> snippet, remember to tab after update every item in the snippet.
 <ol>
 <li>Name = <strong>GetCarsInfo</strong>.</li>
 <li>Inherit from <strong>BusinessProcessBase</strong>.</li>
@@ -877,14 +877,14 @@ namespace Northwind.Exercises
 </ol>
 </li>
 <li>Set the main table of <strong>GetCarsInfo</strong> to be <strong>EmployeeCars</strong>.</li>
-<li>Add a where to limit <strong>GetCarsInfo</strong> to the parent employee ID.</li>
+<li>Add a where to filter <strong>GetCarsInfo</strong> to the parent employee ID.</li>
 <li>In the <strong>Run</strong> method set the parent two local columns to zero.</li>
 <li>Override the <strong>OnEnterRow</strong>.</li>
 <li>Update the parent <strong>NumberOfCars</strong> to be accumulated by one.</li>
-<li>Update the parent <strong>LatesModel</strong> to the current row <strong>CarYear</strong> only if it's bigger. (use if)</li>
+<li>Update the parent <strong>LatestModel</strong> to the current row <strong>CarYear</strong> only if it's bigger. (use if)</li>
 <li>In <strong>ShowEmployees</strong>.</li>
 <li>Override the <strong>OnEnterRow</strong>.</li>
-<li>Add a call to <strong>GetCarsInfo</strong>. (notice that you need to send this as parameter to the class constructor).</li>
+<li>Add a call to <strong>GetCarsInfo</strong>. (notice that you need to send <strong>this</strong> as parameter to the class constructor).</li>
 <li>Build and test.</li>
 </ol>
 <ul>

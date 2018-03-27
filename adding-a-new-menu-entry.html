@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Setup the Web Demo project code sample</title>
+    <title>Add Categories menu</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,42 +29,18 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="setup-the-web-demo-project-code-sample">Setup the Web Demo project code sample</h1>
-<p>When we develop this demo we use Visual Studio 2017 for the server side, and Visual Studio Code (VSCode) for the Front End.</p>
-<p>If you wonder why, see:
-<a href="https://medium.com/@noam_11690/why-am-i-using-both-visual-studio-2017-and-visual-studio-code-for-web-development-7d7d71a40785">Why am I using both Visual Studio 2017 and Visual Studio Code for web development</a></p>
-<h1 id="prerequisites">PreRequisites:</h1>
-<p>Please install the following :</p>
-<h2 id="visual-studio-2017">Visual Studio 2017 <img src="vs.png" alt="" /></h2>
-<p>We use Visual Studio 2017, version 15.3.5, although this demo can also work on previous version of Visual Studio.</p>
-<h2 id="node-js">Node JS</h2>
-<p>Node.js is an open-source, cross-platform JavaScript runtime environment for executing JavaScript code server-side.</p>
-<p>Install it from: <a href="https://nodejs.org/en/">https://nodejs.org/en/</a></p>
-<h2 id="visual-studio-code">Visual Studio Code <img src="vscode.png" alt="" /></h2>
-<p>A source code editor which we use to develop the client side.</p>
+                <div class="content"><h1 id="add-categories-menu">Add Categories menu</h1>
+<p><img src="addmenu.png" alt="" /></p>
+<p>In order to add a new menu entry at the top we will do the following</p>
 <ol>
-<li>Install it from: <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></li>
-<li>During the installation wizard check all the checkboxes in the &quot;Select Additional Tasks&quot; screen</li>
-<li>Download the &quot;Angular Language Service&quot; extension from the Marketplace:</li>
+<li>Create a new categories component. (we have been using the Home component so far)</li>
+<li>Modify the categories component</li>
+<li>Route the new menu to the categories component</li>
 </ol>
-<p><img src="NG_Ex.gif" alt="" /></p>
-<h2 id="northwind-version">Northwind Version</h2>
-<p>This demo is using the NorthwindTraining project that is used for training.
-If you have a version older than 9/2017, please contact us to get a recent version.</p>
-<h2 id="the-code-used-in-this-demo">The code used in this demo</h2>
-<p>You can download the files that are used for this tutorial on <a href="https://github.com/FireflyMigration/ENV.Web/releases/tag/v0.0.4-pre-alpha">https://github.com/FireflyMigration/ENV.Web/releases/tag/v0.0.4-pre-alpha</a></p>
-<p>Please use the 2017-12 version</p>
-<h1 id="setup">Setup</h1>
-<p>These are the steps you'll need to follow to setup the project, it may be a bit long but we tried to make it as simple as we can :)</p>
 <ul>
-<li><a href="place--the-downloaded-files.html">Place  the Downloaded Files</a></li>
-<li><a href="open-vs-code.html">Open VS Code</a></li>
-<li><a href="choose-color-scheme.html">Choose Color Scheme</a></li>
-<li><a href="install-npm-packages.html">Install npm Packages</a></li>
-<li><a href="run-the-integrated-web-server.html">run the integrated web server</a></li>
-<li><a href="deploy-the-site-to-the-mvc-site.html">Deploy the site to the MVC site</a></li>
-<li><a href="test-the-csharp-server.html">Test the CSharp Server</a></li>
-<li><a href="sharing-your-dev-site-with-the-world.html">Sharing your dev site with the world</a></li>
+<li><a href="create-a-new-component.html">Create a new component</a></li>
+<li><a href="modify-the-component.html">Modify the component</a></li>
+<li><a href="routing.html">Routing</a></li>
 </ul>
 
 
@@ -73,7 +49,7 @@ If you have a version older than 9/2017, please contact us to get a recent versi
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/00-ENV Web/01-Web Development Tutorial/02-Setup the Web Demo project code sample/00-index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/00-ENV Web/01-Web Development Tutorial/38-Adding a new menu entry/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -135,7 +111,7 @@ If you have a version older than 9/2017, please contact us to get a recent versi
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'setup-the-web-demo-project-code-sample.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'adding-a-new-menu-entry.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

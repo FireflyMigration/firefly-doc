@@ -34,10 +34,19 @@
 <p>In the command line run:</p>
 <pre><code>npm install
 </code></pre>
-<p>npm will now install all the packages required by the application, it'll take a few minutes.</p>
+<p>npm will now download and install all the packages listed in the dependencies in package.json, it'll take a few minutes.</p>
 <p><img src="git-install.gif" alt="Git Install" /></p>
 <p>When it's done you'll see the result like this:</p>
 <p><img src="file.png" alt="File" /></p>
+<h2 id="what-is-npm">What is npm?</h2>
+<p>npm (Node Package Manager) is a command line utility based on node.js that helps manage javascript projects and libraries.</p>
+<p>Samples:</p>
+<pre><code>Npm install – downloads all the packages listed in the dependencies in package.json
+Npm install xxxx –save – installs the package xxx to the current project folder and updates the dependencies in package.json
+Npm install xxx –savedev - installs the package xxx to the current project folder  and updates the dev-dependencies in package.json
+Npm install xxx –g – installs the package to the entire machine – and now you can use it in the command line. For example to install ng (angular cli)  we used the –g flag.
+Npm install xxxx@v.v.v installs the xxx package with the specific version.
+</code></pre>
 
 
 
