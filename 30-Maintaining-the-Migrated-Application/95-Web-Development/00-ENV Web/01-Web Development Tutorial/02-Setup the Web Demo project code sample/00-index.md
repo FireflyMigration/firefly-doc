@@ -6,17 +6,21 @@ If you wonder why, see:
 
 # PreRequisites:
 Please install the following :
-## Visual Studio 2017
+## Visual Studio 2017 ![](vs.png)
 We use Visual Studio 2017, version 15.3.5, although this demo can also work on previous version of Visual Studio.
 
 ## Node JS
+Node.js is an open-source, cross-platform JavaScript runtime environment for executing JavaScript code server-side.
+
 Install it from: https://nodejs.org/en/
 
-## Visual Studio Code
+## Visual Studio Code ![](vscode.png)
+A source code editor which we use to develop the client side.
 1. Install it from: https://code.visualstudio.com/
 2. During the installation wizard check all the checkboxes in the "Select Additional Tasks" screen
-2. Download the Angular extension at: https://github.com/angular/vscode-ng-language-service/releases and follow the instructions carefully
-3. If you run into trouble installing it, see instructions at:https://stackoverflow.com/questions/47015263/typescript-angular-intelisense-in-html-template 
+3. Download the "Angular Language Service" extension from the Marketplace:
+
+![](NG_Ex.gif)
 
 ## Northwind Version
 This demo is using the NorthwindTraining project that is used for training.

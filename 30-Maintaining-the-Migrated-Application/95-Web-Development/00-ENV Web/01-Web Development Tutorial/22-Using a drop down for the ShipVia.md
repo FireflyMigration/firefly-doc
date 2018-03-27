@@ -1,4 +1,4 @@
-﻿`src/app/app.component.ts`
+﻿`src//home/home.component.ts`
 ```csdiff
 export class AppComponent {
   ordersGrid = new radweb.GridSettings(new models.Orders(),

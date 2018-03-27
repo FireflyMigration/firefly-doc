@@ -1,4 +1,4 @@
-﻿in the terminal window type:
+﻿in the terminal window type you can either type:
 ```
 npm run start
 ```

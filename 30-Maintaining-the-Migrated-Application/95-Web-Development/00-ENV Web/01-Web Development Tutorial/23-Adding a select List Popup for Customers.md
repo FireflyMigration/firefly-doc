@@ -1,7 +1,7 @@
 ﻿* Add the `<select-popup>` definition to the template
 * Add a handler for the `click` of the column - in which we'll call the `showSelectPopup` method, and send it an arrow function so when the user selects, it'll update the `customerID` column in the `order` object based on the `id` of the selected `customer` object.
 
-`src/app/app.component.ts`
+`src/app/home/home.component.ts`
 ```csdiff
 export class AppComponent {
 + selectCustomerGrid = new radweb.GridSettings(new models.Customers());
@@ -40,7 +40,7 @@ export class AppComponent {
   );
 }
 ```
-`src/app/app.component.html`
+`src/app/home/home.component.html`
 ```csdiff
   <h1>Orders</h1>
   <data-grid [settings]="ordersGrid"></data-grid>
