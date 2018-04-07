@@ -3,7 +3,7 @@
 1. Run the application and run **ShowProducts**.
 2. Break into the code using the <kbd>Shift</kbd> <kbd>F12</kbd>.
 3. Add **Relations[Categories].__RecomputePath** to the **Watch** panel.
-4. Expend the result and notice the result.
+4. Expand the result and notice the result.
 5. Stop the program.
 6. Use <kbd>Alt</kbd> <kbd>arrow up</kbd> to change the **Columns.Add** of **Categories.CategoryID** location to be before **Products.CategoryID**.
 7. Build and test.
