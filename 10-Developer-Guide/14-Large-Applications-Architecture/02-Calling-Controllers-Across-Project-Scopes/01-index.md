@@ -25,7 +25,7 @@ namespace Northwind.Orders
     }
 }
 ```
-* In the Northwind.Customers project we have a screen called `ShuwCustomerView` that has a button which when it's clicked we want to call the `CustomerOrders` controller that is in the Northwind.Orders project.
+* In the Northwind.Customers project we have a screen called `ShowCustomerView` that has a button which when it's clicked we want to call the `CustomerOrders` controller that is in the Northwind.Orders project.
 ```csdiff
 namespace Northwind.Customers.Views
 {
