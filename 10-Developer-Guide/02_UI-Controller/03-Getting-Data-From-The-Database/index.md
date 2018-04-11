@@ -35,7 +35,7 @@ To use a table from the database first we need to define the Table we are going 
 public readonly Models.Orders MyOrders = new Models.Orders(); 
 ```
 
-Them we can set the Table as the Main table in our controller by setting the From in the constructor
+Then we can set the Table as the Main table in our controller by setting the From in the constructor
 
 ```csdiff
 From = MyOrders;
