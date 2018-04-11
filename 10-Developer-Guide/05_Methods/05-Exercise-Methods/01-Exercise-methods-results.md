@@ -1,4 +1,4 @@
-﻿# UI Controller Life cycle result
+﻿# Exercise Methods Results
 
 The **ShowProducts** class should look like :
 ```csdiff
