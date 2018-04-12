@@ -25,7 +25,7 @@ The two classes will be explained in the next session
 ###### In the controller class:
 You will add the logic of the report:
 1. What tables are used 
-2. What the report actually do (the logic)
+2. What the report actually does (the logic)
 
 ###### In the layout class:
 You will design the way the report will look.

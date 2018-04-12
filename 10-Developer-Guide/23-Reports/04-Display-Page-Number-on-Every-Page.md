@@ -7,7 +7,7 @@
 
 ---
 
-First let's add two methods that will provide us with the page number and todays's date:
+First let's add two methods that will provide us with the page number and today's date:
 ```csdiff
 +public Number Page() => _Printer.Page;      
 +public Date CurrentDate() => Date.Now;
