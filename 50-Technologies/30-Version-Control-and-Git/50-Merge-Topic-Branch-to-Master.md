@@ -5,7 +5,7 @@ Here are the steps to do it in a safe manner:
 
 2. Create a temp branch from master.
    1. Right-click the branch name at the bottom right corner of Visual Studio and select "New Branch..."
-3. Merge the topic brahcn to into the temp branch
+3. Merge the topic branch to into the temp branch
    1. Right-click the branch name at the bottom-right corner of Visual Studio and select "Manage Branches"
    2. Right-click the branch name and select "Merge From..." and select the topic branch from the drop-down list   
    3. Visual Studio will try to merge the work from the topic branch into the temp branch which is equivalent to the master branch. If all goes well, the changes will be committed. In some cases, you might have conflicts. Don't worry, just compare the files and resolve the conflict manually. 
