@@ -15,6 +15,7 @@
       6. UnitsInStock
       7. UnitsOnOrder
 8.	Sort the report by the **ProductName**.
-9.  Add the new report to the main menu.
-10.	Build and test.  
+9.  Add the new report to the main menu
+10. Build and test
+
 
