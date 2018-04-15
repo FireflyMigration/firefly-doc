@@ -26,7 +26,7 @@ protected override void OnLoad()
 }
 ```
 
-Another option would be to prevent the user from swithing activities. This is done using the *AllowActivitySwitch*.
+Another option would be to prevent the user from switching activities. This is done using the *AllowActivitySwitch*.
 In the code it will look like this:
 ```csdiff
 protected override void OnLoad()
