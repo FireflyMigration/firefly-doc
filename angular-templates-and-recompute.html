@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Introduction to Angular and Typescript</title>
+    <title>Angular templates and recompute</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,18 +29,22 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="introduction-to-angular-and-typescript">Introduction to Angular and Typescript</h1>
-<p>In this section of the Tutorial we'll cover Angular and TypeScript basics.</p>
-<p>To learn more please visit the Angular tutorial by Google at:  <a href="https://angular.io/tutorial">https://angular.io/tutorial</a></p>
-<ul>
-<li><a href="angular-templates-and-recompute.html">Angular templates and recompute</a></li>
-<li><a href="using-ngif.html">Using ngIf</a></li>
-<li><a href="adding-a-button-in-angular.html">Adding a button in angular</a></li>
-<li><a href="typescript-objects.html">typescript objects</a></li>
-<li><a href="adding-an-array.html">adding an array</a></li>
-<li><a href="ngfor.html">ngFor</a></li>
-<li><a href="using-typescript-interface-to-get-compile-time-error-checking---copy.html">using typescript interface to get compile time error checking   Copy</a></li>
-</ul>
+                <div class="content"><h1 id="angular-templates-and-recompute">Angular templates and recompute</h1>
+<pre data-line="4,5,11" class="language-csdiff line-numbers"><code>@Component({
+    template:`
+-&lt;h1&gt;Orders &lt;/h1&gt;
+  &lt;h1&gt;{{ title }} ({{title.length}})&lt;/h1&gt;
+  &lt;input [(ngModel)]="title"&gt;
+`
+})
+  
+@Injectable()
+export class AppComponent {
+     title = 'the title';
+}
+const apiUrl = '/dataApi/'; </code></pre>
+<p><a href="https://github.com/FireflyMigration/ENV.Web/commit/4ba0b29708d42adddb8358eee772b1d8c44ba1df?diff=unified">Commit info on GitHub</a></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6Uk8Vz25z6Y?list=PL1DEQjXG2xnLvNcbYEN0lYoc7KLROIjeK" frameborder="0" allowfullscreen></iframe>
 
 
 
@@ -48,7 +52,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/00-ENV Web/02-Introduction to Angular and Typescript/00-index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/00-ENV Web/02-Introduction to Angular and Typescript/07-Angular templates and recompute.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -110,7 +114,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'introduction-to-angular-and-typescript.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'angular-templates-and-recompute.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
