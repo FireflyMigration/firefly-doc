@@ -1,7 +1,9 @@
 ﻿# Simple Web Request
 
-1) In Northwind project, create a new BussinessProcess UIController named "WebDemo"
-2) Add the following to the class:
+
+1) Open Visual Studio as Administrator
+2) In Northwind project, create a new BussinessProcess UIController named "WebDemo"
+3) Add the following to the class:
 
 ```csdiff
 namespace Northwind
@@ -26,7 +28,7 @@ namespace Northwind
 `WebWriter` is an object that we use to work with the Web (Similar to Requester in Magic).  
 `Streams` is an object which is used to transfer the data.
 
-3) In the OnStart, write a string back to the web page using the `WebWriter`
+4) In the OnStart, write a string back to the web page using the `WebWriter`
 
 ```csdiff
 namespace Northwind
@@ -52,8 +54,8 @@ namespace Northwind
 }
 ```
 
-4) In order to call this program from the web, it needs to have a unique identifier so we should create a public name for this program. 
-5) Go to the `ApplicationPrograms.cs` and add a new entry as follows:
+5) In order to call this program from the web, it needs to have a unique identifier so we should create a public name for this program. 
+6) Go to the `ApplicationPrograms.cs` and add a new entry as follows:
 
 ```csdiff
 namespace Northwind
@@ -76,10 +78,13 @@ namespace Northwind
 
 Notice that the first parameter is the public name.
 
-6) Now, let’s configure the request URL.
+7) Now, let’s configure the request URL.
 
-Open the properties of the project (Northwind.Server) and go to the "Web" tab.
-The URL is a combination of Project Url option + Request.aspx?prgname=WebDemo (WebDemo is the unique public name and case sensitive) as follows:.
-http://localhost/Norhwind.Server/Request.aspx?prgname=WebDemo
+Open the properties of the project (Northwind.Server) and go to the "Web" tab.  
+The URL is a combination of Project Url option + Request.aspx?prgname=WebDemo (WebDemo is the unique public name and case sensitive) as follows:  
+http://localhost:61988/Request.aspx?prgname=WebDemo (Port number might be different in each computer)
+
+![](WebProperties.png)
 
 
+8) Build and run (click "Google Chrome" or "Internet Explorer")
