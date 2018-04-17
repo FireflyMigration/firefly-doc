@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="u. UserMethods u.IniGet">
 
     <title>Using the user methods class in non migrated code</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -30,6 +30,18 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="using-the-user-methods-class-in-non-migrated-code">Using the user methods class in non migrated code</h1>
+<p>In the migration, user methods are accessed using the <code>u</code> member. That member is defined in the base class as protected and is available for any class that inherits from it.</p>
+<p>It is implemented in <code>BusinessProcessBase</code>, <code>UIContorllerBase</code>, <code>FlowUIControllerBase</code>, <code>Form</code>, <code>TextColumn</code>, <code>NumberColumn</code> etc...</p>
+<p>If you want to use the UserMethods in other classes you'll need to create an instance for it:</p>
+<pre><code>var u = new ENV.UserMethods();
+if (u.IniGet('SomeFlag')==&quot;Y&quot;)
+  Do Something();
+</code></pre>
+<p>Or you can use a helper instance for that called <code>UserMethods.Instance</code></p>
+<pre><code>
+if (ENV.UserMethods.Instance.IniGet('SomeFlag')==&quot;Y&quot;)
+  Do Something();
+</code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/p84Yl6tVc_E" frameborder="0" allowfullscreen></iframe>
 
 
