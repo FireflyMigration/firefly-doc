@@ -2,7 +2,7 @@
 
 
 1) Open Visual Studio as Administrator
-2) In Northwind project, create a new BussinessProcess UIController named "WebDemo"
+2) In Northwind project, create a new BussinessProcess named "WebDemo"
 3) Add the following to the class:
 
 ```csdiff
