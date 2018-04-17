@@ -86,5 +86,5 @@ http://localhost:61988/Request.aspx?prgname=WebDemo (Port number might be differ
 
 ![](WebProperties.png)
 
-
-8) Build and run (click "Google Chrome" or "Internet Explorer")
+8) Set the Web Project as your startup project (Right-Click on the project ->'Set as StartUP Project')  
+9) Build and run (click "Google Chrome" or "Internet Explorer")
