@@ -1,5 +1,3 @@
-﻿In this section we'll review the different data types that are used in the migration and their unique attributes
-
-[MigratedDataTypes Power Point Presentation](MigratedDataTypes.pptx)
-
-To learn more about the migrated data types see [Migrated DataTypes Demos](migrated-datatypes-demos.html)
+﻿In this section we will explain how to present data from the application on a web page.
+The web part is based on IIS (Internet Informatrion Services).
+To learn more about the IIS configuration, see [IIS configuration](http://doc.fireflymigration.com/iis-configuration.html)
