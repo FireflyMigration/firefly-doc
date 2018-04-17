@@ -1,5 +1,5 @@
 ﻿keywords: web,merge,template,iis
-# Web Merge
+# Web Merge and Templates
 
 In this section we will explain how to present data from the application on a web page.  
 To work with a web application, an IIS (Internet Information Serrvices) needs to be installed and configured.  

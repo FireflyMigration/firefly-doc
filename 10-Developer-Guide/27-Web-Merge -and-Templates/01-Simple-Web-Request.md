@@ -80,7 +80,7 @@ Notice that the first parameter is the public name.
 
 7) Now, let’s configure the request URL.
 
-Open the properties of the project (Northwind.Server) and go to the "Web" tab.  
+Open the properties of the web project (Northwind.Server) and go to the "Web" tab.  
 The URL is a combination of Project Url option + Request.aspx?prgname=WebDemo (WebDemo is the unique public name and case sensitive) as follows:  
 http://localhost:61988/Request.aspx?prgname=WebDemo (Port number might be different in each computer)
 
