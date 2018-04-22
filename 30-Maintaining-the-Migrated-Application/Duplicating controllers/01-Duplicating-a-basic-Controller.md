@@ -14,7 +14,7 @@ Duplicating a simple controller involves two steps:
 
 Change the class name, in our case from `Totals` to `TotalsNew`
 
-* Don't forgen to rename the constructor.
+* Don't forget to rename the constructor.
 
 ```csdiff
 -class Totals : Northwind.BusinessProcessBase 

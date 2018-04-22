@@ -7,11 +7,11 @@ Duplicating a controller with a view involves the following steps:
 4. **Rename the new View class, it's constructor and it's designer class**
 5. **Fix the references between the View and the Controller**
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/https://youtu.be/MGoDG02VRXE" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MGoDG02VRXE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ## Duplicating Explained
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/https://youtu.be/VxR26WY5Css" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VxR26WY5Css" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ## Steps Breakdown
 
