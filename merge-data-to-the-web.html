@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Merge data from a table</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="merge-data-from-a-table">Merge data from a table</h1>
+<p>Now, let’s create a program which will display data from a table.<br />
+We will use an HTML template for the program called <a href="WebProducts.html">WebProducts.html</a> (right Click -&gt; save link as)</p>
+<ol>
+<li>In Northwind, create a new BussinessProcess named &quot;WebProcess&quot;</li>
+<li>Add the Products table:</li>
+</ol>
+<pre data-line="5,8" class="language-csdiff line-numbers"><code>namespace Northwind
+{
+    public class WebProducts : BusinessProcessBase
+    {
+        public readonly Models.Products Products = new Models.Products();
+        public WebProducts()
+        {
+            From = Products;
+        }
+        public void Run()
+        {
+            Execute();
+        }
+    }
+} </code></pre>
+<ol start="3">
+<li>Add <code>WebWriter</code> and <code>TextTemplate</code> objects and initiate them in the OnLoad method:</li>
+</ol>
+<pre data-line="7,8,20,21" class="language-csdiff line-numbers"><code>namespace Northwind
+{
+    public class WebProducts : BusinessProcessBase
+    {
+        public readonly Models.Products Products = new Models.Products();
+
+        ENV.IO.WebWriter ioRequester;
+        ENV.IO.TextTemplate htmlPage;
+        
+        public WebProducts()
+        {
+            From = Products;
+        }
+        public void Run()
+        {
+            Execute();
+        }
+        protected override void OnLoad()
+        {
+            ioRequester = new ENV.IO.WebWriter();
+            htmlPage = new ENV.IO.TextTemplate(@"c:\WebProducts.html");
+        }
+    }
+} </code></pre>
+<ol start="4">
+<li>Add <code>Streams</code> object:</li>
+</ol>
+<pre data-line="5" class="language-csdiff line-numbers"><code>  protected override void OnLoad()
+        {
+            ioRequester = new ENV.IO.WebWriter();
+            htmlPage = new ENV.IO.TextTemplate(@"c:\WebProducts.html");
+            Streams.Add(ioRequester);
+        } </code></pre>
+<ol start="5">
+<li>Add the HTML tags:</li>
+</ol>
+<pre data-line="6,7,8,9" class="language-csdiff line-numbers"><code>  protected override void OnLoad()
+        {
+            ioRequester = new ENV.IO.WebWriter();
+            htmlPage = new ENV.IO.TextTemplate(@"c:\WebProducts.html");
+
+            htmlPage.Add(
+                new Tag("ProductID", Products.ProductID),
+                new Tag("ProductName", Products.ProductName)
+                );
+
+            Streams.Add(ioRequester);
+        } </code></pre>
+<p>The first parameter is the tag name inside the HTML template (case-sensitive) without the <code>!$MG_</code> - &lt;!$MG_ProductID&gt;.<br />
+The second parameter is the value which will replace the tag during runtime.</p>
+<ol start="6">
+<li>In the OnLeaveRow, Write the HTML page to the requester</li>
+</ol>
+<pre data-line="3" class="language-csdiff line-numbers"><code>        protected override void OnLeaveRow()
+        {
+             htmlPage.WriteTo(ioRequester);
+        } </code></pre>
+<ol start="7">
+<li>Add the program to <code>ApplicationPrograms.cs</code>:</li>
+</ol>
+<pre data-line="13" class="language-csdiff line-numbers"><code>namespace Northwind
+{
+    class ApplicationPrograms : ENV.ProgramCollection 
+    {
+        public ApplicationPrograms()
+        {
+            Add(3, "Show Customers", "", typeof(ShowCustomers));
+            Add(4, "Show Products", "", typeof(ShowProducts));
+            Add(5, "Show Orders", "", typeof(ShowOrders));
+            Add(6, "Print - Order", "", typeof(Print_Order));
+            Add(7, "Print - Orders", "", typeof(Print_Orders));
+            Add("WebDemo", typeof(WebDemo));
+            Add("WebProducts", typeof(WebProducts));           
+        }
+    }
+} </code></pre>
+<ol start="8">
+<li><p>In the project settings, based on the previous page, update the URL with the new public name:<br />
+<a href="http://localhost:61988/Request.aspx?prgname=WebProducts">http://localhost:61988/Request.aspx?prgname=WebProducts</a></p>
+</li>
+<li><p>Build and run (click &quot;Google Chrome&quot; or &quot;Internet Explorer&quot;)</p>
+</li>
+</ol>
+
+
+
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/27-Web-Merge -and-Templates/02-Merge-Data-To-The-Web.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'merge-data-to-the-web.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>

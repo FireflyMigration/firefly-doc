@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Duplicating a basic Controller</title>
+    <title>Simple Web Request</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,33 +29,87 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="duplicating-a-basic-controller">Duplicating a basic Controller</h1>
-<p>Here are the steps to follow when duplicating a controller.</p>
-<p>Duplicating a simple controller involves two steps:</p>
+                <div class="content"><h1 id="simple-web-request">Simple Web Request</h1>
 <ol>
-<li><strong>Duplicate the Controller class</strong></li>
-<li><strong>Rename the new class and it's constructor</strong></li>
+<li>Open Visual Studio as Administrator</li>
+<li>In Northwind project, create a new BussinessProcess named &quot;WebDemo&quot;</li>
+<li>Add the following to the class:</li>
 </ol>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/skGhzpQZT1A" frameborder="0" allowfullscreen></iframe>
-<h2 id="steps-breakdown">Steps Breakdown</h2>
-<h3 id="step-1-duplicate-controller-the-class">Step 1 - Duplicate Controller the class</h3>
-<h3 id="step-2-rename-the-new-class">Step 2 - Rename the new class</h3>
-<p>Change the class name, in our case from <code>Totals</code> to <code>TotalsNew</code></p>
-<ul>
-<li>Don't forgen to rename the constructor.</li>
-</ul>
-<pre data-line="2,6" class="language-csdiff line-numbers"><code>-class Totals : Northwind.BusinessProcessBase 
-class TotalsNew : Northwind.BusinessProcessBase 
+<pre data-line="5,9,13" class="language-csdiff line-numbers"><code>namespace Northwind
 {
-    ShowOrders _parent;
--   public Totals(ShowOrders parent)
-    public TotalsNew(ShowOrders parent)
+    public class WebDemo : BusinessProcessBase
     {
-        _parent = parent;
-        Title = "Totals";
-        InitializeDataView();
+        ENV.IO.WebWriter _ioRequester = new ENV.IO.WebWriter();
+
+        public WebDemo()
+        {
+           Streams.Add(_ioRequester);
+        }
+        public void Run()
+        {
+           Exit(ExitTiming.AfterRow);
+           Execute();
+        }
     }
-    .... </code></pre>
+} </code></pre>
+<p><code>WebWriter</code> is an object that we use to work with the Web (Similar to Requester in Magic).<br />
+<code>Streams</code> is an object which is used to transfer the data.</p>
+<ol start="4">
+<li>In the OnStart, write a string back to the web page using the <code>WebWriter</code></li>
+</ol>
+<pre data-line="18" class="language-csdiff line-numbers"><code>namespace Northwind
+{
+    public class WebDemo : BusinessProcessBase
+    {
+        ENV.IO.WebWriter _ioRequester = new ENV.IO.WebWriter();
+
+        public WebDemo()
+        {
+           Streams.Add(_ioRequester);
+        }
+        public void Run()
+        {
+           Exit(ExitTiming.AfterRow);
+           Execute();
+        }
+        protected override void OnStart()
+        {
+             _ioRequester.WriteLine("This is my first web page");
+        }
+    }
+} </code></pre>
+<ol start="5">
+<li>In order to call this program from the web, it needs to have a unique identifier so we should create a public name for this program.</li>
+<li>Go to the <code>ApplicationPrograms.cs</code> and add a new entry as follows:</li>
+</ol>
+<pre data-line="12" class="language-csdiff line-numbers"><code>namespace Northwind
+{
+    class ApplicationPrograms : ENV.ProgramCollection 
+    {
+        public ApplicationPrograms()
+        {
+            Add(3, "Show Customers", "", typeof(ShowCustomers));
+            Add(4, "Show Products", "", typeof(ShowProducts));
+            Add(5, "Show Orders", "", typeof(ShowOrders));
+            Add(6, "Print - Order", "", typeof(Print_Order));
+            Add(7, "Print - Orders", "", typeof(Print_Orders));
+            Add("WebDemo", typeof(WebDemo));
+            
+        }
+    }
+} </code></pre>
+<p>Notice that the first parameter is the public name.</p>
+<ol start="7">
+<li>Now, let’s configure the request URL.</li>
+</ol>
+<p>Open the properties of the web project (Northwind.Server) and go to the &quot;Web&quot; tab.<br />
+The URL is a combination of Project Url option + Request.aspx?prgname=WebDemo (WebDemo is the unique public name and case sensitive) as follows:<br />
+<a href="http://localhost:61988/Request.aspx?prgname=WebDemo">http://localhost:61988/Request.aspx?prgname=WebDemo</a> (Port number might be different in each computer)</p>
+<p><img src="WebProperties.png" alt="" /></p>
+<ol start="8">
+<li>Set the Web Project as your startup project (Right-Click on the project -&gt;'Set as StartUP Project')</li>
+<li>Build and run (click &quot;Google Chrome&quot; or &quot;Internet Explorer&quot;)</li>
+</ol>
 
 
 
@@ -63,7 +117,7 @@ class TotalsNew : Northwind.BusinessProcessBase
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/Duplicating controllers/01-Duplicating-a-basic-Controller.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/27-Web-Merge -and-Templates/01-Simple-Web-Request.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -125,7 +179,7 @@ class TotalsNew : Northwind.BusinessProcessBase
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'duplicating-a-basic-controller.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'simple-web-request.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

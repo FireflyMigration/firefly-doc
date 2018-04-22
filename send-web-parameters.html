@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Duplicating a basic Controller</title>
+    <title>Web Parameters</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,33 +29,46 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="duplicating-a-basic-controller">Duplicating a basic Controller</h1>
-<p>Here are the steps to follow when duplicating a controller.</p>
-<p>Duplicating a simple controller involves two steps:</p>
+                <div class="content"><h1 id="web-parameters">Web Parameters</h1>
 <ol>
-<li><strong>Duplicate the Controller class</strong></li>
-<li><strong>Rename the new class and it's constructor</strong></li>
+<li>Add a local NumberColumn named &quot;_prodid&quot;</li>
+<li>In the Run Method, Add a <code>NumberParamter</code> named &quot;prodid&quot;</li>
+<li>Bind the paramenters</li>
+<li>Add a Where filter based on the _prodid</li>
 </ol>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/skGhzpQZT1A" frameborder="0" allowfullscreen></iframe>
-<h2 id="steps-breakdown">Steps Breakdown</h2>
-<h3 id="step-1-duplicate-controller-the-class">Step 1 - Duplicate Controller the class</h3>
-<h3 id="step-2-rename-the-new-class">Step 2 - Rename the new class</h3>
-<p>Change the class name, in our case from <code>Totals</code> to <code>TotalsNew</code></p>
-<ul>
-<li>Don't forgen to rename the constructor.</li>
-</ul>
-<pre data-line="2,6" class="language-csdiff line-numbers"><code>-class Totals : Northwind.BusinessProcessBase 
-class TotalsNew : Northwind.BusinessProcessBase 
-{
-    ShowOrders _parent;
--   public Totals(ShowOrders parent)
-    public TotalsNew(ShowOrders parent)
+<pre data-line="6,14,18" class="language-csdiff line-numbers"><code> public class WebProducts : BusinessProcessBase
     {
-        _parent = parent;
-        Title = "Totals";
-        InitializeDataView();
-    }
-    .... </code></pre>
+        
+        public readonly Models.Products Products = new Models.Products();
+
+        public readonly NumberColumn _prodid = new NumberColumn();
+
+        ENV.IO.WebWriter ioRequester;
+        ENV.IO.TextTemplate htmlPage;
+
+        public WebProducts()
+        {
+            From = Products;
+            Where.Add(Products.ProductID.IsEqualTo(_prodid));
+        }
+        public void Run(NumberParameter prodid)
+        {
+            BindParameter(_prodid, prodid);
+            Execute();
+        } </code></pre>
+<ol start="5">
+<li><p>In order to send argument to the application we will add another parameter to the url:</p>
+<p>ARGUMENTS=-N45</p>
+<p>-N meants that this a numeric value<br />
+-A Alpha<br />
+-L boolean</p>
+</li>
+<li><p>Let's concatenate the arguments to the URL using &quot;&amp;&quot; as follows:<br />
+<a href="http://localhost:61988/Request.aspx?prgname=WebProducts&amp;arguments=-N45">http://localhost:61988/Request.aspx?prgname=WebProducts&amp;arguments=-N45</a></p>
+</li>
+<li><p>Build and run (click &quot;Google Chrome&quot; or &quot;Internet Explorer&quot;)</p>
+</li>
+</ol>
 
 
 
@@ -63,7 +76,7 @@ class TotalsNew : Northwind.BusinessProcessBase
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/Duplicating controllers/01-Duplicating-a-basic-Controller.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/27-Web-Merge -and-Templates/03-Send-Web-Parameters.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -125,7 +138,7 @@ class TotalsNew : Northwind.BusinessProcessBase
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'duplicating-a-basic-controller.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'send-web-parameters.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
