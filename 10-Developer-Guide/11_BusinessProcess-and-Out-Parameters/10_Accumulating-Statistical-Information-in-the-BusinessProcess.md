@@ -37,7 +37,7 @@ protected override void OnLeaveRow()
 {
 +   _count++;
 +   _quantity += Order_Details.Quantity;
-+   _totalAmount += Order_Details.Quantity * Order_Details.Quantity.UnitPrice;
++   _totalAmount += Order_Details.Quantity * Order_Details.UnitPrice;
 }
 ``` 
 * Add a "Break Point" in the `OnLeaveRow` method and review the values of _count, _quantity and _totalAmount in the "watch" window
