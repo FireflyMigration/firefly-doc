@@ -3,13 +3,13 @@
 1. Add new UIController to the Exercises folder, name the new UIController **ControlsDemo**. 
 2. Set the Orders table as the main table 
 3. Add **OrderID**, **ShipCountry** to a grid on the form.
-4. Add 3 ComboBoxes to the grid to do so :  
+4. Add 3 ComboBoxes to the grid. For each combobox you need to:  
    1. Add a column to the grid.  
-   2. Name the columns :
+   3. Place a ComboBox from the toolbox in the new column.
+   2. Name the column:
       1. **Customer**.
       2. **Employee**.
       3. **Shipper**.
-   3. Drag and drop a ComboBox from the toolbox to the new column.
 5. The 3 ComboBoxes will show data from :  
    1. CustomerID.
    2. EmployeeID.
