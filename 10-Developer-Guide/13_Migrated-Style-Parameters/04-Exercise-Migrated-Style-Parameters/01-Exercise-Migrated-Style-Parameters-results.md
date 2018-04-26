@@ -106,6 +106,8 @@ namespace Northwind.Exercises.Views
 
 +       private void button1_Click(object sender, ButtonClickEventArgs e)
 +       {
++           _controller.NumberOfOrders.Value = 0;
++           _controller.TotalFreight.Value = 0;
 +           new CalcTotalOrdersPerCustomer().Run(_controller.Customers.CustomerID,_controller.NumberOfOrders,_controller.TotalFreight);
 +       }
     }
@@ -140,13 +142,15 @@ namespace Northwind.Exercises.Views
 
         private void button1_Click(object sender, ButtonClickEventArgs e)
         {
+            _controller.NumberOfOrders.Value = 0;
+            _controller.TotalFreight.Value = 0;
 -           new CalcTotalOrdersPerCustomer().Run(_controller.Customers.CustomerID,_controller.NumberOfOrders,_controller.TotalFreight);
 +           new CalcTotalOrdersPerCustomer().Run(_controller.Customers.CustomerID,_controller.NumberOfOrders.Value,_controller.TotalFreight);
         }
     }
 }
 ```
-After item 20 the **ShowCustomersView** class should look like :
+After item 22 the **ShowCustomersView** class should look like :
 The **ShowCustomersView** class should look like :
 ```csdiff
 using System;
@@ -174,6 +178,8 @@ namespace Northwind.Exercises.Views
 
         private void button1_Click(object sender, ButtonClickEventArgs e)
         {
+            _controller.NumberOfOrders.Value = 0;
+            _controller.TotalFreight.Value = 0;
 -           new CalcTotalOrdersPerCustomer().Run(_controller.Customers.CustomerID,_controller.NumberOfOrders.Value,_controller.TotalFreight);
 +           new CalcTotalOrdersPerCustomer().Run(_controller.Customers.CustomerID,_controller.NumberOfOrders,_controller.TotalFreight.Value);
         }

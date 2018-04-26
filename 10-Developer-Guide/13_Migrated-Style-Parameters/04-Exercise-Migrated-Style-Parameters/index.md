@@ -5,10 +5,11 @@
 3. Add 2 **local columns**:  
 	1. type **NumberColumn** name **NumberOfOrders**.
 	2. type **NumberColumn** name **TotalFreight**.  
-4. Add this columns to the form **(Do not use a grid)**:  
-	1. From **Customer** CustomerID.
-	2. From **Customer** CompanyName.
-	3. From **Customer** ContactName.
+4. Add these columns to the form **(Do not use a grid)**:  
+	1. From **Customers**   
+       1. CustomerID.
+       2. CompanyName.
+       3. ContactName.
 	4. **Local** column **NumberOfOrders**.
 	5. **Local** column **TotalFreight**.
 5. Add a new menu entry and call **ShowCustomers**.  
@@ -31,6 +32,7 @@
 15. Build and test the **BusinessProcess** using the <kbd>Shift</kbd><kbd>F3</kbd> send **ANATR** and check the **Output** panel for the results.   
 16. In **ShowCustomers** add a button to the screen, set the button text to **Get Total Orders**.  
 17. set the value of **NumberOfOrders** and **TotalFreight** to zero.  
+    This should be done before the call to **CalcTotalOrdersPerCustomer**
 18. Call the **CalcTotalOrdersPerCustomer** from the button **click** event and send the parameters.  
 19. Build and test, notice that **NumberOfOrders** and **TotalFreight** are update with values when clicking the button.  
 20. In **ShowCustomers** view, find the call to **CalcTotalOrdersPerCustomer**.  
