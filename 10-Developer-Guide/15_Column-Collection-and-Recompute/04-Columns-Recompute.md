@@ -58,7 +58,7 @@ Let's review the columns collection and it's role in the Recompute
 * Note that if the `Columns.Add` of the `EndOfMonth` column is **Before** the call to `Columns.Add` of the `Orders.OrderDate` column, the value of `EndOfMonth` will **NOT** automatically change whenever the value of `Orders.OrderDate` changes, it'll only evaluate once when you enter the row.
 * We can use <kbd>Alt</kbd> + <kbd>up arrow</kbd> to move a line of code up, or <kbd>Alt</kbd> + <kbd>down arrow</kbd> to move a line of code down
 ### Debugging
-* Break into the code using the <kbd>Control</kbd> + F12
+* Break into the code using the <kbd>Shift</kbd> + <kbd>F12</kbd>
 * In the "Watch" window, use the `__RecomputePath` property of any column, to see the columns that when changed, will cause this column to recompute  
 ![2017 02 28 10H35 11](2017-02-28_10h35_11.png)
 * You can also use the 'Make Object ID' right click option, to highlight columns (or any object) in the watch window and the columns collection, using the `{$1}` symbol.  
