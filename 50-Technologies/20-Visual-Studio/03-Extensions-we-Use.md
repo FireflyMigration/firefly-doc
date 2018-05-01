@@ -1,6 +1,6 @@
 Here is a list of Visual Studio Extensions we use and recommend
 ## Essentials
-The Visual studio extensions that we think are essential are detailed in the[Configuring Visual Studio 2017](configuring-visual-studio-2017.html) Article
+The Visual studio extensions that we think are essential are detailed in the [Configuring Visual Studio 2017](http://doc.fireflymigration.com/configuring-visual-studio.html) Article
 
 
 ## Nice To Have
