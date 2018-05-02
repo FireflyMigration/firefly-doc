@@ -23,9 +23,9 @@
 	 - .ini file - the configuration file use to run the application  
 	 - The Views folder which contains all the menus  
 	 - ApplicationCore class - is migrated version of the main program  
-	 - ApplicationPograms class - is the list of the migrated programs with their numbers, names, public names, and their location inside the solution  
+	 - ApplicationPrograms class - is the list of the migrated programs with their numbers, names, public names, and their location inside the solution  
 	 - ApplicationEntities class - is the list of the migrated tables with their numbers, names, public names, and their location inside the solution  
-	 - program.cs - is the first program that runs when you launch the application.  
+	 - Program.cs - is the first program that runs when you launch the application.  
        Main is the program   
      
 
