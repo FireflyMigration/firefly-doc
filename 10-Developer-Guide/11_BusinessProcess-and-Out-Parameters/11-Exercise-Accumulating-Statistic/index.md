@@ -1,7 +1,7 @@
 ﻿# Exercise - Accumulating Statistic
 
-1.	In **CalcOrderTotalForShipper** add two variables type **Number**:
-    2.  _numberOfOrders.
+1.	In **CalcOrderTotalForShipper** add two variables type **Number**:  
+    1.  _numberOfOrders.
     2.  _totalValue. 
 2.  Remember to set them to zero.
 3.  In the **OnLeaveRow**, update :
