@@ -11,7 +11,7 @@ import * as radweb from 'radweb';
   styleUrls: ['./home.component.css'],
 
 })
-export class AppComponent {
+export class HomeComponent {
 + ordersGrid = new radweb.GridSettings(new models.Orders());
 }
 ```
