@@ -39,11 +39,15 @@
 <li>type <strong>NumberColumn</strong> name <strong>TotalFreight</strong>.</li>
 </ol>
 </li>
-<li>Add this columns to the form <strong>(Do not use a grid)</strong>:
+<li>Add these columns to the form <strong>(Do not use a grid)</strong>:
 <ol>
-<li>From <strong>Customer</strong> CustomerID.</li>
-<li>From <strong>Customer</strong> CompanyName.</li>
-<li>From <strong>Customer</strong> ContactName.</li>
+<li>From <strong>Customers</strong>
+<ol>
+<li>CustomerID.</li>
+<li>CompanyName.</li>
+<li>ContactName.</li>
+</ol>
+</li>
 <li><strong>Local</strong> column <strong>NumberOfOrders</strong>.</li>
 <li><strong>Local</strong> column <strong>TotalFreight</strong>.</li>
 </ol>
@@ -73,7 +77,8 @@
 <li>set <strong>TotalFreight value</strong> to accumulate the value of <strong>Freight</strong> column from the <strong>Orders</strong> table.</li>
 <li>Build and test the <strong>BusinessProcess</strong> using the <kbd>Shift</kbd><kbd>F3</kbd> send <strong>ANATR</strong> and check the <strong>Output</strong> panel for the results.</li>
 <li>In <strong>ShowCustomers</strong> add a button to the screen, set the button text to <strong>Get Total Orders</strong>.</li>
-<li>set the value of <strong>NumberOfOrders</strong> and <strong>TotalFreight</strong> to zero.</li>
+<li>set the value of <strong>NumberOfOrders</strong> and <strong>TotalFreight</strong> to zero.<br />
+This should be done before the call to <strong>CalcTotalOrdersPerCustomer</strong></li>
 <li>Call the <strong>CalcTotalOrdersPerCustomer</strong> from the button <strong>click</strong> event and send the parameters.</li>
 <li>Build and test, notice that <strong>NumberOfOrders</strong> and <strong>TotalFreight</strong> are update with values when clicking the button.</li>
 <li>In <strong>ShowCustomers</strong> view, find the call to <strong>CalcTotalOrdersPerCustomer</strong>.</li>

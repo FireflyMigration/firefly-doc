@@ -104,7 +104,7 @@ namespace Northwind.Exercises
     }
 } </code></pre>
 <p>The <strong>ShowCustomersView</strong> class should look like :</p>
-<pre data-line="24,25,26,27" class="language-csdiff line-numbers"><code>using System;
+<pre data-line="24,25,26,27,28,29" class="language-csdiff line-numbers"><code>using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -129,13 +129,15 @@ namespace Northwind.Exercises.Views
 
         private void button1_Click(object sender, ButtonClickEventArgs e)
         {
+            _controller.NumberOfOrders.Value = 0;
+            _controller.TotalFreight.Value = 0;
             new CalcTotalOrdersPerCustomer().Run(_controller.Customers.CustomerID,_controller.NumberOfOrders,_controller.TotalFreight);
         }
     }
 } </code></pre>
 <p>After item 19 the <strong>ShowCustomersView</strong> class should look like :
 The <strong>ShowCustomersView</strong> class should look like :</p>
-<pre data-line="27" class="language-csdiff line-numbers"><code>using System;
+<pre data-line="29" class="language-csdiff line-numbers"><code>using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -160,14 +162,16 @@ namespace Northwind.Exercises.Views
 
         private void button1_Click(object sender, ButtonClickEventArgs e)
         {
+            _controller.NumberOfOrders.Value = 0;
+            _controller.TotalFreight.Value = 0;
 -           new CalcTotalOrdersPerCustomer().Run(_controller.Customers.CustomerID,_controller.NumberOfOrders,_controller.TotalFreight);
             new CalcTotalOrdersPerCustomer().Run(_controller.Customers.CustomerID,_controller.NumberOfOrders.Value,_controller.TotalFreight);
         }
     }
 } </code></pre>
-<p>After item 20 the <strong>ShowCustomersView</strong> class should look like :
+<p>After item 22 the <strong>ShowCustomersView</strong> class should look like :
 The <strong>ShowCustomersView</strong> class should look like :</p>
-<pre data-line="27" class="language-csdiff line-numbers"><code>using System;
+<pre data-line="29" class="language-csdiff line-numbers"><code>using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -192,6 +196,8 @@ namespace Northwind.Exercises.Views
 
         private void button1_Click(object sender, ButtonClickEventArgs e)
         {
+            _controller.NumberOfOrders.Value = 0;
+            _controller.TotalFreight.Value = 0;
 -           new CalcTotalOrdersPerCustomer().Run(_controller.Customers.CustomerID,_controller.NumberOfOrders.Value,_controller.TotalFreight);
             new CalcTotalOrdersPerCustomer().Run(_controller.Customers.CustomerID,_controller.NumberOfOrders,_controller.TotalFreight.Value);
         }

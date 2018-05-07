@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="batch,Lifecycle,life cycle, life-cycle,Break,BreakPoint, Break Point, Watch, Watch Window, Output window">
 
-    <title>Display all the Orders on a data grid</title>
+    <title>021_Introduction to BusinessProcess</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,30 +29,65 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="display-all-the-orders-on-a-data-grid">Display all the Orders on a data grid</h1>
-<p><code>src/app/home/home.component.ts</code></p>
-<pre data-line="12" class="language-csdiff line-numbers"><code>import { Component } from '@angular/core';
-import * as models from './../models';
-import * as radweb from 'radweb';
+                <div class="content"><h1 id="introduction-to-businessprocess">021_Introduction to BusinessProcess</h1>
+<p>We'll need to automatically iterate the data in the &quot;Order_Details&quot; table. For that we'll use a <strong>BusinessProcess</strong></p>
+<ul>
+<li>Add a new item, based on the &quot;BusinessProcess&quot; template and call it &quot;GetOrderStatistics&quot;
+<img src="2017-02-27_08h53_58.png" alt="2017 02 27 08H53 58" /></li>
+<li>Add the Order_Details table to the controller, and set the Controller's <code>From</code> Property with that table.</li>
+</ul>
+<pre data-line="14,18" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows.Forms;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+using System.Diagnostics;
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+namespace Northwind.Training.SimpleScreen
+{
+    public class GetOrderStatistics : BusinessProcessBase
+    {
+        public readonly Models.Order_Details Order_Details = new Models.Order_Details();
 
-})
-export class HomeComponent {
-  ordersGrid = new radweb.GridSettings(new models.Orders());
+        public GetOrderStatistics()
+        {
+            From = Order_Details;
+        }
+        public void Run()
+        {
+            Execute();
+        }
+    }
 } </code></pre>
-<p><code>src//home/home.component.html</code></p>
-<pre data-line="1,2" class="language-csdiff line-numbers"><code>  &lt;h1&gt;Orders&lt;/h1&gt;
-  &lt;data-grid [settings]="ordersGrid"&gt;&lt;/data-grid&gt; </code></pre>
-<p>Here is the result:</p>
-<p><img src="../2017-10-13_08h29_23.png" alt="2017 10 13 08H29 23" /></p>
-<p>By default the grid will display the first 5 columns on a grid, and all other columns below the grid in a <code>data-area</code></p>
-<p>The grid is fully functional and the user can Sort, filter and page through the data, it can display millions of rows affectively as it only downloads the rows it needs to the browser.</p>
-<h3 id="grid-functionality-demo">Grid functionality demo</h3>
-<p><img src="../2017-10-13_08h32_41.gif" alt="2017 10 13 08H32 41" /></p>
+<ul>
+<li>Note that you can remove it's <code>public</code> modifier, since we'll only use this table inside this controller.</li>
+</ul>
+<pre data-line="4" class="language-csdiff line-numbers"><code>public class GetOrderStatistics : BusinessProcessBase
+{
+-   public readonly Models.Order_Details Order_Details = new Models.Order_Details();
+    readonly Models.Order_Details Order_Details = new Models.Order_Details();
+
+    public GetOrderStatistics()
+    {
+        From = Order_Details;
+    }
+    public void Run()
+    {
+        Execute();
+    }
+} </code></pre>
+<ul>
+<li>Place a &quot;Break Point&quot; (using the <kbd>F9</kbd> keyboard shortcut) on the call to <code>Execute</code> within the <code>Run</code> method, and run our controller</li>
+<li>Use the &quot;Controllers&quot; developer tool to run the 'GetOrderStatistics' BusinessProcess</li>
+<li>Visual studio will &quot;Break&quot; into the code and highlight our <code>Execute</code> method<br />
+<img src="2017-02-27_08h58_31.png" alt="2017 02 27 08H58 31" /></li>
+<li>We'll add the <code>Counter</code> property to the &quot;Watch&quot; Window, to see how many rows get's processed<br />
+<img src="2017-02-27_08h59_33.png" alt="2017 02 27 08H59 33" /></li>
+<li>We'll then press <kbd>F10</kbd> to &quot;Break&quot; on next line, and we'll see that the value of <code>Counter</code> in the &quot;Watch&quot; window change to reflect the number of rows in the Order_Details table.<br />
+<img src="2017-02-27_09h00_41.png" alt="2017 02 27 09H00 41" /></li>
+</ul>
 
 
 
@@ -60,7 +95,7 @@ export class HomeComponent {
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/00-ENV Web/01-Web Development Tutorial/14-Display all the Orders on a data-grid.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/11_BusinessProcess-and-Out-Parameters/021_Introduction-to-BusinessProcess.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -122,7 +157,7 @@ export class HomeComponent {
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'display-all-the-orders-on-a-data-grid.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', '021_introduction-to-businessprocess.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
