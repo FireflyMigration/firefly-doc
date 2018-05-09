@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Refactoring the Relation to the Type Class</title>
+    <title>Adding a new project to a migrated solution</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,8 +29,58 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="refactoring-the-relation-to-the-type-class">Refactoring the Relation to the Type Class</h1>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/s6OW_dxqt0w?list=PL1DEQjXG2xnLzvOZZ55WcSSLF8EdrBayZ" frameborder="0" allowfullscreen></iframe>
+                <div class="content"><h1 id="adding-a-new-project-to-a-migrated-solution">Adding a new project to a migrated solution</h1>
+<ol>
+<li>Right click on the solution and add a new project of type &quot;Class Library&quot;, from the &quot;Windows Classic Desktop&quot; folder and call it <code>Northwind.ModuleName</code></li>
+<li>Delete the class.cs - we don't need it.</li>
+<li>In project settings:
+<ol>
+<li>Make sure that it has the same .NET framework version of the original app.</li>
+<li>configure the Build &quot;Output path&quot; to: <code>..\bin\</code> for both Debug and release configuration.</li>
+</ol>
+</li>
+<li>Add the project to the <code>msbuild.xml</code> file - so that it'll get included when you run the <code>BuildDebug.bat</code> and <code>BuildRelease.bat</code></li>
+</ol>
+<pre data-line="11" class="language-csdiff line-numbers"><code> &lt;?xml version="1.0" encoding="utf-8" ?&gt;
+ &lt;Project DefaultTargets="Step4" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5"&gt;
+    &lt;Target Name="Step1" DependsOnTargets=""&gt;
+    &lt;MSBuild Projects=".\ENV\ENV.csproj;"  BuildInParallel="true"  StopOnFirstFailure="true"/&gt;
+    &lt;/Target&gt;
+    &lt;Target Name="Step2" DependsOnTargets="Step1"&gt;
+    &lt;MSBuild Projects=".\NorthwindBase\NorthwindBase.csproj;"  BuildInParallel="true"  StopOnFirstFailure="true"/&gt;
+    &lt;/Target&gt;
+    &lt;Target Name="Step3" DependsOnTargets="Step2"&gt;
+-   &lt;MSBuild Projects=".\Northwind.Customers\Northwind.Customers.csproj;.\Northwind.Products\Northwind.Products.csproj;.\Northwind.Orders\Northwind.Orders.csproj;"  BuildInParallel="true"  StopOnFirstFailure="true"/&gt;
+    &lt;MSBuild Projects=".\Northwind.NewModule\Northwind.NewModule.csproj;.\Northwind.Customers\Northwind.Customers.csproj;.\Northwind.Products\Northwind.Products.csproj;.\Northwind.Orders\Northwind.Orders.csproj;"  BuildInParallel="true"  StopOnFirstFailure="true"/&gt;
+
+    &lt;/Target&gt;
+    &lt;Target Name="Step4" DependsOnTargets="Step3"&gt;
+    &lt;MSBuild Projects=".\Northwind\Northwind.csproj;"  BuildInParallel="true"  StopOnFirstFailure="true"/&gt;
+    &lt;/Target&gt;
+  &lt;/Project&gt; </code></pre>
+<ol start="5">
+<li><p>Add references to:</p>
+<ul>
+<li>From the <code>Assemblies</code> tab:
+<ol>
+<li>System.Windows.Forms</li>
+<li>System.Drawing</li>
+</ol>
+</li>
+<li>From the <code>Browse</code> tab, select from the project's <code>bin</code> directory the following dlls:
+<ol>
+<li>ENV</li>
+<li>Firefly.Box</li>
+<li>NorthwindBase</li>
+<li>(Northwind.Share for larger migrated solutions)</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>Add a reference to it where ever you need it, or for more complex scenarios, use the AbstractFactory pattern described in: <a href="http://doc.fireflymigration.com/calling-controllers-across-project-scopes.html">Calling Controllers across project scopes</a></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/b2oRTV-cYGE" frameborder="0" allowfullscreen></iframe>
+</li>
+</ol>
 
 
 
@@ -38,7 +88,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/40-Refactoring-Migrated-Code/03-Refactoring the Relation to the Type Class.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/Adding-a-new-project-to-a-migrated-solution/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -100,7 +150,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'refactoring-the-relation-to-the-type-class.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'adding-a-new-project-to-a-migrated-solution.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
