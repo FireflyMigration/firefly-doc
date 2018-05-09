@@ -5,7 +5,7 @@ The Columns Collection has two roles:
 
 
 ### Determine which columns will be loaded from the database
-* By Default - If no column were added using "Columns.Add" then all the columns which belongs to entities used in this controller will be added. (“Local columns” will not be added as part of this rule)
+* By Default - If no columns were added using `Columns.Add`, then all the columns which belong to entities used in this controller will be added. (Local columns will not be added as part of this rule)
 * Columns are added using the "Columns.Add" method
 * PrimaryKey columns are added automatically
 * Any column that is set as a Data of a control on the View is automatically added.

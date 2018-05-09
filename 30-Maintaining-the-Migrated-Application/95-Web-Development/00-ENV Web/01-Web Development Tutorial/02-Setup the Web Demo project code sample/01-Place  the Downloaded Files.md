@@ -1,4 +1,4 @@
-﻿Download the files from: https://github.com/FireflyMigration/ENV.Web/releases/tag/v0.0.4-pre-alpha
+﻿Download the files from: https://github.com/FireflyMigration/ENV.Web/releases/tag/v0.0.5-pre-alpha
 
 1. Place the `ENV.Web.dll` in the `lib` directory of your `Northwind Training` folder.
 2. Open the WebProjects.zip and move the two folders in it to your `Northwind Training` folder.
