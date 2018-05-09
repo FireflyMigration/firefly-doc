@@ -30,6 +30,67 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="getting-rid-of-if-statements">Getting rid of if statements</h1>
+<pre data-line="5,8,11,13,14,15,16,17,18,19,20" class="language-csdiff line-numbers"><code>
+
+
+-internal Bool Exp_5() =&gt; _parent.Orders1.ShipCountry != "Germany";
+internal Bool Exp_5() =&gt; GetDiscountStrategy().ShouldShowDiscountColumn();
+
+-internal Text Exp_4() =&gt; u.If(_parent.Orders1.ShipCountry == "France", "3%", "5.2CZ +$;");
+internal Text Exp_4() =&gt; GetDiscountStrategy().DiscountColumnFormat();
+
+-internal Number Exp_3() =&gt; Order_Details.UnitPrice * Order_Details.Quantity - u.If(_parent.Orders1.ShipCountry == "France", (Order_Details.UnitPrice * Order_Details.Quantity * Order_Details.Discount / 100), u.If(_parent.Orders1.ShipCountry == "Germany", 0, Order_Details.Discount));
+internal Number Exp_3() =&gt; Order_Details.Quantity * Order_Details.UnitPrice - GetDiscountStrategy().GetDiscount(Order_Details);
+
+DefaultDiscountStrategy GetDiscountStrategy()
+{
+     if (_parent.Orders1.ShipCountry == "France")
+         return new PrecentDiscountStrategy();
+     else if (_parent.Orders1.ShipCountry == "Germany")
+         return new NoDiscountStrategy();
+     return new DefaultDiscountStrategy();
+} </code></pre>
+<p><code>DiscountStrategy.cs</code></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>namespace Northwind.Orders
+{
+    public class DefaultDiscountStrategy
+    {
+        public virtual bool ShouldShowDiscountColumn()
+        {
+            return true;
+        }
+        public virtual Text DiscountColumnFormat()
+        {
+            return "5.2CZ +$;";
+        }
+        public virtual Number GetDiscount(Models.Order_Details Order_Details)
+        {
+            return Order_Details.Discount;
+        }
+    }
+    public class PrecentDiscountStrategy : DefaultDiscountStrategy
+    {
+        public override Text DiscountColumnFormat()
+        {
+            return "3%";
+        }
+        public override Number GetDiscount(Order_Details Order_Details)
+        {
+            return (Order_Details.UnitPrice * Order_Details.Quantity * Order_Details.Discount / 100);
+        }
+    }
+    public class NoDiscountStrategy : DefaultDiscountStrategy
+    {
+        public override bool ShouldShowDiscountColumn()
+        {
+            return false;
+        }
+        public override Number GetDiscount(Order_Details Order_Details)
+        {
+            return 0;
+        }
+    }
+} </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UoGsJ19yUcw" frameborder="0" allowfullscreen></iframe>
 
 
