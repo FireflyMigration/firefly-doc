@@ -76,3 +76,7 @@ Go To the "Edit\Go To\Go To All..." menu item
 ![2017 03 08 10H57 17](2017-03-08_10h57_17.png)
 2. Uncheck the "Use Preview Tab" CheckBox
 3. Check the "Show details" CheckBox
+
+### G - Recommended extentions
+We would like to recommend the follow extension to you:
+[Stack Trace Explorer](stack-trace-explorer.html)
