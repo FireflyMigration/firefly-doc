@@ -1,7 +1,7 @@
 This Visual Studio extension allows quick navigation based on a call stack you receive from an error report by your customer.
 It automatically turns it into a set of hyper links that help you navigate the code.
 
-![Stack Trace Explorer](stack-trace-explorer.gif)
+![Stack Trace Explorer](stack-trace-explorer1.gif)
 
 
 You can download it from:
