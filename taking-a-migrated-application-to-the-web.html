@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Taking a migrated application to the web</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="taking-a-migrated-application-to-the-web">Taking a migrated application to the web</h1>
+<p>Many customers after completing the migration to.NET, wish to take their application to web and or mobile and are asking themselves what do we need to know, and how can we get there.</p>
+<p>In this article, we try to relay our opinion on taking your application to the web.</p>
+<p>Currently (May 2018) we believe that the best approach is a responsive web app that can work both on mobile devices and desktop web browsers. The technology is mature and is widely accepted.</p>
+<h1 id="technologies">Technologies</h1>
+<p>A web application typically has two parts, Server Side code, and Client Side code (code that runs in the browser)</p>
+<h2 id="server-side-code">Server Side Code</h2>
+<p>For the Server-Side Code, we recommend that you'll use C# as the language and technologies such as  MVC.NET and WEB.API. This architecture will allow you to maximize your reuse of the migrated code in any web application that you'll write.</p>
+<p>If you intend to deploy a production-ready application using these technologies we recommend that you'll get training on both these technologies from sources such as PluralSight etc...</p>
+<h4 id="env.web">ENV.Web</h4>
+<p>ENV.Web is an open source code sample that we wrote and we use in our demos, which allows you to easily reuse your migrated application on the server and expose rich data API's based on migrated code easily.</p>
+<p>It is not designed as a comprehensive solution for all your server-side requirements, you'll need knowledge in MVC.NET to perform the operations you need that it doesn't yet provide.</p>
+<p>ENV.Web is not a supported Firefly product, it's an open source library that you can download with its source and demos at <a href="https://github.com/fireflymigration/env.web">https://github.com/fireflymigration/env.web</a></p>
+<p>We believe it's fairly stable, but before using it in production, make sure that you also familiarize yourself with its code, in case you'll run into a bug you'll be able to quickly fix it.</p>
+<h2 id="client-side">Client Side</h2>
+<p>You can use any client-side technology with .NET as the server side.
+We use Angular (the technology) and Typescript (the coding language) to develop our web-based demos and solutions.
+We use Visual Studio Code, as the IDE to do such development.</p>
+<p>Angular is a great technology that once mastered, allows you to develop a web application with relative ease - but it requires training and expertise.</p>
+<p>If you plan to develop a production ready solution, make sure that you get extensive training and expertise in these technologies.</p>
+<h1 id="web-tutorial">Web Tutorial</h1>
+<p>We have a web development tutorial on our doc site, that shows a speedy development of a web application using .NET as the server side technology and Angular as the client side technology. you can find it at !!!REplace with link!!!!</p>
+<p>In that tutorial, we use an open source client-side library currently called radweb, this is an open source, non-firefly project that is at a very early stage (as of May 2018). If you plan to use it in production, use it at your own risk and be ready to work around bugs that it has by using other Typescript and angular libraries)</p>
+<h1 id="team-structure">Team Structure</h1>
+<p>If you are at the first few months after a migration to .NET, your developers may already be overwhelmed by learning .NET and learning another technology like Angular and Typescript may be too much at this time.</p>
+<p>If you still want to go to the web fairly quickly we recommend that you split your team into two teams</p>
+<h3 id="server-side-team">Server Side team</h3>
+<p>Comprised of your migrated developers whom we trained in C#. They can and should write the server side code, that reuses the migrated code and any other server-side code should be relatively easy for them to write in C#.
+The developer's extensive application-specific knowledge and business know-how will be put to best use as they create REST API's that will expose the application data and logic to the front end.</p>
+<h3 id="client-side-team-aka-front-end">Client Side team (AKA Front End)</h3>
+<p>This team will write the Angular, Typescript, HTML and CSS code that will consume the server side REST API and provide a rich beautiful user experience.
+These technologies are widely used, and developers who are fluent in them are easy to come by. These developers do not need in-depth application knowledge, as they'll rely on the knowledge of the Server Side team that will expose the API's for them.</p>
+<h1 id="mobile-development">Mobile development</h1>
+<p>We think that the best approach for mobile development is to use web technologies. We think that native apps are relevant only when you need to do intensive device-specific features, like gaming. But for IT application web technologies will serve you well.
+Even features like access to the camera and geolocation are currently accessible through javascript to any web application.
+Also, today, you can develop fully functional offline applications using PWA for both Android and IOS and use offline storage such as Indexed DB that exist in any browser.
+We believe that using the same technology (and code) for both web and mobile reduces your development costs.</p>
+<p>This web applications do not require any installation and can be deployed to customers using a simple link.</p>
+<p>If at a later time you wish to deploy the application as an app in the store and want it to run natively, you can always use PhoneGap to run that application natively.</p>
+<p>If you still choose to use native technologies, we recommend that you'll look into Xamarin - which allows you to create mobile native apps using .NET while sharing the maximum amount of code between the different platforms.</p>
+
+
+
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/Taking-a-migrated-application-to-the-web.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'taking-a-migrated-application-to-the-web.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>
