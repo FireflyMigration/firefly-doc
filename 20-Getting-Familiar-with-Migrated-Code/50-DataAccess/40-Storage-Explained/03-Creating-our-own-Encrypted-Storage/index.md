@@ -1,4 +1,6 @@
-﻿Storage is a column attribute, which defines the way the value of the columns is saved to the database and loaded from it.
+﻿<iframe width="560" height="315" src="https://www.youtube.com/embed/Z1uljBHEXs8?list=PL1DEQjXG2xnJF4Jon_mjd-QnmsQ3KBWLr" frameborder="0" allowfullscreen></iframe>
+
+Storage is a column attribute, which defines the way the value of the columns is saved to the database and loaded from it.
 Storage is used to separate the way a value is stored in persistant storage from the way it is used by the application.
 There are many built in storages that we can use. For example,the DateTimeDateStorage is used to store dates as DateTime in the Database, while the StringDateStorage allows us to keep dates as strings.
 The migrated application comes with a plethora of storages for numbers, texts, dates, times and bool. 
