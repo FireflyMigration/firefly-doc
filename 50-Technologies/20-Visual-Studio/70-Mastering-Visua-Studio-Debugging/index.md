@@ -71,10 +71,3 @@ If you only want to step into a specific method, right click and select "Step in
 ![2017 11 13 13H49 53](2017-11-13_13h49_53.png)
 
 
-Restart application
-Set next Statement 
-
-### Debug Windows ###
-
-### Controling the Debugger by Code ###
-
