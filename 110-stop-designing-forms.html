@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="designer, form, view, dynamic, screen">
 
-    <title>Prepae the view for a general use</title>
+    <title>Stop desinging forms</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,50 +29,24 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="prepae-the-view-for-a-general-use">Prepae the view for a general use</h1>
-<p>Lets modify our view code so any controller can use it.
-First let create an <code>AddColumns</code> method that receives an array of columns and calls the <code>AddColumn</code> method for each column:</p>
-<pre data-line="6,15,16,17,18,19,20,21" class="language-csdiff line-numbers"><code>
-partial class ShowView : Shared.Theme.Controls.Form
-{
--   ShowCustomers _controller;
--   public ShowView(ShowCustomers controller)
-    public ShowView()
-    {
--       _controller = controller;
-        InitializeComponent();
--       foreach (var col in _controller.Customers.Columns)
--       {
--          AddColumn(col);
--       }
-    }
-    public void AddColumns(prams ColumnBase [] columns)
-    {
-        foreach (var col in columns)
-        {
-            AddColumn(col);
-        }
-    }
-
-} </code></pre>
-<p>Now we need to modify the controller's code, so it would use this view and the <code>AddColumns</code> method:</p>
-<pre data-line="4,5,6,7,8,9" class="language-csdiff line-numbers"><code>    protected override void OnLoad()
-    {
--       View = () =&gt; new Views.ShowView(this);
-        View = () =&gt;
-        {
-            var view = new Views.ShowView();
-            view.AddColumns(Customers.CustomerID, Customers.Address, Customers.City, Customers.Phone);
-            return view;
-        };   
-} </code></pre>
-<p>The result will look like this:<br />
-<img src="2018-02-07_16h47_44.jpg" alt="2018 02 07 16H47 44" /></p>
-<blockquote>
-<p>As we did in the previous example, you can use the <code>foreach</code> loop to add all the columns.</p>
-</blockquote>
-<p>So now, adding a new controller with no view, that will use our existing view in the same manner, is easy.
-The next article will show it.</p>
+                <div class="content"><h1 id="stop-desinging-forms">Stop desinging forms</h1>
+<p>Ever wanted to be able to create a dynamic screen, one you do not have to create by yourself ?<br />
+Ever had a list of Ctrl+G programs, attached to a menu, and wished you could get rid of them ?</p>
+<p>Well - with .Net you can :-)</p>
+<p>By default a Magic screen has to be designed - the programmer has to create an Online program and design its screen (form).<br />
+This has to be done for <strong>each</strong> form.<br />
+The following articles will discuss the ability to create dynamic screens built by code.</p>
+<ul>
+<li><a href="10-understanding-the-code.html">10 Understanding the code</a></li>
+<li><a href="20-adding-the-first-column.html">20 Adding the first column</a></li>
+<li><a href="30-sending-the-column-as-a-parameter.html">30 Sending the column as a parameter</a></li>
+<li><a href="40-adding-all-the-columns-of-the-entity.html">40 Adding all the columns of the entity</a></li>
+<li><a href="50-controlling-the-width-of-a-column.html">50 Controlling the width of a column</a></li>
+<li><a href="60-prepae-the-view-for-a-general-use.html">60 Prepae the view for a general use</a></li>
+<li><a href="70-using-the-same-view-in-another-controller.html">70 Using the same view in another controller</a></li>
+<li><a href="80-adding-an-action-to-the-view.html">80 Adding an action to the view</a></li>
+<li><a href="90-using-the-formbuilder.html">90 Using the FormBuilder</a></li>
+</ul>
 
 
 
@@ -80,7 +54,7 @@ The next article will show it.</p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/110-Stop-designing-Forms/60 Prepae the view for a general use.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/110-Stop-designing-Forms/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -142,7 +116,7 @@ The next article will show it.</p>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', '60-prepae-the-view-for-a-general-use.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', '110-stop-designing-forms.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

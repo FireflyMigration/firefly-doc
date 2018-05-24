@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Mastering Visual Studio Debugging</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="mastering-visual-studio-debugging">Mastering Visual Studio Debugging</h1>
+<blockquote>
+<p>&quot;<em>Everyone know that <strong><strong>debugging is twice as hard</strong></strong> as writing a program in the first place.
+So if you're as clever as you can be when you write it, how will you ever debug it?</em>&quot;</p>
+<ul>
+<li><strong>Brian Kernighan</strong>, Computer Scientist</li>
+</ul>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>Developers spends more time maintaining and debugging the applications than writing it.
+Visual Studio provides a lot of powerful tools to debug our application. Some of tools are hidden and are less familiar by many .NET developers.
+This article reveals some of the hidden features of Visual Studio and introduces advanced techniques to help you master Visual Studio debugging.</p>
+<h3 id="start-debugging">Start Debugging</h3>
+<p>Usually, you start a debugging session by pressing F5 (Debug &gt; Start Debugging), or by clicking the green arrow to start the application with the debugger attached.</p>
+<p><img src="2017-10-19_14h07_01.png" alt="2017 10 19 14H07 01" /></p>
+<p>Once the debugger is attached, you can use the application to navigate to any program and press <kbd>Shift + F12</kbd> to suspend execution and go to the current running program. This option works only in applications that were migrated by Firelfy.</p>
+<p>Other ways to start the application with the debugger attached are F10, F11, or by right clicking a code line and using Run to Cursor (or pressing <kbd>Ctrl + F10</kbd>).</p>
+<p>If you start the application without debugging you can still attach the debugger to a running process by pressing <kbd>Ctrl+Alt+P</kbd> (Debug &gt; Attach to Process...) and select the process of the applicaiton from the list.</p>
+<p><img src="2017-10-19_16h26_12.png" alt="2017 10 19 16H26 12" /></p>
+<h3 id="breakpoints">Breakpoints</h3>
+<p>You can set breakpoint on any code line by pressing F9, when you want to suspend the execution.
+In case you want to disable a breakpoint but keep the location of it, press <kbd>Ctrl + F9</kbd>.</p>
+<p><img src="2017-10-19_16h29_46.png" alt="2017 10 19 16H29 46" /></p>
+<h4 id="setting-a-breakpoint-from-the-breakpoints-window">Setting a breakpoint from the Breakpoints window</h4>
+<p>You can also set a new breakpoint from the Breakpoints window (Debug &gt; Windows &gt; Breakpoints or <kbd>Ctrl + Alt + B</kbd>).
+This window allows you to manage breakpoints and see all the breakpoints you have set in your application.</p>
+<p>One of the hidden secrets of Visual Studio is the ability to create a new Function Breakpoint from this window.
+A Function breakpoint is connection to a method name. For example, if you create a new function breakpoint providing &quot;Run&quot; as the function name, the application will suspend execution on any call to a method name Run.</p>
+<p><img src="2017-10-19_16h39_20.png" alt="2017 10 19 16H39 20" /></p>
+<p>This screen gives you options to add conditions and actions to each breakpoint.</p>
+<h4 id="breakpoint-conditions">Breakpoint conditions</h4>
+<p>You can control when a breakpoint suspend execution by settings conditions.
+Hover over the breakpoint and click on the settings button to open the Breakpoints Settings window.</p>
+<p><img src="2017-10-19_16h45_46.png" alt="2017 10 19 16H45 46" /></p>
+<p>When you check the Conditions box, the window expands allowing you to set conditions for the breakpoint.
+You have a few kinds of conditions. Expression that will be calculated and break if it is true, or when it is changed.
+You may also add a hit count condition, which is useful to stop inside a loop on a specific iteration.</p>
+<p><img src="2017-10-19_16h51_28.png" alt="2017 10 19 16H51 28" /></p>
+<h4 id="breakpoint-actions">Breakpoint actions</h4>
+<p>Another hidden feature of Visual Studio is Tracepoints. A tracepoint is a breakpoint that prints a message to the Output window.</p>
+<p>In the Breakpoint Settings window, check the Actions box. You can print any string and also use special keywords in the message such as $CALLER, $CALLSTACK, $FUNCTION and more.
+See <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/using-breakpoints">https://docs.microsoft.com/en-us/visualstudio/debugger/using-breakpoints</a> for more information.</p>
+<h3 id="debugging-navigation">Debugging Navigation</h3>
+<p>When you start a debugging session, you can use F10 to step over a line of code or F11 in case you need to step into a method code.</p>
+<h4 id="run-to-cursor">Run to Cursor</h4>
+<p>Another option is to put the mouse cursor on a specific line and right click that location to select &quot;Run to Cursor&quot;. This works as if you create a one time breakpoint at this line, so the code will executes and stop at the line your mouse cursor is pointing on.</p>
+<h4 id="step-into-specific">Step into Specific</h4>
+<p>Some code lines are compound calls to different methods. Using F11 will step into each call.
+If you only want to step into a specific method, right click and select &quot;Step into Specific&quot;. This allows you to select the method you want to step into.</p>
+<p><img src="2017-11-13_13h49_53.png" alt="2017 11 13 13H49 53" /></p>
+
+
+
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//50-Technologies/20-Visual-Studio/70-Mastering-Visual-Studio-Debugging/index.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'mastering-visual-studio-debugging.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>
