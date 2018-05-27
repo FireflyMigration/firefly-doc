@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="designer, form, view, dynamic, screen, formbuilder">
+    <meta name="keywords" content="designer, form, view, dynamic, screen">
 
-    <title>Using the FormBuilder</title>
+    <title>Stop desinging forms</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,22 +29,24 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="using-the-formbuilder">Using the FormBuilder</h1>
-<p>You can use a built-in utility called FormBuilder that performs as a general view.<br />
-Lets use it:</p>
-<pre><code>    var firstName = new TextColumn(&quot;First Name&quot;, &quot;30&quot;);
-    var lastName = new TextColumn(&quot;Last Name&quot;, &quot;30&quot;);
-
-    var fb = new ENV.UI.FormBuilder(&quot;My Form Builder&quot;);
-    fb.AddColumn(firstName);
-    fb.AddColumn(lastName);
-    fb.AddAction(&quot;Show Full Name&quot;, () =&gt; System.Windows.Forms.MessageBox.Show(firstName.Trim()+ &quot; &quot; + lastName.Trim()));
-    fb.Run();
-
-</code></pre>
-<p>The result looks like this:<br />
-<img src="2018-02-07_17h37_46.jpg" alt="2018 02 07 17H37 46" /></p>
-<p>Enjoy :-)</p>
+                <div class="content"><h1 id="stop-desinging-forms">Stop desinging forms</h1>
+<p>Ever wanted to be able to create a dynamic screen, one you do not have to create by yourself ?<br />
+Ever had a list of Ctrl+G programs, attached to a menu, and wished you could get rid of them ?</p>
+<p>Well - with .Net you can :-)</p>
+<p>By default a Magic screen has to be designed - the programmer has to create an Online program and design its screen (form).<br />
+This has to be done for <strong>each</strong> form.<br />
+The following articles will discuss the ability to create dynamic screens built by code.</p>
+<ul>
+<li><a href="understanding-the-code.html">Understanding the code</a></li>
+<li><a href="adding-the-first-column.html">Adding the first column</a></li>
+<li><a href="sending-the-column-as-a-parameter.html">Sending the column as a parameter</a></li>
+<li><a href="adding-all-the-columns-of-the-entity.html">Adding all the columns of the entity</a></li>
+<li><a href="controlling-the-width-of-a-column.html">Controlling the width of a column</a></li>
+<li><a href="prepae-the-view-for-a-general-use.html">Prepae the view for a general use</a></li>
+<li><a href="using-the-same-view-in-another-controller.html">Using the same view in another controller</a></li>
+<li><a href="adding-an-action-to-the-view.html">Adding an action to the view</a></li>
+<li><a href="using-the-formbuilder.html">Using the FormBuilder</a></li>
+</ul>
 
 
 
@@ -52,7 +54,7 @@ Lets use it:</p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/99-Stop-designing-Forms/90 Using the FormBuilder.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/99-Stop-designing-Forms/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -114,7 +116,7 @@ Lets use it:</p>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', '90-using-the-formbuilder.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'stop-designing-forms.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="designer, form, view, dynamic, screen, formbuilder">
+    <meta name="keywords" content="designer, form, view, dynamic, screen">
 
-    <title>Using the FormBuilder</title>
+    <title>Using the same view in another controller</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,22 +29,43 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="using-the-formbuilder">Using the FormBuilder</h1>
-<p>You can use a built-in utility called FormBuilder that performs as a general view.<br />
-Lets use it:</p>
-<pre><code>    var firstName = new TextColumn(&quot;First Name&quot;, &quot;30&quot;);
-    var lastName = new TextColumn(&quot;Last Name&quot;, &quot;30&quot;);
+                <div class="content"><h1 id="using-the-same-view-in-another-controller">Using the same view in another controller</h1>
+<p>Lets create a new controler for <code>ShowOrders</code> but use the view we already have:</p>
+<pre><code>public class ShowOrders : UIControllerBase
+{
+    public Models.Orders Orders = new Models.Orders();
+    public ShowOrders()
+    {
+        From = Orders;
+    }
 
-    var fb = new ENV.UI.FormBuilder(&quot;My Form Builder&quot;);
-    fb.AddColumn(firstName);
-    fb.AddColumn(lastName);
-    fb.AddAction(&quot;Show Full Name&quot;, () =&gt; System.Windows.Forms.MessageBox.Show(firstName.Trim()+ &quot; &quot; + lastName.Trim()));
-    fb.Run();
+    public void Run()
+    {
+        Execute();
+    }
+
+    protected override void OnLoad()
+    {
+        View = () =&gt;
+        {
+            var view = new Views.ShowView(){ Text = &quot;Show Orders&quot; };
+            foreach (var col in Orders.Columns)
+            {
+                view.AddColumns(col);
+            }
+            return view;
+        };
+    }
+}
 
 </code></pre>
 <p>The result looks like this:<br />
-<img src="2018-02-07_17h37_46.jpg" alt="2018 02 07 17H37 46" /></p>
-<p>Enjoy :-)</p>
+<img src="2018-02-07_17h01_55.jpg" alt="2018 02 07 17H01 55" /></p>
+<blockquote>
+<p>Here I used the <code>foreach</code> loop to add all the columns just cause I am lazy ;-)</p>
+</blockquote>
+<p>What about adding a control that does something ?<br />
+The next article will show it.</p>
 
 
 
@@ -52,7 +73,7 @@ Lets use it:</p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/99-Stop-designing-Forms/90 Using the FormBuilder.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/99-Stop-designing-Forms/70-Using the same view in another controller.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -114,7 +135,7 @@ Lets use it:</p>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', '90-using-the-formbuilder.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'using-the-same-view-in-another-controller.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

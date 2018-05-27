@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="designer, form, view, dynamic, screen, formbuilder">
+    <meta name="keywords" content="designer, form, view, dynamic, screen">
 
-    <title>Using the FormBuilder</title>
+    <title>Sending the column as a parameter</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,22 +29,35 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="using-the-formbuilder">Using the FormBuilder</h1>
-<p>You can use a built-in utility called FormBuilder that performs as a general view.<br />
-Lets use it:</p>
-<pre><code>    var firstName = new TextColumn(&quot;First Name&quot;, &quot;30&quot;);
-    var lastName = new TextColumn(&quot;Last Name&quot;, &quot;30&quot;);
+                <div class="content"><h1 id="sending-the-column-as-a-parameter">Sending the column as a parameter</h1>
+<p>We can use the column we want to add as a parameter to the <code>AddColumn</code> method.</p>
+<pre data-line="2,12,16,19,22" class="language-csdiff line-numbers"><code>
+using Firefly.Box.Data.Advanced;
 
-    var fb = new ENV.UI.FormBuilder(&quot;My Form Builder&quot;);
-    fb.AddColumn(firstName);
-    fb.AddColumn(lastName);
-    fb.AddAction(&quot;Show Full Name&quot;, () =&gt; System.Windows.Forms.MessageBox.Show(firstName.Trim()+ &quot; &quot; + lastName.Trim()));
-    fb.Run();
+partial class ShowView : Shared.Theme.Controls.Form
+{
+    ShowCustomers _controller;
+    public ShowView(ShowCustomers controller)
+    {
+        _controller = controller;
+        InitializeComponent();
+-       AddColumn();
+        AddColumn(_controller.Customers.City);
+    }
 
-</code></pre>
-<p>The result looks like this:<br />
-<img src="2018-02-07_17h37_46.jpg" alt="2018 02 07 17H37 46" /></p>
-<p>Enjoy :-)</p>
+-   void AddColumn()
+    void AddColumn(ColumnBase colToAdd)
+    {
+-       var gcCity = new Shared.Theme.Controls.GridColumn() { Text = "City" };
+        var gcCity = new Shared.Theme.Controls.GridColumn() { Text = colToAdd.Caption };
+        var tbCity = new Shared.Theme.Controls.TextBox() { Style = Firefly.Box.UI.ControlStyle.Flat };
+-       tbCity.Data = _controller.Customers.City;
+        tbCity.Data = colToAdd;
+        gcCity.Controls.Add(tbCity);
+        grid1.Controls.Add(gcCity);
+    }
+} </code></pre>
+<p>The next article will use the <code>AddColumn</code> method to add all the columns in the entity.</p>
 
 
 
@@ -52,7 +65,7 @@ Lets use it:</p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/99-Stop-designing-Forms/90 Using the FormBuilder.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/99-Stop-designing-Forms/30-Sending the column as a parameter.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -114,7 +127,7 @@ Lets use it:</p>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', '90-using-the-formbuilder.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'sending-the-column-as-a-parameter.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
