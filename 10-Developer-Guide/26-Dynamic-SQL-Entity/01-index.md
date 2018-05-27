@@ -1,4 +1,6 @@
-﻿1.	The best way to access the data from the database is using the entities classes. However, sometimes, we need to write our own SQL, especially if we need to execute a stored procedure or use special SQL functions like Count, Sum etc.
+﻿keywords: DynamicSql, DynamicSqlEntity, Stored Procedure, DirectSQL
+
+1.	The best way to access the data from the database is using the entities classes. However, sometimes, we need to write our own SQL, especially if we need to execute a stored procedure or use special SQL functions like Count, Sum etc.
 
 ```csdiff
  public class DemoCustomSQL : UIControllerBase
