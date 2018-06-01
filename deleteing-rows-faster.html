@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Printing the Total number of pages on every page</title>
+    <title>Performance And Table Exists</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,48 +29,10 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="printing-the-total-number-of-pages-on-every-page">Printing the Total number of pages on every page</h1>
-<p>You probably know that when using the print preview, you know how many pages the report has:
-<img src="2018-04-17_11h26_40.jpg" alt="2018 04 17 11H26 40" /></p>
-<p>But what about the report itself? How would you like to be able to print this information on every page?<br />
-Well - from now on you can :-)</p>
-<p>In order to do that we will need to modify our report controller:</p>
-<ol>
-<li>Add the new <code>TotalPagesPlaceholderToken</code> property to the list of PrinterWriter properties.
-This is a text property that contains a token, a value that will be used later and will replace this value with the number of pages of the report.<br />
-For example:</li>
-</ol>
-<pre data-line="7" class="language-csdiff line-numbers"><code>_ioPrint_Order = new ENV.Printing.PrinterWriter()
-{
-    Name = "Print - Order",
-    PageHeader = _layout.Header,
-    PrinterName = Northwind.Shared.Printing.Printers.Printer1.PrinterName,
-    PrintPreview = true,
-     TotalPagesPlaceholderToken = "!Total"
-}; </code></pre>
-<ol start="2">
-<li>Now we can use this token in the method that returns the page number and the total number of pages.<br />
-Before:</li>
-</ol>
-<pre data-line="" class="language-csdiff line-numbers"><code>-internal Number Exp_2() =&gt; _ioPrint_Order.Page; </code></pre>
-<p>After:</p>
-<pre data-line="1" class="language-csdiff line-numbers"><code>internal Text NumberOfPage() =&gt; _ioPrint_Order.Page + " of !Total"; </code></pre>
-<blockquote>
-<p>The previous method, Exp_2, is not used anymore. Instead the NumberOfPage method is used, returning Text that contains both the current page number and the token for the total number of pages that we set earlier.</p>
-</blockquote>
-<ol start="3">
-<li>Don't forget to edit the layout, so it will use the new method<br />
-<img src="2018-04-17_11h42_57.jpg" alt="2018 04 17 11H42 57" /></li>
-<li>Run the report and see the new design:<br />
-<img src="2018-04-17_11h59_00.jpg" alt="2018 04 17 11H59 00" /></li>
-</ol>
-<blockquote>
-<p>This requires more memory, as the report is printed first to the memory. Consider using this property when printing complex reports (containing images for example) or reports with a large number of pages.</p>
-</blockquote>
-<p>A video showing how it works:</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/JQ0KVr1Ckgg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-<p>A video explaining how to implement total number of pages in ENV:</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/KZZNWJaGuDA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <div class="content"><h1 id="performance-and-table-exists">Performance And Table Exists</h1>
+<p>In this video we discuss what &quot;Table Exists&quot; means in the profiler and how to tweek the AutoCreateTable to get what you want</p>
+<hr />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5cbRfmiyxQo?list=PL1DEQjXG2xnKt9tRPRR1YtbITJ3idW-vL" frameborder="0" allowfullscreen></iframe>
 
 
 
@@ -78,7 +40,7 @@ Before:</li>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/Printing the Total number of pages in every page/Index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/50-Improve-Performance/Deleteing-rows-faster.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -140,7 +102,7 @@ Before:</li>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'printing-the-total-number-of-pages-in-every-page.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'deleteing-rows-faster.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
