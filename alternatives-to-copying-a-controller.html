@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Alternatives to copying a controller</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="alternatives-to-copying-a-controller">Alternatives to copying a controller</h1>
+<blockquote>
+<p>&quot;Every piece of knowledge must have a single, unambiguous, authoritative representation within a system&quot;</p>
+</blockquote>
+<p><em>Andy Hunt and Dave Thomas, The Pragmatic Programner</em></p>
+<h1 id="introduction">Introduction</h1>
+<p>Don't Repeat Yourself (DRY) is a basic principle in software development. No matter the language or the technology, code duplication can lead to a maintenance nightmare.
+However, many applications contain code duplications and Magic applications are no exception.
+In this article we'll suggest some alternatives to tasks that were commonly achieved by duplicating programs in Magic.</p>
+<h1 id="why-duplication-is-bad">Why Duplication is Bad?</h1>
+<p>Programming is mostly about maintenance. It's easy to copy and paste code when creating a new feature, but 80% of the time will be spent on the maintenance of the features, either fixing bugs or changing requirements.</p>
+<p>Code duplication creates a 'technical debt' for the future. Any change you ever need to make in the code will now be twice as expensive. Moreover, it is more risky that you will forget one of the places that need to be changed, which will make your work even harder.</p>
+<p>Keeping the logic in one place and expressing everything only once, makes it easier to change it when needed (and it will be needed sooner or later).</p>
+<h1 id="why-we-duplicate">Why We Duplicate?</h1>
+<p>Here are some common scenarios for code duplication in Magic:</p>
+<h2 id="using-the-same-view-with-different-data">Using the same View with Different Data</h2>
+<p>Assuming that we have a screen with a special design, or many controls and we want the same screen to be used with different logic.
+For example, a screen that let the user define many filtering options before running a report. In Magic the program screen is consolidated with the business logic, which makes it difficult to reuse the screen.
+The common solution is to copy the program and remove everything from it except the screen, so that we can use the screen with different data and logic.</p>
+<h2 id="using-the-same-data-with-different-view">Using the same Data with Different View</h2>
+<p>As opposed to the previous example, we sometimes have a big program with lots logic code and we want to display a different screen to the user.
+This can be very common task in a multi-lingual applications. Magic allows us to create more than one screen in the same program, but each screen is very coupled to the logic of the program and this not always fit for the purpose.</p>
+<h2 id="backup-before-a-big-change">Backup before a big change</h2>
+<p>Perhaps the most common reason for coping a program in Magic is for backup. Even if you've used source control, it was sometimes a habit to copy a program before changing the code, just in case...
+Almost every Magic application has these copies, usually at the end of the program repository, usually with a name that implies that these are temporary programs, which means they are going to be there forever :).</p>
+<h2 id="its-too-easy">It's too easy</h2>
+<p>Writing code from scratch can be difficult or irritating. Coping a pre-written solution can be used as the basis for solving the current problem.
+When the tools make it easier to copy code than to reuse it, the latter becomes the popular choice. Magic falls exactly in this category. Coping a complete program which include the view in it can be done with a few clicks, while using the same view with different data is a headache.</p>
+<h1 id="how-can-we-do-better-in.net">How Can We Do Better in .NET?</h1>
+<p>We have a set of videos that explain how to reuse a controller or a view in the migrated application, which you can find <a href="http://localhost:8083/creating-reusable-views-and-controllers.html">here</a>.<br />
+It also helps that coping a program in .NET is not so easy as it was in Magic. However, if you are still not convinced and have a good reason to duplicate a program, we have a few videos that explains how, which you can find <a href="http://doc.fireflymigration.com/duplicating-controllers.html">here</a>.</p>
+<h1 id="when-is-it-ok-to-copy">When is it OK to Copy?</h1>
+<p>As with any rule, taking it to the extreme can be harmful and cause other problems. So here are a few scenarios when you can copy code without feeling bad about it:</p>
+<h2 id="throwaway-code">Throwaway code</h2>
+<p>There are some cases where we need to write code that is going to be thrown away. Let's be clear here, that is code that you know for sure will get thrown away.
+For example, when you exploring with a new feature, writing some trial and error code, until you decide on the final design.
+In unit tests, there is the concept of 'scaffolding tests', which are tests we write early when the solution is not clear enough, than remove them when other tests are being written.</p>
+<h2 id="this-is-the-second-time-you-write-the-same-thing-then-generalize-it">This is the second time you write the same thing (then generalize it)</h2>
+<p>Sometimes it's hard to see the general solution before you have more than one concrete example.
+We sometimes write the same thing twice before we understand what parts of the program are variables that need to be external and all that is left, the common code, is usually the general solution.</p>
+
+
+
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/Copying Controllers (programs)/01-Alternatives to copying a controller.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'alternatives-to-copying-a-controller.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>

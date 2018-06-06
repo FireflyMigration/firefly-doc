@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="copy program, copy task, copy controller, copy class, duplicate controller, duplicate class, duplicate view, duplicate task, duplicate program">
 
-    <title>SQL Editor Tool</title>
+    <title>Copying Controllers (programs)</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,58 +29,15 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="sql-editor-tool">SQL Editor Tool</h1>
-<p>In every migration project we provide a set of Developer Tools. One of these useful tools is the SQL Editor.</p>
-<p><img src="devtools.png" alt="" /></p>
-<p><img src="sqleditor.png" alt="" /></p>
-<p>The advantages of having this tool built-in the application are:</p>
-<ol>
-<li>No need to have SQL Management Studio installed on the workstation</li>
-<li>The SQL editor uses the same connection of the application so for example, you can query memory tables</li>
-</ol>
-<p>The SQL editor supports any relational database management system (RDBMS) and contains three options:</p>
-<h3 id="execute-f5">Execute (F5)</h3>
-<p>Divided into two parts:</p>
-<ol>
-<li>Upper pane - SQL Commands area</li>
-<li>Lower pane- Results set</li>
-</ol>
-<p>You can use any DML commands in the SQL editor (query, update, delete and insert and etc)</p>
-<p><img src="execute.png" alt="" /></p>
-<h3 id="format-f8">Format (F8)</h3>
-<p>We often copy an SQL statement, written in one line, directly into the SQL editor. It will be much easier to read the statement if it is well formatted.
-Clicking on the Format button (F8) while the SQL statement is in the upper pane will format the SQL code.</p>
-<h6 id="not-formatted">Not Formatted</h6>
-<pre><code class="language-sql">select CustomerID,CompanyName,Contactname,ContactTitle,Address,City from customers where City='London' and ContactTitle='Sales Agent' order by customerID
-</code></pre>
-<h6 id="formatted">Formatted</h6>
-<pre><code class="language-sql">SELECT CustomerID,
-       CompanyName,
-       Contactname,
-       ContactTitle,
-       Address,
-       City
-FROM customers
-WHERE City='London'
-  AND ContactTitle='Sales Agent'
-ORDER BY customerID
-</code></pre>
-<br>
-<p><img src="format.png" alt="" /></p>
-<h2 id="history-f6">History (F6)</h2>
-<p>The History button (F6) will display all the previous SQL statements that were used.
-Clicking on the desired statement will copy it to the SQL commands area so you can re-run it</p>
-<p><img src="history.png" alt="" /></p>
-<h2 id="profiler-sql-statement">Profiler SQL statement</h2>
-<p>You can copy an SQL statement from the Firefly profiler &quot;AS IS&quot; with the parameters and the SQL editor will execute it</p>
-<p><img src="sqlbind.png" alt="" /></p>
-<hr />
-<p><strong>See Also:</strong></p>
+                <div class="content"><h1 id="copying-controllers-programs">Copying Controllers (programs)</h1>
+<p>In this section we'll discuss ways of copying controllers.</p>
+<p>We'll cover simple, and increasingly complex scenarios</p>
 <ul>
-<li><a href="http://doc.fireflymigration.com/access-developer-tools-and-users-management-menu.html">Developer Tools</a></li>
-<li><a href="http://doc.fireflymigration.com/fireflyprofiler.html">Firefly Profiler</a></li>
+<li><a href="alternatives-to-copying-a-controller.html">Alternatives to copying a controller</a></li>
+<li><a href="copying-a-basic-controller.html">Copying a basic Controller</a></li>
+<li><a href="copying-a-controller-with-a-view.html">Copying a Controller with a View</a></li>
+<li><a href="copting-a-controller-with-inner-controllers-and-views.html">Copting a Controller with inner Controllers and Views</a></li>
 </ul>
-<hr />
 
 
 
@@ -88,7 +45,7 @@ Clicking on the desired statement will copy it to the SQL commands area so you c
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/98-SQl-Editor-Tool/SQL-Editor-Tool.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/Copying Controllers (programs)/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -150,7 +107,7 @@ Clicking on the desired statement will copy it to the SQL commands area so you c
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'sql-editor-tool.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'copying-controllers-(programs).html', 'previousButton', 'nextButton');
         </script>
 </body>
 
