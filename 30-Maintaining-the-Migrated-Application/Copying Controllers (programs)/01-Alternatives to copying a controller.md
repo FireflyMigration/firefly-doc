@@ -31,7 +31,7 @@ Almost every Magic application has these copies, usually at the end of the progr
 
   ## It's too easy 
 Writing code from scratch can be difficult or irritating. Coping a pre-written solution can be used as the basis for solving the current problem.
-When the tools make it easier to copy code than to reuse it, the latter becomes the popular choice. Magic falls exactly in this category. Coping a complete program which include the view in it can be done with a few clicks, while using the same view with different data is a headache.
+When the tools make it easier to copy code than to reuse it, the former becomes the popular choice. Magic falls exactly in this category. Coping a complete program which include the view in it can be done with a few clicks, while using the same view with different data is a headache.
 
 # How Can We Do Better in .NET?
 We have a set of videos that explain how to reuse a controller or a view in the migrated application, which you can find [here](http://localhost:8083/creating-reusable-views-and-controllers.html).  
