@@ -38,7 +38,7 @@ textarea.form-control {
 }
 </style>
 
-<form method="POST" action="http://fireflyintern.al/home/customerrecommendation" >
+<form method="POST" action="https://fireflyintern.al/home/customerrecommendation" >
 <div class="grid-container">
   <div class="itemleft">
 
