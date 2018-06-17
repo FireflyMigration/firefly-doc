@@ -26,7 +26,7 @@ The common solution is to copy the program and remove everything from it except 
 As opposed to the previous example, we sometimes have a big program with lots logic code and we want to display a different screen to the user.
 This can be very common task in a multi-lingual applications. Magic allows us to create more than one screen in the same program, but each screen is very coupled to the logic of the program and this not always fit for the purpose.
   ## Backup before a big change
-Perhaps the most common reason for coping a program in Magic is for backup. Even if you've used source control, it was sometimes a habit to copy a program before changing the code, just in case...
+Perhaps the most common reason for coping a program in Magic is for backup. Even if you've used source control, it was sometimes a habit to copy a program before changing the code, just in case...  
 Almost every Magic application has these copies, usually at the end of the program repository, usually with a name that implies that these are temporary programs, which means they are going to be there forever :).
 
   ## It's too easy 
