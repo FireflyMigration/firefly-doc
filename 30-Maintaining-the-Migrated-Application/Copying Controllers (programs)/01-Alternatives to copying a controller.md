@@ -48,3 +48,4 @@ For example, when you exploring with a new feature, writing some trial and error
 ## This is the second time you write the same thing (then generalize it)
 Sometimes it's hard to see the general solution before you have more than one concrete example.
 We sometimes write the same thing twice before we understand what parts of the program are variables that need to be external and all that is left, the common code, is usually the general solution.
+
