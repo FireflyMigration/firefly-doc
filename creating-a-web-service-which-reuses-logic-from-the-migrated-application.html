@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Web Service, asmx, WCF, xml">
 
-    <title>Pocos Xml and WebServices</title>
+    <title>Creating a Web Service which reuses Logic from the Migrated Application</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,45 +29,16 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="pocos-xml-and-webservices">Pocos Xml and WebServices</h1>
-<p>In this section we explain how to read and write basic XML objects using POCO's</p>
-<p>POCOs or <strong>P</strong>lain <strong>O</strong>ld <strong>C</strong>Sharp <strong>O</strong>bjects are basic classes that uses only basic C#.<br />
-These classes are used to communicate between different programs and are easily translated to XML, JSON and any other form of communication.<br />
-These POCO's are used in WebServices, Restful API's and all around the .NET World.</p>
-<p>We'll review how to:</p>
+                <div class="content"><h1 id="creating-a-web-service-which-reuses-logic-from-the-migrated-application">Creating a Web Service which reuses Logic from the Migrated Application</h1>
+<p>This video demonstrate how to create a web service, which reused the business logic of the migrated application.<br />
+Notice that in case you don't have a Server project in your migrated solution, you can easily add one following <a href="http://doc.fireflymigration.com/setting-up-an-mvc-project-that-reuses-migrated-code.html">this</a> video.<br />
+Another way to expose migrated functionality to the web is by adding a REST API server to the migrated application using our <a href="http://doc.fireflymigration.com/setup-the-web-demo-project-code-sample.html">ENV Web</a>.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TTSwitT8g1Y" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<h3 id="see-also">See Also</h3>
 <ul>
-<li>Create simple POCOs</li>
-<li>Read and write them from XML</li>
-<li>Creating more complex POCOs</li>
-<li>Creating them based on database values, and updating the database according to their values</li>
-</ul>
-<p>After that we'll:</p>
-<ul>
-<li>Polish and Generalize the Load and Save to XML Method</li>
-</ul>
-<p>Later we show how to:</p>
-<ul>
-<li>Consume WebServices</li>
-<li>Receive data From a WebService, using POCOs</li>
-<li>Send data to a WebService, using POCOs</li>
-</ul>
-<h3 id="here-are-the-specific-articles-in-this-section">Here are the Specific Articles in this section:</h3>
-<ul>
-<li><a href="creating-a-poco.html">Creating a POCO</a></li>
-<li><a href="saving-a-poco-to-xml.html">Saving a POCO to XML</a></li>
-<li><a href="loading-a-poco-from-xml.html">Loading a POCO from XML</a></li>
-<li><a href="master-detail-using-pocos.html">Master Detail using POCOs</a></li>
-<li><a href="creating-pocos-based-on-database-values.html">Creating POCOs based on Database Values</a></li>
-<li><a href="refactor-to-getorderpoco.html">Refactor to GetOrderPOCO</a></li>
-<li><a href="updating-the-database-based-on-the-poco.html">Updating the Database based on the POCO</a></li>
-<li><a href="using-logical-names-when-loading-and-saving-xml.html">Using Logical Names when loading and saving XML</a></li>
-<li><a href="using-generics-to-generalize-the-save-and-load-xml.html">Using Generics to Generalize the Save and Load Xml</a></li>
-<li><a href="xmlhelper-reusable-class.html">XmlHelper Reusable Class</a></li>
-<li><a href="creating-classes-based-on-xml-data.html">Creating Classes based on XML Data</a></li>
-<li><a href="consuming-a-webservice.html">Consuming a WebService</a></li>
-<li><a href="creating-a-web-service-which-reuses-logic-from-the-migrated-application.html">Creating a Web Service which reuses Logic from the Migrated Application</a></li>
-<li><a href="creating-classes-based-on-xsd.html">Creating Classes based on XSD</a></li>
-<li><a href="json.html">JSON</a></li>
+<li><a href="http://doc.fireflymigration.com/setting-up-an-mvc-project-that-reuses-migrated-code.html">Setting up an MVC project that reuses migrated code</a></li>
+<li><a href="http://doc.fireflymigration.com/consuming-a-webservice.html">Consuming a WebService</a></li>
+<li><a href="http://doc.fireflymigration.com/setup-the-web-demo-project-code-sample.html">Setup the Web Demo project code sample</a></li>
 </ul>
 
 
@@ -76,7 +47,7 @@ These POCO's are used in WebServices, Restful API's and all around the .NET Worl
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/60-Further-Learning/40-Pocos-Xml-and-WebServices/00-index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/60-Further-Learning/40-Pocos-Xml-and-WebServices/12-Creating a Web Service which reuses Logic from the Migrated Application.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -138,7 +109,7 @@ These POCO's are used in WebServices, Restful API's and all around the .NET Worl
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'pocos-xml-and-webservices.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'creating-a-web-service-which-reuses-logic-from-the-migrated-application.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

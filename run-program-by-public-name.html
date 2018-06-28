@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="Call By Name, Call Public, RunByPublicName, RunProgramFromAnUnreferencedApplication">
+
+    <title>Introduction</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="introduction">Introduction</h1>
+<p>Call By Name or Call Public is Magic operation, which allows to dynamically call a program using its public name. Usually, the called program is known only at execution time.<br />
+This article explains how this is implemented in the migrated code. This is backward compatible, we'll discuss best practices and suggest some improvements for making dynamic calls in new .NET programs.</p>
+<h2 id="calling-a-program-from-the-same-application">Calling a Program from the Same Application</h2>
+<p>Suppose we have an order list screen and we want to call the &quot;ShowCustomerDetails&quot; (public name) program to display the current order customer details.<br />
+Here is a simple example of calling a program from the same application, using its public name.</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Application.AllPrograms.RunByPublicName("ShowCustomerDetails", Orders.CustomerID); </code></pre>
+<p>For simplicity, the public name is hard coded, so there is nothing dynamic here. In real life, the name can come from a variable, db, user input or any other source which evaluates at execution time.</p>
+<h3 id="remarks">Remarks</h3>
+<ol>
+<li>This line of code can be in any part of the program logic (where we have a value for the Orders.CustomerID argument). It can be used by clicking a button, or when entering / leaving a row.</li>
+<li>There is a program in the application with public name &quot;ShowCustomerDetails&quot; and which accepts a CustomerID parameter.</li>
+<li>The CustomerID argument being passed is a TextColumn, however, the RunByPublicName method accepts an array of object parameters, as it is dynamic call, so there is no type checking.</li>
+</ol>
+<h2 id="calling-a-program-from-another-application">Calling a Program from another Application</h2>
+<p>Following the previous example, let's assume that the &quot;ShowCustomerDetails&quot; program is in another Flat File/ Cabinet File.
+This was often the case, as a technique to avoid circular reference between Magic Components.<br />
+Here is how the migrated code would look like:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Application.RunControllerFromAnUnreferencedApplication(@"c:\NorthwindUnipaas\Norhtwind.ecf","ShowCustomerDetails", Orders.CustomerID); </code></pre>
+<p>Again, in real-life, the name of the cabinet file and the public name will be dynamically evaluated at execution time.</p>
+<h3 id="remarks-1">Remarks</h3>
+<ol>
+<li>As before, the line of code can be in any part of the program logic.</li>
+<li>There is a cabinet file named c:\NorthwindUnipaas\Northwind.ecf, which contains a program with public name &quot;ShowCustomerDetails&quot;.</li>
+<li>The &quot;ShowCustomerDetails&quot; program accepts a CustomerID parameter.</li>
+<li>The CustomerID argument being passed is a TextColun, however, the RunControllerFromAnUnreferencedApplication method accepts and array of object parameters, as it is dynamic call, so there is no type checking.</li>
+<li>Notice that the ecf file name should be mapped to the .NET assembly, by adding the following to the Magic.ini file:</li>
+</ol>
+<pre data-line="" class="language-csdiff line-numbers"><code>    [MapMff2Dll]
+    Northwind = Northwind.exe
+    ```
+
+## Pros and Cons
+Calling programs dynamically have some caveats:
+1. As with any dynamic code, there is no type checking, so sending a number instead of a text can be easily missed. The compiler will not be able to help.
+2. Finding usages of the called program, will not include dynamic calls in the results.
+3. Any change to the called program, such as adding parameters, changing parameter type or changing the public name, might break existing calls without the compiler ability to check it.
+4. There is also a security risk here. If the program public name is coming from user input, the user can potentially input any program public name and call it unsolicitedly.
+
+It is always proffered to call programs directly when possible. Most of the reasons for using dynamic calls in Magic has better alternatives in .NET:
+1. For avoiding circular reference, use the AbstractFactory, which is built in the migrated application. See [this](http://doc.fireflymigration.com/calling-controllers-across-project-scopes.html) for more details.
+2. It is recommended to use a switch statement for dynamically selecting the called program at execution and calling the selected program directly in each case statement, levering the type checking of the compiler. This allows you the dynamic behaviour without the drawbacks mentioned above. In any case, avoid calling a program by name (or number) which is based on user input.
+
+## See Also
+* [Setting up an MVC Project that Reuses Migrated Code](http://doc.fireflymigration.com/setting-up-an-mvc-project-that-reuses-migrated-code.html) </code></pre>
+
+
+
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/85-Run Program by Public Name/index.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'run-program-by-public-name.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>
