@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="DataTable, Export to DataTable, DataGridView, DataSource">
 
-    <title>Maintaining the Migrated Application</title>
+    <title>Introduction</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,41 +29,37 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="maintaining-the-migrated-application">Maintaining the Migrated Application</h1>
-<ul>
-<li><a href="common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-net.html">Common migrated code patterns and how to improve on them in new code in NET</a></li>
-<li><a href="debugging-the-migrated-application.html">Debugging the Migrated Application</a></li>
-<li><a href="unit-tests-and-migrated-code.html">Unit Tests and Migrated Code</a></li>
-<li><a href="refactoring-migrated-code.html">Refactoring Migrated Code</a></li>
-<li><a href="improve-performance.html">Improve Performance</a></li>
-<li><a href="working-with-users-data.html">Working with Users Data</a></li>
-<li><a href="further-learning.html">Further Learning</a></li>
-<li><a href="user-interface.html">User Interface</a></li>
-<li><a href="adding-a-new-database-to-the-application.html">Adding a new database to the application</a></li>
-<li><a href="define-a-calculated-entity-column.html">Define a calculated entity column</a></li>
-<li><a href="getting-the-update-migrated-code.html">Getting the update migrated code</a></li>
-<li><a href="reporting-an-issue-after-the-final-migration.html">Reporting an issue after the final migration</a></li>
-<li><a href="web-development.html">Web Development</a></li>
-<li><a href="stop-designing-forms.html">Stop designing Forms</a></li>
-<li><a href="show-expnad-button.html">Show expnad button</a></li>
-<li><a href="sql-editor-tool.html">SQl Editor Tool</a></li>
-<li><a href="adding-a-view-to-a-nested-class.html">Adding a View to a Nested Class</a></li>
-<li><a href="adding-a-new-project-to-a-migrated-solution.html">Adding a new project to a migrated solution</a></li>
-<li><a href="copying-controllers-(programs).html">Copying Controllers (programs)</a></li>
-<li><a href="creating-different-code-for-different-clients.html">Creating Different code for different Clients</a></li>
-<li><a href="enabling-the-developer-tools-based-on-application-logic.html">Enabling the developer tools based on application logic</a></li>
-<li><a href="export-to-datatable.html">Export to DataTable</a></li>
-<li><a href="how-to-make-an-application-multilingual.html">How to make an application multilingual</a></li>
-<li><a href="imported-updates-to-migrated-applications.html">Imported Updates to Migrated Applications</a></li>
-<li><a href="isdifferentfrom.html">IsDifferentFrom</a></li>
-<li><a href="moving-from-oracle-to-sql-basics.html">Moving from Oracle to SQL Basics</a></li>
-<li><a href="printing-the-total-number-of-pages-in-every-page.html">Printing the Total number of pages in every page</a></li>
-<li><a href="readallrows-and-readselectedrows.html">ReadAllRows and ReadSelectedRows</a></li>
-<li><a href="resolve-missing-namespaces-in-code-samples.html">Resolve Missing Namespaces in Code Samples</a></li>
-<li><a href="saverowanddo.html">SaveRowAndDo</a></li>
-<li><a href="using-a-resource-file-instead-of-images-on-drive.html">Using a resource file instead of images on drive</a></li>
-<li><a href="using-user-methods-class-in-non-migrated-code.html">Using user methods class in non migrated code</a></li>
-</ul>
+                <div class="content"><h1 id="introduction">Introduction</h1>
+<p>There are many data controls in .NET that use a DataTable as their data source.
+This article explains how to export the current data view to a DataTable, which can be used to display the data in any .NET control such as the DataGridView or DevExpress controls.</p>
+<h1 id="the-exporttodatatable-method">The ExportToDataTable Method</h1>
+<p>Assuming we have a UIController with a filtered list of orders:
+<img src="2018-07-10_16h53_05.png" alt="2018 07 10 16H53 05" /></p>
+<p>We want to display the data in a DataGridView control from the System.Windows.Forms namespace:
+<img src="2018-07-10_16h53_56.png" alt="2018 07 10 16H53 56" /></p>
+<p>Here is the code sample to export the current data view to a DataTable:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>internal void ExportToDataTable()
+{
+    var dtb = new DataTableBuilder();
+    GridExports.ExportToDataTableBuilder(this._uiController, () =&gt;
+    {
+        var f = new System.Windows.Forms.Form();
+        var gv = new DataGridView
+        {
+            Dock = DockStyle.Fill,
+            DataSource = dtb.Result
+        };
+
+        f.Controls.Add(gv);
+        f.ShowDialog();
+
+    }, dtb);
+} </code></pre>
+<p>Notice that this._uiController is a member of ENV.AbstractUIController class, which is not accessible by default.
+If you want to make it available to any UIController, just add the <strong>protected</strong> access modifier to it:</p>
+<pre data-line="3" class="language-csdiff line-numbers"><code>public abstract class AbstractUIController : ControllerBase
+{
+     protected internal UIController _uiController; </code></pre>
 
 
 
@@ -71,7 +67,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/Export to DataTable/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -133,7 +129,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'maintaining-the-migrated-application.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'export-to-datatable.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
