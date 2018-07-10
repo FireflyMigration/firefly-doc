@@ -41,12 +41,22 @@ We need to take this filter into account when summing the freight.
 <p>In the migrated application, every controller has a method named ReadAllRows, which iterates all the rows that are currently part of the controller's data view.
 This methods accepts an action, in which we can do whatever we want with each row. We can update the rows values, print it or just count it.
 Here is an example for summing the freight:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>public void SumFreight()
+<pre data-line="11,12,13,14,15,16" class="language-csdiff line-numbers"><code>public class DemoReadAllRows : UIControllerBase
 {
-    Number sum = 0;
-    ReadAllRows(() =&gt; sum += orders.Freight);
-    MessageBox.Show(sum.ToString());
-} </code></pre>
+    public readonly Models.Orders orders = new Models.Orders();
+
+    public DemoReadAllRows()
+    {
+        From = orders;
+        Where.Add(orders.OrderDate.IsGreaterOrEqualTo(new Date(1997, 1, 1)));
+    }
+
+     public void SumFreight()
+     {
+         Number sum = 0;
+         ReadAllRows(() =&gt; sum += orders.Freight);
+         MessageBox.Show(sum.ToString());
+     } </code></pre>
 <h1 id="readselectedrows">ReadSelectedRows</h1>
 <p>In case we need to sum only the selected rows, we can use the grid method &quot;ReadSelectedRows&quot;. For example, the user selects the first 3 rows:
 <img src="2018-07-10_13h31_51.png" alt="2018 07 10 13H31 51" /></p>
