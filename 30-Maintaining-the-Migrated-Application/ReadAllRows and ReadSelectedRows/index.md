@@ -14,12 +14,22 @@ In the migrated application, every controller has a method named ReadAllRows, wh
 This methods accepts an action, in which we can do whatever we want with each row. We can update the rows values, print it or just count it.
 Here is an example for summing the freight:
 ```csdiff
-public void SumFreight()
+public class DemoReadAllRows : UIControllerBase
 {
-    Number sum = 0;
-    ReadAllRows(() => sum += orders.Freight);
-    MessageBox.Show(sum.ToString());
-}
+    public readonly Models.Orders orders = new Models.Orders();
+
+    public DemoReadAllRows()
+    {
+        From = orders;
+        Where.Add(orders.OrderDate.IsGreaterOrEqualTo(new Date(1997, 1, 1)));
+    }
+
++    public void SumFreight()
++    {
++        Number sum = 0;
++        ReadAllRows(() => sum += orders.Freight);
++        MessageBox.Show(sum.ToString());
++    }
 ```
 
 # ReadSelectedRows
