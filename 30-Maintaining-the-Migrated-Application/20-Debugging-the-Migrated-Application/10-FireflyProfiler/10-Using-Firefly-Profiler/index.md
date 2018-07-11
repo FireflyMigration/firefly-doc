@@ -2,14 +2,14 @@
 
 1) Starting the Profiler  
 While the application is open, Right-Click on the status bar:  
-**Developer Tools -> Profiler** -> Click **Start Profiling**:
+**Developer Tools -> Profiler** -> Click **Start Profiling**, or use <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>
 
 ![](start_profiler.jpg)
 
 Run a process you would like to observe.
 
 2) End the Profiler
-Once the process is done, click **End Profiling** in the toolbar menu
+Once the process is done, click **End Profiling** in the toolbar menu or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> again
 
 ![](end_profiler.jpg)
 
@@ -54,16 +54,16 @@ Right-Click on the results screen will bring a context menu with 3 options:
 ![](open_profiler.jpg)
 
 6) Profiler for the web or Profiler without Developer tools  
-Simply add an entry to the INI file:
+Simply add an entry to the INI file in the [MAGIC_ENV] section:
 
-Profiler= c:\temp\path
+Profiler= c:\temp\filename
 
 The result will be a file with *.prof extension.  
-Notice that a Profiler for the Web will create a file for each request
+Notice that a Profiler for the Web will create a file for each request.
 
 7) Profiler for Parallel programs   
-To start profiling parallel context stand on the window of the context you would like to debug and press Ctrl+Shift+P, that will start profiling.
-To end profiling press Ctrl+Shift+P again.  
+To start profiling parallel context stand on the window of the context you would like to debug and press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>, that will start profiling.
+To end profiling press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> again.  
 
 
 The Profiler is part of the migrated solution but you can also download it from here:
