@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="SEHException, AppRunner, Crash, System.Interop.Services.SEHException, SEH, Exception,The process was terminated due to an unhandled exception">
 
-    <title>Maintaining the Migrated Application</title>
+    <title>Introduction</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,42 +29,20 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="maintaining-the-migrated-application">Maintaining the Migrated Application</h1>
-<ul>
-<li><a href="common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-net.html">Common migrated code patterns and how to improve on them in new code in NET</a></li>
-<li><a href="debugging-the-migrated-application.html">Debugging the Migrated Application</a></li>
-<li><a href="unit-tests-and-migrated-code.html">Unit Tests and Migrated Code</a></li>
-<li><a href="refactoring-migrated-code.html">Refactoring Migrated Code</a></li>
-<li><a href="improve-performance.html">Improve Performance</a></li>
-<li><a href="working-with-users-data.html">Working with Users Data</a></li>
-<li><a href="further-learning.html">Further Learning</a></li>
-<li><a href="user-interface.html">User Interface</a></li>
-<li><a href="adding-a-new-database-to-the-application.html">Adding a new database to the application</a></li>
-<li><a href="define-a-calculated-entity-column.html">Define a calculated entity column</a></li>
-<li><a href="getting-the-update-migrated-code.html">Getting the update migrated code</a></li>
-<li><a href="reporting-an-issue-after-the-final-migration.html">Reporting an issue after the final migration</a></li>
-<li><a href="web-development.html">Web Development</a></li>
-<li><a href="stop-designing-forms.html">Stop designing Forms</a></li>
-<li><a href="show-expnad-button.html">Show expnad button</a></li>
-<li><a href="sql-editor-tool.html">SQl Editor Tool</a></li>
-<li><a href="adding-a-view-to-a-nested-class.html">Adding a View to a Nested Class</a></li>
-<li><a href="adding-a-new-project-to-a-migrated-solution.html">Adding a new project to a migrated solution</a></li>
-<li><a href="copying-controllers-(programs).html">Copying Controllers (programs)</a></li>
-<li><a href="creating-different-code-for-different-clients.html">Creating Different code for different Clients</a></li>
-<li><a href="enabling-the-developer-tools-based-on-application-logic.html">Enabling the developer tools based on application logic</a></li>
-<li><a href="export-to-datatable.html">Export to DataTable</a></li>
-<li><a href="how-to-make-an-application-multilingual.html">How to make an application multilingual</a></li>
-<li><a href="imported-updates-to-migrated-applications.html">Imported Updates to Migrated Applications</a></li>
-<li><a href="isdifferentfrom.html">IsDifferentFrom</a></li>
-<li><a href="moving-from-oracle-to-sql-basics.html">Moving from Oracle to SQL Basics</a></li>
-<li><a href="printing-the-total-number-of-pages-in-every-page.html">Printing the Total number of pages in every page</a></li>
-<li><a href="readallrows-and-readselectedrows.html">ReadAllRows and ReadSelectedRows</a></li>
-<li><a href="resolve-missing-namespaces-in-code-samples.html">Resolve Missing Namespaces in Code Samples</a></li>
-<li><a href="saverowanddo.html">SaveRowAndDo</a></li>
-<li><a href="sehexception-and-apprunner.html">SEHException and AppRunner</a></li>
-<li><a href="using-a-resource-file-instead-of-images-on-drive.html">Using a resource file instead of images on drive</a></li>
-<li><a href="using-user-methods-class-in-non-migrated-code.html">Using user methods class in non migrated code</a></li>
-</ul>
+                <div class="content"><h1 id="introduction">Introduction</h1>
+<p>We've recently received reports from clients that experience intermittent crashes of .NET applications, when running from a network location or a mapped drive, possibly under Remote Desktop session.</p>
+<h2 id="symptoms">Symptoms</h2>
+<p>When you run the application from a mapped drive or a network location, the application crashes during execution.
+The error details, which can be found the in Windows Event Viewer are similar to the following:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Framework Version: v4.0.30319
+Description: The process was terminated due to an unhandled exception.
+Exception Info: System.Runtime.InteropServices.SEHException </code></pre>
+<h2 id="the-cause">The Cause</h2>
+<p>This is a known Microsoft issue in Windows Server 2008 and Windows Server 2012, as described in <a href="https://support.microsoft.com/en-gb/help/2536487/applications-crash-or-become-unresponsive-if-another-user-logs-off-a-r">this article</a></p>
+<h2 id="our-solution">Our Solution</h2>
+<p>We've developed a small utility called AppRunner, which allows you to run the application from a network location, without having this issue.
+You can download AppRunner <a href="https://github.com/FireflyMigration/AppRunner/releases">this link</a></p>
+<p>For details about how to use it please refer to the <a href="https://github.com/FireflyMigration/AppRunner/blob/master/README.md">ReadMe Page</a></p>
 
 
 
@@ -72,7 +50,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/SEHException and AppRunner/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -134,7 +112,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'maintaining-the-migrated-application.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'sehexception-and-apprunner.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
