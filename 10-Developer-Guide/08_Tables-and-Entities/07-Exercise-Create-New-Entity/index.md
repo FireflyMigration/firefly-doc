@@ -12,7 +12,7 @@
     6. **NumberColum** for the **CarKM** format **6.2C**.
 6.	Set the **PrimaryKey** to be the **EmployeeID** and **CarID**
 7.  Build and go to **RunTime**.
-8.  Use the **developers tolls** to create the new Entity.
+8.  Use the **developer tools** to create the new Entity.
 9.  Use <kbd>F4</kbd> to insert new records: 
     1. Add 2 **Toyota** for employee 1.
     1. Add 2 **BMW** for employee number 2.
