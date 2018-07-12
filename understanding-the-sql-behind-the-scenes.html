@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Using GetValue Inner Select</title>
+    <title>Understanding the SQL behind the Scenes</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,37 +29,19 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="using-getvalue-inner-select">Using GetValue Inner Select</h1>
-<p>Were going to use an Inner Select to get the value from the Exchange Rates table.</p>
-<p>The first step is to add a local Column instead of the <code>Rate</code> column from the <code>ExchangeRate</code> entity.</p>
-<p>Add the <code>Rate</code> Local Column</p>
-<pre data-line="3" class="language-csdiff line-numbers"><code>#region Columns
-readonly Types.Amount RowTotal = new Types.Amount { Caption = "RowTotal" };
-readonly NumberColumn Rate = new NumberColumn("Rate", "2.4");
-#endregion </code></pre>
-<p>Add the <code>Rate</code> Local Column to the Column Collection, and add a BindValue for it.</p>
-<pre data-line="3,4" class="language-csdiff line-numbers"><code>Columns.Add(ExchangeRates.Currency);
-Columns.Add(ExchangeRates.EffectiveDate);
-Columns.Add(ExchangeRates.Rate);
-Rate.BindValue(ExchangeRates.Rate);
-Columns.Add(Rate);
-Columns.Add(CategorySales.Year);
-Columns.Add(CategorySales.CategoryID); </code></pre>
-<p>Use the local column in the expression</p>
-<pre data-line="4" class="language-csdiff line-numbers"><code>protected override void OnLeaveRow()
-{
--   RowTotal.Value = Order_Details.UnitPrice * Order_Details.Quantity * ExchangeRates.Rate;
-    RowTotal.Value = Order_Details.UnitPrice * Order_Details.Quantity * this.Rate;
-                
-    if (u.Month(Orders.OrderDate) == 1)
-        CategorySales.Jan.Value += RowTotal; </code></pre>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/IxWUUV_PZTI?list=PL1DEQjXG2xnJNtUHwUvmwYKay85F3WYMg" frameborder="0" allowfullscreen></iframe>
-<ul>
-<li><a href="using-the-original-relation-when-using-pervasive.html">Using the original relation when using Pervasive</a></li>
-<li><a href="getvalue-inner-select.html">GetValue Inner Select</a></li>
-<li><a href="understanding-the-sql-behind-the-scenes.html">Understanding the SQL behind the Scenes</a></li>
-<li><a href="using-getvalue-for-multiple-columns.html">Using GetValue for multiple columns</a></li>
-</ul>
+                <div class="content"><h1 id="understanding-the-sql-behind-the-scenes">Understanding the SQL behind the Scenes</h1>
+<pre data-line="3,4,5,6" class="language-csdiff line-numbers"><code>Select A.OrderID, A.ProductID, A.UnitPrice, A.Quantity,
+
+isnull((select top 1 Rate 
+	from ExchangeRate 
+	where Currency = 'USD' And EffectiveDate &lt;= B.OrderDate 
+	Order By Currency desc, EffectiveDate desc),0)
+
+,B.OrderID, B.OrderDate 
+From dbo.[Order Details] A 
+  left outer join dbo.Orders B on B.OrderID = A.OrderID 
+Order by A.OrderID, A.ProductID </code></pre>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Z28xIYbGQ-M?list=PL1DEQjXG2xnJNtUHwUvmwYKay85F3WYMg" frameborder="0" allowfullscreen></iframe>
 
 
 
@@ -67,7 +49,7 @@ Columns.Add(CategorySales.CategoryID); </code></pre>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/50-Improve-Performance/00-Reduce-calls-to-the-database/06-Using-GetValue-Inner-Select/01-index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/50-Improve-Performance/00-Reduce-calls-to-the-database/06-Using-GetValue-Inner-Select/04-Understanding-the-SQL-behind-the-Scenes.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -129,7 +111,7 @@ Columns.Add(CategorySales.CategoryID); </code></pre>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'using-getvalue-inner-select.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'understanding-the-sql-behind-the-scenes.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
