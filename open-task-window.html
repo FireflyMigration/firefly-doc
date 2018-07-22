@@ -36,7 +36,7 @@ Location in migrated code: <strong>OnLoad</strong></p>
 <h2 id="migrated-code-example">Migrated Code Example</h2>
 <pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
 {
-     View = () =&gt; new Views.OrdersViewthis);
+     View = () =&gt; new Views.OrdersView(this);
 } </code></pre>
 <p>When the property is set to No - the View property is not defined</p>
 <h2 id="notes">Notes</h2>
