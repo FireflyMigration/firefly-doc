@@ -12,7 +12,7 @@ Location in migrated code: **OnLoad**
 ```csdiff   
 protected override void OnLoad()
 {
-+    View = () => new Views.OrdersViewthis);
++    View = () => new Views.OrdersView(this);
 }
 ``` 
 
