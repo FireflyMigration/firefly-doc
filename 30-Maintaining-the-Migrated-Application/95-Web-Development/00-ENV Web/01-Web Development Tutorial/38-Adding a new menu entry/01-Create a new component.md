@@ -3,13 +3,13 @@
 Using the terminal view, type:
 
 ```
-npm run nc categories
+npm run gc categories
 ```
 
 If you want to specify more than one word as a component name, you need to use hyphen between the words and no upper case:
 
 ```
-npm run nc categories-list
+npm run gc categories-list
 ```
 
 It will generate a new folder called "categories" with three files:
