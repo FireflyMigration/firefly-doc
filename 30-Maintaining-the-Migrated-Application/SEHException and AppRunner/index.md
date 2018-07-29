@@ -18,7 +18,7 @@ This is a known Microsoft issue in Windows Server 2008 and Windows Server 2012, 
 
 ## Our Solution
 We've developed a small utility called AppRunner, which allows you to run the application from a network location, without having this issue.
-You can download AppRunner [this link](https://github.com/FireflyMigration/AppRunner/releases)
+You can download AppRunner from [this link](https://github.com/FireflyMigration/AppRunner/releases)
 
-For details about how to use it please refer to the [ReadMe Page](https://github.com/FireflyMigration/AppRunner/blob/master/README.md)
+For details about how to use it please refer to the [ReadMe page](https://github.com/FireflyMigration/AppRunner/blob/master/README.md)
 
