@@ -1,4 +1,4 @@
-﻿# Exercise - Large Applications Architecture result
+﻿# Exercise - Calling Controllers Across Project Scopes result
 
 The **ShowRegions** class should look like :
 ```csdiff

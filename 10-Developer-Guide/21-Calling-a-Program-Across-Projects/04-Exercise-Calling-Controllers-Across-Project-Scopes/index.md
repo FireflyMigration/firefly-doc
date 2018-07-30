@@ -1,4 +1,4 @@
-﻿# Exercise - Large Applications Architecture
+﻿# Exercise - Calling Controllers Across Project Scopes
 
 1. Using the runtime **Developer Tools**, **Generate Entity C#** add the **Region** entity to the **NorthwindBase**, **Models**.
 2. Build **NorthwindBase**.
