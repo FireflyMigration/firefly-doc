@@ -7,29 +7,30 @@
 5. Build and go to the form designer.
 6. Add **Employee ID** and the method **GetFullName** to the top left of the screen.
 7. Add a **Tab control** to the form.
-8. Set the Tab control **Properites**:  
+8. Set the **Data** Propertie of the **Tab control**, to the **TabValue** **NumberColumn** in item 3. 
+9. Set the Tab control **Properites**:  
    1. Set the **Valuse** to "1,2,3,4,5".
    2. Set the **DisplayValues** to "Personal,Address,Contact,Notes,Extra".
    3. Set the **Style** to **Flat**.
-9. Add the following columns to the **Personal** tab:  
+10. Add the following columns to the **Personal** tab:  
    1. LastName.  
    2. FirstName.
    3. Title.
    4. TitleOfCourtesy.
    5. BirthDate.
    6. HireDate.
-10. Add the following columns to the **Address** tab:  
+11. Add the following columns to the **Address** tab:  
     1. Address.
     2. City.
     3. Region.
     4. PostalCode.
     5. Country.
-11. Add the following columns to the **Contact** tab:  
+12. Add the following columns to the **Contact** tab:  
     1. HomePhone.
     2. Extension.
-12. Add the following columns to the **Notes** tab: 
+13. Add the following columns to the **Notes** tab: 
     1. Notes.
-13. Add the following columns to the **Extra** tab: 
+14. Add the following columns to the **Extra** tab: 
     1.  ReportTo.
     2.  PhotoPath.
-14. Build and test.
+15. Build and test.
