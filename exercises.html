@@ -859,50 +859,6 @@ namespace Northwind.Exercises
 <li><a href="exercise-optional-parameters-results.html">Exercise Optional parameters results</a></li>
 </ul>
 
-<h1 id="exercise-inner-classes">Exercise - Inner Classes</h1>
-<ol>
-<li>In <strong>ShowEmployees</strong>.</li>
-<li>Add two new local columns type NumberColumn:
-<ol>
-<li><strong>NumberOfCars</strong>.</li>
-<li><strong>LatestModel</strong>.</li>
-</ol>
-</li>
-<li>Build and add the two columns to the grid in the form.</li>
-<li>Build and test.</li>
-<li>Add a new inner class ,use <strong>contr</strong> snippet, remember to tab after update every item in the snippet.
-<ol>
-<li>Name = <strong>GetCarsInfo</strong>.</li>
-<li>Inherit from <strong>BusinessProcessBase</strong>.</li>
-<li><strong>parent</strong>  = name of the parent class <strong>ShowEmployees</strong>.</li>
-</ol>
-</li>
-<li>Set the main table of <strong>GetCarsInfo</strong> to be <strong>EmployeeCars</strong>.</li>
-<li>Add a where to filter <strong>GetCarsInfo</strong> to the parent employee ID.</li>
-<li>In the <strong>Run</strong> method set the parent two local columns to zero.</li>
-<li>Override the <strong>OnEnterRow</strong>.</li>
-<li>Update the parent <strong>NumberOfCars</strong> to be accumulated by one.</li>
-<li>Update the parent <strong>LatestModel</strong> to the current row <strong>CarYear</strong> only if it's bigger. (use if)</li>
-<li>In <strong>ShowEmployees</strong>.</li>
-<li>Override the <strong>OnEnterRow</strong>.</li>
-<li>Add a call to <strong>GetCarsInfo</strong>. (notice that you need to send <strong>this</strong> as parameter to the class constructor).</li>
-<li>Build and test.</li>
-</ol>
-<ul>
-<li><a href="exercise-inner-classes-results.html">Exercise Inner Classes results</a></li>
-</ul>
-
-<h1 id="exercise-cached-inner-class">Exercise - Cached Inner Class</h1>
-<ol>
-<li>In <strong>ShowEmployees</strong>.</li>
-<li>Change the call to <strong>GetCarsInfo</strong> to use Cached.</li>
-<li>notice there is no need to send <strong>this</strong> any more.</li>
-<li>Build and test.</li>
-</ol>
-<ul>
-<li><a href="exercise-cached-inner-class-results.html">Exercise Cached Inner Class results</a></li>
-</ul>
-
 <h1 id="exercise-migrated-style-parameters">Exercise - Migrated Style Parameters</h1>
 <ol>
 <li>Create a new UIController name it <strong>ShowCustomers</strong>.</li>
@@ -962,6 +918,50 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 </ol>
 <ul>
 <li><a href="exercise-migrated-style-parameters-results.html">Exercise Migrated Style Parameters results</a></li>
+</ul>
+
+<h1 id="exercise-inner-classes">Exercise - Inner Classes</h1>
+<ol>
+<li>In <strong>ShowEmployees</strong>.</li>
+<li>Add two new local columns type NumberColumn:
+<ol>
+<li><strong>NumberOfCars</strong>.</li>
+<li><strong>LatestModel</strong>.</li>
+</ol>
+</li>
+<li>Build and add the two columns to the grid in the form.</li>
+<li>Build and test.</li>
+<li>Add a new inner class ,use <strong>contr</strong> snippet, remember to tab after update every item in the snippet.
+<ol>
+<li>Name = <strong>GetCarsInfo</strong>.</li>
+<li>Inherit from <strong>BusinessProcessBase</strong>.</li>
+<li><strong>parent</strong>  = name of the parent class <strong>ShowEmployees</strong>.</li>
+</ol>
+</li>
+<li>Set the main table of <strong>GetCarsInfo</strong> to be <strong>EmployeeCars</strong>.</li>
+<li>Add a where to filter <strong>GetCarsInfo</strong> to the parent employee ID.</li>
+<li>In the <strong>Run</strong> method set the parent two local columns to zero.</li>
+<li>Override the <strong>OnEnterRow</strong>.</li>
+<li>Update the parent <strong>NumberOfCars</strong> to be accumulated by one.</li>
+<li>Update the parent <strong>LatestModel</strong> to the current row <strong>CarYear</strong> only if it's bigger. (use if)</li>
+<li>In <strong>ShowEmployees</strong>.</li>
+<li>Override the <strong>OnEnterRow</strong>.</li>
+<li>Add a call to <strong>GetCarsInfo</strong>. (notice that you need to send <strong>this</strong> as parameter to the class constructor).</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-inner-classes-results.html">Exercise Inner Classes results</a></li>
+</ul>
+
+<h1 id="exercise-cached-inner-class">Exercise - Cached Inner Class</h1>
+<ol>
+<li>In <strong>ShowEmployees</strong>.</li>
+<li>Change the call to <strong>GetCarsInfo</strong> to use Cached.</li>
+<li>notice there is no need to send <strong>this</strong> any more.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-cached-inner-class-results.html">Exercise Cached Inner Class results</a></li>
 </ul>
 
 <h1 id="exercise-large-applications-architecture">Exercise - Large Applications Architecture</h1>
