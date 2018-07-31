@@ -1132,128 +1132,6 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <li><a href="exercise-relations-recompute-results.html">Exercise Relations Recompute results</a></li>
 </ul>
 
-<h1 id="exercise-list-controls">Exercise - List Controls</h1>
-<ol>
-<li>Add new UIController to the Exercises folder, name the new UIController <strong>ControlsDemo</strong>.</li>
-<li>Set the Orders table as the main table</li>
-<li>Add <strong>OrderID</strong>, <strong>ShipCountry</strong> to a grid on the form.</li>
-<li>Add 3 ComboBoxes to the grid. For each combobox you need to:
-<ol>
-<li>Add a column to the grid.</li>
-<li>Place a ComboBox from the toolbox in the new column.</li>
-<li>Name the column:
-<ol>
-<li><strong>Customer</strong>.</li>
-<li><strong>Employee</strong>.</li>
-<li><strong>Shipper</strong>.</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>The 3 ComboBoxes will show data from :
-<ol>
-<li>CustomerID.</li>
-<li>EmployeeID.</li>
-<li>ShipVia.</li>
-</ol>
-</li>
-<li>Set the <strong>Name</strong> property of the 3 ComboBoxes to :
-<ol>
-<li>cmbCustomer.</li>
-<li>cmbEmployee.</li>
-<li>cmbShipper.</li>
-</ol>
-</li>
-<li>In <strong>ControlsDemo</strong> controller define these 3 tables:
-<ol>
-<li>Customers.</li>
-<li>Employees.</li>
-<li>Shippers.</li>
-</ol>
-</li>
-<li>Go to the <strong>code behind</strong> of ControlsDemo form and set:
-<ol>
-<li>cmbCustomer ListSource to be customer table from the controller.</li>
-<li>cmbCustomer ValueColumn to be CustomerID.</li>
-<li>cmbCustomer DisplayColumn to be CompanyName.</li>
-<li>cmbEmployee ListSource to be Employees table from the controller.</li>
-<li>cmbEmployee ValueColumn to be EmployeeID.</li>
-<li>cmbEmployee DisplayColumn to be LastName.</li>
-<li>cmbShipper ListSource to be Shippers table from the controller.</li>
-<li>cmbShipper ValueColumn to be ShipperID.</li>
-<li>cmbShipper DisplayColumn to be CompanyName.</li>
-</ol>
-</li>
-<li>Build and test.</li>
-<li>Add <strong>Where</strong> to show records where the order <strong>ShipCountry</strong> is equal to <strong>UK</strong>.</li>
-<li>Build and test.</li>
-<li>Set the <strong>cmbCustomer</strong> to show only <strong>UK</strong> customers.</li>
-<li>Build and test.</li>
-<li>Set the <strong>cmbEmployee</strong> to show only <strong>UK</strong> Employees.</li>
-<li>Build and test.</li>
-</ol>
-<ul>
-<li><a href="exercise-list-controls-results.html">Exercise List Controls results</a></li>
-</ul>
-
-<h1 id="exercise-binding-controls">Exercise - Binding Controls</h1>
-<ol>
-<li>Add new UIController to the Exercises folder, name the new UIController <strong>ShowEmployeesDataInTabs</strong>.</li>
-<li>Set the <strong>Employees</strong> table as the main table</li>
-<li>Add local column type <strong>NumberColumn</strong>, name <strong>TabValue</strong>, set the default value to be 1 (use <code>{}</code>).</li>
-<li>Add a method, name it <strong>GetFullName</strong>, return type <strong>Text</strong>, return FirstName and LastName (remember to use trim and add an empty space).</li>
-<li>Build and go to the form designer.</li>
-<li>Add <strong>Employee ID</strong> and the method <strong>GetFullName</strong> to the top left of the screen.</li>
-<li>Add a <strong>Tab control</strong> to the form.</li>
-<li>Set the Tab control <strong>Properites</strong>:
-<ol>
-<li>Set the <strong>Valuse</strong> to &quot;1,2,3,4,5&quot;.</li>
-<li>Set the <strong>DisplayValues</strong> to &quot;Personal,Address,Contact,Notes,Extra&quot;.</li>
-<li>Set the <strong>Style</strong> to <strong>Flat</strong>.</li>
-</ol>
-</li>
-<li>Add the following columns to the <strong>Personal</strong> tab:
-<ol>
-<li>LastName.</li>
-<li>FirstName.</li>
-<li>Title.</li>
-<li>TitleOfCourtesy.</li>
-<li>BirthDate.</li>
-<li>HireDate.</li>
-</ol>
-</li>
-<li>Add the following columns to the <strong>Address</strong> tab:
-<ol>
-<li>Address.</li>
-<li>City.</li>
-<li>Region.</li>
-<li>PostalCode.</li>
-<li>Country.</li>
-</ol>
-</li>
-<li>Add the following columns to the <strong>Contact</strong> tab:
-<ol>
-<li>HomePhone.</li>
-<li>Extension.</li>
-</ol>
-</li>
-<li>Add the following columns to the <strong>Notes</strong> tab:
-<ol>
-<li>Notes.</li>
-</ol>
-</li>
-<li>Add the following columns to the <strong>Extra</strong> tab:
-<ol>
-<li>ReportTo.</li>
-<li>PhotoPath.</li>
-</ol>
-</li>
-<li>Build and test.</li>
-</ol>
-<ul>
-<li><a href="exercise-binding-controls-results.html">Exercise Binding Controls results</a></li>
-</ul>
-
 <h1 id="exercise-keyboard-handlers">Exercise - Keyboard Handlers</h1>
 <ol>
 <li>In “ShowRegions”, add a handler for the F9 key that displays the message &quot;I am handling the F9 keyboard event!”</li>
@@ -1715,6 +1593,128 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 </ol>
 <ul>
 <li><a href="exercise-using-groups-results.html">Exercise Using Groups results</a></li>
+</ul>
+
+<h1 id="exercise-list-controls">Exercise - List Controls</h1>
+<ol>
+<li>Add new UIController to the Exercises folder, name the new UIController <strong>ControlsDemo</strong>.</li>
+<li>Set the Orders table as the main table</li>
+<li>Add <strong>OrderID</strong>, <strong>ShipCountry</strong> to a grid on the form.</li>
+<li>Add 3 ComboBoxes to the grid. For each combobox you need to:
+<ol>
+<li>Add a column to the grid.</li>
+<li>Place a ComboBox from the toolbox in the new column.</li>
+<li>Name the column:
+<ol>
+<li><strong>Customer</strong>.</li>
+<li><strong>Employee</strong>.</li>
+<li><strong>Shipper</strong>.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>The 3 ComboBoxes will show data from :
+<ol>
+<li>CustomerID.</li>
+<li>EmployeeID.</li>
+<li>ShipVia.</li>
+</ol>
+</li>
+<li>Set the <strong>Name</strong> property of the 3 ComboBoxes to :
+<ol>
+<li>cmbCustomer.</li>
+<li>cmbEmployee.</li>
+<li>cmbShipper.</li>
+</ol>
+</li>
+<li>In <strong>ControlsDemo</strong> controller define these 3 tables:
+<ol>
+<li>Customers.</li>
+<li>Employees.</li>
+<li>Shippers.</li>
+</ol>
+</li>
+<li>Go to the <strong>code behind</strong> of ControlsDemo form and set:
+<ol>
+<li>cmbCustomer ListSource to be customer table from the controller.</li>
+<li>cmbCustomer ValueColumn to be CustomerID.</li>
+<li>cmbCustomer DisplayColumn to be CompanyName.</li>
+<li>cmbEmployee ListSource to be Employees table from the controller.</li>
+<li>cmbEmployee ValueColumn to be EmployeeID.</li>
+<li>cmbEmployee DisplayColumn to be LastName.</li>
+<li>cmbShipper ListSource to be Shippers table from the controller.</li>
+<li>cmbShipper ValueColumn to be ShipperID.</li>
+<li>cmbShipper DisplayColumn to be CompanyName.</li>
+</ol>
+</li>
+<li>Build and test.</li>
+<li>Add <strong>Where</strong> to show records where the order <strong>ShipCountry</strong> is equal to <strong>UK</strong>.</li>
+<li>Build and test.</li>
+<li>Set the <strong>cmbCustomer</strong> to show only <strong>UK</strong> customers.</li>
+<li>Build and test.</li>
+<li>Set the <strong>cmbEmployee</strong> to show only <strong>UK</strong> Employees.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-list-controls-results.html">Exercise List Controls results</a></li>
+</ul>
+
+<h1 id="exercise-binding-controls">Exercise - Binding Controls</h1>
+<ol>
+<li>Add new UIController to the Exercises folder, name the new UIController <strong>ShowEmployeesDataInTabs</strong>.</li>
+<li>Set the <strong>Employees</strong> table as the main table</li>
+<li>Add local column type <strong>NumberColumn</strong>, name <strong>TabValue</strong>, set the default value to be 1 (use <code>{}</code>).</li>
+<li>Add a method, name it <strong>GetFullName</strong>, return type <strong>Text</strong>, return FirstName and LastName (remember to use trim and add an empty space).</li>
+<li>Build and go to the form designer.</li>
+<li>Add <strong>Employee ID</strong> and the method <strong>GetFullName</strong> to the top left of the screen.</li>
+<li>Add a <strong>Tab control</strong> to the form.</li>
+<li>Set the Tab control <strong>Properites</strong>:
+<ol>
+<li>Set the <strong>Valuse</strong> to &quot;1,2,3,4,5&quot;.</li>
+<li>Set the <strong>DisplayValues</strong> to &quot;Personal,Address,Contact,Notes,Extra&quot;.</li>
+<li>Set the <strong>Style</strong> to <strong>Flat</strong>.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Personal</strong> tab:
+<ol>
+<li>LastName.</li>
+<li>FirstName.</li>
+<li>Title.</li>
+<li>TitleOfCourtesy.</li>
+<li>BirthDate.</li>
+<li>HireDate.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Address</strong> tab:
+<ol>
+<li>Address.</li>
+<li>City.</li>
+<li>Region.</li>
+<li>PostalCode.</li>
+<li>Country.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Contact</strong> tab:
+<ol>
+<li>HomePhone.</li>
+<li>Extension.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Notes</strong> tab:
+<ol>
+<li>Notes.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Extra</strong> tab:
+<ol>
+<li>ReportTo.</li>
+<li>PhotoPath.</li>
+</ol>
+</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-binding-controls-results.html">Exercise Binding Controls results</a></li>
 </ul>
 
 <h1 id="sql-entity">SQL Entity</h1>
