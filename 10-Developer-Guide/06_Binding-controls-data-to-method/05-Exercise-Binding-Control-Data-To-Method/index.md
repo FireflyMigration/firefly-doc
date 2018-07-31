@@ -6,7 +6,7 @@
 2.  The **TotalUnits** method will :
     1.  Need to be **public**.
     2.  Return a **Number** as the return value.
-    3.  Calculate the total number of units in **stock** and **on order**.
+    3.  Calculate the total number of **UnitsInStock** and **UnitsOnOrder**.
 3. Build the project.
 4. Go to the **Form**.
 5. Using the **Grid** **Column Wizard** add the **TotalUnits**.
