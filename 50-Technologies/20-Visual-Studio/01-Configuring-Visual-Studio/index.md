@@ -8,7 +8,7 @@ These are the extensions and settings we use - since they are our preferences no
 
 ## A - Visual Studio Extentions
 Please download and install our Extensions Bundle from [here](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioExtensionBundle)
-The bundler will install the following extension:
+The bundler will install the following extensions:
 
 1. [Class Outline](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.ClassOutline) - A tool that shows you a window with all the classes and inner classes in a C# code file.
 When you right click on any node, you'll see the different important methods of it, such as OnStart etc... and will also be able to go directly to the controller's view
