@@ -16,7 +16,7 @@ When you right click on any node, you'll see the different important methods of 
 3. [Visual Studio Templates](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioTemplates) - Install item templates, snippets and help tune up Visual Studio. 
 
 ## Important:
-After installing the extensions, open Visual Studio and under the Tools menu, select "Tuneup Visual Studio" and click Yes
+After installing the extensions, open Visual Studio and under the Tools menu, select "Tuneup Visual Studio" and click Yes.  
 In case you can't install the extension, follow the manual instructions [here](http://doc.fireflymigration.com/Manually-install-Templates-and-Snippets.html)
 ![2018 08 04 19H23 07](2018-08-04_19h23_07.png)
 
