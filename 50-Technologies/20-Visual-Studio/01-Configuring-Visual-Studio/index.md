@@ -7,13 +7,10 @@ Although this document was written with Visual Studio 2017 in mind, most of it i
 These are the extensions and settings we use - since they are our preferences none of them are mandatory but they are highly recommended.
 
 ## A - Visual Studio Extentions
-Please download and install our Extensions Bundle from [here](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioExtensionBundle)
-The bundler will install the following extensions:
+We have created am Extensions Bundle for your use.  
+You can download it from this link: [Extensions Bundle](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioExtensionBundle)
 
-1. [Class Outline](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.ClassOutline) - A tool that shows you a window with all the classes and inner classes in a C# code file.
-When you right click on any node, you'll see the different important methods of it, such as OnStart etc... and will also be able to go directly to the controller's view
-2. [VS Drop Assist](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VSDropAssist) - Allows for drag and drop of various objects from the solution into the code.
-3. [Visual Studio Templates](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioTemplates) - Install item templates, snippets and help tune up Visual Studio. 
+You can read more about the extensions bundle from this link: [Learn More about the extension bundle](http://doc.fireflymigration.com/Extensions-Bundle.html)
 
 ## Important:
 After installing the extensions, open Visual Studio and under the Tools menu, select "Tuneup Visual Studio" and click Yes.  
