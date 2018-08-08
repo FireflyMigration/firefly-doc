@@ -8,9 +8,9 @@ These are the extensions and settings we use - since they are our preferences no
 
 ## A - Visual Studio Extentions
 We have created am Extensions Bundle for your use.  
-You can download it from this link: [Extensions Bundle](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioExtensionBundle)
+You can download it from: [Extensions Bundle](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioExtensionBundle)
 
-You can read more about the extensions bundle from this link: [Learn More about the extension bundle](http://doc.fireflymigration.com/Extensions-Bundle.html)
+You can read more about the extensions bundle in: [Learn More about the extension bundle](http://doc.fireflymigration.com/Extensions-Bundle.html)
 
 ## Important:
 After installing the extensions, open Visual Studio and under the Tools menu, select "Tuneup Visual Studio" and click Yes.  
