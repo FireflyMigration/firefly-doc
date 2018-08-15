@@ -9,7 +9,7 @@
 7. Add a **Tab control** to the form.
 8. Set the **Data** Propertie of the **Tab control**, to the **TabValue** **NumberColumn** in item 3. 
 9. Set the Tab control **Properites**:  
-   1. Set the **Valuse** to "1,2,3,4,5".
+   1. Set the **Values** to "1,2,3,4,5".
    2. Set the **DisplayValues** to "Personal,Address,Contact,Notes,Extra".
    3. Set the **Style** to **Flat**.
 10. Add the following columns to the **Personal** tab:  
