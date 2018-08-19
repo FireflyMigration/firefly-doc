@@ -14,7 +14,7 @@ protected override void OnLoad()
         Category.Indexes.IndexOf(Category.SortByCategoryName))];
 }
 ```
-
+ 
 ### For UIController
 Name in Migrated Code: **BindOrderBy**  
 Location in Migrated Code: **InitializeDataView Method**  
