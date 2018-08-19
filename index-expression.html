@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="BindOrderBy">
 
     <title>Index Expression</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -30,15 +30,89 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="index-expression">Index Expression</h1>
+<h3 id="for-businessprocess">For BusinessProcess</h3>
 <p>Name in Migrated Code: <strong>OrderBy</strong><br />
 Location in Migrated Code: <strong>OnLoad Method</strong></p>
-<p>Note:  If the index is determined according to a boolean value based on an expression then the migrated code will have the orderBy statement in the OnLoad Method as opposed to the InitializeDataView Method. The following example shows the usage of a boolean expression to determine the index to be used in the Categories file:</p>
-<p>Example:</p>
+<p>Example :</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLoad()
 {
     OrderBy = Customers.Indexes[u.If(v_Indicator == 1,
         Category.Indexes.IndexOf(Category.SortByCategoryID), 
         Category.Indexes.IndexOf(Category.SortByCategoryName))];
+} </code></pre>
+<h3 id="for-uicontroller">For UIController</h3>
+<p>Name in Migrated Code: <strong>BindOrderBy</strong><br />
+Location in Migrated Code: <strong>InitializeDataView Method</strong></p>
+<p>In UIController we use the <code>BindOrderBy</code> instead of a simple set to the <code>OrderBy</code> because this expression is evaluated during the execution of the UIController in cases of ReloadData and other cases.</p>
+<p>Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void InitializeDataView()
+{
+    BindOrderBy(() =&gt; Customers.Indexes[u.If(v_Indicator == 1,
+        Category.Indexes.IndexOf(Category.SortByCategoryID), 
+        Category.Indexes.IndexOf(Category.SortByCategoryName))]);
+} </code></pre>
+<h2 id="development-post-migration">Development post migration</h2>
+<p>In new code that we'll write after the mgiration we can write this with much easier syntax.</p>
+<p>First - we don't need the index stuff - the <code>IndexOf</code> method is backward compatible to '1'Key in magic.
+So this can be written:</p>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+    OrderBy = u.If(v_Indicator == 1,Category.SortByCategoryID, Category.SortByCategoryName);
+} </code></pre>
+<p>Also - I would much rather use an If statement:</p>
+<pre data-line="3,4,5,6" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+    if(v_Indicator == 1)
+        OrderBy = Category.SortByCategoryID; 
+    else
+        OrderBy = Category.SortByCategoryName;
+} </code></pre>
+<p>In some cases - you can also use a <code>switch</code> Statement:</p>
+<pre data-line="3,4,5,6,7,8,9,10,11" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+    switch((int)v_Indicator)
+    {
+        case 1:
+            OrderBy = Category.SortByCategoryID; 
+            break;
+        default:
+            OrderBy = Category.SortByCategoryName;
+            break;
+    }
+} </code></pre>
+<h3 id="you-can-also-do-the-same-with-the-bindorderby-method-for-uicontrollers">You can also do the same with the <code>BindOrderBy</code> method for UIControllers</h3>
+<p>First - we don't need the index stuff - the <code>IndexOf</code> method is backward compatible to '1'Key in magic.
+So this can be written:</p>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void InitializeDataView()
+{
+    BindOrderBy(() =&gt; u.If(v_Indicator == 1,Category.SortByCategoryID, Category.SortByCategoryName));
+} </code></pre>
+<p>Also - I would much rather use an If statement:</p>
+<pre data-line="3,4,5,6,7,8,9" class="language-csdiff line-numbers"><code>protected override void InitializeDataView()
+{
+    BindOrderBy(() =&gt; 
+        {
+           if(v_Indicator == 1)
+               return Category.SortByCategoryID; 
+           else
+               return Category.SortByCategoryName;
+        });
+} </code></pre>
+<p>In some cases - you can also use a Switch Statement:</p>
+<pre data-line="3,4,5,6,7,8,9,10,11,12,13,14" class="language-csdiff line-numbers"><code>protected override void InitializeDataView()
+{
+    BindOrderBy(() =&gt; 
+        {
+           switch((int)v_Indicator)
+           {
+               case 1:
+                   return Category.SortByCategoryID; 
+                   break;
+               default:
+                   return Category.SortByCategoryName;
+                   break;
+           }
+        });
 } </code></pre>
 <hr />
 <p><strong>See Also:</strong></p>
