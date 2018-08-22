@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Using Date to Filter Data</title>
+    <title>200_Getting the day of week using User Methods</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,23 +29,21 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="using-date-to-filter-data">Using Date to Filter Data</h1>
-<p><em>Using Dates in the Where statement</em></p>
-<pre data-line="4" class="language-csdiff line-numbers"><code>public ShowOrders()
-{
-    From = Orders;
-    Where.Add(Orders.OrderDate.IsGreaterOrEqualTo(new Date(1997, 1, 1)));
-} </code></pre>
-<p><em>Using date in the Between statement</em></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Where.Add(Orders.OrderDate.IsBetween(new Date(1996, 1, 1), new Date(1996, 12, 31))); </code></pre>
-<p><em>An other example:</em></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>var start = new Date(1996, 1, 1);
-Where.Add(Orders.OrderDate.IsBetween(start,start.EndOfYear)); </code></pre>
-<hr />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/B_Xqlz1Cy-U?list=PL1DEQjXG2xnJHBP-SfD7JIStsHcbhKV8r" frameborder="0" allowfullscreen></iframe>
+                <div class="content"><h1 id="getting-the-day-of-week-using-user-methods">200_Getting the day of week using User Methods</h1>
 <ul>
-<li><a href="exercise-date-in-filter.html">Exercise Date in Filter</a></li>
+<li>We can use the <code>UserMethods</code>, or it's short <code>u</code> to get the day of week using the migrated version of the functions we already knew in magic. To read more about it see <a href="usermethods-class.html">UserMethods Class</a></li>
+<li>User methods class is important as it teaches us about subtleties like <em>&quot;Date can be null&quot;</em>  or <em>&quot;Date can be empty&quot;</em> and handles it for us.</li>
 </ul>
+<pre data-line="4" class="language-csdiff line-numbers"><code>internal Text GetDayOfWeek()
+{
+-   return Orders.OrderDate.DayOfWeek.ToString();
+    return u.NDOW(u.DOW(Orders.OrderDate));
+} </code></pre>
+<ul>
+<li>In the code of the <code>DOW</code> method we can see that we write - <code>date.DayOfWeek + 1</code>. From that we can learn that in .NET Sunday is 0, and in the migrated code, Sunday was 1.
+The difference that in the original code, the first element of everything (a string, week days, etc...) was 1 and in .NET it's 0 is something to remember for your future .NET developer.</li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zky5_J5oYQE?list=PL1DEQjXG2xnKm-XBP3t3KCFZzWMVogMlj" frameborder="0" allowfullscreen></iframe>
 
 
 
@@ -53,7 +51,7 @@ Where.Add(Orders.OrderDate.IsBetween(start,start.EndOfYear)); </code></pre>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/06_Binding-controls-data-to-method/11_Using-Date-to-Filter-Data/01-index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/06_Binding-controls-data-to-method/200_Getting-the-day-of-week-using-User-Methods.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -115,7 +113,7 @@ Where.Add(Orders.OrderDate.IsBetween(start,start.EndOfYear)); </code></pre>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'using-date-to-filter-data.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', '200_getting-the-day-of-week-using-user-methods.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

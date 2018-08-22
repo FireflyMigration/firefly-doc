@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Using Date to Filter Data</title>
+    <title>300_Using csharp6 syntax to get the day of week</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,23 +29,18 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="using-date-to-filter-data">Using Date to Filter Data</h1>
-<p><em>Using Dates in the Where statement</em></p>
-<pre data-line="4" class="language-csdiff line-numbers"><code>public ShowOrders()
-{
-    From = Orders;
-    Where.Add(Orders.OrderDate.IsGreaterOrEqualTo(new Date(1997, 1, 1)));
-} </code></pre>
-<p><em>Using date in the Between statement</em></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Where.Add(Orders.OrderDate.IsBetween(new Date(1996, 1, 1), new Date(1996, 12, 31))); </code></pre>
-<p><em>An other example:</em></p>
-<pre data-line="" class="language-csdiff line-numbers"><code>var start = new Date(1996, 1, 1);
-Where.Add(Orders.OrderDate.IsBetween(start,start.EndOfYear)); </code></pre>
-<hr />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/B_Xqlz1Cy-U?list=PL1DEQjXG2xnJHBP-SfD7JIStsHcbhKV8r" frameborder="0" allowfullscreen></iframe>
+                <div class="content"><h1 id="using-csharp6-syntax-to-get-the-day-of-week">300_Using csharp6 syntax to get the day of week</h1>
 <ul>
-<li><a href="exercise-date-in-filter.html">Exercise Date in Filter</a></li>
+<li>Use C#6 syntax to write one line methods in one line, and get shorter code</li>
 </ul>
+<h3 id="new-way">new way</h3>
+<pre data-line="" class="language-csdiff line-numbers"><code>internal Text GetDayOfWeek() =&gt; u.NDOW(u.DOW(Orders.OrderDate)); </code></pre>
+<h3 id="old-way">old way</h3>
+<pre data-line="" class="language-csdiff line-numbers"><code>internal Text GetDayOfWeek()
+{
+    return u.NDOW(u.DOW(Orders.OrderDate));
+} </code></pre>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OxFy2bttqe8?list=PL1DEQjXG2xnKm-XBP3t3KCFZzWMVogMlj" frameborder="0" allowfullscreen></iframe>
 
 
 
@@ -53,7 +48,7 @@ Where.Add(Orders.OrderDate.IsBetween(start,start.EndOfYear)); </code></pre>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/06_Binding-controls-data-to-method/11_Using-Date-to-Filter-Data/01-index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/06_Binding-controls-data-to-method/300_Using-csharp6-syntax-to-get-the-day-of-week.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -115,7 +110,7 @@ Where.Add(Orders.OrderDate.IsBetween(start,start.EndOfYear)); </code></pre>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'using-date-to-filter-data.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', '300_using-csharp6-syntax-to-get-the-day-of-week.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
