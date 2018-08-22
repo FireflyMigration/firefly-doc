@@ -1,4 +1,9 @@
 ﻿In this article We'll:
+
+* Review the different data types that are used in the migration and their unique attributes
+
+[MigratedDataTypes Power Point Presentation](MigratedDataTypes.pptx)
+
 * Create a GetDayOfWeek method and bind a control to the result of this method.
 * Explain the different parts of the method
 * We need the method to be `internal` or `public` because we want to use it in another class - the `ShowOrdersView` class
@@ -21,3 +26,6 @@ internal Text GetDayOfWeek()
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/sVi8uQlCBNE?list=PL1DEQjXG2xnKm-XBP3t3KCFZzWMVogMlj" frameborder="0" allowfullscreen></iframe>
 
+
+
+To learn more about the migrated data types see [Migrated DataTypes Demos](migrated-datatypes-demos.html)
