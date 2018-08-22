@@ -52,8 +52,8 @@ Location in Migrated Code: <strong>InitializeDataView Method</strong></p>
         Category.Indexes.IndexOf(Category.SortByCategoryName))]);
 } </code></pre>
 <h2 id="development-post-migration">Development post migration</h2>
-<p>In new code that we'll write after the mgiration we can write this with much easier syntax.</p>
-<p>First - we don't need the index stuff - the <code>IndexOf</code> method is backward compatible to '1'Key in magic.
+<p>In new code that we'll write after the migration we can write this with much easier syntax.</p>
+<p>First - we don't need the index stuff - the <code>IndexOf</code> method is backward compatible to '1'Key in magic or the '1'Index in unipaas/xpa.
 So this can be written:</p>
 <pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnLoad()
 {
@@ -81,7 +81,7 @@ So this can be written:</p>
     }
 } </code></pre>
 <h3 id="you-can-also-do-the-same-with-the-bindorderby-method-for-uicontrollers">You can also do the same with the <code>BindOrderBy</code> method for UIControllers</h3>
-<p>First - we don't need the index stuff - the <code>IndexOf</code> method is backward compatible to '1'Key in magic.
+<p>First - we don't need the index stuff - the <code>IndexOf</code> method is backward compatible to '1'Key in magic or the '1'Index in unipaas/xpa.
 So this can be written:</p>
 <pre data-line="3" class="language-csdiff line-numbers"><code>protected override void InitializeDataView()
 {
