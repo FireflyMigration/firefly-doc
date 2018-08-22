@@ -2,8 +2,8 @@
 
 # Prepare the view for a general use 
 
-Lets modify our view code so any controller can use it.
-First lets create an ```AddColumns``` method that receives an array of columns and calls the ```AddColumn``` method for each column:
+Let's modify our view code so any controller can use it.
+First let's create an ```AddColumns``` method that receives an array of columns and calls the ```AddColumn``` method for each column:
 
 ```csdiff
 
