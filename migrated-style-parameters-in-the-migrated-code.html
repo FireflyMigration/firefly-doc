@@ -126,7 +126,7 @@
     }
 } </code></pre>
 <ul>
-<li>And update the <code>Quantity</code> local column in the <code>OnLeaveRow</code> method</li>
+<li>We need to make sure Quantity will be set to zero.</li>
 </ul>
 <pre data-line="18,19,20,21" class="language-csdiff line-numbers"><code>public class GetOrderStatisticsDemoNumberParameter : BusinessProcessBase
 {
@@ -144,6 +144,35 @@
         BindParameter(OrderId, orderId);
         BindParameter(Quantity, quantity);
         Execute();
+    }
+	protected override void OnStart()
+    {
+        Quantity.Value = 0;
+    }
+} </code></pre>
+<ul>
+<li>And update the <code>Quantity</code> local column in the <code>OnLeaveRow</code> method</li>
+</ul>
+<pre data-line="22,23,24,25" class="language-csdiff line-numbers"><code>public class GetOrderStatisticsDemoNumberParameter : BusinessProcessBase
+{
+    readonly Models.Order_Details Order_Details = new Models.Order_Details();
+    readonly NumberColumn OrderId = new NumberColumn();
+    readonly NumberColumn Quantity = new NumberColumn();
+
+    public GetOrderStatisticsDemoNumberParameter()
+    {
+        From = Order_Details;
+        Where.Add(Order_Details.OrderID.IsEqualTo(OrderId));
+    }
+    public void Run(NumberParameter orderId, NumberParameter quantity)
+    {
+        BindParameter(OrderId, orderId);
+        BindParameter(Quantity, quantity);
+        Execute();
+    }
+ 	protected override void OnStart()
+    {
+        Quantity.Value = 0;
     }
     protected override void OnLeaveRow()
     {
