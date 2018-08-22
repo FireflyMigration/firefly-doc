@@ -90,6 +90,32 @@ public class GetOrderStatisticsDemoNumberParameter : BusinessProcessBase
     }
 }
 ```
+* We need to make sure Quantity will be set to zero.
+```csdiff
+public class GetOrderStatisticsDemoNumberParameter : BusinessProcessBase
+{
+    readonly Models.Order_Details Order_Details = new Models.Order_Details();
+    readonly NumberColumn OrderId = new NumberColumn();
+    readonly NumberColumn Quantity = new NumberColumn();
+
+    public GetOrderStatisticsDemoNumberParameter()
+    {
+        From = Order_Details;
+        Where.Add(Order_Details.OrderID.IsEqualTo(OrderId));
+    }
+    public void Run(NumberParameter orderId, NumberParameter quantity)
+    {
+        BindParameter(OrderId, orderId);
+        BindParameter(Quantity, quantity);
+        Execute();
+    }
++	protected override void OnStart()
++   {
++       Quantity.Value = 0;
++   }
+}
+```
+
 * And update the `Quantity` local column in the `OnLeaveRow` method
 ```csdiff
 public class GetOrderStatisticsDemoNumberParameter : BusinessProcessBase
@@ -108,6 +134,10 @@ public class GetOrderStatisticsDemoNumberParameter : BusinessProcessBase
         BindParameter(OrderId, orderId);
         BindParameter(Quantity, quantity);
         Execute();
+    }
+ 	protected override void OnStart()
+    {
+        Quantity.Value = 0;
     }
 +   protected override void OnLeaveRow()
 +   {
