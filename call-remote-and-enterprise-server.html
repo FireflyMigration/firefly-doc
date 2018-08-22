@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="Broker">
+
+    <title>Call Remote and Enterprise Server</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="call-remote-and-enterprise-server">Call Remote and Enterprise Server</h1>
+<p>In magic you had the option to use an Enterprise server that allowed you to run code on the server.</p>
+<p>To do that you had to configure a server, run a broker on it and run magic engined to service requests that that server recieved.
+Let's call it the <code>Application Server</code></p>
+<p>To call that server, you would have used <code>CallRemote</code> or <code>mgrqcmdl.exe</code></p>
+<p>In .NET the application server is <code>IIS</code>. IIS replaces the Broekr and the engines that you would have run on the server.</p>
+<p>In the migration, such application will also have a project called <code>.Server</code> for example <code>Northwind.server</code>.</p>
+<p><img src="2018-08-22_13h39_15.png" alt="2018 08 22 13H39 15" /></p>
+<p>In that project you would find a file called <code>Services.aspx</code> that manages all of this.</p>
+<p>That project is then mapped to a virtual directory on the IIS. See the <a href="iis-configuration.html">IIS configuration article</a></p>
+<p>Once you navigate to the Services.aspx url on the web browser you'll get a small monitor application that allows you to follow up on the server information.</p>
+<p><img src="2018-08-22_19h00_27.png" alt="2018 08 22 19H00 27" /></p>
+<h2 id="calling-the-server-from-an-application">Calling the Server from an Application</h2>
+<p>For every Service that was defined in the migrated application you'll find a class in `...Shared.Remoting'</p>
+<p><img src="file3.png" alt="File3" /></p>
+<p>Here's it's code:
+<img src="file2.png" alt="File2" /></p>
+<p>As you can see - this class goes to the <code>UserSettings</code> class to get the Server's url based on the Service name from the ini file.</p>
+<p>If you'll look into the code of <code>GetApplicationServerUrl</code> you'll see that there are two ways to configure the server url.</p>
+<ol>
+<li>For simple cases where there is only one server, you can add an entry in the ini called <code>TemporaryRemoteUrl</code> with the url of the services.aspx file.</li>
+</ol>
+<p><img src="file4.png" alt="File4" />
+2. For more complext cases where you have multiple services, you can add a section in the ini called <code>ApplicationServers</code> and add entries based on the Service Name set in the cs file under the <code>Remoting</code> namespace.
+<img src="file5.png" alt="File5" /></p>
+<h3 id="performing-the-actual-call-from-the-code">Performing the Actual Call from the code</h3>
+<p>Calling the service is simply done by Creating a new instance of the <code>Service</code> class and calling it's run method:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>new Shared.Remoting.DefaultService().Run("PrintService", "SomeArgument", "Another Argument"); </code></pre>
+<p>The first argument is the <code>PublicName</code> of the controller as defined in the <code>ApplicationPrograms</code> class. The other arguments are simply sent to that controller.
+For more call variations see <a href="call-remote.html">Call Remote article</a></p>
+<h3 id="calling-a-remote-controller-using-a-command-line">Calling a Remote Controller using a command line</h3>
+<p>You can also call a remote controller using a command line, the CMDL.exe file. See <a href="running-cmdl.exe.html">Running cmdl.exe article</a></p>
+<h3 id="calling-a-remote-controller-using-http">Calling a remote Controller using Http</h3>
+<p>You can also call a remote controlling using simple HTTP - which is very useful for some scenarios.
+The syntax is similar to calling a web request.</p>
+<pre><code>http://localhost/Northwind.Server/services.aspx?prgname=PrintOrders&amp;Arguments=someargument,anotherargument
+</code></pre>
+
+
+
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/Call-Remote-and-Enterprise-Server/index.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'call-remote-and-enterprise-server.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>
