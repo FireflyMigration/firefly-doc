@@ -15,7 +15,7 @@ The code behind the view will look like this:
 ```csdiff
 private void txtShipVia_Expand()
 {
-    new SelectShippers().Run(_controller.Shippers.ShipperID);
+    new SelectShippers().Run(_controller.Orders.ShipVia);
 }
 ```
 
