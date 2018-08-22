@@ -31,7 +31,7 @@
                 </div>
                 <div class="content"><h1 id="exercise-keep-view-visible-after-exit-result">Exercise - Keep View Visible After Exit result</h1>
 <p>Your <strong>ShowProducts</strong> class should look like :</p>
-<pre data-line="14,19,24,25,26,31" class="language-csdiff line-numbers"><code>using System;
+<pre data-line="14,19,24,30" class="language-csdiff line-numbers"><code>using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
@@ -54,7 +54,6 @@ namespace Northwind.Exercises.KeepViewVisibleAfterExit
 
         public void Run(Number pCategoryID)
         {
-            Where.Clear();
             Where.Add(Products.CategoryID.IsEqualTo(pCategoryID));
             Execute();
         }
