@@ -1,7 +1,7 @@
 keywords:Broker
 In magic you had the option to use an Enterprise server that allowed you to run code on the server.
 
-To do that you had to configure a server, run a broker on it and run magic engined to service requests that that server recieved.
+To do that you had to configure a server, run a broker on it and run magic engined to service requests that the server recieved.
 Let's call it the `Application Server`
 
 To call that server, you would have used `CallRemote` or `mgrqcmdl.exe`
