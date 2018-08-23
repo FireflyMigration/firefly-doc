@@ -25,9 +25,8 @@ namespace Northwind.Exercises.KeepViewVisibleAfterExit
 
         public void Run(Number pCategoryID)
         {
-+           Where.Clear();
 +           Where.Add(Products.CategoryID.IsEqualTo(pCategoryID));
-+           Execute();
+            Execute();
         }
 
         protected override void OnLoad()

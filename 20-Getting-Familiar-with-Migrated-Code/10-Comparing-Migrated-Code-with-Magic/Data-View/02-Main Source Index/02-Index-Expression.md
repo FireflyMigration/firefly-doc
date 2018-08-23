@@ -32,9 +32,9 @@ protected override void InitializeDataView()
 ```
 
 ## Development post migration
-In new code that we'll write after the mgiration we can write this with much easier syntax.
+In new code that we'll write after the migration we can write this with much easier syntax.
 
-First - we don't need the index stuff - the `IndexOf` method is backward compatible to '1'Key in magic.
+First - we don't need the index stuff - the `IndexOf` method is backward compatible to '1'Key in magic or the '1'Index in unipaas/xpa.
 So this can be written:
 ```csdiff
 protected override void OnLoad()
@@ -71,7 +71,7 @@ protected override void OnLoad()
 ```
 
 ### You can also do the same with the `BindOrderBy` method for UIControllers
-First - we don't need the index stuff - the `IndexOf` method is backward compatible to '1'Key in magic.
+First - we don't need the index stuff - the `IndexOf` method is backward compatible to '1'Key in magic or the '1'Index in unipaas/xpa.
 So this can be written:
 ```csdiff
 protected override void InitializeDataView()
