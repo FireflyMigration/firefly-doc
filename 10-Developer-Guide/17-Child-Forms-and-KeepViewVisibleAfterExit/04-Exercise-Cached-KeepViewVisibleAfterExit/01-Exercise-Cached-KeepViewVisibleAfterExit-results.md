@@ -71,3 +71,34 @@ namespace Northwind.Exercises.KeepViewVisibleAfterExit.Views
     }
 }
 ```
+
+Your **ShowProducts** class should look like :
+```csdiff
+namespace Northwind.Exercises.KeepViewVisibleAfterExit
+{
+    public class ShowProducts : UIControllerBase
+    {
+
+        public readonly Models.Products Products = new Models.Products();
+
+
+        public ShowProducts()
+        {
+            From = Products;
+        }
+
+        public void Run(Number pCategoryID)
+        {
++           Where.Clear();
+            Where.Add(Products.CategoryID.IsEqualTo(pCategoryID));
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            KeepViewVisibleAfterExit = true;
+            View = () => new Views.ShowProductsView(this);
+        }
+    }
+}
+```

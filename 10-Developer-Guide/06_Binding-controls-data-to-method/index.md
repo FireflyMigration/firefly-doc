@@ -1,4 +1,5 @@
 ﻿In this article We'll:
+
 * Review the different data types that are used in the migration and their unique attributes
 
 [MigratedDataTypes Power Point Presentation](MigratedDataTypes.pptx)
@@ -25,4 +26,3 @@ internal Text GetDayOfWeek()
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/sVi8uQlCBNE?list=PL1DEQjXG2xnKm-XBP3t3KCFZzWMVogMlj" frameborder="0" allowfullscreen></iframe>
 
-To learn more about the migrated data types see [Migrated DataTypes Demos](migrated-datatypes-demos.html)
