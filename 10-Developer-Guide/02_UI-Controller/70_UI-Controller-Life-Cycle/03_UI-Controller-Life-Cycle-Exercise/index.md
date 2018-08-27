@@ -1,6 +1,6 @@
 ﻿# UI Controller Life cycle
 
-1.	Open the **ShowOrderDetails** class.
+1.	Open the **ShowProducts** class.
 1.  Add to the top of the class a **using** for **System.Diagnostics**.
 1.  Override the following methods and add a Debug.WriteLine to display each method name:  
     1. OnLoad
