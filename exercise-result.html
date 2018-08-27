@@ -42,17 +42,20 @@ using System.Diagnostics;
 
 namespace Northwind.Exercises
 {
-    public class ShowOrderDetails : UIControllerBase
+    public class ShowProducts : UIControllerBase
     {
 
-        public readonly Models.Order_Details Order_Details = new Models.Order_Details();
         public readonly Models.Products Products = new Models.Products();
+        public readonly Models.Categories Categories = new Models.Categories();
 
-        public ShowOrderDetails()
+        public ShowProducts()
         {
-            From = Order_Details;
-            Where.Add(Order_Details.UnitPrice.IsGreaterOrEqualTo(20));
-            OrderBy.Add(Order_Details.OrderID, SortDirection.Descending);
+            From = Products;
+            Relations.Add(Categories, RelationType.Find,
+                Categories.CategoryID.IsEqualTo(Products.CategoryID));
+            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
+            Where.Add(Products.UnitPrice.IsGreaterThan(25));
+            OrderBy = Products.SortByProductName;
         }
 
         public void Run()
@@ -63,7 +66,7 @@ namespace Northwind.Exercises
         protected override void OnLoad()
         {
             Debug.WriteLine("OnLoad");
-            View = () =&gt; new Views.ShowOrderDetailsView(this);
+            View = () =&gt; new Views.ShowProductsView(this);
         }
         protected override void OnStart()
         {
