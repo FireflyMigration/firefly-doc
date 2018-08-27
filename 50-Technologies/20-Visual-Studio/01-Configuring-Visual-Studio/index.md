@@ -1,4 +1,4 @@
-keywords:Symbols for the module 'ENV.dll' were not loaded
+keywords:Symbols for the module 'ENV.dll' were not loaded, VisualStudioTemplates, Templates, VSDropAssist, Class Outline, Extensions, Bundle
 
 In this document we'll detail how we configure Visual Studio 2017 to make the most out of it while working with large migrated applications.
 
@@ -7,25 +7,16 @@ Although this document was written with Visual Studio 2017 in mind, most of it i
 These are the extensions and settings we use - since they are our preferences none of them are mandatory but they are highly recommended.
 
 ## A - Visual Studio Extentions
-### A.1 - Class Outline
-A tool that shows you a window with all the classes and inner classes in a C# code file.
+We have created am Extensions Bundle for your use.  
+You can download it from: [Extensions Bundle](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioExtensionBundle)
 
-When you right click on any node, you'll see the different important methods of it, such as OnStart etc... and will also be able to go directly to the controller's view
+You can read more about the extensions bundle in: [Learn More about the extension bundle](http://doc.fireflymigration.com/Extensions-Bundle.html)
 
-* [Download](https://marketplace.visualstudio.com/items?itemName=Stickle.ClassOutline)  
-
-### A.2 - VS Drop Assist
-Allows for drag and drop of various objects from the solution into the code.
-
-* [Download](https://marketplace.visualstudio.com/items?itemName=Stickle.VSDropAssist)  
-
-### A.3 - Visual Studio Templates
-Install item templates, snippets and help tune up Visual Studio. 
-
-* [Download](https://marketplace.visualstudio.com/items?itemName=sefi1.VisualStudioTemplates)
-
-After installing the extension, open Visual Studio and under the Tools menu, select "Tuneup Visual Studio" and click Yes
+## Important:
+After installing the extensions, open Visual Studio and under the Tools menu, select "Tuneup Visual Studio" and click Yes.  
 In case you can't install the extension, follow the manual instructions [here](http://doc.fireflymigration.com/Manually-install-Templates-and-Snippets.html)
+![2018 08 04 19H23 07](2018-08-04_19h23_07.png)
+
 
 ## B - Other important settings that improve the performance and experience in Visual Studio
 The following settings are in the  "Tools\Options" menu
