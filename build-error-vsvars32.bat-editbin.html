@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="editbin, error, build">
 
     <title>Build error – “C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE..\tools\vsvars32.bat” editbin</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -33,8 +33,11 @@
 <p>In some cases, mainly when you upgrade VS, the build in 2015 will fail with the following message:</p>
 <p><img src="buildFail.png" alt="" /><br />
 This is due to the fact that Visual Studio checks for the environment variable according to the installed VS.<br />
-To overcome this issue, make sure the C++ Tools option in the installer is selected. By default VS2015 only installs C# and VB.net, but not C++ with its tools.
-<img src="vs_setup.png" alt="" /></p>
+To overcome this issue, make sure the C++ Tools option in the installer is selected. By default VS2015 only installs C# and VB.net, but not C++ with its tools.</p>
+<p><img src="vs_setup.png" alt="" /></p>
+<p>If you are using VS2017, during the installation, make sure to check &quot;Desktop development with C++&quot;</p>
+<p><img src="vs2017setup.png" alt="" /></p>
+<p>In both VS2015 and VS2017, you can configure this even after VS is already installed. Go to &quot;Add/Remove Programs&quot;, Right-Click on VS installation -&gt; you should get an option to modify the installation.</p>
 
 
 
