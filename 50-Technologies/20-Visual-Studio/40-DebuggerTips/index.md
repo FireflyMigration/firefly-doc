@@ -38,4 +38,4 @@ class MyClass
 }
 ```
 
->Other useful attributes are DebuggerHidden, DebuggerBrowsable and DebuggerTypeProxy
+>Other useful attributes are DebuggerHidden, DebuggerBrowsable and DebuggerTypeProxy.
