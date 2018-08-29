@@ -23,7 +23,7 @@ class MyClass
 ```
 
 ## DebuggerDisplay
-Adding this attribute to classes allows you to set the informatin that will be displayed when the plus sign (+) is selected to expand the debugger display for an instance of the class.
+Adding this attribute to classes allows you to set the informatin that will be displayed when the plus sign (+) is selected to expand the debugger display for an instance of the class..
 
 ### Example:
 ```csdiff
