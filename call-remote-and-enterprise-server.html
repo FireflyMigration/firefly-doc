@@ -31,28 +31,28 @@
                 </div>
                 <div class="content"><h1 id="call-remote-and-enterprise-server">Call Remote and Enterprise Server</h1>
 <p>In magic you had the option to use an Enterprise server that allowed you to run code on the server.</p>
-<p>To do that you had to configure a server, run a broker on it and run magic engined to service requests that that server recieved.
+<p>To do that you had to configure a server, run a broker on it and run magic engined to service requests that the server received.
 Let's call it the <code>Application Server</code></p>
 <p>To call that server, you would have used <code>CallRemote</code> or <code>mgrqcmdl.exe</code></p>
-<p>In .NET the application server is <code>IIS</code>. IIS replaces the Broekr and the engines that you would have run on the server.</p>
+<p>In .NET the application server is <code>IIS</code>. IIS replaces the Broker and the engines that you would have run on the server.</p>
 <p>In the migration, such application will also have a project called <code>.Server</code> for example <code>Northwind.server</code>.</p>
 <p><img src="2018-08-22_13h39_15.png" alt="2018 08 22 13H39 15" /></p>
 <p>In that project you would find a file called <code>Services.aspx</code> that manages all of this.</p>
 <p>That project is then mapped to a virtual directory on the IIS. See the <a href="iis-configuration.html">IIS configuration article</a></p>
-<p>Once you navigate to the Services.aspx url on the web browser you'll get a small monitor application that allows you to follow up on the server information.</p>
+<p>Once you navigate to the Services.aspx URL on the web browser you'll get a small monitor application that allows you to follow up on the server information.</p>
 <p><img src="2018-08-22_19h00_27.png" alt="2018 08 22 19H00 27" /></p>
 <h2 id="calling-the-server-from-an-application">Calling the Server from an Application</h2>
 <p>For every Service that was defined in the migrated application you'll find a class in `...Shared.Remoting'</p>
 <p><img src="file3.png" alt="File3" /></p>
 <p>Here's it's code:
 <img src="file2.png" alt="File2" /></p>
-<p>As you can see - this class goes to the <code>UserSettings</code> class to get the Server's url based on the Service name from the ini file.</p>
-<p>If you'll look into the code of <code>GetApplicationServerUrl</code> you'll see that there are two ways to configure the server url.</p>
+<p>As you can see - this class goes to the <code>UserSettings</code> class to get the Server's URL based on the Service name from the ini file.</p>
+<p>If you'll look into the code of <code>GetApplicationServerUrl</code> you'll see that there are two ways to configure the server URL.</p>
 <ol>
-<li>For simple cases where there is only one server, you can add an entry in the ini called <code>TemporaryRemoteUrl</code> with the url of the services.aspx file.</li>
+<li>For simple cases where there is only one server, you can add an entry in the ini called <code>TemporaryRemoteUrl</code> with the URL of the services.aspx file.</li>
 </ol>
 <p><img src="file4.png" alt="File4" />
-2. For more complext cases where you have multiple services, you can add a section in the ini called <code>ApplicationServers</code> and add entries based on the Service Name set in the cs file under the <code>Remoting</code> namespace.
+2. For more complex cases where you have multiple services, you can add a section in the ini called <code>ApplicationServers</code> and add entries based on the Service Name set in the cs file under the <code>Remoting</code> namespace.
 <img src="file5.png" alt="File5" /></p>
 <h3 id="performing-the-actual-call-from-the-code">Performing the Actual Call from the code</h3>
 <p>Calling the service is simply done by Creating a new instance of the <code>Service</code> class and calling it's run method:</p>
