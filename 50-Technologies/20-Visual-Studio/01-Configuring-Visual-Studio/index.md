@@ -68,6 +68,13 @@ Go To the "Edit\Go To\Go To All..." menu item
 2. Uncheck the "Use Preview Tab" CheckBox
 3. Check the "Show details" CheckBox
 
-### G - Recommended extentions
+### G Uncheck the two checkboxes in the"Search options"
+1. Open the solution explorer
+2. Press the combo down arrow button to open the search options
+3. Uncheck the two checkboxes  
+![Search Options](searchOptions.png)  
+**Improves search performance**
+
+### H - Recommended extentions
 We would like to recommend the follow extension to you:
 [Stack Trace Explorer](stack-trace-explorer.html)
