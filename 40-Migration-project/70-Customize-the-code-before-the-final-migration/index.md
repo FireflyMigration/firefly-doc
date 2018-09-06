@@ -51,4 +51,4 @@ This is how it will look after the change:
 #### program
 ![2018 09 06 12H09 38](2018-09-06_12h09_38.jpg)
 
-This is just one example. As you can see there are various ways to influence the way the migrated code will look - we encourage you to consider these type of changes. 
+This is just one example. As you can see there are various ways to influence the way the migrated code will look - we encourage you to consider these type of changes. Enjoy :)
