@@ -29,7 +29,7 @@ This is an example of how it will look before/after:
 #### program
 ![2018 09 06 11H21 47](2018-09-06_11h21_47.jpg)
 
-## Modify the table / program name
+## Modify the table / column name
 Adding the number is just one form of change that can be done to the name. There are other manipulations that can be made.  
 One example would be something we have come across in several cases - table names include both the table short name in the database and the caption.
 For example: USRD_UserDesc.
