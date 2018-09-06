@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="customize, custom, code, final, migration">
+    <meta name="keywords" content="customize, custom, code, final, migration, program, name, table, number, prefix">
 
     <title>Customize the code before the final migration</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -39,24 +39,24 @@ You can ask for an IO prefix of your choice - this is an example of how it will 
 <img src="IOPrefix.png" alt="I O Prefix" /></p>
 <h2 id="add-a-prefix-to-a-local-column">Add a prefix to a local column</h2>
 <p>The virtual fields (columns) names are not changed in the migration.
-In Magic it was not simply to differentiate between a virtual and a real field (from a table).
+In Magic it was not simple to differentiate between a virtual and a real field (from a table).
 In the migrated code it is clearer - any table column will have the entity (table) name prefixed
-(e.g myTable.myColumn).
+(e.g <code>myTable.myColumn</code>).<br />
 However, you can ask for a prefix to a local column - this is an example of how it will look before/after:
 <img src="FieldPrefix.png" alt="Field Prefix" /></p>
 <h2 id="using-the-table-program-number-in-the-class-name">Using the table / program number in the class name</h2>
-<p>In Magic a table / program is referenced by its number. In the migrated code they are referenced by their class name.
-However, you can ask to add the number to the class name - it can be added as a prefix or suffix.
+<p>In Magic a table / program is referenced by its number. In the migrated code they are referenced by their class name.<br />
+However, we know that a lot of Magic developers remember the table / program numbers by heart and would like to keep the reference to the number in the migrated code. These numbers can be added to the class name - as a prefix or suffix.
 This is an example of how it will look before/after:</p>
 <h4 id="table">table</h4>
 <p><img src="2018-09-06_11h18_58.jpg" alt="2018 09 06 11H18 58" /></p>
 <h4 id="program">program</h4>
 <p><img src="2018-09-06_11h21_47.jpg" alt="2018 09 06 11H21 47" /></p>
 <h2 id="modify-the-table-program-name">Modify the table / program name</h2>
-<p>Adding the number is just one form of change that can be done to the name. There are other manipulations that can be made.
-We have come across several cases in which table names would include both the table short name in the database and the caption.
+<p>Adding the number is just one form of change that can be done to the name. There are other manipulations that can be made.<br />
+One example would be something we have come across in several cases - table names include both the table short name in the database and the caption.
 For example: USRD_UserDesc.
-This was also used in the column names, so the table short name prefixed each column.
+This was also used in the column names, so the table short name is prefixed to each column.
 For example: USRD_User_name.
 In Magic, it was done for obvious reasons - this was a quick way of recognizing the table each column belongs to without having to look for it.
 This is an example of how it looks in Magic:
@@ -66,14 +66,14 @@ This is an example of how it looks in the migrated code:</p>
 <p><img src="2018-09-06_11h57_13.jpg" alt="2018 09 06 11H57 13" /></p>
 <h4 id="program-1">program</h4>
 <p><img src="2018-09-06_11h59_27.jpg" alt="2018 09 06 11H59 27" />
-In this example, removing the short name prefix will improve the visibility of the code.
+As mentioned, in the migrated code, any column is references by its entity (table) name, so
+removing the short name prefix will improve the look &amp; feel of the code, giving it a &quot;neat&quot; look.<br />
 This is how it will look after the change:</p>
 <h4 id="table-2">table</h4>
 <p><img src="2018-09-06_12h08_53.jpg" alt="2018 09 06 12H08 53" /></p>
 <h4 id="program-2">program</h4>
 <p><img src="2018-09-06_12h09_38.jpg" alt="2018 09 06 12H09 38" /></p>
-<p>As you can see there are various ways to influence the way the migrated code will look - we encourage you to consider these type<br />
-of changes.</p>
+<p>This is just one example. As you can see there are various ways to influence the way the migrated code will look - we encourage you to consider these type of changes.</p>
 <ul>
 <li><a href="originals.html">Originals</a></li>
 </ul>
