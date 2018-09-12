@@ -34,6 +34,32 @@ namespace Northwind
                 ...
 ```
 
+## Profiler.OnStartContext
+As of version 30725
+This event is fired just before anything is written to the profiler. This can be useful if you see something in the profiler and you wish to break on it, for example a specific sql statement etc...
+Remember that the profiler has to be switched on for this breakpoint to work.
+
+For example, I want to break whenever a specific SQL statement is executed:
+```csdiff
+Init(args);
+ENV.Utilities.Profiler.OnStartContext += e =>
+{
++    if (e.Name.Contains(@"Select ProductID, UnitPrice 
++From dbo.Products 
++Where ProductID = @0
++
++Parameters:
++@0(Int32) = 11 (B)
++"))
++    {
++        System.Diagnostics.Debugger.Break();
++    }
++};
+
+ApplicationCore.Run();
+ENV.UserSettings.FinalizeINI();
+```
+
 ## ControllerBase.OnProcessingCommand
 This event is fired whenever a command is about to be processed.
 It receives two parameters:
@@ -63,33 +89,6 @@ Receives one parameter - the command that is being raised.
 ## HandlerCollectionWrapper.BeforeHandler
 This event is fired just before a handler is executed. You can break in it and once you hit the Breakpoint, just Click F10 to go to the Handler's code.
 It receives one parameter, the handler that is about to be invoked.
-
-## Profiler.OnStartContext
-As of version 30725
-This event is fired just before anything is written to the profiler. This can be useful if you see something in the profiler and you wish to break on it, for example a specific sql statement etc...
-Remember that the profiler has to be switched on for this breakpoint to work.
-
-For example, I want to break whenever a specific SQL statement is executed:
-```csdiff
-Init(args);
-ENV.Utilities.Profiler.OnStartContext += e =>
-{
-+    if (e.Name.Contains(@"Select ProductID, UnitPrice 
-+From dbo.Products 
-+Where ProductID = @0
-+
-+Parameters:
-+@0(Int32) = 11 (B)
-+"))
-+    {
-+        System.Diagnostics.Debugger.Break();
-+    }
-+};
-
-ApplicationCore.Run();
-ENV.UserSettings.FinalizeINI();
-```
-
 
 ## ControllerBase BeforeExecute and AfterExecute
 These events are fired before and after the execution of a controller. 
