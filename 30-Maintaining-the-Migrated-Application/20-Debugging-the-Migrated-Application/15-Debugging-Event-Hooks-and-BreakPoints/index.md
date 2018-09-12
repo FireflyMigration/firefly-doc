@@ -59,6 +59,8 @@ ENV.Utilities.Profiler.OnStartContext += e =>
 ApplicationCore.Run();
 ENV.UserSettings.FinalizeINI();
 ```
+> for additional ways of debugging data changes see: [additional-events-for-data-related-debugging](additional-events-for-data-related-debugging.html)
+
 
 ## ControllerBase.OnProcessingCommand
 This event is fired whenever a command is about to be processed.
@@ -80,9 +82,8 @@ try
     ENV.UserSettings.FinalizeINI();
 }
 ```
-> for additional ways of debugging data changes see: [additional-events-for-data-related-debugging](additional-events-for-data-related-debugging.html)
-## ControllerBase.OnRaise
 
+## ControllerBase.OnRaise
 This event is fired whenever an event is raised, either from a button or from a Raise command. Helps track down these Raise `Exit` that are all over the code.
 Receives one parameter - the command that is being raised.
 
