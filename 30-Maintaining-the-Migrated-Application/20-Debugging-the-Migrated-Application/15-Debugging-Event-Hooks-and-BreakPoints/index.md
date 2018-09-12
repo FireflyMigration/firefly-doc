@@ -6,7 +6,7 @@ Normally you would register to that event for debugging purposes only and at the
 Let's review the different types of events.
 ## Entity.EntitySavingRow
 As of version 30725 there is a static event called 'EntitySavingRow' in 'ENV.Data.Entity'. This event will be fired whenever and there is an Update, Insert or Delete operation for an Entity.
-It recieves two arguments:
+It receives two arguments:
 1. The `Entity` for which the OnSavingRow is called.
 2. The Event args, that include the Activity (Update, Insert or Delete)
 
@@ -36,7 +36,7 @@ namespace Northwind
 
 ## ControllerBase.OnProcessingCommand
 This event is fired whenever a command is about to be processed.
-It recieves two paraneters:
+It receives two parameters:
 1. controller - the controller which is about to process the command
 2. command - the actual command.
 
