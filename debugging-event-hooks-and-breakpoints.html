@@ -84,6 +84,9 @@ Parameters:
 
 ApplicationCore.Run();
 ENV.UserSettings.FinalizeINI(); </code></pre>
+<blockquote>
+<p>for additional ways of debugging data changes see: <a href="additional-events-for-data-related-debugging.html">additional-events-for-data-related-debugging</a></p>
+</blockquote>
 <h2 id="controllerbase.onprocessingcommand">ControllerBase.OnProcessingCommand</h2>
 <p>This event is fired whenever a command is about to be processed.
 It receives two parameters:</p>
@@ -103,9 +106,6 @@ It receives two parameters:</p>
     ApplicationCore.Run();
     ENV.UserSettings.FinalizeINI();
 } </code></pre>
-<blockquote>
-<p>for additional ways of debugging data changes see: <a href="additional-events-for-data-related-debugging.html">additional-events-for-data-related-debugging</a></p>
-</blockquote>
 <h2 id="controllerbase.onraise">ControllerBase.OnRaise</h2>
 <p>This event is fired whenever an event is raised, either from a button or from a Raise command. Helps track down these Raise <code>Exit</code> that are all over the code.
 Receives one parameter - the command that is being raised.</p>
