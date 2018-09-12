@@ -34,6 +34,27 @@ namespace Northwind
                 ...
 ```
 
+## PathDecoder.AfterDecode
+As of version 30727
+This event will fire whenever a path is being decoded (Logical Name). Every FileDelete or any other method that uses DecodePath will fire it. It's a great way to find where a specific file is being accessed
+It receives two parameters:
+1. source - the original value before decoding
+2. result - the values after it was decoded
+
+```csdiff
+Init(args);
++ENV.PathDecoder.AfterDecode += (source, result) =>
++{
++    if (result.ToLower().Contains(@"c:\temp"))
++    {
++        System.Diagnostics.Debugger.Break();
++    }
++};
+ApplicationCore.Run();
+ENV.UserSettings.FinalizeINI();
+```
+
+
 ## Profiler.OnStartContext
 As of version 30725
 This event is fired just before anything is written to the profiler. This can be useful if you see something in the profiler and you wish to break on it, for example a specific sql statement etc...
