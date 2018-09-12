@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Debugging the Migrated Application</title>
+    <title>additional events for data related debugging</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,21 +29,42 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="debugging-the-migrated-application">Debugging the Migrated Application</h1>
-<ul>
-<li><a href="fireflyprofiler.html">FireflyProfiler</a></li>
-<li><a href="debugging-event-hooks-and-breakpoints.html">Debugging Event Hooks and BreakPoints</a></li>
-<li><a href="using-log-files.html">Using log files</a></li>
-<li><a href="debugging-flags-usage-in-the-configuration-file-(ini).html">Debugging flags usage in the configuration file (INI)</a></li>
-<li><a href="debugging-env.html">Debugging ENV</a></li>
-<li><a href="viewing-memory-tables.html">Viewing Memory Tables</a></li>
-<li><a href="investigating-memory-issues.html">Investigating memory issues</a></li>
-<li><a href="using-fiddler-to-monitor-web-service-traffic.html">Using Fiddler to monitor web service traffic</a></li>
-<li><a href="debugging-flags-in-configuration.html">Debugging Flags In Configuration</a></li>
-<li><a href="using-the-debughelper.html">Using the debughelper</a></li>
-<li><a href="random-data-generator.html">Random Data Generator</a></li>
-<li><a href="using-the-trackmemory-developer-tool-to-isolate-memory-issues-quickly.html">Using the TrackMemory developer tool to isolate memory issues quickly</a></li>
-</ul>
+                <div class="content"><h1 id="additional-events-for-data-related-debugging">additional events for data related debugging</h1>
+<p>Sometimes you want to track down an update to a specific entity or a specific column. You can do that by overriding the <code>OnSavingRow</code> Entity method or by handle the <code>ValueChange</code> event of a column.</p>
+<h2 id="overriding-the-onsavingrow-method-of-an-entity">overriding the <code>OnSavingRow</code> method of an entity</h2>
+<p>As of version 30735 a new method was added to entity called <code>OnSavingRow</code>
+The <code>OnSavingRow</code> event of entities is called after the <code>Controller</code>'s OnSavingRow and before the entity is saved to the database.
+You can put all sorts of logic in such methods and you can also use it for debugging purposes. For example:</p>
+<pre data-line="11,12,13,14,15,16,17,18" class="language-csdiff line-numbers"><code>public class Orders : Entity
+{
+    #region Columns
+    ...
+    #endregion
+    public Orders() : base("dbo.Orders", "Orders", Northwind.Shared.DataSources.Northwind1)
+    {
+        Cached = false;
+        InitializeIndexes();
+    }
+    protected override void OnSavingRow(IEntityOnSavingRowEventArgs e)
+    {
+        if (e.Activity == Activities.Insert &amp;&amp; this.OrderDate.WasChanged)
+        {
+            System.Diagnostics.Debug.WriteLine("Order Date was Changed from:" + OrderDate.OriginalValue + " to: " + OrderDate.Value);
+        }
+        base.OnSavingRow(e);
+    } </code></pre>
+<h2 id="handling-the-valuechange-event-of-a-column">Handling the ValueChange event of a column</h2>
+<p>Sometimes if you want to see what code exactly updates a column, simply handle it's <code>ValueChanged</code> event and add a breakpoint in it.
+For example the following code will write to the output whenever the OrderDate is actually changed (way before it's saved to the database)</p>
+<pre data-line="5,6,7,8" class="language-csdiff line-numbers"><code>public Orders() : base("dbo.Orders", "Orders", Northwind.Shared.DataSources.Northwind1)
+{
+    Cached = false;
+    InitializeIndexes();
+    OrderDate.ValueChanged += e =&gt;
+    {
+        System.Diagnostics.Debug.WriteLine("OrderDate was changed from " + e.PreviousValue + " to " + OrderDate.Value);
+    };
+} </code></pre>
 
 
 
@@ -51,7 +72,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/20-Debugging-the-Migrated-Application/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/20-Debugging-the-Migrated-Application/15-Debugging-Event-Hooks-and-BreakPoints/additional-events-for-data-related-debugging.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -113,7 +134,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'debugging-the-migrated-application.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'additional-events-for-data-related-debugging.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
