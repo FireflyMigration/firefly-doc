@@ -61,6 +61,12 @@ As of version 30725
 This event is fired just before anything is written to the profiler. This can be useful if you see something in the profiler and you wish to break on it, for example a specific sql statement etc...
 Remember that the profiler has to be switched on for this breakpoint to work.
 
+It recieves and EventArgs object that has the following properties:
+1. Name - the text of the profiler line
+2. Count - the repetition count of that line.
+3. Parent - the parent tree entry of that profiler line.
+
+
 For example, I want to break whenever a specific SQL statement is executed:
 ```csdiff
 Init(args);

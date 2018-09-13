@@ -16,7 +16,7 @@ public class Orders : Entity
     }
 +   protected override void OnSavingRow(IEntityOnSavingRowEventArgs e)
 +   {
-+       if (e.Activity == Activities.Insert && this.OrderDate.WasChanged)
++       if (e.Activity == Activities.Update && this.OrderDate.WasChanged)
 +       {
 +           System.Diagnostics.Debug.WriteLine("Order Date was Changed from:" + OrderDate.OriginalValue + " to: " + OrderDate.Value);
 +       }
