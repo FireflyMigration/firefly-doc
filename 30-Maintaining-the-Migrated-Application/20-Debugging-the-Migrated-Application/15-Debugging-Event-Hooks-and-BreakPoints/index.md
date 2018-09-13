@@ -33,6 +33,7 @@ namespace Northwind
                 ApplicationCore.Run();
                 ...
 ```
+> for additional ways of debugging data changes see: [additional-events-for-data-related-debugging](additional-events-for-data-related-debugging.html)
 
 ## PathDecoder.AfterDecode
 As of version 30727
@@ -80,8 +81,6 @@ ENV.Utilities.Profiler.OnStartContext += e =>
 ApplicationCore.Run();
 ENV.UserSettings.FinalizeINI();
 ```
-> for additional ways of debugging data changes see: [additional-events-for-data-related-debugging](additional-events-for-data-related-debugging.html)
-
 
 ## ControllerBase.OnProcessingCommand
 This event is fired whenever a command is about to be processed.
