@@ -87,6 +87,12 @@ ENV.UserSettings.FinalizeINI(); </code></pre>
 <p>As of version 30725
 This event is fired just before anything is written to the profiler. This can be useful if you see something in the profiler and you wish to break on it, for example a specific sql statement etc...
 Remember that the profiler has to be switched on for this breakpoint to work.</p>
+<p>It recieves and EventArgs object that has the following properties:</p>
+<ol>
+<li>Name - the text of the profiler line</li>
+<li>Count - the repetition count of that line.</li>
+<li>Parent - the parent tree entry of that profiler line.</li>
+</ol>
 <p>For example, I want to break whenever a specific SQL statement is executed:</p>
 <pre data-line="4,5,6,7,8,9,10,11,12,13,14" class="language-csdiff line-numbers"><code>Init(args);
 ENV.Utilities.Profiler.OnStartContext += e =&gt;

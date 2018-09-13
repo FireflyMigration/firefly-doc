@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Refactoring Migrated Code</title>
+    <title>Entity OnSavingRow</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,20 +29,31 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="refactoring-migrated-code">Refactoring Migrated Code</h1>
-<p>In this series of videos we are going to review the most basic refactorings that any developer should start doing as soon as you gain some confidence in the code.</p>
-<ul>
-<li><a href="moving-an-expression-from-a-controller-to-a-type.html">Moving an Expression from a Controller to a Type</a></li>
-<li><a href="refactoring-the-relation-to-the-type-class.html">Refactoring the Relation to the Type Class</a></li>
-<li><a href="refactoring-a-color-expression-to-the-entity-class.html">Refactoring a Color Expression to the Entity Class</a></li>
-<li><a href="types-i-want-more-out-of-it.html">Types I want more out of it</a></li>
-<li><a href="calling-a-migrated-inner-class-without-calling-its-parent.html">Calling a migrated inner class without calling its parent</a></li>
-<li><a href="getting-rid-of-if-statements.html">Getting rid of if statements</a></li>
-<li><a href="moving-validations-to-entities-and-all-controllers.html">Moving validations to Entities and all Controllers</a></li>
-<li><a href="creating-reusable-views-and-controllers.html">Creating reusable Views and Controllers</a></li>
-<li><a href="inner-select-and-sql-evaluated-columns-in-depth.html">Inner Select and SQL Evaluated Columns in depth</a></li>
-<li><a href="entity-onsavingrow.html">Entity OnSavingRow</a></li>
-</ul>
+                <div class="content"><h1 id="entity-onsavingrow">Entity OnSavingRow</h1>
+<p>In many cases in an application you have business logic that has to do with a specific entity, for example you may have a column in the Entity called <code>LastUpdateUser</code> and <code>LastUpdateDate</code>.
+To maintain these you have to add code in the <code>OnSavingRow</code> of each controller that &quot;may&quot; update this entity.</p>
+<p>Also - you may have all sorts of validations that should be the same when the user inputs and when there is an automatic import process.</p>
+<p>These are the exact problems that <code>OnSavingRow</code> in the <code>Entity</code> class can solve (since version 30725).
+The <code>OnSavingRow</code> in the <code>Entity</code> class is called immediately after the <code>OnSavingRow</code> of the specific controller, for each entity that is updated, deleted are inserted.</p>
+<p>The <code>OnSavingRow</code> event recieves and event args that specify the specific activity - <code>Insert</code>, <code>Update</code> or <code>Delete</code></p>
+<p>Here's an example of it's usage:</p>
+<pre data-line="11,12,13,14,15,16,17,18" class="language-csdiff line-numbers"><code>public class Orders : Entity
+{
+    #region Columns
+    ...
+    #endregion
+    public Orders() : base("dbo.Orders", "Orders", Northwind.Shared.DataSources.Northwind1)
+    {
+        Cached = false;
+        InitializeIndexes();
+    }
+    protected override void OnSavingRow(IEntityOnSavingRowEventArgs e)
+    {
+        if (e.Activity == Activities.Update &amp;&amp; this.OrderDate.WasChanged)
+        {
+            System.Diagnostics.Debug.WriteLine("Order Date was Changed from:" + OrderDate.OriginalValue + " to: " + OrderDate.Value);
+        }
+        base.OnSavingRow(e); </code></pre>
 
 
 
@@ -50,7 +61,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/40-Refactoring-Migrated-Code/01-index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/40-Refactoring-Migrated-Code/Entity-OnSavingRow.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -112,7 +123,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'refactoring-migrated-code.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'entity-onsavingrow.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

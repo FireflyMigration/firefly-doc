@@ -47,7 +47,7 @@ You can put all sorts of logic in such methods and you can also use it for debug
     }
     protected override void OnSavingRow(IEntityOnSavingRowEventArgs e)
     {
-        if (e.Activity == Activities.Insert &amp;&amp; this.OrderDate.WasChanged)
+        if (e.Activity == Activities.Update &amp;&amp; this.OrderDate.WasChanged)
         {
             System.Diagnostics.Debug.WriteLine("Order Date was Changed from:" + OrderDate.OriginalValue + " to: " + OrderDate.Value);
         }
