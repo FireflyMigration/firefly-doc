@@ -62,6 +62,9 @@ It receives two arguments:</p>
 
                 ApplicationCore.Run();
                 ... </code></pre>
+<blockquote>
+<p>for additional ways of debugging data changes see: <a href="additional-events-for-data-related-debugging.html">additional-events-for-data-related-debugging</a></p>
+</blockquote>
 <h2 id="pathdecoder.afterdecode">PathDecoder.AfterDecode</h2>
 <p>As of version 30727
 This event will fire whenever a path is being decoded (Logical Name). Every FileDelete or any other method that uses DecodePath will fire it. It's a great way to find where a specific file is being accessed
@@ -102,9 +105,6 @@ Parameters:
 
 ApplicationCore.Run();
 ENV.UserSettings.FinalizeINI(); </code></pre>
-<blockquote>
-<p>for additional ways of debugging data changes see: <a href="additional-events-for-data-related-debugging.html">additional-events-for-data-related-debugging</a></p>
-</blockquote>
 <h2 id="controllerbase.onprocessingcommand">ControllerBase.OnProcessingCommand</h2>
 <p>This event is fired whenever a command is about to be processed.
 It receives two parameters:</p>
@@ -159,7 +159,7 @@ They exist at the following classes:</p>
 <li>TextTemplate.BeforeWrite - before writing a text template (AKA merge form)</li>
 </ol>
 <ul>
-<li><a href="additional-events-for-data-related-debugging.html">additional events for data related debugging</a></li>
+<li><a href="additional-events-for-data-related-debugging1.html">Additional Events for Data Related Debugging1</a></li>
 </ul>
 
 
