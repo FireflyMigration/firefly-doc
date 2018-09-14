@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Mandatory columns, automatically add columns to all controllers">
 
     <title>Entity OnSavingRow</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -30,30 +30,62 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="entity-onsavingrow">Entity OnSavingRow</h1>
-<p>In many cases in an application you have business logic that has to do with a specific entity, for example you may have a column in the Entity called <code>LastUpdateUser</code> and <code>LastUpdateDate</code>.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OANolBwXmUk" frameborder="0" allowfullscreen></iframe>
+<p>In many cases in an application you have business logic that has to do with a specific entity, for example you may have a column in the Entity called <code>LastChangeDate</code> and <code>LastChangeTime</code>.
 To maintain these you have to add code in the <code>OnSavingRow</code> of each controller that &quot;may&quot; update this entity.</p>
 <p>Also - you may have all sorts of validations that should be the same when the user inputs and when there is an automatic import process.</p>
 <p>These are the exact problems that <code>OnSavingRow</code> in the <code>Entity</code> class can solve (since version 30725).
 The <code>OnSavingRow</code> in the <code>Entity</code> class is called immediately after the <code>OnSavingRow</code> of the specific controller, for each entity that is updated, deleted are inserted.</p>
-<p>The <code>OnSavingRow</code> event recieves and event args that specify the specific activity - <code>Insert</code>, <code>Update</code> or <code>Delete</code></p>
+<p>The <code>OnSavingRow</code> event receives and event args that specify the specific activity - <code>Insert</code>, <code>Update</code> or <code>Delete</code></p>
 <p>Here's an example of it's usage:</p>
-<pre data-line="11,12,13,14,15,16,17,18" class="language-csdiff line-numbers"><code>public class Orders : Entity
+<pre data-line="17,18,19,20,21" class="language-csdiff line-numbers"><code>public class Customers : Entity 
 {
     #region Columns
     ...
+    public readonly DateColumn LastChangeDate = new DateColumn();
+    public readonly TimeColumn LastChangeTime = new TimeColumn();
     #endregion
-    public Orders() : base("dbo.Orders", "Orders", Northwind.Shared.DataSources.Northwind1)
+    #region Indexes
+    ...
+    #endregion
+    public Customers() : base("dbo.Customers", "Customers", Northwind.Shared.DataSources.Northwind1)
     {
         Cached = false;
+        CustomerID.ClearExpandEvent();
         InitializeIndexes();
     }
     protected override void OnSavingRow(IEntityOnSavingRowEventArgs e)
     {
-        if (e.Activity == Activities.Update &amp;&amp; this.OrderDate.WasChanged)
-        {
-            System.Diagnostics.Debug.WriteLine("Order Date was Changed from:" + OrderDate.OriginalValue + " to: " + OrderDate.Value);
-        }
-        base.OnSavingRow(e); </code></pre>
+        LastChangeDate.Value = Date.Now;
+        LastChangeTime.Value = Time.Now;
+    } </code></pre>
+<h2 id="automatically-adding-columns-to-all-controller">Automatically adding Columns to all Controller</h2>
+<p>If you want to make sure that specific columns in an entity will always be added to all Controllers that use this Entity, override the <code>GetMandatoryColumns</code> method</p>
+<pre data-line="22,23,24,25" class="language-csdiff line-numbers"><code>public class Customers : Entity 
+{
+    #region Columns
+    ...
+    public readonly DateColumn LastChangeDate = new DateColumn();
+    public readonly TimeColumn LastChangeTime = new TimeColumn();
+    #endregion
+    #region Indexes
+    ...
+    #endregion
+    public Customers() : base("dbo.Customers", "Customers", Northwind.Shared.DataSources.Northwind1)
+    {
+        Cached = false;
+        CustomerID.ClearExpandEvent();
+        InitializeIndexes();
+    }
+    protected override void OnSavingRow(IEntityOnSavingRowEventArgs e)
+    {
+        LastChangeDate.Value = Date.Now;
+        LastChangeTime.Value = Time.Now;
+    }
+    protected override ColumnBase[] GetMandatoryColumns()
+    {
+        return new ColumnBase[] { LastChangeDate, LastChangeTime };
+    } </code></pre>
 
 
 

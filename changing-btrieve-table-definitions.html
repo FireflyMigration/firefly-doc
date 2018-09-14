@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="pervasive, actian">
+
+    <title>Changing Btrieve Table Definitions</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="changing-btrieve-table-definitions">Changing Btrieve Table Definitions</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qiVTaKkIBdE" frameborder="0" allowfullscreen></iframe>
+<h2 id="automatic-btrieve-table-conversion-while-developing">Automatic Btrieve Table Conversion while Developing</h2>
+<p>To Enable it, call the following method</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>ENV.Utilities.TableDefinitionConverter.EnableBtrieveAutoConversion(); </code></pre>
+<ol>
+<li>Make sure to open the Entity List (Shift F2) and view the table data before the change.</li>
+<li>Make the change to the Entity class as you want.</li>
+<li>Build and run the code.</li>
+<li>Next time that you'll open the table in the Entity List you'll get a message asking if you want to convert the actual data.</li>
+</ol>
+<p><img src="2018-09-14_09h42_03.png" alt="2018 09 14 09H42 03" /></p>
+<ol start="5">
+<li>The conversion will create a backup of the original file with the date and time of the conversion in it's name. for example <code>nwfil001.dat_mch_2018-09-13_05-48-00</code>.</li>
+<li>Once the conversion is done, it'll offer you to copy the code that did the conversion, whuch you can use in your code to run the conversion automatically.</li>
+</ol>
+<h2 id="converting-btrieve-tables-from-the-code">Converting Btrieve Tables from the code</h2>
+<p>Item 6 in the previous header will provide you with the code to run the conversion automatically.
+Here's the code from the video:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>// Copy this code to a database migration program
+var oldDef = "AAEAAAD/////AQAAAAAAAAAMAgAAAD9FTlYsIFZlcnNpb249My40LjI0LjMwNzQwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGwFAQAAAB1FTlYuVXRpbGl0aWVzLlRhYmxlRGVmaW5pdGlvbggAAAAIVHlwZU5hbWUHU3FsTmFtZQdDYXB0aW9uCVNxbFNjaGVtYQtCdHJpZXZlTmFtZQVPd25lcgdDb2x1bW5zB0luZGV4ZXMBAQEBAQEEBCBFTlYuVXRpbGl0aWVzLkNvbHVtbkRlZmluaXRpb25bXQIAAAAfRU5WLlV0aWxpdGllcy5JbmRleERlZmluaXRpb25bXQIAAAACAAAABgMAAAAaTm9ydGh3aW5kLk1vZGVscy5DdXN0b21lcnMGBAAAAAlDdXN0b21lcnMJBAAAAAYFAAAAI0M6XEZpcmVmbHlNaWdyYXRpb25cTm9ydGh3aW5kXERhdGFcBgYAAAAMbndmaWwwMDEuZGF0CgkHAAAACQgAAAAHBwAAAAABAAAACwAAAAQeRU5WLlV0aWxpdGllcy5Db2x1bW5EZWZpbml0aW9uAgAAAAkJAAAACQoAAAAJCwAAAAkMAAAACQ0AAAAJDgAAAAkPAAAACRAAAAAJEQAAAAkSAAAACRMAAAAHCAAAAAABAAAABQAAAAQdRU5WLlV0aWxpdGllcy5JbmRleERlZmluaXRpb24CAAAACRQAAAAJFQAAAAkWAAAACRcAAAAJGAAAAAUJAAAAHkVOVi5VdGlsaXRpZXMuQ29sdW1uRGVmaW5pdGlvbgUAAAAIVHlwZU5hbWUETmFtZQZGb3JtYXQPU3RvcmFnZVR5cGVOYW1lDERlZmF1bHRWYWx1ZQEBAQEBAgAAAAYZAAAABFRleHQGGgAAAApDdXN0b21lcklEBhsAAAABNQYcAAAAP0VOVi5EYXRhLlN0b3JhZ2UuQW5zaVN0cmluZ1RleHRTdG9yYWdlVGhhdFJlbW92ZXNOdWxsQ2hhcnMsIEVOVgoBCgAAAAkAAAAJGQAAAAYeAAAAC0NvbXBhbnlOYW1lBh8AAAACNDAGIAAAAD9FTlYuRGF0YS5TdG9yYWdlLkFuc2lTdHJpbmdUZXh0U3RvcmFnZVRoYXRSZW1vdmVzTnVsbENoYXJzLCBFTlYKAQsAAAAJAAAACRkAAAAGIgAAAAtDb250YWN0TmFtZQYjAAAAAjMwBiQAAAA/RU5WLkRhdGEuU3RvcmFnZS5BbnNpU3RyaW5nVGV4dFN0b3JhZ2VUaGF0UmVtb3Zlc051bGxDaGFycywgRU5WCgEMAAAACQAAAAkZAAAABiYAAAAMQ29udGFjdFRpdGxlCSMAAAAGKAAAAD9FTlYuRGF0YS5TdG9yYWdlLkFuc2lTdHJpbmdUZXh0U3RvcmFnZVRoYXRSZW1vdmVzTnVsbENoYXJzLCBFTlYKAQ0AAAAJAAAACRkAAAAGKgAAAAdBZGRyZXNzBisAAAACNjAGLAAAAD9FTlYuRGF0YS5TdG9yYWdlLkFuc2lTdHJpbmdUZXh0U3RvcmFnZVRoYXRSZW1vdmVzTnVsbENoYXJzLCBFTlYKAQ4AAAAJAAAACRkAAAAGLgAAAARDaXR5Bi8AAAACMTUGMAAAAD9FTlYuRGF0YS5TdG9yYWdlLkFuc2lTdHJpbmdUZXh0U3RvcmFnZVRoYXRSZW1vdmVzTnVsbENoYXJzLCBFTlYKAQ8AAAAJAAAACRkAAAAGMgAAAAZSZWdpb24JLwAAAAY0AAAAP0VOVi5EYXRhLlN0b3JhZ2UuQW5zaVN0cmluZ1RleHRTdG9yYWdlVGhhdFJlbW92ZXNOdWxsQ2hhcnMsIEVOVgoBEAAAAAkAAAAJGQAAAAY2AAAAClBvc3RhbENvZGUGNwAAAAIxMAY4AAAAP0VOVi5EYXRhLlN0b3JhZ2UuQW5zaVN0cmluZ1RleHRTdG9yYWdlVGhhdFJlbW92ZXNOdWxsQ2hhcnMsIEVOVgoBEQAAAAkAAAAJGQAAAAY6AAAAB0NvdW50cnkJLwAAAAY8AAAAP0VOVi5EYXRhLlN0b3JhZ2UuQW5zaVN0cmluZ1RleHRTdG9yYWdlVGhhdFJlbW92ZXNOdWxsQ2hhcnMsIEVOVgoBEgAAAAkAAAAJGQAAAAY+AAAABVBob25lBj8AAAACMjQGQAAAAD9FTlYuRGF0YS5TdG9yYWdlLkFuc2lTdHJpbmdUZXh0U3RvcmFnZVRoYXRSZW1vdmVzTnVsbENoYXJzLCBFTlYKARMAAAAJAAAACRkAAAAGQgAAAANGYXgJPwAAAAZEAAAAP0VOVi5EYXRhLlN0b3JhZ2UuQW5zaVN0cmluZ1RleHRTdG9yYWdlVGhhdFJlbW92ZXNOdWxsQ2hhcnMsIEVOVgoFFAAAAB1FTlYuVXRpbGl0aWVzLkluZGV4RGVmaW5pdGlvbgMAAAAETmFtZQZVbmlxdWUIU2VnbWVudHMBAAQBIUVOVi5VdGlsaXRpZXMuU2VnbWVudERlZmluaXRpb25bXQIAAAACAAAACRoAAAABCUYAAAABFQAAABQAAAAJLgAAAAAJSAAAAAEWAAAAFAAAAAkeAAAAAAlKAAAAARcAAAAUAAAACTYAAAAACUwAAAABGAAAABQAAAAJMgAAAAAJTgAAAAdGAAAAAAEAAAABAAAABB9FTlYuVXRpbGl0aWVzLlNlZ21lbnREZWZpbml0aW9uAgAAAAlPAAAAB0gAAAAAAQAAAAEAAAAEH0VOVi5VdGlsaXRpZXMuU2VnbWVudERlZmluaXRpb24CAAAACVAAAAAHSgAAAAABAAAAAQAAAAQfRU5WLlV0aWxpdGllcy5TZWdtZW50RGVmaW5pdGlvbgIAAAAJUQAAAAdMAAAAAAEAAAABAAAABB9FTlYuVXRpbGl0aWVzLlNlZ21lbnREZWZpbml0aW9uAgAAAAlSAAAAB04AAAAAAQAAAAEAAAAEH0VOVi5VdGlsaXRpZXMuU2VnbWVudERlZmluaXRpb24CAAAACVMAAAAFTwAAAB9FTlYuVXRpbGl0aWVzLlNlZ21lbnREZWZpbml0aW9uAgAAAApDb2x1bW5OYW1lCkRlc2NlbmRpbmcBAAECAAAACRoAAAAAAVAAAABPAAAACS4AAAAAAVEAAABPAAAACR4AAAAAAVIAAABPAAAACTYAAAAAAVMAAABPAAAACTIAAAAACw==";
+var newDef = "AAEAAAD/////AQAAAAAAAAAMAgAAAD9FTlYsIFZlcnNpb249My40LjI0LjMwNzQwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGwFAQAAAB1FTlYuVXRpbGl0aWVzLlRhYmxlRGVmaW5pdGlvbggAAAAIVHlwZU5hbWUHU3FsTmFtZQdDYXB0aW9uCVNxbFNjaGVtYQtCdHJpZXZlTmFtZQVPd25lcgdDb2x1bW5zB0luZGV4ZXMBAQEBAQEEBCBFTlYuVXRpbGl0aWVzLkNvbHVtbkRlZmluaXRpb25bXQIAAAAfRU5WLlV0aWxpdGllcy5JbmRleERlZmluaXRpb25bXQIAAAACAAAABgMAAAAaTm9ydGh3aW5kLk1vZGVscy5DdXN0b21lcnMGBAAAAAlDdXN0b21lcnMJBAAAAAYFAAAAI0M6XEZpcmVmbHlNaWdyYXRpb25cTm9ydGh3aW5kXERhdGFcBgYAAAAMbndmaWwwMDEuZGF0CgkHAAAACQgAAAAHBwAAAAABAAAADQAAAAQeRU5WLlV0aWxpdGllcy5Db2x1bW5EZWZpbml0aW9uAgAAAAkJAAAACQoAAAAJCwAAAAkMAAAACQ0AAAAJDgAAAAkPAAAACRAAAAAJEQAAAAkSAAAACRMAAAAJFAAAAAkVAAAABwgAAAAAAQAAAAUAAAAEHUVOVi5VdGlsaXRpZXMuSW5kZXhEZWZpbml0aW9uAgAAAAkWAAAACRcAAAAJGAAAAAkZAAAACRoAAAAFCQAAAB5FTlYuVXRpbGl0aWVzLkNvbHVtbkRlZmluaXRpb24FAAAACFR5cGVOYW1lBE5hbWUGRm9ybWF0D1N0b3JhZ2VUeXBlTmFtZQxEZWZhdWx0VmFsdWUBAQEBAQIAAAAGGwAAAARUZXh0BhwAAAAKQ3VzdG9tZXJJRAYdAAAAATUGHgAAAD9FTlYuRGF0YS5TdG9yYWdlLkFuc2lTdHJpbmdUZXh0U3RvcmFnZVRoYXRSZW1vdmVzTnVsbENoYXJzLCBFTlYKAQoAAAAJAAAACRsAAAAGIAAAAAtDb21wYW55TmFtZQYhAAAAAjQwBiIAAAA/RU5WLkRhdGEuU3RvcmFnZS5BbnNpU3RyaW5nVGV4dFN0b3JhZ2VUaGF0UmVtb3Zlc051bGxDaGFycywgRU5WCgELAAAACQAAAAkbAAAABiQAAAALQ29udGFjdE5hbWUGJQAAAAIzMAYmAAAAP0VOVi5EYXRhLlN0b3JhZ2UuQW5zaVN0cmluZ1RleHRTdG9yYWdlVGhhdFJlbW92ZXNOdWxsQ2hhcnMsIEVOVgoBDAAAAAkAAAAJGwAAAAYoAAAADENvbnRhY3RUaXRsZQklAAAABioAAAA/RU5WLkRhdGEuU3RvcmFnZS5BbnNpU3RyaW5nVGV4dFN0b3JhZ2VUaGF0UmVtb3Zlc051bGxDaGFycywgRU5WCgENAAAACQAAAAkbAAAABiwAAAAHQWRkcmVzcwYtAAAAAjYwBi4AAAA/RU5WLkRhdGEuU3RvcmFnZS5BbnNpU3RyaW5nVGV4dFN0b3JhZ2VUaGF0UmVtb3Zlc051bGxDaGFycywgRU5WCgEOAAAACQAAAAkbAAAABjAAAAAEQ2l0eQYxAAAAAjE1BjIAAAA/RU5WLkRhdGEuU3RvcmFnZS5BbnNpU3RyaW5nVGV4dFN0b3JhZ2VUaGF0UmVtb3Zlc051bGxDaGFycywgRU5WCgEPAAAACQAAAAkbAAAABjQAAAAGUmVnaW9uCTEAAAAGNgAAAD9FTlYuRGF0YS5TdG9yYWdlLkFuc2lTdHJpbmdUZXh0U3RvcmFnZVRoYXRSZW1vdmVzTnVsbENoYXJzLCBFTlYKARAAAAAJAAAACRsAAAAGOAAAAApQb3N0YWxDb2RlBjkAAAACMTAGOgAAAD9FTlYuRGF0YS5TdG9yYWdlLkFuc2lTdHJpbmdUZXh0U3RvcmFnZVRoYXRSZW1vdmVzTnVsbENoYXJzLCBFTlYKAREAAAAJAAAACRsAAAAGPAAAAAdDb3VudHJ5CTEAAAAGPgAAAD9FTlYuRGF0YS5TdG9yYWdlLkFuc2lTdHJpbmdUZXh0U3RvcmFnZVRoYXRSZW1vdmVzTnVsbENoYXJzLCBFTlYKARIAAAAJAAAACRsAAAAGQAAAAAVQaG9uZQZBAAAAAjI0BkIAAAA/RU5WLkRhdGEuU3RvcmFnZS5BbnNpU3RyaW5nVGV4dFN0b3JhZ2VUaGF0UmVtb3Zlc051bGxDaGFycywgRU5WCgETAAAACQAAAAkbAAAABkQAAAADRmF4CUEAAAAGRgAAAD9FTlYuRGF0YS5TdG9yYWdlLkFuc2lTdHJpbmdUZXh0U3RvcmFnZVRoYXRSZW1vdmVzTnVsbENoYXJzLCBFTlYKARQAAAAJAAAABkcAAAAERGF0ZQZIAAAADkxhc3RDaGFuZ2VEYXRlCgZJAAAAN0ZpcmVmbHkuQm94LkRhdGEuU3RvcmFnZS5TdHJpbmdEYXRlU3RvcmFnZSwgRmlyZWZseS5Cb3gGSgAAANgBQUFFQUFBRC8vLy8vQVFBQUFBQUFBQUFNQWdBQUFEOUZUbFlzSUZabGNuTnBiMjQ5TXk0MExqSTBMak13TnpRd0xDQkRkV3gwZFhKbFBXNWxkWFJ5WVd3c0lGQjFZbXhwWTB0bGVWUnZhMlZ1UFc1MWJHd0ZBUUFBQUNwRlRsWXVVbVZ0YjNScGJtY3VRMnhwWlc1MFVHRnlZVzFsZEdWeVRXRnVZV2RsY2l0dGVVUmhkR1VCQUFBQUJsOTJZV3gxWlFBSkFnQUFBTW1XQ2dBQUFBQUFDdz09ARUAAAAJAAAABksAAAAEVGltZQZMAAAADkxhc3RDaGFuZ2VUaW1lCgZNAAAAPEZpcmVmbHkuQm94LkRhdGEuVGltZUNvbHVtbitUb3RhbFNlY29uZHNTdG9yYWdlLCBGaXJlZmx5LkJveAZOAAAA2AFBQUVBQUFELy8vLy9BUUFBQUFBQUFBQU1BZ0FBQUQ5RlRsWXNJRlpsY25OcGIyNDlNeTQwTGpJMExqTXdOelF3TENCRGRXeDBkWEpsUFc1bGRYUnlZV3dzSUZCMVlteHBZMHRsZVZSdmEyVnVQVzUxYkd3RkFRQUFBQ3BGVGxZdVVtVnRiM1JwYm1jdVEyeHBaVzUwVUdGeVlXMWxkR1Z5VFdGdVlXZGxjaXR0ZVZScGJXVUJBQUFBQmw5MllXeDFaUUFKQWdBQUFBQUFBQUFBQUFBQUN3PT0FFgAAAB1FTlYuVXRpbGl0aWVzLkluZGV4RGVmaW5pdGlvbgMAAAAETmFtZQZVbmlxdWUIU2VnbWVudHMBAAQBIUVOVi5VdGlsaXRpZXMuU2VnbWVudERlZmluaXRpb25bXQIAAAACAAAACRwAAAABCVAAAAABFwAAABYAAAAJMAAAAAAJUgAAAAEYAAAAFgAAAAkgAAAAAAlUAAAAARkAAAAWAAAACTgAAAAACVYAAAABGgAAABYAAAAJNAAAAAAJWAAAAAdQAAAAAAEAAAABAAAABB9FTlYuVXRpbGl0aWVzLlNlZ21lbnREZWZpbml0aW9uAgAAAAlZAAAAB1IAAAAAAQAAAAEAAAAEH0VOVi5VdGlsaXRpZXMuU2VnbWVudERlZmluaXRpb24CAAAACVoAAAAHVAAAAAABAAAAAQAAAAQfRU5WLlV0aWxpdGllcy5TZWdtZW50RGVmaW5pdGlvbgIAAAAJWwAAAAdWAAAAAAEAAAABAAAABB9FTlYuVXRpbGl0aWVzLlNlZ21lbnREZWZpbml0aW9uAgAAAAlcAAAAB1gAAAAAAQAAAAEAAAAEH0VOVi5VdGlsaXRpZXMuU2VnbWVudERlZmluaXRpb24CAAAACV0AAAAFWQAAAB9FTlYuVXRpbGl0aWVzLlNlZ21lbnREZWZpbml0aW9uAgAAAApDb2x1bW5OYW1lCkRlc2NlbmRpbmcBAAECAAAACRwAAAAAAVoAAABZAAAACTAAAAAAAVsAAABZAAAACSAAAAAAAVwAAABZAAAACTgAAAAAAV0AAABZAAAACTQAAAAACw==";
+var customers = new Northwind.Models.Customers();
+ENV.Utilities.TableDefinitionConverter.Convert(newDef, oldDef, customers.DataProvider, @"nwfil001.dat"); </code></pre>
+<p>Let's review this code.</p>
+<ol>
+<li>oldDef - the original structure of the btrieve table in Base64 format. you can obtain that by right clicking on an Btrieve Entity in the Entity Browser and select <code>Copy Btrieve Definition as Base64 string</code>
+<img src="getting-definition-base64.png" alt="Getting Definition Base64" /></li>
+<li>newDef - the new structure of the Btrieve table in Base64 format.</li>
+<li>an instance of the entity.</li>
+<li>Calling the <code>Convert</code> method that recieves the newDev, oldDef, DataProvider and filename to convert.</li>
+</ol>
+<blockquote>
+<p>If you want to translate the Base64 to a readable object, use the <code>ENV.Utilities.TableDefinitionConverter.FromBase64</code> method.</p>
+</blockquote>
+<ul>
+<li><a href="originals.html">Originals</a></li>
+</ul>
+
+
+
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/Changing-Btrieve-Table-Definitions/index.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'changing-btrieve-table-definitions.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>
