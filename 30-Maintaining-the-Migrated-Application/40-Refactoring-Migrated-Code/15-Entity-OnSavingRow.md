@@ -7,9 +7,9 @@ To maintain these you have to add code in the `OnSavingRow` of each controller t
 Also - you may have all sorts of validations that should be the same when the user inputs and when there is an automatic import process.
 
 These are the exact problems that `OnSavingRow` in the `Entity` class can solve (since version 30725).
-The `OnSavingRow` in the `Entity` class is called immediately after the `OnSavingRow` of the specific controller, for each entity that is updated, deleted are inserted.
+The `OnSavingRow` in the `Entity` class is called immediately after the `OnSavingRow` of the specific controller, for each entity that is updated, deleted or inserted.
 
-The `OnSavingRow` event receives and event args that specify the specific activity - `Insert`, `Update` or `Delete`
+The `OnSavingRow` event receives an event args that specify the specific activity - `Insert`, `Update` or `Delete`
 
 Here's an example of it's usage:
 ```csdiff
