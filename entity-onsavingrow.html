@@ -35,8 +35,8 @@
 To maintain these you have to add code in the <code>OnSavingRow</code> of each controller that &quot;may&quot; update this entity.</p>
 <p>Also - you may have all sorts of validations that should be the same when the user inputs and when there is an automatic import process.</p>
 <p>These are the exact problems that <code>OnSavingRow</code> in the <code>Entity</code> class can solve (since version 30725).
-The <code>OnSavingRow</code> in the <code>Entity</code> class is called immediately after the <code>OnSavingRow</code> of the specific controller, for each entity that is updated, deleted are inserted.</p>
-<p>The <code>OnSavingRow</code> event receives and event args that specify the specific activity - <code>Insert</code>, <code>Update</code> or <code>Delete</code></p>
+The <code>OnSavingRow</code> in the <code>Entity</code> class is called immediately after the <code>OnSavingRow</code> of the specific controller, for each entity that is updated, deleted or inserted.</p>
+<p>The <code>OnSavingRow</code> event receives an event args that specify the specific activity - <code>Insert</code>, <code>Update</code> or <code>Delete</code></p>
 <p>Here's an example of it's usage:</p>
 <pre data-line="17,18,19,20,21" class="language-csdiff line-numbers"><code>public class Customers : Entity 
 {
