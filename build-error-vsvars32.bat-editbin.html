@@ -30,14 +30,50 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="build-error-cprogram-files-x86microsoft-visual-studio-14.0common7ide.toolsvsvars32.bat-editbin">Build error – “C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE..\tools\vsvars32.bat” editbin</h1>
+<h2 id="visual-studio-2015">Visual Studio 2015</h2>
 <p>In some cases, mainly when you upgrade VS, the build in 2015 will fail with the following message:</p>
 <p><img src="buildFail.png" alt="" /><br />
 This is due to the fact that Visual Studio checks for the environment variable according to the installed VS.<br />
 To overcome this issue, make sure the C++ Tools option in the installer is selected. By default VS2015 only installs C# and VB.net, but not C++ with its tools.</p>
 <p><img src="vs_setup.png" alt="" /></p>
+<h2 id="visual-studio-2017">Visual Studio 2017</h2>
 <p>If you are using VS2017, during the installation, make sure to check &quot;Desktop development with C++&quot;</p>
 <p><img src="vs2017setup.png" alt="" /></p>
 <p>In both VS2015 and VS2017, you can configure this even after VS is already installed. Go to &quot;Add/Remove Programs&quot;, Right-Click on VS installation -&gt; you should get an option to modify the installation.</p>
+<h2 id="what-is-it-good-for">What is it good for?</h2>
+<p>In the migration we ran into cases where old com component or external dll's would crash with an error regarding &quot;Data Execution Prevention&quot; and other wierd crashes.</p>
+<p>Here are some examples of the errors we got:</p>
+<ol>
+<li>System.DllNotFoundException - Unable to load DLL 'xxx\mgchart': A dynamic link library (DLL) initialization routine failed. (Exception from HRESULT: 0x8007045A)</li>
+<li>System.DllNotFoundException - Unable to load DLL 'some dll': Invalid access to memory location. (Exception from HRESULT: 0x800703E6)</li>
+<li>Errors with a dll called export.dll</li>
+<li>Errors with a dll called mgexport.dll</li>
+<li>Errors calling a crystal report dll.</li>
+</ol>
+<p>After researching the matter we found the running <code>editbin /nxcompat</code> with some configuration solved this problem for these com components.
+For more info on edit bin see <a href="https://msdn.microsoft.com/en-us/library/d25ddyfc.aspx">Microsoft editbin documentation</a></p>
+<p>Initially we've added it to every migration as a post build event, but in recent migration we only add it if we run into a bug that justifies it.</p>
+<p>Up to Visual Studio 2015 the post build event was as follows:</p>
+<pre><code>call &quot;$(DevEnvDir)..\tools\vsvars32.bat&quot;
+editbin.exe /NXCOMPAT:NO &quot;$(TargetPath)&quot;
+</code></pre>
+<p>In Visual Studio 2017, Microsoft has changed the <code>DevEnvDir</code> requiring a more complicated post build event that searches for the editbin:</p>
+<pre><code>IF EXIST &quot;%25ProgramFiles(x86)%25\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build&quot; call &quot;%25ProgramFiles(x86)%25\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars32.bat&quot; &amp;amp;&amp;amp; goto :run
+      IF EXIST &quot;%25ProgramFiles%25\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build&quot; call &quot;%25ProgramFiles(x86)%25\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars32.bat&quot; &amp;amp;&amp;amp; goto :run
+      IF EXIST &quot;%25ProgramFiles(x86)%25\Microsoft Visual Studio\2017\Professional\VC\Auxiliary\Build&quot; call &quot;%25ProgramFiles(x86)%25\Microsoft Visual Studio\2017\Professional\VC\Auxiliary\Build\vcvars32.bat&quot; &amp;amp;&amp;amp; goto :run
+      IF EXIST &quot;%25ProgramFiles%25\Microsoft Visual Studio\2017\Professional\VC\Auxiliary\Build&quot; call &quot;%25ProgramFiles(x86)%25\Microsoft Visual Studio\2017\Professional\VC\Auxiliary\Build\vcvars32.bat&quot; &amp;amp;&amp;amp; goto :run
+      IF EXIST &quot;%25ProgramFiles(x86)%25\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build&quot; call &quot;%25ProgramFiles(x86)%25\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat&quot; &amp;amp;&amp;amp; goto :run
+      IF EXIST &quot;%25ProgramFiles%25\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build&quot; call &quot;%25ProgramFiles(x86)%25\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat&quot; &amp;amp;&amp;amp; goto :run
+      IF EXIST &quot;%25VS140COMNTOOLS%25&quot; call &quot;%25VS140COMNTOOLS%25VsDevCmd.bat&quot; &amp;amp;&amp;amp; goto :run
+      IF EXIST &quot;%25VS120COMNTOOLS%25&quot; call &quot;%25VS120COMNTOOLS%25VsDevCmd.bat&quot; &amp;amp;&amp;amp; goto :run
+      IF EXIST &quot;%25VS110COMNTOOLS%25&quot; call &quot;%25VS110COMNTOOLS%25VsDevCmd.bat&quot; &amp;amp;&amp;amp; goto :run
+      IF EXIST &quot;%25VS100COMNTOOLS%25&quot; call &quot;%25VS100COMNTOOLS%25VsDevCmd.bat&quot;
+      :run
+      editbin.exe /NXCOMPAT:NO &quot;$(TargetPath)&quot;
+</code></pre>
+<p>If you want you can copy this text to the Post Build event of your projects and it'll work in VS2017.</p>
+<p>That said - most application don't use wierd com component or external events, and if they do, we recommend to remove them.</p>
+<p>So my recommendation to anyone who finds this enoying, remove it, test your external dll's and coms and if all is ok - live happily ever after without it.</p>
 
 
 
