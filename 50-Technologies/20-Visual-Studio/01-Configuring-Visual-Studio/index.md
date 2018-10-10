@@ -34,6 +34,11 @@ The following settings are in the  "Tools\Options" menu
 1. Go to the "Text Editor\C#\Advanced" Tab
 2. Check the "Collapse #regions when collapsing to definition" check box, under "Outlining"  
 ![2017 03 12 18H01 23](2017-03-12_18h01_23.png)  
+### B.4 Disable Test Flags
+1. Go to the "Tests" Tab
+2. Uncheck `Discover tests in real time from source files`
+![2018 10 07 12H38 11](2018-10-07_12h38_11.png)
+
 **Improves performance**
 ### C - Configure the "Error List..." Window
 1. Go to "View\Error List" menu  
