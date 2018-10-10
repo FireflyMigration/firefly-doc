@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Migration project</title>
+    <title>Tuning the code of Calls with many Arguments</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,20 +29,33 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="migration-project">Migration project</h1>
-<ul>
-<li><a href="automatic-migration-using-ftp.html">Automatic Migration Using FTP</a></li>
-<li><a href="using-the-migration-reports.html">Using the Migration Reports</a></li>
-<li><a href="alpha-testing.html">Alpha Testing</a></li>
-<li><a href="getting-the-code-for-the-first-time.html">Getting the code for the first time</a></li>
-<li><a href="symbols-for-the-module-env.dll-were-not-loaded.html">Symbols for the module ENV.dll were not loaded</a></li>
-<li><a href="splitting-an-application-into-smaller-parts.html">Splitting an application into smaller parts</a></li>
-<li><a href="data-migration-from-btrieve-to-sql.html">Data Migration from Btrieve To SQL</a></li>
-<li><a href="iis-configuration.html">IIS Configuration</a></li>
-<li><a href="customize-the-code-before-the-final-migration.html">Customize the code before the final migration</a></li>
-<li><a href="tuning-the-code-of-calls-with-many-arguments.html">Tuning the code of Calls with many Arguments</a></li>
-<li><a href="oracle-performance-enhancements-in-version-29720.html">Oracle Performance Enhancements in version 29720</a></li>
-</ul>
+                <div class="content"><h1 id="tuning-the-code-of-calls-with-many-arguments">Tuning the code of Calls with many Arguments</h1>
+<p>Sometimes in the migrated code you may find a call to a controller (&quot;program&quot; in magic) with many arguments.</p>
+<p>By default all the arguments are migrated in a single line, as follows - which may sometimes require you to scroll horizontally.</p>
+<p><img src="arguments-in-single-line.gif" alt="Arguments In Single Line" /></p>
+<p>Of course you can define word wrap in Visual Studio (<code>Menu:Edit\Advanced\word wrap</code>), and it'll look like this:
+<img src="wordwrap.png" alt="File" /></p>
+<h2 id="migration-optimization-options">Migration Optimization options</h2>
+<p>Since different developers prefer different options we've added several configuration flags that can help make this clearer</p>
+<h3 id="named-parameters">Named Parameters</h3>
+<p>The migration engine can be configured to migrate the names of parameters as well - to make it easier to identify which value is sent to which parameter.
+You can choose to include the names if a controller receives more than X parameters(a value that you can choose) and it'll look like this:
+<img src="namesparameters.png" alt="Namesparameters" /></p>
+<blockquote>
+<p>of course you can also use it with word wrap.</p>
+</blockquote>
+<h3 id="each-argument-in-new-line">Each Argument in new line</h3>
+<p>The migration engine can be configured to migrate the each argument in a new line.
+You can choose to do that when a controller receives more than X arguments(a value that you can choose) and it'll look like this:
+<img src="parameters-in-new-line.png" alt="Parameters In New Line" /></p>
+<blockquote>
+<p>you cal also do this without named parameters if you choose</p>
+</blockquote>
+<h3 id="wrap-multi-line-parameters-with-a-region">Wrap multi line parameters with a Region</h3>
+<p>Since each parameter in a new line can be cluttering, you can also choose to put long argument lists in a region.
+<img src="region-of-arguments.gif" alt="Region Of Arguments" /></p>
+<h3 id="let-us-know-what-you-prefer">Let us know what you prefer</h3>
+<p>Please ask your technical contact at Firefly to configure it based on your requests. Feel free to change it and play with it until you get what you like</p>
 
 
 
@@ -50,7 +63,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/80-Tuning-the-code-of-Calls-with-many-Arguments/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -112,7 +125,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'migration-project.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'tuning-the-code-of-calls-with-many-arguments.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
