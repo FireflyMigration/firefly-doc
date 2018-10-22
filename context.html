@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="Firefly.Box.Context">
+
+    <title>Context</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="context">Context</h1>
+<p>Whenever you use multi threading in an application, either by using <code>AsyncHelperBase</code> for a UIController or by service mutliple requests for the iis in parallel, the class called <code>Firefly.Box.Context</code> comes into play.</p>
+<p>Each thread will have it's own instance of the class called <code>Firefly.Box.Context</code>, you can access the context of the current thread by using the <code>Current</code> property of the class <code>Firefly.Box.Context</code>.
+To list all the current active contexts you can use the <code>Firefly.Box.Context.ActiveContexts</code> class.</p>
+<p>The <code>Context</code> class is responsible for keeping information that is relevant only for the current thread and making sure that each thread get's it's own separated values.</p>
+<p>When ever you run a controller using the <code>AsyncHelperBase</code> class or recieve a new request - a new <code>Context</code> instance is created to serve that thread.</p>
+<p>Once the work is done, the <code>Context</code> is disposed and all it's assets are disposed.</p>
+<h2 id="the-following-topics-should-be-considered">The following topics should be considered:</h2>
+<ol>
+<li>Each context has it's own Controller Stack - you can see it in <code>Firefly.Box.Context.Current.ActiveTasks</code></li>
+<li>Each context has it's own connections to the database and it's own transactions</li>
+<li>Each context has it's own instance of the <code>Application</code> class this means that when you set a value to a column that is defined in the <code>Application</code> class, it only affects that specific context.</li>
+<li><code>Application</code>'s <code>OnStart</code> event is executed when ever the first controller is called. - this means that it'll get executed when you calll using <code>AsyncHelperBase</code> class or when a new web request is served.</li>
+</ol>
+<blockquote>
+<p>when usign AsyncHelperBase class you can controll that behaviour with the <code>DisableApplicationStart</code> flag.</p>
+</blockquote>
+<ol start="5">
+<li>By default Memory Tables are not shared between contexts.</li>
+<li>ParametersInMemory (getparam, setparam) are not shared between contexts - if you want to share values between contexts, use <code>SharedValSet</code> and <code>SharedValGet</code></li>
+<li>Ini values that are set using u.IniSet('xx',false) are not shared between contexts - each context will have it's own values.</li>
+</ol>
+<h2 id="sharing-data-between-threads">Sharing Data Between Threads</h2>
+<p>You can share data between threads by using the C# <code>static</code> keyword.
+For Example:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>class MyClass
+{
+	public static string CustomerName = "Important Customer";
+} </code></pre>
+<h2 id="saving-context-specific-data">Saving Context Specific Data</h2>
+<p>There are two ways to save data per context - that will still be available in the context of that specific context.</p>
+<h3 id="use-the-context-object">1. Use the Context Object</h3>
+<p>Setting a context specific value:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>//set the value
+Firefly.Box.Context.Current["CustomerName"] = "Important Customer";
+//get the value
+System.Diagnostics.Debug.WriteLine(Firefly.Box.Context.Current["CustomerName"]);
+//List value from all Current Contexts:
+foreach (var item in Firefly.Box.Context.ActiveContexts)
+{
+    System.Diagnostics.Debug.WriteLine(item["CustomerName"];
+} </code></pre>
+<blockquote>
+<p>note that every value that is stored in the context and implements the <code>IDisposable</code> interface will get disposed when the context is disposed.</p>
+</blockquote>
+<h3 id="using-context-static">2. Using Context Static</h3>
+<p>You can use the generic <code>ContextStatic</code> class to maintain the ease of use of <code>static</code> with the Context separation.</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>public static ContextStatic&lt;string&gt; CustomerName = new ContextStatic&lt;string&gt;(() =&gt; "Default Value"); </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>// set the value for the current context
+CustomerName.Value = "Important Customer";
+// get the value
+System.Diagnostics.Debug.WriteLine(CustomerName.Value);
+//List value from all Current Contexts:
+foreach (var item in Firefly.Box.Context.ActiveContexts)
+{
+    System.Diagnostics.Debug.WriteLine( CustomerName.GetValueFromContext(item));
+} </code></pre>
+<blockquote>
+<p>this is better than using the <code>[ThreadStatic]</code> attribute since threads get reused and the <code>ContextStatic</code> is cleared and refreshed</p>
+</blockquote>
+<h2 id="important-note">Important note</h2>
+<p>When you create your own threads, or use a non migrated web code that calls migrated code - make sure to call <code>Firefly.Box.Context.Current.Dispose()</code> when you are done, to close all active connections and release all context specific resources.</p>
+<h2 id="interesting-codes-to-review-in-env">Interesting codes to review in ENV</h2>
+<ol>
+<li><code>RaiseOnContext</code> and <code>RaiseOnContextPrivate</code> method in <code>ControllerBase</code></li>
+<li><code>UserMethods.CtxGetId</code></li>
+<li><code>UserMethods.CtxSetName</code></li>
+<li><code>UserMethods.CtxGetAllNames</code></li>
+<li><code>UserMethods.CtxNum</code></li>
+<li><code>UserMethods.SetContextFocus</code></li>
+<li><code>UserMethods.DoOnContext</code></li>
+<li><code>UserMethods.CtxKill</code></li>
+<li><code>UserMethods.CtxLstUse</code></li>
+<li><code>UserMethods.CtxProg</code></li>
+<li><code>UserMethods.CtxClose</code></li>
+<li><code>UserMethods.CtxStat</code></li>
+<li><code>UserMethods.Prog</code></li>
+</ol>
+
+
+
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/Multi-Threading-and-Contexts/Context.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'context.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>

@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="parallel, paralel, async">
 
-    <title>Maintaining the Migrated Application</title>
+    <title>Having the same screen open mutliple times</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,45 +29,21 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="maintaining-the-migrated-application">Maintaining the Migrated Application</h1>
-<ul>
-<li><a href="common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-net.html">Common migrated code patterns and how to improve on them in new code in NET</a></li>
-<li><a href="debugging-the-migrated-application.html">Debugging the Migrated Application</a></li>
-<li><a href="unit-tests-and-migrated-code.html">Unit Tests and Migrated Code</a></li>
-<li><a href="refactoring-migrated-code.html">Refactoring Migrated Code</a></li>
-<li><a href="improve-performance.html">Improve Performance</a></li>
-<li><a href="working-with-users-data.html">Working with Users Data</a></li>
-<li><a href="further-learning.html">Further Learning</a></li>
-<li><a href="user-interface.html">User Interface</a></li>
-<li><a href="adding-a-new-database-to-the-application.html">Adding a new database to the application</a></li>
-<li><a href="define-a-calculated-entity-column.html">Define a calculated entity column</a></li>
-<li><a href="getting-the-update-migrated-code.html">Getting the update migrated code</a></li>
-<li><a href="reporting-an-issue-after-the-final-migration.html">Reporting an issue after the final migration</a></li>
-<li><a href="web-development.html">Web Development</a></li>
-<li><a href="stop-designing-forms.html">Stop designing Forms</a></li>
-<li><a href="show-expand-button.html">Show expand button</a></li>
-<li><a href="sql-editor-tool.html">SQl Editor Tool</a></li>
-<li><a href="adding-a-view-to-a-nested-class.html">Adding a View to a Nested Class</a></li>
-<li><a href="adding-a-new-project-to-a-migrated-solution.html">Adding a new project to a migrated solution</a></li>
-<li><a href="changing-btrieve-table-definitions.html">Changing Btrieve Table Definitions</a></li>
-<li><a href="copying-controllers-(programs).html">Copying Controllers (programs)</a></li>
-<li><a href="creating-ddf-files.html">Creating DDF files</a></li>
-<li><a href="creating-different-code-for-different-clients.html">Creating Different code for different Clients</a></li>
-<li><a href="enabling-the-developer-tools-based-on-application-logic.html">Enabling the developer tools based on application logic</a></li>
-<li><a href="export-to-datatable.html">Export to DataTable</a></li>
-<li><a href="how-to-make-an-application-multilingual.html">How to make an application multilingual</a></li>
-<li><a href="imported-updates-to-migrated-applications.html">Imported Updates to Migrated Applications</a></li>
-<li><a href="isdifferentfrom.html">IsDifferentFrom</a></li>
-<li><a href="moving-from-oracle-to-sql-basics.html">Moving from Oracle to SQL Basics</a></li>
-<li><a href="multi-threading-and-contexts.html">Multi Threading and Contexts</a></li>
-<li><a href="printing-the-total-number-of-pages-in-every-page.html">Printing the Total number of pages in every page</a></li>
-<li><a href="readallrows-and-readselectedrows.html">ReadAllRows and ReadSelectedRows</a></li>
-<li><a href="resolve-missing-namespaces-in-code-samples.html">Resolve Missing Namespaces in Code Samples</a></li>
-<li><a href="saverowanddo.html">SaveRowAndDo</a></li>
-<li><a href="sehexception-and-apprunner.html">SEHException and AppRunner</a></li>
-<li><a href="using-a-resource-file-instead-of-images-on-drive.html">Using a resource file instead of images on drive</a></li>
-<li><a href="using-user-methods-class-in-non-migrated-code.html">Using user methods class in non migrated code</a></li>
-</ul>
+                <div class="content"><h1 id="having-the-same-screen-open-mutliple-times">Having the same screen open mutliple times</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/P2D4F7YVivE" frameborder="0" allowfullscreen></iframe>
+<h2 id="create-the-asynchelper-class">Create the AsyncHelper class</h2>
+<pre data-line="" class="language-csdiff line-numbers"><code>public class ShowOrdersAsync:AsyncHelperBase
+{
+    public void Run(Text forCustomer = null)
+    {
+        RunAsync&lt;ShowOrders&gt;(c =&gt; c.Run(forCustomer));
+    }
+} </code></pre>
+<h2 id="call-in-new-thread">Call in new thread</h2>
+<pre data-line="2" class="language-csdiff line-numbers"><code>-new ShowOrders().Run(_controller.Customers.CustomerID);
+new ShowOrdersAsync().Run(_controller.Customers.CustomerID); </code></pre>
+<h2 id="make-sure-you-read">Make sure you read</h2>
+<p><a href="context.html">Context class</a> in the context of multi threading etc...</p>
 
 
 
@@ -75,7 +51,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/Multi-Threading-and-Contexts/Having the same screen open mutliple times.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -137,7 +113,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'maintaining-the-migrated-application.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'having-the-same-screen-open-mutliple-times.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
