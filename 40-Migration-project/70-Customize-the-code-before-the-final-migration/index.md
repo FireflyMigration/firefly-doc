@@ -44,13 +44,14 @@ This is an example of how it looks in the migrated code:
 #### Table
 ![2018 09 06 11H57 13](2018-09-06_11h57_13.jpg)
 #### Program
-![2018 09 06 11H59 27](2018-09-06_11h59_27.jpg)
+![2018 09 06 11H59 27](2018-09-06_11h59_27.jpg)  
+
 As mentioned, in the migrated code, any column is references by its entity (table) name, so
 removing the short name prefix will improve the look & feel of the code, giving it a "neat" look.  
 This is how it will look after the change:
-#### table
+#### Table
 ![2018 09 06 12H08 53](2018-09-06_12h08_53.jpg)
-#### program
+#### Program
 ![2018 09 06 12H09 38](2018-09-06_12h09_38.jpg)
 
 This is just one example. As you can see there are various ways to influence the way the migrated code will look - we encourage you to consider these type of changes. Enjoy :)
