@@ -3,7 +3,7 @@
 # Customize the code before the final migration
 
 Just before you are about the perform the final migration of your code and switch to .Net, we can offer you some additional  
-options that will allow you to fine tune your code, adjust it to suit your needs.
+options that will allow you to fine-tune your code, adjust it to suit your needs.
 
 The first part of the code adjustment is the namespaces - you can read more about it in the [Splitting an application into smaller parts](http://doc.fireflymigration.com/splitting-an-application-into-smaller-parts.html) article.
 
@@ -13,7 +13,7 @@ You can ask for an IO prefix of your choice - this is an example of how it will 
 ![I O Prefix](IOPrefix.png)
 
 ## Add a prefix to a local column
-The virtual fields (columns) names are not changed in the migration.
+The virtual fields (columns) names are not changed during the migration.
 In Magic it was not simple to differentiate between a virtual and a real field (from a table).
 In the migrated code it is clearer - any table column will have the entity (table) name prefixed
 (e.g <code>myTable.myColumn</code>).  
@@ -24,9 +24,9 @@ However, you can ask for a prefix to a local column - this is an example of how 
 In Magic a table / program is referenced by its number. In the migrated code they are referenced by their class name.  
 However, we know that a lot of Magic developers remember the table / program numbers by heart and would like to keep the reference to the number in the migrated code. These numbers can be added to the class name - as a prefix or suffix.
 This is an example of how it will look before/after:
-#### table
+#### Table
 ![2018 09 06 11H18 58](2018-09-06_11h18_58.jpg)
-#### program
+#### Program
 ![2018 09 06 11H21 47](2018-09-06_11h21_47.jpg)
 
 ## Modify the table / column name
@@ -36,12 +36,14 @@ For example: USRD_UserDesc.
 This was also used in the column names, so the table short name is prefixed to each column.
 For example: USRD_User_name.
 In Magic, it was done for obvious reasons - this was a quick way of recognizing the table each column belongs to without having to look for it.
-This is an example of how it looks in Magic:
+This is an example of how it looks in Magic:  
+
 ![2018 09 06 11H53 38](2018-09-06_11h53_38.jpg)
+
 This is an example of how it looks in the migrated code:
-#### table
+#### Table
 ![2018 09 06 11H57 13](2018-09-06_11h57_13.jpg)
-#### program
+#### Program
 ![2018 09 06 11H59 27](2018-09-06_11h59_27.jpg)
 As mentioned, in the migrated code, any column is references by its entity (table) name, so
 removing the short name prefix will improve the look & feel of the code, giving it a "neat" look.  
