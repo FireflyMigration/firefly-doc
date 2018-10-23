@@ -15,4 +15,4 @@ One useful example is the **#if** - only when the condition is true, the compile
 DoSomething()
 #endif
 ```
-In this example, the part in the **#if** will not be compiled when building the code in Release mode.
+In this example, the part in the **#if** will not be compiled when building the code in Release mode..
