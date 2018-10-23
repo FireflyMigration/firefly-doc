@@ -31,14 +31,14 @@
                 </div>
                 <div class="content"><h1 id="customize-the-code-before-the-final-migration">Customize the code before the final migration</h1>
 <p>Just before you are about the perform the final migration of your code and switch to .Net, we can offer you some additional<br />
-options that will allow you to fine tune your code, adjust it to suit your needs.</p>
+options that will allow you to fine-tune your code, adjust it to suit your needs.</p>
 <p>The first part of the code adjustment is the namespaces - you can read more about it in the <a href="http://doc.fireflymigration.com/splitting-an-application-into-smaller-parts.html">Splitting an application into smaller parts</a> article.</p>
 <h2 id="add-a-prefix-to-an-io-definition">Add a prefix to an IO definition</h2>
 <p>By default, any IO (stream) defined in a class will get the <code>_io</code> prefix.<br />
 You can ask for an IO prefix of your choice - this is an example of how it will look before/after:
 <img src="IOPrefix.png" alt="I O Prefix" /></p>
 <h2 id="add-a-prefix-to-a-local-column">Add a prefix to a local column</h2>
-<p>The virtual fields (columns) names are not changed in the migration.
+<p>The virtual fields (columns) names are not changed during the migration.
 In Magic it was not simple to differentiate between a virtual and a real field (from a table).
 In the migrated code it is clearer - any table column will have the entity (table) name prefixed
 (e.g <code>myTable.myColumn</code>).<br />
@@ -48,9 +48,9 @@ However, you can ask for a prefix to a local column - this is an example of how 
 <p>In Magic a table / program is referenced by its number. In the migrated code they are referenced by their class name.<br />
 However, we know that a lot of Magic developers remember the table / program numbers by heart and would like to keep the reference to the number in the migrated code. These numbers can be added to the class name - as a prefix or suffix.
 This is an example of how it will look before/after:</p>
-<h4 id="table">table</h4>
+<h4 id="table">Table</h4>
 <p><img src="2018-09-06_11h18_58.jpg" alt="2018 09 06 11H18 58" /></p>
-<h4 id="program">program</h4>
+<h4 id="program">Program</h4>
 <p><img src="2018-09-06_11h21_47.jpg" alt="2018 09 06 11H21 47" /></p>
 <h2 id="modify-the-table-column-name">Modify the table / column name</h2>
 <p>Adding the number is just one form of change that can be done to the name. There are other manipulations that can be made.<br />
@@ -59,12 +59,12 @@ For example: USRD_UserDesc.
 This was also used in the column names, so the table short name is prefixed to each column.
 For example: USRD_User_name.
 In Magic, it was done for obvious reasons - this was a quick way of recognizing the table each column belongs to without having to look for it.
-This is an example of how it looks in Magic:
-<img src="2018-09-06_11h53_38.jpg" alt="2018 09 06 11H53 38" />
-This is an example of how it looks in the migrated code:</p>
-<h4 id="table-1">table</h4>
+This is an example of how it looks in Magic:</p>
+<p><img src="2018-09-06_11h53_38.jpg" alt="2018 09 06 11H53 38" /></p>
+<p>This is an example of how it looks in the migrated code:</p>
+<h4 id="table-1">Table</h4>
 <p><img src="2018-09-06_11h57_13.jpg" alt="2018 09 06 11H57 13" /></p>
-<h4 id="program-1">program</h4>
+<h4 id="program-1">Program</h4>
 <p><img src="2018-09-06_11h59_27.jpg" alt="2018 09 06 11H59 27" />
 As mentioned, in the migrated code, any column is references by its entity (table) name, so
 removing the short name prefix will improve the look &amp; feel of the code, giving it a &quot;neat&quot; look.<br />
