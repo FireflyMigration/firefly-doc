@@ -1723,6 +1723,32 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 4.1 <strong>BackColor</strong> to</li>
 </ol>
 
+<h1 id="exercise-control-models">Exercise - Control Models</h1>
+<ol>
+<li>Using the <strong>Solution Explorer</strong> open the <strong>Base</strong> Project and navigate to <strong>Shared.Theme.Controls</strong> Folder.</li>
+<li>Right click on the <strong>Controls</strong> folder and add new item using the <strong>BaseControl</strong> template, name it <strong>MandatoryTextBox</strong>.</li>
+<li>Open the <strong>Properties</strong> panel and set :
+3.1 <strong>BackColor</strong> = LightCoral.
+3.2 <strong>Border</strong> = Thick
+3.3 <strong>BorderColor</strong> = Red</li>
+<li>Change the panel to show <strong>Events</strong>.</li>
+<li>Double click the <strong>InputValidation</strong> event and show <strong>Error</strong> message if the <strong>this.Text == &quot;&quot;</strong>;</li>
+<li><strong>Build</strong> the <strong>Base Project</strong>.</li>
+<li>Open the <strong>ShowProducts</strong>.</li>
+<li>Use <strong>Class Outline</strong> and navigate to the <strong>view</strong>.</li>
+<li>Right Click the ToolBoox and <strong>Add Tab</strong> name it <strong>My controls</strong>.</li>
+<li>Right click anywhere on the <strong>form</strong> (<strong>Do not</strong> Right click a control like the grid on the form) and select <strong>Add Controls To Toolbox</strong>.</li>
+<li>Navigate to the <strong>bin folder</strong> of your solution and select the <strong>NorthwindBase.dll</strong>.</li>
+<li>In the new windows that open navigate to <strong>Northwind.Shared.Them.Controls</strong> and expend it.</li>
+<li>select the  <strong>MandatoryTextBox</strong> and click the <strong>Add to ToolBox</strong> button.</li>
+<li>Drug and drop the <strong>MandatoryTextBox</strong> to the screen set the <strong>Data</strong> property to point to the <strong>Products.ProductName</strong>.</li>
+<li>Delete the current textBox in the ProductName Column with the new <strong>MandatoryTextBox</strong>.</li>
+<li>Build and test , try to delte the product name from one of the rows in Runtime, and check that you get the error message.</li>
+</ol>
+<ul>
+<li><a href="exercise-binding-controls-results.html">Exercise Binding Controls results</a></li>
+</ul>
+
 <h1 id="sql-entity">SQL Entity</h1>
 <ol>
 <li>Create a new UIController named “ProductsSQLEntity”</li>

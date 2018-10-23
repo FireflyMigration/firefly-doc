@@ -30,125 +30,53 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="exercise-binding-controls-result">Exercise - Binding Controls result</h1>
-<p>At item <strong>14</strong> Your <strong>ShowEmployeesDataInTabs</strong> class should look like :</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing;
+<p>At item <strong>5</strong> Your <strong>MandatoryTextBox</strong> code behind should look like :</p>
+<pre data-line="21,22,23,24,25" class="language-csdiff line-numbers"><code>using System.Drawing;
+using Firefly.Box.UI;
 using Firefly.Box;
 using ENV;
 using ENV.Data;
 
-namespace Northwind.TestExercies
+namespace Northwind.Shared.Theme.Controls
 {
-    public class ShowEmployeesDataInTabs : UIControllerBase
+
+    /// &lt;summary&gt;MandatoryTextBox&lt;/summary&gt;
+    public partial class MandatoryTextBox : Shared.Theme.Controls.TextBox
     {
-        public readonly Models.Employees Employees = new Models.Employees();
-        public readonly NumberColumn TabValue = new NumberColumn { DefaultValue=1};
 
-        public ShowEmployeesDataInTabs()
-        {
-            From = Employees;
-        }
 
-        public void Run()
+        /// &lt;summary&gt;MandatoryTextBox&lt;/summary&gt;
+        public MandatoryTextBox()
         {
-            Execute();
-        }
-
-        protected override void OnLoad()
-        {
-            View = () =&gt; new Views.ShowEmployeesDataInTabsView(this);
-        }
-        public Text FullName()
-        {
-            return Employees.FirstName + " " + Employees.LastName;
-        }
-    }
-} </code></pre>
-<p>The <strong>ShowEmployeesDataInTabs</strong> runtime should look like :<br />
-Personal Tab :<br />
-<img src="2017-05-14_13h38_06.png" alt="2017-05-14_13h38_06" /><br />
-Address Tab :<br />
-<img src="2017-05-14_13h41_30.png" alt="2017-05-14_13h41_30" /><br />
-Contact Tab :<br />
-<img src="2017-05-14_13h42_14.png" alt="2017-05-14_13h42_14" /><br />
-Notes Tab :<br />
-<img src="2017-05-14_13h42_44.png" alt="2017-05-14_13h42_44" /><br />
-Extra Tab:<br />
-<img src="2017-05-14_13h43_03.png" alt="2017-05-14_13h43_03" /></p>
-<p>After item <strong>15</strong> The <strong>Notes</strong> Tab runtime should look like :<br />
-<img src="2017-05-14_13h55_04.png" alt="2017-05-14_13h55_04" /></p>
-<p>After item <strong>24</strong> <strong>ShowEmployeesDataInTabs</strong> class should look like :</p>
-<pre data-line="14" class="language-csdiff line-numbers"><code>using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing;
-using Firefly.Box;
-using ENV;
-using ENV.Data;
-
-namespace Northwind.TestExercies
-{
-    public class ShowEmployeesDataInTabs : UIControllerBase
-    {
-        public readonly Models.Employees Employees = new Models.Employees();
-        public readonly Models.Employees EmployeesReportsTo = new Models.Employees();
-        public readonly NumberColumn TabValue = new NumberColumn { DefaultValue=1};
-
-        public ShowEmployeesDataInTabs()
-        {
-            From = Employees;
-        }
-
-        public void Run()
-        {
-            Execute();
-        }
-
-        protected override void OnLoad()
-        {
-            View = () =&gt; new Views.ShowEmployeesDataInTabsView(this);
-        }
-        public Text FullName()
-        {
-            return Employees.FirstName + " " + Employees.LastName;
-        }
-    }
-} </code></pre>
-<p><strong>ShowEmployeesDataInTabsView</strong> class should look like :</p>
-<pre data-line="23,24,25,26" class="language-csdiff line-numbers"><code>using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using Firefly.Box;
-using Firefly.Box.UI.Advanced;
-using ENV;
-using ENV.Data;
-
-namespace Northwind.TestExercies.Views
-{
-    partial class ShowEmployeesDataInTabsView : Shared.Theme.Controls.Form
-    {
-        ShowEmployeesDataInTabs _controller;
-        public ShowEmployeesDataInTabsView(ShowEmployeesDataInTabs controller)
-        {
-            _controller = controller;
             InitializeComponent();
+        }
 
-            cmbReportsTo.ListSource = _controller.EmployeesReportsTo;
-            cmbReportsTo.ValueColumn = _controller.EmployeesReportsTo.EmployeeID;
-            cmbReportsTo.DisplayColumn = _controller.EmployeesReportsTo.FirstName;
-            cmbReportsTo.ListWhere.Add(_controller.EmployeesReportsTo.EmployeeID.IsDifferentFrom(_controller.Employees.EmployeeID));
+        private void MandatoryTextBox_InputValidation()
+        {
+            if (this.Text == "")
+                ENV.Message.ShowError("This a mandatory text box, it cannot be left empty");
         }
     }
 } </code></pre>
-<p>The <strong>ShowEmployeesDataInTabs</strong> runtime should look like :<br />
-Extra Tab:<br />
-<img src="2017-05-14_14h00_46.png" alt="2017-05-14_14h00_46" /></p>
+<p>items 9 to 16 should look like :<br />
+9 :<br />
+<img src="2018-08-27_15h24_16.png" alt="2018-08-27_15h24_16" /><br />
+<img src="2018-08-27_15h25_27.png" alt="2018-08-27_15h25_27" /><br />
+10 :<br />
+<img src="2018-08-27_15h19_37.png" alt="2018-08-27_15h19_37" /><br />
+11 :<br />
+<img src="2018-08-27_15h27_17.png" alt="2018-08-27_15h27_17" /><br />
+12 :<br />
+<img src="2018-08-27_15h29_00.png" alt="2018-08-27_15h29_00" /><br />
+13:<br />
+<img src="2018-08-27_15h30_04.png" alt="2018-08-27_15h30_04" /><br />
+14 :<br />
+<img src="2018-08-27_15h31_30.png" alt="2018-08-27_15h31_30" /><br />
+<img src="2018-08-27_15h32_20.png" alt="2018-08-27_15h32_20" /><br />
+15 :<br />
+<img src="2018-08-27_15h33_29.png" alt="2018-08-27_15h33_29" />
+16 :<br />
+<img src="2018-08-27_15h34_25.png" alt="2018-08-27_15h34_25" /></p>
 
 
 
@@ -156,7 +84,7 @@ Extra Tab:<br />
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/23_Binding-Controls/03-Exercise-Binding-Controls/01-Exercise-Binding-Controls-results.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/25-Control-Models/03-Exercise-Control-Models/01-Exercise-Binding-Controls-results.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>

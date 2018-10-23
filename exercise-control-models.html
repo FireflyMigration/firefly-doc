@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="Control, model, type, gui">
+    <meta name="keywords" content="">
 
-    <title>Creating and using a Control Model</title>
+    <title>Exercise - Control Models</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,23 +29,31 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="creating-and-using-a-control-model">Creating and using a Control Model</h1>
-<p>Same as you have controls from the migrated code, you can add controls of your own.<br />
-In order to do that you need to:</p>
+                <div class="content"><h1 id="exercise-control-models">Exercise - Control Models</h1>
 <ol>
-<li>Go to the Base/Views/Controls folder</li>
-<li>Right click / add new item and choose the <em>BaseControl</em> template</li>
-<li>Specify a name - for example <em>ExitButton</em>*</li>
-<li>The class will be opened in the designer. Press F7 to go to the code</li>
-<li>Note the type from which your class inherits from - by default it is <em>TextBox</em> - you can change it any control from the <em>Shared.Theme.Controls</em> namespace. In our sample choose <em>Button</em></li>
-<li>Setting its properties is done from the designer - so open it (double click on the class) and press F4.<br />
-In our sample you can change the <em>Format</em> to display <em>Exit</em> and handle its <em>Click</em> event to raise the <em>Command.Exit</em></li>
-<li>Build the <em>Base</em> project and then the startup project</li>
-<li>Now if you will choose the <em>Add controls to toolbox</em> option and select the <em>Base</em> dll again, you will see the newly added control<br />
-<img src="2018-03-08_14h01_08.jpg" alt="2018 03 08 14H01 08" /></li>
+<li>Using the <strong>Solution Explorer</strong> open the <strong>Base</strong> Project and navigate to <strong>Shared.Theme.Controls</strong> Folder.</li>
+<li>Right click on the <strong>Controls</strong> folder and add new item using the <strong>BaseControl</strong> template, name it <strong>MandatoryTextBox</strong>.</li>
+<li>Open the <strong>Properties</strong> panel and set :
+3.1 <strong>BackColor</strong> = LightCoral.
+3.2 <strong>Border</strong> = Thick
+3.3 <strong>BorderColor</strong> = Red</li>
+<li>Change the panel to show <strong>Events</strong>.</li>
+<li>Double click the <strong>InputValidation</strong> event and show <strong>Error</strong> message if the <strong>this.Text == &quot;&quot;</strong>;</li>
+<li><strong>Build</strong> the <strong>Base Project</strong>.</li>
+<li>Open the <strong>ShowProducts</strong>.</li>
+<li>Use <strong>Class Outline</strong> and navigate to the <strong>view</strong>.</li>
+<li>Right Click the ToolBoox and <strong>Add Tab</strong> name it <strong>My controls</strong>.</li>
+<li>Right click anywhere on the <strong>form</strong> (<strong>Do not</strong> Right click a control like the grid on the form) and select <strong>Add Controls To Toolbox</strong>.</li>
+<li>Navigate to the <strong>bin folder</strong> of your solution and select the <strong>NorthwindBase.dll</strong>.</li>
+<li>In the new windows that open navigate to <strong>Northwind.Shared.Them.Controls</strong> and expend it.</li>
+<li>select the  <strong>MandatoryTextBox</strong> and click the <strong>Add to ToolBox</strong> button.</li>
+<li>Drug and drop the <strong>MandatoryTextBox</strong> to the screen set the <strong>Data</strong> property to point to the <strong>Products.ProductName</strong>.</li>
+<li>Delete the current textBox in the ProductName Column with the new <strong>MandatoryTextBox</strong>.</li>
+<li>Build and test , try to delte the product name from one of the rows in Runtime, and check that you get the error message.</li>
 </ol>
-<hr />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/uWX025ElpMA?list=PL1DEQjXG2xnKZtXegLpuyGsdaxGh9dr9n" frameborder="0" allowfullscreen></iframe>
+<ul>
+<li><a href="exercise-binding-controls-results.html">Exercise Binding Controls results</a></li>
+</ul>
 
 
 
@@ -53,7 +61,7 @@ In our sample you can change the <em>Format</em> to display <em>Exit</em> and ha
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/25-Control-Models/02-Creating-and-Using-a-Control-Model.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/25-Control-Models/03-Exercise-Control-Models/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -115,7 +123,7 @@ In our sample you can change the <em>Format</em> to display <em>Exit</em> and ha
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'creating-and-using-a-control-model.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'exercise-control-models.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
