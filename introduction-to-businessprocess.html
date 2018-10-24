@@ -88,64 +88,6 @@ namespace Northwind.Training.SimpleScreen
 <li>We'll then press <kbd>F10</kbd> to &quot;Break&quot; on next line, and we'll see that the value of <code>Counter</code> in the &quot;Watch&quot; window change to reflect the number of rows in the Order_Details table.<br />
 <img src="2017-02-27_09h00_41.png" alt="2017 02 27 09H00 41" /></li>
 </ul>
-<h3 id="business-process-life-cycle">Business Process Life-Cycle</h3>
-<ul>
-<li>Review the BusinessProcess Life-Cycle - make the following changes:</li>
-</ul>
-<pre data-line="3,8,10" class="language-csdiff line-numbers"><code>public GetOrderStatistics()
-{
-    Debug.WriteLine("Constructor");
-    From = Order_Details;
-}
-public void Run()
-{
-    Debug.WriteLine("Before the Execute");
-    Execute();
-    Debug.WriteLine("After the Execute");
-} </code></pre>
-<ul>
-<li>Add code for all the controller life cycle events (just copy)</li>
-</ul>
-<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLoad()
-{
-    Debug.WriteLine("\tOnLoad");
-}
-protected override void OnStart()
-{
-    Debug.WriteLine("\t\tOnStart");
-}
-protected override void OnEnterRow()
-{
-    Debug.WriteLine("\t\t\tOnEnterRow");
-}
-protected override void OnLeaveRow()
-{
-    Debug.WriteLine("\t\t\tOnLeaveRow");
-}
-protected override void OnSavingRow()
-{
-    Debug.WriteLine("\t\t\tOnSavingRow");
-}
-protected override void OnEnd()
-{
-    Debug.WriteLine("\t\tOnEnd");
-}
-protected override void OnUnLoad()
-{
-    Debug.WriteLine("\tOnUnLoad");
-} </code></pre>
-<ul>
-<li>Run the code and review the output in Visual Studio &quot;Output&quot; window</li>
-<li>Change the <code>OnEnterRow</code> method to reflect the values of the OrderID and the ProductID</li>
-</ul>
-<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnEnterRow()
-{
-    Debug.WriteLine("\t\t\tOnEnterRow Order:" + Order_Details.OrderID + " Product:" + Order_Details.ProductID);
-} </code></pre>
-<ul>
-<li>Run the code and review the output in Visual Studio &quot;Output&quot; window</li>
-</ul>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7lcdz6ACF8o?list=PL1DEQjXG2xnKS0Zo7h-PrExXZ18hGxhvA" frameborder="0" allowfullscreen></iframe>
 
 
 
@@ -153,7 +95,7 @@ protected override void OnUnLoad()
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/11_BusinessProcess-and-Out-Parameters/02_Introduction-to-BusinessProcess.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/11_BusinessProcess-and-Out-Parameters/04_Introduction-to-BusinessProcess.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>

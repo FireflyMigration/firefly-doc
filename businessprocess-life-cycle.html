@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="Control, model, type, gui">
+    <meta name="keywords" content="batch,Lifecycle,life cycle, life-cycle,Break,BreakPoint, Break Point, Watch, Watch Window, Output window">
 
-    <title>Creating and using a Control Model</title>
+    <title>Business Process Life-Cycle</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,23 +29,64 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="creating-and-using-a-control-model">Creating and using a Control Model</h1>
-<p>Same as you have controls from the migrated code, you can add controls of your own.<br />
-In order to do that you need to:</p>
-<ol>
-<li>Go to the Base/Views/Controls folder</li>
-<li>Right click / add new item and choose the <em>BaseControl</em> template</li>
-<li>Specify a name - for example <em>ExitButton</em>*</li>
-<li>The class will be opened in the designer. Press F7 to go to the code</li>
-<li>Note the type from which your class inherits from - by default it is <em>TextBox</em> - you can change it any control from the <em>Shared.Theme.Controls</em> namespace. In our sample choose <em>Button</em></li>
-<li>Setting its properties is done from the designer - so open it (double click on the class) and press F4.<br />
-In our sample you can change the <em>Format</em> to display <em>Exit</em> and handle its <em>Click</em> event to raise the <em>Command.Exit</em></li>
-<li>Build the <em>Base</em> project and then the startup project</li>
-<li>Now if you will choose the <em>Add controls to toolbox</em> option and select the <em>Base</em> dll again, you will see the newly added control<br />
-<img src="2018-03-08_14h01_08.jpg" alt="2018 03 08 14H01 08" /></li>
-</ol>
-<hr />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/uWX025ElpMA?list=PL1DEQjXG2xnKZtXegLpuyGsdaxGh9dr9n" frameborder="0" allowfullscreen></iframe>
+                <div class="content"><h1 id="business-process-life-cycle">Business Process Life-Cycle</h1>
+<ul>
+<li>Review the BusinessProcess Life-Cycle - make the following changes:</li>
+</ul>
+<pre data-line="3,8,10" class="language-csdiff line-numbers"><code>public GetOrderStatistics()
+{
+    Debug.WriteLine("Constructor");
+    From = Order_Details;
+}
+public void Run()
+{
+    Debug.WriteLine("Before the Execute");
+    Execute();
+    Debug.WriteLine("After the Execute");
+} </code></pre>
+<ul>
+<li>Add code for all the controller life cycle events (just copy)</li>
+</ul>
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+    Debug.WriteLine("\tOnLoad");
+}
+protected override void OnStart()
+{
+    Debug.WriteLine("\t\tOnStart");
+}
+protected override void OnEnterRow()
+{
+    Debug.WriteLine("\t\t\tOnEnterRow");
+}
+protected override void OnLeaveRow()
+{
+    Debug.WriteLine("\t\t\tOnLeaveRow");
+}
+protected override void OnSavingRow()
+{
+    Debug.WriteLine("\t\t\tOnSavingRow");
+}
+protected override void OnEnd()
+{
+    Debug.WriteLine("\t\tOnEnd");
+}
+protected override void OnUnLoad()
+{
+    Debug.WriteLine("\tOnUnLoad");
+} </code></pre>
+<ul>
+<li>Run the code and review the output in Visual Studio &quot;Output&quot; window</li>
+<li>Change the <code>OnEnterRow</code> method to reflect the values of the OrderID and the ProductID</li>
+</ul>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnEnterRow()
+{
+    Debug.WriteLine("\t\t\tOnEnterRow Order:" + Order_Details.OrderID + " Product:" + Order_Details.ProductID);
+} </code></pre>
+<ul>
+<li>Run the code and review the output in Visual Studio &quot;Output&quot; window</li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7lcdz6ACF8o?list=PL1DEQjXG2xnKS0Zo7h-PrExXZ18hGxhvA" frameborder="0" allowfullscreen></iframe>
 
 
 
@@ -53,7 +94,7 @@ In our sample you can change the <em>Format</em> to display <em>Exit</em> and ha
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/25-Control-Models/02-Creating-and-Using-a-Control-Model.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/11_BusinessProcess-and-Out-Parameters/06_BusinessProcess-life-cycle.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -115,7 +156,7 @@ In our sample you can change the <em>Format</em> to display <em>Exit</em> and ha
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'creating-and-using-a-control-model.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'businessprocess-life-cycle.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
