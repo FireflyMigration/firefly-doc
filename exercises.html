@@ -1714,13 +1714,42 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <li><a href="exercise-binding-controls-results.html">Exercise Binding Controls results</a></li>
 </ul>
 
-<h1 id="exercise-control-model">Exercise - Control Model</h1>
+<h1 id="exercise-binding-controls">Exercise - Binding Controls</h1>
 <ol>
-<li>Open <strong>ShowProducts</strong> use the class outline to open the view.</li>
-<li>In the <strong>Solution Explorer</strong> navigate to the <strong>Base</strong> project <strong>Shared -&gt; Theme -&gt; Controls</strong>.</li>
-<li>Right click on the <strong>Controls</strong> folder and add a new item, use the <strong>BaseControl</strong> template, name it <strong>MandatoryTextBox</strong>.</li>
-<li>Open the <strong>Properties</strong> panel and set :
-4.1 <strong>BackColor</strong> to</li>
+<li><p>Add new folder under the Exervicises folder, name the new folder <strong>SelectionList</strong>.</p>
+</li>
+<li><p>Add new UIController to the <strong>SelectionList</strong> folder, name the new UIController <strong>ShowOrdersWithEmployeeSelection</strong>.</p>
+</li>
+<li><p>Set the <strong>Orders</strong> table as the main table</p>
+</li>
+<li><p>Build and go to the form designer.</p>
+</li>
+<li><p>Add a <strong>Grid control</strong> to the form.</p>
+</li>
+<li><p>Add the following columns to the <strong>Grid</strong>:</p>
+<ol>
+<li>Orders.OrderID.</li>
+<li>Orders.CustomerID.</li>
+<li>Orders.OrderDate.</li>
+</ol>
+</li>
+<li><p>Add new UIController to the <strong>SelectionList</strong> folder, name the new UIController <strong>SelectCustomers</strong>.</p>
+</li>
+<li><p>Set the <strong>Customers</strong> table as the main table</p>
+</li>
+<li><p>In the Onload method</p>
+</li>
+<li><p>Build and go to the form designer.</p>
+</li>
+<li><p>Add a <strong>Grid control</strong> to the form.</p>
+</li>
+<li><p>Add the following columns to the <strong>Grid</strong></p>
+</li>
+<li><p>Customer.CustomerID.</p>
+</li>
+<li><p>Customer.CompanyName.</p>
+</li>
+<li></li>
 </ol>
 
 <h1 id="exercise-control-models">Exercise - Control Models</h1>
@@ -1745,9 +1774,6 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <li>Delete the current textBox in the ProductName Column with the new <strong>MandatoryTextBox</strong>.</li>
 <li>Build and test , try to delte the product name from one of the rows in Runtime, and check that you get the error message.</li>
 </ol>
-<ul>
-<li><a href="exercise-binding-controls-results.html">Exercise Binding Controls results</a></li>
-</ul>
 
 <h1 id="sql-entity">SQL Entity</h1>
 <ol>
