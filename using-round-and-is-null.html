@@ -29,7 +29,8 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="using-round-and-is-null">using round and is null</h1>
+                <div class="content">
+                    <h1 id="using-round-and-is-null">using round and is null</h1>
 <pre data-line="2,4,8,9" class="language-csdiff line-numbers"><code>select od.OrderID,p.CategoryID , year(o.OrderDate) year, month(o.OrderDate) month,
 round(
     od.UnitPrice * od.Quantity*
@@ -46,11 +47,13 @@ from [Order Details] od
 	left outer join Orders o on o.OrderID = od.OrderID </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_Qaoq2h4wdU?list=PL1DEQjXG2xnLgvHTh1MJvWScqgyqvsxSu" frameborder="0" allowfullscreen></iframe>
 
+                    <br/>
+                    <script src="//www.powr.io/powr.js?external-type=html"></script>
+                    <div class="powr-hit-counter" id="11a1240c_1540358974"></div>
+                    <br />
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/50-Improve-Performance/16-Using-Basic-and-not-so-basic-sql-to-Dramatically-Improve-Performance/07-using round and is null.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
