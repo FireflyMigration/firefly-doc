@@ -29,8 +29,7 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content">
-                    <h1 id="adding-cache">Adding Cache</h1>
+                <div class="content"><h1 id="adding-cache">Adding Cache</h1>
 <p>Use cache when you have a relation that is unique (returns only one row), and that returns the same row many times.</p>
 <p>In our case we are accessing the Products table based on ID (it's unique, so it returns only one row) and we get the same product many many times (for many orders)</p>
 <pre data-line="11" class="language-csdiff line-numbers"><code>class CollectOrderDetails : BusinessProcessBase 
@@ -60,13 +59,11 @@
     #endregion </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/vyQVOK8YIMU?list=PL1DEQjXG2xnJNtUHwUvmwYKay85F3WYMg" frameborder="0" allowfullscreen></iframe>
 
-                    <br/>
-                    <script src="//www.powr.io/powr.js?external-type=html"></script>
-                    <div class="powr-hit-counter" id="11a1240c_1540358974"></div>
-                    <br />
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                    <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                <br />
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/50-Improve-Performance/00-Reduce-calls-to-the-database/03-Adding-Cache.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at

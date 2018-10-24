@@ -29,8 +29,7 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content">
-                    <h1 id="env.data.entity.shoulddeterminenameaccordingtocallstack">ENV.Data.Entity.ShouldDetermineNameAccordingToCallStack</h1>
+                <div class="content"><h1 id="env.data.entity.shoulddeterminenameaccordingtocallstack">ENV.Data.Entity.ShouldDetermineNameAccordingToCallStack</h1>
 <p>Most programs use entity objects to access database tables.</p>
 <p>In most cases, the physical name of the table is defined in the entity class. However, sometimes we want to redefine the physical name of the table at runtime, so we set the EntityName property of the entity object to a different name. For example, the following program iterates data of products in stock rather than all products, by changing the entity name:</p>
 <p><img src="shoulddeterminenameaccordingtocallstack1.png" alt="" /></p>
@@ -41,13 +40,11 @@
 <p><img src="shoulddeterminenameaccordingtocallstack3.png" alt="" /></p>
 <p>It is also possible to change this behavior for the entire application, by changing the default value of the property to “false” in the ENV.Data.Entity base class. Notice that this change affects existing programs that have the specific scenario above, of changing the EntityName of a table that is used by previous programs in the current call stack, so any assignment to the EntityName property should be examined.</p>
 
-                    <br/>
-                    <script src="//www.powr.io/powr.js?external-type=html"></script>
-                    <div class="powr-hit-counter" id="11a1240c_1540358974"></div>
-                    <br />
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                    <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                <br />
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/70-Should-determine-name-according-to-callstack/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at

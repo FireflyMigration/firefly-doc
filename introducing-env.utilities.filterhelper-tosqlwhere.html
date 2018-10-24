@@ -29,8 +29,7 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content">
-                    <h1 id="introducing-env.utilities.filterhelper.tosqlwhere">Introducing ENV.Utilities.FilterHelper.ToSQLWhere</h1>
+                <div class="content"><h1 id="introducing-env.utilities.filterhelper.tosqlwhere">Introducing ENV.Utilities.FilterHelper.ToSQLWhere</h1>
 <p>Now for the implementation. Instead of receiving the ‘filterColumn’ and the ‘filterValue’ we’ll recieve a ‘filter’ of type “FilterBase”. All we have to do is to translate that “FilterBase” into proper SQL, using the ENV.Utilities.FilterHelper.ToSQLWhere method.</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>static FilterBase IsNotInSelect
    (ColumnBase col, ColumnBase colInOtherTable, FilterBase filter)
@@ -47,13 +46,11 @@
 <p>Of course that this also can be refactored to Context and moved to the TextColumn base class or anywhere else you may find it useful.</p>
 <p>That’s it, long answer to a short question – but my goal was to share with you some advanced features and refactoring concepts that will empower your development – and the biggest fun – you only do this once and then you can simply reuse it all over your code.</p>
 
-                    <br/>
-                    <script src="//www.powr.io/powr.js?external-type=html"></script>
-                    <div class="powr-hit-counter" id="11a1240c_1540358974"></div>
-                    <br />
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                    <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                <br />
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/20-Making-the-most-out-of-Where/80-Introducing-ENV.Utilities.FilterHelper-ToSQLWhere.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at

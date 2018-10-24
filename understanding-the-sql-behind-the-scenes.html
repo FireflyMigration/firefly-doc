@@ -29,8 +29,7 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content">
-                    <h1 id="understanding-the-sql-behind-the-scenes">Understanding the SQL behind the Scenes</h1>
+                <div class="content"><h1 id="understanding-the-sql-behind-the-scenes">Understanding the SQL behind the Scenes</h1>
 <pre data-line="3,4,5,6" class="language-csdiff line-numbers"><code>Select A.OrderID, A.ProductID, A.UnitPrice, A.Quantity,
 
 isnull((select top 1 Rate 
@@ -44,13 +43,11 @@ From dbo.[Order Details] A
 Order by A.OrderID, A.ProductID </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Z28xIYbGQ-M?list=PL1DEQjXG2xnJNtUHwUvmwYKay85F3WYMg" frameborder="0" allowfullscreen></iframe>
 
-                    <br/>
-                    <script src="//www.powr.io/powr.js?external-type=html"></script>
-                    <div class="powr-hit-counter" id="11a1240c_1540358974"></div>
-                    <br />
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                    <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                <br />
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/50-Improve-Performance/00-Reduce-calls-to-the-database/06-Using-GetValue-Inner-Select/04-Understanding-the-SQL-behind-the-Scenes.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at

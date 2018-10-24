@@ -29,8 +29,7 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content">
-                    <h1 id="using-the-user-methods-class-in-non-migrated-code">Using the user methods class in non migrated code</h1>
+                <div class="content"><h1 id="using-the-user-methods-class-in-non-migrated-code">Using the user methods class in non migrated code</h1>
 <p>In the migration, user methods are accessed using the <code>u</code> member. That member is defined in the base class as protected and is available for any class that inherits from it.</p>
 <p>It is implemented in <code>BusinessProcessBase</code>, <code>UIContorllerBase</code>, <code>FlowUIControllerBase</code>, <code>Form</code>, <code>TextColumn</code>, <code>NumberColumn</code> etc...</p>
 <p>If you want to use the UserMethods in other classes you'll need to create an instance for it:</p>
@@ -45,13 +44,11 @@ if (ENV.UserMethods.Instance.IniGet('SomeFlag')==&quot;Y&quot;)
 </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/p84Yl6tVc_E" frameborder="0" allowfullscreen></iframe>
 
-                    <br/>
-                    <script src="//www.powr.io/powr.js?external-type=html"></script>
-                    <div class="powr-hit-counter" id="11a1240c_1540358974"></div>
-                    <br />
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                    <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                <br />
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/Using-user-methods-class-in-non-migrated-code.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
