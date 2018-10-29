@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="why we don't use select for update, sp_getapplock, sp_releaseapplock">
+
+    <title>Locking After Btrieve to SQL Migration</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="locking-after-btrieve-to-sql-migration">Locking After Btrieve to SQL Migration</h1>
+<p>Btrieve and SQL Server have fundamental differences in the way they manage locks.</p>
+<p>When we migrate an application from btrieve to SQL it is crucial to maintain the exact same locking and transaction behavior that existed in Btrieve - in the migrated SQL application.</p>
+<h2 id="locking">Locking</h2>
+<p>In Btrieve an row can be locked even if there is no active transaction. That lock exists while the controller is parked on a row and is released when the controller moves to the next row (After OnSavingRow).</p>
+<h3 id="the-challange-with-sql-server">The Challange with SQL Server</h3>
+<p>The SQL Server <code>select ... with (UPDLOCK,NOWAIT)</code> works differently from the locking strategy used by Btrieve.</p>
+<p>A <code>select ... with (UPDLOCK,NOWAIT)</code> can only exist when a transaction is open - and that lock is only released when the transaction is either committed or released.
+This causes huge problems for application that were migrated from Btrieve to SQL in the past - it had two undesired outcomes.</p>
+<ol>
+<li>Loss of data - Most Btrieve applications did not use Transactions, and even if they did - they had to extend the transaction to cover all locking scenarios, resulting in long transactions that either succeeded or rolled back all together. Users will usually report that they worked all day and nothing was saved - that's because the transaction was still open and the application crashed or rolled back the transaction and nothing was saved.</li>
+<li>Many many locked row errors - since in Btrieve a Lock had a short life span (from lock start, until you leave that row) developers didn't always pay enough attention to their locking. Previously, after they migrated to SQL that lock would extend all the way until the transaction is committed or rolled back - causing users the get a &quot;Locked Row&quot; error more frequently</li>
+</ol>
+<h3 id="the-solution">The Solution</h3>
+<p>To achieve the exact same Locking behavior in SQL Server that existed in the Btrieve application we used two SQL Server native locking stored procedures, <a href="https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-getapplock-transact-sql">sp_getapplock</a> and <a href="https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-releaseapplock-transact-sql">sp_releaseapplock</a>.
+These stored procedures gives us full control of the locking scope and can lock outside transactions.</p>
+<p>So whenever the application issues a lock - instead of using the <code>select ... with (UPDLOCK,NOWAIT)</code> syntax, we call the <code>sp_getapplock</code> stored procedure with a unique key that represents the table and primary key.
+If any other session will call <code>sp_getapplock</code> with the same key, it'll get a locked row error.</p>
+<p>Once the controller leaves the row, we call the <code>sp_releaseapplock</code> with the same key to release the lock.</p>
+<p>We encourage customers after the migration to reduce the locks in their application, since in a <code>BusinessProcess</code> locks cause more database interactions, and since in a <code>BusinessProcess</code> the locks exists for a short period of time (milliseconds) it may make sense to remove them all together.</p>
+<p>Here's an article on how to do so:
+<a href="removing-locking-that-is-not-needed.html">removing-locking-that-is-not-needed.html</a></p>
+<h2 id="transactions">Transactions</h2>
+<p>Most customers using Btrieve did not use Transactions.
+That setting is controlled by the <code>ISAMTransaction</code> setting in the ini file.</p>
+<p>The SQL version of these application uses the <code>NoTransactionEntityDataProvider</code> class which ignores any transaction setting at the <code>Controller</code> level for Entities that were migrated from Btrieve to SQL.</p>
+<p>For customers that did use transactions in Btrieve, (<code>ISAMTransaction = Y</code>) we provide an identical locking and transaction behavior.</p>
+<p>When using Transactions in btrieve, locking that was caused by an actual update command remained until the transaction was committed or rolled back (in btrieve).</p>
+<p>To maintain that behavior in accordance with the <code>sp_getapplock</code> strategy, another call to <code>sp_getapplock</code> will happen before each <code>Update</code> that happens as part of a transaction with a setting to release automatically once the transaction is committed or rolled back.</p>
+
+
+                <br />
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/50-Data-Migration-from-Btrieve-To-SQL/35-Locking-After-Btrieve-to-SQL-Migration.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'locking-after-btrieve-to-sql-migration.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>

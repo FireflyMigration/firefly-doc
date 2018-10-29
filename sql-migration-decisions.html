@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Data Migration from Btrieve To SQL</title>
+    <title>Some Decisions to make</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,17 +29,35 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="data-migration-from-btrieve-to-sql">Data Migration from Btrieve To SQL</h1>
-<hr />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fs3BUbryuno" frameborder="0" allowfullscreen></iframe>
-<ul>
-<li><a href="preparing-for-the-migration.html">Preparing for the Migration</a></li>
-<li><a href="migrating-to-sql.html">Migrating to SQL</a></li>
-<li><a href="sql-migration-decisions.html">SQL Migration Decisions</a></li>
-<li><a href="latin1_general_bin-collation-for-mssql-data-migration.html">Latin1_general_bin collation for MSSQL data migration</a></li>
-<li><a href="locking-after-btrieve-to-sql-migration.html">Locking After Btrieve to SQL Migration</a></li>
-<li><a href="getting-assistance-with-sql-performance-issues.html">Getting assistance with SQL performance issues</a></li>
-</ul>
+                <div class="content"><h1 id="some-decisions-to-make">Some Decisions to make</h1>
+<h3 id="multiple-schemas-vs-prefixing-the-tables">Multiple schemas vs Prefixing the tables</h3>
+<p>Some applications have group of Btrieve tables in a separate folder for different purposes.
+For example, tables that serve a specific module named &quot;Reports&quot; may be stored in a folder named &quot;ReportsTables&quot;.
+It is recommended to migrate all the tables of the application into one SQL database (schema).
+This makes the maintenance and backup of the database very easy.
+In order to differentiate these tables, it is possible to add  a special prefix to their name,
+for example all the tables from the ReportsTables folder will have the prefix &quot;rpt_&quot; in their SQL column name.
+Alternatively, it is possible to migrate these tables into a separate SQL database, which is less recommended.</p>
+<h3 id="naming-tables">Naming Tables</h3>
+<p>In Magic, each table has a name (caption) and a DB Table name.
+In Btrieve the DB Table name usually refer to the file name, which might be invalid SQL name.
+In this case, we use the captions as SQL names for the table and fix them so that there will be SQL style without any spaces for example &quot;my table name&quot; will be changed &quot;MyTableName&quot;.
+This is the standard and recommended option but there are alternatives that you can choose:</p>
+<ol>
+<li>Using the captions as is (i.e. &quot;my table name&quot;)
+In case you used Actian PSQL (formerly pervasive) heavily and you want to keep the original SQL commands in the code which uses the captions as table names.</li>
+<li>However this will require adjustments to all the table names which are based on expressions.</li>
+</ol>
+<h3 id="naming-columns">Naming Columns</h3>
+<p>As with table names, Btrieve has no notion of Column names. The only thing that matters in the table structure is the columns position.
+In SQL, column names are important and are based on the columns captions of the original application.
+However, if your application uses SQL commands and have different columns names in your tables DDFs (Data Definition File),
+the column names should be adjusted.
+Please prepare a use case and consult with Firefly.</p>
+<h3 id="data-storage">Data Storage</h3>
+<p>Most applications store dates as char(8) in the database and store times as numbers.
+In Btrieve, there could be non-standard ways to store data values. For example storing dates as numbers.
+If your application uses special kind of storage for dates, times, booleans etc, please prepare use cases and consult with Firefly.</p>
 
 
                 <br />
@@ -47,7 +65,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/50-Data-Migration-from-Btrieve-To-SQL/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/50-Data-Migration-from-Btrieve-To-SQL/25-SQL Migration Decisions.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -109,7 +127,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'data-migration-from-btrieve-to-sql.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'sql-migration-decisions.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
