@@ -1737,7 +1737,12 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 </li>
 <li><p>Set the <strong>Customers</strong> table as the main table</p>
 </li>
-<li><p>In the Onload method</p>
+<li><p>In the Onload method set the following settings</p>
+<ol>
+<li>Activity to Browse.</li>
+<li>Allow Delete,Insert and update to false.</li>
+<li>Allow Select to ture.</li>
+</ol>
 </li>
 <li><p>Build and go to the form designer.</p>
 </li>
@@ -1749,7 +1754,8 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 </li>
 <li><p>Customer.CompanyName.</p>
 </li>
-<li></li>
+<li><p>Set a Debug Write line in the On Saving row and make sure that you get the message in the output window when selecting an item</p>
+</li>
 </ol>
 
 <h1 id="exercise-control-models">Exercise - Control Models</h1>
