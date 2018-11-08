@@ -36,7 +36,7 @@ protected override OnLoad()
 ```csdiff
 protected override OnLoad()
 {   
-+    Activity =  u.TranslateTaskActivity(u.if(1==1,"Q","M"));     
++    Activity =  u.TranslateTaskActivity(u.If(1==1,"Q","M"));     
 }
 ```
 

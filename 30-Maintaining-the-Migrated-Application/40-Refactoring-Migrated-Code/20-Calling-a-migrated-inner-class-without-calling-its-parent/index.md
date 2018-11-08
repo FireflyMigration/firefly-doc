@@ -1,4 +1,6 @@
-﻿# Calling a migrated inner class without calling it’s parent
+﻿>This article focuses on making as few changes to the code as possible. There is a different approach that includes refactoring to remove dependency on the parent Controller at [reusing-an-inner-controller-class-from-another-controller.html](reusing-an-inner-controller-class-from-another-controller.html)
+
+
 
 Some times we want to be able to run an inner class without calling it’s parent class, this usually happens when we are writing some code without any user interaction that want’s to reuse a code that used to be in a batch “SubTask” of an online task – and now it’s a BusinessProcess inner class of an outer UIContorller Class.
 
