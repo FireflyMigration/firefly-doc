@@ -58,11 +58,11 @@ The result will be:
 
 | Format        | Description                                                                                                                                                                                              |
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **N**         | **N** – Numeric. The number can display negative values (**N5**)                                                                                                                                             |
+| **N**         | **N** – Negative. The number can display negative values (**N5**)                                                                                                                                             |
 | **P**         | **P** – Pad. If the mask of the number is **5P0** and the user types just one digit, it will be padded with the number following **P**. (Ex – specifying the number 6 will become **00006**.)                |
 | **Z**         | **Z** – Zero. In case there is no value in the field, it will be displayed with the character following **Z**.(Ex – if the field mask is **5Z#** and the field is empty, the field will display **#####**)  |
 | **L**         | **L** - Lef. The number will be displayed from left to right (Default is right to left) (**5L**)                                                                                                            |
-| **A**         | A – Auto. Once the user fills all the possible digits of the numeric field, the cursor moves automatically to the next field. (Ex – A5 mask moves to the next field after typing 5 digits)           |
+| **A**         | **A** – Auto. Once the user fills all the possible digits of the numeric field, the cursor moves automatically to the next field. (Ex – A5 mask moves to the next field after typing 5 digits)           |
 
 **Text types**
 
