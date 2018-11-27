@@ -1,4 +1,4 @@
-﻿# Exercise - Binding Controls
+﻿# Exercise - Selection List
 
 1. Add new folder under the Exervicises folder, name the new folder **SelectionList**.
 2. Add new UIController to the **SelectionList** folder, name the new UIController **ShowOrdersWithEmployeeSelection**. 
