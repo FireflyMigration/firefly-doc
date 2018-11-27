@@ -6,7 +6,7 @@
 4. **RunShowEmployeesCars** will call the new instance Run Method.
 5. Build.
 6. Open the **ShowEmployees** form.
-7. Redoes the size of the grid, and add a subform.
+7. Reduce the size of the grid, and add a subform.
 8. Go to the code behind of the form (F7).
 9. After the **InitializeComponent()** set the subform controller.
 10. Build and test.
