@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Data Migration from Btrieve To SQL</title>
+    <title>rowId__And Why all my SQL Indexes are Unique</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,18 +29,49 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="data-migration-from-btrieve-to-sql">Data Migration from Btrieve To SQL</h1>
-<hr />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fs3BUbryuno" frameborder="0" allowfullscreen></iframe>
-<ul>
-<li><a href="preparing-for-the-migration.html">Preparing for the Migration</a></li>
-<li><a href="migrating-to-sql.html">Migrating to SQL</a></li>
-<li><a href="sql-migration-decisions.html">SQL Migration Decisions</a></li>
-<li><a href="latin1_general_bin-collation-for-mssql-data-migration.html">Latin1_general_bin collation for MSSQL data migration</a></li>
-<li><a href="locking-after-btrieve-to-sql-migration.html">Locking After Btrieve to SQL Migration</a></li>
-<li><a href="rowid__and-why-all-my-sql-indexes-are-unique.html">rowId__And Why all my SQL Indexes are Unique</a></li>
-<li><a href="getting-assistance-with-sql-performance-issues.html">Getting assistance with SQL performance issues</a></li>
-</ul>
+                <div class="content"><h1 id="rowid_and-why-all-my-sql-indexes-are-unique">rowId__And Why all my SQL Indexes are Unique</h1>
+<p>As part of the automatic migration to SQL we create the tables in SQL.
+If you open the table definition using SQL management tool you may have notice this two items :</p>
+<ol>
+<li>All the table indexes are now unique regardless of it bin unique or not in Btrive.</li>
+<li>A new column as bin add to all the tables named  &quot;rowid__&quot; that is of type Identity.</li>
+</ol>
+<p>In this article we will cover the reason why.</p>
+<p>First let us start with an Ten thousand feet type of statement:
+&quot;we use the rowid__ to get a unique row identifier, and we add that to all your indexes to make them Unique&quot;.</p>
+<p>This will rise the following questions :</p>
+<ol>
+<li>I have code column that is unique - why not use this column ?</li>
+</ol>
+<p>Two reasons:</p>
+<p><strong>Row was lost</strong></p>
+<p>The short reply will be to prevent the end user for getting the &quot;Row was lost&quot; exception.</p>
+<p>When Btrieve updates a row – it <strong>doesn't</strong> do it based on the code column – it <strong>does it based on btrieve position</strong>
+so the identical behavior is to use an identity column that is external to the table columns and cannot be changed.
+If we used the code column as the way to identify a unique row – and that column was changed – it can cause a &quot;Row was lost exception&quot;.</p>
+<p>Imagine the following scenario – we have a row with code &quot;A&quot; and it's position (rowid__)is 751.</p>
+<ol>
+<li>A parent task parks on the row.</li>
+<li>A sub task is called and update the code column from A to B.</li>
+<li>The sub task is done and the parent class now tries to update the row – and row A does not exist – hens – row was lost exception.</li>
+</ol>
+<p><strong>Locking</strong></p>
+<p>locking is done based on the position definition – so if we lock the Key &quot;A&quot; and change the code to &quot;B&quot; the row will not locked.</p>
+<ol start="2">
+<li>Why do I need my non Unique Index to become Unique ?</li>
+</ol>
+<ol type="a">
+<li>We add the rowid__ column to the index making the index unique.</li>
+<li>It's better to have unique indexes from an application perspective
+because in a UIController we need to know what is the next row, and what is the previous row.
+So for every Order By statement that is not unique – a UIController will automatically add the unique columns to the Order By.
+If the Index in the database doesn't have that extra column – it'll not be used causing poorer performance.</li>
+<li>Before we added the rowid__ column to the table – some customers complained that rows appear in a different order between
+Btrieve and SQL. When we investigated it, we found that SQL and Btrieve sort non unique index differently.
+Btrieve does so based on an extrapolation of the position. And SQL does so based on undocumented method.
+To get a result that is as close as possible to the result in btrieve when using a non unique index
+we migrate into the rowid__ column that extrapolation of the position value.</li>
+</ol>
 
 
                 <br />
@@ -48,7 +79,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/50-Data-Migration-from-Btrieve-To-SQL/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/50-Data-Migration-from-Btrieve-To-SQL/35-rowId__And-Why-all-my-SQL-Indexes-are-Unique/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -110,7 +141,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'data-migration-from-btrieve-to-sql.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'rowid__and-why-all-my-sql-indexes-are-unique.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
