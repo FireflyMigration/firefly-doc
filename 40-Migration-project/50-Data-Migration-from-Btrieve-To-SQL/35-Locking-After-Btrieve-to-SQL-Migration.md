@@ -29,6 +29,13 @@ We encourage customers after the migration to reduce the locks in their applicat
 Here's an article on how to do so:
 [removing-locking-that-is-not-needed.html](removing-locking-that-is-not-needed.html)
 
+#### Viewing the current locks in the db
+To see all the current locks and who is locking them, you can use the following query:
+```SQL
+select a.resource_type,a.resource_description,b.program_name,b.host_name,b.host_process_id , b.login_name ,b.session_id
+from sys.dm_tran_locks a left outer join sys.dm_exec_sessions b on a.request_session_id=b.session_id 
+```
+
 ## Transactions
 Most customers using Btrieve did not use Transactions.
 That setting is controlled by the `ISAMTransaction` setting in the ini file.
