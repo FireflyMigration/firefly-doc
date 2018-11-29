@@ -51,6 +51,11 @@ If any other session will call <code>sp_getapplock</code> with the same key, it'
 <p>We encourage customers after the migration to reduce the locks in their application, since in a <code>BusinessProcess</code> locks cause more database interactions, and since in a <code>BusinessProcess</code> the locks exists for a short period of time (milliseconds) it may make sense to remove them all together.</p>
 <p>Here's an article on how to do so:
 <a href="removing-locking-that-is-not-needed.html">removing-locking-that-is-not-needed.html</a></p>
+<h4 id="viewing-the-current-locks-in-the-db">Viewing the current locks in the db</h4>
+<p>To see all the current locks and who is locking them, you can use the following query:</p>
+<pre><code class="language-SQL">select a.resource_type,a.resource_description,b.program_name,b.host_name,b.host_process_id , b.login_name ,b.session_id
+from sys.dm_tran_locks a left outer join sys.dm_exec_sessions b on a.request_session_id=b.session_id 
+</code></pre>
 <h2 id="transactions">Transactions</h2>
 <p>Most customers using Btrieve did not use Transactions.
 That setting is controlled by the <code>ISAMTransaction</code> setting in the ini file.</p>
