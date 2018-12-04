@@ -22,21 +22,42 @@ You can download AppRunner from [this link](https://github.com/FireflyMigration/
 
 For details about how to use it please refer to the [ReadMe page](https://github.com/FireflyMigration/AppRunner/blob/master/README.md)
 
-2) Using mklink.
+2) Using mklink to create a symbolic link.
 
-Using the mklink command allow you to create a local directory with all the application files from the remote server. While saving the trouble of having a local copy, that will be needed to be updated from time to time, and no duplicate files.
+Symbolic link are used to create a local folder that points to a remote server folder.
+
+The folder created by the Symbolic links are transparent to users. and appear as normal local folder.
+
+Using the mklink command allow you to point your user to the exe file on its local Hard drive.
+
+
+This method allow you to enjoy the two worlds :
+
+1. The application will be running form the local HD and the problem is resolve.
+2. You do not need to copy the application to your user local drive, every time you have a new version.
+
+
 To implement this please open command line window, and run this command :
 ```csdiff
-mklink /D "local location on your hard drive, I.E. c:\northwind" "remote folder I.E. x:\fireflymigration\northwind\northwind.exe" 
+mklink /D c:\northwind-linked \\trainingpc\c\Northwind\Dotnet" 
 ```
-/D Creates a directory symbolic link. The default is a file symbolic link.
 
-Now you can see on your local hard drive a new folder named northwind, and you can run the application from there.
+/D  = Switch creates a directory symbolic link.
+
+c:\northwind-linked = the name of the new folder that will be created for you on your hard drive.
+
+\\\\trainingpc\c\Northwind\Dotnet = remote folder that have the application files.
+
+Now you can see on your local hard drive a new folder named northwind-linked, and you can run the application from there.
+
+![2018 12 04 14h16 10](2018-12-04_15h01_13.png)
+
 If needed you can create a northwind.Bat file that will do that for the end user:
 ```csdiff
-If not exist c:\northwind mklink /D C:\northwind x:\fireflymigration\northwind\northwind.exe
+If not exist c:\northwind-linked mklink /D C:\northwind-linked \\trainingpc\c\Northwind\Dotnet
 
 c:
-cd c:\northwind
+cd c:\northwind-linked
 start northwind.exe /ini=northwind.ini
 ```
+
