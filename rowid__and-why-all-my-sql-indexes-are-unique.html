@@ -33,8 +33,8 @@
 <p>As part of the automatic migration to SQL we create the tables in SQL.
 If you open the table definition using SQL management tool you may have notice this two items :</p>
 <ol>
-<li>All the table indexes are now unique regardless of it bin unique or not in Btrive.</li>
-<li>A new column as bin add to all the tables named  &quot;rowid__&quot; that is of type Identity.</li>
+<li>All the table indexes are now unique regardless of it been unique or not in Btrieve.</li>
+<li>A new column has been add to all the tables named  &quot;rowid__&quot; that is of type Identity.</li>
 </ol>
 <p>In this article we will cover the reason why.</p>
 <p>First let us start with an Ten thousand feet type of statement:
@@ -46,7 +46,7 @@ If you open the table definition using SQL management tool you may have notice t
 <p>Two reasons:</p>
 <p><strong>Row was lost</strong></p>
 <p>The short reply will be to prevent the end user for getting the &quot;Row was lost&quot; exception.</p>
-<p>When Btrieve updates a row – it <strong>doesn't</strong> do it based on the code column – it <strong>does it based on btrieve position</strong>
+<p>When Btrieve updates a row – it <strong>doesn't</strong> do it based on the code column – it <strong>does it based on Btrieve position</strong>
 so the identical behavior is to use an identity column that is external to the table columns and cannot be changed.
 If we used the code column as the way to identify a unique row – and that column was changed – it can cause a &quot;Row was lost exception&quot;.</p>
 <p>Imagine the following scenario – we have a row with code &quot;A&quot; and it's position (rowid__)is 751.</p>
