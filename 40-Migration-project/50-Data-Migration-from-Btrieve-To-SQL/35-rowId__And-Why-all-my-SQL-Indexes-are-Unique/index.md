@@ -3,8 +3,8 @@
 As part of the automatic migration to SQL we create the tables in SQL.
 If you open the table definition using SQL management tool you may have notice this two items : 
 
-1. All the table indexes are now unique regardless of it bin unique or not in Btrive.
-2. A new column as bin add to all the tables named  "rowid__" that is of type Identity.
+1. All the table indexes are now unique regardless of it been unique or not in Btrieve.
+2. A new column has been add to all the tables named  "rowid__" that is of type Identity.
 
 In this article we will cover the reason why.
 
@@ -22,7 +22,7 @@ Two reasons:
 
 The short reply will be to prevent the end user for getting the "Row was lost" exception.
 
-When Btrieve updates a row – it **doesn't** do it based on the code column – it **does it based on btrieve position**
+When Btrieve updates a row – it **doesn't** do it based on the code column – it **does it based on Btrieve position**
 so the identical behavior is to use an identity column that is external to the table columns and cannot be changed.
 If we used the code column as the way to identify a unique row – and that column was changed – it can cause a "Row was lost exception".
 
