@@ -52,6 +52,7 @@ Now you can see on your local hard drive a new folder named northwind-linked, an
 
 ![2018 12 04 14h16 10](2018-12-04_15h01_13.png)
 
+
 If needed you can create a northwind.Bat file that will do that for the end user:
 ```csdiff
 If not exist c:\northwind-linked mklink /D C:\northwind-linked \\trainingpc\c\Northwind\Dotnet
