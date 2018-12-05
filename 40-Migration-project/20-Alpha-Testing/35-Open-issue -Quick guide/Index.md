@@ -1,4 +1,4 @@
-﻿keywords: issue,ticket, tracker
+﻿keywords: issue,ticket, tracker, issue tracker
 
 A good issue report must include:
 1. A Step by step description for someone who is not familiar with the app.
@@ -6,8 +6,7 @@ A good issue report must include:
 3. A screenshot of the result in magic
 4. A screenshot of the result in .NET
 5. If it's a process - a profiler file for that process.
-
-
+6. One problem per issue
 
 
 ## Step by step description
@@ -60,9 +59,10 @@ Profiler log is essential especially when a process is involved.   It is a good 
 Please refer to: <br>
 http://doc.fireflymigration.com/using-firefly-profiler.html
 
+
+> In case the issue is related to perfomance, please include time in Magic and time in .NET 
+
 <br><br>
-
-
 
 For the complete guide of how to report an issue, please refer to:  
 http://doc.fireflymigration.com/using-issue-tracker.html  
