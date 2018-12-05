@@ -60,7 +60,7 @@ Please refer to: <br>
 http://doc.fireflymigration.com/using-firefly-profiler.html
 
 
-> In case the issue is related to perfomance, please include time in Magic and time in .NET 
+> In case the issue is related to performance, please include time in Magic and time in .NET 
 
 <br><br>
 
