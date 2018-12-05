@@ -2,7 +2,7 @@
 
 1.	Find the **Models** folder in the **NorthwindBase**.
 2.	Right click on the **Models** folder and **add new Item**, select the **Entity** template, name the new entity **EmployeeCars**.
-3. Set the **DataSources** to be **Northwind1**, (copy the DataSources definition from one of the excising entities);
+3. Set the **DataSources** to be **Northwind**, (copy the DataSources definition from one of the excising entities);
 4. Add The following members :  
     1. **NumberColum** for the **EmployeeID** format **10**.
     1. **NumberColum** for the **CarID** format **6**.
