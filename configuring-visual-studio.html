@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="Symbols for the module 'ENV.dll' were not loaded, VisualStudioTemplates, Templates, VSDropAssist, Class Outline, Extensions, Bundle">
+    <meta name="keywords" content="Symbols for the module 'ENV.dll' were not loaded, VisualStudioTemplates, Templates, VSDropAssist, Class Outline, Extensions, Bundle, visual studio configuration">
 
     <title>Configuring Visual Studio</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -32,54 +32,55 @@
                 <div class="content"><h1 id="configuring-visual-studio">Configuring Visual Studio</h1>
 <p>In this document we'll detail how we configure Visual Studio 2017 to make the most out of it while working with large migrated applications.</p>
 <p>Although this document was written with Visual Studio 2017 in mind, most of it is also relevant to previous versions of Visual Studio.</p>
-<p>These are the extensions and settings we use - since they are our preferences none of them are mandatory but they are highly recommended.</p>
 <h2 id="a-visual-studio-extentions">A - Visual Studio Extentions</h2>
 <p>We have created am Extensions Bundle for your use.<br />
 You can download it from: <a href="https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioExtensionBundle">Extensions Bundle</a></p>
-<p>You can read more about the extensions bundle in: <a href="http://doc.fireflymigration.com/Extensions-Bundle.html">Learn More about the extension bundle</a></p>
-<h2 id="important">Important:</h2>
-<p>After installing the extensions, open Visual Studio and under the Tools menu, select &quot;Tuneup Visual Studio&quot; and click Yes.<br />
-In case you can't install the extension, follow the manual instructions <a href="http://doc.fireflymigration.com/Manually-install-Templates-and-Snippets.html">here</a>
-<img src="2018-08-04_19h23_07.png" alt="2018 08 04 19H23 07" /></p>
+<h3 id="after-you-install-the-bundle">After you install the bundle</h3>
+<p>Please run the Visual Studio Tuneup utility at &quot;TOOLS\Tuneup Visual Studio&quot;</p>
+<p><img src="2018-12-07_13h23_27.png" alt="2018 12 07 13H23 27" /></p>
+<p><strong>if you can't find this menu entry, <a href="extensions-bundle.html">please install the extentions manually</a></strong></p>
 <h2 id="b-other-important-settings-that-improve-the-performance-and-experience-in-visual-studio">B - Other important settings that improve the performance and experience in Visual Studio</h2>
-<p>The following settings are in the  &quot;Tools\Options&quot; menu
-<img src="2017-03-08_09h59_27.png" alt="2017 03 08 09H59 27" /></p>
-<h4 id="b.1-uncheck-enable-diagnostic-tools-while-debugging">B.1 - Uncheck &quot;Enable Diagnostic Tools while debugging&quot;</h4>
-<p><img src="2017-02-21_06h54_22.png" alt="2017 02 21 06H54 22" />
-<strong>Improves performance</strong> when running in Debug</p>
-<h3 id="b.2-disable-intellitrace">B.2 Disable IntelliTrace</h3>
+<p>The following settings are in the  &quot;Tools\Options&quot; menu</p>
+<p><img src="2017-03-08_09h59_27.png" alt="2017 03 08 09H59 27" /></p>
+<h3 id="b.1-debugging-tab">B.1 - &quot;Debugging&quot; Tab</h3>
+<h4 id="b.1.1-uncheck-warn-if-no-user-code-on-launch-managed-only">B.1.1 - Uncheck &quot;Warn if no user code on launch (Managed only)&quot;</h4>
+<p><img src="2017-02-21_07h32_11.png" alt="2017 02 21 07H32 11" /></p>
+<p>Eliminates the &quot;Symbols for the module 'ENV.dll' were not loaded&quot; message you get every time you run the code</p>
+<p><img src="ENV_message.png" alt="ENV Message" /></p>
+<h4 id="b.1.2-uncheck-enable-edit-and-continue">B.1.2 - Uncheck &quot;Enable Edit and Continue&quot;</h4>
+<p><img src="2017-02-21_06h55_05.png" alt="2017 02 21 06H55 05" /></p>
+<p>Allows you to edit your code, while the application is running</p>
+<h4 id="b.1.3-uncheck-enable-diagnostic-tools-while-debugging">B.1.3 - Uncheck &quot;Enable Diagnostic Tools while debugging&quot;</h4>
+<p><img src="2017-02-21_06h54_22.png" alt="2017 02 21 06H54 22" /></p>
+<p><strong>Improves performance</strong> when running in Debug</p>
+<h3 id="b.2-set-automatically-populate-toolbox-to-false">B.2 set &quot;Automatically Populate Toolbox&quot; to False</h3>
+<p>In the &quot;Windows Forms Designer&quot; tab</p>
+<p><img src="2017-03-08_10h31_14.png" alt="2017 03 08 10H31 14" /></p>
+<p><strong>Improves performance</strong> after each build</p>
+<h3 id="b.3-disable-intellitrace">B.3 Disable IntelliTrace</h3>
 <ol>
 <li>Go to the &quot;IntelliTrace&quot; Tab</li>
-<li>Uncheck the &quot;Enable IntelliTrace&quot; checkbox
-<img src="2017-03-08_10h33_43.png" alt="2017 03 08 10H33 43" />
-<strong>Improves performance</strong> when running in Debug</li>
+<li>Uncheck the &quot;Enable IntelliTrace&quot; checkbox</li>
 </ol>
-<h3 id="b.3-check-collapse-regions-when-collapsing-to-definition">B.3 Check &quot;Collapse #regions when collapsing to definition&quot;</h3>
-<ol>
-<li>Go to the &quot;Text Editor\C#\Advanced&quot; Tab</li>
-<li>Check the &quot;Collapse #regions when collapsing to definition&quot; check box, under &quot;Outlining&quot;<br />
-<img src="2017-03-12_18h01_23.png" alt="2017 03 12 18H01 23" /></li>
-</ol>
+<p><img src="2017-03-08_10h33_43.png" alt="2017 03 08 10H33 43" /></p>
+<p><strong>Improves performance</strong> when running in Debug</p>
 <h3 id="b.4-disable-test-flags">B.4 Disable Test Flags</h3>
 <ol>
 <li>Go to the &quot;Tests&quot; Tab</li>
-<li>Uncheck <code>Discover tests in real time from source files</code>
-<img src="2018-10-07_12h38_11.png" alt="2018 10 07 12H38 11" /></li>
+<li>Uncheck <code>Discover tests in real time from source files</code></li>
 </ol>
-<p><strong>Improves performance</strong></p>
-<h3 id="c-configure-the-error-list.window">C - Configure the &quot;Error List...&quot; Window</h3>
+<p><img src="2018-10-07_12h38_11.png" alt="2018 10 07 12H38 11" /></p>
+<h3 id="b.5-check-collapse-regions-when-collapsing-to-definition">B.5 Check &quot;Collapse #regions when collapsing to definition&quot;</h3>
 <ol>
-<li>Go to &quot;View\Error List&quot; menu<br />
-<img src="2017-03-08_10h43_55.png" alt="2017 03 08 10H43 55" /></li>
-<li>Uncheck the &quot;Warnings&quot; tab by clicking on it (Our preference, not mandatory)</li>
-<li>Uncheck the &quot;Messages&quot; tab by clicking on it (Our preference, not mandatory)</li>
-<li>Set the combo to &quot;Build Only&quot;<br />
-<img src="2017-03-08_10h45_18.png" alt="2017 03 08 10H45 18" /></li>
+<li>Go to the &quot;Text Editor\C#\Advanced&quot; Tab</li>
+<li>Check the &quot;Collapse #regions when collapsing to definition&quot; check box, under &quot;Outlining&quot;</li>
 </ol>
-<h3 id="d-disable-preview-selected-item">D - Disable &quot;Preview Selected Item&quot;</h3>
-<p>In the &quot;Solution Explorer&quot; window make sure that the &quot;Preview Selected Item&quot; Icon is not checked (highlighted)<br />
-<img src="2017-03-08_10h47_38.png" alt="2017 03 08 10H47 38" /></p>
-<h3 id="e-add-the-parameter-information-toolbar-item">E - Add the parameter information toolbar item</h3>
+<p><img src="2017-03-12_18h01_23.png" alt="2017 03 12 18H01 23" /></p>
+<p><strong>Improves performance</strong></p>
+<h3 id="c-disable-preview-selected-item">C - Disable &quot;Preview Selected Item&quot;</h3>
+<p>In the &quot;Solution Explorer&quot; window make sure that the &quot;Preview Selected Item&quot; Icon is not checked (highlighted)</p>
+<p><img src="2017-03-08_10h47_38.png" alt="2017 03 08 10H47 38" /></p>
+<h3 id="d-add-the-parameter-information-toolbar-item">D - Add the parameter information toolbar item</h3>
 <ol>
 <li>Open any class</li>
 <li>On the toolbar</li>
@@ -93,7 +94,7 @@ In case you can't install the extension, follow the manual instructions <a href=
 <li><img src="2017-03-08_10h51_00.png" alt="2017 03 08 10H51 00" /></li>
 <li><img src="2017-03-08_10h51_55.png" alt="2017 03 08 10H51 55" /></li>
 </ol>
-<h3 id="f-configure-the-goto-window">F - Configure the &quot;GoTo&quot; window</h3>
+<h3 id="e-configure-the-goto-window">E - Configure the &quot;GoTo&quot; window</h3>
 <p>Go To the &quot;Edit\Go To\Go To All...&quot; menu item<br />
 <img src="2017-03-08_10h56_02.png" alt="2017 03 08 10H56 02" /></p>
 <ol>
@@ -102,7 +103,7 @@ In case you can't install the extension, follow the manual instructions <a href=
 <li>Uncheck the &quot;Use Preview Tab&quot; CheckBox</li>
 <li>Check the &quot;Show details&quot; CheckBox</li>
 </ol>
-<h3 id="g-uncheck-the-two-checkboxes-in-thesearch-options">G Uncheck the two checkboxes in the&quot;Search options&quot;</h3>
+<h3 id="f-uncheck-the-two-checkboxes-in-thesearch-options">F Uncheck the two checkboxes in the&quot;Search options&quot;</h3>
 <ol>
 <li>Open the solution explorer</li>
 <li>Press the combo down arrow button to open the search options</li>
@@ -110,6 +111,15 @@ In case you can't install the extension, follow the manual instructions <a href=
 <img src="searchOptions.png" alt="Search Options" /><br />
 <strong>Improves search performance</strong></li>
 </ol>
+<h3 id="g-configure-the-error-list.window">G - Configure the &quot;Error List...&quot; Window</h3>
+<ol>
+<li>Go to &quot;View\Error List&quot; menu</li>
+</ol>
+<p><img src="2017-03-08_10h43_55.png" alt="2017 03 08 10H43 55" />
+2. Uncheck the &quot;Warnings&quot; tab by clicking on it (Our preference, not mandatory)
+3. Uncheck the &quot;Messages&quot; tab by clicking on it (Our preference, not mandatory)
+4. Set the combo to &quot;Build Only&quot;</p>
+<p><img src="2017-03-08_10h45_18.png" alt="2017 03 08 10H45 18" /></p>
 <h3 id="h-recommended-extentions">H - Recommended extentions</h3>
 <p>We would like to recommend the follow extension to you:
 <a href="stack-trace-explorer.html">Stack Trace Explorer</a></p>
