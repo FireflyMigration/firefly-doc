@@ -2,7 +2,7 @@ keywords: VisualStudioTemplates, Templates, VSDropAssist, Class Outline, Extensi
 
 ## Visual Studio Extentions
 
-The Firefly extensions bundler includes the following extensions:
+The Firefly extensions bundler includes the following extensions, if the bundle installation failed please install them manually:
 
 1. [Class Outline](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.ClassOutline) - A tool that shows you a window with all the classes and inner classes in a C# code file.
 When you right click on any node, you'll see the different important methods of it, such as OnStart etc... and will also be able to go directly to the controller's view
