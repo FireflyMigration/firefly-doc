@@ -8,7 +8,7 @@ Although this document was written with Visual Studio 2017 in mind, most of it i
 We have created am Extensions Bundle for your use.  
 You can download it from: [Extensions Bundle](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioExtensionBundle)
 
-### After you install the bundle
+#### After you install the bundle
 Please run the Visual Studio Tuneup utility at "Tools\Tuneup Visual Studio"
 
 ![2018 12 07 13H23 27](2018-12-07_13h23_27.png)
