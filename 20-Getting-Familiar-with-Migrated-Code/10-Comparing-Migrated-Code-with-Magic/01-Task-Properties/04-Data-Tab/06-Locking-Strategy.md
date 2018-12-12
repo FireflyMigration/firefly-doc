@@ -52,22 +52,4 @@ It does that to explicitly indicate that there is locking.
 * [LockingStrategy Enum](http://www.fireflymigration.com/reference/html/T_Firefly_Box_LockingStrategy.htm)
 
 
-### LockCurrentRow
-
-#### Note
-If the Locking Strategy is “On Modify” in Magic (LockingSTrategy.OnUserEdit) then it may be necessary when calling a task or program to specify that the current record with all its links must be locked.    
-This may be specified in Magic by clicking Ctrl+P on the call task or call program line, and specifying the lock as 'Yes' in the dialog that appears. To support this functionality, the LockCurrentRow method is employed.    
- 
-
-#### Migrated Code Example 
-```csdiff
-if(V_counter == 1) 
-{ 
-    LockCurrentRow(); 
-    new ProgramName(this).Run(); 
-}  
-```
-
-#### See Also: 
-* [UIController LockCurrentRow Method](http://www.fireflymigration.com/reference/html/M_Firefly_Box_UIController_LockCurrentRow.htm) 
-* [BusinessProcess LockCurrentRow Method](http://www.fireflymigration.com/reference/html/M_Firefly_Box_BusinessProcess_LockCurrentRow.htm) 
+For a deeper explanation of locking please refer to [the row locking article](row-locking.html)
