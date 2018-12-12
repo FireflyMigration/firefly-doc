@@ -85,21 +85,7 @@ It does that to explicitly indicate that there is locking.</p>
 <li><a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_RowLocking.htm">BusinessProcess LockingStrategy Property</a></li>
 <li><a href="http://www.fireflymigration.com/reference/html/T_Firefly_Box_LockingStrategy.htm">LockingStrategy Enum</a></li>
 </ul>
-<h3 id="lockcurrentrow">LockCurrentRow</h3>
-<h4 id="note-1">Note</h4>
-<p>If the Locking Strategy is “On Modify” in Magic (LockingSTrategy.OnUserEdit) then it may be necessary when calling a task or program to specify that the current record with all its links must be locked.<br />
-This may be specified in Magic by clicking Ctrl+P on the call task or call program line, and specifying the lock as 'Yes' in the dialog that appears. To support this functionality, the LockCurrentRow method is employed.</p>
-<h4 id="migrated-code-example-1">Migrated Code Example</h4>
-<pre data-line="" class="language-csdiff line-numbers"><code>if(V_counter == 1) 
-{ 
-    LockCurrentRow(); 
-    new ProgramName(this).Run(); 
-} </code></pre>
-<h4 id="see-also-1">See Also:</h4>
-<ul>
-<li><a href="http://www.fireflymigration.com/reference/html/M_Firefly_Box_UIController_LockCurrentRow.htm">UIController LockCurrentRow Method</a></li>
-<li><a href="http://www.fireflymigration.com/reference/html/M_Firefly_Box_BusinessProcess_LockCurrentRow.htm">BusinessProcess LockCurrentRow Method</a></li>
-</ul>
+<p>For a deeper explanation of locking please refer to <a href="row-locking.html">the row locking article</a></p>
 
 
                 <br />
