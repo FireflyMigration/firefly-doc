@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Bind, BindValue">
 
     <title>BindValueToColumnChange()</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -35,27 +35,6 @@
 A normal BindValue will determine the recompute path on its own based on the position of the columns.
 With BindValueToColumnChange(), using the second parameter of the method, you can control which columns will affect the recompute path <strong>regardless of their position</strong>.
 This is a new and powerful feature which enhances the capabilities of the recompute path. (Does not exist in Magic)</p>
-<h3 id="the-migrated-code">The migrated code</h3>
-<p>For example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>void MyMethod()
-{
-    SaveRowAndDo(o=&gt; PrintDoc() );
-} </code></pre>
-<p>With the above example</p>
-<ol>
-<li>The OnLeaveRow() and OnSavingRow() methods are executed.</li>
-<li>The data is saved to the Database.</li>
-<li>If the data successfully saved
-<ol type="a">
-<li>The method PrintDoc() is executed</li>
-<li>Data is reloaded - OnEnterRow() is executed</li>
-</ol>
-</li>
-<li>If the data fail to be saved to the DB the action sent as parameter is not executed.</li>
-</ol>
-<p>The SaveRowAndDo() method is designed to leave the current row, save it to the DB and then to perform the
-action sent to it as parameter.
-It designed to make sure data is saved to the DB before any operation is executed.</p>
 
 
                 <br />
