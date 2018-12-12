@@ -1,4 +1,4 @@
-﻿keywords: Task Properties, Data Tab, Locking Strategy, Rowlocking, OnLoad 
+﻿keywords: Task Properties, Data Tab, Locking Strategy, Rowlocking, OnLoad, LockCurrentRow
 
 Name in Migrated Code: **Rowlocking**  
 Location in Migrated Code: **OnLoad Method**  
