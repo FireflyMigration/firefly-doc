@@ -25,20 +25,3 @@ You can place the shortcuts folder anywhere on your local machine - you'll just 
 3. Click the Add... button
 3. Select the "Shortcuts" folder that you've downloaded
 ![2017 03 08 10H05 26](2017-03-08_10h05_26.png) 
-
-## Other important settings that improve the performance and experience in Visual Studio
-The following settings are in the  "Tools\Options" menu
-![2017 03 08 09H59 27](2017-03-08_09h59_27.png)
-### 1 set "Automatically Populate Toolbox" to False
-In the "Windows Forms Designer" tab
-![2017 03 08 10H31 14](2017-03-08_10h31_14.png)
-**Improves performance** after each build
-
-### 2 - "Debugging" Tab
-#### 2.1 - Uncheck "Warn if no user code on launch (Managed only)"
-![2017 02 21 07H32 11](2017-02-21_07h32_11.png)
-Eliminates the "Symbols for the module 'ENV.dll' were not loaded" message you get every time you run the code
-![ENV Message](ENV_message.png)
-#### 2.2 - Uncheck "Enable Edit and Continue"
-![2017 02 21 06H55 05](2017-02-21_06h55_05.png)
-Allows you to edit your code, while the application is running
