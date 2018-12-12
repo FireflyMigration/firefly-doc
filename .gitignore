@@ -240,3 +240,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/10-Developer-Guide/25-Control-Models

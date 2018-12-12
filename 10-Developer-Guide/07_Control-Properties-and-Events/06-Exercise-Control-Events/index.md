@@ -10,7 +10,7 @@
 8. Change the **Gird** **RowColorStyle** to **ByColumnAndControls**.
 9. Bind the back color of the **UnitsOnOrder** textboox to show the following colors:
     1.  **Red** if **UnitsOnOrder** equal to zero. 
-    2.  **Yello** if **UnitsOnOrder** is greater then zero and equal or smaller then 10.
+    2.  **Yellow** if **UnitsOnOrder** is greater then zero and equal or smaller then 10.
     3.  **Green** if **UnitsOnOrder** is greater then 10.
 10. build and test.
 
