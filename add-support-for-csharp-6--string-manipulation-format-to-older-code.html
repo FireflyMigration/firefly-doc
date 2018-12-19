@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Common migrated code patterns and how to improve on them in new code in NET</title>
+    <title>Add Support for CSharp 6  String Manipulation Format to Older Code</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,15 +29,55 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-net">Common migrated code patterns and how to improve on them in new code in NET</h1>
-<ul>
-<li><a href="common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-net-intro.html">Common migrated code patterns and how to improve on them in new code in NET intro</a></li>
-<li><a href="replace-inner-classes-with-entity-method.html">Replace Inner Classes With Entity Method</a></li>
-<li><a href="replace-notifyrowwasfound-with-rowfound-and-contains.html">Replace NotifyRowWasFound with RowFound and Contains</a></li>
-<li><a href="writing-shorter-code-using-the-businessprocess-class.html">Writing shorter code using the BusinessProcess class</a></li>
-<li><a href="refactoring-a-44-line-long-inner-class-to-one-line-or-code.html">Refactoring a 44 line long inner class to one line or code</a></li>
-<li><a href="stop-using-str.html">Stop using Str</a></li>
-</ul>
+                <div class="content"><h1 id="add-support-for-csharp-6-string-manipulation-format-to-older-code">Add Support for CSharp 6  String Manipulation Format to Older Code</h1>
+<p>This article explains the changes that need to be done to support C#6 style string manipulation Format in older code.</p>
+<p>In essence we want <code>$&quot;{Age:3P0}&quot;</code> to work and respect the <code>3P0</code> format.</p>
+<p>Here are the changes:</p>
+<h3 id="firefly.box.advanced.datatypebase-class">Firefly.Box.Advanced.DataTypeBase class</h3>
+<ol>
+<li>Implement the IFormattable interface in the class definition</li>
+</ol>
+<pre data-line="6" class="language-csdiff line-numbers"><code> /// &lt;summary&gt;
+ /// The base type of any type in Firefly.Box
+ /// &lt;/summary&gt;
+ [Firefly.Box.UI.Advanced.IsData]
+-public abstract class DataTypeBase : IComparable
+public abstract class DataTypeBase : IComparable,IFormattable
+ {
+     internal DataTypeBase()
+     {
+     } </code></pre>
+<ol start="2">
+<li>Add the <code>ToString</code> method to the class</li>
+</ol>
+<pre data-line="1,2,3,4" class="language-csdiff line-numbers"><code>public virtual string ToString(string format, IFormatProvider formatProvider)
+{
+    return ToString(format);
+} </code></pre>
+<h3 id="firefly.box.data.advanced.columnbase">Firefly.Box.Data.Advanced.ColumnBase</h3>
+<ol>
+<li>Implement the IFormattable interface in the class definition</li>
+</ol>
+<pre data-line="9" class="language-csdiff line-numbers"><code>/// &lt;summary&gt;
+/// The Base class of all columns. 
+/// &lt;/summary&gt;
+/// &lt;remarks&gt;
+/// Represents the basic storage of data, and it's interaction with &lt;see cref="UIController"/&gt;, &lt;see cref="BusinessProcess"/&gt; and the database.
+/// &lt;/remarks&gt;
+[UI.Advanced.IsData]
+-public abstract class ColumnBase : WizardOfOz.Witch.Engine.StateSaver, WhereMeaningfullItem, IFilterItem
+public abstract class ColumnBase : WizardOfOz.Witch.Engine.StateSaver, WhereMeaningfullItem, IFilterItem,IFormattable
+{
+    string _caption;
+    internal int _internalIndexInRow = -1; </code></pre>
+<ol start="2">
+<li>Add the <code>ToString</code> method to the class:</li>
+</ol>
+<pre data-line="1,2,3,4" class="language-csdiff line-numbers"><code>public virtual string ToString(string format, IFormatProvider formatProvider)
+{
+     return ToString(format);
+} </code></pre>
+<p>Thats it</p>
 
 
                 <br />
@@ -45,7 +85,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/10-Common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-NET/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/10-Common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-NET/Stop-using-Str/Add-Support-for-CSharp-6 -String-Manipulation-Format-to-Older-Code.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -107,7 +147,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-net.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'add-support-for-csharp-6--string-manipulation-format-to-older-code.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

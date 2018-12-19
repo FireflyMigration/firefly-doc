@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="dstr, str, tstr, tostring, stringformatting,trim">
+
+    <title>Stop using Str</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="stop-using-str">Stop using Str</h1>
+<p>In magic,  converting numbers dates etc... to string - was unnecessaraly compliated, and as such the migrated code will reflect that.</p>
+<p>In this article we'll take a peice of migrated code and demo better ways of writing it including C# 6 style string and more.</p>
+<p>Let's review the following code where we define 4 columns, put values in them and display a Message Box.</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>TextColumn FirstName = new TextColumn("First Name", "20");
+TextColumn LastName = new TextColumn("Last Name", "20");
+DateColumn BirthDate = new DateColumn("Birth Date", "DD/MM/YYYY");
+NumberColumn Age = new NumberColumn("Age", "3");
+FirstName.Value = "Noam";
+LastName.Value = "Honig";
+BirthDate.Value = new Date(1976, 6, 16);
+Age.Value = 42;
+
+
+Message.ShowWarning(
+	"Name:" + u.Trim(FirstName) + " " + u.Trim(LastName) + //it's so long that I've put it in two lines
+    " Born On " + u.DStr(BirthDate, "DD/MM/YYYY") + " Age " + u.Trim(u.Str(Age, "3"))); </code></pre>
+<p>The result is:
+<code>Name:Noam Honig Born On 16/06/1976 Age 42</code></p>
+<p>Let's try to focus on the string build in line 11 and 12 and improve on it.</p>
+<h3 id="step-1-replace-u.str-and-u.dstr-methods-with-tostring">Step 1 - Replace u.Str and u.Dstr methods with ToString</h3>
+<p>The <code>ToString</code> method is used to convert any object to string, and is what any .NET developer would use, let's do that.</p>
+<pre data-line="2,4" class="language-csdiff line-numbers"><code>- u.DStr(BirthDate, "DD/MM/YYYY")
+  BirthDate.ToString("DD/MM/YYYY")
+- u.Str(Age, "3")
+  Age.ToString("3") </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>"Name:" + u.Trim(FirstName) + " " + u.Trim(LastName) + //it's so long that I've put it in two lines
+    " Born On " + BirthDate.ToString("DD/MM/YYYY") + " Age " + u.Trim(Age.ToString("3"))); </code></pre>
+<h3 id="step-2-remove-the-format">Step 2 - Remove the Format</h3>
+<p>In magic you had to specify the <code>Picture</code> to the <code>Str</code> method. In .NET if you don't specify a <code>Format</code> the <code>Format</code> that was defined in the column is used.</p>
+<ul>
+<li>This also has the befit that if we change the Format in the Column (or the type) it'll affect all the string conversions</li>
+</ul>
+<pre data-line="2,4" class="language-csdiff line-numbers"><code>- BirthDate.ToString("DD/MM/YYYY")
+  BirthDate.ToString()
+- Age.ToString("3")
+  Age.ToString() </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>"Name:" + u.Trim(FirstName) + " " + u.Trim(LastName) + //it's so long that I've put it in two lines
+    " Born On " + BirthDate.ToString() + " Age " + u.Trim(Age.ToString())); </code></pre>
+<blockquote>
+<blockquote>
+<p>Some developers in magic tried to solve the problem of redefining the picture in the STR method by calling the varpic command
+<code>Str(A,VarPic(A,0))</code> a nice try to solve a problem that shouldn't have been there to begin with :)</p>
+</blockquote>
+</blockquote>
+<h3 id="step-3-remove-the-tostring">Step 3 - Remove the ToString</h3>
+<p>In .NET when the + operator is used between a string and anything - the <code>ToString</code> method is called automatically.
+This helps us with the Birth Date Column.</p>
+<pre data-line="2" class="language-csdiff line-numbers"><code>- " Born On " + BirthDate.ToString() + " Age "
+  " Born On " + BirthDate + " Age " </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>"Name:" + u.Trim(FirstName) + " " + u.Trim(LastName) + //it's so long that I've put it in two lines
+    " Born On " + BirthDate + " Age " + u.Trim(Age.ToString())); </code></pre>
+<h3 id="step-4-use-c6-style-string">Step 4 - Use C#6 Style string</h3>
+<p>In C#6 a new way of building strings was introduced. Simply add the <code>$</code> sign before the open quotes, and now you can include members within curley brakets in your string.</p>
+<pre data-line="2" class="language-csdiff line-numbers"><code>- "Name:" + u.Trim(FirstName) + " " + u.Trim(LastName) + " Born On"
+  $"Name:{u.Trim(FirstName)} {u.Trim(LastName)} Born On" </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>$"Name:{u.Trim(FirstName)} {u.Trim(LastName)} Born On {BirthDate} Age {u.Trim(Age.ToString())}" </code></pre>
+<blockquote>
+<blockquote>
+<p>The code between the Curley brakets is regular C# code, so you have intelisense and visual studio will keep you safe when you build.</p>
+</blockquote>
+</blockquote>
+<h4 id="formatting-you-can-also-apply-formatting-to-c6-style-string">Formatting - you can also apply formatting to C#6 style string</h4>
+<p>Simply put the format after <code>:</code> sign.</p>
+<p>For example:</p>
+<pre data-line="2" class="language-csdiff line-numbers"><code>- "Age " + u.Str(Age, "3P0")+ ".";
+  $"Age {Age:3P0}."; </code></pre>
+<p>Result will be:
+<code>Age 42.</code></p>
+<ul>
+<li>For more info about <code>Format</code> see <a href="formatting.html">the Formatting article</a></li>
+</ul>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>The support for migrated style format in C#6 style was added on December 2018 - you can easily add it to source code of older migrations by following this article <a href="add-support-for-csharp-6--string-manipulation-format-to-older-code.html">Add Support for CSharp 6 String Manipulation Format to Older Code</a></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="step-5-remove-the-trim">Step 5 - Remove the Trim</h3>
+<p>I HATE TRIM!!!!</p>
+<p>In magic any Alpha had trailing spaces to it - so any migrated code behaves like that.</p>
+<p>This means that if I try to create a full name by writing <code>FirstName + LastName + &quot;:&quot;</code> I'll get:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Noam                Honig              :
+    ^^^^^^^^^^^^^^^^     ^^^^^^^^^^^^^^ //the spaces we hate </code></pre>
+<p>To solve that we've added a new format special character <code>~</code> that whenever it's added to a format, it'll make sure it's trimmed.</p>
+<pre data-line="2" class="language-csdiff line-numbers"><code>- $"Name:{u.Trim(FirstName)} {u.Trim(LastName)} Born On {BirthDate} Age {u.Trim(Age.ToString())}"
+  $"Name:{FirstName:~} {LastName:~} Born On {BirthDate} Age {Age:~}" </code></pre>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>The support for <code>~</code> sign as trim in formats was added on December 2018 - you can easily add it source code of older migrations by following this article <a href="add-support-for-telde-format-char-to-trim.html">Add Support for Telde Format Char to Trim</a></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="the-end-result-comparison">The End Result Comparison</h3>
+<pre data-line="1" class="language-csdiff line-numbers"><code>  $"Name:{FirstName:~} {LastName:~} Born On {BirthDate} Age {Age:~}"
+- "Name:" + u.Trim(FirstName) + " " + u.Trim(LastName) + " Born On " + BirthDate + " Age " + u.Trim(Age.ToString())); </code></pre>
+<p>This code is a lot easier to read and is a almost 50% shorter.</p>
+<ul>
+<li><a href="add-support-for-csharp-6--string-manipulation-format-to-older-code.html">Add Support for CSharp 6  String Manipulation Format to Older Code</a></li>
+<li><a href="add-support-for-telde-format-char-to-trim.html">Add Support for Telde Format Char to Trim</a></li>
+</ul>
+
+
+                <br />
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/10-Common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-NET/Stop-using-Str/index.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'stop-using-str.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Add Support for Telde Format Char to Trim</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="add-support-for-telde-format-char-to-trim">Add Support for Telde Format Char to Trim</h1>
+<p>In the Firefly Project</p>
+<h3 id="wizardofoz.witch.types.textformat-class">WizardOfOz.Witch.Types.TextFormat Class</h3>
+<ol>
+<li>Add the following two members:</li>
+</ol>
+<pre data-line="" class="language-csdiff line-numbers"><code>public static char CharToIndicateTrim = '~';
+bool _trimResult = false; </code></pre>
+<ol start="2">
+<li>Add the following chars to the constructor:</li>
+</ol>
+<pre data-line="11,12,13,14,15,16,17" class="language-csdiff line-numbers"><code>ImeMode _imeMode = ImeMode.NoControl;
+TextFormat(string format)
+{
+    if (string.IsNullOrEmpty(format))
+    {
+        _ignoreFormat = true;
+        _dataLength = int.MaxValue;
+
+        return;
+    }
+    if (format.Length == 1 &amp;&amp; format[0] == CharToIndicateTrim)
+    {
+        _ignoreFormat = true;
+        _dataLength = int.MaxValue;
+        _trimResult = true;
+        return;
+    }
+
+    FormatStructure&lt;TextFormatHelper&gt; structure = new FormatStructure&lt;TextFormatHelper&gt;();
+    _formater = new StructureBridgeToFormater(structure);
+    bool hassimpleSingleItem = false;
+    FormatReader fr = new FormatReader(format); </code></pre>
+<ol start="3">
+<li>Later in that constructor add the following code to the <code>default</code> part of the <code>switch</code> statement that starts on line 150 in our version of the code:</li>
+</ol>
+<pre data-line="14,15,16,17,18,19,22" class="language-csdiff line-numbers"><code>case 'H':
+    _hebrew = true;
+    break;
+case 'K':
+    if (char.IsNumber(fr.PeekChar()))
+    {
+        var x = fr.ReadNumber();
+        _imeMode = TranslateImeMode(x);
+        break;
+    }
+    else
+        goto default;
+default:
+    if (c == CharToIndicateTrim)
+    {
+        _trimResult = true;
+    }
+    else
+    {
+        structure.AddConstant(c, fr.ReadNumber());
+        _hasNoConstants = false;
+    }
+    break; </code></pre>
+<ol start="4">
+<li>Replace the <code>ToText</code> method which receive two parameters implementation</li>
+</ol>
+<pre data-line="6,7,8,9,10,11,12,13" class="language-csdiff line-numbers"><code>public Text ToText(Text source, TextFormatHelper helper)
+{
+-   if (_ignoreFormat)
+-       return source;
+-   return _formater.ToText(source, helper);
+    var result = source;
+    if (!_ignoreFormat)
+    {
+        result = _formater.ToText(source, helper);
+    }
+    if (_trimResult &amp;&amp; result != null)
+        result = result.Trim();
+    return result;
+} </code></pre>
+<h3 id="wizardofoz.witch.types.numericformatclass">WizardOfOz.Witch.Types.NumericFormatClass</h3>
+<ol>
+<li>Add the following member to the class</li>
+</ol>
+<pre data-line="5" class="language-csdiff line-numbers"><code>bool _autoSkip = false;
+bool _allowNegative = false;
+bool _commaSeperated = false;
+bool _leftJustified = false;
+bool _trim = false;
+char _fillerChar = ' ';
+char _zeroValueFillerChar = (char)0; </code></pre>
+<ol start="2">
+<li>in the constructor add the following code to the <code>default</code> part of the <code>switch</code> statement that starts on line 117 in our version of the code:</li>
+</ol>
+<pre data-line="16,17,18,19,20,21" class="language-csdiff line-numbers"><code>switch (c)
+{
+    case 'L':
+        _leftJustified = true;
+        break;
+    case 'A':
+        _autoSkip = true;
+        break;
+    case 'N':
+        _allowNegative = true;
+        break;
+    case 'C':
+        _commaSeperated = true;
+        break;
+    default:
+        if (c == TextFormat.CharToIndicateTrim)
+        {
+            _trim = true;
+            break;
+        }
+        else
+            return false;
+} </code></pre>
+<ol start="3">
+<li>In the <code>ToStringClass</code> Constructor add at the end:</li>
+</ol>
+<pre data-line="5,6" class="language-csdiff line-numbers"><code>    ...
+    PrepareOriginalNumber();
+
+    if (_fillerChar != (char)0) Result = "".PadLeft(Result.Length, _fillerChar);
+    if (_parent._trim)
+        Result = Result.Trim();
+} </code></pre>
+<h3 id="firefly.box.data.advanced.typedcolumnbase-class">Firefly.Box.Data.Advanced.TypedColumnBase class</h3>
+<p>Add the following code to the <code>GetDisplayTextProvider</code> method</p>
+<pre data-line="5,6" class="language-csdiff line-numbers"><code>internal DisplayTextProvider&lt;dataType&gt; GetDisplayTextProvider(string format, bool useInputRange)
+{
+    if (string.IsNullOrEmpty(format))
+        format = _formatString;
+    if (format!=null&amp;&amp; format.Length == 1 &amp;&amp; format[0] == TextFormat.CharToIndicateTrim)
+        format = _formatString + format;
+    if (_prevDisplayTextProvider == null || !(_lastFormat == format &amp;&amp; _lastUseInputRange == useInputRange))
+    {
+        _prevDisplayTextProvider = _CreateDisplayTextProvider(format, useInputRange ? _range : string.Empty, _nullDisplayText ?? string.Empty);
+        _lastFormat = format;
+        _lastUseInputRange = useInputRange;
+    }
+    return _prevDisplayTextProvider;
+
+             
+} </code></pre>
+
+
+                <br />
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/10-Common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-NET/Stop-using-Str/Add-Support-for-Telde-Format-Char-to-Trim.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'add-support-for-telde-format-char-to-trim.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>
