@@ -111,7 +111,7 @@ To solve that we've added a new format special character `~` that whenever it's 
 - $"Name:{u.Trim(FirstName)} {u.Trim(LastName)} Born On {BirthDate} Age {u.Trim(Age.ToString())}"
 + $"Name:{FirstName:~} {LastName:~} Born On {BirthDate} Age {Age:~}"
 ```
->>> The support for `~` sign as trim in formats was added on December 2018 - you can easily add it source code of older migrations by following this article [Add Support for Telde Format Char to Trim](add-support-for-telde-format-char-to-trim.html)
+>>> The support for `~` sign as trim in formats was added on December 2018 - you can easily add its source code of older migrations by following this article [Add Support for Telde Format Char to Trim](add-support-for-telde-format-char-to-trim.html)
 
 
 ### The End Result Comparison
