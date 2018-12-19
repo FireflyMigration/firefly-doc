@@ -48,7 +48,7 @@ Message.ShowWarning(
     " Born On " + u.DStr(BirthDate, "DD/MM/YYYY") + " Age " + u.Trim(u.Str(Age, "3"))); </code></pre>
 <p>The result is:
 <code>Name:Noam Honig Born On 16/06/1976 Age 42</code></p>
-<p>Let's try to focus on the string build in line 11 and 12 and improve on it.</p>
+<p>Let's try to focus on the string build in line 12 and 13 and improve on it.</p>
 <h3 id="step-1-replace-u.str-and-u.dstr-methods-with-tostring">Step 1 - Replace u.Str and u.Dstr methods with ToString</h3>
 <p>The <code>ToString</code> method is used to convert any object to string, and is what any .NET developer would use, let's do that.</p>
 <pre data-line="2,4" class="language-csdiff line-numbers"><code>- u.DStr(BirthDate, "DD/MM/YYYY")
@@ -60,7 +60,7 @@ Message.ShowWarning(
 <h3 id="step-2-remove-the-format">Step 2 - Remove the Format</h3>
 <p>In magic you had to specify the <code>Picture</code> to the <code>Str</code> method. In .NET if you don't specify a <code>Format</code> the <code>Format</code> that was defined in the column is used.</p>
 <ul>
-<li>This also has the befit that if we change the Format in the Column (or the type) it'll affect all the string conversions</li>
+<li>This also has the benefit that if we change the Format in the Column (or the type) it'll affect all the string conversions</li>
 </ul>
 <pre data-line="2,4" class="language-csdiff line-numbers"><code>- BirthDate.ToString("DD/MM/YYYY")
   BirthDate.ToString()
