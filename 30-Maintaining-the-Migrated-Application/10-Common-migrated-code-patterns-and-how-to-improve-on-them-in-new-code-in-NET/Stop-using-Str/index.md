@@ -24,7 +24,7 @@ Message.ShowWarning(
 The result is:
 `Name:Noam Honig Born On 16/06/1976 Age 42`
 
-Let's try to focus on the string build in line 11 and 12 and improve on it.
+Let's try to focus on the string build in line 12 and 13 and improve on it.
 ### Step 1 - Replace u.Str and u.Dstr methods with ToString
 The `ToString` method is used to convert any object to string, and is what any .NET developer would use, let's do that.
 ```csdiff
@@ -40,7 +40,7 @@ The `ToString` method is used to convert any object to string, and is what any .
 
 ### Step 2 - Remove the Format
 In magic you had to specify the `Picture` to the `Str` method. In .NET if you don't specify a `Format` the `Format` that was defined in the column is used.
-* This also has the befit that if we change the Format in the Column (or the type) it'll affect all the string conversions
+* This also has the benefit that if we change the Format in the Column (or the type) it'll affect all the string conversions
 ```csdiff
 - BirthDate.ToString("DD/MM/YYYY")
 + BirthDate.ToString()
