@@ -66,6 +66,10 @@ This helps us with the Birth Date Column.
 "Name:" + u.Trim(FirstName) + " " + u.Trim(LastName) + //it's so long that I've put it in two lines
     " Born On " + BirthDate + " Age " + u.Trim(Age.ToString()));
 ```
+## So far so good
+If you got this far - you've got most of the benefits.
+
+If you want to push it further, continue to explore the new features of C#6 and see how they can improve the way you work
 
 ### Step 4 - Use C#6 Style string 
 
