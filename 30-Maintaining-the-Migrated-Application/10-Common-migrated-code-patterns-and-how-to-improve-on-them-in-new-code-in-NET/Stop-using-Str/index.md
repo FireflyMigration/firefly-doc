@@ -2,7 +2,7 @@ keywords: dstr, str, tstr, tostring, stringformatting,trim
 
 In magic,  converting numbers dates etc... to string - was unnecessaraly compliated, and as such the migrated code will reflect that.
 
-In this article we'll take a peice of migrated code and demo better ways of writing it including C# 6 style string and more.
+In this article we'll take a piece of migrated code and demo better ways of writing it including C# 6 style string and more.
 
 Let's review the following code where we define 4 columns, put values in them and display a Message Box.
 
