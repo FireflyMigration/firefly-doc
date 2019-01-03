@@ -2,6 +2,9 @@
 
 There are many tips for the Visual Studio. We have collected some that you might find useful.
 
+### Goto closing bracket
+In many cases where there is a long if statement I see an open bracket and I want to see where it ends - just park on it and click <kbd>Control</kbd> + <kbd>]</kbd> and it'll get you there
+
 ### Scope to This
 
 In case you have a large solution with many projects and you would like to concentrate on a particular project, you can use "Scope to This" which shows you only the project you selected. 

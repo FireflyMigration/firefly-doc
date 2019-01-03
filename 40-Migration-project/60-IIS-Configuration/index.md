@@ -1,4 +1,6 @@
-﻿# IIS Configuration
+﻿keywords: IIS, broker,config,configuration
+
+# IIS Configuration
 
 This article covers the configuration needed to implement .NET migrated web application in IIS.  
 First, let’s explain the architecture of .NET web comparing to the Magic web.
