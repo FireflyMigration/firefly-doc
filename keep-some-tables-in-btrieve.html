@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Keep using some of the application tables in Btrieve After the SQL Migration</title>
+    <title>Keep using some of the application tables in Btrieve after the SQL Migration</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,31 +29,31 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="keep-using-some-of-the-application-tables-in-btrieve-after-the-sql-migration">Keep using some of the application tables in Btrieve After the SQL Migration</h1>
-<p>In same cases we will like to work in SQL but also keep some tables in Btrieve, this can be if some of our tables are shared with other applications.
-In this case we will need to change the DataSource of this tables, so we can keep working with it in Btrieve.</p>
+                <div class="content"><h1 id="keep-using-some-of-the-application-tables-in-btrieve-after-the-sql-migration">Keep using some of the application tables in Btrieve after the SQL Migration</h1>
+<p>In same cases we would like to work in SQL but also keep some tables in Btrieve, this is needed when some of our tables are shared with other applications.
+In this case we will need to change the DataSource of these tables in order to keep working with them in Btrieve.</p>
 <h2 id="change-the-datasource">Change the DataSource</h2>
 <ol>
 <li>First we will need to add the new DataSource to our migrated application.</li>
-<li>Here the DataSource of migrated NorthWind application
+<li>Below is the DataSource of a migrated Northwind application
 <img src="2019-01-03_16h27_39.png" alt="" /></li>
-<li>Now Let us add a new DataSource
+<li>Now Let's add a new DataSource
 <ol>
-<li>notice the name &quot;KeepInBtrive&quot;</li>
-<li>notice that the new entry using ConnectionManager.</li>
-<li>notice that &quot;GetDataProvider&quot; point to the same &quot;Btrieve&quot; as the original one
+<li>Notice the name &quot;KeepInBtrieve&quot;</li>
+<li>Notice that the new entry using ConnectionManager.</li>
+<li>Notice that &quot;GetDataProvider&quot; points to the same &quot;Btrieve&quot; as the original one
 <img src="2019-01-03_16h33_29.png" alt="" /></li>
 </ol>
 </li>
 </ol>
-<h2 id="set-the-tables-that-we-will-like-to-keep-working-with-in-btrieve">Set The Tables that we will like to keep working with in Btrieve</h2>
+<h2 id="set-the-tables-that-we-would-like-to-keep-working-with-btrieve">Set The Tables that we would like to keep working with Btrieve</h2>
 <ol>
 <li><p>Change the table DataSource from Btrieve to KeepInBtrieve
 <img src="2019-01-03_16h47_07.png" alt="" />
 <img src="2019-01-03_16h48_25.png" alt="" />
 <img src="2019-01-03_16h49_12.png" alt="" /></p>
 </li>
-<li><p>Now When you run your application the data for &quot;Categories&quot; table will be from Btrieve, and the rest of your tables will be using SQL</p>
+<li><p>Now when you run your application the data for &quot;Categories&quot; will be based on Btrieve, and the rest of your tables will be based on SQL</p>
 </li>
 </ol>
 
