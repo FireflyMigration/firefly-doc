@@ -8,6 +8,7 @@ In this case we will need to change the DataSource of these tables in order to k
 2. Below is the DataSource of a migrated Northwind application
 
 ![](2019-01-03_16h27_39.png)
+
 3. Now Let's add a new DataSource
    1. Notice the name "KeepInBtrieve"
    2. Notice that the new entry using ConnectionManager.
