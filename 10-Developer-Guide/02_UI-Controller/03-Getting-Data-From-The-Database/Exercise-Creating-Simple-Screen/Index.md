@@ -14,6 +14,10 @@
 ![Status bar](2019-01-09_16h35_33.png)
 
 5. Now your code is in local Git.
+6. Change back to the **Solution Explorer** panel.
+
+![Solution Explorer](2019-01-09_16h51_43.png)
+
 6. Right click on the **Northwind** project, select **Add** then select **New Folder**, name the new folder **“Exercises”**.
 7.  Right click **“Exercises”** and select **Add** then select **New Item**, an Add nmew Item screen will open.
 8.  Select from the list to the left **Templates**, and from the list in the center of the screen select **UIController**
