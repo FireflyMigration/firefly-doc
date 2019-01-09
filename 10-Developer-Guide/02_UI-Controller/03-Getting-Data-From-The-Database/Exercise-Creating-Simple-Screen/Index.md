@@ -22,7 +22,7 @@
 7.  Right click **“Exercises”** and select **Add** then select **New Item**, an Add new Item screen will open.
 8.  Select from the list to the left **Templates**, and from the list in the center of the screen select **UIController**
 9.  In the **Name box** at the bottom of the screen type in the name **ShowProducts**.
-10.	Define the **Products** table at the beginning of the controller class.(drag and drop it, holding the **Shift** key just before the drop).
+10. Define the **Products** table at the beginning of the controller class.(drag and drop it, holding the **Shift** key just before the drop).
 11.  In the **constructor** use the **From** to set the **Products** to be the class main table.
 12.  Build the **Northwind** Project. (in the **Build** pulldown menu, select **Build Northwind**).
 13.  Using the **Class Outline** Open the Form Designer:  
