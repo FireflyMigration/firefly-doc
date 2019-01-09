@@ -22,3 +22,5 @@
    1. Customer.CustomerID.  
    2. Customer.CompanyName.
 14. Set a Debug Write line in the On Saving row and make sure that you get the message in the output window when selecting an item
+16. Save changes to Git.
+17. Build and test.

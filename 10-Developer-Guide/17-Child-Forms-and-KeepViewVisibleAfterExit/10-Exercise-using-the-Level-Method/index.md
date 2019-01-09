@@ -5,5 +5,6 @@
 3. Use the debug write line and test the level names in run time.
 4. In **ShowCategories**.
 5. Clear the true and false values when calling the **ShowProducts**.
-4. Build and test.
+4. Save changes to Git.
+7. Build and test.
 

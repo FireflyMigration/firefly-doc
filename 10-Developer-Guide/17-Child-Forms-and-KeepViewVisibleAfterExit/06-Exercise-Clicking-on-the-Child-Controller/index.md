@@ -2,5 +2,6 @@
 
 1. In **ShowCategories**.
 2. Add Register Cached Controller to the constructor.   
-3. Build and Test 
+3. Save changes to Git.
+4. Build and Test 
 

@@ -32,10 +32,14 @@
    7.  cmbShipper ListSource to be Shippers table from the controller.
    2.  cmbShipper ValueColumn to be ShipperID.
    3.  cmbShipper DisplayColumn to be CompanyName.
-9. Build and test.
+9. Save changes to Git.
+10. Build and test.
 10. Add **Where** to show records where the order **ShipCountry** is equal to **UK**.
-11. Build and test.
-12. Set the **cmbCustomer** to show only **UK** customers.
+11. Save changes to Git.
 13. Build and test.
+12. Set the **cmbCustomer** to show only **UK** customers.
+13. Save changes to Git.
+16. Build and test.
 14. Set the **cmbEmployee** to show only **UK** Employees.
-15. Build and test.
+15. Save changes to Git.
+19. Build and test.

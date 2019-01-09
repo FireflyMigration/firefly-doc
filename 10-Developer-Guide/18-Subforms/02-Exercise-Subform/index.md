@@ -9,9 +9,11 @@
 7. Reduce the size of the grid, and add a subform.
 8. Go to the code behind of the form (F7).
 9. After the **InitializeComponent()** set the subform controller.
-10. Build and test.
+10. Save changes to Git.
+11. Build and test.
 11. Notice that you get data only for the first employee.
 12. In **ShowEmployeeCars**.
 13. In the **Run** method.
 14. Clear the where.
-15. Build and test.
+15. Save changes to Git.
+17. Build and test.

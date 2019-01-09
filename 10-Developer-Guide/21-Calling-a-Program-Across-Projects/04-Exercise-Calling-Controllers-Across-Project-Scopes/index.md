@@ -5,7 +5,8 @@
 3. Add a new **UIController** to the **Exercises** name space in **Northwind** project, name it **ShowRegions**.
 4. Set the new **Region** entity as the main table.
 5. Build and add a grid that will show all the columns in the form.
-6. Build and test.
+6. Save changes to Git.
+7. Build and test.
 7. In the **customer project** create a new folder name it **Exercises**.
 8. Add a new **UIController** under the new folder, name it **ShowCustomerPerRegion**.
 9. Set the **Customers** entity as the main table.
@@ -29,4 +30,5 @@
 22. In **ShowRegionsView** use **Create** to call IShowCustomerPerRegion remember:  
 	1. Use the full **NameSpace**.  
 	2. Send the right parameter.   
-23. Build and test. 
+23. Save changes to Git.
+25. Build and test. 

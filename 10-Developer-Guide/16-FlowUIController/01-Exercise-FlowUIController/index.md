@@ -8,8 +8,10 @@
       4. UnitPrice
       5. UnitsInStock
       6. UnitsOnOrder
-2.	Build and test the program.
+2.	Save changes to Git.
+4.  Build and test the program.
 3.	Add the columns to the columns collection in a different order.
+6.  Save changes to Git.
 4.	Run the program and test the tab order.
 5.	Fix the tab order. Build and test.
 

@@ -8,5 +8,6 @@
     1.  _numberOfOrders to increase by 1 for every row.
     2.  _totalValue to accumulate the value of **Freight** column from the **Orders** table.
 4.  add one more Debug line to reflect the two new variables to the Output.
-5.  Build and test. 
+5.  Save changes to Git.
+6.  Build and test. 
 

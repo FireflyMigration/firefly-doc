@@ -10,7 +10,9 @@
     c.	ShipVia
     d.	ShipName
     e.	ShipCity
-4.	Build and test.
+4.	Save changes to Git.
+7.  Build and test.
 3.	Go back to the **controller** of **ShowOrders**:
 7.  Add a **Where** to display only orders from **January 1996**  up to the end of  **June 1997**.  
-4.	Build and test.
+4.	Save changes to Git.
+10. Build and test.

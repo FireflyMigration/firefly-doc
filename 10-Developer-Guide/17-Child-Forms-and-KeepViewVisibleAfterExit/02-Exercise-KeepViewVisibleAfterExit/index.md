@@ -17,5 +17,6 @@
            2.  CategoryName.  
         2. Place a button name it **Products**, call the  **ShowProducts** from the click event.  
 3. Add **ShowCategories** to the **ApplicationMdi**.
-4. Build and Test 
+4. Save changes to Git.
+5. Build and Test 
 

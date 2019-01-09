@@ -6,4 +6,5 @@
 4.	Raise the **MySpecialCommand**, using a button on the screen.
 5.  Set a message box to the leave row to show **OnLeaveRow**.
 5.  Set the **MySpecialCommand** Precondition to leave row. 
-6.	Build and test.
+6.	Save changes to Git.
+8.  Build and test.

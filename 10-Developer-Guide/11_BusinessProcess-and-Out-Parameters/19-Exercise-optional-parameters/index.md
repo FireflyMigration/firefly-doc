@@ -5,5 +5,6 @@
 3. Add a new menu entry name its **Run BP with Optional parameters** and call **CalcOrderTotalForShipper**.
 4. Notice that Visual studio force you to send only one parameter.
 5. Hard code **2** as the shipper ID.
-6. Build and test.
+6. Save changes to Git.
+7. Build and test.
 

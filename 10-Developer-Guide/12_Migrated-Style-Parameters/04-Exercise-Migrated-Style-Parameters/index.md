@@ -13,7 +13,8 @@
 	4. **Local** column **NumberOfOrders**.
 	5. **Local** column **TotalFreight**.
 5. Add a new menu entry and call **ShowCustomers**.  
-6. Build and test.  
+6. Save changes to Git.
+7. Build and test.  
 7. Add a new **BusinessProcess** name it **CalcTotalOrdersPerCustomer**.  
 8. Set the **Orders** Entity as the main table.  
 9. Add 3 **local columns**:  
@@ -29,13 +30,16 @@
 12. Override the **OnLeaveRow**.
 13. set **NumberOfOrders value** to increase by 1 for every row.  
 14. set **TotalFreight value** to accumulate the value of **Freight** column from the **Orders** table.  
-15. Build and test the **BusinessProcess** using the <kbd>Shift</kbd><kbd>F3</kbd> send **ANATR** and check the **Output** panel for the results.   
+15. Save changes to Git.
+17. Build and test the **BusinessProcess** using the <kbd>Shift</kbd><kbd>F3</kbd> send **ANATR** and check the **Output** panel for the results.   
 16. In **ShowCustomers** add a button to the screen, set the button text to **Get Total Orders**.  
 17. set the value of **NumberOfOrders** and **TotalFreight** to zero.  
     This should be done before the call to **CalcTotalOrdersPerCustomer**
 18. Call the **CalcTotalOrdersPerCustomer** from the button **click** event and send the parameters.  
-19. Build and test, notice that **NumberOfOrders** and **TotalFreight** are update with values when clicking the button.  
+19. Save changes to Git.
+22. Build and test, notice that **NumberOfOrders** and **TotalFreight** are update with values when clicking the button.  
 20. In **ShowCustomers** view, find the call to **CalcTotalOrdersPerCustomer**.  
 21. Try to change the second parameters **NumberOfOrders** and send its **Value**, notice the error.  
 22. Cancel the last item change and try to do the same for **TotalFreight** notice that you will **not** get an error.
-23. Build and test, notice that **TotalFreight** is not update when you click the button.
+23. Save changes to Git.
+27. Build and test, notice that **TotalFreight** is not update when you click the button.

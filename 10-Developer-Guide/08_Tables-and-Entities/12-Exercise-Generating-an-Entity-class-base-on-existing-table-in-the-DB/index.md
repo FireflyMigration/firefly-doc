@@ -7,6 +7,7 @@
 5.	Copy all the text of the class.
 6.	Create a new Entity called **Employees**.
 7.	Replace all the code of the new entity with the one you just copied.
-9.	Build and Test. 
+9.	Save changes to Git.
+9.  Build and Test. 
 
 

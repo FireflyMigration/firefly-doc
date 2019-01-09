@@ -33,4 +33,5 @@
 14. Add the following columns to the **Extra** tab: 
     1.  ReportTo.
     2.  PhotoPath.
-15. Build and test.
+15. Save changes to Git.
+22. Build and test.

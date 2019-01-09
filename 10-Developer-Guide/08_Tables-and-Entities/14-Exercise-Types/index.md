@@ -6,6 +6,7 @@
     2.  For the CarID.  
 2.	In **Employees** change the code of the **EmployeeID** column to use the new **EmployeeID** type.
 4.  in **EmployeeCars** change the code of **EmployeeID** and the **CarID** to use the new types. 
-3.	Build and test.
+3.	Save changes to Git.
+6.  Build and test.
 
 

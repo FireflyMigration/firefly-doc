@@ -5,5 +5,6 @@
     1. **GetCurrentDate** return data type **Date**.
     2. **GetCureentPage** return data type **Number**.
 3.  Display the new methods on the report layout.
-3.	Build and test.  
+3.	Save changes to Git.
+5.  Build and test.  
 

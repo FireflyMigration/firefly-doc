@@ -10,13 +10,16 @@
     2.  **AllowFocus** of the **CategoryName** textbox to **False**.
     3.  **BackColor** of the **ProductName** textbox to **LightBlue**.
     4.  **Font** of the **ProductName** textbox to **Bold**.
-7. build and test.
+7. Save changes to Git.
+8. Build and test.
 8. Change the following properties of the grid control:  
     1.	**RowColorStyle** to **AlternatingRowBackColor**.
     2.	**AlternatingBackcolor** to **WhiteSmoke**.
-9.	Build and test.
+9.	Save changes to Git.
+11. Build and test.
 10. Notice that the grid properties override the textbox one.
 11. Change **back** the  **RowColorStyle** to **ByColumnAndControls**.
-12. Build and test.
+12. Save changes to Git.
+15. Build and test.
 
 

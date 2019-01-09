@@ -7,5 +7,6 @@
     2.  **ReportFooter** Display the page number.  
     3.  **CategoryHeader** display **CategoryName** for each group of rows with the same **Category**.  
     4.  **CategoryFooter** display summary  at the end of each category, showing the total items in the category and the total unit price.  
-5.	Build and test.  
+5.	Save changes to Git.
+5.  Build and test.  
 

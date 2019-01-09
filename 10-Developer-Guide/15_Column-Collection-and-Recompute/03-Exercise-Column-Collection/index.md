@@ -37,4 +37,5 @@
 21. Go to the **Form** and follow this steps:
 	1. Set the **ShipperID** textBox to show the data from the **ShipperID**.
 	2. Set the **TotalOrders** textBox to show the data from the **TotalOrders**.
-22. Build and test.
+22. Save changes to Git.
+23. Build and test.

@@ -7,5 +7,6 @@
 5. Override the OnEnterRow.
 6. call using Cached to the **ShowProducts**, send true as the second parameter.
 7. Change the **CalProducts** method, and send false as the second parameter.
-8. Build and test.
+8. Save changes to Git.
+9. Build and test.
 

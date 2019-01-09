@@ -16,6 +16,7 @@
       7. UnitsOnOrder
 8.	Sort the report by the **ProductName**.
 9.  Add the new report to the main menu
-10. Build and test
+10. Save changes to Git.
+11. Build and test
 
 

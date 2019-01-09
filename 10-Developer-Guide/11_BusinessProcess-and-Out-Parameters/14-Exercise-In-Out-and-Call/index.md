@@ -8,5 +8,6 @@
 4.  Override the **OnEnterRow**.
 5.  Add a call to **CalcOrderTotalForShipper**. (use the **run** snippet)
 6.  Remember to send the **ShipperID** and the **two local columns** to **CalcOrderTotalForShipper**.
-7.  Build and test.
+7.  Save changes to Git.
+8.  Build and test.
 

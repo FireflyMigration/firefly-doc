@@ -10,7 +10,8 @@
     1. OnSavingRow
     1. OnEnd
     1. OnUnLoad
-1. **Build and test** 
+1. Save changes to Git.
+5. **Build and test** 
 1.	Run the program.
 1.  Open the **Output window** and notice the Debug information.
 1.  Go to the next row.
