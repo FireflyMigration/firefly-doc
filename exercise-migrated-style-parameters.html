@@ -53,6 +53,7 @@
 </ol>
 </li>
 <li>Add a new menu entry and call <strong>ShowCustomers</strong>.</li>
+<li>Save changes to Git.</li>
 <li>Build and test.</li>
 <li>Add a new <strong>BusinessProcess</strong> name it <strong>CalcTotalOrdersPerCustomer</strong>.</li>
 <li>Set the <strong>Orders</strong> Entity as the main table.</li>
@@ -75,15 +76,18 @@
 <li>Override the <strong>OnLeaveRow</strong>.</li>
 <li>set <strong>NumberOfOrders value</strong> to increase by 1 for every row.</li>
 <li>set <strong>TotalFreight value</strong> to accumulate the value of <strong>Freight</strong> column from the <strong>Orders</strong> table.</li>
+<li>Save changes to Git.</li>
 <li>Build and test the <strong>BusinessProcess</strong> using the <kbd>Shift</kbd><kbd>F3</kbd> send <strong>ANATR</strong> and check the <strong>Output</strong> panel for the results.</li>
 <li>In <strong>ShowCustomers</strong> add a button to the screen, set the button text to <strong>Get Total Orders</strong>.</li>
 <li>set the value of <strong>NumberOfOrders</strong> and <strong>TotalFreight</strong> to zero.<br />
 This should be done before the call to <strong>CalcTotalOrdersPerCustomer</strong></li>
 <li>Call the <strong>CalcTotalOrdersPerCustomer</strong> from the button <strong>click</strong> event and send the parameters.</li>
+<li>Save changes to Git.</li>
 <li>Build and test, notice that <strong>NumberOfOrders</strong> and <strong>TotalFreight</strong> are update with values when clicking the button.</li>
 <li>In <strong>ShowCustomers</strong> view, find the call to <strong>CalcTotalOrdersPerCustomer</strong>.</li>
 <li>Try to change the second parameters <strong>NumberOfOrders</strong> and send its <strong>Value</strong>, notice the error.</li>
 <li>Cancel the last item change and try to do the same for <strong>TotalFreight</strong> notice that you will <strong>not</strong> get an error.</li>
+<li>Save changes to Git.</li>
 <li>Build and test, notice that <strong>TotalFreight</strong> is not update when you click the button.</li>
 </ol>
 <ul>
