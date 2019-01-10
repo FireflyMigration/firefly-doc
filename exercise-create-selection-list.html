@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="online, uicontroller, selection, select, zoom">
+    <meta name="keywords" content="">
 
-    <title>Selection Lists</title>
+    <title>Exercise - Selection List</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,34 +29,55 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="selection-lists">Selection Lists</h1>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/JI4VyFsso-w?list=PL1DEQjXG2xnKzD8ASzFC1KFYHRQKVk2nC" frameborder="0" allowfullscreen></iframe>
-<hr />
-<p>Selection list allows the user to select values from a pre-defined set of values (usually a table).</p>
-<p>In this set of articles we will learn how to:</p>
+                <div class="content"><h1 id="exercise-selection-list">Exercise - Selection List</h1>
 <ol>
-<li>Create a selection list controller</li>
-<li>Set the allowed activities of a controller</li>
-<li>Learn about the AllowSelect</li>
-<li>Pass the parameter</li>
-<li>Determine which row should the program park on</li>
-<li>Use the Expand event</li>
-<li>Use a generic SelectionList utility</li>
+<li><p>Add new folder under the Exervicises folder, name the new folder <strong>SelectionList</strong>.</p>
+</li>
+<li><p>Add new UIController to the <strong>SelectionList</strong> folder, name the new UIController <strong>ShowOrdersWithEmployeeSelection</strong>.</p>
+</li>
+<li><p>Set the <strong>Orders</strong> table as the main table</p>
+</li>
+<li><p>Build and go to the form designer.</p>
+</li>
+<li><p>Add a <strong>Grid control</strong> to the form.</p>
+</li>
+<li><p>Add the following columns to the <strong>Grid</strong>:</p>
+<ol>
+<li>Orders.OrderID.</li>
+<li>Orders.CustomerID.</li>
+<li>Orders.OrderDate.</li>
 </ol>
-<p>For this example, let's create a SelectShippers controller that will allow the user to select a shipper from the shippers entity.
-Basically we can start with a regular UIController class that uses the shippers entity as its main table and place the ShipperID and CompanyName columns on the view.</p>
+</li>
+<li><p>Add new UIController to the <strong>SelectionList</strong> folder, name the new UIController <strong>SelectCustomers</strong>.</p>
+</li>
+<li><p>Set the <strong>Customers</strong> table as the main table</p>
+</li>
+<li><p>In the Onload method set the following settings</p>
+<ol>
+<li>Activity to Browse.</li>
+<li>Allow Delete,Insert and update to false.</li>
+<li>Allow Select to ture.</li>
+</ol>
+</li>
+<li><p>Build and go to the form designer.</p>
+</li>
+<li><p>Add a <strong>Grid control</strong> to the form.</p>
+</li>
+<li><p>Add the following columns to the <strong>Grid</strong></p>
+</li>
+<li><p>Customer.CustomerID.</p>
+</li>
+<li><p>Customer.CompanyName.</p>
+</li>
+<li><p>Set a Debug Write line in the On Saving row and make sure that you get the message in the output window when selecting an item</p>
+</li>
+<li><p>Save changes to Git.</p>
+</li>
+<li><p>Build and test.</p>
+</li>
+</ol>
 <ul>
-<li><a href="making-the-controller-readonly.html">Making the Controller Readonly</a></li>
-<li><a href="allowselect-property.html">AllowSelect Property</a></li>
-<li><a href="exercise-create-selection-list.html">Exercise Create Selection List</a></li>
-<li><a href="returning-the-selected-value.html">Returning the Selected Value</a></li>
-<li><a href="exercise-returning-the-selected-value.html">Exercise Returning The Selected Value</a></li>
-<li><a href="determine-the-parked-row.html">Determine the Parked Row</a></li>
-<li><a href="exercise-determine-the-parked-row.html">Exercise Determine the Parked Row</a></li>
-<li><a href="using-the-expand-event-to-call-the-selectshipper-controller.html">Using the Expand event to call the SelectShipper Controller</a></li>
-<li><a href="defining-the-expand-event-at-the-column-level.html">Defining the Expand event at the Column Level</a></li>
-<li><a href="showexpandbutton-property.html">ShowExpandButton Property</a></li>
-<li><a href="using-the-generic-selectionlist.html">Using the Generic SelectionList</a></li>
+<li><a href="exercise-create-selection-list-results.html">Exercise Create Selection List results</a></li>
 </ul>
 
 
@@ -65,7 +86,7 @@ Basically we can start with a regular UIController class that uses the shippers 
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/24-Selection-Lists/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/24-Selection-Lists/31-Exercise-Create-Selection-List/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -127,7 +148,7 @@ Basically we can start with a regular UIController class that uses the shippers 
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'selection-lists.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'exercise-create-selection-list.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
