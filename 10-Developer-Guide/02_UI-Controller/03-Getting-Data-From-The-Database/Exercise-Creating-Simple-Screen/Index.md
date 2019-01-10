@@ -1,7 +1,7 @@
 ﻿# Exercise - Creating a Simple Screen
 
 1. First we will add **Northwind** to Git.
-2. Click on the bottom right rornner of Visual Studio option **Add to Source Control**.
+2. Click on the bottom right coroner of Visual Studio option **Add to Source Control**.
 
 ![Add to source Control](2019-01-09_16h29_34.png)
 
