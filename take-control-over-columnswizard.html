@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Busting Types to the next level</title>
+    <title>Take control over ColumnsWizard</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,18 +29,60 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="busting-types-to-the-next-level">Busting Types to the next level</h1>
-<p>In the original code, the use of types was limited to :</p>
-<ol>
-<li>Set the same format, cross the system. I.E. &quot;First name&quot; will be set to 30 chars everywhere in the system.</li>
-<li>Set a default program to be execute when the user hit the expend (Zoom) event.</li>
-<li>The ability to set the GUI display on a form. I.E. when I use ProductID on a form it will defaulting to combo box.</li>
-</ol>
-<p>In the next set of articles you will understand how to achieve much more then just this options.</p>
-<ul>
-<li><a href="use-type-as-combobox-with-data-from-table.html">Use type as comboBox with data from table</a></li>
-<li><a href="take-control-over-columnswizard.html">Take control over ColumnsWizard</a></li>
-</ul>
+                <div class="content"><h1 id="take-control-over-columnswizard">Take control over ColumnsWizard</h1>
+<p>We start by setting up our form object the root of all forms:
+<img src="10.png" alt="10" /></p>
+<p>We will override the 'AfterWizardAddedControl' method</p>
+<pre data-line="17,18,19,20" class="language-csdiff line-numbers"><code>using Firefly.Box.Data.Advanced;
+using Firefly.Box.UI;
+using Firefly.Box.UI.Advanced;
+
+namespace Northwind.Shared.Theme.Controls
+{
+    public partial class Form : ENV.UI.Form 
+    {
+        /// &lt;summary&gt;Form&lt;/summary&gt;
+        public Form()
+        {
+            Icon = ENV.Common.DefaultIcon;
+            DefaultLabelType = typeof(Label);
+            DefaultTextBoxType = typeof(TextBox);
+            InitializeComponent();
+        }
+        public override void AfterWizardAddedControl(Firefly.Box.UI.Label label, InputControlBase control, ColumnBase column)
+        {
+            base.AfterWizardAddedControl(label, control, column);
+        }
+    }
+} </code></pre>
+<p>This method allow us to take more control on how the items we are adding to the form are going to look or behave:
+I.E. If I will like all labels to have a suffix of ':' , I can add that here:</p>
+<pre data-line="19" class="language-csdiff line-numbers"><code>using Firefly.Box.Data.Advanced;
+using Firefly.Box.UI;
+using Firefly.Box.UI.Advanced;
+
+namespace Northwind.Shared.Theme.Controls
+{
+    public partial class Form : ENV.UI.Form 
+    {
+        /// &lt;summary&gt;Form&lt;/summary&gt;
+        public Form()
+        {
+            Icon = ENV.Common.DefaultIcon;
+            DefaultLabelType = typeof(Label);
+            DefaultTextBoxType = typeof(TextBox);
+            InitializeComponent();
+        }
+        public override void AfterWizardAddedControl(Firefly.Box.UI.Label label, InputControlBase control, ColumnBase column)
+        {
+            label.Text += " :";
+            base.AfterWizardAddedControl(label, control, column);
+        }
+    }
+} </code></pre>
+<p>Now when I use the columnWizard to add columns the end result will be:
+<img src="20.png" alt="20" /></p>
+<p><img src="30.png" alt="30" /></p>
 
 
                 <br />
@@ -48,7 +90,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/70-User Interface/40-Busting-Types-to-the-next-level/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/70-User Interface/40-Busting-Types-to-the-next-level/20-Take-control-over-ColumnsWizard/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -110,7 +152,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'busting-types-to-the-next-level.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'take-control-over-columnswizard.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
