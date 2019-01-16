@@ -1,0 +1,271 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Use type as comboBox with data from table</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="use-type-as-combobox-with-data-from-table">Use type as comboBox with data from table</h1>
+<p>In this article we will improve the ProdID type, to show data from the Products table, when we use it in combo box.</p>
+<p>First we will create a new type &quot;ProductID&quot;:</p>
+<p><img src="2019-01-10_14h43_41.png" alt="2019-01-10_14h43_41" /></p>
+<p>This is the code for the new type:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using Firefly.Box;
+using ENV.Data;
+
+namespace Northwind.Types
+{
+    public class ProductID : NumberColumn
+    {
+        public ProductID() : base("ProductID", "N10")
+        {
+        }
+    }
+} </code></pre>
+<p>Now we will use it in the Order_Details table definition:</p>
+<pre data-line="13" class="language-csdiff line-numbers"><code>using Firefly.Box;
+using ENV.Data;
+namespace Northwind.Models
+{
+    /// &lt;summary&gt;Order_Details(E#3)&lt;/summary&gt;
+    public class Order_Details : Entity 
+    {
+        #region Columns
+        [PrimaryKey]
+        public readonly Types.OrderID OrderID = new Types.OrderID { Caption = "OrderID", Name = "OrderID" };
+        [PrimaryKey]
+-       public readonly NumberColumn ProductID = new NumberColumn("ProductID", "N10");
+        public readonly Types.ProductID ProductID = new Types.ProductID();
+        public readonly NumberColumn UnitPrice = new NumberColumn("UnitPrice", "10.3");
+        public readonly NumberColumn Quantity = new NumberColumn("Quantity", "N5");
+        public readonly NumberColumn Discount = new NumberColumn("Discount", "5.2");
+        #endregion
+        #region Indexes
+        /// &lt;summary&gt;PK_Order_Details (#1)&lt;/summary&gt;
+        public readonly Index SortByPK_Order_Details = new Index { Caption = "PK_Order_Details", Name = "PK_Order_Details", AutoCreate = true, Unique = true };
+        /// &lt;summary&gt;OrderID (#2)&lt;/summary&gt;
+        public readonly Index SortByOrderID = new Index { Caption = "OrderID", Name = "OrderID", AutoCreate = true };
+        /// &lt;summary&gt;ProductID (#3)&lt;/summary&gt;
+        public readonly Index SortByProductID = new Index { Caption = "ProductID", Name = "ProductID", AutoCreate = true };
+        #endregion
+        public Order_Details() : base("dbo.[Order Details]", "Order_Details", Shared.DataSources.Northwind)
+        {
+            Cached = false;
+            InitializeIndexes();
+        }
+        void InitializeIndexes()
+        {
+            SortByPK_Order_Details.Add(OrderID, ProductID);
+            SortByOrderID.Add(OrderID);
+            SortByProductID.Add(ProductID);
+        }
+    }
+} </code></pre>
+<p>Next we need to add some new functionality to our combobox :</p>
+<p><img src="2019-01-10_16h48_00.png" alt="combo box location" /></p>
+<p>We will start with adding an interface</p>
+<pre data-line="13,14,15,16" class="language-csdiff line-numbers"><code>namespace Northwind.Shared.Theme.Controls
+{
+    public partial class ComboBox : ENV.UI.ComboBox 
+    {
+        /// &lt;summary&gt;ComboBox&lt;/summary&gt;
+        public ComboBox()
+        {
+            if (!DesignMode)
+            	FixedBackColorInNonFlatStyles = ENV.UserSettings.FixedBackColorInNonFlatStyles;
+            InitializeComponent();
+        }
+    }
+    public interface ICanConfigureCombo
+    {
+        void Configure(ComboBox c);
+    }
+} </code></pre>
+<p>And now we will add the option to configure the combox using our new interface :</p>
+<pre data-line="13,14,15,16,17,18,19,20,21,22,23,24,25" class="language-csdiff line-numbers"><code>namespace Northwind.Shared.Theme.Controls
+{
+    public partial class ComboBox : ENV.UI.ComboBox 
+    {
+        /// &lt;summary&gt;ComboBox&lt;/summary&gt;
+        public ComboBox()
+        {
+            if (!DesignMode)
+            	FixedBackColorInNonFlatStyles = ENV.UserSettings.FixedBackColorInNonFlatStyles;
+            InitializeComponent();
+        }
+    }
+    protected override void OnLoad()
+    {
+       if (Data != null)
+       {
+         var c = Data.Column as ICanConfigureCombo;
+         if (c != null)
+            {
+                c.Configure(this);
+            }
+        }
+            base.OnLoad();
+        }
+    }
+    public interface ICanConfigureCombo {
+        void Configure(ComboBox c);
+    }
+} </code></pre>
+<p>Now we implement the ComboBox &quot;ICanConfigureCombo&quot; interface in the &quot;ProductId&quot; type:</p>
+<pre data-line="12,19,20,21,22" class="language-csdiff line-numbers"><code>
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Firefly.Box;
+using ENV.Data;
+using Northwind.Shared.Theme.Controls;
+
+namespace Northwind.Types
+{
+-   public class ProductID : NumberColumn
+    public class ProductID : NumberColumn , Shared.Theme.Controls.ICanConfigureCombo
+    {
+        public ProductID() : base("ProductID", "N10")
+        {
+            ControlType = typeof(Shared.Theme.Controls.ComboBox);
+        }
+
+        public void Configure(ComboBox c)
+        {
+            throw new NotImplementedException();
+        }
+    }
+} </code></pre>
+<p>Now we will change the code from throwing NotImplementedException to some reasonable code, that will populate the combobox with values from the Products table.</p>
+<pre data-line="21,22,23,24,25" class="language-csdiff line-numbers"><code>
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Firefly.Box;
+using ENV.Data;
+using Northwind.Shared.Theme.Controls;
+
+namespace Northwind.Types
+{
+    public class ProductID : NumberColumn , Shared.Theme.Controls.ICanConfigureCombo
+    {
+        public ProductID() : base("ProductID", "N10")
+        {
+            ControlType = typeof(Shared.Theme.Controls.ComboBox);
+        }
+
+        public void Configure(ComboBox c)
+        {
+-           throw new NotImplementedException();
+            var p = new Models.Products();
+            c.ListSource = p;
+            c.DisplayColumn = p.ProductName;
+            c.ValueColumn = p.ProductID;
+        }
+    }
+} </code></pre>
+<p>At this point adding the ProductID column to a UIController will result in a regular column :</p>
+<p><img src="2019-01-10_17h17_14.png" alt="UI controller" /></p>
+<p>But if we change the TextBox to ComboBox you will get ComboBox that allow you to select from list of products:</p>
+<p><img src="2019-01-10_17h20_31.png" alt="UI Controller with combo box" /></p>
+
+
+                <br />
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/70-User Interface/40-Busting-Types-to-the-next-level/10-Use-type-as-comboBox-with-data-from-table/index.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'use-type-as-combobox-with-data-from-table.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>
