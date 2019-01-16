@@ -83,6 +83,46 @@ namespace Northwind.Shared.Theme.Controls
 <p>Now when I use the columnWizard to add columns the end result will be:
 <img src="20.png" alt="20" /></p>
 <p><img src="30.png" alt="30" /></p>
+<p>Also notice that our product Id column was add as comboBox:</p>
+<p><img src="40.png" alt="40" /></p>
+<h3 id="set-a-local-column-to-be-combobox">Set a local column to be comboBox</h3>
+<p>Just add a local column to your controller and set the ControlType to be typeof comboBox, this is a new option that you may not have.</p>
+<pre data-line="17" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+
+namespace Northwind
+{
+    public class DemoProductIDType : UIControllerBase
+    {
+        
+
+        public readonly Models.Order_Details Order_Details = new Models.Order_Details();
+
+        public readonly NumberColumn MyNewComboBox = new NumberColumn() { ControlType = typeof(Shared.Theme.Controls.ComboBox)};
+
+        public DemoProductIDType()
+        {
+            From = Order_Details;
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () =&gt; new Views.DemoProductIDTypeView(this);
+        }
+    }
+} </code></pre>
+<p>When you add this column to the form using the columnWizard it will show up as comboBox</p>
+<p><img src="50.png" alt="50" /></p>
 
 
                 <br />
