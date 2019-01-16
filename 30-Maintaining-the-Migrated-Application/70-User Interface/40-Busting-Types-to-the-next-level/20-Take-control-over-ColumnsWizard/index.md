@@ -63,3 +63,54 @@ Now when I use the columnWizard to add columns the end result will be:
 ![20](20.png)
 
 ![30](30.png)
+
+Also notice that our product Id column was add as comboBox:
+
+![40](40.png)
+
+
+
+### Set a local column to be comboBox
+
+Just add a local column to your controller and set the ControlType to be typeof comboBox, this is a new option that you may not have.
+
+```csdiff
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+
+namespace Northwind
+{
+    public class DemoProductIDType : UIControllerBase
+    {
+        
+
+        public readonly Models.Order_Details Order_Details = new Models.Order_Details();
+
++       public readonly NumberColumn MyNewComboBox = new NumberColumn() { ControlType = typeof(Shared.Theme.Controls.ComboBox)};
+
+        public DemoProductIDType()
+        {
+            From = Order_Details;
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () => new Views.DemoProductIDTypeView(this);
+        }
+    }
+}
+```
+
+When you add this column to the form using the columnWizard it will show up as comboBox 
+
+![50](50.png)
