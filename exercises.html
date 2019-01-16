@@ -1051,47 +1051,36 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <li><a href="exercise-cached-inner-class-results.html">Exercise Cached Inner Class results</a></li>
 </ul>
 
-<h1 id="exercise-standard-solution-vs-full-solution">Exercise - Standard Solution vs Full Solution</h1>
+<h1 id="using-the-standard-solution-exercise">Using the Standard Solution exercise</h1>
 <ol>
-<li>Open your application migrated code using the full solution bat file.</li>
-<li>Notice the time and computer resource  need.</li>
-<li>Close the full solution and open the smaller version.</li>
-<li>Notice that you can go in to run time with out loading all the projects.</li>
-<li>Add one of the existing projects.</li>
+<li>Open your application migrated code using the Standard (non full) solution.</li>
+<li>Add one of the existing projects using the rightclick add existing project.</li>
 </ol>
 
-<h1 id="exercise-large-migrated-application-structure">Exercise - Large Migrated Application Structure</h1>
+<h1 id="finding-a-controller-using-the-developer-tools-and-find-type-exercise">Finding a Controller using the Developer Tools and Find Type exercise</h1>
 <ol>
-<li>Open the following directories in your solution and examining the content:
+<li>Work with the Standard (non full) solution file.</li>
+<li>Run your application.</li>
+<li>Using the developer tools choose a program and copy it's path.</li>
+<li>Go to Visual Studio and use <kbd>Ctrl</kbd> + <kbd>,</kbd> and paste the program path to find the program.</li>
+<li>If you the project is not loaded - remember to stop debugging before adding it to the solution.</li>
+<li>Please repeat 4 times, for four programs in four different projects</li>
+</ol>
+
+<h1 id="looking-at-a-large-migrated-program-for-the-first-time-exercise">Looking at a Large Migrated Program for the First Time exercise</h1>
 <ol>
-<li>lib</li>
-<li>ENV</li>
-<li>Shared (if relevant)</li>
-<li>Base</li>
-<li>One or two of your projects</li>
-<li>The main project</li>
+<li>Choose a program</li>
+<li>Remember to use <kbd>Ctrl</kbd> + <kbd>m</kbd>, <kbd>o</kbd> to collapse the code.</li>
+<li>In it see that you can find and review the .NET equivilant of:
+<ol>
+<li>Task Prefix</li>
+<li>Data Source</li>
+<li>Handlers</li>
+<li>Data View</li>
 </ol>
 </li>
 </ol>
-
-<h1 id="exercise-finding-a-controller-using-the-developer-tools-and-find-type">Exercise - Finding a Controller using the Developer Tools and Find Type</h1>
-<ol>
-<li>Run your application.</li>
-<li>Using the developer tolls find 4 programs, copy there path and go back to Visual studio.</li>
-<li>Use <kbd>Ctrl</kbd><kbd>,</kbd> and the pass the program path.</li>
-<li>open the program.</li>
-<li>make sure to peek 2 programs that there project is not loaded, try it before the project is loaded and after.</li>
-</ol>
-
-<h1 id="exercise-looking-at-a-large-migrated-program-for-the-first-time">Exercise - Looking at a Large Migrated Program for the First Time</h1>
-<ol>
-<li>Run your application.</li>
-<li>Using the developer tolls find 2 programs, copy there path and go back to Visual studio.</li>
-<li>Use <kbd>Ctrl</kbd><kbd>,</kbd> and the pass the program path.</li>
-<li>open the program.</li>
-<li>using  <kbd>Ctrl</kbd><kbd>m</kbd><kbd>o</kbd> collapse the code.</li>
-<li>go over the code and notice the event that we talked about during the training.</li>
-</ol>
+<p>Please write down the class you've chosen and the line numbers you've found it in.</p>
 
 <h1 id="exercise-using-class-outline-to-read-large-controller-trees">Exercise - Using Class Outline to Read Large Controller Trees</h1>
 <ol>
@@ -1105,6 +1094,13 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <li>use the right click menu on one of the classes to navigate to the main methods of the class.</li>
 <li>Right click on one of the UIControllers and go to the form.</li>
 <li>use to navigate back to go back the class controller</li>
+</ol>
+
+<h1 id="calling-a-program-across-projects-exercise">Calling a Program Across Projects exercise</h1>
+<ol>
+<li>In the <code>Orders</code> project add a new controller called <code>DoSomethingWithProducts</code></li>
+<li>In that controller add a Local Column product id.</li>
+<li>In the <code>OnStart</code> of that controller call the <code>ShowProducts</code> controller to select the product id.</li>
 </ol>
 
 <h1 id="exercise-keyboard-handlers">Exercise - Keyboard Handlers</h1>
@@ -1679,51 +1675,6 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <li><a href="exercise-using-groups-results.html">Exercise Using Groups results</a></li>
 </ul>
 
-<h1 id="exercise-calling-controllers-across-project-scopes">Exercise - Calling Controllers Across Project Scopes</h1>
-<ol>
-<li>Using the runtime <strong>Developer Tools</strong>, <strong>Generate Entity C#</strong> add the <strong>Region</strong> entity to the <strong>NorthwindBase</strong>, <strong>Models</strong>.</li>
-<li>Build <strong>NorthwindBase</strong>.</li>
-<li>Add a new <strong>UIController</strong> to the <strong>Exercises</strong> name space in <strong>Northwind</strong> project, name it <strong>ShowRegions</strong>.</li>
-<li>Set the new <strong>Region</strong> entity as the main table.</li>
-<li>Build and add a grid that will show all the columns in the form.</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-<li>In the <strong>customer project</strong> create a new folder name it <strong>Exercises</strong>.</li>
-<li>Add a new <strong>UIController</strong> under the new folder, name it <strong>ShowCustomerPerRegion</strong>.</li>
-<li>Set the <strong>Customers</strong> entity as the main table.</li>
-<li>In the <strong>Run</strong> method add a parameter : type <strong>Number</strong> name <strong>pRegionID</strong>.</li>
-<li>Add a <strong>where</strong> in the <strong>Run</strong> method to show only customer that have the same <strong>Region</strong> have the parameter, notice that you will need to use <strong>.ToString()</strong>.</li>
-<li>Add the following columns to a <strong>grid</strong> on the form:
-<ol>
-<li>CustomerID.</li>
-<li>CompanyName.</li>
-<li>Address.</li>
-<li>City.</li>
-<li>Region.</li>
-</ol>
-</li>
-<li>In <strong>ShowRegions</strong>.</li>
-<li>Add a button to the screen, set the button text to <strong>Show Region Customers</strong>.</li>
-<li>Try to call the <strong>ShowCustomerPerRegion</strong> from the button <strong>click</strong> event.</li>
-<li>In <strong>NorthwindBase</strong> project, under <strong>Customers</strong> folder, create a new folder name it <strong>Exercises</strong>.</li>
-<li>Add a new interface, name it <strong>IShowCustomerPerRegion</strong>.</li>
-<li>Set the new interface to be public.</li>
-<li>Add the Run with the same parameter definition as <strong>ShowCustomerPerRegion</strong>.(you will need to add using to Firefly.Box).</li>
-<li>build <strong>NorthwindBase</strong>.</li>
-<li>In <strong>ShowCustomerPerRegion</strong> add the interface next to the <strong>UIControllerBase</strong>.</li>
-<li>In <strong>ShowRegionsView</strong> use <strong>Create</strong> to call IShowCustomerPerRegion remember:
-<ol>
-<li>Use the full <strong>NameSpace</strong>.</li>
-<li>Send the right parameter.</li>
-</ol>
-</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-</ol>
-<ul>
-<li><a href="exercise-calling-controllers-across-project-scopes-results.html">Exercise Calling Controllers Across Project Scopes results</a></li>
-</ul>
-
 <h1 id="exercise-list-controls">Exercise - List Controls</h1>
 <ol>
 <li>Add new UIController to the Exercises folder, name the new UIController <strong>ControlsDemo</strong>.</li>
@@ -1966,6 +1917,51 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <li>Save changes to Git.</li>
 <li>Build and test.</li>
 </ol>
+
+<h1 id="exercise-calling-controllers-across-project-scopes">Exercise - Calling Controllers Across Project Scopes</h1>
+<ol>
+<li>Using the runtime <strong>Developer Tools</strong>, <strong>Generate Entity C#</strong> add the <strong>Region</strong> entity to the <strong>NorthwindBase</strong>, <strong>Models</strong>.</li>
+<li>Build <strong>NorthwindBase</strong>.</li>
+<li>Add a new <strong>UIController</strong> to the <strong>Exercises</strong> name space in <strong>Northwind</strong> project, name it <strong>ShowRegions</strong>.</li>
+<li>Set the new <strong>Region</strong> entity as the main table.</li>
+<li>Build and add a grid that will show all the columns in the form.</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+<li>In the <strong>customer project</strong> create a new folder name it <strong>Exercises</strong>.</li>
+<li>Add a new <strong>UIController</strong> under the new folder, name it <strong>ShowCustomerPerRegion</strong>.</li>
+<li>Set the <strong>Customers</strong> entity as the main table.</li>
+<li>In the <strong>Run</strong> method add a parameter : type <strong>Number</strong> name <strong>pRegionID</strong>.</li>
+<li>Add a <strong>where</strong> in the <strong>Run</strong> method to show only customer that have the same <strong>Region</strong> have the parameter, notice that you will need to use <strong>.ToString()</strong>.</li>
+<li>Add the following columns to a <strong>grid</strong> on the form:
+<ol>
+<li>CustomerID.</li>
+<li>CompanyName.</li>
+<li>Address.</li>
+<li>City.</li>
+<li>Region.</li>
+</ol>
+</li>
+<li>In <strong>ShowRegions</strong>.</li>
+<li>Add a button to the screen, set the button text to <strong>Show Region Customers</strong>.</li>
+<li>Try to call the <strong>ShowCustomerPerRegion</strong> from the button <strong>click</strong> event.</li>
+<li>In <strong>NorthwindBase</strong> project, under <strong>Customers</strong> folder, create a new folder name it <strong>Exercises</strong>.</li>
+<li>Add a new interface, name it <strong>IShowCustomerPerRegion</strong>.</li>
+<li>Set the new interface to be public.</li>
+<li>Add the Run with the same parameter definition as <strong>ShowCustomerPerRegion</strong>.(you will need to add using to Firefly.Box).</li>
+<li>build <strong>NorthwindBase</strong>.</li>
+<li>In <strong>ShowCustomerPerRegion</strong> add the interface next to the <strong>UIControllerBase</strong>.</li>
+<li>In <strong>ShowRegionsView</strong> use <strong>Create</strong> to call IShowCustomerPerRegion remember:
+<ol>
+<li>Use the full <strong>NameSpace</strong>.</li>
+<li>Send the right parameter.</li>
+</ol>
+</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-calling-controllers-across-project-scopes-results.html">Exercise Calling Controllers Across Project Scopes results</a></li>
+</ul>
 
 <h1 id="exercise-date-and-time">Exercise Date and Time</h1>
 <ol>

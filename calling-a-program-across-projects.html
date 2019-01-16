@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Create<>">
 
     <title>Calling a Program Across Projects</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -30,18 +30,28 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="calling-a-program-across-projects">Calling a Program Across Projects</h1>
-<p>In this page we'll</p>
+<p>When large application are migrated, they are usually splitted into multiple siebling projects.</p>
+<p>So far, when we have called a controller, it was eight in our project, or in a project we referenced, and we've done that using the <code>new</code> syntax.</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>new ShowOrders().Run(); </code></pre>
+<p>When we are in a project, and we want to call a <code>controller</code> in a siebling project we need to use a different syntax.</p>
+<p>For example - if we're in the <code>Northwind.Orders</code> project and we need the <code>ShowCustomers</code> program from the <code>Northwind.Customers</code> porject  to select a customer, we can't use the <code>new</code> syntax - since we are not referncing the <code>Northwind.Costomers</code> project. Instead we'll use a syntax called <code>Create</code></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Create&lt;Northwind.Customers.IShowCustomers&gt;().Run(); </code></pre>
+<h2 id="demo">Demo</h2>
+<ol>
+<li>In the <code>Northwind.Orders</code> project add a dev demo folder.</li>
+<li>Add a UIContorller called <code>AddOrder</code></li>
+<li>Add a local TextColumn called CustomerId</li>
+<li>Put it on the screen.</li>
+<li>In the <code>OnStart</code> call the <code>ShowCustomers</code> controller to select a customer.</li>
+</ol>
+<h2 id="note">Note</h2>
+<p>You can only call programs across project that were prepared for that.</p>
+<p>The easy way to call a program in another project, is to add a reference to it.</p>
+<p>For example We can add in <code>Northwind.Orders</code> a reference to <code>Northwind.Customers</code> and it'll be ok.</p>
+<p>The  problems starts if then we want to call a controller from <code>Northind.Customers</code>  to <code>Northwind.Orders</code> it'll create a cyrcular reference and break.</p>
+<p>We do recommend adding the reference in most scenariosFor the rest learn how to adjust a program to be called across project see. <a href="creating-a-program-that-can-be-called-across-projects.html">creating-a-program-that-can-be-called-across-projects.html</a></p>
 <ul>
-<li>Review how large projects are migrated into smaller more maintainable projects (modules)</li>
-<li>Review the different projects  parts of a large applications.</li>
-<li>Review the scope of each of these projects, and the Controllers they can access</li>
-</ul>
-<p><a href="Large-Applications-Architecture.pptx">Calling a Program Across Projects Power Point Presentation</a></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dns55O3vaf0?list=PL1DEQjXG2xnJzHc7zzs7CxZX0uK_oOWOY" frameborder="0" allowfullscreen></iframe>
-<hr />
-<ul>
-<li><a href="calling-controllers-across-project-scopes.html">Calling Controllers Across Project Scopes</a></li>
-<li><a href="exercise-calling-controllers-across-project-scopes.html">Exercise Calling Controllers Across Project Scopes</a></li>
+<li><a href="calling-a-program-across-projects-exercise.html">Calling a Program Across Projects exercise</a></li>
 </ul>
 
 
@@ -50,7 +60,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/65-Calling-a-Program-Across-Projects/01-index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/20-Calling-a-Program-Across-Projects/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
