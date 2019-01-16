@@ -36,6 +36,10 @@
 However, if the SilentSet is done together with another regular update of any other column, both changes will be saved.</p>
 <h3 id="migrated-code-examples">Migrated Code Examples:</h3>
 <pre data-line="" class="language-csdiff line-numbers"><code>TableA.Name1.SilentSet("new name"); </code></pre>
+<h3 id="where-did-it-come-from">Where did it come from</h3>
+<p>In magic, when you had an online task, the update command on it's own wouldn't be considered a change that causes the record suffix.
+Updates that happen in another task, due to parameters being sent, due to update with cancel false - or force update or varset - whould be considered a change and would cause the record suffix.</p>
+<p>To properly articualte that in the migrated code any update that happens in a magic online task in: RecordPrefix, Handler and RecordMain are migrated to <code>SilentSet</code></p>
 
 
                 <br />
