@@ -1,6 +1,7 @@
 ﻿
 
 We start by setting up our form object the root of all forms:
+
 ![10](10.png)
 
 We will override the 'AfterWizardAddedControl' method
