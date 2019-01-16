@@ -112,6 +112,3 @@ namespace Northwind
 }
 ```
 
-When you add this column to the form using the columnWizard it will show up as comboBox 
-
-![50](50.png)
