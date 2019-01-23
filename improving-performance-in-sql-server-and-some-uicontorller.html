@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="DisableFirstRowOptimization">
 
-    <title>Improve Performance</title>
+    <title>Improving performance in SQL Server and some UIContorller</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,28 +29,23 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="improve-performance">Improve Performance</h1>
-<ul>
-<li><a href="reduce-calls-to-the-database.html">Reduce calls to the database</a></li>
-<li><a href="table-exists.html">Table Exists</a></li>
-<li><a href="locking.html">Locking</a></li>
-<li><a href="relation-cache.html">Relation Cache</a></li>
-<li><a href="relation-cache-scope.html">Relation Cache Scope</a></li>
-<li><a href="when-to-use-joins.html">When to use Joins</a></li>
-<li><a href="cache-for-entity-that-is-used-for-the-from-of-a-controller.html">Cache for Entity that is used for the From of a Controller</a></li>
-<li><a href="dynamicfilter.html">DynamicFilter</a></li>
-<li><a href="using-sql-inner-select.html">Using SQL inner select</a></li>
-<li><a href="leveraging-sql-powers-to-eliminate-findrow-relation.html">Leveraging SQL Powers to Eliminate FindRow Relation</a></li>
-<li><a href="using-the-profiler-to-investigate-non-database-related-performance-issues.html">Using the Profiler to investigate non database related performance issues</a></li>
-<li><a href="inmemory-the-cache-you-always-wanted.html">InMemory the Cache You Always Wanted</a></li>
-<li><a href="reducing-inner-controller-tree-to-improve-performance.html">Reducing Inner Controller tree to Improve Performance</a></li>
-<li><a href="using-basic-and-not-so-basic-sql-to-dramatically-improve-performance.html">Using Basic and not so basic sql to Dramatically Improve Performance</a></li>
-<li><a href="startonrowwhere-explained.html">StartOnRowWhere Explained</a></li>
-<li><a href="using-an-sql-statement-instead-of-an-entity-name.html">Using an sql statement instead of an entity name</a></li>
-<li><a href="accessing-the-database-directly.html">Accessing the database directly</a></li>
-<li><a href="deleting-rows-faster.html">Deleting rows faster</a></li>
-<li><a href="improving-performance-in-sql-server-and-some-uicontorller.html">Improving performance in SQL Server and some UIContorller</a></li>
-</ul>
+                <div class="content"><h1 id="improving-performance-in-sql-server-and-some-uicontorller">Improving performance in SQL Server and some UIContorller</h1>
+<p>Sometimes you may have a UIController that views a large set of data and you have all the correct index but still, you'll see queries taking long.</p>
+<p>The annoying thing is that you take these queries and run them in SQL Studio they run quickly.</p>
+<p>A possible cause is the &quot;First-row optimization&quot;.</p>
+<p>When we define a cursor for a  UIController we use some optimizations that hint to the database, that we may only want the first few rows and not the entire data result.</p>
+<p>In some cases, this can confuse the database and cause it to actually take longer.</p>
+<p>IN these cases for entities that inherit from SQLEntity - try setting the <code>Cursor.DisableFirstRowOptimization</code> property of the entity to true.</p>
+<p>IT should look something like this:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>From = Orders;
+Orders.Cursor.DisableFirstRowOptimization = true; </code></pre>
+<p>And test - you'll might see a considerable improvement. I just had a screen that took 5 seconds to load reduced to 0 just by changing this flag.</p>
+<p>We use the First Row Optimization by default for UIControllers both because the original application used it and because in most cases it works great.</p>
+<p>Apply these setting on a case by case basis and see if it solves it to you.</p>
+<p>So far we haven't been able to identify a general rule on when to apply this</p>
+<p>Another interesting flag, is <code>Cursor.UseStaticCursorAsFallbackCursor</code>
+This will improve performance when working with complicated views with group by etc...</p>
+<p>Let us know if you this helps, or if you have another case that you want us to investigate and figure out.</p>
 
 
                 <br />
@@ -58,7 +53,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/50-Improve-Performance/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/50-Improve-Performance/Improving performance in SQL Server and some UIContorller.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -120,7 +115,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'improve-performance.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'improving-performance-in-sql-server-and-some-uicontorller.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
