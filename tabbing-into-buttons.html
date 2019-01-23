@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="tab,tabbing,tabing,taborder,tab order,AllowFocusWithoutBoundColumn,focus">
 
-    <title>User Interface</title>
+    <title>Tabbing into buttons</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,25 +29,10 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="user-interface">User Interface</h1>
-<ul>
-<li><a href="integrating-devexpress-pivotgrid-with-migrated-application.html">Integrating DevExpress PivotGrid with Migrated Application</a></li>
-<li><a href="improving-the-user-ability-to-select-columns.html">Improving the user ability to select columns</a></li>
-<li><a href="integrating-devexpress-scheduler-with-migrated-application.html">Integrating DevExpress Scheduler with Migrated Application</a></li>
-<li><a href="loading-data-into-a-devexpress-data-grid-control-or-any-other-grid.html">Loading data into a DevExpress Data Grid control or any other grid</a></li>
-<li><a href="upgrade-types-to-the-next-level.html">Upgrade Types to the next level</a></li>
-<li><a href="adjust-grid-enhancements-to-your-needs.html">Adjust grid enhancements to your needs</a></li>
-<li><a href="changing-the-way-a-tab-control-or-any-control-paints.html">Changing the way a tab control or any control paints</a></li>
-<li><a href="controlling-the-tab-order.html">Controlling the Tab Order</a></li>
-<li><a href="creating-a-user-control-based-on-non-migrated-control.html">Creating a user control based on non migrated control</a></li>
-<li><a href="enable-facelift-and-pivot.html">Enable Facelift and Pivot</a></li>
-<li><a href="how-to-move-menu-entries-between-menus.html">How to move menu entries between menus</a></li>
-<li><a href="how-to-adjust-the-column-wizard-to-use-my-own-controls.html">How to adjust the column wizard to use my own controls</a></li>
-<li><a href="tabbing-into-buttons.html">Tabbing into buttons</a></li>
-<li><a href="toolbox-and-controls-in-migrated-code.html">Toolbox and Controls in Migrated Code</a></li>
-<li><a href="using-non-migrated-controls-part-1.html">Using non migrated controls Part 1</a></li>
-<li><a href="using-values-from-ini-in-the-visual-studio-designer.html">Using values from ini in the Visual Studio Designer</a></li>
-</ul>
+                <div class="content"><h1 id="tabbing-into-buttons">Tabbing into buttons</h1>
+<p>In magic you could only focus on buttons that had a column attached to them VIA their data.</p>
+<p>By default the migrated application matches that behavior, but we never liked it, so in .NET we've added a property to the button that changes this behavior and allows you to fucos on a button that is not bound to any column, the property is called <code>AllowFocusWithoutBoundColumn</code></p>
+<p>Now you can add a button that can be focused without a column. Just set the <code>AllowFocusWithoutBoundColumn</code>  to true.</p>
 
 
                 <br />
@@ -55,7 +40,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/70-User Interface/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/70-User Interface/Tabbing-into-buttons.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -117,7 +102,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'user-interface.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'tabbing-into-buttons.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
