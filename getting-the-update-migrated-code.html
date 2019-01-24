@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="getting latest version of ENV and firefly,latest version">
 
     <title>Getting the update migrated code</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -30,15 +30,26 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="getting-the-update-migrated-code">Getting the update migrated code</h1>
-<p>This article explains how to get the lastest version of <em>ENV</em> and <em>Firefly.Box</em> after switching to developing in .NET</p>
+<p>This article explains how to get the latest version of <em>ENV</em> and <em>Firefly.Box</em> after switching to developing in .NET</p>
 <p>1- Open the AutomaticMigration folder, and launch a new migration (Change the name of Start.Done file to Start)<br />
 2- When the migration is done download the .rar file paste it to temporary folder<br />
 3- Extract it<br />
 4- Copy <em>ENV</em> folder + <em>Firefly.Box.Dll</em> and paste into your code folder<br />
 <img src="2017-03-28_11h29_38.png" alt="" /><br />
 5- Run buildDebug.bat</p>
-<hr />
 <p><img src="2017-03-28_11h49_11.png" alt="" /></p>
+<h2 id="testing-in-a-controlled-environment">Testing in a controlled environment</h2>
+<p>We strongly recommend that you do not take this new version immediately into production. It's important to test this in a separate non critical test environment in case the upgrade will cause any bugs.</p>
+<h3 id="version-control-and-git">Version Control and Git</h3>
+<p>If you are using version control we recommend that you'll follow the following steps:</p>
+<ol>
+<li>Create a branch from your code.</li>
+<li>Integrate the new ENV and Firefly code to the new branch</li>
+<li>Test the new branch</li>
+<li>Once it's tested and ok, merge the new branch to your existing master branch.</li>
+</ol>
+<h2 id="changes-to-the-migrated-code">Changes to the migrated code</h2>
+<p>If the new version has changes to the migrated code that you with to integrate, please follow the steps in the following article:</p>
 <ul>
 <li><a href="the-migrated-code-has-changes.html">The migrated code has changes</a></li>
 </ul>

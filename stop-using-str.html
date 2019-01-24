@@ -69,10 +69,8 @@ Message.ShowWarning(
 <pre data-line="" class="language-csdiff line-numbers"><code>"Name:" + u.Trim(FirstName) + " " + u.Trim(LastName) + //it's so long that I've put it in two lines
     " Born On " + BirthDate.ToString() + " Age " + u.Trim(Age.ToString())); </code></pre>
 <blockquote>
-<blockquote>
 <p>Some developers in magic tried to solve the problem of redefining the picture in the STR method by calling the varpic command
 <code>Str(A,VarPic(A,0))</code> a nice try to solve a problem that shouldn't have been there to begin with :)</p>
-</blockquote>
 </blockquote>
 <h3 id="step-3-remove-the-tostring">Step 3 - Remove the ToString</h3>
 <p>In .NET when the + operator is used between a string and anything - the <code>ToString</code> method is called automatically.
@@ -81,7 +79,24 @@ This helps us with the Birth Date Column.</p>
   " Born On " + BirthDate + " Age " </code></pre>
 <pre data-line="" class="language-csdiff line-numbers"><code>"Name:" + u.Trim(FirstName) + " " + u.Trim(LastName) + //it's so long that I've put it in two lines
     " Born On " + BirthDate + " Age " + u.Trim(Age.ToString())); </code></pre>
-<h2 id="so-far-so-good">So far so good</h2>
+<h4 id="moving-complex-formatting-logic-to-the-type">Moving complex formatting logic to the Type</h4>
+<p>You can also move all your formatting logic to the &quot;Type&quot; class, and have a it all in one place. That way you can create complex formatting rules once and reuse them.</p>
+<p>So Instead of writing something like this:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>"Quantity : " + v_Qty.ToString(v_Qty % 1 == 0 ? "10" : "10.5").Trim(); </code></pre>
+<p>You'll be able to write:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>"Quantity : " + v_Qty; </code></pre>
+<p>Just add the ToString method to your Quantity type class</p>
+<pre data-line="6,7,8,9" class="language-csdiff line-numbers"><code>public class Quantity:NumberColumn
+{
+    public Quantity():base("Quantity","10.5")
+    {
+    }
+    public override string ToString()
+    {
+         return this.ToString(this % 1 == 0 ? "10" : "10.5").Trim();
+    }
+} </code></pre>
+<h1 id="so-far-so-good">So far so good</h1>
 <p>If you got this far - you've got most of the benefits.</p>
 <p>If you want to push it further, continue to explore the new features of C#6 and see how they can improve the way you work</p>
 <h3 id="step-4-use-c6-style-string">Step 4 - Use C#6 Style string</h3>
