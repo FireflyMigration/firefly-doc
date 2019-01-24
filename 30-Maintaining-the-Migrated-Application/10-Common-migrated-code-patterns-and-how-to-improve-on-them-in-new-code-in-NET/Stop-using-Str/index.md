@@ -52,8 +52,9 @@ In magic you had to specify the `Picture` to the `Str` method. In .NET if you do
     " Born On " + BirthDate.ToString() + " Age " + u.Trim(Age.ToString()));
 ```
 
->> Some developers in magic tried to solve the problem of redefining the picture in the STR method by calling the varpic command
->> `Str(A,VarPic(A,0))` a nice try to solve a problem that shouldn't have been there to begin with :)
+> Some developers in magic tried to solve the problem of redefining the picture in the STR method by calling the varpic command
+> `Str(A,VarPic(A,0))` a nice try to solve a problem that shouldn't have been there to begin with :)
+
 
 ### Step 3 - Remove the ToString
 In .NET when the + operator is used between a string and anything - the `ToString` method is called automatically.
@@ -66,7 +67,36 @@ This helps us with the Birth Date Column.
 "Name:" + u.Trim(FirstName) + " " + u.Trim(LastName) + //it's so long that I've put it in two lines
     " Born On " + BirthDate + " Age " + u.Trim(Age.ToString()));
 ```
-## So far so good
+
+#### Moving complex formatting logic to the Type
+You can also move all your formatting logic to the "Type" class, and have a it all in one place. That way you can create complex formatting rules once and reuse them.
+
+So Instead of writing something like this:
+```csdiff
+"Quantity : " + v_Qty.ToString(v_Qty % 1 == 0 ? "10" : "10.5").Trim();
+```
+You'll be able to write:
+```csdiff
+"Quantity : " + v_Qty;
+```
+
+Just add the ToString method to your Quantity type class
+```csdiff
+public class Quantity:NumberColumn
+{
+    public Quantity():base("Quantity","10.5")
+    {
+    }
++   public override string ToString()
++   {
++        return this.ToString(this % 1 == 0 ? "10" : "10.5").Trim();
++   }
+}
+```
+
+
+
+# So far so good
 If you got this far - you've got most of the benefits.
 
 If you want to push it further, continue to explore the new features of C#6 and see how they can improve the way you work
