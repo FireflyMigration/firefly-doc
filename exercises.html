@@ -1541,7 +1541,7 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <ol>
 <li>In <strong>ShowProducts</strong>.</li>
 <li>Add one more parameter to the Run method: type  Bool, name pExit.</li>
-<li>Set the Exit to be BeforeRow and when pExit is equal to true.</li>
+<li>Set the Exit to be ExitTiming.BeforeRow and when pExit is equal to true.</li>
 <li>In <strong>ShowCategories</strong>.</li>
 <li>Override the OnEnterRow.</li>
 <li>call using Cached to the <strong>ShowProducts</strong>, send true as the second parameter.</li>
