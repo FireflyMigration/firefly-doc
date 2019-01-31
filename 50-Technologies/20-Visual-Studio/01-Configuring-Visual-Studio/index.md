@@ -5,8 +5,10 @@ In this document we'll detail how we configure Visual Studio 2017 to make the mo
 Although this document was written with Visual Studio 2017 in mind, most of it is also relevant to previous versions of Visual Studio.
 
 ## A - Visual Studio Extentions
-We have created am Extensions Bundle for your use.  
+We have created am Extensions Bundle for your use if you're using VS2017.  
 You can download it from: [Extensions Bundle](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioExtensionBundle)
+
+If you are using Visual studio 2015, [please install the extentions manually](extensions-bundle.html) and proceed to item B in this document.
 
 #### After you install the bundle
 Please run the Visual Studio Tuneup utility at "Tools\Tuneup Visual Studio"
@@ -60,13 +62,13 @@ In the "Windows Forms Designer" tab
 
 
 
-### B.4 Disable Test Flags
+### B.4 Disable Test Flags (VS2017 only)
 1. Go to the "Tests" Tab
 2. Uncheck `Discover tests in real time from source files`
 
 ![2018 10 07 12H38 11](2018-10-07_12h38_11.png)
 
-### B.5 Check "Collapse #regions when collapsing to definition"
+### B.5 Check "Collapse #regions when collapsing to definition" (VS2017 only)
 1. Go to the "Text Editor\C#\Advanced" Tab
 2. Check the "Collapse #regions when collapsing to definition" check box, under "Outlining"  
 
@@ -84,6 +86,7 @@ In the "Solution Explorer" window make sure that the "Preview Selected Item" Ico
 2. On the toolbar
 3. Click on the icon highlighted in the image as 2  
 ![2017 03 08 10H49 18](2017-03-08_10h49_18.png)
+
 4. Select "Add or Remove Button"
 5. Select the "Parameter Info" Tool box item.
 
@@ -93,10 +96,14 @@ This adds the following toolbox item, that will show you the parameter informati
 2. ![2017 03 08 10H51 55](2017-03-08_10h51_55.png)
 
 ### E - Configure the "GoTo" window
-Go To the "Edit\Go To\Go To All..." menu item  
+Go To the "Edit\Go To\Go To All..." menu item  in VS2017
 ![2017 03 08 10H56 02](2017-03-08_10h56_02.png)
+
+> in VS2015 the menu is called "Edit\Navigate To..."
+
 1. Click the "Settings" button  
 ![2017 03 08 10H57 17](2017-03-08_10h57_17.png)
+
 2. Uncheck the "Use Preview Tab" CheckBox
 3. Check the "Show details" CheckBox
 
@@ -105,12 +112,14 @@ Go To the "Edit\Go To\Go To All..." menu item
 2. Press the combo down arrow button to open the search options
 3. Uncheck the two checkboxes  
 ![Search Options](searchOptions.png)  
+
 **Improves search performance**
 
 ### G - Configure the "Error List..." Window
 1. Go to "View\Error List" menu  
 
 ![2017 03 08 10H43 55](2017-03-08_10h43_55.png)
+
 2. Uncheck the "Warnings" tab by clicking on it (Our preference, not mandatory)
 3. Uncheck the "Messages" tab by clicking on it (Our preference, not mandatory)
 4. Set the combo to "Build Only"  
