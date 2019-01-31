@@ -33,8 +33,9 @@
 <p>In this document we'll detail how we configure Visual Studio 2017 to make the most out of it while working with large migrated applications.</p>
 <p>Although this document was written with Visual Studio 2017 in mind, most of it is also relevant to previous versions of Visual Studio.</p>
 <h2 id="a-visual-studio-extentions">A - Visual Studio Extentions</h2>
-<p>We have created am Extensions Bundle for your use.<br />
+<p>We have created am Extensions Bundle for your use if you're using VS2017.<br />
 You can download it from: <a href="https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioExtensionBundle">Extensions Bundle</a></p>
+<p>If you are using Visual studio 2015, <a href="extensions-bundle.html">please install the extentions manually</a> and proceed to item B in this document.</p>
 <h4 id="after-you-install-the-bundle">After you install the bundle</h4>
 <p>Please run the Visual Studio Tuneup utility at &quot;Tools\Tuneup Visual Studio&quot;</p>
 <p><img src="2018-12-07_13h23_27.png" alt="2018 12 07 13H23 27" /></p>
@@ -64,13 +65,13 @@ You can download it from: <a href="https://marketplace.visualstudio.com/items?it
 </ol>
 <p><img src="2017-03-08_10h33_43.png" alt="2017 03 08 10H33 43" /></p>
 <p><strong>Improves performance</strong> when running in Debug</p>
-<h3 id="b.4-disable-test-flags">B.4 Disable Test Flags</h3>
+<h3 id="b.4-disable-test-flags-vs2017-only">B.4 Disable Test Flags (VS2017 only)</h3>
 <ol>
 <li>Go to the &quot;Tests&quot; Tab</li>
 <li>Uncheck <code>Discover tests in real time from source files</code></li>
 </ol>
 <p><img src="2018-10-07_12h38_11.png" alt="2018 10 07 12H38 11" /></p>
-<h3 id="b.5-check-collapse-regions-when-collapsing-to-definition">B.5 Check &quot;Collapse #regions when collapsing to definition&quot;</h3>
+<h3 id="b.5-check-collapse-regions-when-collapsing-to-definition-vs2017-only">B.5 Check &quot;Collapse #regions when collapsing to definition&quot; (VS2017 only)</h3>
 <ol>
 <li>Go to the &quot;Text Editor\C#\Advanced&quot; Tab</li>
 <li>Check the &quot;Collapse #regions when collapsing to definition&quot; check box, under &quot;Outlining&quot;</li>
@@ -82,12 +83,17 @@ You can download it from: <a href="https://marketplace.visualstudio.com/items?it
 <p><img src="2017-03-08_10h47_38.png" alt="2017 03 08 10H47 38" /></p>
 <h3 id="d-add-the-parameter-information-toolbar-item">D - Add the parameter information toolbar item</h3>
 <ol>
-<li>Open any class</li>
-<li>On the toolbar</li>
-<li>Click on the icon highlighted in the image as 2<br />
-<img src="2017-03-08_10h49_18.png" alt="2017 03 08 10H49 18" /></li>
-<li>Select &quot;Add or Remove Button&quot;</li>
-<li>Select the &quot;Parameter Info&quot; Tool box item.</li>
+<li><p>Open any class</p>
+</li>
+<li><p>On the toolbar</p>
+</li>
+<li><p>Click on the icon highlighted in the image as 2<br />
+<img src="2017-03-08_10h49_18.png" alt="2017 03 08 10H49 18" /></p>
+</li>
+<li><p>Select &quot;Add or Remove Button&quot;</p>
+</li>
+<li><p>Select the &quot;Parameter Info&quot; Tool box item.</p>
+</li>
 </ol>
 <p>This adds the following toolbox item, that will show you the parameter information for a method you are parked on</p>
 <ol>
@@ -95,30 +101,38 @@ You can download it from: <a href="https://marketplace.visualstudio.com/items?it
 <li><img src="2017-03-08_10h51_55.png" alt="2017 03 08 10H51 55" /></li>
 </ol>
 <h3 id="e-configure-the-goto-window">E - Configure the &quot;GoTo&quot; window</h3>
-<p>Go To the &quot;Edit\Go To\Go To All...&quot; menu item<br />
+<p>Go To the &quot;Edit\Go To\Go To All...&quot; menu item  in VS2017
 <img src="2017-03-08_10h56_02.png" alt="2017 03 08 10H56 02" /></p>
+<blockquote>
+<p>in VS2015 the menu is called &quot;Edit\Navigate To...&quot;</p>
+</blockquote>
 <ol>
-<li>Click the &quot;Settings&quot; button<br />
-<img src="2017-03-08_10h57_17.png" alt="2017 03 08 10H57 17" /></li>
-<li>Uncheck the &quot;Use Preview Tab&quot; CheckBox</li>
-<li>Check the &quot;Show details&quot; CheckBox</li>
+<li><p>Click the &quot;Settings&quot; button<br />
+<img src="2017-03-08_10h57_17.png" alt="2017 03 08 10H57 17" /></p>
+</li>
+<li><p>Uncheck the &quot;Use Preview Tab&quot; CheckBox</p>
+</li>
+<li><p>Check the &quot;Show details&quot; CheckBox</p>
+</li>
 </ol>
 <h3 id="f-uncheck-the-two-checkboxes-in-thesearch-options">F Uncheck the two checkboxes in the&quot;Search options&quot;</h3>
 <ol>
 <li>Open the solution explorer</li>
 <li>Press the combo down arrow button to open the search options</li>
 <li>Uncheck the two checkboxes<br />
-<img src="searchOptions.png" alt="Search Options" /><br />
-<strong>Improves search performance</strong></li>
+<img src="searchOptions.png" alt="Search Options" /></li>
 </ol>
+<p><strong>Improves search performance</strong></p>
 <h3 id="g-configure-the-error-list.window">G - Configure the &quot;Error List...&quot; Window</h3>
 <ol>
 <li>Go to &quot;View\Error List&quot; menu</li>
 </ol>
-<p><img src="2017-03-08_10h43_55.png" alt="2017 03 08 10H43 55" />
-2. Uncheck the &quot;Warnings&quot; tab by clicking on it (Our preference, not mandatory)
-3. Uncheck the &quot;Messages&quot; tab by clicking on it (Our preference, not mandatory)
-4. Set the combo to &quot;Build Only&quot;</p>
+<p><img src="2017-03-08_10h43_55.png" alt="2017 03 08 10H43 55" /></p>
+<ol start="2">
+<li>Uncheck the &quot;Warnings&quot; tab by clicking on it (Our preference, not mandatory)</li>
+<li>Uncheck the &quot;Messages&quot; tab by clicking on it (Our preference, not mandatory)</li>
+<li>Set the combo to &quot;Build Only&quot;</li>
+</ol>
 <p><img src="2017-03-08_10h45_18.png" alt="2017 03 08 10H45 18" /></p>
 <h3 id="h-recommended-extentions">H - Recommended extentions</h3>
 <p>We would like to recommend the follow extension to you:
