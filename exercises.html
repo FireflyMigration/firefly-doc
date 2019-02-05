@@ -28,7 +28,7 @@
                     
                 </div>
                 <div >
-                    <h1 id="exercise-application-structure">010_Exercise Application Structure</h1>
+                    <h1 id="exercise-application-structure">Exercise Application Structure</h1>
 <p>Let us go over the main parts of the Application, using the &quot;Solution Explorer&quot;:</p>
 <ol>
 <li>Find the startup project (Marked <strong>Bold</strong>).</li>
@@ -340,6 +340,57 @@
 <li><a href="exercise-methods-results.html">Exercise methods results</a></li>
 </ul>
 
+<h1 id="exercise-using-date-to-filter-data">Exercise - Using Date to Filter Data</h1>
+<ol>
+<li>Right-Click on the <strong>Exercise</strong> folder and <strong>add a new</strong> <strong>UIController</strong> named <strong>ShowOrders</strong>.</li>
+<li>Define the <strong>Orders</strong> table at the beginning of the controller class.(drag and drop it, holding the <strong>Shift</strong> key just before the drop).</li>
+<li>Using the <strong>Class Outline</strong> Open the Form Designer:</li>
+<li>Add a <strong>grid</strong> to the <strong>Form</strong>.</li>
+<li>Add the following columns to the grid:
+<ol type="a">
+<li>OrderID</li>
+</ol>
+<ol start="2">
+<li>OrderDate</li>
+</ol>
+<ol type="a" start="3">
+<li>ShipVia</li>
+<li>ShipName</li>
+<li>ShipCity</li>
+</ol>
+</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+<li>Go back to the <strong>controller</strong> of <strong>ShowOrders</strong>:</li>
+<li>Add a <strong>Where</strong> to display only orders from <strong>January 1996</strong>  up to the end of  <strong>June 1997</strong>.</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-date-in-filter-results.html">Exercise Date in Filter results</a></li>
+</ul>
+
+<h1 id="exercise-binding-the-data-of-a-control-to-a-method">Exercise - Binding the data of a control to a method</h1>
+<ol>
+<li>In <strong>ShowProducts</strong>, add a new <strong>TotalUnits method</strong> inside the <strong>expressions region</strong>.</li>
+<li>The <strong>TotalUnits</strong> method will :
+<ol>
+<li>Need to be <strong>public</strong>.</li>
+<li>Return a <strong>Number</strong> as the return value.</li>
+<li>Calculate the total number of units in <strong>stock</strong> and <strong>on order</strong>.</li>
+</ol>
+</li>
+<li>Save changes to Git.</li>
+<li>Build the project.</li>
+<li>Go to the <strong>Form</strong>.</li>
+<li>Using the <strong>Grid</strong> <strong>Column Wizard</strong> add the <strong>TotalUnits</strong>.</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-binding-control-data-to-method-results.html">Exercise Binding Control Data To Method results</a></li>
+</ul>
+
 <h1 id="exercise-control-properties-and-code-navigation">Exercise - Control Properties and code navigation</h1>
 <ol>
 <li>Close all open tabs in visual studio. (right click on one of the tabs and select close all documents).</li>
@@ -485,57 +536,6 @@
 </ol>
 <ul>
 <li><a href="exercise-types-results.html">Exercise Types results</a></li>
-</ul>
-
-<h1 id="exercise-using-date-to-filter-data">Exercise - Using Date to Filter Data</h1>
-<ol>
-<li>Right-Click on the <strong>Exercise</strong> folder and <strong>add a new</strong> <strong>UIController</strong> named <strong>ShowOrders</strong>.</li>
-<li>Define the <strong>Orders</strong> table at the beginning of the controller class.(drag and drop it, holding the <strong>Shift</strong> key just before the drop).</li>
-<li>Using the <strong>Class Outline</strong> Open the Form Designer:</li>
-<li>Add a <strong>grid</strong> to the <strong>Form</strong>.</li>
-<li>Add the following columns to the grid:
-<ol type="a">
-<li>OrderID</li>
-</ol>
-<ol start="2">
-<li>OrderDate</li>
-</ol>
-<ol type="a" start="3">
-<li>ShipVia</li>
-<li>ShipName</li>
-<li>ShipCity</li>
-</ol>
-</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-<li>Go back to the <strong>controller</strong> of <strong>ShowOrders</strong>:</li>
-<li>Add a <strong>Where</strong> to display only orders from <strong>January 1996</strong>  up to the end of  <strong>June 1997</strong>.</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-</ol>
-<ul>
-<li><a href="exercise-date-in-filter-results.html">Exercise Date in Filter results</a></li>
-</ul>
-
-<h1 id="exercise-binding-the-data-of-a-control-to-a-method">Exercise - Binding the data of a control to a method</h1>
-<ol>
-<li>In <strong>ShowProducts</strong>, add a new <strong>TotalUnits method</strong> inside the <strong>expressions region</strong>.</li>
-<li>The <strong>TotalUnits</strong> method will :
-<ol>
-<li>Need to be <strong>public</strong>.</li>
-<li>Return a <strong>Number</strong> as the return value.</li>
-<li>Calculate the total number of units in <strong>stock</strong> and <strong>on order</strong>.</li>
-</ol>
-</li>
-<li>Save changes to Git.</li>
-<li>Build the project.</li>
-<li>Go to the <strong>Form</strong>.</li>
-<li>Using the <strong>Grid</strong> <strong>Column Wizard</strong> add the <strong>TotalUnits</strong>.</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-</ol>
-<ul>
-<li><a href="exercise-binding-control-data-to-method-results.html">Exercise Binding Control Data To Method results</a></li>
 </ul>
 
 <h1 id="exercise-local-columns">Exercise - Local Columns</h1>
@@ -906,22 +906,6 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <li>In the <code>OnStart</code> of that controller call the <code>ShowProducts</code> controller to select the product id.</li>
 </ol>
 
-<h1 id="exercise-raise">Exercise - Raise</h1>
-<ol>
-<li>In  <strong>ShowRegions</strong>.</li>
-<li>Add two buttons to the form:
-<ol>
-<li>Next row raising GoToNextRow.</li>
-<li>Previous row raising GoToPreviousRow.</li>
-</ol>
-</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-</ol>
-<ul>
-<li><a href="exercise-raise-results.html">Exercise Raise results</a></li>
-</ul>
-
 <h1 id="exercise-keyboard-handlers">Exercise - Keyboard Handlers</h1>
 <ol>
 <li>In “ShowRegions”, add a handler for the F9 key that displays the message &quot;I am handling the F9 keyboard event!”</li>
@@ -930,35 +914,6 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 </ol>
 <ul>
 <li><a href="exercise-keyboard-handlers-results.html">Exercise Keyboard Handlers results</a></li>
-</ul>
-
-<h1 id="exercise-customcommand">Exercise - CustomCommand</h1>
-<ol>
-<li>In  <strong>ShowRegions</strong>, create a custom command named <strong>MySpecialCommand</strong>.</li>
-<li>Add a handler to the <strong>MySpecialCommand</strong> that display the message: <strong>My Special Command Handler</strong>.</li>
-<li>Raise the <strong>MySpecialCommand</strong>, using the Raise method from the OnStart.</li>
-<li>Raise the <strong>MySpecialCommand</strong>, using a button on the screen.</li>
-<li>Set a message box to the leave row to show <strong>OnLeaveRow</strong>.</li>
-<li>Set the <strong>MySpecialCommand</strong> Precondition to leave row.</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-</ol>
-<ul>
-<li><a href="exercise-customcommand-results.html">Exercise CustomCommand results</a></li>
-</ul>
-
-<h1 id="exercise-invoke">Exercise - Invoke</h1>
-<ol>
-<li>In <strong>ShowRegions</strong>.</li>
-<li>Change the Raise of <strong>MySpecialCommand</strong> in the <strong>OnStart</strong> to Invoke.</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-<li>Notice the grid will not show data until you press <strong>OK</strong> button in the message box.</li>
-<li>Try it again with Raise.</li>
-<li>Save changes to Git.</li>
-</ol>
-<ul>
-<li><a href="exercise-invoke-results.html">Exercise Invoke results</a></li>
 </ul>
 
 <h1 id="exercise-using-anonymous-methods">Exercise - Using Anonymous Methods</h1>
@@ -1033,6 +988,51 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 </ol>
 <ul>
 <li><a href="exercise-commands-results.html">Exercise Commands results</a></li>
+</ul>
+
+<h1 id="exercise-raise">Exercise - Raise</h1>
+<ol>
+<li>In  <strong>ShowRegions</strong>.</li>
+<li>Add two buttons to the form:
+<ol>
+<li>Next row raising GoToNextRow.</li>
+<li>Previous row raising GoToPreviousRow.</li>
+</ol>
+</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-raise-results.html">Exercise Raise results</a></li>
+</ul>
+
+<h1 id="exercise-customcommand">Exercise - CustomCommand</h1>
+<ol>
+<li>In  <strong>ShowRegions</strong>, create a custom command named <strong>MySpecialCommand</strong>.</li>
+<li>Add a handler to the <strong>MySpecialCommand</strong> that display the message: <strong>My Special Command Handler</strong>.</li>
+<li>Raise the <strong>MySpecialCommand</strong>, using the Raise method from the OnStart.</li>
+<li>Raise the <strong>MySpecialCommand</strong>, using a button on the screen.</li>
+<li>Set a message box to the leave row to show <strong>OnLeaveRow</strong>.</li>
+<li>Set the <strong>MySpecialCommand</strong> Precondition to leave row.</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-customcommand-results.html">Exercise CustomCommand results</a></li>
+</ul>
+
+<h1 id="exercise-invoke">Exercise - Invoke</h1>
+<ol>
+<li>In <strong>ShowRegions</strong>.</li>
+<li>Change the Raise of <strong>MySpecialCommand</strong> in the <strong>OnStart</strong> to Invoke.</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+<li>Notice the grid will not show data until you press <strong>OK</strong> button in the message box.</li>
+<li>Try it again with Raise.</li>
+<li>Save changes to Git.</li>
+</ol>
+<ul>
+<li><a href="exercise-invoke-results.html">Exercise Invoke results</a></li>
 </ul>
 
 <h1 id="exercise-column-collection">Exercise - Column Collection</h1>
@@ -2846,7 +2846,7 @@ namespace Northwind.Exercises.MoreOnClass
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', '010_exercise-application-structure.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', 'exercise-application-structure.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>
