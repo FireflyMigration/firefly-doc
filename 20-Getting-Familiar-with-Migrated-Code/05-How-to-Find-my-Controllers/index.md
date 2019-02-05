@@ -7,17 +7,23 @@ By doing so you are shortening the search time for a program, and you are gettin
 
 See [using debug information in VS](using-debug-information-in-vs.html)
 
-2. Use the <kbd>Ctrl</kbd> + <kbd>T</kbd> keyboard shortcut, to open visual studio's goto type dialog. (in vs 2015 it was <kbd>Ctrl</kbd> + <kbd>,</kbd>)  
-    ![Shift + F12](20190205_13h21_16.gif)   
+2. Use the <kbd>Ctrl</kbd> + <kbd>,</kbd> keyboard shortcut, to open visual studio's goto type dialog. (in vs 2015 it was <kbd>Ctrl</kbd> + <kbd>T</kbd>)  
+    ![Ctrl + ,](20190205_13h21_16.gif)   
 
 3. While running the application use the Controller List developer tools (<kbd>Shift</kbd> + <kbd>F3</kbd>) and <kbd>Ctrl</kbd> + <kbd>T</kbd> keyboard shortcut.  
-    ![Shift + F12](20190205_13h28_41.gif) 
+    ![developer tools](20190205_13h28_41.gif) 
  
 see: [finding a controller using the developer tools and find type](finding-a-controller-using-the-developer-tools-and-find-type.html)
 
-4. Right click on any class and choose `Goto Definition` to go to it's code. <kbd>F12</kbd>. If it's an `interface` you can choose `Goto Implementation` to go to the actual controller's code.
+4. Right click on any class and choose `Goto Definition` to go to it's code. <kbd>F12</kbd>. If it's an `interface` you can choose `Goto Implementation` to go to the actual controller's code.  
+    ![Goto Definition](20190205_13h42_58.gif) 
 
-5. In the entry point project, there is a class called `ApplicationControllers` that lists all controllers with their number and class info.
+5. In the entry point project, there is a class called `ApplicationPrograms` that lists all programs with their number and class info.  
+You can use one of this options to go the code :  
+ option 2 : if the name of the class appears as text.
+ option 4 : `Goto Implementation`  
+
+![ApplicationPrograms](2019-02-05_14h09_13.png)
 
 6. If you get an error report from your users with the call stack, use the [stack trace explorer](stack-trace-explorer.html) visual studio extension to go directly from it to your code.
 
