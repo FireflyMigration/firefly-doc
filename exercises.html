@@ -108,7 +108,7 @@
 <li>Build and test.</li>
 </ol>
 <ul>
-<li><a href="results.html">Results</a></li>
+<li><a href="exercise-result.html">Exercise Result</a></li>
 </ul>
 
 <h1 id="exercise-filtering-data">Exercise Filtering Data</h1>
@@ -127,88 +127,8 @@
 </li>
 </ol>
 <ul>
-<li><a href="results.html">results</a></li>
+<li><a href="exercise-result.html">Exercise Result</a></li>
 </ul>
-
-<h1 id="exercise-uicontroller-sorting-data-result">Exercise - UIController - Sorting Data result</h1>
-<h3 id="first-part">First part</h3>
-<p>You <strong>ShowProducts</strong> should look like:</p>
-<pre data-line="22,23" class="language-csdiff line-numbers"><code>using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing;
-using Firefly.Box;
-using ENV;
-using ENV.Data;
-
-namespace Northwind.Exercises
-{
-    public class ShowProducts : UIControllerBase
-    {
-
-        public readonly Models.Products Products = new Models.Products();
-
-        public ShowProducts()
-        {
-            From = Products;
-            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
-            Where.Add(Products.UnitPrice.IsGreaterThan(25));
-
-             OrderBy.Add(Products.CategoryID);
-             OrderBy.Add(Products.ProductName,SortDirection.Descending);
-        }
-
-        public void Run()
-        {
-            Execute();
-        }
-
-        protected override void OnLoad()
-        {
-            View = () =&gt; new Views.ShowProductsView(this);
-        }
-    }
-} </code></pre>
-<h3 id="second-part">Second part</h3>
-<p>You <strong>ShowProducts</strong> should look like:</p>
-<pre data-line="24" class="language-csdiff line-numbers"><code>using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing;
-using Firefly.Box;
-using ENV;
-using ENV.Data;
-
-namespace Northwind.Exercises
-{
-    public class ShowProducts : UIControllerBase
-    {
-
-        public readonly Models.Products Products = new Models.Products();
-
-        public ShowProducts()
-        {
-            From = Products;
-            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
-            Where.Add(Products.UnitPrice.IsGreaterThan(25));
-
--           //OrderBy.Add(Products.CategoryID);
--           //OrderBy.Add(Products.ProductName,SortDirection.Descending);
-            OrderBy = Products.SortByProductName;
-        }
-
-        public void Run()
-        {
-            Execute();
-        }
-
-        protected override void OnLoad()
-        {
-            View = () =&gt; new Views.ShowProductsView(this);
-        }
-    }
-} </code></pre>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/YDzp679xpeA?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
 
 <h1 id="exercise-uicontroller-sorting-data">Exercise - UIController - Sorting Data</h1>
 <ol>
@@ -230,52 +150,8 @@ namespace Northwind.Exercises
 </li>
 </ol>
 <ul>
-<li><a href="sorting-data-exercise.html">Sorting Data Exercise</a></li>
+<li><a href="exercise-result.html">Exercise Result</a></li>
 </ul>
-
-<h1 id="exercise-uicontroller-relations-results">Exercise - UIController - Relations results</h1>
-<p>Your <strong>ShowProducts</strong> class should look like :</p>
-<pre data-line="15,20,21" class="language-csdiff line-numbers"><code>using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing;
-using Firefly.Box;
-using ENV;
-using ENV.Data;
-
-namespace Northwind.Exercises
-{
-    public class ShowProducts : UIControllerBase
-    {
-
-        public readonly Models.Products Products = new Models.Products();
-        public readonly Models.Categories Categories = new Models.Categories();
-
-        public ShowProducts()
-        {
-            From = Products;
-            Relations.Add(Categories, RelationType.Find,
-                Categories.CategoryID.IsEqualTo(Products.CategoryID));
-
-            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
-            Where.Add(Products.UnitPrice.IsGreaterThan(25));
-
-            OrderBy = Products.SortByProductName;
-        }
-
-        public void Run()
-        {
-            Execute();
-        }
-
-        protected override void OnLoad()
-        {
-            View = () =&gt; new Views.ShowProductsView(this);
-        }
-    }
-} </code></pre>
-<p><img src="RelationDesignerLook.png" alt="Relation Designer Look" /></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XJe4IZePjAg?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
 
 <h1 id="exercise-uicontroller-relations">Exercise - UIController - Relations</h1>
 <ol>
@@ -290,7 +166,7 @@ namespace Northwind.Exercises
 <li>Build and test</li>
 </ol>
 <ul>
-<li><a href="relations-exercise.html">Relations Exercise</a></li>
+<li><a href="exercise-result.html">Exercise Result</a></li>
 </ul>
 
 <h1 id="exercise-using-debug-information">Exercise Using Debug Information</h1>
