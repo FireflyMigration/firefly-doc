@@ -1,5 +1,5 @@
 ﻿
-**Note**: If you can install Visual Studio extensions, use the extension instead of following this manual instructions. Download the extension [here]https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioTemplates)
+**Note**: If you can install Visual Studio extensions, use the extension instead of following this manual instructions. Download the extension [here](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioTemplates)
 After installing the extension, open Visual Studio and under the Tools menu, select "Tuneup Visual Studio" and click OK
 
 ## Visual Studio Templates
