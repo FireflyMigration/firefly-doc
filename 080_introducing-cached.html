@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>080_Introducing Cached</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="introducing-cached">080_Introducing Cached</h1>
+<ul>
+<li>For every line in the ShowOrders controller, the following code gets executed:</li>
+</ul>
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnEnterRow()
+{
+    new GetOrderStatistics().Run(Orders.OrderID, Items, TotalQuantity, TotalAmount);
+} </code></pre>
+<ul>
+<li>this means that for every row
+<ul>
+<li>A new instance of the <code>GetOrderStatistics</code> class is created</li>
+<li>The Constructor for the <code>GetOrderStatistics</code> class get's executed</li>
+<li>The <code>Run</code> method of the <code>GetOrderStatistics</code> get's executed.</li>
+</ul>
+</li>
+<li>This can be wasteful in some cases</li>
+<li>To avoid that, we can create the instance of the <code>GetOrderStatistics</code> class once, and run it multiple times.</li>
+</ul>
+<h3 id="the-long-way">the long way</h3>
+<pre data-line="1,4" class="language-csdiff line-numbers"><code>GetOrderStatistics _stats = new GetOrderStatistics();
+protected override void OnEnterRow()
+{
+    _stats.Run(Orders.OrderID, Items, TotalQuantity, TotalAmount);
+} </code></pre>
+<ul>
+<li>By following this pattern:
+<ul>
+<li>The <code>GetOrderStatistics</code> class instance is created once.</li>
+<li>The <code>GetOrderStatistics</code> constructor is executed once</li>
+<li>Only the <code>Run</code> method get's executed for each row.</li>
+</ul>
+</li>
+<li>Since this is such a common pattern, we decided to create a way of doing it in just one line, by using the <code>Cached</code> method</li>
+</ul>
+<h3 id="the-short-way-using-cached">the short way, using Cached</h3>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void OnEnterRow()
+{
+    Cached&lt;GetOrderStatistics&gt;().Run(Orders.OrderID, Items, TotalQuantity, TotalAmount);
+} </code></pre>
+<ul>
+<li>The <code>Cached</code> method, creates an instance of the <code>GetOrderStatistics</code> only when it's used for the first time, and then simply returns the same instance, so that we can run it again and again.</li>
+<li>Review in the output window, that the <code>Constructor</code> get's executed once, while the <code>Run</code> method get's executed for each row.</li>
+<li>Note - now we have a bug, since the values of Items, Total Quantity and Total Amount don't change for each row - we'll fix that in the next step</li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3qyrFYnfB4E?list=PL1DEQjXG2xnKS0Zo7h-PrExXZ18hGxhvA" frameborder="0" allowfullscreen></iframe>
+
+
+                <br />
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/090_BusinessProcess-and-Out-Parameters/080_Introducing-Cached.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', '080_introducing-cached.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>

@@ -28,7 +28,7 @@
                     
                 </div>
                 <div >
-                    <h1 id="exercise-application-structure">Exercise Application Structure</h1>
+                    <h1 id="exercise-application-structure">010_Exercise Application Structure</h1>
 <p>Let us go over the main parts of the Application, using the &quot;Solution Explorer&quot;:</p>
 <ol>
 <li>Find the startup project (Marked <strong>Bold</strong>).</li>
@@ -111,7 +111,7 @@
 <li><a href="creating-simple-screen-result.html">Creating Simple Screen Result</a></li>
 </ul>
 
-<h1 id="exercise-filtering-data">Exercise Filtering Data</h1>
+<h1 id="exercise-filtering-data">010_Exercise Filtering Data</h1>
 <ol>
 <li><p>In <strong>ShowProducts</strong> Add a filter to shows only records where <strong>CategoryID</strong> is 2 or 4 or 6 and <strong>UnitPrice</strong> is greater than 25.</p>
 </li>
@@ -169,7 +169,7 @@
 <li><a href="relations-result.html">Relations Result</a></li>
 </ul>
 
-<h1 id="exercise-using-debug-information">Exercise Using Debug Information</h1>
+<h1 id="exercise-using-debug-information">010_Exercise Using Debug Information</h1>
 <ol>
 <li>Run the application.</li>
 <li>Run <strong>ShowProducts</strong>.</li>
@@ -216,7 +216,7 @@
 </ol>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/yXLJhIwrFdY?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
 <ul>
-<li><a href="summary-exercise-result.html">Summary Exercise Result</a></li>
+<li><a href="010-summary-exercise-result.html">010 Summary Exercise Result</a></li>
 </ul>
 
 <h1 id="ui-controller-life-cycle">UI Controller Life cycle</h1>
@@ -507,17 +507,17 @@
 <h1 id="exercise-generating-an-entity-class-base-on-existing-table-in-the-db">Exercise - Generating an Entity class base on existing table in the DB</h1>
 <ol>
 <li>Run the application.</li>
-<li>Go to <strong>Developer Tools</strong> and select <strong>Generate Entity C#</strong>.</li>
-<li>Choose <strong>Northwind</strong> database.</li>
-<li>Double-Click on <strong>Employees</strong> entity.</li>
+<li>Go to Developer Tools and select Generate Entity C#.</li>
+<li>Choose Northwind database.</li>
+<li>Double-Click on Employees entity.</li>
 <li>Copy all the text of the class.</li>
-<li>Create a new Entity called <strong>Employees</strong>.</li>
+<li>Create a new Entity called Employees.</li>
 <li>Replace all the code of the new entity with the one you just copied.</li>
 <li>Save changes to Git.</li>
 <li>Build and Test.</li>
 </ol>
 <ul>
-<li><a href="exercise-generating-an-entity-class-base-on-existing-table-in-the-db-results.html">Exercise Generating an Entity class base on existing table in the DB results</a></li>
+<li><a href="exercise-generating-an-entity-results.html">Exercise Generating an Entity results</a></li>
 </ul>
 
 <h1 id="exercise-types">Exercise - Types</h1>
@@ -605,7 +605,7 @@
 <li>Build and test.</li>
 </ol>
 <ul>
-<li><a href="exercise-send-parameter-results.html">Exercise Send Parameter results</a></li>
+<li><a href="010_exercise-send-parameter-results.html">010_Exercise Send Parameter results</a></li>
 </ul>
 
 <h1 id="exercise-set-the-default-value">Exercise - Set the Default Value</h1>
@@ -628,7 +628,7 @@
 <li>Build and test</li>
 </ol>
 <ul>
-<li><a href="exercise-set-the-default-value-results.html">Exercise Set the Default Value results</a></li>
+<li><a href="010_exercise-set-the-default-value-results.html">010_Exercise Set the Default Value results</a></li>
 </ul>
 
 <h1 id="exercise-filtering-data-in-the-businessprocess">Exercise - Filtering data in the BusinessProcess</h1>
@@ -899,12 +899,28 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <li>use to navigate back to go back the class controller</li>
 </ol>
 
-<h1 id="calling-a-program-across-projects-exercise">Calling a Program Across Projects exercise</h1>
+<h1 id="exercise-calling-a-program-across-projects">Exercise Calling a Program Across Projects</h1>
 <ol>
 <li>In the <code>Orders</code> project add a new controller called <code>DoSomethingWithProducts</code></li>
 <li>In that controller add a Local Column product id.</li>
 <li>In the <code>OnStart</code> of that controller call the <code>ShowProducts</code> controller to select the product id.</li>
 </ol>
+
+<h1 id="exercise-raise">Exercise - Raise</h1>
+<ol>
+<li>In  <strong>ShowRegions</strong>.</li>
+<li>Add two buttons to the form:
+<ol>
+<li>Next row raising GoToNextRow.</li>
+<li>Previous row raising GoToPreviousRow.</li>
+</ol>
+</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-raise-results.html">Exercise Raise results</a></li>
+</ul>
 
 <h1 id="exercise-keyboard-handlers">Exercise - Keyboard Handlers</h1>
 <ol>
@@ -914,6 +930,35 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 </ol>
 <ul>
 <li><a href="exercise-keyboard-handlers-results.html">Exercise Keyboard Handlers results</a></li>
+</ul>
+
+<h1 id="exercise-customcommand">Exercise - CustomCommand</h1>
+<ol>
+<li>In  <strong>ShowRegions</strong>, create a custom command named <strong>MySpecialCommand</strong>.</li>
+<li>Add a handler to the <strong>MySpecialCommand</strong> that display the message: <strong>My Special Command Handler</strong>.</li>
+<li>Raise the <strong>MySpecialCommand</strong>, using the Raise method from the OnStart.</li>
+<li>Raise the <strong>MySpecialCommand</strong>, using a button on the screen.</li>
+<li>Set a message box to the leave row to show <strong>OnLeaveRow</strong>.</li>
+<li>Set the <strong>MySpecialCommand</strong> Precondition to leave row.</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-customcommand-results.html">Exercise CustomCommand results</a></li>
+</ul>
+
+<h1 id="exercise-invoke">Exercise - Invoke</h1>
+<ol>
+<li>In <strong>ShowRegions</strong>.</li>
+<li>Change the Raise of <strong>MySpecialCommand</strong> in the <strong>OnStart</strong> to Invoke.</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+<li>Notice the grid will not show data until you press <strong>OK</strong> button in the message box.</li>
+<li>Try it again with Raise.</li>
+<li>Save changes to Git.</li>
+</ol>
+<ul>
+<li><a href="exercise-invoke-results.html">Exercise Invoke results</a></li>
 </ul>
 
 <h1 id="exercise-using-anonymous-methods">Exercise - Using Anonymous Methods</h1>
@@ -988,51 +1033,6 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 </ol>
 <ul>
 <li><a href="exercise-commands-results.html">Exercise Commands results</a></li>
-</ul>
-
-<h1 id="exercise-raise">Exercise - Raise</h1>
-<ol>
-<li>In  <strong>ShowRegions</strong>.</li>
-<li>Add two buttons to the form:
-<ol>
-<li>Next row raising GoToNextRow.</li>
-<li>Previous row raising GoToPreviousRow.</li>
-</ol>
-</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-</ol>
-<ul>
-<li><a href="exercise-raise-results.html">Exercise Raise results</a></li>
-</ul>
-
-<h1 id="exercise-customcommand">Exercise - CustomCommand</h1>
-<ol>
-<li>In  <strong>ShowRegions</strong>, create a custom command named <strong>MySpecialCommand</strong>.</li>
-<li>Add a handler to the <strong>MySpecialCommand</strong> that display the message: <strong>My Special Command Handler</strong>.</li>
-<li>Raise the <strong>MySpecialCommand</strong>, using the Raise method from the OnStart.</li>
-<li>Raise the <strong>MySpecialCommand</strong>, using a button on the screen.</li>
-<li>Set a message box to the leave row to show <strong>OnLeaveRow</strong>.</li>
-<li>Set the <strong>MySpecialCommand</strong> Precondition to leave row.</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-</ol>
-<ul>
-<li><a href="exercise-customcommand-results.html">Exercise CustomCommand results</a></li>
-</ul>
-
-<h1 id="exercise-invoke">Exercise - Invoke</h1>
-<ol>
-<li>In <strong>ShowRegions</strong>.</li>
-<li>Change the Raise of <strong>MySpecialCommand</strong> in the <strong>OnStart</strong> to Invoke.</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-<li>Notice the grid will not show data until you press <strong>OK</strong> button in the message box.</li>
-<li>Try it again with Raise.</li>
-<li>Save changes to Git.</li>
-</ol>
-<ul>
-<li><a href="exercise-invoke-results.html">Exercise Invoke results</a></li>
 </ul>
 
 <h1 id="exercise-column-collection">Exercise - Column Collection</h1>
@@ -1280,6 +1280,17 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <li><a href="exercise-blocks-in-flow-results.html">Exercise Blocks in Flow results</a></li>
 </ul>
 
+<h1 id="exercise-cached-keep-view-visible-after-exit">Exercise - Cached Keep View Visible After Exit</h1>
+<ol>
+<li>In <strong>ShowCategories</strong>.</li>
+<li>Refactor the click event of the <strong>Products button</strong> to a method in the controller.</li>
+<li>Change the call to use Cached.</li>
+<li>In <strong>ShowProducts</strong> at the <strong>Run</strong> method clear the where.</li>
+</ol>
+<ul>
+<li><a href="exercise-cached-keepviewvisibleafterexit-results.html">Exercise Cached KeepViewVisibleAfterExit results</a></li>
+</ul>
+
 <h1 id="exercise-keep-view-visible-after-exit">Exercise - Keep View Visible After Exit</h1>
 <ol>
 <li>Under the <strong>Exercises folder</strong>, create a new folder named <strong>KeepViewVisibleAfterExit</strong>.</li>
@@ -1316,17 +1327,6 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 </ol>
 <ul>
 <li><a href="exercise-keepviewvisibleafterexit-results.html">Exercise KeepViewVisibleAfterExit results</a></li>
-</ul>
-
-<h1 id="exercise-cached-keep-view-visible-after-exit">Exercise - Cached Keep View Visible After Exit</h1>
-<ol>
-<li>In <strong>ShowCategories</strong>.</li>
-<li>Refactor the click event of the <strong>Products button</strong> to a method in the controller.</li>
-<li>Change the call to use Cached.</li>
-<li>In <strong>ShowProducts</strong> at the <strong>Run</strong> method clear the where.</li>
-</ol>
-<ul>
-<li><a href="exercise-cached-keepviewvisibleafterexit-results.html">Exercise Cached KeepViewVisibleAfterExit results</a></li>
 </ul>
 
 <h1 id="exercise-clicking-on-the-child-controller">Exercise - Clicking on the Child Controller</h1>
@@ -1764,6 +1764,7 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 </ol>
 <ul>
 <li><a href="exercise-calling-controllers-across-project-scopes-results.html">Exercise Calling Controllers Across Project Scopes results</a></li>
+<li><a href="exercise-calling-results.html">Exercise Calling results</a></li>
 </ul>
 
 <h1 id="exercise-date-and-time">Exercise Date and Time</h1>
@@ -2845,7 +2846,7 @@ namespace Northwind.Exercises.MoreOnClass
     </script>
     <script src="assets/js/tree.js"></script>
     <script language="javascript">
-        buildTree('menuTree', 'exercise-application-structure.html', 'previousButton', 'nextButton');
+        buildTree('menuTree', '010_exercise-application-structure.html', 'previousButton', 'nextButton');
     </script>
 </body>
 </html>

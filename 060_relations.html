@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="relation,link">
+
+    <title>060_Relations</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="relations">060_Relations</h1>
+<p>In this article we'll:</p>
+<ul>
+<li>Add a relation to the Shippers table</li>
+<li>Mention the different RelationTypes</li>
+<li>Use that relation to get the CompanyName of the shipper in ShipVIA</li>
+<li>Explain the recompute, when we change the shipVIA  - the CompanyName will be recomputed</li>
+<li>Explain that you can use the <code>rel</code> snippet to create the relation using the wizard</li>
+</ul>
+<pre data-line="2,13" class="language-csdiff line-numbers"><code>public readonly Models.Orders Orders = new Models.Orders();
+public readonly Models.Shippers Shippers = new Models.Shippers();
+public ShowOrders()
+{
+    From = Orders;
+    Where.Add(Orders.ShipCity.IsEqualTo("London").Or(
+        Orders.ShipCity.IsEqualTo("Madrid")));
+    Where.Add(Orders.ShipName.IsDifferentFrom(""));
+
+    OrderBy.Add(Orders.ShipCity);
+    OrderBy.Add(Orders.OrderDate, SortDirection.Descending);
+
+    Relations.Add(Shippers, RelationType.Find, Shippers.ShipperID.IsEqualTo(Orders.ShipVia));
+} </code></pre>
+<p>Notes:</p>
+<ul>
+<li>To duplicate the control on the grid, we drag the control while holding the <kbd>Ctrl </kbd> key</li>
+</ul>
+<hr />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6X7M-PbloU4?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
+<p>For more information about the different relation types see:
+<a href="http://www.fireflymigration.com/reference/html/T_Firefly_Box_RelationType.htm">RelationTypes</a></p>
+<ul>
+<li><a href="010_exercise-relations.html">010_Exercise Relations</a></li>
+<li><a href="020_more-on-relation.html">020_More On Relation</a></li>
+</ul>
+
+
+                <br />
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/020_UI-Controller/060_Relations/index.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', '060_relations.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>

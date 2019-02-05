@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Exercise - Calling Controllers Across Project Scopes</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="exercise-calling-controllers-across-project-scopes">Exercise - Calling Controllers Across Project Scopes</h1>
+<ol>
+<li>Using the runtime <strong>Developer Tools</strong>, <strong>Generate Entity C#</strong> add the <strong>Region</strong> entity to the <strong>NorthwindBase</strong>, <strong>Models</strong>.</li>
+<li>Build <strong>NorthwindBase</strong>.</li>
+<li>Add a new <strong>UIController</strong> to the <strong>Exercises</strong> name space in <strong>Northwind</strong> project, name it <strong>ShowRegions</strong>.</li>
+<li>Set the new <strong>Region</strong> entity as the main table.</li>
+<li>Build and add a grid that will show all the columns in the form.</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+<li>In the <strong>customer project</strong> create a new folder name it <strong>Exercises</strong>.</li>
+<li>Add a new <strong>UIController</strong> under the new folder, name it <strong>ShowCustomerPerRegion</strong>.</li>
+<li>Set the <strong>Customers</strong> entity as the main table.</li>
+<li>In the <strong>Run</strong> method add a parameter : type <strong>Number</strong> name <strong>pRegionID</strong>.</li>
+<li>Add a <strong>where</strong> in the <strong>Run</strong> method to show only customer that have the same <strong>Region</strong> have the parameter, notice that you will need to use <strong>.ToString()</strong>.</li>
+<li>Add the following columns to a <strong>grid</strong> on the form:
+<ol>
+<li>CustomerID.</li>
+<li>CompanyName.</li>
+<li>Address.</li>
+<li>City.</li>
+<li>Region.</li>
+</ol>
+</li>
+<li>In <strong>ShowRegions</strong>.</li>
+<li>Add a button to the screen, set the button text to <strong>Show Region Customers</strong>.</li>
+<li>Try to call the <strong>ShowCustomerPerRegion</strong> from the button <strong>click</strong> event.</li>
+<li>In <strong>NorthwindBase</strong> project, under <strong>Customers</strong> folder, create a new folder name it <strong>Exercises</strong>.</li>
+<li>Add a new interface, name it <strong>IShowCustomerPerRegion</strong>.</li>
+<li>Set the new interface to be public.</li>
+<li>Add the Run with the same parameter definition as <strong>ShowCustomerPerRegion</strong>.(you will need to add using to Firefly.Box).</li>
+<li>build <strong>NorthwindBase</strong>.</li>
+<li>In <strong>ShowCustomerPerRegion</strong> add the interface next to the <strong>UIControllerBase</strong>.</li>
+<li>In <strong>ShowRegionsView</strong> use <strong>Create</strong> to call IShowCustomerPerRegion remember:
+<ol>
+<li>Use the full <strong>NameSpace</strong>.</li>
+<li>Send the right parameter.</li>
+</ol>
+</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-calling-controllers-across-project-scopes-results.html">Exercise Calling Controllers Across Project Scopes results</a></li>
+<li><a href="exercise-calling-results.html">Exercise Calling results</a></li>
+</ul>
+
+
+                <br />
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/260-Creating-a-program-that-can-be-called-across-projects/20-Calling-Controllers-Across-Project-Scopes/30-Exercise-Calling-Controllers/index.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'exercise-calling-controllers.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>
