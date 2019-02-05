@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Exercise - UIController - Relations</title>
+    <title>Creating Simple Screen Result</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,21 +29,42 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="exercise-uicontroller-relations">Exercise - UIController - Relations</h1>
-<ol>
-<li>In <strong>ShowProducts</strong>, drag and drop the <strong>Categories</strong> entity (located in the NorthwindBase.Models name space).</li>
-<li>Using the <strong>rel</strong> snippet Add a relation to the <strong>Categories</strong> table.</li>
-<li><strong>Build</strong> the project and then using the <strong>Class Outline</strong> open the <strong>designer</strong>.</li>
-<li>Add to the grid the <strong>CategoryName</strong> next to the <strong>CategoryID</strong> value.</li>
-<li>Build and test.</li>
-<li>While running the project, change the value of the &quot;CategoryID&quot; and verify that the &quot;CategoryName&quot; is changed.</li>
-<li>Make the &quot;CategoryName&quot; textbox readonly.</li>
-<li>Save changes to Git</li>
-<li>Build and test</li>
-</ol>
-<ul>
-<li><a href="relations-result.html">Relations Result</a></li>
-</ul>
+                <div class="content"><h1 id="creating-simple-screen-result">Creating Simple Screen Result</h1>
+<p>The <strong>ShowProducts</strong> class should look like :</p>
+<pre data-line="14,18" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Exercises
+{
+    public class ShowProducts : UIControllerBase
+    {
+
+        public readonly Models.Products Products = new Models.Products();
+
+        public ShowProducts()
+        {
+            From = Products;
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () =&gt; new Views.ShowProductsView(this);
+        }
+    }
+} </code></pre>
+<p>The <strong>ShowProducts Form Designer</strong> should look like :<br />
+<img src="ShowProductsScreen.png" alt="Show Products Screen" /></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PkikKDuWjLw?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
 
 
                 <br />
@@ -51,7 +72,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/02_UI-Controller/40_Relations/Exercise-Relations/Index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/02_UI-Controller/03-Getting-Data-From-The-Database/Exercise-Creating-Simple-Screen/01-Creating-Simple-Screen-Result.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -113,7 +134,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'exercise-relations.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'creating-simple-screen-result.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
