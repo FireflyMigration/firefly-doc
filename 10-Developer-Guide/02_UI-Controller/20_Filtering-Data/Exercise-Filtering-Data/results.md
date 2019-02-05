@@ -1,6 +1,4 @@
-﻿# Exercise - UIController - Filtering Data results
-
-### First part
+﻿### First part
 
 The **ShowProducts** class should look like :
 ```csdiff
