@@ -1,6 +1,4 @@
-﻿# Exercise - Creating a Simple Screen results
-
-The **ShowProducts** class should look like :
+﻿The **ShowProducts** class should look like :
 ```csdiff
 using System;
 using System.Collections.Generic;
