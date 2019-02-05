@@ -28,6 +28,8 @@ Use one of this options to go the code :
 6. If you get an error report from your users with the call stack, use the [stack trace explorer](stack-trace-explorer.html) visual studio extension to go directly from it to your code.
 
 7. Once you break into the code, use the Visual Studio's `CallStack` window to browse through the running controllers and double click any line to go to it's code. you can find the `CallStack` window the "Debug\Windows\CallStack" menu
+![CallStack](20190205_14h21_28.gif)
+
 
 ## Some more navigation related articles
 1. Goto code from the designer: [going to an expression from the designer](going-to-an-expression-from-the-designer.html)
