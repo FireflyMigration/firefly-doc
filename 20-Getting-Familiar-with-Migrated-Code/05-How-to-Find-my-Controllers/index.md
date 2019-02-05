@@ -1,5 +1,11 @@
 ﻿Here are some articles and techniques on how to find your controllers (programs) easily:
-1. Use the Shift F12 keyboard shortcut while running the application, to pause into the code. See [using debug information in VS](using-debug-information-in-vs.html):
+1. Use the (<kbd>Shift</kbd> + <kbd>F12</kbd>) keyboard shortcut while running the application to pause directly into the relevant code.  
+    
+    ![Shift + F12](20190205_10h39_50.gif)   
+
+By doing so you are shortening the search time for a program, and you are getting the code you need, using faster method, than tracking menus and tracking code 
+
+See [using debug information in VS](using-debug-information-in-vs.html)
 
 2. Use the <kbd>Ctrl</kbd> + <kbd>T</kbd> keyboard shortcut, to open visual studio's goto type dialog. (in vs 2015 it was <kbd>Ctrl</kbd> + <kbd>,</kbd>)
 
