@@ -1,6 +1,4 @@
-﻿# Exercise - Using Debug Information
-
-1. Run the application.
+﻿1. Run the application.
 2. Run **ShowProducts**.
 3. Use <kbd>Shift + F12</kbd> key combination to break into the code of **ShowProducts**.
 4. Open the **Watch Window**.  
