@@ -19,7 +19,7 @@ see: [finding a controller using the developer tools and find type](finding-a-co
     ![Goto Definition](20190205_13h42_58.gif) 
 
 5. In the entry point project, there is a class called `ApplicationPrograms` that lists all programs with their number and class info.  
-You can use one of this options to go the code :  
+Use one of this options to go the code :  
  option 2 : if the name of the class appears as text.
  option 4 : `Goto Implementation`  
 
