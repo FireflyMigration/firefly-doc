@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Using the Debug information in visual studio</title>
+    <title>First part</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,30 +29,77 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="using-the-debug-information-in-visual-studio">Using the Debug information in visual studio</h1>
-<p>In this page we'll:</p>
-<ul>
-<li><p>Use <kbd>Shift + F12</kbd> key combination, to debug the current running code.</p>
-</li>
-<li><p>Use the &quot;Watch window&quot; to explore the information about the current controller.</p>
-</li>
-<li><p>See the value in the &quot;Watch Window&quot; for the following items for example:</p>
-<ul>
-<li><code>AllowUpdate</code> - to see if we can update in this controller</li>
-<li><code>From</code> - to see the main table of this controller</li>
-<li><code>Where</code> - to see the current controller</li>
-<li><code>OrderBy</code> - the sort of the current controller</li>
-<li><code>Relations</code> - to see the different relations and their info</li>
-<li><code>Columns</code> - to see the columns in this controller</li>
-</ul>
-</li>
-<li><p>Explain how to uncheck the &quot;Show External Code&quot; menu item, to only see relevant information while we debug and avoid the &quot;Symbol file not loaded&quot; message in visual studio</p>
-</li>
-</ul>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/u1mZ96tSHpE?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
-<ul>
-<li><a href="exercise-using-debug-information.html">Exercise Using Debug Information</a></li>
-</ul>
+                <div class="content"><h1 id="first-part">First part</h1>
+<p>The <strong>ShowProducts</strong> class should look like :</p>
+<pre data-line="19" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Exercises
+{
+    public class ShowProducts : UIControllerBase
+    {
+
+        public readonly Models.Products Products = new Models.Products();
+
+        public ShowProducts()
+        {
+            From = Products;
+            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))).And(Products.UnitPrice.IsGreaterThan(25)));
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () =&gt; new Views.ShowProductsView(this);
+        }
+    }
+} </code></pre>
+<h3 id="second-part">Second part</h3>
+<p>The <strong>ShowProducts</strong> class should look like :</p>
+<pre data-line="20,21" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using Firefly.Box;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Exercises
+{
+    public class ShowProducts : UIControllerBase
+    {
+
+        public readonly Models.Products Products = new Models.Products();
+
+        public ShowProducts()
+        {
+            From = Products;
+-           Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))).And(Products.UnitPrice.IsGreaterThan(25)));
+            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
+            Where.Add(Products.UnitPrice.IsGreaterThan(25));
+        }
+
+        public void Run()
+        {
+            Execute();
+        }
+
+        protected override void OnLoad()
+        {
+            View = () =&gt; new Views.ShowProductsView(this);
+        }
+    }
+} </code></pre>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ex29Ip6q5ow?list=PL1DEQjXG2xnKwhPzEwuvVkEL7a_D9-pkL" frameborder="0" allowfullscreen></iframe>
 
 
                 <br />
@@ -60,7 +107,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/02_UI-Controller/50_Using-debug-information-in-VS/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/02_UI-Controller/20_Filtering-Data/Exercise-Filtering-Data/results.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -122,7 +169,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'using-debug-information-in-vs.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'results.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
