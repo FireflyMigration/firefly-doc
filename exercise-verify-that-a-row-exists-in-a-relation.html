@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Exercise - result</title>
+    <title>Exercise - Row Found Validation</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,55 +29,15 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="exercise-result">Exercise - result</h1>
-<p>The <strong>ShowProducts</strong> class should look like :</p>
-<pre data-line="38,39,40,41,42,43,44,45" class="language-csdiff line-numbers"><code>using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing;
-using Firefly.Box;
-using ENV;
-using ENV.Data;
-
-namespace Northwind.Exercises
-{
-    public class ShowProducts : UIControllerBase
-    {
-
-        public readonly Models.Products Products = new Models.Products();
-        public readonly Models.Categories Categories = new Models.Categories();
-
-        public ShowProducts()
-        {
-            From = Products;
-            Relations.Add(Categories, RelationType.Find,
-                Categories.CategoryID.IsEqualTo(Products.CategoryID));
-
-            Where.Add(Products.CategoryID.IsEqualTo(2).Or(Products.CategoryID.IsEqualTo(4).Or(Products.CategoryID.IsEqualTo(6))));
-            Where.Add(Products.UnitPrice.IsGreaterThan(25));
-
-            OrderBy = Products.SortByProductName;
-        }
-
-        public void Run()
-        {
-            Execute();
-        }
-
-        protected override void OnLoad()
-        {
-            View = () =&gt; new Views.ShowProductsView(this);
-        }
-        protected override void OnSavingRow()
-        {
-            if (Products.ProductName =="")
-                System.Windows.Forms.MessageBox.Show("Take notice : Product name is empty!");
-
-            if (Products.UnitsInStock==0 || Products.UnitsOnOrder==0)
-                System.Windows.Forms.MessageBox.Show("Take notice : Units in stock or Units on order is equal to zero");
-        }
-    }
-} </code></pre>
+                <div class="content"><h1 id="exercise-row-found-validation">Exercise - Row Found Validation</h1>
+<ol>
+<li>In <strong>ShowProducts</strong>, add an <strong>error</strong> message using the <strong>RowFound</strong> relation property, if the <strong>Relation</strong> to <strong>Categories</strong> did not find a row.</li>
+<li>Save changes to Git.</li>
+<li>Build and Test.</li>
+</ol>
+<ul>
+<li><a href="exercise-results.html">Exercise results</a></li>
+</ul>
 
 
                 <br />
@@ -85,7 +45,7 @@ namespace Northwind.Exercises
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/15-UI-Controller/91_Input-Validation/10_IF-Statement-Explanation/010_Exercise-if-statement/10_Exercise-if-statement-results.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/15-UI-Controller/92_verify-that-a-row-exists-in-a-relation/10_Exercise-verify-that-a-row-exists-in-a-relation/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -147,7 +107,7 @@ namespace Northwind.Exercises
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'exercise-if-statement-results.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'exercise-verify-that-a-row-exists-in-a-relation.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
