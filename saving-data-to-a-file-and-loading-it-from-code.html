@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="save data, load data, generate sql insert script, export data, import data">
 
-    <title>Fix Recompute Issue regarding Locking and Relation</title>
+    <title>Saving Data to a File and Loading it from code</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,24 +29,39 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="fix-recompute-issue-regarding-locking-and-relation">Fix Recompute Issue regarding Locking and Relation</h1>
-<h3 id="affetced-version">Affetced version</h3>
-<p>Any version before 30124 (Feb 21st 2018).</p>
-<h3 id="symptom">Symptom</h3>
-<p>The user cancel in respond to a locked row message (by pressing Esc or F2) and the program has a Relation to the locked table.<br />
-In some cases, the recompute engine may enter an unstable state.</p>
-<h3 id="resolution">Resolution</h3>
-<p>Updating to version 30124 (Feb 21st 2018) or later resolves the issue.</p>
-<p>If you need to apply the fix to your current source code of the Firefy.Box.dll, the changes are in the Engine\ManyToOneRelatino.cs file.<br />
-Please follow the changes below:</p>
-<ol>
-<li>In the GetRowMonitoredAction class, in the Do() method:</li>
-</ol>
-<p><img src="2018-02-21_18h05_39.png" alt="2018 02 21 18H05 39" /></p>
-<ol start="2">
-<li>In the dummyRow class, in the GetRowFromProvider method:</li>
-</ol>
-<p><img src="2018-02-21_18h06_52.png" alt="2018 02 21 18H06 52" /></p>
+                <div class="content"><h1 id="saving-data-to-a-file-and-loading-it-from-code">Saving Data to a File and Loading it from code</h1>
+<p>In this article we review how to load and save data to a file from code.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Y5zKI4tLRqg" frameborder="0" allowfullscreen></iframe>
+<h2 id="saving-the-data">Saving the Data</h2>
+<pre data-line="" class="language-csdiff line-numbers"><code>var o = new Models.Orders();
+var dataBytes = u.SerializeEntity(o);
+u.Blb2File(dataBytes, @"c:\temp\orders.data"); </code></pre>
+<h4 id="filter-the-data-to-be-saved">Filter the data to be saved</h4>
+<pre data-line="3" class="language-csdiff line-numbers"><code>var o = new Models.Orders();
+-var dataBytes = u.SerializeEntity(o);
+var dataBytes = u.SerializeEntity(o,o.ShipCountry.IsEqualTo("France"));
+u.Blb2File(dataBytes, @"c:\temp\orders.data"); </code></pre>
+<h4 id="using-a-table-name-expression">Using a Table Name Expression</h4>
+<p>this code shows how to export data from a table that uses a table name expression, in this case we used a separate Ordres file per year.</p>
+<pre data-line="2" class="language-csdiff line-numbers"><code>var o = new Models.Orders();
+o.EntityName = "Orders_" + Date.Now.Year;
+var dataBytes = u.SerializeEntity(o);
+u.Blb2File(dataBytes, @"c:\temp\orders.data"); </code></pre>
+<h2 id="loading-the-data">Loading the Data</h2>
+<pre data-line="" class="language-csdiff line-numbers"><code>var o = new Models.Orders();
+var dataBytes = u.File2Blb(@"c:\temp\orders.data");
+u.DeserializeEntity(o, dataBytes); </code></pre>
+<h2 id="using-system.io-instead-of-file2blb">Using System.IO instead of File2Blb</h2>
+<h4 id="saving">Saving</h4>
+<pre data-line="4" class="language-csdiff line-numbers"><code>var o = new Models.Orders();
+var dataBytes = u.SerializeEntity(o);
+-u.Blb2File(dataBytes, @"c:\temp\orders.data");
+File.WriteAllBytes(@"c:\temp\orders.data", dataBytes); </code></pre>
+<h4 id="loading">Loading</h4>
+<pre data-line="3" class="language-csdiff line-numbers"><code>var o = new Models.Orders();
+-var dataBytes = u.File2Blb(@"c:\temp\orders.data");
+var dataBytes =File.ReadAllBytes(@"c:\temp\orders.data");
+u.DeserializeEntity(o, dataBytes); </code></pre>
 
 
                 <br />
@@ -54,7 +69,7 @@ Please follow the changes below:</p>
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/Important-Updates-to-Migrated-Applications/Fix-Recompute-Issue-regarding-Locking-and-Relation/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/Saving-Data-to-a-File-and-Loading-it-from-code.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -116,7 +131,7 @@ Please follow the changes below:</p>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'fix-recompute-issue-regarding-locking-and-relation.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'saving-data-to-a-file-and-loading-it-from-code.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
