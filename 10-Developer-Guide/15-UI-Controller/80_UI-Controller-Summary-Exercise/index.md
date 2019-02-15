@@ -1,15 +1,15 @@
 ﻿# Introduction to UI Controller - Summary Exercise
 
 
-1.	Under the **Exercise folder** add a new UIController named it **showOrderDetails**.
+1.	Under the **Exercise folder** add a new UIController named it **ShowOrderDetails**.
 1.	Define the **Order_Details** table at the beginning of the controller class.(drag and drop it, holding the **Shift** key just before the drop).
 1.  In the **constructor** use the **From** to set the **Order_Details** to be the class main table.
 1.  **Build** and open the form designer (Using the **Class outline** window). 
 1.  Add a **grid** with all the columns from the **OrderDetails** table.
-1.	Add a new menu entry calling **showOrderDetails**.
+1.	Add a new menu entry calling **ShowOrderDetails**.
 7.  Save changes to Git.
 1.  **Build and test**.
-1.  Going back the **showOrderDetails** controller:
+1.  Going back the **ShowOrderDetails** controller:
 1.	Filter the data to display only the rows where the **UnitPrice** is **greater or equal** to 20.
 1.  Save changes to Git.
 12. **Build and test**.
