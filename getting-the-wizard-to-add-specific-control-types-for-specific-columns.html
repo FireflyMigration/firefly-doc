@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>User Interface</title>
+    <title>Getting the Wizard to add specific control types for specific Columns</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,24 +29,31 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="user-interface">User Interface</h1>
-<ul>
-<li><a href="integrating-devexpress-pivotgrid-with-migrated-application.html">Integrating DevExpress PivotGrid with Migrated Application</a></li>
-<li><a href="improving-the-user-ability-to-select-columns.html">Improving the user ability to select columns</a></li>
-<li><a href="integrating-devexpress-scheduler-with-migrated-application.html">Integrating DevExpress Scheduler with Migrated Application</a></li>
-<li><a href="loading-data-into-a-devexpress-data-grid-control-or-any-other-grid.html">Loading data into a DevExpress Data Grid control or any other grid</a></li>
-<li><a href="adjust-grid-enhancements-to-your-needs.html">Adjust grid enhancements to your needs</a></li>
-<li><a href="changing-the-way-a-tab-control-or-any-control-paints.html">Changing the way a tab control or any control paints</a></li>
-<li><a href="column-wizard.html">Column Wizard</a></li>
-<li><a href="controlling-the-tab-order.html">Controlling the Tab Order</a></li>
-<li><a href="creating-a-user-control-based-on-non-migrated-control.html">Creating a user control based on non migrated control</a></li>
-<li><a href="enable-facelift-and-pivot.html">Enable Facelift and Pivot</a></li>
-<li><a href="how-to-move-menu-entries-between-menus.html">How to move menu entries between menus</a></li>
-<li><a href="tabbing-into-buttons.html">Tabbing into buttons</a></li>
-<li><a href="toolbox-and-controls-in-migrated-code.html">Toolbox and Controls in Migrated Code</a></li>
-<li><a href="using-non-migrated-controls-part-1.html">Using non migrated controls Part 1</a></li>
-<li><a href="using-values-from-ini-in-the-visual-studio-designer.html">Using values from ini in the Visual Studio Designer</a></li>
-</ul>
+                <div class="content"><h1 id="getting-the-wizard-to-add-specific-control-types-for-specific-columns">Getting the Wizard to add specific control types for specific Columns</h1>
+<pre data-line="8,9,10" class="language-csdiff line-numbers"><code>public class Products : Entity 
+{
+    #region Columns
+    [PrimaryKey]
+    public readonly Types.ProdID ProductID = new Types.ProdID { Caption = "ProductID", Name = "ProductID", Format = "N10", ReadOnlyForExistingRows = true };
+    public readonly TextColumn ProductName = new TextColumn("ProductName", "40");
+    public readonly NumberColumn SupplierID = new NumberColumn("SupplierID", "N10")
+    {
+        ControlTypeOnGrid = typeof(Shared.Theme.Controls.ComboBox)
+    };
+    public readonly NumberColumn CategoryID = new NumberColumn("CategoryID", "N10");
+    public readonly TextColumn QuantityPerUnit = new TextColumn("QuantityPerUnit", "20");
+    public readonly NumberColumn UnitPrice = new NumberColumn("UnitPrice", "10.3");
+... </code></pre>
+<p>Or in a type</p>
+<pre data-line="5" class="language-csdiff line-numbers"><code>public class SupplierId : NumberColumn
+{
+    public SupplierId() : base("SupplierId","10")
+    {
+        ControlTypeOnGrid = typeof(Shared.Theme.Controls.ComboBox);
+    }
+} </code></pre>
+<hr />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/iyybreFTmuk" frameborder="0" allowfullscreen></iframe>
 
 
                 <br />
@@ -54,7 +61,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/70-User Interface/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/70-User Interface/Column-Wizard/Getting the Wizard to add specific control types for specific Columns.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -116,7 +123,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'user-interface.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'getting-the-wizard-to-add-specific-control-types-for-specific-columns.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
