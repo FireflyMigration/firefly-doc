@@ -1,0 +1,614 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Using GridView and FormView to Create Automatic Views</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="using-gridview-and-formview-to-create-automatic-views">Using GridView and FormView to Create Automatic Views</h1>
+<p>Use <code>GridView</code> and <code>FormView</code> to create automatic views without any need for the visual designer</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VYfzhbYn4CQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<h4 id="use-grid-view">Use Grid View</h4>
+<pre data-line="4" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+-   View = () =&gt; new Views.ShowProductsView(this);
+    View = () =&gt; new ENV.UI.GridView(Products.ProductID,Products.ProductName);
+} </code></pre>
+<h4 id="use-form-view">Use Form View</h4>
+<pre data-line="4" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+-   View = () =&gt; new Views.ShowProductsView(this);
+    View = () =&gt; new ENV.UI.FormView(Products.ProductID,Products.ProductName);
+} </code></pre>
+<h4 id="add-an-action-to-the-view">Add an Action to the View</h4>
+<pre data-line="6,7,8,9" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+    View = () =&gt;
+    {
+        var result = new ENV.UI.GridView(Products.ProductID, Products.ProductName, Products.SupplierID);
+        result.AddAction("Do Something", () =&gt;
+        {
+            System.Windows.Forms.MessageBox.Show("Test");
+        });
+        return result;
+    };
+} </code></pre>
+<h4 id="add-a-checkbox">Add a CheckBox</h4>
+<pre data-line="6" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+    View = () =&gt;
+    {
+        var result = new ENV.UI.GridView(Products.ProductID, Products.ProductName, Products.SupplierID);
+        result.AddCheckBox(Products.Discontinued);
+        result.AddAction("Do Something", () =&gt;
+        {
+            System.Windows.Forms.MessageBox.Show("Test");
+        });
+        return result;
+    };
+} </code></pre>
+<h4 id="add-a-combobox-based-on-an-entity">Add a ComboBox based on an Entity</h4>
+<pre data-line="6,7" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+    View = () =&gt;
+    {
+        var result = new ENV.UI.GridView(Products.ProductID, Products.ProductName);
+        var sup = new Models.Suppliers();
+        result.AddCombo(Products.SupplierID, sup, sup.SupplierID, sup.CompanyName);
+        result.AddCheckBox(Products.Discontinued);
+        result.AddAction("Do Something", () =&gt;
+        {
+            System.Windows.Forms.MessageBox.Show("Test");
+        });
+        return result;
+    };
+} </code></pre>
+<h2 id="source-code">Source Code</h2>
+<h3 id="gridview">GridView</h3>
+<pre data-line="" class="language-csdiff line-numbers"><code>using System;
+using System.Windows.Forms;
+using ENV.Data;
+using ENV.UI;
+using ENV.Utilities;
+using Firefly.Box;
+using Firefly.Box.Data;
+using Firefly.Box.Data.Advanced;
+using Firefly.Box.UI.Advanced;
+
+namespace ENV.UI
+{
+    public class GridView : ENV.UI.Form
+    {
+        public GridView(params ColumnBase[] columns)
+        {
+            Height = 430;
+            
+            grid = new ENV.UI.Grid
+            {
+                AllowMultiSelect = true,
+
+                Width = 21,
+                Height = this.ClientSize.Height,
+                AllowUserToResizeColumns = true,
+                AllowUserToReorderColumns = true,
+                AlternatingBackColor = System.Drawing.Color.FromArgb(243, 249, 254),
+                RowColorStyle = Firefly.Box.UI.GridRowColorStyle.AlternatingRowBackColor,
+                UnderConstructionNewGridLook = true,
+                HeaderHeight = 30,
+                
+            };
+            RightToLeft = LocalizationInfo.Current.RightToLeft;
+            RightToLeftLayout = true;
+            AutoScroll = true;
+            StartPosition = Firefly.Box.UI.WindowStartPosition.CenterMDI;
+            PaintChildControls = true;
+            Controls.Add(grid);
+            ContextMenuStrip = _strip;
+            AddColumns(columns);
+        }
+        public void AddCheckBox(Data.BoolColumn column)
+        {
+            var cb = new CheckBox();
+            cb.Data = column;
+            cb.UseColumnInputRangeWhenEmptyText = false;
+            AddGridColumn(column.Caption, cb);
+        }
+        ContextMenuStrip _strip = new ContextMenuStrip() { };
+        public int MaxWidthINChars = 25;
+        protected override void OnLoad(EventArgs e)
+        {
+            grid.EnableGridEnhancements();
+            if (RightToLeft == RightToLeft.Yes)
+                grid.AdvancedAnchor = new Firefly.Box.UI.AdvancedAnchor(100, 0, 0, 100);
+            else
+                grid.AdvancedAnchor = new Firefly.Box.UI.AdvancedAnchor(0, 0, 0, 100);
+            var originalGridWidth = grid.Width;
+            Resize += (sender, args) =&gt; grid.Width = Math.Min(originalGridWidth, ClientSize.Width);
+            Layout += delegate { grid.Height = ClientSize.Height - (HorizontalScroll.Visible ? SystemInformation.HorizontalScrollBarHeight : 0); };
+            base.OnLoad(e);
+        }
+        public new System.Windows.Forms.RightToLeft RightToLeft
+        {
+            get { return base.RightToLeft; }
+            set
+            {
+                base.RightToLeft = value;
+                grid.RightToLeft = value;
+            }
+        }
+        public bool RightToLeftByFormat { get; set; }
+        private Firefly.Box.UI.Advanced.ControlBase GetControl(ColumnBase column)
+        {
+
+
+            {
+                Firefly.Box.UI.Advanced.InputControlBase icb = null;
+                icb = GetControlBasedOnControlTypeInColumn(column, c =&gt; c.ControlTypeOnGrid);
+                var tb = icb as ENV.UI.TextBox;
+                if (icb == null)
+                {
+                    tb = new ENV.UI.TextBox
+                    {
+                        Data = column,
+                        RightToLeft = RightToLeft,
+                        Style = Firefly.Box.UI.ControlStyle.Flat,
+                        AdvancedAnchor = new Firefly.Box.UI.AdvancedAnchor(0, 100, 0, 0),
+                        RightToLeftByFormat = RightToLeftByFormat,
+                        ShowExpandButton = true
+                    };
+                    icb = tb;
+                }
+
+
+
+                var x = column.FormatInfo.MaxLength;
+                if (column is DateTimeColumn)
+                    x = 15;
+                if (x == 0)
+                    x = MaxWidthINChars;
+                if (x &gt;= MaxWidthINChars)
+
+                    x = MaxWidthINChars;
+                if (tb != null)
+                {
+                    tb.ResizeToFit(x);
+
+                    
+                }
+                return icb;
+            }
+        }
+
+        internal static Firefly.Box.UI.Advanced.InputControlBase GetControlBasedOnControlTypeInColumn(ColumnBase column, Func&lt;IENVColumn, System.Type&gt; getControlType)
+        {
+            Firefly.Box.UI.Advanced.InputControlBase icb = null;
+            var envColumn = column as IENVColumn;
+            if (envColumn != null)
+            {
+                var controlType = getControlType(envColumn);
+                if (controlType != null)
+                {
+                    try
+                    {
+                        icb = Activator.CreateInstance(controlType) as Firefly.Box.UI.Advanced.InputControlBase;
+                        if (icb != null)
+                        {
+                            var d = icb.GetType().GetProperty("Data");
+
+                            d.SetValue(icb, Activator.CreateInstance(d.PropertyType, column), new object[0]);
+
+                        }
+                    }
+                    catch { }
+                }
+            }
+
+            return icb;
+        }
+
+        public void AddAction(string what, Action action, Func&lt;bool&gt; condition = null)
+        {
+
+            var b = new ToolStripMenuItem() { Text = what };
+            b.Click += delegate
+            {
+                try
+                {
+                    Common.RunOnLogicContext(this, action);
+                }
+                catch (Exception ex)
+                {
+                    ENV.Common.ShowExceptionDialog(ex, true, what);
+
+                }
+
+            };
+            if (condition != null)
+                _strip.Opening += (s, e) =&gt;
+
+                {
+                    b.Visible = condition();
+
+                };
+
+            _strip.Items.Add(b);
+
+
+
+
+        }
+        public int MultiSelectRowsCount { get { return grid.MultiSelectRowsCount; } }
+
+
+
+        Grid grid;
+
+
+        internal void ReadSelectedRows(Action what)
+        {
+            grid.ReadSelectedRows(what);
+        }
+
+        internal FilterOnAllColumnsClass GetFilterOnAllColumnsClass()
+        {
+            return new FilterOnAllColumnsClass(grid);
+        }
+
+        public void AddColumns(params ColumnBase[] args)
+        {
+            foreach (var item in args)
+            {
+                AddColumn(item);
+            }
+        }
+        public void AddColumn(ColumnBase column, Action&lt;ControlBase&gt; doOnControl = null)
+        {
+            var tb = GetControl(column);
+            AddGridColumn(column.Caption, tb);
+            if (doOnControl != null)
+                doOnControl(tb);
+        }
+        public void AddCombo&lt;T&gt;(TypedColumnBase&lt;T&gt; column, Data.Entity sourceEntity = null, TypedColumnBase&lt;T&gt; valueColumn = null, Data.TextColumn displayColumn = null, Sort orderBy = null, FilterBase where = null, string values = null, string displayValues = null)
+        {
+            var c = new ENV.UI.ComboBox() { Data = column, Style = Firefly.Box.UI.ControlStyle.Flat };
+            if (sourceEntity != null)
+            {
+                c.ListSource = sourceEntity;
+                c.ValueColumn = valueColumn;
+                if (displayColumn != null)
+                    c.DisplayColumn = displayColumn;
+                else
+                    c.DisplayColumn = valueColumn;
+                if (where != null)
+                    c.ListWhere.Add(where);
+                if (orderBy != null)
+                    c.ListOrderBy = orderBy;
+                else
+                    c.ListOrderBy.Add(valueColumn);
+            }
+            if (values != null)
+                c.Values = values;
+            if (displayValues != null)
+                c.DisplayValues = displayValues;
+            using (var tb = new TextBox())
+            {
+                var length = MaxWidthINChars;
+                if (displayColumn!=null &amp;&amp; displayColumn.FormatInfo.MaxLength &gt; 5 &amp;&amp; displayColumn.FormatInfo.MaxLength &lt; MaxWidthINChars)
+                    length = displayColumn.FormatInfo.MaxLength;
+                tb.ResizeToFit(length);
+                c.Width = tb.Width;
+            }
+            AddGridColumn(column.Caption, c);
+        }
+        public void AddGridColumn(string columnTitle, Firefly.Box.UI.Advanced.ControlBase tb)
+        {
+            var gc = new ENV.UI.GridColumn
+            {
+                Text = columnTitle,
+                RightToLeft = RightToLeft,
+                AllowSort = true,
+                AutoResize = false,
+                Name = columnTitle
+            };
+
+
+
+
+
+            gc.Controls.Add(tb);
+            gc.ResizeToFitContent();
+            tb.Location = new System.Drawing.Point(2, 3);
+            tb.Width = gc.Width - 3;
+            grid.Controls.Add(gc);
+            grid.Width += gc.Width;
+            if (!FitToMDI)
+            {
+                if (ClientSize.Width &lt; grid.Width)
+                    ClientSize = new System.Drawing.Size(grid.Width, ClientSize.Height);
+            }
+        }
+    }
+} </code></pre>
+<h3 id="formview">FormView</h3>
+<pre data-line="" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
+using ENV.Data;
+using Firefly.Box;
+using Firefly.Box.Data.Advanced;
+
+namespace ENV.UI
+{
+    public class FormView : ENV.UI.Form
+    {
+        int padding = 5;
+        int _top;
+        List&lt;ENV.UI.Label&gt; _labels = new List&lt;ENV.UI.Label&gt;();
+        List&lt;System.Windows.Forms.Control&gt; _textboxes = new List&lt;System.Windows.Forms.Control&gt;();
+        int _labelWidth;
+        int _textBoxWidth;
+        int _actionsOffset = 0;
+        public FormView(params ColumnBase[] columns)
+        {
+            StartPosition = Firefly.Box.UI.WindowStartPosition.CenterMDI;
+            Width = 200;
+            RightToLeftLayout = true;
+            BackColor = ENV.Labs.FaceLiftDemo.BackGroundColor;
+            _top = padding;
+            AddColumns(columns);
+        }
+        public void AddAction(string name, Action what)
+        {
+            if (_top &lt; 120)
+                _top = 120;
+            ClientSize = new Size(Math.Max(ClientSize.Width, 300), ClientSize.Height);
+            var tc = new TextColumn();
+            tc.DefaultValue = name;
+            var b = new ENV.UI.Button { Data = tc, Top = _top, CoolEnabled = true };
+            var w = b.Width;
+            b.ResizeToFit(name);
+            if (w &gt; b.Width)
+                b.Width = w;
+            b.Left = ClientSize.Width - padding - b.Width - _actionsOffset;
+            _actionsOffset += b.Width + padding;
+            b.Click += delegate { what(); };
+
+            AcceptButton = b;
+            ResizeToFit(b);
+            Controls.Add(b);
+            if (b.Left &lt; padding)
+            {
+                var y = padding - b.Left;
+                foreach (var item in Controls)
+                {
+                    var btn = item as Button;
+                    if (btn != null)
+                    {
+                        btn.Left += y;
+                        ResizeToFit(btn);
+                    }
+
+                }
+            }
+        }
+
+        public void AddCombo&lt;T&gt;(TypedColumnBase&lt;T&gt; column, Entity sourceEntity = null, TypedColumnBase&lt;T&gt; valueColumn = null, TextColumn displayColumn = null, Sort orderBy = null, FilterBase where = null, string values = null, string displayValues = null)
+        {
+            var c = new ENV.UI.ComboBox() { Data = column };
+            if (sourceEntity != null)
+            {
+                c.ListSource = sourceEntity;
+                c.ValueColumn = valueColumn;
+                if (displayColumn != null)
+                    c.DisplayColumn = displayColumn;
+                else
+                    c.DisplayColumn = valueColumn;
+                if (where != null)
+                    c.ListWhere.Add(where);
+                if (orderBy != null)
+                    c.ListOrderBy = orderBy;
+                else
+                    c.ListOrderBy.Add(valueColumn);
+            }
+            if (values != null)
+                c.Values = values;
+            if (displayValues != null)
+                c.DisplayValues = displayValues;
+            AddColumn(column.Caption, c);
+        }
+        public void AddCheckBox(Data.BoolColumn column)
+        {
+            var cb = new CheckBox();
+            cb.Data = column;
+            cb.UseColumnInputRangeWhenEmptyText = false;
+            AddColumn(column.Caption, cb);
+        }
+        public void AddColumn(string name, Control displayControl)
+        {
+
+            var label = new ENV.UI.Label
+            {
+                Style = Firefly.Box.UI.ControlStyle.Flat,
+                Width = 150,
+                Left = padding,
+                Top = _top,
+                Text = name
+            };
+            label.ResizeToFitContent();
+            if (label.Width &lt;= _labelWidth)
+            {
+                label.Width = _labelWidth;
+            }
+            else
+            {
+                foreach (var label1 in _labels)
+                {
+                    label1.Width = _labelWidth;
+                }
+                foreach (var textBox in _textboxes)
+                {
+                    textBox.Left = label.Right + padding;
+                }
+                _labelWidth = label.Width;
+            }
+            _labels.Add(label);
+            Controls.Add(label);
+            var tb = displayControl;
+
+            tb.Left = label.Right + padding;
+            tb.Top = _top;
+            if (tb.Height&lt;label.Height)
+                tb.Height = label.Height;
+
+            if (tb.Width &lt; _textBoxWidth)
+            {
+                tb.Width = _textBoxWidth;
+            }
+            else
+            {
+                foreach (var textBox in _textboxes)
+                {
+                    textBox.Width = tb.Width;
+                }
+                _textBoxWidth = tb.Width;
+            }
+
+            _textboxes.Add(tb);
+            ResizeToFit(tb);
+            Controls.Add(tb);
+
+            _top = label.Bottom + padding;
+        }
+        public void AddColumns(params ColumnBase[] args)
+        {
+            foreach (var item in args)
+            {
+                AddColumn(item);
+            }
+        }
+        public void AddColumn(BoolColumn column)
+        {
+            AddColumn(column.Caption, new Firefly.Box.UI.CheckBox { Data = column, Text = "" });
+        }
+        public void AddColumn(ColumnBase column)
+        {
+            var control = GridView.GetControlBasedOnControlTypeInColumn(column, x =&gt; x.ControlType);
+            if (control == null)
+            {
+                var tb = new TextBox { Data = column };
+                tb.ResizeToFit(Math.Max(30, Math.Min(column.FormatInfo.MaxLength, 50)));
+                control = tb;
+            }
+            AddColumn(column.Caption, control);
+        }
+        public void AddPassword(TextColumn column)
+        {
+            var tb = new TextBox { Data = column, UseSystemPasswordChar = true };
+            tb.ResizeToFit(Math.Max(30, Math.Min(column.FormatInfo.MaxLength, 50)));
+            AddColumn(column.Caption, tb);
+        }
+        void ResizeToFit(Control c)
+        {
+            ClientSize = new Size(Math.Max(ClientSize.Width, c.Right + padding), c.Bottom + padding);
+        }
+    }
+} </code></pre>
+
+
+                <br />
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/70-User Interface/Automatic-Views/10-Using-GridView-and-FormView-to-Create-Automatic-Views/index.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'using-gridview-and-formview-to-create-automatic-views.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>
