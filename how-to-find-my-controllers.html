@@ -30,46 +30,45 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="how-to-find-my-controllers">How to Find my Controllers</h1>
-<p>Here are some articles and techniques on how to find your controllers (programs) easily:</p>
+<p>Here are some techniques on how to find your controllers (programs) easily:</p>
 <ol>
 <li><p>Use the (<kbd>Shift</kbd> + <kbd>F12</kbd>) keyboard shortcut while running the application to pause directly into the relevant code.</p>
 <p><img src="20190205_10h39_50.gif" alt="Shift + F12" /></p>
 </li>
 </ol>
-<p>By doing so you are shortening the search time for a program, and you are getting the code you need, using faster method, than tracking menus and tracking code</p>
-<p>See <a href="using-debug-information-in-vs.html">using debug information in VS</a></p>
+<p>See <a href="using-debug-information-in-vs.html">Using Debug Information in VS</a></p>
 <ol start="2">
-<li><p>Use the <kbd>Ctrl</kbd> + <kbd>,</kbd> keyboard shortcut, to open visual studio's goto type dialog. (in vs 2015 it was <kbd>Ctrl</kbd> + <kbd>T</kbd>)<br />
+<li><p>Use the (<kbd>Ctrl</kbd> + <kbd>,</kbd>) keyboard shortcut, to open Visual Studio's &quot;goto all dialog&quot;. (in vs 2015 it was <kbd>Ctrl</kbd> + <kbd>T</kbd>)<br />
 <img src="20190205_13h21_16.gif" alt="Ctrl + ," /></p>
 </li>
-<li><p>While running the application use the Controller List developer tools (<kbd>Shift</kbd> + <kbd>F3</kbd>) and <kbd>Ctrl</kbd> + <kbd>T</kbd> keyboard shortcut.<br />
-<img src="20190205_13h28_41.gif" alt="developer tools" /></p>
+<li><p>While running the application use the Controller List developer tools (<kbd>Shift</kbd> + <kbd>F3</kbd>) to locate the program, right click on the eatery and &quot;Copy Code Path&quot;, then use (<kbd>Ctrl</kbd> + <kbd>T</kbd>) keyboard shortcut to navigate to the class.<br />
+<img src="20190205_13h28_41.gif" alt="Developer Tools" /></p>
 </li>
 </ol>
-<p>see: <a href="finding-a-controller-using-the-developer-tools-and-find-type.html">finding a controller using the developer tools and find type</a></p>
+<p>see: <a href="finding-a-controller-using-the-developer-tools-and-find-type.html">Finding a Controller Using The Developer Tools And Find Type</a></p>
 <ol start="4">
-<li><p>Right click on any class and choose <code>Goto Definition</code> to go to it's code. <kbd>F12</kbd>. If it's an <code>interface</code> you can choose <code>Goto Implementation</code> to go to the actual controller's code.<br />
+<li><p>Right click on any class and choose <code>Goto Definition</code> to go to it's code. (<kbd>F12</kbd>). If it's an <code>interface</code> you can choose <code>Goto Implementation</code> to go to the actual controller's code.<br />
 <img src="20190205_13h42_58.gif" alt="Goto Definition" /></p>
 </li>
 <li><p>In the entry point project, there is a class called <code>ApplicationPrograms</code> that lists all programs with their number and class info.<br />
-Use one of this options to go the code :<br />
-option 2 : if the name of the class appears as text.
-option 4 : <code>Goto Implementation</code></p>
+Use one of the previous options to go the code :<br />
+previous option 2 : if the name of the class appears as text.<br />
+previous option 4 : <code>Goto Implementation</code>.</p>
 </li>
 </ol>
-<p><img src="2019-02-05_14h09_13.png" alt="ApplicationPrograms" /></p>
+<p><img src="2019-02-05_14h09_13.png" alt="Application Programs" /></p>
 <ol start="6">
 <li><p>If you get an error report from your users with the call stack, use the <a href="stack-trace-explorer.html">stack trace explorer</a> visual studio extension to go directly from it to your code.</p>
 </li>
-<li><p>Once you break into the code, use the Visual Studio's <code>CallStack</code> window to browse through the running controllers and double click any line to go to it's code. you can find the <code>CallStack</code> window the &quot;Debug\Windows\CallStack&quot; menu
+<li><p>Once you break into the code, use the Visual Studio's <code>CallStack</code> window to browse through the running controllers and double click any line to go to it's code. you can find the <code>CallStack</code> window the &quot;Debug\Windows\CallStack&quot; menu<br />
 <img src="20190205_14h21_28.gif" alt="CallStack" /></p>
 </li>
 </ol>
 <h2 id="some-more-navigation-related-articles">Some more navigation related articles</h2>
 <ol>
-<li><p>Goto code from the designer: <a href="going-to-an-expression-from-the-designer.html">going to an expression from the designer</a></p>
+<li><p>Goto code from the designer: <a href="going-to-an-expression-from-the-designer.html">Going To An Expression From The Designer</a></p>
 </li>
-<li><p>Working with the small and fast standard solution: <a href="using-the-standard-solution.html">using the standard solution</a></p>
+<li><p>Working with the small and fast standard solution: <a href="using-the-standard-solution.html">Using The Standard Solution</a></p>
 </li>
 </ol>
 <p>We hope you'll find this useful</p>
