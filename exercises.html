@@ -1167,6 +1167,354 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <li><a href="exercise-relations-recompute-results.html">Exercise Relations Recompute results</a></li>
 </ul>
 
+<h1 id="exercise-subform">Exercise - Subform</h1>
+<ol>
+<li>In <strong>ShowEmployees</strong>.</li>
+<li>Add instance of <strong>ShowEmployeeCars</strong>.(You can use drag and drop of the class).</li>
+<li>Add an action method (no return value and no parameters received) name it RunShowEmployeesCars.</li>
+<li><strong>RunShowEmployeesCars</strong> will call the new instance Run Method.</li>
+<li>Build.</li>
+<li>Open the <strong>ShowEmployees</strong> form.</li>
+<li>Reduce the size of the grid, and add a subform.</li>
+<li>Go to the code behind of the form (F7).</li>
+<li>After the <strong>InitializeComponent()</strong> set the subform controller.</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+<li>Notice that you get data only for the first employee.</li>
+<li>In <strong>ShowEmployeeCars</strong>.</li>
+<li>In the <strong>Run</strong> method.</li>
+<li>Clear the where.</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-subform-results.html">Exercise Subform results</a></li>
+</ul>
+
+<h1 id="exercise-basic-report">Exercise - Basic Report</h1>
+<ol>
+<li>Using the <strong>Basic Report</strong> template create a new report and name it <strong>ProductsReport</strong>.</li>
+<li>Set the <strong>Products</strong> table as the main data source.</li>
+<li>Add relation to the <strong>Categories</strong> table.</li>
+<li>In the OnLoad find the layout and navigate to the layout code behind the form using <kbd>F12</kbd>.</li>
+<li>Using <kbd>Shift</kbd><kbd>F7</kbd>, navigate to the layout form.</li>
+<li>Add a nice title at the top of the report.</li>
+<li>Add the following columns to a grid:
+<ol>
+<li>ProductID</li>
+<li>ProductName</li>
+<li>CategoryID</li>
+<li>CategoryName ( in the same column with CategoryID)</li>
+<li>UnitPrice</li>
+<li>UnitsInStock</li>
+<li>UnitsOnOrder</li>
+</ol>
+</li>
+<li>Sort the report by the <strong>ProductName</strong>.</li>
+<li>Add the new report to the main menu</li>
+<li>Save changes to Git.</li>
+<li>Build and test</li>
+</ol>
+<ul>
+<li><a href="exercise-basic_report-results.html">Exercise Basic_Report results</a></li>
+</ul>
+
+<h1 id="exercise-basic-report">Exercise - Basic Report</h1>
+<ol>
+<li>In <strong>ProductsReport</strong>.</li>
+<li>Add two methods:
+<ol>
+<li><strong>GetCurrentDate</strong> return data type <strong>Date</strong>.</li>
+<li><strong>GetCureentPage</strong> return data type <strong>Number</strong>.</li>
+</ol>
+</li>
+<li>Display the new methods on the report layout.</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-date-and-page-number-results.html">Exercise Date and Page Number results</a></li>
+</ul>
+
+<h1 id="exercise-using-groups">Exercise - Using Groups</h1>
+<ol>
+<li>In <strong>ProductsReport</strong>.</li>
+<li>Reorder the report by the <strong>CategoryID</strong>.</li>
+<li>Add 4 new sections :
+<ol>
+<li><strong>ReportHeader</strong> Display the title current Date.</li>
+<li><strong>ReportFooter</strong> Display the page number.</li>
+<li><strong>CategoryHeader</strong> display <strong>CategoryName</strong> for each group of rows with the same <strong>Category</strong>.</li>
+<li><strong>CategoryFooter</strong> display summary  at the end of each category, showing the total items in the category and the total unit price.</li>
+</ol>
+</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-using-groups-results.html">Exercise Using Groups results</a></li>
+</ul>
+
+<h1 id="exercise-control-models">Exercise - Control Models</h1>
+<ol>
+<li><p>Using the <strong>Solution Explorer</strong> open the <strong>Base</strong> Project and navigate to <strong>Shared.Theme.Controls</strong> Folder.</p>
+</li>
+<li><p>Right click on the <strong>Controls</strong> folder and add new item using the <strong>BaseControl</strong> template, name it <strong>MandatoryTextBox</strong>.</p>
+</li>
+<li><p>Open the <strong>Properties</strong> panel and set:</p>
+<p>3.1. <strong>BackColor</strong> = LightCoral</p>
+<p>3.2. <strong>Border</strong> = Thick</p>
+<p>3.3. <strong>BorderColor</strong> = Red</p>
+</li>
+<li><p>Change the panel to show <strong>Events</strong>.</p>
+</li>
+<li><p>Double click the <strong>InputValidation</strong> event and show <strong>Error</strong> message if the <strong>this.Text == &quot;&quot;</strong>;</p>
+</li>
+<li><p><strong>Build</strong> the <strong>Base Project</strong>.</p>
+</li>
+<li><p>Open the <strong>ShowProducts</strong>.</p>
+</li>
+<li><p>Use <strong>Class Outline</strong> and navigate to the <strong>view</strong>.</p>
+</li>
+<li><p>Right Click the ToolBoox and <strong>Add Tab</strong> name it <strong>My controls</strong>.</p>
+</li>
+<li><p>Right click anywhere on the <strong>form</strong> (<strong>Do not</strong> Right click a control like the grid on the form) and select <strong>Add Controls To Toolbox</strong>.</p>
+</li>
+<li><p>Navigate to the <strong>bin folder</strong> of your solution and select the <strong>NorthwindBase.dll</strong>.</p>
+</li>
+<li><p>In the new windows that open navigate to <strong>Northwind.Shared.Them.Controls</strong> and expend it.</p>
+</li>
+<li><p>select the  <strong>MandatoryTextBox</strong> and click the <strong>Add to ToolBox</strong> button.</p>
+</li>
+<li><p>Drug and drop the <strong>MandatoryTextBox</strong> to the screen set the <strong>Data</strong> property to point to the <strong>Products.ProductName</strong>.</p>
+</li>
+<li><p>Delete the current textBox in the ProductName Column with the new <strong>MandatoryTextBox</strong>.</p>
+</li>
+<li><p>Save changes to Git.</p>
+</li>
+<li><p>Build and test , try to delete the product name from one of the rows in Runtime, and check that you get the error message.</p>
+</li>
+</ol>
+
+<h1 id="exercise-list-controls">Exercise - List Controls</h1>
+<ol>
+<li>Add new UIController to the Exercises folder, name the new UIController <strong>ControlsDemo</strong>.</li>
+<li>Set the Orders table as the main table</li>
+<li>Add <strong>OrderID</strong>, <strong>ShipCountry</strong> to a grid on the form.</li>
+<li>Add 3 ComboBoxes to the grid. For each combobox you need to:
+<ol>
+<li>Add a column to the grid.</li>
+<li>Place a ComboBox from the toolbox in the new column.</li>
+<li>Name the column:
+<ol>
+<li><strong>Customer</strong>.</li>
+<li><strong>Employee</strong>.</li>
+<li><strong>Shipper</strong>.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>The 3 ComboBoxes will show data from :
+<ol>
+<li>CustomerID.</li>
+<li>EmployeeID.</li>
+<li>ShipVia.</li>
+</ol>
+</li>
+<li>Set the <strong>Name</strong> property of the 3 ComboBoxes to :
+<ol>
+<li>cmbCustomer.</li>
+<li>cmbEmployee.</li>
+<li>cmbShipper.</li>
+</ol>
+</li>
+<li>In <strong>ControlsDemo</strong> controller define these 3 tables:
+<ol>
+<li>Customers.</li>
+<li>Employees.</li>
+<li>Shippers.</li>
+</ol>
+</li>
+<li>Go to the <strong>code behind</strong> of ControlsDemo form and set:
+<ol>
+<li>cmbCustomer ListSource to be customer table from the controller.</li>
+<li>cmbCustomer ValueColumn to be CustomerID.</li>
+<li>cmbCustomer DisplayColumn to be CompanyName.</li>
+<li>cmbEmployee ListSource to be Employees table from the controller.</li>
+<li>cmbEmployee ValueColumn to be EmployeeID.</li>
+<li>cmbEmployee DisplayColumn to be LastName.</li>
+<li>cmbShipper ListSource to be Shippers table from the controller.</li>
+<li>cmbShipper ValueColumn to be ShipperID.</li>
+<li>cmbShipper DisplayColumn to be CompanyName.</li>
+</ol>
+</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+<li>Add <strong>Where</strong> to show records where the order <strong>ShipCountry</strong> is equal to <strong>UK</strong>.</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+<li>Set the <strong>cmbCustomer</strong> to show only <strong>UK</strong> customers.</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+<li>Set the <strong>cmbEmployee</strong> to show only <strong>UK</strong> Employees.</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-list-controls-results.html">Exercise List Controls results</a></li>
+</ul>
+
+<h1 id="exercise-binding-controls">Exercise - Binding Controls</h1>
+<ol>
+<li>Add new UIController to the Exercises folder, name the new UIController <strong>ShowEmployeesDataInTabs</strong>.</li>
+<li>Set the <strong>Employees</strong> table as the main table</li>
+<li>Add local column type <strong>NumberColumn</strong>, name <strong>TabValue</strong>, set the default value to be 1 (use <code>{}</code>).</li>
+<li>Add a method, name it <strong>GetFullName</strong>, return type <strong>Text</strong>, return FirstName and LastName (remember to use trim and add an empty space).</li>
+<li>Build and go to the form designer.</li>
+<li>Add <strong>Employee ID</strong> and the method <strong>GetFullName</strong> to the top left of the screen.</li>
+<li>Add a <strong>Tab control</strong> to the form.</li>
+<li>Set the <strong>Data</strong> Property of the <strong>Tab control</strong> to the <strong>TabValue</strong> <strong>NumberColumn</strong> in item 3.</li>
+<li>Set the Tab control <strong>Properites</strong>:
+<ol>
+<li>Set the <strong>Values</strong> to &quot;1,2,3,4,5&quot;.</li>
+<li>Set the <strong>DisplayValues</strong> to &quot;Personal,Address,Contact,Notes,Extra&quot;.</li>
+<li>Set the <strong>Style</strong> to <strong>Flat</strong>.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Personal</strong> tab:</li>
+<li>LastName.</li>
+<li>FirstName.</li>
+<li>Title.</li>
+<li>TitleOfCourtesy.</li>
+<li>BirthDate.</li>
+<li>HireDate.</li>
+<li>Add the following columns to the <strong>Address</strong> tab:
+<ol>
+<li>Address.</li>
+<li>City.</li>
+<li>Region.</li>
+<li>PostalCode.</li>
+<li>Country.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Contact</strong> tab:
+<ol>
+<li>HomePhone.</li>
+<li>Extension.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Notes</strong> tab:
+<ol>
+<li>Notes.</li>
+</ol>
+</li>
+<li>Add the following columns to the <strong>Extra</strong> tab:
+<ol>
+<li>ReportTo.</li>
+<li>PhotoPath.</li>
+</ol>
+</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+</ol>
+<ul>
+<li><a href="exercise-binding-controls-results.html">Exercise Binding Controls results</a></li>
+</ul>
+
+<h1 id="exercise-selection-list">Exercise - Selection List</h1>
+<ol>
+<li><p>Add new folder under the Exervicises folder, name the new folder <strong>SelectionList</strong>.</p>
+</li>
+<li><p>Add new UIController to the <strong>SelectionList</strong> folder, name the new UIController <strong>ShowOrdersWithEmployeeSelection</strong>.</p>
+</li>
+<li><p>Set the <strong>Orders</strong> table as the main table</p>
+</li>
+<li><p>Build and go to the form designer.</p>
+</li>
+<li><p>Add a <strong>Grid control</strong> to the form.</p>
+</li>
+<li><p>Add the following columns to the <strong>Grid</strong>:</p>
+<ol>
+<li>Orders.OrderID.</li>
+<li>Orders.CustomerID.</li>
+<li>Orders.OrderDate.</li>
+</ol>
+</li>
+<li><p>Add new UIController to the <strong>SelectionList</strong> folder, name the new UIController <strong>SelectCustomers</strong>.</p>
+</li>
+<li><p>Set the <strong>Customers</strong> table as the main table</p>
+</li>
+<li><p>In the Onload method set the following settings</p>
+<ol>
+<li>Activity to Browse.</li>
+<li>Allow Delete,Insert and update to false.</li>
+<li>Allow Select to ture.</li>
+</ol>
+</li>
+<li><p>Build and go to the form designer.</p>
+</li>
+<li><p>Add a <strong>Grid control</strong> to the form.</p>
+</li>
+<li><p>Add the following columns to the <strong>Grid</strong></p>
+</li>
+<li><p>Customer.CustomerID.</p>
+</li>
+<li><p>Customer.CompanyName.</p>
+</li>
+<li><p>Set a Debug Write line in the On Saving row and make sure that you get the message in the output window when selecting an item</p>
+</li>
+<li><p>Save changes to Git.</p>
+</li>
+<li><p>Build and test.</p>
+</li>
+</ol>
+<ul>
+<li><a href="exercise-create-selection-list-results.html">Exercise Create Selection List results</a></li>
+</ul>
+
+<h1 id="exercise-returning-the-selected-value">Exercise - Returning The Selected Value</h1>
+<p>In <strong>SelectCustomers</strong>:</p>
+<ol>
+<li>Check the data type of Customers.CustomerId (use &quot;Go To Definition&quot;)</li>
+<li>Set a local column <strong>_CustomerID</strong> make sure that it is not <strong>readonly</strong>.</li>
+<li>In the <strong>Run</strong> method receive a parameter with the relevant column type, name it <strong>customerID</strong>.</li>
+<li>In the <strong>Run</strong> method set _customerId to reference to customerID.</li>
+<li>Save changes to Git.</li>
+<li>Build and test using the <strong>Developer Tools</strong>.</li>
+</ol>
+<ul>
+<li><a href="exercise-returning-the-selected-value-results.html">Exercise Returning The Selected Value results</a></li>
+</ul>
+
+<h1 id="exercise-determine-the-parked-row">Exercise - Determine the Parked Row</h1>
+<p>In <strong>SelectCustomers</strong>:</p>
+<ol>
+<li>In the <strong>Run</strong> method use StartOnRowWhere statement to locate the row where Customers.CustomerId equal to _customerID.</li>
+<li>Save changes to Git.</li>
+<li>Build and test using the <strong>Developer Tools</strong>.</li>
+</ol>
+<ul>
+<li><a href="exercise-determine-the-parked-row-results.html">Exercise Determine the Parked Row results</a></li>
+</ul>
+
+<h1 id="sql-entity">SQL Entity</h1>
+<ol>
+<li>Create a new UIController named “ProductsSQLEntity”</li>
+<li>Add a grid with the following columns from the table, using DynamicSQLEntity:
+<ol type="a">
+<li>ProductID</li>
+<li>ProductName</li>
+<li>UnitPrice</li>
+<li>Discontinued</li>
+</ol>
+</li>
+<li>Make the program read only.</li>
+<li>Filter the data to show only products of categories: 2,4,6,8</li>
+<li>Add a new menu entry to call to this screen.</li>
+<li>Save changes to Git.</li>
+<li>Build and test.</li>
+</ol>
+
 <h1 id="exercise-flowuicontroller">Exercise - FlowUIController</h1>
 <ol>
 <li>Create a <strong>FlowUIController</strong> named <strong>FlowProducts</strong>. (use the UIController template)</li>
@@ -1389,354 +1737,6 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <ul>
 <li><a href="exercise-embedding-the-form-results.html">Exercise Embedding the Form results</a></li>
 </ul>
-
-<h1 id="exercise-subform">Exercise - Subform</h1>
-<ol>
-<li>In <strong>ShowEmployees</strong>.</li>
-<li>Add instance of <strong>ShowEmployeeCars</strong>.(You can use drag and drop of the class).</li>
-<li>Add an action method (no return value and no parameters received) name it RunShowEmployeesCars.</li>
-<li><strong>RunShowEmployeesCars</strong> will call the new instance Run Method.</li>
-<li>Build.</li>
-<li>Open the <strong>ShowEmployees</strong> form.</li>
-<li>Reduce the size of the grid, and add a subform.</li>
-<li>Go to the code behind of the form (F7).</li>
-<li>After the <strong>InitializeComponent()</strong> set the subform controller.</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-<li>Notice that you get data only for the first employee.</li>
-<li>In <strong>ShowEmployeeCars</strong>.</li>
-<li>In the <strong>Run</strong> method.</li>
-<li>Clear the where.</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-</ol>
-<ul>
-<li><a href="exercise-subform-results.html">Exercise Subform results</a></li>
-</ul>
-
-<h1 id="exercise-basic-report">Exercise - Basic Report</h1>
-<ol>
-<li>Using the <strong>Basic Report</strong> template create a new report and name it <strong>ProductsReport</strong>.</li>
-<li>Set the <strong>Products</strong> table as the main data source.</li>
-<li>Add relation to the <strong>Categories</strong> table.</li>
-<li>In the OnLoad find the layout and navigate to the layout code behind the form using <kbd>F12</kbd>.</li>
-<li>Using <kbd>Shift</kbd><kbd>F7</kbd>, navigate to the layout form.</li>
-<li>Add a nice title at the top of the report.</li>
-<li>Add the following columns to a grid:
-<ol>
-<li>ProductID</li>
-<li>ProductName</li>
-<li>CategoryID</li>
-<li>CategoryName ( in the same column with CategoryID)</li>
-<li>UnitPrice</li>
-<li>UnitsInStock</li>
-<li>UnitsOnOrder</li>
-</ol>
-</li>
-<li>Sort the report by the <strong>ProductName</strong>.</li>
-<li>Add the new report to the main menu</li>
-<li>Save changes to Git.</li>
-<li>Build and test</li>
-</ol>
-<ul>
-<li><a href="exercise-basic_report-results.html">Exercise Basic_Report results</a></li>
-</ul>
-
-<h1 id="exercise-basic-report">Exercise - Basic Report</h1>
-<ol>
-<li>In <strong>ProductsReport</strong>.</li>
-<li>Add two methods:
-<ol>
-<li><strong>GetCurrentDate</strong> return data type <strong>Date</strong>.</li>
-<li><strong>GetCureentPage</strong> return data type <strong>Number</strong>.</li>
-</ol>
-</li>
-<li>Display the new methods on the report layout.</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-</ol>
-<ul>
-<li><a href="exercise-date-and-page-number-results.html">Exercise Date and Page Number results</a></li>
-</ul>
-
-<h1 id="exercise-using-groups">Exercise - Using Groups</h1>
-<ol>
-<li>In <strong>ProductsReport</strong>.</li>
-<li>Reorder the report by the <strong>CategoryID</strong>.</li>
-<li>Add 4 new sections :
-<ol>
-<li><strong>ReportHeader</strong> Display the title current Date.</li>
-<li><strong>ReportFooter</strong> Display the page number.</li>
-<li><strong>CategoryHeader</strong> display <strong>CategoryName</strong> for each group of rows with the same <strong>Category</strong>.</li>
-<li><strong>CategoryFooter</strong> display summary  at the end of each category, showing the total items in the category and the total unit price.</li>
-</ol>
-</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-</ol>
-<ul>
-<li><a href="exercise-using-groups-results.html">Exercise Using Groups results</a></li>
-</ul>
-
-<h1 id="exercise-list-controls">Exercise - List Controls</h1>
-<ol>
-<li>Add new UIController to the Exercises folder, name the new UIController <strong>ControlsDemo</strong>.</li>
-<li>Set the Orders table as the main table</li>
-<li>Add <strong>OrderID</strong>, <strong>ShipCountry</strong> to a grid on the form.</li>
-<li>Add 3 ComboBoxes to the grid. For each combobox you need to:
-<ol>
-<li>Add a column to the grid.</li>
-<li>Place a ComboBox from the toolbox in the new column.</li>
-<li>Name the column:
-<ol>
-<li><strong>Customer</strong>.</li>
-<li><strong>Employee</strong>.</li>
-<li><strong>Shipper</strong>.</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>The 3 ComboBoxes will show data from :
-<ol>
-<li>CustomerID.</li>
-<li>EmployeeID.</li>
-<li>ShipVia.</li>
-</ol>
-</li>
-<li>Set the <strong>Name</strong> property of the 3 ComboBoxes to :
-<ol>
-<li>cmbCustomer.</li>
-<li>cmbEmployee.</li>
-<li>cmbShipper.</li>
-</ol>
-</li>
-<li>In <strong>ControlsDemo</strong> controller define these 3 tables:
-<ol>
-<li>Customers.</li>
-<li>Employees.</li>
-<li>Shippers.</li>
-</ol>
-</li>
-<li>Go to the <strong>code behind</strong> of ControlsDemo form and set:
-<ol>
-<li>cmbCustomer ListSource to be customer table from the controller.</li>
-<li>cmbCustomer ValueColumn to be CustomerID.</li>
-<li>cmbCustomer DisplayColumn to be CompanyName.</li>
-<li>cmbEmployee ListSource to be Employees table from the controller.</li>
-<li>cmbEmployee ValueColumn to be EmployeeID.</li>
-<li>cmbEmployee DisplayColumn to be LastName.</li>
-<li>cmbShipper ListSource to be Shippers table from the controller.</li>
-<li>cmbShipper ValueColumn to be ShipperID.</li>
-<li>cmbShipper DisplayColumn to be CompanyName.</li>
-</ol>
-</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-<li>Add <strong>Where</strong> to show records where the order <strong>ShipCountry</strong> is equal to <strong>UK</strong>.</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-<li>Set the <strong>cmbCustomer</strong> to show only <strong>UK</strong> customers.</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-<li>Set the <strong>cmbEmployee</strong> to show only <strong>UK</strong> Employees.</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-</ol>
-<ul>
-<li><a href="exercise-list-controls-results.html">Exercise List Controls results</a></li>
-</ul>
-
-<h1 id="exercise-binding-controls">Exercise - Binding Controls</h1>
-<ol>
-<li>Add new UIController to the Exercises folder, name the new UIController <strong>ShowEmployeesDataInTabs</strong>.</li>
-<li>Set the <strong>Employees</strong> table as the main table</li>
-<li>Add local column type <strong>NumberColumn</strong>, name <strong>TabValue</strong>, set the default value to be 1 (use <code>{}</code>).</li>
-<li>Add a method, name it <strong>GetFullName</strong>, return type <strong>Text</strong>, return FirstName and LastName (remember to use trim and add an empty space).</li>
-<li>Build and go to the form designer.</li>
-<li>Add <strong>Employee ID</strong> and the method <strong>GetFullName</strong> to the top left of the screen.</li>
-<li>Add a <strong>Tab control</strong> to the form.</li>
-<li>Set the <strong>Data</strong> Property of the <strong>Tab control</strong> to the <strong>TabValue</strong> <strong>NumberColumn</strong> in item 3.</li>
-<li>Set the Tab control <strong>Properites</strong>:
-<ol>
-<li>Set the <strong>Values</strong> to &quot;1,2,3,4,5&quot;.</li>
-<li>Set the <strong>DisplayValues</strong> to &quot;Personal,Address,Contact,Notes,Extra&quot;.</li>
-<li>Set the <strong>Style</strong> to <strong>Flat</strong>.</li>
-</ol>
-</li>
-<li>Add the following columns to the <strong>Personal</strong> tab:</li>
-<li>LastName.</li>
-<li>FirstName.</li>
-<li>Title.</li>
-<li>TitleOfCourtesy.</li>
-<li>BirthDate.</li>
-<li>HireDate.</li>
-<li>Add the following columns to the <strong>Address</strong> tab:
-<ol>
-<li>Address.</li>
-<li>City.</li>
-<li>Region.</li>
-<li>PostalCode.</li>
-<li>Country.</li>
-</ol>
-</li>
-<li>Add the following columns to the <strong>Contact</strong> tab:
-<ol>
-<li>HomePhone.</li>
-<li>Extension.</li>
-</ol>
-</li>
-<li>Add the following columns to the <strong>Notes</strong> tab:
-<ol>
-<li>Notes.</li>
-</ol>
-</li>
-<li>Add the following columns to the <strong>Extra</strong> tab:
-<ol>
-<li>ReportTo.</li>
-<li>PhotoPath.</li>
-</ol>
-</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-</ol>
-<ul>
-<li><a href="exercise-binding-controls-results.html">Exercise Binding Controls results</a></li>
-</ul>
-
-<h1 id="exercise-selection-list">Exercise - Selection List</h1>
-<ol>
-<li><p>Add new folder under the Exervicises folder, name the new folder <strong>SelectionList</strong>.</p>
-</li>
-<li><p>Add new UIController to the <strong>SelectionList</strong> folder, name the new UIController <strong>ShowOrdersWithEmployeeSelection</strong>.</p>
-</li>
-<li><p>Set the <strong>Orders</strong> table as the main table</p>
-</li>
-<li><p>Build and go to the form designer.</p>
-</li>
-<li><p>Add a <strong>Grid control</strong> to the form.</p>
-</li>
-<li><p>Add the following columns to the <strong>Grid</strong>:</p>
-<ol>
-<li>Orders.OrderID.</li>
-<li>Orders.CustomerID.</li>
-<li>Orders.OrderDate.</li>
-</ol>
-</li>
-<li><p>Add new UIController to the <strong>SelectionList</strong> folder, name the new UIController <strong>SelectCustomers</strong>.</p>
-</li>
-<li><p>Set the <strong>Customers</strong> table as the main table</p>
-</li>
-<li><p>In the Onload method set the following settings</p>
-<ol>
-<li>Activity to Browse.</li>
-<li>Allow Delete,Insert and update to false.</li>
-<li>Allow Select to ture.</li>
-</ol>
-</li>
-<li><p>Build and go to the form designer.</p>
-</li>
-<li><p>Add a <strong>Grid control</strong> to the form.</p>
-</li>
-<li><p>Add the following columns to the <strong>Grid</strong></p>
-</li>
-<li><p>Customer.CustomerID.</p>
-</li>
-<li><p>Customer.CompanyName.</p>
-</li>
-<li><p>Set a Debug Write line in the On Saving row and make sure that you get the message in the output window when selecting an item</p>
-</li>
-<li><p>Save changes to Git.</p>
-</li>
-<li><p>Build and test.</p>
-</li>
-</ol>
-<ul>
-<li><a href="exercise-create-selection-list-results.html">Exercise Create Selection List results</a></li>
-</ul>
-
-<h1 id="exercise-returning-the-selected-value">Exercise - Returning The Selected Value</h1>
-<p>In <strong>SelectCustomers</strong>:</p>
-<ol>
-<li>Check the data type of Customers.CustomerId (use &quot;Go To Definition&quot;)</li>
-<li>Set a local column <strong>_CustomerID</strong> make sure that it is not <strong>readonly</strong>.</li>
-<li>In the <strong>Run</strong> method receive a parameter with the relevant column type, name it <strong>customerID</strong>.</li>
-<li>In the <strong>Run</strong> method set _customerId to reference to customerID.</li>
-<li>Save changes to Git.</li>
-<li>Build and test using the <strong>Developer Tools</strong>.</li>
-</ol>
-<ul>
-<li><a href="exercise-returning-the-selected-value-results.html">Exercise Returning The Selected Value results</a></li>
-</ul>
-
-<h1 id="exercise-determine-the-parked-row">Exercise - Determine the Parked Row</h1>
-<p>In <strong>SelectCustomers</strong>:</p>
-<ol>
-<li>In the <strong>Run</strong> method use StartOnRowWhere statement to locate the row where Customers.CustomerId equal to _customerID.</li>
-<li>Save changes to Git.</li>
-<li>Build and test using the <strong>Developer Tools</strong>.</li>
-</ol>
-<ul>
-<li><a href="exercise-determine-the-parked-row-results.html">Exercise Determine the Parked Row results</a></li>
-</ul>
-
-<h1 id="exercise-control-models">Exercise - Control Models</h1>
-<ol>
-<li><p>Using the <strong>Solution Explorer</strong> open the <strong>Base</strong> Project and navigate to <strong>Shared.Theme.Controls</strong> Folder.</p>
-</li>
-<li><p>Right click on the <strong>Controls</strong> folder and add new item using the <strong>BaseControl</strong> template, name it <strong>MandatoryTextBox</strong>.</p>
-</li>
-<li><p>Open the <strong>Properties</strong> panel and set:</p>
-<p>3.1. <strong>BackColor</strong> = LightCoral</p>
-<p>3.2. <strong>Border</strong> = Thick</p>
-<p>3.3. <strong>BorderColor</strong> = Red</p>
-</li>
-<li><p>Change the panel to show <strong>Events</strong>.</p>
-</li>
-<li><p>Double click the <strong>InputValidation</strong> event and show <strong>Error</strong> message if the <strong>this.Text == &quot;&quot;</strong>;</p>
-</li>
-<li><p><strong>Build</strong> the <strong>Base Project</strong>.</p>
-</li>
-<li><p>Open the <strong>ShowProducts</strong>.</p>
-</li>
-<li><p>Use <strong>Class Outline</strong> and navigate to the <strong>view</strong>.</p>
-</li>
-<li><p>Right Click the ToolBoox and <strong>Add Tab</strong> name it <strong>My controls</strong>.</p>
-</li>
-<li><p>Right click anywhere on the <strong>form</strong> (<strong>Do not</strong> Right click a control like the grid on the form) and select <strong>Add Controls To Toolbox</strong>.</p>
-</li>
-<li><p>Navigate to the <strong>bin folder</strong> of your solution and select the <strong>NorthwindBase.dll</strong>.</p>
-</li>
-<li><p>In the new windows that open navigate to <strong>Northwind.Shared.Them.Controls</strong> and expend it.</p>
-</li>
-<li><p>select the  <strong>MandatoryTextBox</strong> and click the <strong>Add to ToolBox</strong> button.</p>
-</li>
-<li><p>Drug and drop the <strong>MandatoryTextBox</strong> to the screen set the <strong>Data</strong> property to point to the <strong>Products.ProductName</strong>.</p>
-</li>
-<li><p>Delete the current textBox in the ProductName Column with the new <strong>MandatoryTextBox</strong>.</p>
-</li>
-<li><p>Save changes to Git.</p>
-</li>
-<li><p>Build and test , try to delete the product name from one of the rows in Runtime, and check that you get the error message.</p>
-</li>
-</ol>
-
-<h1 id="sql-entity">SQL Entity</h1>
-<ol>
-<li>Create a new UIController named “ProductsSQLEntity”</li>
-<li>Add a grid with the following columns from the table, using DynamicSQLEntity:
-<ol type="a">
-<li>ProductID</li>
-<li>ProductName</li>
-<li>UnitPrice</li>
-<li>Discontinued</li>
-</ol>
-</li>
-<li>Make the program read only.</li>
-<li>Filter the data to show only products of categories: 2,4,6,8</li>
-<li>Add a new menu entry to call to this screen.</li>
-<li>Save changes to Git.</li>
-<li>Build and test.</li>
-</ol>
 
 <h1 id="exercise-calling-controllers-across-project-scopes">Exercise - Calling Controllers Across Project Scopes</h1>
 <ol>
