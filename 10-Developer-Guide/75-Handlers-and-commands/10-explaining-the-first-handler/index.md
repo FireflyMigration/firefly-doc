@@ -7,10 +7,12 @@
     {
         From = Orders;
 
-+       Handlers.Add(System.Windows.Forms.Keys.F8).Invokes += e =>
-+       {
-+           Message.ShowWarning("Pressed F8");
-+       };
+        Handlers.Add(System.Windows.Forms.Keys.F8).Invokes += ShowOrders_Invokes;
+    }
+
+    private void ShowOrders_Invokes(Firefly.Box.Advanced.HandlerInvokeEventArgs e)
+    {
+        Message.ShowWarning("Pressed F8");
     }
 ```
 
