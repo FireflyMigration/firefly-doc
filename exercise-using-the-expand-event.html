@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="online, uicontroller, selection, select, zoom">
+    <meta name="keywords" content="">
 
-    <title>Using the Exapnd event to call the SelectShippers</title>
+    <title>Exercise - Using the Expand event</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,25 +29,15 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="using-the-exapnd-event-to-call-the-selectshippers">Using the Exapnd event to call the SelectShippers</h1>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cVMOgw0AHRE?list=PL1DEQjXG2xnKzD8ASzFC1KFYHRQKVk2nC" frameborder="0" allowfullscreen></iframe>
-<hr />
-<p>Calling the SelectShippers controller is done by configuring the <em>Expand</em> event of the column on the view:</p>
+                <div class="content"><h1 id="exercise-using-the-expand-event">Exercise - Using the Expand event</h1>
+<p>In <strong>ShowOrdersWithEmployeeSelection</strong>:</p>
 <ol>
-<li>Park on the Shipper column in the ShowOrders controller and press F4 to display its properties</li>
-<li>Go to the <em>Events</em> tab of the properties and look for the <em>Expand</em> event. Double click it will create a method in the code begind the view.</li>
-<li>In this method call the SelectShippers controller, sending it the appropriate parameter</li>
+<li>Park on the TextBox = <strong>txtCustomerID</strong> in the CustomeID column and press F4 to display its properties</li>
+<li>Go to the Events tab of the properties and look for the Expand event. Double click it will create a method in the code begind the view.</li>
+<li>In this method call the SelectCustomers controller, remember to send the appropriate parameter</li>
 </ol>
-<p>The code behind the view will look like this:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>private void txtShipVia_Expand()
-{
-    new SelectShippers().Run(_controller.Orders.ShipVia);
-} </code></pre>
-<blockquote>
-<p>Once an <em>_Expand</em> event is defined, a <strong>Zoom</strong> indication will be shown in the status bar, allowing you to either press F5, double click on the column or click the <strong>Zoom</strong> indication to call the SelectShippers controller.</p>
-</blockquote>
 <ul>
-<li><a href="exercise-using-the-expand-event.html">Exercise Using the Expand event</a></li>
+<li><a href="exercise-using-the-expand-event-results.html">Exercise Using the Expand event results</a></li>
 </ul>
 
 
@@ -56,7 +46,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/88-Selection-Lists/70-Using-the-Expand-event-to-call-the-SelectShipper-Controller/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/88-Selection-Lists/70-Using-the-Expand-event-to-call-the-SelectShipper-Controller/10-Exercise-Using-the-Expand-event/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -118,7 +108,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'using-the-expand-event-to-call-the-selectshipper-controller.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'exercise-using-the-expand-event.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
