@@ -88,4 +88,4 @@ The **ShowOrdersWithEmployeeSelection** runtime should look like :
 
 The **SelectCustomers** runtime should look like : 
 
-![SelectCustomers](2019-01-10_10h36_08.png)
+![SelectCustomers](2019-01-10_10h40_42.png)
