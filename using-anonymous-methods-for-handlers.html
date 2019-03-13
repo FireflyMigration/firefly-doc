@@ -30,7 +30,7 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="using-anonymous-methods-for-handlers">Using Anonymous Methods for Handlers</h1>
-<pre data-line="9,12,13,14,15" class="language-csdiff line-numbers"><code> public class ShowOrders : UIControllerBase
+<pre data-line="10" class="language-csdiff line-numbers"><code> public class ShowOrders : UIControllerBase
 {
 
     public readonly Models.Orders Orders = new Models.Orders();
@@ -38,13 +38,14 @@
     {
         From = Orders;
 
-        Handlers.Add(System.Windows.Forms.Keys.F8).Invokes += ShowOrders_Invokes;
+-       Handlers.Add(System.Windows.Forms.Keys.F8).Invokes += ShowOrders_Invokes;
+        Handlers.Add(System.Windows.Forms.Keys.F8).Invokes += e =&gt; Message.ShowWarning("Pressed F8");
     }
 
-    private void ShowOrders_Invokes(Firefly.Box.Advanced.HandlerInvokeEventArgs e)
-    {
-        Message.ShowWarning("Pressed F8");
-    } </code></pre>
+-   private void ShowOrders_Invokes(Firefly.Box.Advanced.HandlerInvokeEventArgs e)
+-   {
+-       Message.ShowWarning("Pressed F8");
+-   } </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/HT0qxvVsKAM?list=PL1DEQjXG2xnIGbO3DlvFQjv-T0OXM81r-" frameborder="0" allowfullscreen></iframe>
 <ul>
 <li><a href="exercise-using-anonymous-methods.html">Exercise Using Anonymous Methods</a></li>
