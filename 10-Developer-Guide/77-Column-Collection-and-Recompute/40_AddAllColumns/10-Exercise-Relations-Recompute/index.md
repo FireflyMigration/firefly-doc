@@ -14,11 +14,11 @@
 11. Use <kbd>Alt</kbd> <kbd>arrow down</kbd> to restore the **Columns.Add** of **Categories.CategoryID** to it's original location before **Categories.CategoryName**.
 12. Save changes to Git.
 14. Build and test.
-13. Break into the code using the <kbd>Control</kbd> <kbd>F12</kbd>.
+13. Break into the code using the <kbd>Shift</kbd> <kbd>F12</kbd>.
 14. Add **Columns** to the **Watch** panel.
 15. Stop the program.
 16. add **AddAllColumns**.
 17. Save changes to Git.
 20. Build and test.
-18. Break into the code using the <kbd>Control</kbd> <kbd>F12</kbd>.
+18. Break into the code using the <kbd>Shift</kbd> <kbd>F12</kbd>.
 19. Add **Columns** to the **Watch** panel.
