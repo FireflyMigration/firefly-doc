@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="online, uicontroller, selection, select, zoom, expand">
+    <meta name="keywords" content="">
 
-    <title>Using the generic SelectionList utility</title>
+    <title>Exercise - Using the Generic Selection List</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,34 +29,16 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="using-the-generic-selectionlist-utility">Using the generic SelectionList utility</h1>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/AOqflTS4fWQ?list=PL1DEQjXG2xnKzD8ASzFC1KFYHRQKVk2nC" frameborder="0" allowfullscreen></iframe>
-<hr />
-<p>Creating a selection list controller for every time it is required can sometimes be tidious / monotonous.<br />
-So we have created a useful utility in the <em>ENV.Utilities</em> namespace called <strong>SelectionList</strong>.</p>
-<p>In order to use it you need to:</p>
+                <div class="content"><h1 id="exercise-using-the-generic-selection-list">Exercise - Using the Generic Selection List</h1>
+<p>In <strong>ShowOrdersWithEmployeeSelectionView</strong>:</p>
 <ol>
-<li>Remove the previous call to the SelectShippers controller in the <em>_Expand</em> method in the code behind the view</li>
-<li>Define a variable for the Shippers entity</li>
-<li>Call the <em>Show</em> method of the <em>SelectionList</em> utility, sending it 4 parameters:</li>
+<li>Find the <strong>txtCustomerID_Expand</strong> method</li>
+<li>comment out the call to the <strong>SelectCustomers</strong>.</li>
+<li>Add an instance of customers entity.</li>
+<li>user ENV.Utilities.SelectionList.Show to show the end user the selection list.</li>
 </ol>
 <ul>
-<li>The column from the controller, in this case the <em>Orders.ShipVia</em></li>
-<li>The <em>Shippers</em> entity variable</li>
-<li>The code column, <em>ShipperID</em></li>
-<li>The description column, <em>CompanyName</em></li>
-</ul>
-<p>The code will look like this:</p>
-<pre data-line="4,5" class="language-csdiff line-numbers"><code>private void txtShipVia_Expand()
-{
--    new SelectShippers().Run(_controller.Shippers.ShipperID);
-     var Shippers = new Models.Shippers();
-     ENV.Utilities.SelectionList.Show(_controller.Orders.ShipVia, Shippers, Shippers.ShipperID, Shippers.CompanyName);
-} </code></pre>
-<p>This is the result:<br />
-<img src="2018-03-07_16h06_57.jpg" alt="2018 03 07 16H06 57" /></p>
-<ul>
-<li><a href="exercise-using-the-generic-selectionlist.html">Exercise Using the Generic SelectionList</a></li>
+<li><a href="exercise-using-the-expand-event-results.html">Exercise Using the Expand event results</a></li>
 </ul>
 
 
@@ -65,7 +47,7 @@ So we have created a useful utility in the <em>ENV.Utilities</em> namespace call
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/88-Selection-Lists/95-Using-the-Generic-SelectionList/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/88-Selection-Lists/95-Using-the-Generic-SelectionList/10-Exercise-Using-the-Generic-SelectionList/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -127,7 +109,7 @@ So we have created a useful utility in the <em>ENV.Utilities</em> namespace call
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'using-the-generic-selectionlist.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'exercise-using-the-generic-selectionlist.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
