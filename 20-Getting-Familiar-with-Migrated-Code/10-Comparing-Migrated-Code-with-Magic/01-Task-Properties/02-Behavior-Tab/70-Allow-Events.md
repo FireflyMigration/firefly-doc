@@ -1,4 +1,4 @@
-﻿keywords: Task Properties, Behavior Tab, Allow events
+﻿keywords: Task Properties, Behavior Tab, Allow events,AllowUserAbort
 
 Name in migrated code: **AllowUserAbort**  
 Location in migrated code: **OnLoad**
@@ -28,6 +28,6 @@ protected override void OnLoad()
 
 
 ## Property Values
-True or false. The default is **True** which is Allow events = Yes in Magic
+True or false. The default is **false** which is Allow events = No in Magic
 
 
