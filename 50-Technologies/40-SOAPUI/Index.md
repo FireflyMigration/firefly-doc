@@ -20,7 +20,7 @@ We need to define:
     </wn0:response>
 </wn0:Test_LoginResponse>```
 
-2.	Extract the session from the response and inject the session to the next service request 
+2.	Extract the session from the response and inject the session to the next service request  
 ![](2019-03-18_13h51_32.png)
 
 3.	Run the next service request.
