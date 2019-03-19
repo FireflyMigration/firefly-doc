@@ -30,8 +30,8 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="soapui">SOAPUI</h1>
-<p>Sometimes when we have webservices we want to test a series of web services with data that is transferred between them.</p>
-<p>For example – we have a service that we want to call - but before it we need to call another service to login and get a session id.<br />
+<p>This article describes how to test a series of Web Services with data that is transferred between them.</p>
+<p>For example – we have a service that we want to call - but before it, we need to call another service to login and receive a session ID.<br />
 We need to define:</p>
 <ol>
 <li>The call to the first service [Test_Login]</li>
@@ -50,20 +50,25 @@ We need to define:</p>
 &lt;/wn0:Test_LoginResponse&gt;
 </code></pre>
 <ol start="2">
-<li><p>Extract the session from the response and inject the session to the next service request<br />
+<li><p>Extract the session ID from the response and inject it to the next service request. You need to use test steps calls &quot;Property Transfer&quot;.<br />
+Into the area text of the source, you put the name of the response element (in our example, it will be &quot;SessionId&quot;).<br />
+And on the second area text, you put the name of the request element (&quot;SessionId&quot; too).<br />
 <img src="2019-03-18_13h51_32.png" alt="" /></p>
 </li>
 <li><p>Run the next service request.</p>
 </li>
 </ol>
+<blockquote>
+<p>When SOAP run , it will transfer the response element that we defined (<em>property transfer</em>) into the request element of the second service</p>
+</blockquote>
 <h2 id="soapui-with-properties">SoapUI with properties</h2>
 <p>To make it easier we’ll set some properties that we can share and reuse throughout our test case.</p>
 <ol>
 <li>Define a test case [Test_Login]</li>
 </ol>
 <pre><code class="language-xml">&lt;bon:Test_Login&gt;
-    &lt;bon:piUserId&gt;Put a property here&lt;/bon:piUserId&gt;
-    &lt;bon:piPassword&gt;Put a property here&lt;/bon:piPassword&gt;
+    &lt;bon:piUserId&gt;Virginie&lt;/bon:piUserId&gt;
+    &lt;bon:piPassword&gt;123456&lt;/bon:piPassword&gt;
 &lt;/bon:Test_Login&gt;
 </code></pre>
 <ol start="2">
@@ -73,9 +78,12 @@ We need to define:</p>
 </ol>
 <pre><code class="language-xml">&lt;bon:Test_Login&gt;
     &lt;bon:piUserId&gt;${Properties#Login}&lt;/bon:piUserId&gt;
-    &lt;bon:piPassword&gt;${Properties#Login}&lt;/bon:piPassword&gt;
+    &lt;bon:piPassword&gt;${Properties#Password}&lt;/bon:piPassword&gt;
 &lt;/bon:Test_Login&gt;
 </code></pre>
+<blockquote>
+<p>When SOAP step is executed, SoapUI will replace this string with the values of the &quot;Login&quot; and &quot;Password&quot; property of the &quot;Properties&quot; step (in the example, it will be &quot;Virginie&quot; and &quot;123456&quot;).</p>
+</blockquote>
 
 
                 <br />
