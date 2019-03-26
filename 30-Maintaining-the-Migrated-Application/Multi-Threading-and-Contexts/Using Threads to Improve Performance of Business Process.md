@@ -17,7 +17,9 @@ Please review the [Article about Context](http://doc.fireflymigration.com/contex
 ### The OnStart of the Application Class
 The on start of the application class runs for every thread - sometimes you may have a lot of logic there, you'll need to condition that logic to only run in the first time and not always.
 
-
+### Use Connection Pools
+By default, the migrated Windows Forms application doesn't use Connection pools, since it usually uses just one connection.
+If you start using Threads extensively we recommend that you'll set the `ENV.Data.DataProvider.ConnectionManager.UseConnectionPool` to `true`
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cXoog4IFA_k" frameborder="0" allowfullscreen></iframe>
