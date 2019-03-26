@@ -1,4 +1,5 @@
-﻿This article describes how to test a series of Web Services with data that is transferred between them.
+﻿keywords: soap, soapui,webservice, web service
+This article describes how to test a series of Web Services with data that is transferred between them.
 
 For example – we have a service that we want to call - but before it, we need to call another service to login and receive a session ID.  
 We need to define:
