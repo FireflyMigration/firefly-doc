@@ -42,6 +42,9 @@
 Please review the <a href="http://doc.fireflymigration.com/context.html">Article about Context</a></p>
 <h3 id="the-onstart-of-the-application-class">The OnStart of the Application Class</h3>
 <p>The on start of the application class runs for every thread - sometimes you may have a lot of logic there, you'll need to condition that logic to only run in the first time and not always.</p>
+<h3 id="use-connection-pools">Use Connection Pools</h3>
+<p>By default, the migrated Windows Forms application doesn't use Connection pools, since it usually uses just one connection.
+If you start using Threads extensively we recommend that you'll set the <code>ENV.Data.DataProvider.ConnectionManager.UseConnectionPool</code> to <code>true</code></p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cXoog4IFA_k" frameborder="0" allowfullscreen></iframe>
 <h2 id="monitoring-the-thread-progress">Monitoring the Thread progress</h2>
 <p>The <code>RunOnNewThread</code> method return a <a href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.thread">system.threading.thread</a> object that you can monitor.
