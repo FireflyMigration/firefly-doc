@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="parallel, paralel, async, run in new thread">
 
-    <title>Multi Threading and Contexts</title>
+    <title>Using Threads to Improve Performance of Business Process</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,12 +29,57 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="multi-threading-and-contexts">Multi Threading and Contexts</h1>
-<ul>
-<li><a href="context.html">Context</a></li>
-<li><a href="having-the-same-screen-open-mutliple-times.html">Having the same screen open mutliple times</a></li>
-<li><a href="using-threads-to-improve-performance-of-business-process.html">Using Threads to Improve Performance of Business Process</a></li>
-</ul>
+                <div class="content"><h1 id="using-threads-to-improve-performance-of-business-process">Using Threads to Improve Performance of Business Process</h1>
+<p>In this article we show how to call a long business process to run on a new thread.</p>
+<h2 id="replace-a-normal-call-to-a-call-in-a-new-thread">Replace a normal call to a call in a new Thread</h2>
+<pre data-line="1,2,4" class="language-csdiff line-numbers"><code>ENV.Common.RunOnNewThread(() =&gt;
+{
+    new Demo.DemoLongProcess().Run();
+},false); </code></pre>
+<h2 id="important-things-to-know">Important things to know</h2>
+<h3 id="context">Context</h3>
+<p>Each thread has it's own Context, it's own connections to the database and it's own transactions.
+Please review the <a href="http://doc.fireflymigration.com/context.html">Article about Context</a></p>
+<h3 id="the-onstart-of-the-application-class">The OnStart of the Application Class</h3>
+<p>The on start of the application class runs for every thread - sometimes you may have a lot of logic there, you'll need to condition that logic to only run in the first time and not always.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cXoog4IFA_k" frameborder="0" allowfullscreen></iframe>
+<h2 id="monitoring-the-thread-progress">Monitoring the Thread progress</h2>
+<p>The <code>RunOnNewThread</code> method return a <a href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.thread">system.threading.thread</a> object that you can monitor.
+You can use it's IsAlive property to monitor what's going on.
+For example</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>var thread = ENV.Common.RunOnNewThread(() =&gt;
+{
+    new Demo.DemoLongProcess().Run();
+},false);
+while (thread.IsAlive)
+{
+    MessageBox.Show("Waiting to complete");
+}
+MessageBox.Show("Done"); </code></pre>
+<h2 id="you-can-wait-for-multiple-threads-to-be-done-using-a-simple-list">You can wait for multiple Threads to be done using a simple List:</h2>
+<pre data-line="" class="language-csdiff line-numbers"><code>var threads = new List&lt;Thread&gt;();
+//run thread one
+threads.Add( Common.RunOnNewThread(() =&gt;
+{
+    new Demo.DemoLongProcess().Run();
+},false));
+//run thread two
+threads.Add(Common.RunOnNewThread(() =&gt;
+{
+    new Demo.DemoLongProcess().Run();
+}, false));
+//run thread three
+threads.Add(Common.RunOnNewThread(() =&gt;
+{
+    new Demo.DemoLongProcess().Run();
+}, false));
+
+
+while (threads.Find(t=&gt;t.IsAlive)!=null)
+{
+    System.Windows.Forms.MessageBox.Show("Waiting to complete");
+}
+System.Windows.Forms.MessageBox.Show("Done"); </code></pre>
 
 
                 <br />
@@ -42,7 +87,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/Multi-Threading-and-Contexts/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/Multi-Threading-and-Contexts/Using Threads to Improve Performance of Business Process.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -104,7 +149,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'multi-threading-and-contexts.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'using-threads-to-improve-performance-of-business-process.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
