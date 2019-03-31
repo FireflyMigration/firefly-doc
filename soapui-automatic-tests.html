@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="soap, soapui,webservice, web service">
 
-    <title>Technologies</title>
+    <title>SoapUi Automatic Tests</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,14 +29,61 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="technologies">Technologies</h1>
-<ul>
-<li><a href="c-sharp.html">C Sharp</a></li>
-<li><a href="microsoft-.net.html">Microsoft .NET</a></li>
-<li><a href="visual-studio.html">Visual Studio</a></li>
-<li><a href="version-control-and-git.html">Version Control and Git</a></li>
-<li><a href="soapui-automatic-tests.html">SoapUi Automatic Tests</a></li>
-</ul>
+                <div class="content"><h1 id="soapui-automatic-tests">SoapUi Automatic Tests</h1>
+<p>This article describes how to test a series of Web Services with data that is transferred between them.</p>
+<p>For example – we have a service that we want to call - but before it, we need to call another service to login and receive a session ID.<br />
+We need to define:</p>
+<ol>
+<li>The call to the first service [Test_Login]</li>
+</ol>
+<p><em>Request</em></p>
+<pre><code class="language-xml">&lt;bon:Test_Login&gt;
+    &lt;bon:piUserId&gt;Virginie&lt;/bon:piUserId&gt;
+    &lt;bon:piPassword&gt;123456&lt;/bon:piPassword&gt;
+&lt;/bon:Test_Login&gt;
+</code></pre>
+<p><em>Response</em></p>
+<pre><code class="language-xml">&lt;wn0:Test_LoginResponse&gt;
+    &lt;wn0:response &gt;
+        &lt;wn0:SessionId&gt;922486967&lt;/wn0:SessionId&gt;
+    &lt;/wn0:response&gt;
+&lt;/wn0:Test_LoginResponse&gt;
+</code></pre>
+<ol start="2">
+<li><p>Extract the session ID from the response and inject it to the next service request. You need to use test steps calls &quot;Property Transfer&quot;.<br />
+Into the area text of the source, you put the name of the response element (in our example, it will be &quot;SessionId&quot;).<br />
+And on the second area text, you put the name of the request element (&quot;SessionId&quot; too).<br />
+<img src="2019-03-18_13h51_32.png" alt="" /></p>
+</li>
+<li><p>Run the next service request.</p>
+</li>
+</ol>
+<blockquote>
+<p>When SoapUI runs , it will transfer the response element that we defined (<em>property transfer</em>) into the request element of the second service</p>
+</blockquote>
+<h2 id="soapui-with-properties">SoapUI with properties</h2>
+<p>To make it easier we’ll set some properties that we can share and reuse throughout our test case.</p>
+<ol>
+<li>Define a test case [Test_Login]</li>
+</ol>
+<pre><code class="language-xml">&lt;bon:Test_Login&gt;
+    &lt;bon:piUserId&gt;Virginie&lt;/bon:piUserId&gt;
+    &lt;bon:piPassword&gt;123456&lt;/bon:piPassword&gt;
+&lt;/bon:Test_Login&gt;
+</code></pre>
+<ol start="2">
+<li>Define the properties : login and password<br />
+<img src="2019-03-18_14h10_05.png" alt="" /></li>
+<li>Use the properties into the request <code>${Properties_title#properties_name}</code></li>
+</ol>
+<pre><code class="language-xml">&lt;bon:Test_Login&gt;
+    &lt;bon:piUserId&gt;${Properties#Login}&lt;/bon:piUserId&gt;
+    &lt;bon:piPassword&gt;${Properties#Password}&lt;/bon:piPassword&gt;
+&lt;/bon:Test_Login&gt;
+</code></pre>
+<blockquote>
+<p>When SoapUi step is executed, SoapUI will replace this string with the values of the &quot;Login&quot; and &quot;Password&quot; property of the &quot;Properties&quot; step (in the example, it will be &quot;Virginie&quot; and &quot;123456&quot;).</p>
+</blockquote>
 
 
                 <br />
@@ -44,7 +91,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//50-Technologies/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//50-Technologies/40-SoapUi-Automatic-Tests/Index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -106,7 +153,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'technologies.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'soapui-automatic-tests.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
