@@ -153,11 +153,21 @@ One of the most useful usage of this method is when it is added to an ID type in
         products.UnitPrice.Value *= 1.1;
     });
 } </code></pre>
+<p>Iterate all orders of a customer:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>var o = new Models.Orders();
+o.ForEachRow(o.CustomerID.IsEqualTo("ALFKI"), new Sort(o.OrderDate), () =&gt;
+{
+    // dosomething
+}); </code></pre>
 <h2 id="update">Update</h2>
 <p>The Update method updates any row of the table that match the filter parameter.</p>
 <p><strong>Example</strong></p>
 <p>Update all beverages prices by 10 percent:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code> </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>var products = new Models.Products();
+                products.Update(products.ProductID.IsEqualTo(1),() =&gt;
+                {
+                    products.UnitPrice.Value *= 1.1;
+                }); </code></pre>
 <h2 id="drop">Drop</h2>
 <p>The Drop method drop the table from the database, similar to the DbDel function.</p>
 <p><strong>Example</strong></p>
