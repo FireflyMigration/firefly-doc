@@ -162,12 +162,11 @@ o.ForEachRow(o.CustomerID.IsEqualTo("ALFKI"), new Sort(o.OrderDate), () =&gt;
 <h2 id="update">Update</h2>
 <p>The Update method updates any row of the table that match the filter parameter.</p>
 <p><strong>Example</strong></p>
-<p>Update all beverages prices by 10 percent:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>var products = new Models.Products();
-                products.Update(products.ProductID.IsEqualTo(1),() =&gt;
-                {
-                    products.UnitPrice.Value *= 1.1;
-                }); </code></pre>
+products.Update(products.ProductID.IsEqualTo(1),() =&gt;
+{
+    products.UnitPrice.Value *= 1.1;
+}); </code></pre>
 <h2 id="drop">Drop</h2>
 <p>The Drop method drop the table from the database, similar to the DbDel function.</p>
 <p><strong>Example</strong></p>
