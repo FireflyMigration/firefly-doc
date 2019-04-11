@@ -3,7 +3,9 @@
 There are many tips for the Visual Studio. We have collected some that you might find useful.
 
 ### Goto closing bracket
-In many cases where there is a long if statement I see an open bracket and I want to see where it ends - just park on it and click <kbd>Control</kbd> + <kbd>]</kbd> and it'll get you there
+In many cases where there is a long if statement I see an open bracket and I want to see where it ends - just park on it and click <kbd>Control</kbd> + <kbd>]</kbd> and it'll get you there. Click <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>]</kbd> to select the content of the bracket.
+
+![Goto Braket](GotoBraket.gif)
 
 ### Scope to This
 

@@ -128,5 +128,7 @@ Go To the "Edit\Go To\Go To All..." menu item  in VS2017
 
 
 ### H - Recommended extentions
-We would like to recommend the follow extension to you:
-[Stack Trace Explorer](stack-trace-explorer.html)
+We would like to recommend the following extensions to you:
+1. [Viasfora, click to download](https://marketplace.visualstudio.com/items?itemName=TomasRestrepo.Viasfora) - see [Our Review](bracket-colors-in-visual-studio-viasfora.html)
+2. [Stack Trace Explorer, click to download](https://marketplace.visualstudio.com/items?itemName=SamirBoulema.StackTraceExplorer) - see [Our Review](stack-trace-explorer.html)
+ 

@@ -73,7 +73,8 @@ The result will be:
 | **L**      | **L** – Lower. All the characters typed in the field will be in lower case                                                                                                                     |
 | **#**      | This is a place holder for numbers and symbols. Good example is a phone number. 8002583826 will be displayed 800-258-3826 with a format **###-####-####**                                      |
 | **A**      | A – Auto. Once the user fills all the possible characters of the text field, the cursor moves automatically to the next field. (Ex – A5 mask moves to the next field after typing 5 chars) |
-| **~**         | **~** (tilde sign) – Trim Result (was added in December 2018                                                                                                                                            |
+| **~**      | **~** (tilde sign) – Trim Result (was added in December 2018                                                                                                                                            |
+
 **Date and Time**
 
 | Format     | Description                                                                                                     |

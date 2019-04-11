@@ -178,13 +178,28 @@ public void UpdatePricesBy10Percent()
 }
 ```
 
+Iterate all orders of a customer:
+```csdiff
+var o = new Models.Orders();
+o.ForEachRow(o.CustomerID.IsEqualTo("ALFKI"), new Sort(o.OrderDate), () =>
+{
+    // dosomething
+});
+```
+
+
 ## Update
 The Update method updates any row of the table that match the filter parameter.
 
 **Example**
 
-Update all beverages prices by 10 percent:
+
 ```csdiff
+var products = new Models.Products();
+products.Update(products.ProductID.IsEqualTo(1),() =>
+{
+    products.UnitPrice.Value *= 1.1;
+});
 ```
 
 ## Drop
