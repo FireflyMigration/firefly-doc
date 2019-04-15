@@ -16,3 +16,13 @@ If you chose a \_CI_ sort order then since strings are case insensitive, a searc
 Reference
 * [https://smist08.wordpress.com/2011/08/13/accpac-and-sql-server/](https://smist08.wordpress.com/2011/08/13/accpac-and-sql-server/)
 * [https://msdn.microsoft.com/en-us/library/ms143726%28v=sql.105%29.aspx?f=255&MSPPError=-2147217396](https://msdn.microsoft.com/en-us/library/ms143726%28v=sql.105%29.aspx?f=255&MSPPError=-2147217396)
+
+# An example where this can hurt us 
+In Btrieve you might have the following statement,
+Show all names where name is between '' and '~'.
+
+In Btrieve '~' is greater than all english characters `'x'<'~' == true` - so you'll get to see all the names.
+
+In the SQL_Latin1_General_CI_AS the `~` sign is not greater than all english characters `'x' < '~' == false` - so you'll not see any rows.
+
+This is a good example of why by default we use the `Latin1_General_BIN` collation when migrating from Btrieve to SQL
