@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="profiler, guide,">
 
-    <title>FireflyProfiler</title>
+    <title>Sending Profiler to Firefly</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,11 +29,48 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="fireflyprofiler">FireflyProfiler</h1>
+                <div class="content"><h1 id="sending-profiler-to-firefly">Sending Profiler to Firefly</h1>
+<p>There are several ways to activate the profiler:</p>
 <ul>
-<li><a href="using-firefly-profiler.html">Using Firefly Profiler</a></li>
-<li><a href="using-profiler-snippet.html">Using Profiler Snippet</a></li>
-<li><a href="sending-profiler-to-firefly.html">Sending Profiler to Firefly</a></li>
+<li>From the Developer Tools menu</li>
+<li>Using a keyboard Short key</li>
+<li>As an INI entry</li>
+</ul>
+<ol>
+<li>Starting the Profiler<br />
+While the application is open, Right-Click on the status bar:<br />
+<strong>Developer Tools -&gt; Profiler</strong> -&gt; Click <strong>Start Profiling</strong>, or use the keyboard shortkey:    <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd></li>
+</ol>
+<p><img src="start_profiler.jpg" alt="" /></p>
+<p>Run the process</p>
+<ol start="2">
+<li>End the Profiler<br />
+Once the process is done, click <strong>End Profiling</strong> in the toolbar menu or use the keyboard shortkey again: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd></li>
+</ol>
+<p><img src="end_profiler.jpg" alt="" /></p>
+<ol start="3">
+<li>Saving the Profiler<br />
+Right-Click on the results screen will bring a context menu with 6 options.<br />
+Click <strong>Save</strong> ,specify the path and file name and send us the file.</li>
+</ol>
+<p><img src="profilermenu.png" alt="" /></p>
+<ol start="5">
+<li><p>Profiler settings in the INI<br />
+To start the Profiler for the Web or without using Developer tools,
+Simply add an entry to the INI file in the [MAGIC_ENV] section:</p>
+<pre><code> Profiler= c:\temp\myfile.prof
+</code></pre>
+</li>
+</ol>
+<p>Or as an argumant from the command line:</p>
+<pre><code>    /Profiler= *c:\temp\myfile.prof
+</code></pre>
+<p>Notice that a Profiler for the Web will create a file for each request.</p>
+<ul>
+<li>The Profiler is part of the migrated solution but you can also download it from here:<br />
+<a href="http://doc.fireflymigration.com/fireflyprofiler.html">http://doc.fireflymigration.com/fireflyprofiler.html</a></li>
+<li>For more information on the Profiler, please visit:<br />
+<a href="http://doc.fireflymigration.com/using-firefly-profiler.html">http://doc.fireflymigration.com/using-firefly-profiler.html</a></li>
 </ul>
 
 
@@ -42,7 +79,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/20-Debugging-the-Migrated-Application/10-FireflyProfiler/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/20-Debugging-the-Migrated-Application/10-FireflyProfiler/30-Sending-Profiler-to-Firefly.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -104,7 +141,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'fireflyprofiler.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'sending-profiler-to-firefly.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

@@ -44,7 +44,7 @@ Once the process is done, click <strong>End Profiling</strong> in the toolbar me
 </ol>
 <p><img src="end_profiler.jpg" alt="" /></p>
 <ol start="3">
-<li>Reviewing the Profiler results
+<li>Reviewing the Profiler results<br />
 Clicking <strong>End Profiling</strong> will open the results window.</li>
 </ol>
 <p><img src="analyze_profiler.png" alt="" /></p>
@@ -72,10 +72,12 @@ Setting the cache to TRUE for the Customers model will reduce the number of call
 </ol>
 <p><img src="analyze_profiler2.png" alt="" /></p>
 <ol start="4">
-<li><p>Reviewing the Profiler options
-Right-Click on the results screen will bring a context menu with 3 options:</p>
+<li><p>Reviewing the Profiler options<br />
+Right-Click on the results screen will bring a context menu with 6 options:</p>
 <ul>
 <li><strong>Details</strong> – You can Right-Click on any line to see the information such the actual SQL statement and the program path. You can also click Enter or hover above the line to see the details <strong>(4)</strong></li>
+<li><strong>Copy Path</strong> – While parking on a controler or event, you can copy the code path to ease the search using the &quot;Go To All&quot; in Visual Studio . (e.g Northwind.Customers.ShowCustomers.OnLoad())</li>
+<li><strong>Statistics</strong> - This will provide statistics for a specific phase such as, how many times the taks it being called in this process</li>
 <li><strong>Save</strong> – You can save the profiler result to a file.</li>
 <li><strong>Large Fonts</strong> – Will enlarge the fonts on the results screen</li>
 <li><strong>Search</strong></li>
@@ -86,12 +88,17 @@ Right-Click on the results screen will bring a context menu with 3 options:</p>
 </ol>
 <p><img src="open_profiler.jpg" alt="" /></p>
 <ol start="6">
-<li>Profiler for the web or Profiler without Developer tools<br />
-Simply add an entry to the INI file in the [MAGIC_ENV] section:</li>
+<li><p>Profiler settings in the INI<br />
+To use the profiler for the Web or without using Developer tools,
+Simply add an entry to the INI file in the [MAGIC_ENV] section:</p>
+<pre><code> Profiler= c:\temp\myfile.prof
+</code></pre>
+</li>
 </ol>
-<p>Profiler= c:\temp\filename</p>
-<p>The result will be a file with *.prof extension.<br />
-Notice that a Profiler for the Web will create a file for each request.</p>
+<p>Or as an argumant from the command line:</p>
+<pre><code>    /Profiler= *c:\temp\myfile.prof
+</code></pre>
+<p>Notice that a Profiler for the Web will create a file for each request.</p>
 <ol start="7">
 <li>Profiler for Parallel programs<br />
 To start profiling parallel context stand on the window of the context you would like to debug and press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>, that will start profiling.
