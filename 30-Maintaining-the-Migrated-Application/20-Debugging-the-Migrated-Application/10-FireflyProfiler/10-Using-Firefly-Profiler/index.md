@@ -13,7 +13,7 @@ Once the process is done, click **End Profiling** in the toolbar menu or <kbd>Ct
 
 ![](end_profiler.jpg)
 
-3) Reviewing the Profiler results
+3) Reviewing the Profiler results    
 Clicking **End Profiling** will open the results window.
 
 ![](analyze_profiler.png)
@@ -41,10 +41,12 @@ c.  The Relation for each Customer occurred only once.
 
 ![](analyze_profiler2.png)
 
-4) Reviewing the Profiler options
-Right-Click on the results screen will bring a context menu with 3 options:
+4) Reviewing the Profiler options  
+Right-Click on the results screen will bring a context menu with 6 options:
 
    * **Details** – You can Right-Click on any line to see the information such the actual SQL statement and the program path. You can also click Enter or hover above the line to see the details **(4)**
+   * **Copy Path** – While parking on a controler or event, you can copy the code path to ease the search using the "Go To All" in Visual Studio . (e.g Northwind.Customers.ShowCustomers.OnLoad())
+   * **Statistics** - This will provide statistics for a specific phase such as, how many times the taks it being called in this process
    * **Save** – You can save the profiler result to a file.
    * **Large Fonts** – Will enlarge the fonts on the results screen
    * **Search**
@@ -53,12 +55,16 @@ Right-Click on the results screen will bring a context menu with 3 options:
 
 ![](open_profiler.jpg)
 
-6) Profiler for the web or Profiler without Developer tools  
+6) Profiler settings in the INI   
+To use the profiler for the Web or without using Developer tools,
 Simply add an entry to the INI file in the [MAGIC_ENV] section:
 
-Profiler= c:\temp\filename
+        Profiler= c:\temp\myfile.prof
 
-The result will be a file with *.prof extension.  
+Or as an argumant from the command line:
+
+        /Profiler= *c:\temp\myfile.prof
+
 Notice that a Profiler for the Web will create a file for each request.
 
 7) Profiler for Parallel programs   
