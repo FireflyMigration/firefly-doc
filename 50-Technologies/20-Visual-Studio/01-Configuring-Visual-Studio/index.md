@@ -4,18 +4,19 @@ In this document we'll detail how we configure Visual Studio 2017 to make the mo
 
 Although this document was written with Visual Studio 2017 in mind, most of it is also relevant to previous versions of Visual Studio.
 
-## A - Visual Studio Extentions
-We have created am Extensions Bundle for your use if you're using VS2017.  
-You can download it from: [Extensions Bundle](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioExtensionBundle)
+## A - Visual Studio Extensions
+We have created an Extensions Bundle.  
+If you're using VS2017, you can download it from: [Extensions Bundle](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioExtensionBundle)  
+If you're using VS2019, you can download it from: [Extensions Bundle 2019](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioExtensionBundle2019)  
 
-If you are using Visual studio 2015, [please install the extentions manually](extensions-bundle.html) and proceed to item B in this document.
+If you are using Visual studio 2015, [please install the extensions manually](extensions-bundle.html) and proceed to item B in this document.
 
 #### After you install the bundle
 Please run the Visual Studio Tuneup utility at "Tools\Tuneup Visual Studio"
 
 ![2018 12 07 13H23 27](2018-12-07_13h23_27.png)
 
-**if you can't find this menu entry, [please install the extentions manually](extensions-bundle.html)**
+**if you can't find this menu entry, [please install the extensions manually](extensions-bundle.html)**
 
 
 ## B - Other important settings that improve the performance and experience in Visual Studio
