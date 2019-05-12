@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>DataAccess</title>
+    <title>PopulateColumns</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,17 +29,32 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="dataaccess">DataAccess</h1>
-<ul>
-<li><a href="database-connections-basic-terms-and-concepts.html">Database Connections basic terms and concepts</a></li>
-<li><a href="making-the-most-out-of-where.html">Making the most out of Where</a></li>
-<li><a href="relations-in-depth.html">Relations in depth</a></li>
-<li><a href="storage-explained.html">Storage Explained</a></li>
-<li><a href="transactions-and-locking.html">Transactions and locking</a></li>
-<li><a href="using-datetime-columns-with-null.html">Using DateTime columns with Null</a></li>
-<li><a href="should-determine-name-according-to-callstack.html">Should determine name according to callstack</a></li>
-<li><a href="populatecolumns.html">PopulateColumns</a></li>
-</ul>
+                <div class="content"><h1 id="populatecolumns">PopulateColumns</h1>
+<p>In Entities that have more than 50 columns you'll find the following code:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>
+/// &lt;summary&gt;Manualy attaches the columns to the entity. Used in tables with a lot of columns&lt;/summary&gt;
+protected override void PopulateColumns()
+{
+    Columns.Add(...
+} </code></pre>
+<p>It is added to these entities due to performance considerations.</p>
+<p><strong>For such entities, if you add a column you should also include it in <code>Columns.Add</code> call.</strong></p>
+<h1 id="why-is-it-there">Why is it there?</h1>
+<p>A column must be associated with an Entity to be considered and Entity Column and to be used in data related operations (select, update etc...)</p>
+<p>Normally (For entities with 50 columns or less) the columns are associated with the Entity using an .NET mechanism called reflection.</p>
+<p>For Example - if we have the following Entity:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>public class Customers : Entity
+{
+    public NumberColumn Code = new NumberColumn("Code");
+    public TextColumn CustomerName = new TextColumn("Customer Name");
+    public Customers() : base("Customers", Shared.DataSources.Northwind)
+    {
+    }
+} </code></pre>
+<p>The default implementation of <code>PopulateColumns</code> (that is if you don't override it) will use reflection to figure out the columns in this class and automatically add the column to the column collection, using <code>Columns.Add</code></p>
+<p>This &quot;reflection&quot; operation comes at a small cost. We found that in entities that have many columns this cost is too high (it's milliseconds but still) so we decided that entities that have more than 50 columns, will not use the &quot;reflection&quot; for populating the columns, instead for such entities the migrated code will generate the <code>Columns.Add</code> call instead - we do that call in the override of <code>PopulateColumns</code> where we &quot;override&quot; the default automatic reflection based mechanism with a manual one that is faster to execute.</p>
+<h2 id="what-do-i-need-to-remember-from-this-article">What do I need to remember from this article</h2>
+<p>If you have a Entity that has <code>PopulateColumns</code> and you are adding a column to it - make sore to add the new column to the <code>Columns.Add</code> call.</p>
 
 
                 <br />
@@ -47,7 +62,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/80-PopulateColumns.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -109,7 +124,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'dataaccess.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'populatecolumns.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
