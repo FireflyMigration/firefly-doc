@@ -34,4 +34,4 @@ The default implementation of `PopulateColumns` (that is if you don't override i
 This "reflection" operation comes at a small cost. We found that in entities that have many columns this cost is too high (it's milliseconds but still) so we decided that entities that have more than 50 columns, will not use the "reflection" for populating the columns, instead for such entities the migrated code will generate the `Columns.Add` call instead - we do that call in the override of `PopulateColumns` where we "override" the default automatic reflection based mechanism with a manual one that is faster to execute.
 
 ## What do I need to remember from this article
-If you have a Entity that has `PopulateColumns` and you are adding a column to it - make sore to add the new column to the `Columns.Add` call.
+If you have a Entity that has `PopulateColumns` and you are adding a column to it - make sure to add the new column to the `Columns.Add` call.
