@@ -54,7 +54,7 @@ protected override void PopulateColumns()
 <p>The default implementation of <code>PopulateColumns</code> (that is if you don't override it) will use reflection to figure out the columns in this class and automatically add the column to the column collection, using <code>Columns.Add</code></p>
 <p>This &quot;reflection&quot; operation comes at a small cost. We found that in entities that have many columns this cost is too high (it's milliseconds but still) so we decided that entities that have more than 50 columns, will not use the &quot;reflection&quot; for populating the columns, instead for such entities the migrated code will generate the <code>Columns.Add</code> call instead - we do that call in the override of <code>PopulateColumns</code> where we &quot;override&quot; the default automatic reflection based mechanism with a manual one that is faster to execute.</p>
 <h2 id="what-do-i-need-to-remember-from-this-article">What do I need to remember from this article</h2>
-<p>If you have a Entity that has <code>PopulateColumns</code> and you are adding a column to it - make sore to add the new column to the <code>Columns.Add</code> call.</p>
+<p>If you have a Entity that has <code>PopulateColumns</code> and you are adding a column to it - make sure to add the new column to the <code>Columns.Add</code> call.</p>
 
 
                 <br />
