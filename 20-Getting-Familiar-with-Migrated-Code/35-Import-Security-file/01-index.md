@@ -1,4 +1,5 @@
-﻿In order to import the security file of Magic (usr_std) into the migrated .NET application you first need to export it from uniPaaS/XPA using a utility
+keywords:import users, usr_std, mgusrdmp
+In order to import the security file of Magic (usr_std) into the migrated .NET application you first need to export it from uniPaaS/XPA using a utility
 provided by Magic Software called **MgUsrDmp.exe** which is located in the Magic engine folder.  
 This utility exports all the users (without passwords) and rights to an XML file.  
 
