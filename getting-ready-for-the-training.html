@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Developer Guide</title>
+    <title>Getting ready for the Training</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,42 +29,43 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="developer-guide">Developer Guide</h1>
-<p>Welcome to Firefly's developer guide.</p>
-<p>In this guide we will cover everything from basic C# concepts, all the way to knowing how to accomplish in .NET and the migrated code any task that you require.</p>
-<p>This guide is intended both to magic developers with no significant .NET training, and to .NET developers who are joining the development of migrated application and want to better understand that underlying principles.</p>
-<p>For developers without any C# knowledge, we recommend that you start with this great Microsoft C# training prior to going over this course.</p>
-<p><a href="https://mva.microsoft.com/en-US/training-courses/c-fundamentals-for-absolute-beginners-16169?l=Lvld4EQIC_2706218949">C# Fundamentals for Absolute Beginners by Bob Tabor</a></p>
-<p>For developers with prior C# training, we recommend that you skim through the C# introduction</p>
-<ul>
-<li><a href="getting-ready-for-the-training.html">Getting ready for the Training</a></li>
-<li><a href="welcome-to-visual-studio-and-the-migrated-application.html">Welcome to Visual Studio and the Migrated Application</a></li>
-<li><a href="ui-controller.html">UI Controller</a></li>
-<li><a href="methods.html">Methods</a></li>
-<li><a href="binding-controls-data-to-method.html">Binding controls data to method</a></li>
-<li><a href="control-properties-and-events.html">Control Properties and Events</a></li>
-<li><a href="tables-and-entities.html">Tables and Entities</a></li>
-<li><a href="local-columns-and-bindvalue.html">Local Columns and BindValue</a></li>
-<li><a href="parameters.html">Parameters</a></li>
-<li><a href="businessprocess-and-out-parameters.html">BusinessProcess and Out Parameters</a></li>
-<li><a href="migrated-style-parameters.html">Migrated Style Parameters</a></li>
-<li><a href="inner-classes.html">Inner Classes</a></li>
-<li><a href="working-and-navigating-in-large-migrated-solutions.html">Working and Navigating in Large Migrated Solutions</a></li>
-<li><a href="calling-a-program-across-projects.html">Calling a Program Across Projects</a></li>
-<li><a href="handlers-and-commands.html">Handlers and commands</a></li>
-<li><a href="column-collection-and-recompute.html">Column Collection and Recompute</a></li>
-<li><a href="subforms.html">Subforms</a></li>
-<li><a href="reports.html">Reports</a></li>
-<li><a href="dynamic-sql-entity.html">Dynamic SQL Entity</a></li>
-<li><a href="control-models.html">Control Models</a></li>
-<li><a href="list-controls.html">List Controls</a></li>
-<li><a href="binding-controls.html">Binding Controls</a></li>
-<li><a href="selection-lists.html">Selection Lists</a></li>
-<li><a href="flowuicontroller.html">FlowUIController</a></li>
-<li><a href="child-forms-and-keepviewvisibleafterexit.html">Child Forms and KeepViewVisibleAfterExit</a></li>
-<li><a href="web-merge--and-templates.html">Web Merge  and Templates</a></li>
-<li><a href="creating-a-program-that-can-be-called-across-projects.html">Creating a program that can be called across projects</a></li>
-</ul>
+                <div class="content"><h1 id="getting-ready-for-the-training">Getting ready for the Training</h1>
+<p>Before we'll start the training, you'll need to prepare and follow some prerequesites in terms of knowledge and in terms of developer machine setup.</p>
+<h2 id="training-knowledge-prerequisits">Training knowledge Prerequisits</h2>
+<p>In our training we'll teach you C# - but most developers found it useful to gain some basic C# concepts and knowledge before our training, to make the live training more effective.</p>
+<p>We strongly recommend that you'll review the <a href="https://mva.microsoft.com/en-US/training-courses/c-fundamentals-for-absolute-beginners-16169?l=Lvld4EQIC_2706218949">C# Fundamentals for Absolute Beginners by Bob Tabor</a></p>
+<p>Please make sure that all trainees follow this course before the start of our training.</p>
+<p>We recommend this course for any developer without prior .NET C# knowledge - so if you only have magic background - or even if you have some basic c or kobol or rpg background, we still recommend that you'll review this course.</p>
+<h2 id="trainee-machine-requirements">Trainee Machine Requirements</h2>
+<p>Each trainee in the training will need the following hardware and software requirements on their machine</p>
+<ol>
+<li>A headset with a Microphone and a web cam - to comunicate with the traier.</li>
+<li>Visual Studio 2017/2019. We recommend the Pro version, but you can also start with the Community version which can be downloaded from [Microsoft's Visual Studio Download])<a href="https://visualstudio.microsoft.com/downloads/_">https://visualstudio.microsoft.com/downloads/_</a></li>
+<li>Once you install visual studio, follow the configuration steps outlined in the <a href="configuring-visual-studio.html">Configuring Visual Studio</a> article.</li>
+<li><strong>Your application code</strong> - Every trainee should have a fully working version of your application in magic and in .NET.
+<ol>
+<li>Make sure that the trainees have access to a database and can run the application both in magic and in .NET</li>
+<li>Make sure to have the source code of the application, both in magic and in .NET available on these machines.
+<ol>
+<li>note - please place the .NET code on a loca drive and not on a network drive.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>The <strong>Northwind Training Application</strong>
+<ol>
+<li>Please setup a new database called Northwind, using the script that we've placed under the <code>Training</code> folder in your migration ftp.</li>
+<li>The .NET code of the Northwind application -
+<ol>
+<li>We've placed a file called <code>dotnet.rar</code> under the <code>training</code> folder in your migration ftp</li>
+<li>Please download it and open it to a folder on your local drive (ie <code>c:\Northwind</code>).</li>
+<li>Once it's open please run <code>builddebug.bat</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>A week before the training, please make sure to have all of this installed, and schedule a system check meeting with tyour firefly representative.</li>
+</ol>
 
 
                 <br />
@@ -72,7 +73,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/05-Getting-ready-for-the-Training.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -134,7 +135,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'developer-guide.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'getting-ready-for-the-training.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
