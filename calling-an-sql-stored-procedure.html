@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>DataAccess</title>
+    <title>calling an sql stored procedure</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,19 +29,25 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="dataaccess">DataAccess</h1>
-<ul>
-<li><a href="database-connections-basic-terms-and-concepts.html">Database Connections basic terms and concepts</a></li>
-<li><a href="making-the-most-out-of-where.html">Making the most out of Where</a></li>
-<li><a href="relations-in-depth.html">Relations in depth</a></li>
-<li><a href="storage-explained.html">Storage Explained</a></li>
-<li><a href="transactions-and-locking.html">Transactions and locking</a></li>
-<li><a href="using-datetime-columns-with-null.html">Using DateTime columns with Null</a></li>
-<li><a href="should-determine-name-according-to-callstack.html">Should determine name according to callstack</a></li>
-<li><a href="populatecolumns.html">PopulateColumns</a></li>
-<li><a href="accessing-the-database-directly.html">Accessing the database directly</a></li>
-<li><a href="calling-an-sql-stored-procedure.html">calling an sql stored procedure</a></li>
-</ul>
+                <div class="content"><h1 id="calling-an-sql-stored-procedure">calling an sql stored procedure</h1>
+<p>Here's a code sample of how to call a stored procedure using a DynamicSQLEntity</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>//create the procedure 
+try
+{
+    Shared.DataSources.Northwind.Execute("create procedure sqlStoredProcedureDemo as begin select orderId,CustomerId from Orders end");
+}
+catch
+{ }
+
+//define the dynamicSQL Entity to use later in the business process
+var e = new DynamicSQLEntity(Shared.DataSources.Northwind, "exec sqlStoredProcedureDemo");
+var orderId = new NumberColumn();
+var customerId = new TextColumn();
+e.Columns.Add(orderId, customerId);
+var bp = new BusinessProcess { From = e };
+bp.ForEachRow(() =&gt; {
+    Debug.WriteLine(orderId+", "+customerId); ;
+}); </code></pre>
 
 
                 <br />
@@ -49,7 +55,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/calling-an-sql-stored-procedure.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -111,7 +117,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'dataaccess.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'calling-an-sql-stored-procedure.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
