@@ -6,7 +6,7 @@ In this article, we'll explain when you should and should not change your applic
 64-bit and 32-bit (also known as x64 and x86 respectively) represent the length in bits of a pointer in memory. When you use 32-bit the process is limited to use 2gb of ram (sometimes 4gb in special cases).
 When you use 64 bit you can use a lot more.
 
-Over the years Windows have switched to 64 bit - to allow the computers to use more than 4gb of ram - these 64-bit operations systems can run an application that where compiled to 64 bit and also an application that where compiled to 32 bit.
+Over the years Windows have switched to 64 bit - to allow the computers to use more than 4gb of ram - these 64-bit operations systems can run an application that was compiled to 64 bit and also an application that was compiled to 32 bit.
 
 ***You can't have within the same process dlls that use 64-bit and dlls that use 32-bit**
 
