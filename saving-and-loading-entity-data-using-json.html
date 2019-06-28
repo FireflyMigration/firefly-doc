@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Introducing ENV.Web</title>
+    <title>Saving and loading Entity Data using JSON</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,35 +29,44 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="introducing-env.web">Introducing ENV.Web</h1>
-<p>ENV.Web is a project we use to demo fast web application development with migrated .NET code reused on the server side.</p>
-<p>Using the code in this project you can create a RESTful API and a responsive modern web user interface for your migrated application.</p>
-<p>The project is hosted on GitHub, at:
-<a href="https://github.com/FireflyMigration/ENV.Web">https://github.com/FireflyMigration/ENV.Web</a></p>
-<h2 id="architecture">Architecture</h2>
-<h3 id="server">Server</h3>
-<p>MVC.NET, REST Api and the migrated code.</p>
-<h3 id="browser">Browser</h3>
-<ol>
-<li>HTML5</li>
-<li>bootstrap - for the styling</li>
-<li>Angular2 - as the application framework</li>
-<li>Typescript - as the coding language</li>
-</ol>
-<h2 id="support">Support</h2>
-<p>You are welcome to raise any issues or questions regarding this project on GitHub. This project is not officially supported by Firefly Migration.</p>
-<h2 id="contributions">Contributions</h2>
-<p>Contributions are welcomed, feel free to fork this repo and suggest pull requests.</p>
-<h2 id="topics">Topics</h2>
-<ul>
-<li><a href="web-development-tutorial.html">Web Development Tutorial</a></li>
-<li><a href="introduction-to-angular-and-typescript.html">Introduction to Angular and Typescript</a></li>
-<li><a href="additional-server-side-features.html">Additional server side features</a></li>
-<li><a href="additional-client-side-features.html">Additional client side features</a></li>
-<li><a href="creating-a-rest-api-endpoint-based-on-external-json-format.html">Creating a Rest API Endpoint based on External JSON format</a></li>
-<li><a href="setup-env-web-development-environment.html">Setup ENV Web Development Environment</a></li>
-<li><a href="saving-and-loading-entity-data-using-json.html">Saving and loading Entity Data using JSON</a></li>
-</ul>
+                <div class="content"><h1 id="saving-and-loading-entity-data-using-json">Saving and loading Entity Data using JSON</h1>
+<p>using ENV.Web you can now easily save and load entity data to json.</p>
+<p>First thing you'll need is to import the ENV.Web.dll which you can download from <a href="https://github.com/FireflyMigration/ENV.Web/releases">here</a></p>
+<p>Next, add a using statement for the <code>ENV.Web.DataListHelpers</code> namesplaces.</p>
+<p>Adding this namespace adds extention methods to entities making it easier to export them</p>
+<h1 id="export-entity-data-to-json">Export Entity Data to Json</h1>
+<pre data-line="" class="language-csdiff line-numbers"><code>var c = new Models.Orders();
+File.WriteAllText(@"orders.json", c.ExportToJson()); </code></pre>
+<h3 id="filtering">Filtering</h3>
+<p>You can also filter the data</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>var c = new Models.Orders();
+File.WriteAllText(@"orders.json", c.ExportToJson(c.ShipCity.IsEqualTo("London"))); </code></pre>
+<p>You can also send an Order By if you want to.</p>
+<h1 id="import-entity-data-from-json">Import Entity Data from JSON</h1>
+<pre data-line="" class="language-csdiff line-numbers"><code>var c = new Models.Orders();
+c.ImportFromJson(File.ReadAllText(@"orders.json")); </code></pre>
+<h1 id="diving-deeper">Diving deeper</h1>
+<p>The <code>ExportToJson</code> and <code>ImportToJson</code> are simple wrap methods around the <code>ViewModel</code> class and the <code>DataList</code> class.
+If you want to have more control over the JSON file and the import process, you are welcome to use the <code>ViewModel</code> class and have all the control that is detailed in other articles in this document.</p>
+<p>Here's the code for the <code>ExportToJson</code> and <code>ImportFromJson</code> methods to explain how it all works.</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>public static string ExportToJson(this ENV.Data.Entity entity, FilterBase where = null, Sort orderBy = null, params ColumnBase[] columns)
+{
+    var vmc = new ViewModel
+    {
+        From = entity
+    };
+    if (where != null)
+        vmc.Where.Add(where);
+    if (orderBy != null)
+        vmc.OrderBy = orderBy;
+    return vmc.ExportRows().ToJson();
+}
+public static void ImportFromJson(this ENV.Data.Entity entity, string json, bool ignoreDuplicateRows = false)
+{
+    var vmc = new ViewModel { From = entity };
+    var dl = DataList.FromJson(json);
+    vmc.ImportRows(dl, ignoreDuplicateRows: ignoreDuplicateRows);
+} </code></pre>
 
 
                 <br />
@@ -65,7 +74,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/00-ENV Web/Index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/00-ENV Web/Saving-and-loading-Entity-Data-using-JSON.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -127,7 +136,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'env-web.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'saving-and-loading-entity-data-using-json.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
