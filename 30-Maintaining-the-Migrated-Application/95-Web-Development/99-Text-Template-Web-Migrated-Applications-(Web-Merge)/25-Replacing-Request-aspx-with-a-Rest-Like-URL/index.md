@@ -1,4 +1,4 @@
-﻿# Using an MVC project instead of the default migrated server project
+﻿
 
 1. Create a new MVC project.
 2. Add all the references used by the xx.Server project to the new MVC project.  
