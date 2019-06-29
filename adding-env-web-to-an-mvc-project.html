@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Setup and Configuration</title>
+    <title>Adding ENV Web to an MVC project</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,12 +29,53 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="setup-and-configuration">Setup and Configuration</h1>
-<ul>
-<li><a href="configuring-an-mvc-project-with-to-reuse-migrated-applications.html">Configuring an MVC Project with to reuse Migrated Applications</a></li>
-<li><a href="installing-visual-studio-2017-for-the-web.html">Installing Visual Studio 2017 for the Web</a></li>
-<li><a href="sql-server-configuration-for-web-projects.html">SQL Server Configuration for Web Projects</a></li>
-</ul>
+                <div class="content"><h1 id="adding-env-web-to-an-mvc-project">Adding ENV Web to an MVC project</h1>
+<p>This article explains how to add the ENV.Web functionality to an MVC project.</p>
+<p>It assumes that you've followed the steps outlined in <a href="configuring-an-mvc-project-with-to-reuse-migrated-applications.html">Configuring an MVC Project with to reuse Migrated Applications</a></p>
+<ol>
+<li>Download the <code>ENV.Web.dll</code> from the <a href="https://github.com/FireflyMigration/ENV.Web/releases">github repo</a></li>
+<li>Place <code>ENV.Web.dll</code> in the lib folder.</li>
+<li>Make sure that the dll is not blocked by windows, by opening the file properties and check the <code>unblock</code> checkbox.</li>
+<li>Add a reference to it, in your MVC project.</li>
+<li>Add a new controller and call it <code>DataApiController</code></li>
+<li>Place the following code there:</li>
+</ol>
+<pre data-line="" class="language-csdiff line-numbers"><code>public class DataApiController : Controller
+{
+    static ENV.Web.DataApi _dataApi = new ENV.Web.DataApi();
+    static DataApiController()
+    {
+    }
+    // GET: DataApi
+    public void Index(string name, string id = null)
+    {
+        _dataApi.ProcessRequest(name, id);
+    }
+} </code></pre>
+<ol start="7">
+<li>Edit the <code>RouteConfig</code> class to route to the added controller:</li>
+</ol>
+<pre data-line="4" class="language-csdiff line-numbers"><code>public static void RegisterRoutes(RouteCollection routes)
+{
+    routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+     routes.MapRoute("DataApi", "dataApi/{name}/{id}", new { controller = "DataApi", action = "Index", name = UrlParameter.Optional, id = UrlParameter.Optional });
+    routes.MapRoute(
+        name: "Default",
+        url: "{controller}/{action}/{id}",
+        defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+    );
+} </code></pre>
+<p>That's it, you are configured to use ENV.Web.
+Review the following articles on how to use it:</p>
+<ol>
+<li><a href="creating-the-server-api.html">creating the server api</a></li>
+<li><a href="making-the-rest-api-updatable.html">making the rest api updatable</a></li>
+<li><a href="create-view-model.html">create view model</a></li>
+<li><a href="automatically-generating-order-id-on-a-new-row.html">automatically generating order id on a new row.html</a></li>
+<li><a href="server-side-validation-made-easy.html">server side validation made easy</a></li>
+<li><a href="additional-server-side-features.html">additional server side features</a></li>
+<li><a href="exposing-a-migrated-report-to-the-web.html">exposing a migrated report to the web</a></li>
+</ol>
 
 
                 <br />
@@ -42,7 +83,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/Setup and Configuration/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/20-ENV Web/01-Adding-ENV-Web-to-an-MVC-project.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -104,7 +145,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'setup-and-configuration.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'adding-env-web-to-an-mvc-project.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

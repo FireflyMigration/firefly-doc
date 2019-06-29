@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Setup and Configuration</title>
+    <title>Replacing Request aspx with a Rest Like URL</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,12 +29,39 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="setup-and-configuration">Setup and Configuration</h1>
+                <div class="content"><h1 id="replacing-request-aspx-with-a-rest-like-url">Replacing Request aspx with a Rest Like URL</h1>
+<ol>
+<li>Create a new MVC project.</li>
+<li>Add all the references used by the xx.Server project to the new MVC project.<br />
+Specifically all the projects of your application, and:
 <ul>
-<li><a href="configuring-an-mvc-project-with-to-reuse-migrated-applications.html">Configuring an MVC Project with to reuse Migrated Applications</a></li>
-<li><a href="installing-visual-studio-2017-for-the-web.html">Installing Visual Studio 2017 for the Web</a></li>
-<li><a href="sql-server-configuration-for-web-projects.html">SQL Server Configuration for Web Projects</a></li>
+<li>ENV</li>
+<li>Firefly.Box</li>
+<li>System.Windows.Forms</li>
 </ul>
+</li>
+<li>Copy the ini file.</li>
+<li>Copy the “App_Start” folder content to the “App_Start” of the new MVC project.</li>
+<li>Copy the following lines from the original global.asax to the global.asax of the new MVC project.</li>
+</ol>
+<p><img src="mvc_application.png" alt="" /></p>
+<ol start="6">
+<li>Change the project to use Local IIS – and click “Create Virtual Directory”<br />
+Project Properties\Web\Servers\LocalIIS</li>
+<li>Copy the Request.aspx files.  Or Add a void Method to a controller and call Application.Instance.ProcessWebRequest</li>
+</ol>
+<p><img src="add_void_method_mvc.png" alt="" /></p>
+<p>8.You can also go one step further and add support for cool routing:</p>
+<p><img src="route_mvc.png" alt="" /></p>
+<p><img src="run_parameter_mvc.png" alt="" /></p>
+<p>For extra features add:</p>
+<ol>
+<li>Reference to ENV.Web.MVC dll</li>
+<li>To print pdf:</li>
+</ol>
+<p><img src="print_to_pdf_mvc.png" alt="" />
+3. To Create Json:</p>
+<p><img src="create_json_mvc.png" alt="" /></p>
 
 
                 <br />
@@ -42,7 +69,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/Setup and Configuration/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/99-Text-Template-Web-Migrated-Applications-(Web-Merge)/25-Replacing-Request-aspx-with-a-Rest-Like-URL/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -104,7 +131,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'setup-and-configuration.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'replacing-request-aspx-with-a-rest-like-url.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
