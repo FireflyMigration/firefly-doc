@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>calling an sql stored procedure</title>
+    <title>calling an sql stored procedure with out parameters</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,25 +29,36 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="calling-an-sql-stored-procedure">calling an sql stored procedure</h1>
-<p>Here's a code sample of how to call a stored procedure using a DynamicSQLEntity</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>//create the procedure 
-try
+                <div class="content"><h1 id="calling-an-sql-stored-procedure-with-out-parameters">calling an sql stored procedure with out parameters</h1>
+<p>Here's a code sample of how to call an SQL server stored procedure that uses out parameters.</p>
+<p>Here's the stored procedure code, based on <a href="https://groups.google.com/forum/?nomobile=true#!topic/migrated-by-firefly/kP-CrhJ_EP4">a question in our forum</a></p>
+<pre><code class="language-SQL">CREATE PROCEDURE [dbo].[Test] @Ret int input output     
+AS
+BEGIN
+    set @Ret =@Ret + 7
+END
+</code></pre>
+<p>We use a direct call to the database, based on the article <a href="accessing-the-database-directly.html">Accessing the database directly</a></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>var valueWeWantToSendToTheStoredProcedure = new NumberColumn();
+valueWeWantToSendToTheStoredProcedure.Value = 4;
+using (var c = Shared.DataSources.Northwind.CreateCommand())
 {
-    Shared.DataSources.Northwind.Execute("create procedure sqlStoredProcedureDemo as begin select orderId,CustomerId from Orders end");
-}
-catch
-{ }
+    c.CommandText = "Test";
+    c.CommandType = System.Data.CommandType.StoredProcedure;
 
-//define the dynamicSQL Entity to use later in the business process
-var e = new DynamicSQLEntity(Shared.DataSources.Northwind, "exec sqlStoredProcedureDemo");
-var orderId = new NumberColumn();
-var customerId = new TextColumn();
-e.Columns.Add(orderId, customerId);
-var bp = new BusinessProcess { From = e };
-bp.ForEachRow(() =&gt; {
-    Debug.WriteLine(orderId+", "+customerId); ;
-}); </code></pre>
+    var ret = c.CreateParameter();
+    c.Parameters.Add(ret);
+    ret.ParameterName = "@ret";
+    ret.Direction = System.Data.ParameterDirection.InputOutput;
+    // setting the database type is optional, usually that type is inferred from the value that is set
+    ret.DbType = System.Data.DbType.Int32;
+
+    // we use the `ToObject` method to convert Firefly types (Number,Text,etc...) to DB Types (int,decimal,string etc...)
+    ret.Value = u.ToObject(valueWeWantToSendToTheStoredProcedure);
+    c.ExecuteNonQuery();
+    // this line is used for testing - to demo that we got the value we wanted
+    ret.Value.ShouldBe(11);
+} </code></pre>
 
 
                 <br />
@@ -55,7 +66,7 @@ bp.ForEachRow(() =&gt; {
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/82-calling-an-sql-stored-procedure.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/83-calling-an-sql-stored-procedure-with-out-parameters.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -117,7 +128,7 @@ bp.ForEachRow(() =&gt; {
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'calling-an-sql-stored-procedure.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'calling-an-sql-stored-procedure-with-out-parameters.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
