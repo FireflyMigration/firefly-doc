@@ -1,4 +1,4 @@
-﻿# Creating a web API from migrated web application
+﻿This article explains how to take a migrated "Web Merge" application and turn the "Merge" result into a JSON response
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XM2VDwexlOU" frameborder="0" allowfullscreen></iframe>
 
