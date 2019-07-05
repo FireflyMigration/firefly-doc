@@ -1,4 +1,4 @@
-﻿keywords: Mandatory columns, automatically add columns to all controllers
+﻿keywords: Mandatory columns, automatically add columns to all controllers, GetMandatoryColumns
 <iframe width="560" height="315" src="https://www.youtube.com/embed/OANolBwXmUk" frameborder="0" allowfullscreen></iframe>
 
 In many cases in an application you have business logic that has to do with a specific entity, for example you may have a column in the Entity called `LastChangeDate` and `LastChangeTime`.
