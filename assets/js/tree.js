@@ -159,7 +159,7 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
                         if (before.length > 20)
                             before = before.substring(before.length - 20);
                         if (after.length > 20)
-                            after = after.substring(after.length - 20);
+                            after = after.substring(0,20);
                         keywords.innerHTML = 'keywords: ' + before + '<strong>' + middle + '</strong>' + after;
                         nodeShow(keywords);
                         found = true;
