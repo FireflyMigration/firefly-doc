@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="columnscollection, columns.add">
 
-    <title>DataAccess</title>
+    <title>Columns Add and the ColumnNotAddedToColumnCollection exception</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,21 +29,36 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="dataaccess">DataAccess</h1>
-<ul>
-<li><a href="database-connections-basic-terms-and-concepts.html">Database Connections basic terms and concepts</a></li>
-<li><a href="making-the-most-out-of-where.html">Making the most out of Where</a></li>
-<li><a href="relations-in-depth.html">Relations in depth</a></li>
-<li><a href="storage-explained.html">Storage Explained</a></li>
-<li><a href="transactions-and-locking.html">Transactions and locking</a></li>
-<li><a href="using-datetime-columns-with-null.html">Using DateTime columns with Null</a></li>
-<li><a href="should-determine-name-according-to-callstack.html">Should determine name according to callstack</a></li>
-<li><a href="populatecolumns.html">PopulateColumns</a></li>
-<li><a href="calling-an-sql-stored-procedure.html">calling an sql stored procedure</a></li>
-<li><a href="calling-an-sql-stored-procedure-with-out-parameters.html">calling an sql stored procedure with out parameters</a></li>
-<li><a href="accessing-the-database-directly.html">Accessing the database directly</a></li>
-<li><a href="columns-add-and-the-columnnotaddedtocolumncollection-exception.html">Columns Add and the ColumnNotAddedToColumnCollection exception</a></li>
-</ul>
+                <div class="content"><h1 id="columns-add-and-the-columnnotaddedtocolumncollection-exception">Columns Add and the ColumnNotAddedToColumnCollection exception</h1>
+<p>Sometimes when you develop and use a column you may get the <strong>ColumnNotAddedToColumnCollection</strong> exception, with the following text:
+'Column EmployeeID(EmployeeID) from Entity Orders(dbo.Orders) was not added to any controller's ColumnCollection. Did you forget Columns.Add?'</p>
+<p>One way to solve this problem is to add the column to the <code>Columns</code> collection.</p>
+<p>Another approach is to use the <code>AddAllColumns</code> method to automatically add all the columns and avoid the potential of this problem all together.</p>
+<p>We recommend using the <code>AddAllColumns</code> in most controllers and avoid it only in special cases where it might have a negative affect.</p>
+<h1 id="why-do-we-need-the-columns-in-the-columns-collection-in-the-first-place">Why do we need the columns in the Columns Collection in the first place?</h1>
+<p>The <code>Columns</code> collection is responsible for two things:</p>
+<ol>
+<li>Manage the recompute path of the <code>BindValue</code> method and the <code>Relations</code></li>
+<li>For Columns that belongs to Entities, it get their data from the database. For example for SQL databases, it'll add the column to the select statement.</li>
+</ol>
+<h1 id="why-doesnt-the-migrated-code-call-addallcolumns-automatically">Why doesn't the migrated code call AddAllColumns automatically?</h1>
+<p>When you developed in magic, you specifically selected which columns are included, and only these columns were included in the select statement.</p>
+<p>Intially we automatically used the Add all columns but we ran into the following problems:</p>
+<ol>
+<li>Some customers had entities that had columns that did not exist in the database and we would get an Invalid Column Name error.</li>
+<li>Some customers used complex views where adding a column had a significant affect on performance.</li>
+<li>Some customers had huge tables with hundreds of fields, which caused a small negative affect on performance.</li>
+</ol>
+<p>Most of these considerations are not relevant to new code that you write or to 99% of migrated code, but since in a migration project we need to match the behaviour and performance of the original application, we needed to add the columns specifically.</p>
+<p>When writing new code - use the <code>AddAllColumns</code> - the performance cost is in 99% of cases insignificant.</p>
+<h1 id="when-not-to-use-addallcolumns">When not to use AddAllColumns?</h1>
+<ol>
+<li>If you have an <code>Entity</code> with columns that do not exist in the database.</li>
+<li>If you have an <code>Entity</code> with Columns that are complex inner selects that add significant performance cost.</li>
+<li>If you have an <code>Entity</code> with hundreds of columns, and you experiance a performance problem - try removing the add all columns and add the columns manually and see if it has any affect on your code.</li>
+</ol>
+<h1 id="why-sometimes-when-i-forget-to-add-the-column-i-dont-get-this-error-and-sometimes-i-do">Why sometimes when I forget to add the Column I don't get this error and sometimes I do?</h1>
+<p>You would only get the <strong>ColumnNotAddedToColumnCollection</strong></p>
 
 
                 <br />
@@ -51,7 +66,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/Columns-Add-and-the-ColumnNotAddedToColumnCollection-exception.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -113,7 +128,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'dataaccess.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'columns-add-and-the-columnnotaddedtocolumncollection-exception.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
