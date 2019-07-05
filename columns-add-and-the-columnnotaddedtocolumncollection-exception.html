@@ -33,41 +33,32 @@
 <p>Sometimes when you develop and use a column you may get the <strong>ColumnNotAddedToColumnCollection</strong> exception, with the following text:
 'Column EmployeeID(EmployeeID) from Entity Orders(dbo.Orders) was not added to any controller's ColumnCollection. Did you forget Columns.Add?'</p>
 <p>One way to solve this problem is to add the column to the <code>Columns</code> collection.</p>
-<p>Another approach is to use the <code>AddAllColumns</code> method to automatically add all the columns and avoid the potential of this problem altogether.</p>
-<p>We recommend using the <code>AddAllColumns</code> in most controllers and avoid it only in special cases where it might have a negative effect.</p>
+<p>Another approach is to use the <code>AddAllColumns</code> method to automatically add all the columns and avoid the potential of this problem all together.</p>
+<p>We recommend using the <code>AddAllColumns</code> in most controllers and avoid it only in special cases where it might have a negative affect.</p>
 <h1 id="why-do-we-need-the-columns-in-the-columns-collection-in-the-first-place">Why do we need the columns in the Columns Collection in the first place?</h1>
 <p>The <code>Columns</code> collection is responsible for two things:</p>
 <ol>
 <li>Manage the recompute path of the <code>BindValue</code> method and the <code>Relations</code></li>
-<li>For Columns that belongs to Entities, it gets their data from the database. For example for SQL databases, it'll add the column to the select statement.</li>
+<li>For Columns that belongs to Entities, it get their data from the database. For example for SQL databases, it'll add the column to the select statement.</li>
 </ol>
 <h1 id="why-doesnt-the-migrated-code-call-addallcolumns-automatically">Why doesn't the migrated code call AddAllColumns automatically?</h1>
 <p>When you developed in magic, you specifically selected which columns are included, and only these columns were included in the select statement.</p>
-<p>Initially we automatically used the Add all columns but we ran into the following problems:</p>
+<p>Intially we automatically used the Add all columns but we ran into the following problems:</p>
 <ol>
 <li>Some customers had entities that had columns that did not exist in the database and we would get an Invalid Column Name error.</li>
-<li>Some customers used complex database-views, where adding a column had a significant effect on performance.</li>
-<li>Some customers had huge tables with hundreds of fields, which caused a small negative effect on performance.</li>
+<li>Some customers used complex views where adding a column had a significant affect on performance.</li>
+<li>Some customers had huge tables with hundreds of fields, which caused a small negative affect on performance.</li>
 </ol>
-<p>Most of these considerations are not relevant to new code that you write or to 99% of the migrated code, but since in a migration project we need to match the behavior and performance of the original application, we needed to add the columns specifically.</p>
+<p>Most of these considerations are not relevant to new code that you write or to 99% of migrated code, but since in a migration project we need to match the behaviour and performance of the original application, we needed to add the columns specifically.</p>
 <p>When writing new code - use the <code>AddAllColumns</code> - the performance cost is in 99% of cases insignificant.</p>
 <h1 id="when-not-to-use-addallcolumns">When not to use AddAllColumns?</h1>
 <ol>
 <li>If you have an <code>Entity</code> with columns that do not exist in the database.</li>
 <li>If you have an <code>Entity</code> with Columns that are complex inner selects that add significant performance cost.</li>
-<li>If you have an <code>Entity</code> with hundreds of columns, and you experience a performance problem - try removing the add all columns and add the columns manually and see if it has any effect on your code.</li>
+<li>If you have an <code>Entity</code> with hundreds of columns, and you experiance a performance problem - try removing the add all columns and add the columns manually and see if it has any affect on your code.</li>
 </ol>
 <h1 id="why-sometimes-when-i-forget-to-add-the-column-i-dont-get-this-error-and-sometimes-i-do">Why sometimes when I forget to add the Column I don't get this error and sometimes I do?</h1>
-<p>You would only get the <strong>ColumnNotAddedToColumnCollection</strong> exception if you are trying to access the value of a Column that belongs to an Entity and that column was not added to the <code>Column</code> collection.</p>
-<p>Columns will be automatically added to the columns collection in the following cases:</p>
-<ol>
-<li>If the column is part of the Primary Key of the Entity</li>
-<li>If the column is used on the screen.</li>
-<li>If the column is added through the <code>GetMandatoryColumns</code> method in the <code>Entity</code> - see the <a href="entity-onsavingrow.html">Entity OnSavingRow</a> article where we also explain this method.</li>
-</ol>
-<ul>
-<li>Columns that are not connected to an Entity will also work without being added to the Columns collection - but they will not be part of the Recompute.</li>
-</ul>
+<p>You would only get the <strong>ColumnNotAddedToColumnCollection</strong></p>
 
 
                 <br />
