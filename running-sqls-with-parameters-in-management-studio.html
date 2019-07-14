@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Debugging the Migrated Application</title>
+    <title>Running SQLs with parameters in Management Studio</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,20 +29,19 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="debugging-the-migrated-application">Debugging the Migrated Application</h1>
-<ul>
-<li><a href="fireflyprofiler.html">FireflyProfiler</a></li>
-<li><a href="debugging-event-hooks-and-breakpoints.html">Debugging Event Hooks and BreakPoints</a></li>
-<li><a href="using-log-files.html">Using log files</a></li>
-<li><a href="debugging-flags-usage-in-the-configuration-file-(ini).html">Debugging flags usage in the configuration file (INI)</a></li>
-<li><a href="debugging-env.html">Debugging ENV</a></li>
-<li><a href="viewing-memory-tables.html">Viewing Memory Tables</a></li>
-<li><a href="investigating-memory-issues.html">Investigating memory issues</a></li>
-<li><a href="using-fiddler-to-monitor-web-service-traffic.html">Using Fiddler to monitor web service traffic</a></li>
-<li><a href="using-the-debughelper.html">Using the debughelper</a></li>
-<li><a href="random-data-generator.html">Random Data Generator</a></li>
-<li><a href="running-sqls-with-parameters-in-management-studio.html">Running SQLs with parameters in Management Studio</a></li>
-</ul>
+                <div class="content"><h1 id="running-sqls-with-parameters-in-management-studio">Running SQLs with parameters in Management Studio</h1>
+<p>Any SQL that is written to the profiler, dblog or query exceptions, now includes the bound parameters as a set of <code>declare</code> statements that SQL Management studio can use to run that sql with it's bound parameters.</p>
+<p>![2019-07-14_10h32_17.png](profiler screenshot)</p>
+<p>See</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9xkmeGIZZx4" frameborder="0" allowfullscreen></iframe>
+<h2 id="integrating-to-older-versions-of-env">Integrating to older versions of ENV</h2>
+<p>The change was done between versions: 31718 and 31719 - you can run a migration of both these versions and compare env.
+The files that were touched are:</p>
+<ol>
+<li>LogDatabaseWrapper.cs</li>
+<li>SQLClient.cs</li>
+<li>Profiler.cs</li>
+</ol>
 
 
                 <br />
@@ -50,7 +49,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/20-Debugging-the-Migrated-Application/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/20-Debugging-the-Migrated-Application/Running-SQLs-with-parameters-in-Management-Studio.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -112,7 +111,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'debugging-the-migrated-application.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'running-sqls-with-parameters-in-management-studio.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
