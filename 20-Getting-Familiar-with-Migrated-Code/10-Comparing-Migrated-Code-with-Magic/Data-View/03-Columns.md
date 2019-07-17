@@ -1,4 +1,4 @@
-﻿keywords: column,real,virtual,parameter
+﻿keywords: column,real,virtual,parameter, MarkParameterColumns
 # Columns and Parameters
 Name in Migrated Code: **Columns.Add / BindParameter**  
 Location in Migrated Class: **InitializeDataView / Run method**  
@@ -23,7 +23,6 @@ readonly TextColumn OkButton = new TextColumn("Ok Button", "10");
             Columns.Add(Products.UnitPrice);
             
 +            Columns.Add(OkButton).BindValue(() => "Ok");
-            MarkParameterColumns(pi_ProdID);
             #endregion
         }
 ```
@@ -55,3 +54,5 @@ The parameter is received via the *Run* method where a variable with the same ty
 ## MarkParameterColumns method call
 It exists for backward compatibility only and you do not need to add it in new code that you write.
 It's only purpose is that when you'll use the function `VarName` it'll prefix the column's name with the word `Parameter` instead of `Virtual`
+
+
