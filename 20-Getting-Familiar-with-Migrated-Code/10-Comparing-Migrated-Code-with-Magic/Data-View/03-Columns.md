@@ -51,3 +51,7 @@ The parameter is received via the *Run* method where a variable with the same ty
 * [Parameters](http://doc.fireflymigration.com/parameters.html)
 
 ---
+
+## MarkParameterColumns method call
+It exists for backward compatibility only and you do not need to add it in new code that you write.
+It's only purpose is that when you'll use the function `VarName` it'll prefix the column's name with the word `Parameter` instead of `Virtual`
