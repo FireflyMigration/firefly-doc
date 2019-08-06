@@ -1,6 +1,6 @@
 ﻿# Database Connections basic terms and concepts
 
-n this article and the next one  I am going to take you on a journey from the old and familiar to the new and exciting. By the end of this article, we are going to understand how to setup database connection and use it in our code.
+In this article, and the next one, I am going to take you on a journey from the old and familiar to the new and exciting. By the end of this article, we are going to understand how to setup database connections and use it in our code.
 
 First, we are going to start with the INI file, specifically in the [MAGIC_DATABASE] section:
 
@@ -48,7 +48,7 @@ namespace Northwind.Models
 
 ![](DynamicSQLSupporingDataProvider_explain.png)
 
-We can see that the return value is “DynamicSQLSupporingDataProvider”, which means that this is a connection to an SQL database, rather than Memory, Btrieve, etc.
+We can see that the return value is “DynamicSQLSupportingDataProvider”, which means that this is a connection to an SQL database, rather than Memory, Btrieve, etc.
 
 The property “getter” (get) asks the “ConnectionManager” class for a SQLDataProvider by the name of the entry in the INI file “Northwind”.
 
