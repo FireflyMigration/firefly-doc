@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="Any Error, Locked Row, Duplicate Index, Constraint failure, Trigger failure, Record has been updated, Record changed by antoher user, Insert/Update/Delete failure, Unmapped errors, As strategy, Abort Task, Rollback and restart, Auto retry, User retry, Ignore, Task, Subtree, AllErrors, LockedRow, DuplicateIndex, ConstraintFailed, TriggerFailed, RowWasChangedSinceLoaded, UpdatedRowWasChangedSinceLoaded, DataChangedFailed, UnknownErrr, Deadlock, FailedToInitializeEntity, InvalidSQLStatement, NullInOnlyOnePartOfDateTimePair, ReadOnlyEntityUpdate, RowDoesNotExist, TransactionRolledBack, Default, AbortTask, RollbackAndRecover, Retry, Ignore, AbortAllTasks, Rollback, Throw, CurrentTaskOnly, CurrentContext, UnhandledCustomCommandInModule, DatabaseErrorType, DatabaseErrorHandlingStrategy, HandlerScope">
+
+    <title>Error Events</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="error-events">Error Events</h1>
+<p>In Magic you have the option to trap database errors by an error event in order to handle the eror in a different way or register the error. In Firefly these are called database error handlers.
+See also: <a href="http://doc.fireflymigration.com/database-error-handling-with-transaction-stack-and-scope.html">http://doc.fireflymigration.com/database-error-handling-with-transaction-stack-and-scope.html</a> for more information on how you can adjust the error handling in Firefly yourself.</p>
+<p>Add the following 'using' to your program (if not already present):</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>using Firefly.Box.Data.DataProvider; </code></pre>
+<p>And if also not already present add:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>	InitializeHandlers(); </code></pre>
+<p>Sample code on how to add a error handler:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>void InitializeHandlers()
+{
+    Handlers.AddDatabaseErrorHandler(DatabaseErrorType.RowWasChangedSinceLoaded, HandlerScope.CurrentContext).Invokes += e =&gt;
+    #region
+    {
+        e.HandlingStrategy = DatabaseErrorHandlingStrategy.Ignore;
+        Common.ShowDatabaseErrorMessage = false;
+        e.Handled = true;
+    };
+    #endregion
+} </code></pre>
+<h3 id="firefly-error-handlers">Firefly error handlers</h3>
+<p>The error trapping options are (Magic compared to Firefly):</p>
+<h3 id="databaseerrortype">DatabaseErrorType</h3>
+<p>|#| Error:| Val | DatabaseErrorType | Remark |
+| | :--- | :--- | :--- | :--- |
+|1| Any Error | 0 | AllErrors |	Represents any and all errors |
+|2| Locked Row | 3 | LockedRow | An attempt to lock a row failed because the row is already locked by another session |
+|3| Duplicate index | 2 | DuplicateIndex | Occurs when values are updated or inserted to the database, and a unique contraint in the database is violated |
+|4| Constraint failure | 5 | ConstraintFailed | |
+|5| Trigger failure | 10 | TriggerFailed | |
+|6| Record has been updated | 7 | RowWasChangedSinceLoaded | |
+|7| Record changed by another user | 14 | UpdatedRowWasChangedSinceLoaded | |
+|8| Insert/Update/Delete failure | 4 | DataChangedFailed | An attempt to perform update, insert or delete failed for an unspecified reason |
+|9| Unmapped errors | 1 | UnknownError | An error that is not specificly defined |
+|-| | 8 | Deadlock | |
+|-| | 12 | FailedToInitializeEntity | |
+|-| | 13 | InvalidSQLStatement | |
+|-| | 11 | NullInOnlyOnePartOfDateTimePair | |
+|-| | 9 | ReadOnlyEntityUpdate | |
+|-| | 6 | RowDoesNotExist | &lt;This handler is automatically added during migration if 'Unmapped error' is used in Magic&gt; |
+|-| | 15 | TransactionRolledBack | |</p>
+<h3 id="databaseerrorhandlingstrategy">DatabaseErrorHandlingStrategy</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Dir:</th>
+<th style="text-align: left;">Val</th>
+<th style="text-align: left;">DatabaseErrorHandlingStrategy</th>
+<th style="text-align: left;">Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">As strategy</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Default</td>
+<td style="text-align: left;">The default behaviour of the error</td>
+</tr>
+<tr>
+<td style="text-align: left;">Abort Task</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">AbortTask</td>
+<td style="text-align: left;">The current task will close</td>
+</tr>
+<tr>
+<td style="text-align: left;">Rollback and restart</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">RollbackAndRecover</td>
+<td style="text-align: left;">The transaction will be rolled back, and the task that started the transaction will try to recover according to the UIController.OnDatabaseErrorRetry property</td>
+</tr>
+<tr>
+<td style="text-align: left;">Auto retry</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Retry</td>
+<td style="text-align: left;">The operation will be retried</td>
+</tr>
+<tr>
+<td style="text-align: left;">User retry</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Default</td>
+<td style="text-align: left;"><This options is not implemented yet because it has not been used so far></td>
+</tr>
+<tr>
+<td style="text-align: left;">Ignore</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">Ignore</td>
+<td style="text-align: left;">Ignore the error, and try to process</td>
+</tr>
+<tr>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">AbortAllTasks</td>
+<td style="text-align: left;">All open tasks will be closed</td>
+</tr>
+<tr>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">Rollback</td>
+<td style="text-align: left;">The transaction will be rolled back, and the task that started the transaction will be terminated</td>
+</tr>
+<tr>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">Throw</td>
+<td style="text-align: left;">The exception will be thrown and the transaction will be rolled back</td>
+</tr>
+</tbody>
+</table>
+<h3 id="handlerscope">HandlerScope</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Scope:</th>
+<th style="text-align: left;">Val</th>
+<th style="text-align: left;">HandlerScope</th>
+<th style="text-align: left;">Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Task</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">CurrentTaskOnly</td>
+<td style="text-align: left;">Only commands invoked by the currrent task are handled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Subtree</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">CurrentContext (=Default)</td>
+<td style="text-align: left;">Any comand invoked by the current task, or commands that were invoked by tasks that were called by the current task</td>
+</tr>
+<tr>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">UnhandledCustomCommandInModule</td>
+<td style="text-align: left;">Relevant for handlers that reside in a task that inherits from ModuleController</td>
+</tr>
+</tbody>
+</table>
+<p>Contributor: Harry Kleinsmit.</p>
+
+
+                <br />
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/09-Handlers/Events/Error-Events.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'error-events.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>
