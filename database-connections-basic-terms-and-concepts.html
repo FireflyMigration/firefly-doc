@@ -30,7 +30,7 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="database-connections-basic-terms-and-concepts">Database Connections basic terms and concepts</h1>
-<p>n this article and the next one  I am going to take you on a journey from the old and familiar to the new and exciting. By the end of this article, we are going to understand how to setup database connection and use it in our code.</p>
+<p>In this article, and the next one, I am going to take you on a journey from the old and familiar to the new and exciting. By the end of this article, we are going to understand how to setup database connections and use it in our code.</p>
 <p>First, we are going to start with the INI file, specifically in the [MAGIC_DATABASE] section:</p>
 <pre><code>[MAGIC_DATABASES]
 Default Database = 1, , , , , , , , MagicRecordLock, ChangeFileInToolkit, +
@@ -67,7 +67,7 @@ namespace Northwind.Models
     }
 } </code></pre>
 <p><img src="DynamicSQLSupporingDataProvider_explain.png" alt="" /></p>
-<p>We can see that the return value is “DynamicSQLSupporingDataProvider”, which means that this is a connection to an SQL database, rather than Memory, Btrieve, etc.</p>
+<p>We can see that the return value is “DynamicSQLSupportingDataProvider”, which means that this is a connection to an SQL database, rather than Memory, Btrieve, etc.</p>
 <p>The property “getter” (get) asks the “ConnectionManager” class for a SQLDataProvider by the name of the entry in the INI file “Northwind”.</p>
 <p>The next step is to use this as part of setting an entity in the application.
 We need to setup the base connection of the entity :</p>
