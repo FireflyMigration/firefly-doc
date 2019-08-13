@@ -33,9 +33,10 @@ The error trapping options are (Magic compared to Firefly):
 
 ### DatabaseErrorType
 
-|#| Error:| Val | DatabaseErrorType | Remark |
-| | :--- | :--- | :--- | :--- |
-|1| Any Error | 0 | AllErrors |	Represents any and all errors |
+
+| # | Error:    | Val | DatabaseErrorType | Remark |
+| :---| :---| :---| :---| :---|
+| 1 | Any Error | 0   | AllErrors         | Represents any and all errors |
 |2| Locked Row | 3 | LockedRow | An attempt to lock a row failed because the row is already locked by another session |
 |3| Duplicate index | 2 | DuplicateIndex | Occurs when values are updated or inserted to the database, and a unique contraint in the database is violated |
 |4| Constraint failure | 5 | ConstraintFailed | |
