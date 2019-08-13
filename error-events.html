@@ -51,24 +51,131 @@ See also: <a href="http://doc.fireflymigration.com/database-error-handling-with-
 <h3 id="firefly-error-handlers">Firefly error handlers</h3>
 <p>The error trapping options are (Magic compared to Firefly):</p>
 <h3 id="databaseerrortype">DatabaseErrorType</h3>
-<p>|#| Error:| Val | DatabaseErrorType | Remark |
-| | :--- | :--- | :--- | :--- |
-|1| Any Error | 0 | AllErrors |	Represents any and all errors |
-|2| Locked Row | 3 | LockedRow | An attempt to lock a row failed because the row is already locked by another session |
-|3| Duplicate index | 2 | DuplicateIndex | Occurs when values are updated or inserted to the database, and a unique contraint in the database is violated |
-|4| Constraint failure | 5 | ConstraintFailed | |
-|5| Trigger failure | 10 | TriggerFailed | |
-|6| Record has been updated | 7 | RowWasChangedSinceLoaded | |
-|7| Record changed by another user | 14 | UpdatedRowWasChangedSinceLoaded | |
-|8| Insert/Update/Delete failure | 4 | DataChangedFailed | An attempt to perform update, insert or delete failed for an unspecified reason |
-|9| Unmapped errors | 1 | UnknownError | An error that is not specificly defined |
-|-| | 8 | Deadlock | |
-|-| | 12 | FailedToInitializeEntity | |
-|-| | 13 | InvalidSQLStatement | |
-|-| | 11 | NullInOnlyOnePartOfDateTimePair | |
-|-| | 9 | ReadOnlyEntityUpdate | |
-|-| | 6 | RowDoesNotExist | &lt;This handler is automatically added during migration if 'Unmapped error' is used in Magic&gt; |
-|-| | 15 | TransactionRolledBack | |</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">#</th>
+<th style="text-align: left;">Error:</th>
+<th style="text-align: left;">Val</th>
+<th style="text-align: left;">DatabaseErrorType</th>
+<th style="text-align: left;">Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Any Error</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">AllErrors</td>
+<td style="text-align: left;">Represents any and all errors</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Locked Row</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">LockedRow</td>
+<td style="text-align: left;">An attempt to lock a row failed because the row is already locked by another session</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">Duplicate index</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">DuplicateIndex</td>
+<td style="text-align: left;">Occurs when values are updated or inserted to the database, and a unique contraint in the database is violated</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">Constraint failure</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">ConstraintFailed</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">Trigger failure</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">TriggerFailed</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">Record has been updated</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">RowWasChangedSinceLoaded</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">Record changed by another user</td>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">UpdatedRowWasChangedSinceLoaded</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">Insert/Update/Delete failure</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">DataChangedFailed</td>
+<td style="text-align: left;">An attempt to perform update, insert or delete failed for an unspecified reason</td>
+</tr>
+<tr>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">Unmapped errors</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">UnknownError</td>
+<td style="text-align: left;">An error that is not specificly defined</td>
+</tr>
+<tr>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">Deadlock</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">FailedToInitializeEntity</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">InvalidSQLStatement</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">NullInOnlyOnePartOfDateTimePair</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">ReadOnlyEntityUpdate</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">RowDoesNotExist</td>
+<td style="text-align: left;">&lt;This handler is automatically added during migration if 'Unmapped error' is used in Magic&gt;</td>
+</tr>
+<tr>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">TransactionRolledBack</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
 <h3 id="databaseerrorhandlingstrategy">DatabaseErrorHandlingStrategy</h3>
 <table>
 <thead>
