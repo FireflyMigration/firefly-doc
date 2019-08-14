@@ -11,7 +11,7 @@ Location in Migrated Code: **OnLoad Method**
 | Magic Name | Migrated Code Name      |
 |------------|-------------------------|
 | Query      | Browse                  |
-| Modify     | Update                  |
+| Modify     | Update (default)        |
 | Create     | Insert                  |
 | Delete     | Delete                  |
 | As Parent  | u.ActivityOfParent      |
