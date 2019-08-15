@@ -26,3 +26,12 @@ Well, in the first example we write the SQL as a string, in the second example w
 * You'll avoid making "stupid" syntax errors, since C# will keep you safe.
 * You'll be able to refactor your sql statements, making it easy to write complex sql expressions, with one line of code.
 * Use a syntax that is similar to SQL but is a lot easier with little or no repetition
+* You can reduce your dependency on specific SQL syntax, making it easier to move from oracle to sql or similar
+* You can use the existing filter syntax you are used to from migrated code.
+
+
+
+## Adding EasySql to an Existing Projects
+Simply download the [EasySql](https://raw.githubusercontent.com/FireflyMigration/EasySql/master/ENV/Utilities/EasySql.cs) file and add it to the `ENV` project under tyhe `Utilities` folder.
+
+
