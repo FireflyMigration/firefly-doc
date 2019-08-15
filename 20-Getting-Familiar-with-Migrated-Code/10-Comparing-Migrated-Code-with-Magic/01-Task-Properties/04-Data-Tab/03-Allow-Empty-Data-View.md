@@ -18,7 +18,9 @@ protected override void OnLoad()
 
 ## Property Values
 
-True or false. The default is false which is Allow empty dataview = **Yes** in Magic
+True or false.
+For a UIController the default is false.
+For a FlowUIController the default is true.
 
 
 ## See Also
