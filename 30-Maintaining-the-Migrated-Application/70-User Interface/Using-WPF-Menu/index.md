@@ -219,4 +219,4 @@ Firefly.Wpf.MenuDemo.WpfMenu.Run(
     );
 ```
 
-* note that in line 14 we are storing the `OrderId` of the specific order that we later want to print. If we do not do that - whenever we'll print it'll print the last order id.
+* note that in line 19 we are storing the `OrderId` of the specific order that we later want to print. If we do not do that - whenever we'll print it'll print the last order id.
