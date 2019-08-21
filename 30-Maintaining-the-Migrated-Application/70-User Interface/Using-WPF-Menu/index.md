@@ -20,6 +20,7 @@ It recieves several parameters:
 2. `title` - the text title that'll be displayed in the menu
 3. `image` - the background image that will be displayed in the menu
 4. `logoImage` - a smaller image that'll be displayed at the to of the menu.
+
 ![](2019-08-21_12h20_08.png)
 
 
