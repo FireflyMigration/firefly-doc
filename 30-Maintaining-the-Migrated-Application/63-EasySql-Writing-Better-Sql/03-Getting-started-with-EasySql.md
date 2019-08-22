@@ -19,7 +19,32 @@ var c = new Models.Customers();
 Select(c.CustomerID, c.CompanyName)
 ```
 
+### Where
+```csdiff
+var c = new Models.Customers();
+Select(c.CustomerID, c.CompanyName)
+.Where(c.Country.IsEqualTo("USA"))
+```
+
+### Inner Join
+```csdiff
+var c = new Models.Customers();
++var o = new Models.Orders();
+Select(c.CustomerID, c.CompanyName)
++   .From(c)
++   .InnerJoin(o,o.CustomerID.IsEqualTo(c.CustomerID))
+.Where(c.Country.IsEqualTo("USA"))
+
+```
+
+### Group By
+var c = new Models.Customers();
+Select(c.City, Count())
+    .From(c)
+    .Where(c.Country.IsEqualTo("USA"))
+    .GroupBy(c.City)
 
 
+### See our Unit Tests
 > For more great examples see our [automatic tests](https://github.com/FireflyMigration/EasySql/blob/master/TestEasySql/UnitTest1.cs)
 > We'll be happy if you'll add some of your own test there

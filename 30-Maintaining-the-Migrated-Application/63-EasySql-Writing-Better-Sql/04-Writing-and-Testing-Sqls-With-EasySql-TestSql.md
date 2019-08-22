@@ -8,9 +8,9 @@ using Firefly.Box;
 static void MyTestMethod()
 {
     var c = new Models.Customers();
-+   Shared.DataSources.Northwind.TestSql(
-        Select(Distinct(c.Country))
-        .From(c));
+    Select(Distinct(c.Country))
+    .From(c)
++	.TestOn(Shared.DataSources.Northwind);
 }
 ```
 

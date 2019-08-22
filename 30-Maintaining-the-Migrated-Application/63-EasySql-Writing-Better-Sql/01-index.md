@@ -31,8 +31,6 @@ Well, in the first example we write the SQL as a string, in the second example w
 
 
 
-## Adding EasySql to an Existing Projects
-Simply download the [EasySql](https://raw.githubusercontent.com/FireflyMigration/EasySql/master/ENV/Utilities/EasySql.cs) file and add it to the `ENV` project under tyhe `Utilities` folder.
 
 
 ## Feedback and issues	
@@ -44,3 +42,5 @@ If you have:
 4. Any other related comment
 
 Please open an issue for it in the [project's github repo](https://github.com/fireflymigration/easysql/issues)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/B5dxPrl4c4I" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
