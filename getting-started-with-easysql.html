@@ -54,11 +54,11 @@ Select(c.CustomerID, c.CompanyName)
     .InnerJoin(o,o.CustomerID.IsEqualTo(c.CustomerID))
 .Where(c.Country.IsEqualTo("USA")) </code></pre>
 <h3 id="group-by">Group By</h3>
-<p>var c = new Models.Customers();
+<pre data-line="" class="language-csdiff line-numbers"><code>var c = new Models.Customers();
 Select(c.City, Count())
-.From(c)
-.Where(c.Country.IsEqualTo(&quot;USA&quot;))
-.GroupBy(c.City)</p>
+    .From(c)
+    .Where(c.Country.IsEqualTo("USA"))
+    .GroupBy(c.City) </code></pre>
 <h3 id="see-our-unit-tests">See our Unit Tests</h3>
 <blockquote>
 <p>For more great examples see our <a href="https://github.com/FireflyMigration/EasySql/blob/master/TestEasySql/UnitTest1.cs">automatic tests</a>
