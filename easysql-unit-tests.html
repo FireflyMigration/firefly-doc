@@ -30,7 +30,26 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="easysql-unit-tests">EasySql Unit Tests</h1>
-<p>Under Construction</p>
+<p>We use a UnitTests to test the EasySql functionality.</p>
+<p>The strategy we chose is that in every test we'll include the original Sql and the Sql produced by the <code>EasySql</code> - run both queries and compare them.</p>
+<p>For example, here's a basic test from our tests suite</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>[TestMethod]
+public void SQLWithAnd()
+{
+    var c = new Models.Customers();
+    Verify(
+        Select(c.CustomerID).From(c).
+        Where(c.Country.IsEqualTo("Germany").And(c.City.IsEqualTo("Berlin")))
+        ,
+        @"SELECT CustomerID FROM Customers
+            WHERE Country = 'Germany' AND City = 'Berlin'; "
+        );
+} </code></pre>
+<p>In lines 9-10 you can see the original sql.</p>
+<p>In lines 6-7 you can see that sql expressed in C#.
+When we run the tests - it runs both queries, compares their results and if the results are not identical the test fails</p>
+<p>You are welcome to contribute tests - we will do our best to fix them.</p>
+<p>To see all tests see our <a href="https://github.com/FireflyMigration/EasySql/blob/master/TestEasySql/UnitTest1.cs">automatic tests on Github</a></p>
 
 
                 <br />

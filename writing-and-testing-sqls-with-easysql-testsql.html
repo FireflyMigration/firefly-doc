@@ -30,7 +30,20 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="writing-and-testing-sqls-with-easysql-testsql">Writing and Testing Sqls With EasySql TestSql</h1>
-<p>Simply download the <a href="https://raw.githubusercontent.com/FireflyMigration/EasySql/master/ENV/Utilities/EasySql.cs">EasySql</a> file and add it to the <code>ENV</code> project under the <code>Utilities</code> folder.</p>
+<p>When you add the following using statements to your code, a <code>TestSql</code> extention method is added to every DataSource</p>
+<pre data-line="2,3,8" class="language-csdiff line-numbers"><code>using Firefly.Box;
+using static ENV.Utilities.EasySql;
+using ENV.Utilities.EasySqlExtentions;
+...
+static void MyTestMethod()
+{
+    var c = new Models.Customers();
+    Shared.DataSources.Northwind.TestSql(
+        Select(Distinct(c.Country))
+        .From(c));
+} </code></pre>
+<p>Running this code will open the browser with the Sql and it's result - giving you a responsive experiance, as if you were writing Sql in a regular sql editor</p>
+<p><img src="2019-08-22_08h38_12.png" alt="" /></p>
 
 
                 <br />

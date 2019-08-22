@@ -30,8 +30,9 @@
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
                 <div class="content"><h1 id="getting-started-with-easysql">Getting started with EasySql</h1>
-<p>To start using <code>EasySql</code> add the following <code>using</code> statement at the top of your <code>cs</code> file</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>using static ENV.Utilities.EasySql; </code></pre>
+<p>To start using <code>EasySql</code> add the following <code>using</code> statements at the top of your <code>cs</code> file</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>using static ENV.Utilities.EasySql;
+using ENV.Utilities.EasySqlExtentions; </code></pre>
 <h2 id="select">Select</h2>
 <p>The most basic sql will start with look like this:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>var c = new Models.Customers();
