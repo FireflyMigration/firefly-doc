@@ -35,3 +35,12 @@ Well, in the first example we write the SQL as a string, in the second example w
 Simply download the [EasySql](https://raw.githubusercontent.com/FireflyMigration/EasySql/master/ENV/Utilities/EasySql.cs) file and add it to the `ENV` project under tyhe `Utilities` folder.
 
 
+## Feedback and issues	
+This project is a work in progress, intended to improve the way we all write Sql code - your feedback is critical to it's success
+If you have:
+1. Suggestions
+2. Bugs
+3. Sql's that you don't know how to express with this syntax
+4. Any other related comment
+
+Please open an issue for it in the [project's github repo](https://github.com/fireflymigration/easysql/issues)

@@ -28,6 +28,7 @@ Shared.DataSources.Northwind.TestSql(
     .From(c));
 ```
 
+
 That'll do the trick whenever you need some sql syntax and can't find a build in solution.
 ### Reusing custom Sql Syntax
 
