@@ -42,6 +42,24 @@ Select(c.CustomerID, c.CompanyName)
 <p>Since the table can be inferred by the column that is being used, if you don't specify the from, it'll infer the entities from the used columns</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>var c = new Models.Customers();
 Select(c.CustomerID, c.CompanyName) </code></pre>
+<h3 id="where">Where</h3>
+<pre data-line="" class="language-csdiff line-numbers"><code>var c = new Models.Customers();
+Select(c.CustomerID, c.CompanyName)
+.Where(c.Country.IsEqualTo("USA")) </code></pre>
+<h3 id="inner-join">Inner Join</h3>
+<pre data-line="2,4,5" class="language-csdiff line-numbers"><code>var c = new Models.Customers();
+var o = new Models.Orders();
+Select(c.CustomerID, c.CompanyName)
+    .From(c)
+    .InnerJoin(o,o.CustomerID.IsEqualTo(c.CustomerID))
+.Where(c.Country.IsEqualTo("USA")) </code></pre>
+<h3 id="group-by">Group By</h3>
+<p>var c = new Models.Customers();
+Select(c.City, Count())
+.From(c)
+.Where(c.Country.IsEqualTo(&quot;USA&quot;))
+.GroupBy(c.City)</p>
+<h3 id="see-our-unit-tests">See our Unit Tests</h3>
 <blockquote>
 <p>For more great examples see our <a href="https://github.com/FireflyMigration/EasySql/blob/master/TestEasySql/UnitTest1.cs">automatic tests</a>
 We'll be happy if you'll add some of your own test there</p>
