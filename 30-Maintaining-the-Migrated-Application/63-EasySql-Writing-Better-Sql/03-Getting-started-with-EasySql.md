@@ -38,12 +38,13 @@ Select(c.CustomerID, c.CompanyName)
 ```
 
 ### Group By
+```csdiff
 var c = new Models.Customers();
 Select(c.City, Count())
     .From(c)
     .Where(c.Country.IsEqualTo("USA"))
     .GroupBy(c.City)
-
+```
 
 ### See our Unit Tests
 > For more great examples see our [automatic tests](https://github.com/FireflyMigration/EasySql/blob/master/TestEasySql/UnitTest1.cs)
