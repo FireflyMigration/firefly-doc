@@ -61,3 +61,6 @@ Shared.DataSources.Northwind.TestSql(
     )
     .From(c));
 ```
+
+### Examples	
+For more examples go to the `EasySql` and see how we've implemented many functions suchh as `IsIn`, `Count`, `Average` etc...
