@@ -1,3 +1,19 @@
-﻿Simply download the [EasySql](https://raw.githubusercontent.com/FireflyMigration/EasySql/master/ENV/Utilities/EasySql.cs) file and add it to the `ENV` project under the `Utilities` folder.
+﻿When you add the following using statements to your code, a `TestSql` extention method is added to every DataSource
 
+```csdiff
+using Firefly.Box;
++using static ENV.Utilities.EasySql;
++using ENV.Utilities.EasySqlExtentions;
+...
+static void MyTestMethod()
+{
+    var c = new Models.Customers();
++   Shared.DataSources.Northwind.TestSql(
+        Select(Distinct(c.Country))
+        .From(c));
+}
+```
 
+Running this code will open the browser with the Sql and it's result - giving you a responsive experiance, as if you were writing Sql in a regular sql editor
+
+![](2019-08-22_08h38_12.png)

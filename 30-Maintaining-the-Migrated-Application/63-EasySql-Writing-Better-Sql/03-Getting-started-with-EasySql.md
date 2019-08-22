@@ -1,6 +1,7 @@
-﻿To start using `EasySql` add the following `using` statement at the top of your `cs` file
+﻿To start using `EasySql` add the following `using` statements at the top of your `cs` file
 ```csdiff
 using static ENV.Utilities.EasySql;
+using ENV.Utilities.EasySqlExtentions;
 ```
 
 ## Select
