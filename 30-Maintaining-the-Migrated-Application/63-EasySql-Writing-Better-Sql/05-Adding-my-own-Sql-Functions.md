@@ -32,7 +32,7 @@ Shared.DataSources.Northwind.TestSql(
 That'll do the trick whenever you need some sql syntax and can't find a build in solution.
 ### Reusing custom Sql Syntax
 
-You can create your own SQL method that can be used all over your code, simply create our own class and add the methods to it.
+You can create your own SQL method, that can be used anywhere in your code, by simply creating your own class and adding the methods to it.
 
 For example, let's add our customer `MySqlFunctions` class:
 ```csdiff
@@ -63,4 +63,4 @@ Shared.DataSources.Northwind.TestSql(
 ```
 
 ### Examples	
-For more examples go to the `EasySql` and see how we've implemented many functions suchh as `IsIn`, `Count`, `Average` etc...
+For more examples go to the `EasySql` and see how we've implemented many functions such as `IsIn`, `Count`, `Average` etc...
