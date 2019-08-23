@@ -54,7 +54,7 @@ Shared.DataSources.Northwind.TestSql(
     .From(c)); </code></pre>
 <p>That'll do the trick whenever you need some sql syntax and can't find a build in solution.</p>
 <h3 id="reusing-custom-sql-syntax">Reusing custom Sql Syntax</h3>
-<p>You can create your own SQL method that can be used all over your code, simply create our own class and add the methods to it.</p>
+<p>You can create your own SQL method, that can be used anywhere in your code, by simply creating your own class and adding the methods to it.</p>
 <p>For example, let's add our customer <code>MySqlFunctions</code> class:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>public static class MySqlFunctions
 {
@@ -78,7 +78,7 @@ Shared.DataSources.Northwind.TestSql(
     )
     .From(c)); </code></pre>
 <h3 id="examples">Examples</h3>
-<p>For more examples go to the <code>EasySql</code> and see how we've implemented many functions suchh as <code>IsIn</code>, <code>Count</code>, <code>Average</code> etc...</p>
+<p>For more examples go to the <code>EasySql</code> and see how we've implemented many functions such as <code>IsIn</code>, <code>Count</code>, <code>Average</code> etc...</p>
 
 
                 <br />
