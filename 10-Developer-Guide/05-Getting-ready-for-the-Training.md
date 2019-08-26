@@ -17,7 +17,7 @@ Each trainee in the training will need the following hardware and software requi
 4. **Your application code** - Every trainee should have a fully working version of your application in magic and in .NET.
    1. Make sure that the trainees have access to a database and can run the application both in magic and in .NET
    2. Make sure to have the source code of the application, both in magic and in .NET available on these machines.
-      1. note - please place the .NET code on a loca drive and not on a network drive.
+      1. note - please place the .NET code on a local drive and not on a network drive.
 5. The **Northwind Training Application**
    1. Please setup a new database called Northwind, using the script that we've placed under the `Training` folder in your migration ftp.
    2. The .NET code of the Northwind application - 
