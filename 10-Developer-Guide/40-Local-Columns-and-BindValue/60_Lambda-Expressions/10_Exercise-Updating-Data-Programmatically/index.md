@@ -13,7 +13,7 @@
 9. Change the **GetAverageKM** method to one line method. ( use => )
 10. Save changes to Git.
 13. Built and test.
-11. Change the **BindValue** to use Lambda Expression instead of calling the **GetAverageKM** method.
+11. Change the **BindValue** to use Lamda Expression instead of calling the **GetAverageKM** method.
 12. Save changes to Git.
 16. Build and test.
 13. In **ShowOrders** Bind the value of **EstimatedArrivalDate** to **OrderDate** plus 30 days.(use Lambda expression).
