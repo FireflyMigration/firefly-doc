@@ -37,12 +37,12 @@ public static void RegisterRoutes(RouteCollection routes)
 ```
 8. Edit the 'Web.config' located at the root of your MVC project and added this lines:
 ```csdiff
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+ <?xml version="1.0" encoding="utf-8"?>
+ <!--
   For more information on how to configure your ASP.NET application, please visit
   https://go.microsoft.com/fwlink/?LinkId=301880
   -->
-<configuration>
+ <configuration>
   <appSettings>
     <add key="webpages:Version" value="3.0.0.0"/>
     <add key="webpages:Enabled" value="false"/>
@@ -96,7 +96,7 @@ public static void RegisterRoutes(RouteCollection routes)
         warningLevel="4" compilerOptions="/langversion:default /nowarn:41008 /define:_MYTYPE=\&quot;Web\&quot; /optionInfer+"/>
     </compilers>
   </system.codedom>
-</configuration>
+ </configuration>
 ```
 That's it, you are configured to use ENV.Web.
 Review the following articles on how to use it:
