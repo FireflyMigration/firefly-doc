@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="MLS, translate, language">
 
-    <title>Getting Familiar with Migrated Code</title>
+    <title>Multilingual Support</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,27 +29,34 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="getting-familiar-with-migrated-code">Getting Familiar with Migrated Code</h1>
-<ul>
-<li><a href="how-to-find-my-controllers.html">How to Find my Controllers</a></li>
-<li><a href="comparing-migrated-code-with-magic.html">Comparing Migrated Code with Magic</a></li>
-<li><a href="large-applications-architecture-for-projects-migrated-up-to-2016.html">Large Applications Architecture for Projects Migrated up to 2016</a></li>
-<li><a href="access-developer-tools-and-users-management-menu.html">Access Developer Tools and Users management menu</a></li>
-<li><a href="import-security-file.html">Import Security file</a></li>
-<li><a href="migrated-datatypes-demos.html">Migrated DataTypes Demos</a></li>
-<li><a href="dataaccess.html">DataAccess</a></li>
-<li><a href="user-methods-and-u-class.html">User methods and u class</a></li>
-<li><a href="going-to-an-expression-from-the-designer.html">Going to an expression from the designer</a></li>
-<li><a href="why-migrated-application-is-case-sensitive-when-comparing-text.html">Why Migrated Application is Case Sensitive when Comparing Text</a></li>
-<li><a href="running-cmdl.exe.html">Running CMDL.exe</a></li>
-<li><a href="run-program-by-public-name.html">Run Program by Public Name</a></li>
-<li><a href="send-report-as-email-attachment.html">Send report as email attachment</a></li>
-<li><a href="understanding-error-message-details.html">Understanding Error Message Details</a></li>
-<li><a href="clicking-on-a-form-with-keepviewvisibleafterexit.html">Clicking on a form with KeepViewVisibleAfterExit</a></li>
-<li><a href="call-remote-and-enterprise-server.html">Call Remote and Enterprise Server</a></li>
-<li><a href="multilingual-support.html">Multilingual Support</a></li>
-<li><a href="standard-solution-vs-full-solution.html">Standard Solution vs Full Solution</a></li>
-</ul>
+                <div class="content"><h1 id="multilingual-support">Multilingual Support</h1>
+<p>The migrated code has many options to translate applications from one language to another.</p>
+<p>By default it supports all the MLS functionality of the original application, but the architecture was designed to be extended a lot further.</p>
+<p>#Basic Usage
+To use multilangual support, you'll a translation file, this file is a simple text file that each &quot;odd&quot; line has the text in the developer's langulage, and each &quot;even&quot; line has that same text in the target langulage</p>
+<p>For example:
+###french.mls</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Hello World
+Bonjour le monde
+We can do a lot more with the migrated code
+Nous pouvons faire beaucoup plus avec le code migr� </code></pre>
+<p>And you can have the same file for German:
+###german.mls</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Hello World
+Hallo Welt
+We can do a lot more with the migrated code
+Mit dem migrierten Code k�nnen wir noch viel mehr tun </code></pre>
+<p>These langulages should be defined in the ini file, as follows:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>[MAGIC_LANGUAGE]
+French = french.mls
+Gernal = german.mls </code></pre>
+<p>And the specific language to use, is determined by <code>StartingLanguage</code> tag:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>StartingLanguage = French </code></pre>
+<h1 id="how-does-it-work">How does it work</h1>
+<p>The entire implementation of Multilingual support is actually quite simple, it's implementation is in a class called '</p>
+<p>#build_mls.exe
+build_mls.exe was a utility used in magic to add some info to a translation file that magic used internally.
+The migrated code <strong>does not</strong> need the build_mls.exe - and can work with the original translation file.</p>
 
 
                 <br />
@@ -57,7 +64,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/Multilingual-Support.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -119,7 +126,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'getting-familiar-with-migrated-code.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'multilingual-support.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
