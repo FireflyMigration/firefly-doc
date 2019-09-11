@@ -107,3 +107,7 @@ You'll need a google translate api key to do that.
 
 In the `Translator` class there is also an interesting implementation in the `TranslateCurrent` method, that translates the control which the cursor parks on. We use it in our testing when we are testing applications that are non English.
 
+
+
+## Here's a video that demos the basic usage of the mls files
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MsF3PPGwdD0" frameborder="0" allowfullscreen></iframe>
