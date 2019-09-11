@@ -31,32 +31,81 @@
                 </div>
                 <div class="content"><h1 id="multilingual-support">Multilingual Support</h1>
 <p>The migrated code has many options to translate applications from one language to another.</p>
-<p>By default it supports all the MLS functionality of the original application, but the architecture was designed to be extended a lot further.</p>
-<p>#Basic Usage
-To use multilangual support, you'll a translation file, this file is a simple text file that each &quot;odd&quot; line has the text in the developer's langulage, and each &quot;even&quot; line has that same text in the target langulage</p>
-<p>For example:
-###french.mls</p>
+<p>By default, it supports all the MLS functionality of the original application, but the architecture was designed to be extended a lot further.</p>
+<h1 id="basic-usage">Basic Usage</h1>
+<p>To use multilingual support, you'll a translation file, this file is a simple text file that each &quot;odd&quot; line has the text in the developer's language, and each &quot;even&quot; line has that same text in the target language</p>
+<p>For example:</p>
+<h4 id="french.mls">french.mls</h4>
 <pre data-line="" class="language-csdiff line-numbers"><code>Hello World
 Bonjour le monde
 We can do a lot more with the migrated code
 Nous pouvons faire beaucoup plus avec le code migr� </code></pre>
-<p>And you can have the same file for German:
-###german.mls</p>
+<p>And you can have the same file for German:</p>
+<h4 id="german.mls">german.mls</h4>
 <pre data-line="" class="language-csdiff line-numbers"><code>Hello World
 Hallo Welt
 We can do a lot more with the migrated code
 Mit dem migrierten Code k�nnen wir noch viel mehr tun </code></pre>
-<p>These langulages should be defined in the ini file, as follows:</p>
+<p>These languages should be defined in the ini file, as follows:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>[MAGIC_LANGUAGE]
 French = french.mls
-Gernal = german.mls </code></pre>
+German = german.mls </code></pre>
 <p>And the specific language to use, is determined by <code>StartingLanguage</code> tag:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>StartingLanguage = French </code></pre>
-<h1 id="how-does-it-work">How does it work</h1>
-<p>The entire implementation of Multilingual support is actually quite simple, it's implementation is in a class called '</p>
-<p>#build_mls.exe
-build_mls.exe was a utility used in magic to add some info to a translation file that magic used internally.
+<h1 id="build_mls.exe">build_mls.exe</h1>
+<p>build_mls.exe was a utility used in magic to add some info to a translation file that magic used internally.
 The migrated code <strong>does not</strong> need the build_mls.exe - and can work with the original translation file.</p>
+<h1 id="how-does-the-translation-work-in-the-migrated-code">How does the translation work in the migrated code</h1>
+<p>The entire implementation of Multilingual support is quite simple, it's implementation is in a class called <code>Languages</code> in ENV (less than 150 lines of code)</p>
+<p>The method that is responsible for translating is called <code>Translate</code> and you can view or change it any way you like.</p>
+<p>The way it works is that the method <code>Translate</code> is called from every control when that control has text that needs to be translated.</p>
+<p>For example, here's the code for the <code>Label</code> control in ENV, with the call that is responsible for the translation (highlighted in green).</p>
+<pre data-line="7,8,9,10" class="language-csdiff line-numbers"><code> public class Label:Firefly.Box.UI.Label
+{
+    public Label()
+    {
+            
+    }
+     protected override string Translate(string term)
+     {
+         return base.Translate(ENV.Languages.Translate(term));
+     }
+
+	.... </code></pre>
+<h1 id="what-can-we-change">What can we change?</h1>
+<p>Actually, you can change anything you want - the implementation is so easy, so you can change it in many ways.</p>
+<p>Here are some examples:</p>
+<h2 id="track-which-terms-dont-have-a-translation">Track which terms don't have a translation</h2>
+<p>Just go to the <code>Translate</code> method and add the following code:</p>
+<pre data-line="15" class="language-csdiff line-numbers"><code> public static string Translate(string text)
+{
+    if (text == null)
+        return null;
+    string result;
+    var trimEnd = text.TrimEnd(' ');
+    if (_current.Value._currentDictionary().TryGetValue(trimEnd, out result))
+    {
+        if (ENV.UserSettings.Version10Compatible)
+            return result + new string(' ', text.Length - trimEnd.Length);
+        else
+            return result;
+    }
+    {
+        System.Diagnostics.Trace.WriteLine(text);
+        if (ENV.UserSettings.Version10Compatible)
+            return text;
+        else
+            return trimEnd;
+    }
+} </code></pre>
+<h2 id="load-the-translations-from-a-database">Load the translations from a database</h2>
+<p>In your code (not env), create the business process that reads the data from the database.
+When the process starts, it should call the <code>GetLanguage</code> method for the language you want to load from the database. That method returns a dictionary to which you can simply add terms.</p>
+<h2 id="use-google-translate-to-translate-things">Use google translate to translate things</h2>
+<p>In the ENV\Labs folder, there is a class called <code>translator</code> that we use when we demo with Google Translate.
+You can change the <code>Translate</code> method in the <code>Languages</code> class to call the <code>TranslateText</code> method ni the <code>Translator</code> class that calls google translate.
+You'll need a google translate api key to do that.</p>
+<p>In the <code>Translator</code> class there is also an interesting implementation in the <code>TranslateCurrent</code> method, that translates the control which the cursor parks on. We use it in our testing when we are testing applications that are non English.</p>
 
 
                 <br />
