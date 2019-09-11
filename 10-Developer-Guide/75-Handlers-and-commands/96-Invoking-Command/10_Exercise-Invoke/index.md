@@ -1,6 +1,6 @@
 ﻿# Exercise - Invoke
 
-1.  In **ShowRegions**.
+1.  In **ShowEmployee**.
 2.	Change the Raise of **MySpecialCommand** in the **OnStart** to Invoke.
 3.	Save changes to Git.
 4.  Build and test.
