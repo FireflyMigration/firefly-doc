@@ -38,3 +38,19 @@ public Orders() : base("dbo.Orders", "Orders", Northwind.Shared.DataSources.Nort
 +   };
 }
 ```
+## Finding when the row was changed
+When the OnSavingRow() method is triggered, it means that the the row was changed.
+In some cases, specially in large programs, you sometimes do not know where the change of the record came from.
+The `RowChanging` event, which can be declared in the controller, can assist you with that.
+```csdiff
+public ShowOrders()
+ {
+    Title = "ShowOrders";
+    InitializeDataViewAndUserFlow();
+    InitializeHandlers();
++   RowChanging += () =>
++   {
++      MessageBox.Show("Row was changed");
++   };
+}
+```
