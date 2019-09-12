@@ -65,6 +65,20 @@ For example the following code will write to the output whenever the OrderDate i
         System.Diagnostics.Debug.WriteLine("OrderDate was changed from " + e.PreviousValue + " to " + OrderDate.Value);
     };
 } </code></pre>
+<h2 id="finding-when-the-row-was-changed">Finding when the row was changed</h2>
+<p>When the OnSavingRow() method is triggered, it means that the the row was changed.
+In some cases, specially in large programs, you sometimes do not know where the change of the record came from.
+The <code>RowChanging</code> event, which can be declared in the controller, can assist you with that.</p>
+<pre data-line="6,7,8,9" class="language-csdiff line-numbers"><code>public ShowOrders()
+ {
+    Title = "ShowOrders";
+    InitializeDataViewAndUserFlow();
+    InitializeHandlers();
+    RowChanging += () =&gt;
+    {
+       MessageBox.Show("Row was changed");
+    };
+} </code></pre>
 
 
                 <br />
