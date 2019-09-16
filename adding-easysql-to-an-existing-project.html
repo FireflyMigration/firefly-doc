@@ -31,6 +31,7 @@
                 </div>
                 <div class="content"><h1 id="adding-easysql-to-an-existing-project">Adding EasySql to an Existing Project</h1>
 <p>Simply download the <a href="https://raw.githubusercontent.com/FireflyMigration/EasySql/master/ENV/Utilities/EasySql.cs">EasySql</a> file and add it to the <code>ENV</code> project under tyhe <code>Utilities</code> folder.</p>
+<h2 id="for-env-versions-17000">For ENV versions &gt;17000</h2>
 <p>You'll also need to make the following changes to older versions of the <code>DynamicSQLEntity</code> class - with regards to it's constructor</p>
 <pre data-line="7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,28" class="language-csdiff line-numbers"><code>...
 public IEntityDataProvider DataProvider
@@ -66,6 +67,48 @@ public DynamicSQLEntity(DynamicSQLSupportingDataProvider dataProvider, string sq
 }
 public static bool OemTextParameters { get; set; }
 ... </code></pre>
+<h2 id="for-env-version-17000">For ENV version &lt;17000</h2>
+<p>There are a few relevant changes.
+First, in the <code>EasySql</code> class there are several lines that will not build - but there should be a comment next to it with the correct line for the older ENV version.</p>
+<p>In the <code>DynamicSQLEntity</code> class do the following changes:</p>
+<pre data-line="5,6,8,9,10,16,23" class="language-csdiff line-numbers"><code>public IEntityDataProvider DataProvider
+{
+    get { return _originalProvider; }
+}
+Func&lt;string&gt; _buildSql;
+public DynamicSQLEntity(DynamicSQLSupportingDataProvider dataProvider, Func&lt;string&gt; sql)
+ : this(dataProvider, "dynamicSql")
+{
+     _buildSql= sql;
+}
+public DynamicSQLEntity(DynamicSQLSupportingDataProvider dataProvider, string sql)
+    : base(sql, sql, dataProvider.ProvideDynamicSqlEntityDataProvider())
+{
+    _originalProvider = dataProvider;
+-   _sql = sql;
+    _buildSql = ()=&gt;sql;
+}
+
+.... and later down the same file
+ internal string GetCompletedSQL(Func&lt;IDbDataParameter&gt; createDbParameter)
+{
+    string prevSql = _sql;
+    _sql = _buildSql();
+    try
+    {
+        _paramNumber = 0;
+        foreach (var action in _prepareSql)
+        {
+            action(createDbParameter);
+        }
+        return _sql;
+    }
+    finally
+    {
+        _sql = prevSql;
+    }
+} </code></pre>
+<h2 id="if-you-are-having-trouble-with-env-let-us-know">If you are having trouble with ENV, let us know</h2>
 <p>If you have an even older version of dynamic sql entity and would require help, let us know - we'll be happy to help.</p>
 
 
