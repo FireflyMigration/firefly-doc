@@ -2,9 +2,6 @@ Many times we want to add to our application the method the information of who i
 
 In this article we'll describe several ways to do that.
 
-> For customers that have migrated from btrieve to Sql up to 2018, see the following article for a query that will display locking:
-> http://doc.fireflymigration.com/locking-after-btrieve-to-sql-migration.html
-
 
 ## Seeing which tables are locked and who is locking them
 You can use the following query, to see the current tables that are locked and who is locking them:
@@ -23,6 +20,9 @@ WHERE  req_spid>=0 AND rsc_objid>0 AND rsc_type=5
 
 Here's a sample result:
 ![](2019-09-26_10h38_58.png)
+
+> For customers that have migrated from btrieve to Sql up to 2018, see the following article for a query that will display locking:
+> http://doc.fireflymigration.com/locking-after-btrieve-to-sql-migration.html
 
 Here's an example of a `UIController` that runs this sql:
 ```csdiff
@@ -206,190 +206,122 @@ And you'll see it in the `program_name` column:
 
 ## "How can we know on which screen the user is now?"
 The way to do that is to create a table that will know where the user is, and update it every x Seconds.
-Here's an example of such an Entity:
-### entity
+
+The following code sample records every 5 seconds the:
+1. Screen - the Form that the user is on
+2. Contorller - the Controller the user was on.
+3. ControllerThatOpenedTheTransaction - the controller where the transaction was opened.
+4. LastUpdate - the last time the values has changed (if the user is on the screen for an hour, there is no point in updating the db again and again, youll see it using ths value.)
+
+
+Add the following entity to the application.
+
 ```csdiff
 public class SqlSessionAdditionalInfo : Entity
-    {
-        [PrimaryKey]
-        public readonly NumberColumn Session = new NumberColumn("SqlSessionId", "5");
-        public readonly Firefly.Box.Data.DateTimeColumn LastUpdate = new Firefly.Box.Data.DateTimeColumn("LastUpdate");
-        public readonly TextColumn OpenScreenName = new TextColumn("OpenScreenName","2000");
-        public SqlSessionAdditionalInfo() : base("SqlSessionAdditionalInfo", ENV.Data.DataProvider.ConnectionManager.GetNoTransactionSQLDataProvider( Shared.DataSources.Northwind.Name))
-        {
-            
-        }
-    }
-```
-
-
-### handler in application
-```csdiff
-var lastScreenName = "";
-            var tableExists = false;
-            Number currentSsessionId = null;
-            Handlers.Add(Command.CreateTimer(5)).Invokes += e =>
-            {
-
-                var screenName = "Application";
-                if (ENV.UI.Form.ActiveForm != null)
-                    screenName = ENV.UI.Form.ActiveForm.Text;
-                if (screenName == lastScreenName)
-                    return; //we only want to update the session info if it has changed. If the user is on the screen for a while, there is no point in sending an update every 5 seconds.
-                var sInfo = new SqlSessionAdditionalInfo();
-                if (!tableExists)
-                {
-                    tableExists = sInfo.Exists();
-                    if (!tableExists)
-                        Shared.DataSources.Northwind.CreateTable(sInfo);
-                    tableExists = true;
-                }
-                if (currentSsessionId == null)
-                {
-                    // get the spid if we don't already know it
-                    using (var c = Shared.DataSources.Northwind.CreateCommand())
-                    {
-                        c.CommandText = "select @@spid";
-                        currentSsessionId = Number.Cast(c.ExecuteScalar());
-                    }
-                }
-
-                sInfo.InsertIfNotFound(sInfo.Session.BindEqualTo(currentSsessionId), () =>
-                {
-                    sInfo.LastUpdate.Value = System.DateTime.Now; 
-                    sInfo.OpenScreenName.Value = screenName;
-                });
-
-            };
-```
-
-### no transaction data provider
-```csdiff
-using ENV.Data;
-using ENV.Data.DataProvider;
-using ENV.Utilities;
-using Firefly.Box.Data;
-using Firefly.Box.Data.DataProvider;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ENV.Data.DataProvider
 {
-    public class NoTransactionDataProviderLite : ISQLEntityDataProvider
+    [PrimaryKey]
+    public readonly NumberColumn Session = new NumberColumn("SqlSessionId", "5");
+    public readonly Firefly.Box.Data.DateTimeColumn LastUpdate = new Firefly.Box.Data.DateTimeColumn("LastUpdate");
+    public readonly TextColumn Screen = new TextColumn("Screen", "2000");
+    public readonly TextColumn Controller = new TextColumn("Controller", "2000");
+    public readonly TextColumn ControllerThatOpenedTheTransaction = new TextColumn("ControllerThatOpenedTheTransaction", "2000");
+    public SqlSessionAdditionalInfo() : base("SqlSessionAdditionalInfo", Shared.DataSources.Northwind)
     {
-        public ITransaction BeginTransaction()
-        {
-            return new DummyTransaction();
-        }
-        class DummyTransaction : ITransaction
-        {
-            public void Commit()
-            {
 
-            }
-
-            public void Rollback()
-            {
-
-            }
-        }
-        public static void Init()
-        {
-            ENV.Data.DataProvider.ConnectionManager._createNoTransactionDatabase = (origin, a, b) => {
-                return new NoTransactionDataProviderLite(origin);
-            };
-        }
-
-        ISQLEntityDataProvider _original;
-        public NoTransactionDataProviderLite(ISQLEntityDataProvider orig)
-        {
-            _original = orig;
-        }
-
-        public bool IsOracle => _original.IsOracle;
-
-        public bool AutoCreateTables { get => _original.AutoCreateTables; set => _original.AutoCreateTables = value; }
-
-        public bool SupportsTransactions => _original.SupportsTransactions;
-
-        public bool RequiresTransactionForLocking => _original.RequiresTransactionForLocking;
-
-
-
-        public bool Contains(Firefly.Box.Data.Entity entity)
-        {
-            return _original.Contains(entity);
-        }
-
-        public long CountRows(Firefly.Box.Data.Entity entity)
-        {
-            return _original.CountRows(entity);
-        }
-
-        public IDbCommand CreateCommand()
-        {
-            return _original.CreateCommand();
-        }
-
-        public SqlScriptTableCreator CreateScriptGeneratorTable(Firefly.Box.Data.Entity entity)
-        {
-            return _original.CreateScriptGeneratorTable(entity);
-        }
-
-        public void Dispose()
-        {
-            _original.Dispose();
-        }
-
-        public void Drop(Firefly.Box.Data.Entity entity)
-        {
-            _original.Drop(entity);
-        }
-
-        public IValueLoader GetDataReaderValueLoader(IDataReader reader, int columnIndexInSelect, IDateTimeCollector dtc)
-        {
-            return _original.GetDataReaderValueLoader(reader, columnIndexInSelect, dtc);
-        }
-
-        public string GetEntityName(Firefly.Box.Data.Entity entity)
-        {
-            return _original.GetEntityName(entity);
-        }
-
-        public ISupportsGetDefinition GetSupportGetDefinition()
-        {
-            return _original.GetSupportGetDefinition();
-        }
-
-        public UserDbMethods.IUserDbMethodImplementation GetUserMethodsImplementation()
-        {
-            return _original.GetUserMethodsImplementation();
-        }
-
-        public bool IsClosed()
-        {
-            return _original.IsClosed();
-        }
-
-        public Exception ProcessException(Exception e, Firefly.Box.Data.Entity entity, IDbCommand c)
-        {
-            return _original.ProcessException(e, entity, c);
-        }
-
-        public IRowsSource ProvideRowsSource(Firefly.Box.Data.Entity entity)
-        {
-            return _original.ProvideRowsSource(entity);
-        }
-
-        public void Truncate(Firefly.Box.Data.Entity entity)
-        {
-            _original.Truncate(entity);
-        }
     }
 }
-
 ```
+
+
+In the `ApplicationCore` class add the following handler
+```csdiff
+var lastScreenName = "";
+var tableExists = false;
+Number currentSsessionId = null;
+Handlers.Add(Command.CreateTimer(5)).Invokes += e =>
+{
+
+    var screenName = "Application";
+    if (ENV.UI.Form.ActiveForm != null)
+        screenName = ENV.UI.Form.ActiveForm.Text;
+    if (screenName == lastScreenName)
+        return; //we only want to update the session info if it has changed. If the user is on the screen for a while, there is no point in sending an update every 5 seconds.
+    lastHash = key.GetHashCode();
+    var sInfo = new SqlSessionAdditionalInfo();
+    if (!tableExists)
+    {
+        tableExists = sInfo.Exists();
+        if (!tableExists)
+            Shared.DataSources.Northwind.CreateTable(sInfo);
+        tableExists = true;
+    }
+    if (currentSsessionId == null)
+    {
+        // get the spid if we don't already know it
+        using (var c = Shared.DataSources.Northwind.CreateCommand())
+        {
+            c.CommandText = "select @@spid";
+            currentSsessionId = Number.Cast(c.ExecuteScalar());
+        }
+    }
+
+    sInfo.InsertIfNotFound(sInfo.Session.BindEqualTo(currentSsessionId), () =>
+    {
+        sInfo.LastUpdate.Value = System.DateTime.Now; 
+        sInfo.OpenScreenName.Value = screenName;
+    });
+
+};
+```
+
+You can query this from the database using the following sql:
+```sql
+select * from SqlSessionAdditionalInfo with(nolock)
+```
+
+Or you can add this info to the `ShowLocks`
+```csdiff
+...
+protected override void OnLoad()
+{
+    Activity = Activities.Browse;
+    View = () =>
+    {
+        var v = new ENV.UI.GridView(this.Columns.ToArray());
++       v.AddAction("Additional Info", () =>
++       {
++           var sInfo = new SqlSessionAdditionalInfo();
++           sInfo.ForEachRow(sInfo.Session.IsEqualTo(Session), () =>
++           {
++               Common.ShowMessageBox("Session Info " + Session.ToString().Trim(), MessageBoxIcon.Information,
++                   "Screen: " + sInfo.Screen.Value.Trim() +
++                   "\r\nController: " + sInfo.Controller.Value.Trim() +
++                   "\r\nTransaction Opened On: " + sInfo.ControllerThatOpenedTheTransaction.Trim() +
++                   "\r\nEstimated duration on Screen: " + (DateTime.Now - sInfo.LastUpdate).Minutes.ToString() + " minutes");
++           });
++       });
+        v.AddAction("Kill Session", () =>
+        {
+            try
+            {
+                Shared.DataSources.Northwind.Execute("kill " + Session.ToString().Trim() + "");
+                Common.ShowMessageBox("Kill session " + Session.ToString().Trim(), MessageBoxIcon.Information, "Session Killed");
+            }
+
+            catch (Exception ex)
+            {
+                Common.ShowMessageBox("Kill session " + Session.ToString().Trim(), MessageBoxIcon.Error, "Failed to kill session: " + ex.Message);
+            }
+        });
+        return v;
+    };
+}
+
+...
+```
+
+And it'll look like this:
+
+![](2019-09-26_15h55_25.png)
+
+![](2019-09-26_15h55_51.png)
