@@ -1,0 +1,459 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Monitoring Row Locking in SQL Server</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="monitoring-row-locking-in-sql-server">Monitoring Row Locking in SQL Server</h1>
+<p>Many times we want to add to our application the method the information of who is locking, and what is being locked.</p>
+<p>In this article we'll describe several ways to do that.</p>
+<blockquote>
+<p>For customers that have migrated from btrieve to Sql up to 2018, see the following article for a query that will display locking:
+<a href="http://doc.fireflymigration.com/locking-after-btrieve-to-sql-migration.html">http://doc.fireflymigration.com/locking-after-btrieve-to-sql-migration.html</a></p>
+</blockquote>
+<h2 id="seeing-which-tables-are-locked-and-who-is-locking-them">Seeing which tables are locked and who is locking them</h2>
+<p>You can use the following query, to see the current tables that are locked and who is locking them:</p>
+<pre><code class="language-sql">SELECT 
+	OBJECT_NAME(rsc_objid,rsc_dbid) 'TableName', 
+	b.login_name 'Locking User Sql Login Name',
+    b.nt_user_name 'Locking User Windows Login Name',
+	b.session_id 'Sql Session Id',
+	b.program_name,
+	b.host_name 'Locking Computer Name',
+	b.host_process_id 'Locking Process Id'
+FROM master.dbo.syslockinfo a left outer join sys.dm_exec_sessions b on a.req_spid=b.session_id 
+WHERE  req_spid&gt;=0 AND rsc_objid&gt;0 AND rsc_type=5
+</code></pre>
+<p>Here's a sample result:
+<img src="2019-09-26_10h38_58.png" alt="" /></p>
+<p>Here's an example of a <code>UIController</code> that runs this sql:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>class ShowLocks : UIControllerBase
+{
+    public readonly TextColumn TableName = new TextColumn("Locked Table");
+    public readonly TextColumn LockingSqlUser = new TextColumn("Locking User Sql Login Name");
+    public readonly TextColumn LockingWindwsUser = new TextColumn("Locking User Windows Login Name");
+    public readonly NumberColumn Session = new NumberColumn("Sql Session Id","5");
+    public readonly TextColumn ProgramName = new TextColumn("Program Name");
+    public readonly TextColumn ComputerName = new TextColumn("Locking Computer Name");
+    public readonly NumberColumn ProcessId = new NumberColumn("Locking Computer Process Id", "6");
+    public ShowLocks()
+    {
+        
+    }
+    protected override void OnLoad()
+    {
+        Activity = Activities.Browse;
+        View = () =&gt; new ENV.UI.GridView(this.Columns.ToArray());
+    }
+    
+    public void Run()
+    {
+        var sql = @"SELECT 
+OBJECT_NAME(rsc_objid,rsc_dbid) 'TableName', 
+b.login_name 'Locking User Sql Login Name',
+b.nt_user_name 'Locking User Windows Login Name',
+b.session_id 'Sql Session Id',
+b.program_name,
+b.host_name 'Locking Computer Name',
+b.host_process_id 'Locking Process Id'
+FROM master.dbo.syslockinfo a left outer join sys.dm_exec_sessions b on a.req_spid=b.session_id 
+WHERE  req_spid&gt;=0 AND rsc_objid&gt;0 AND rsc_type=5";
+
+        var sqlEntity = new DynamicSQLEntity(Shared.DataSources.Northwind,sql);
+
+        sqlEntity.Columns.Add(TableName, LockingSqlUser, LockingWindwsUser, Session, ProgramName, ComputerName, ProcessId);
+        From = sqlEntity;
+        
+        Execute();
+    }
+} </code></pre>
+<h2 id="showing-to-the-locked-user-who-is-locking-the-table-they-are-trying-to-use">Showing to the locked user, who is locking the table they are trying to use</h2>
+<p>If you want to display to the user what other users are locking the table they are trying to access - let's modify the <code>ShowLocks</code> controller to filter on a table:</p>
+<pre data-line="20,33,34,35,36,37" class="language-csdiff line-numbers"><code>class ShowLocks : UIControllerBase
+{
+    public readonly TextColumn TableName = new TextColumn("Locked Table");
+    public readonly TextColumn LockingSqlUser = new TextColumn("Locking User Sql Login Name");
+    public readonly TextColumn LockingWindwsUser = new TextColumn("Locking User Windows Login Name");
+    public readonly NumberColumn Session = new NumberColumn("Sql Session Id","5");
+    public readonly TextColumn ProgramName = new TextColumn("Program Name");
+    public readonly TextColumn ComputerName = new TextColumn("Locking Computer Name");
+    public readonly NumberColumn ProcessId = new NumberColumn("Locking Computer Process Id", "6");
+    public ShowLocks()
+    {
+        
+    }
+    protected override void OnLoad()
+    {
+        Activity = Activities.Browse;
+        View = () =&gt; new ENV.UI.GridView(this.Columns.ToArray());
+    }
+-   public void Run()   
+    public void Run(Text lockedTable=null)
+    {
+        var sql = @"SELECT 
+OBJECT_NAME(rsc_objid,rsc_dbid) 'TableName', 
+b.login_name 'Locking User Sql Login Name',
+b.nt_user_name 'Locking User Windows Login Name',
+b.session_id 'Sql Session Id',
+b.program_name,
+b.host_name 'Locking Computer Name',
+b.host_process_id 'Locking Process Id'
+FROM master.dbo.syslockinfo a left outer join sys.dm_exec_sessions b on a.req_spid=b.session_id 
+WHERE  req_spid&gt;=0 AND rsc_objid&gt;0 AND rsc_type=5";
+
+        if (!Text.IsNullOrEmpty(lockedTable))
+        {
+            sql += " and rsc_objid=object_id('" + lockedTable.Trim().Replace("'", "''") + "')";
+            sql += " and b.session_id!=@@spid"; //exclude my locks
+        }
+
+        var sqlEntity = new DynamicSQLEntity(Shared.DataSources.Northwind,sql);
+
+        sqlEntity.Columns.Add(TableName, LockingSqlUser, LockingWindwsUser, Session, ProgramName, ComputerName, ProcessId);
+        From = sqlEntity;
+        
+        Execute();
+    }
+} </code></pre>
+<p>And add an handler in the  <code>AppliationCore</code> class.</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Handlers.AddDatabaseErrorHandler(DatabaseErrorType.LockedRow).Invokes += e =&gt;
+{
+    new ShowLocks().Run(e.Entity.EntityName);
+}; </code></pre>
+<p>You can also change the default behavior when locking from retry to abort by changing the <code>HandlingStrategy</code></p>
+<pre data-line="4" class="language-csdiff line-numbers"><code>Handlers.AddDatabaseErrorHandler(DatabaseErrorType.LockedRow).Invokes += e =&gt;
+{
+    new ShowLocks().Run(e.Entity.EntityName);
+    e.HandlingStrategy = DatabaseErrorHandlingStrategy.RollbackAndRecover;
+}; </code></pre>
+<h2 id="kill-the-locking-session">Kill the locking session</h2>
+<p>If you want to kill the locking session, you can use the  <a href="https://docs.microsoft.com/en-us/sql/t-sql/language-elements/kill-transact-sql">KILL (Transact-SQL)</a>.</p>
+<p>Here's how we add that to our controller:</p>
+<pre data-line="5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22" class="language-csdiff line-numbers"><code>protected override void OnLoad()
+{
+    Activity = Activities.Browse;
+-   View = () =&gt; new ENV.UI.GridView(this.Columns.ToArray());
+    View = () =&gt;
+    {
+        var v = new ENV.UI.GridView(this.Columns.ToArray());
+        v.AddAction("Kill Session", () =&gt;
+        {
+            try
+            {
+                Shared.DataSources.Northwind.Execute("kill " + Session.ToString().Trim() + "");
+                Common.ShowMessageBox("Kill session " + Session.ToString().Trim(), MessageBoxIcon.Information, "Session Killed");
+            }
+
+            catch (Exception ex)
+            {
+                Common.ShowMessageBox("Kill session " + Session.ToString().Trim(), MessageBoxIcon.Error, "Failed to kill session: "+ex.Message);
+            }
+        });
+        return v;
+    };
+} </code></pre>
+<p>Now the user can kill the session by right clicking on it and choosing kill session:</p>
+<p><img src="2019-09-26_10h40_29.png" alt="" /></p>
+<h2 id="we-are-using-the-same-sql-account-for-all-our-users-how-can-we-know-who-is-the-locking-user">&quot;We are using the same Sql account for all our users, how can we know who is the locking user?&quot;</h2>
+<p>Often a single sql server user account is used, but we still want to know what is the user that logged in to the application.
+In .NET we have control of the sql <code>Program_name</code>:</p>
+<p><img src="2019-09-26_10h40_59.png" alt="" /></p>
+<p>We can change it to include the user that was used to login to the application.
+On the <code>ConnectionManager</code> class in ENV, you'll find, search for the word <code>applicationName</code> and make the following change:</p>
+<pre data-line="12" class="language-csdiff line-numbers"><code>if (n != null)
+{
+    var
+        applicationName
+            =
+            n.Name +
+            "_" +
+            n.Version
+                .
+                ToString
+                ();
+    applicationName += "|" + Security.UserManager.CurrentUser.Name;
+    connect.Append(
+        "Application Name=" +
+        applicationName +
+        ";");
+} </code></pre>
+<p>And you'll see it in the <code>program_name</code> column:</p>
+<p><img src="2019-09-26_10h46_41.png" alt="" /></p>
+<h2 id="how-can-we-know-on-which-screen-the-user-is-now">&quot;How can we know on which screen the user is now?&quot;</h2>
+<p>The way to do that is to create a table that will know where the user is, and update it every x Seconds.
+Here's an example of such an Entity:</p>
+<h3 id="entity">entity</h3>
+<pre data-line="" class="language-csdiff line-numbers"><code>public class SqlSessionAdditionalInfo : Entity
+    {
+        [PrimaryKey]
+        public readonly NumberColumn Session = new NumberColumn("SqlSessionId", "5");
+        public readonly Firefly.Box.Data.DateTimeColumn LastUpdate = new Firefly.Box.Data.DateTimeColumn("LastUpdate");
+        public readonly TextColumn OpenScreenName = new TextColumn("OpenScreenName","2000");
+        public SqlSessionAdditionalInfo() : base("SqlSessionAdditionalInfo", ENV.Data.DataProvider.ConnectionManager.GetNoTransactionSQLDataProvider( Shared.DataSources.Northwind.Name))
+        {
+            
+        }
+    } </code></pre>
+<h3 id="handler-in-application">handler in application</h3>
+<pre data-line="" class="language-csdiff line-numbers"><code>var lastScreenName = "";
+            var tableExists = false;
+            Number currentSsessionId = null;
+            Handlers.Add(Command.CreateTimer(5)).Invokes += e =&gt;
+            {
+
+                var screenName = "Application";
+                if (ENV.UI.Form.ActiveForm != null)
+                    screenName = ENV.UI.Form.ActiveForm.Text;
+                if (screenName == lastScreenName)
+                    return; //we only want to update the session info if it has changed. If the user is on the screen for a while, there is no point in sending an update every 5 seconds.
+                var sInfo = new SqlSessionAdditionalInfo();
+                if (!tableExists)
+                {
+                    tableExists = sInfo.Exists();
+                    if (!tableExists)
+                        Shared.DataSources.Northwind.CreateTable(sInfo);
+                    tableExists = true;
+                }
+                if (currentSsessionId == null)
+                {
+                    // get the spid if we don't already know it
+                    using (var c = Shared.DataSources.Northwind.CreateCommand())
+                    {
+                        c.CommandText = "select @@spid";
+                        currentSsessionId = Number.Cast(c.ExecuteScalar());
+                    }
+                }
+
+                sInfo.InsertIfNotFound(sInfo.Session.BindEqualTo(currentSsessionId), () =&gt;
+                {
+                    sInfo.LastUpdate.Value = System.DateTime.Now; 
+                    sInfo.OpenScreenName.Value = screenName;
+                });
+
+            }; </code></pre>
+<h3 id="no-transaction-data-provider">no transaction data provider</h3>
+<pre data-line="" class="language-csdiff line-numbers"><code>using ENV.Data;
+using ENV.Data.DataProvider;
+using ENV.Utilities;
+using Firefly.Box.Data;
+using Firefly.Box.Data.DataProvider;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ENV.Data.DataProvider
+{
+    public class NoTransactionDataProviderLite : ISQLEntityDataProvider
+    {
+        public ITransaction BeginTransaction()
+        {
+            return new DummyTransaction();
+        }
+        class DummyTransaction : ITransaction
+        {
+            public void Commit()
+            {
+
+            }
+
+            public void Rollback()
+            {
+
+            }
+        }
+        public static void Init()
+        {
+            ENV.Data.DataProvider.ConnectionManager._createNoTransactionDatabase = (origin, a, b) =&gt; {
+                return new NoTransactionDataProviderLite(origin);
+            };
+        }
+
+        ISQLEntityDataProvider _original;
+        public NoTransactionDataProviderLite(ISQLEntityDataProvider orig)
+        {
+            _original = orig;
+        }
+
+        public bool IsOracle =&gt; _original.IsOracle;
+
+        public bool AutoCreateTables { get =&gt; _original.AutoCreateTables; set =&gt; _original.AutoCreateTables = value; }
+
+        public bool SupportsTransactions =&gt; _original.SupportsTransactions;
+
+        public bool RequiresTransactionForLocking =&gt; _original.RequiresTransactionForLocking;
+
+
+
+        public bool Contains(Firefly.Box.Data.Entity entity)
+        {
+            return _original.Contains(entity);
+        }
+
+        public long CountRows(Firefly.Box.Data.Entity entity)
+        {
+            return _original.CountRows(entity);
+        }
+
+        public IDbCommand CreateCommand()
+        {
+            return _original.CreateCommand();
+        }
+
+        public SqlScriptTableCreator CreateScriptGeneratorTable(Firefly.Box.Data.Entity entity)
+        {
+            return _original.CreateScriptGeneratorTable(entity);
+        }
+
+        public void Dispose()
+        {
+            _original.Dispose();
+        }
+
+        public void Drop(Firefly.Box.Data.Entity entity)
+        {
+            _original.Drop(entity);
+        }
+
+        public IValueLoader GetDataReaderValueLoader(IDataReader reader, int columnIndexInSelect, IDateTimeCollector dtc)
+        {
+            return _original.GetDataReaderValueLoader(reader, columnIndexInSelect, dtc);
+        }
+
+        public string GetEntityName(Firefly.Box.Data.Entity entity)
+        {
+            return _original.GetEntityName(entity);
+        }
+
+        public ISupportsGetDefinition GetSupportGetDefinition()
+        {
+            return _original.GetSupportGetDefinition();
+        }
+
+        public UserDbMethods.IUserDbMethodImplementation GetUserMethodsImplementation()
+        {
+            return _original.GetUserMethodsImplementation();
+        }
+
+        public bool IsClosed()
+        {
+            return _original.IsClosed();
+        }
+
+        public Exception ProcessException(Exception e, Firefly.Box.Data.Entity entity, IDbCommand c)
+        {
+            return _original.ProcessException(e, entity, c);
+        }
+
+        public IRowsSource ProvideRowsSource(Firefly.Box.Data.Entity entity)
+        {
+            return _original.ProvideRowsSource(entity);
+        }
+
+        public void Truncate(Firefly.Box.Data.Entity entity)
+        {
+            _original.Truncate(entity);
+        }
+    }
+} </code></pre>
+
+
+                <br />
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/50-Transactions-and-locking/25-Monitoring Row Locking in SQL Server/index.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'monitoring-row-locking-in-sql-server.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>
