@@ -5,6 +5,6 @@
 3.	Save changes to Git.
 4.  Build and test.
 4.  Change the new F5 handler to use **Var**.
-5.  Add BindEnabled limit the handler to be enabled only if RegionID is equal to one.  
+5.  Add BindEnabled limit the handler to be enabled only if Cars Km is more then 1000 KM.  
 6.  Save changes to Git.
 8.  Build and test.
