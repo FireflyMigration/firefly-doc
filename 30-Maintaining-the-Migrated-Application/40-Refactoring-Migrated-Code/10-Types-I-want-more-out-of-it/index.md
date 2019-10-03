@@ -26,7 +26,10 @@ namespace Northwind.Types
 
 So the question is how to get more out of it ?
 
+## Using the type to get the description
 Since the type is a class we can add more code to it. The first thing we can do is add a method that will return relevant information like the product name.  
+
+We'll apply the refactoring specified in [Refactoring the Relation to the Type Class](refactoring-the-relation-to-the-type-class.html)
 Using this method here will save the developer the need to use a Relation in the programs.
 So now the code will look like that :
 
@@ -62,6 +65,8 @@ Now, whenever this type is used, there is no need to add a Relation to the Produ
 
 As you can see the column wizard recognizes not only the column itself, but also its public methods, such as the GetProductName, and allows you to use it.
 
+
+## Getting more than one column with GetValue
 But now what will I do if I need more than just the product name ?  
 What if I need two or more columns from the Products model ?  
 The first option looks like more of the same, meaning:  
@@ -97,6 +102,8 @@ namespace Northwind.Types
     }
 }
 ```
+
+## Reducing the number of calls to the database
 The problem is that now we will have two queries going to the database:
 ![](using_profiler.png)
 So we need to improve our code,  we need one SQL query that will return more than one column a time. To do so we need some ground work. We need to create a new object that will store all the information we need :
@@ -216,6 +223,8 @@ namespace Northwind.Types
 This time we can see that there is only one database call:
 ![](using_profiler_1.png)
 
+
+# GetValue Implementation for Older Versions of ENV
 If you have an older version of firefly ENV (Before version 21719), your version does not support the lambda option in GetValue method. To add it to your version add and replace the current GetValue code in your ENV.Data.Entity class with the following code :
 
 ```csdiff
