@@ -1,0 +1,1 @@
+In this section we'll cover common code patters that were used in magic or in the migrated code and that can be written a lot simpler in the migrated code.
