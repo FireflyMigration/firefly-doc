@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Common migrated code patterns and how to improve on them in new code in NET</title>
+    <title>Stop using CustomCommands and Handlers for Buttons</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,18 +29,44 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-net">Common migrated code patterns and how to improve on them in new code in NET</h1>
-<p>In this section we'll cover common code patters that were used in magic or in the migrated code and that can be written a lot simpler in the migrated code.</p>
-<ul>
-<li><a href="simplify-incoming-parameters.html">Simplify Incoming Parameters</a></li>
-<li><a href="stop-using-customcommands-and-handlers-for-buttons.html">Stop using CustomCommands and Handlers for Buttons</a></li>
-<li><a href="stop-using-str.html">Stop using Str</a></li>
-<li><a href="common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-net-intro.html">Common migrated code patterns and how to improve on them in new code in NET intro</a></li>
-<li><a href="replace-inner-classes-with-entity-method.html">Replace Inner Classes With Entity Method</a></li>
-<li><a href="replace-notifyrowwasfound-with-rowfound-and-contains.html">Replace NotifyRowWasFound with RowFound and Contains</a></li>
-<li><a href="writing-shorter-code-using-the-businessprocess-class.html">Writing shorter code using the BusinessProcess class</a></li>
-<li><a href="refactoring-a-44-line-long-inner-class-to-one-line-or-code.html">Refactoring a 44 line long inner class to one line or code</a></li>
-</ul>
+                <div class="content"><h1 id="stop-using-customcommands-and-handlers-for-buttons">Stop using CustomCommands and Handlers for Buttons</h1>
+<p>In magic to handle a button click it was common to create a <code>CustomCommand</code> (User Action as it was called in magic)  and create a handler to handle that custom command.</p>
+<p>In new code you can simply call a method from the button click
+In the <code>Controller</code> use a Method instead of a <code>CustomCommand</code></p>
+<pre data-line="22,23,24,25,26" class="language-csdiff line-numbers"><code>
+#region CustomCommands
+internal readonly CustomCommand ExpandCust = new CustomCommand("Expand Cust");
+-internal readonly CustomCommand Print = new CustomCommand("Print");
+#endregion
+...
+void InitializeHandlers()
+{
+ ...
+-   Handlers.Add(Print).Invokes += e =&gt; 
+-   #region
+-   {
+-       // send range of this order
+-       new Print_Order().Run(Orders.OrderID);
+-       e.Handled = true;
+-   };
+-   #endregion
+    
+  ...
+}
+
+public void PrintTheOrders()
+{
+    // send range of this order
+    new Print_Order().Run(Orders.OrderID);
+} </code></pre>
+<p>And in the <code>View</code> class instead of raising the <code>CustomCommand</code> just call the <code>PrintTheOrders</code> method</p>
+<pre data-line="4" class="language-csdiff line-numbers"><code>void btnPrint_Click(object sender, ButtonClickEventArgs e)
+{
+-   e.Raise(_controller.Print);
+    _controller.PrintTheOrders();
+} </code></pre>
+<hr />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/y3Kby6rdK9E" frameborder="0" allowfullscreen></iframe>
 
 
                 <br />
@@ -48,7 +74,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/10-Common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-NET/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/10-Common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-NET/03-Stop using CustomCommands and Handlers for Buttons.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -110,7 +136,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-net.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'stop-using-customcommands-and-handlers-for-buttons.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
