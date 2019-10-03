@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="MarkParameterColumns,BindParameter,CndRange">
 
-    <title>Returning more than one value from a Method</title>
+    <title>Simplify Incoming Parameters</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,8 +29,56 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="returning-more-than-one-value-from-a-method">Returning more than one value from a Method</h1>
-<iframe width = "560" height="315" src="https://www.youtube.com/embed/vEpFQJ_lol8" frameborder="0" allowfullscreen></iframe>
+                <div class="content"><h1 id="simplify-incoming-parameters">Simplify Incoming Parameters</h1>
+<p>In the migrated code parameters are written using <code>NumberParameter</code>, <code>BindParameter</code> and <code>MarkParameterColumns</code> and other complexities that are relevant to complexities that exist in migrated code but rarely relevant for new code that you'll write.</p>
+<p>In this article we'll take a common case if filtering the orders in the <code>Print_Orders</code> controller.</p>
+<h2 id="dont-use-the-markparametercolumns-any-more">Don't use the MarkParameterColumns any more</h2>
+<p>This method is included in the migrated code to handle one specific use case that you would never use in new code.</p>
+<p>All this method does is ensure that if you'll use the <code>VarName</code> method for this column, it's name would be prefixed by the word &quot;parameter&quot; instead of the word &quot;virtual&quot;</p>
+<p>As you can see, this is useless in new code - so don't use the <code>MarkParameterColumns</code> in new code</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Columns.Add(Order_Details.UnitPrice);
+Columns.Add(Order_Details.Quantity);
+Columns.Add(Order_Details.Discount);
+
+Columns.Add(vOrderTotal);
+-MarkParameterColumns(pi_OrderID);
+#endregion </code></pre>
+<h2 id="replace-numberparameter-with-number">Replace NumberParameter with Number</h2>
+<p>Since we only use the incoming parameter called <code>ppi_OrderID</code> to filter the orders of this controller, we can replace the <code>NumberParameter</code> with a simple <code>Number</code>, move the <code>Where</code> to the <code>Run</code> method and remove the local column <code>pi_OrderID</code> entirely</p>
+<pre data-line="19,22" class="language-csdiff line-numbers"><code>...
+-#region Parameters
+-readonly Types.OrderID pi_OrderID = new Types.OrderID { Caption = "pi.Order ID" };
+-#endregion
+...
+void InitializeDataView()
+{
+    ...
+    OrderBy = Order_Details.SortByOrderID;
+    #region Column Selection
+-   Columns.Add(pi_OrderID);
+    // Range on Order if in parameters
+    Columns.Add(Order_Details.OrderID);
+    ...
+    #endregion
+}
+/// &lt;summary&gt;Print - Order(P#6)&lt;/summary&gt;
+-public void Run(NumberParameter ppi_OrderID)
+public void Run(Number ppi_OrderID)
+{
+-   BindParameter(pi_OrderID, ppi_OrderID);
+    Where.Add(CndRange(() =&gt; ppi_OrderID != 0, Order_Details.OrderID.IsEqualTo(ppi_OrderID)));
+    Execute();
+} </code></pre>
+<h2 id="replace-cndrange-with-a-simple-if">Replace CndRange with a simple if</h2>
+<pre data-line="4,5" class="language-csdiff line-numbers"><code>public void Run(Number ppi_OrderID)
+{
+-   Where.Add(CndRange(() =&gt; ppi_OrderID != 0, Order_Details.OrderID.IsEqualTo(ppi_OrderID)));
+    if (ppi_OrderID != 0)
+        Where.Add(Order_Details.OrderID.IsEqualTo(ppi_OrderID));
+    Execute();
+} </code></pre>
+<hr />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XLc_Xw_9VhE" frameborder="0" allowfullscreen></iframe>
 
 
                 <br />
@@ -38,7 +86,7 @@
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/40-Refactoring-Migrated-Code/12-Refactoring-Parameters/30-Returning-more-than-one-value-from-a-Method.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/10-Common-migrated-code-patterns-and-how-to-improve-on-them-in-new-code-in-NET/02-Simplify Incoming Parameters.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -100,7 +148,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'returning-more-than-one-value-from-a-method.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'simplify-incoming-parameters.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
