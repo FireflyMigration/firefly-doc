@@ -235,11 +235,19 @@ Handlers.Add(Command.CreateTimer(5)).Invokes += e =&gt;
 {
 
     var screenName = "Application";
-    if (ENV.UI.Form.ActiveForm != null)
-        screenName = ENV.UI.Form.ActiveForm.Text;
+    var activeControllers = Firefly.Box.Context.Current.ActiveTasks;
+    for (int i = activeControllers.Count - 1; i &gt;= 0; i--)
+    {
+        var c = activeControllers[i];
+        if (c.View != null &amp;&amp; !c.View.ChildWindow) //controller has a view and controller is not a child window
+        {
+            screenName = c.View.Text;
+            break;
+        }
+    }
     if (screenName == lastScreenName)
         return; //we only want to update the session info if it has changed. If the user is on the screen for a while, there is no point in sending an update every 5 seconds.
-    lastHash = key.GetHashCode();
+    lastScreenName= screenName;
     var sInfo = new SqlSessionAdditionalInfo();
     if (!tableExists)
     {
