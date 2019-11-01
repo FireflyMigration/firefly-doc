@@ -16,7 +16,11 @@ This will rise the following questions :
 
 1. I have code column that is unique - why not use this column ?
 
-Two reasons:
+Several reasons:
+
+**Sorting of rows **
+
+When using a UIController, the OrderBy has to be unique - the reason for that is that we need to find the next rows and previous rows - and without a unique index we'll get the same rows again. So - if the index is not unique, the UIController will automatically add the PrimaryKeyColumns of the Entity to the order by. So if'll you'll order by Name, it'll order by Name, rowid__.So - if your database index columns will not match the order by that the UIController is using - there is a less chance that the database will use that index, and more chance that it'll decide to do a full table scan - resulting with poorer performance.
 
 **Row was lost**
 
