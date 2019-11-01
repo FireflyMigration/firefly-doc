@@ -235,26 +235,36 @@ public class SqlSessionAdditionalInfo : Entity
 
 In the `ApplicationCore` class add the following handler
 ```csdiff
-var lastScreenName = "";
+var lastKkey = "";
 var tableExists = false;
 Number currentSsessionId = null;
 Handlers.Add(Command.CreateTimer(5)).Invokes += e =>
 {
 
     var screenName = "Application";
-    var activeControllers = Firefly.Box.Context.Current.ActiveTasks;
-    for (int i = activeControllers.Count - 1; i >= 0; i--)
+    ITask controller = null;
+    ITask controllerThatOpenedTheTransaction = null;
+
+    foreach (var c in Context.Current.ActiveTasks)
     {
-        var c = activeControllers[i];
-        if (c.View != null && !c.View.ChildWindow) //controller has a view and controller is not a child window
-        {
+        if (c.View != null && !c.View.ChildWindow)
             screenName = c.View.Text;
-            break;
-        }
+        controller = c;
+        if (controllerThatOpenedTheTransaction == null && c.InTransaction)
+            controllerThatOpenedTheTransaction = c;
     }
-    if (screenName == lastScreenName)
+    var controllerName = "";
+    var transactionControllerName = "";
+    if (controller!=null)
+        //note that you'll need to change the SendInstanceBasedOnTaskAndCallStack method to public :)
+        ControllerBase.SendInstanceBasedOnTaskAndCallStack(controller, c => controllerName = c.GetType().FullName);
+    if (controllerThatOpenedTheTransaction!=null)
+        ControllerBase.SendInstanceBasedOnTaskAndCallStack(controllerThatOpenedTheTransaction, c => transactionControllerName = c.GetType().FullName);
+
+    var key = controllerName + screenName + controllerThatOpenedTheTransaction;
+    if (key == lastKkey)
         return; //we only want to update the session info if it has changed. If the user is on the screen for a while, there is no point in sending an update every 5 seconds.
-    lastScreenName= screenName;
+    lastKkey = key;
     var sInfo = new SqlSessionAdditionalInfo();
     if (!tableExists)
     {
@@ -275,10 +285,11 @@ Handlers.Add(Command.CreateTimer(5)).Invokes += e =>
 
     sInfo.InsertIfNotFound(sInfo.Session.BindEqualTo(currentSsessionId), () =>
     {
-        sInfo.LastUpdate.Value = System.DateTime.Now; 
-        sInfo.OpenScreenName.Value = screenName;
+        sInfo.LastUpdate.Value = System.DateTime.Now;
+        sInfo.Screen.Value = screenName;
+        sInfo.Controller.Value = controllerName;
+        sInfo.ControllerThatOpenedTheTransaction.Value = transactionControllerName;
     });
-
 };
 ```
 
