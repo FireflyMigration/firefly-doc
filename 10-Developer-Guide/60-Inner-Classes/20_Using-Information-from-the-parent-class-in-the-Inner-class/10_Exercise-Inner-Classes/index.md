@@ -7,7 +7,7 @@
 3. Build and add the two columns to the grid in the form.
 4. Save changes to Git.
 5. Build and test.
-5. Add a new inner class ,use **contr** snippet, remember to tab after update every item in the snippet.
+5. Add a new inner class ,use **contrp** snippet, remember to tab after update every item in the snippet.
    1. Name = **GetCarsInfo**.
    2. Inherit from **BusinessProcessBase**.
    3. **parent**  = name of the parent class **ShowEmployees**.
