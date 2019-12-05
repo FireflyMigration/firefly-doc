@@ -4,7 +4,7 @@
 
 1.	In **ShowProducts**, add a new **TotalUnits method** inside the **expressions region**.
 2.  The **TotalUnits** method will :
-    1.  Need to be **public**.
+    1.  Need to be **internal**.
     2.  Return a **Number** as the return value.
     3.  Calculate the total number of units in **stock** and **on order**.
 3. Save changes to Git.
