@@ -10,4 +10,4 @@ This document explains how to run an automatic migration using Firefly’s FTP s
 6. A second email will be sent, informing that the migration process has completed successfully with statistics about the converted application.
 7. The new version and error report will be found in the AutomaticMigration\MigrationResult folder, on the FTP server.
 8. In case you want to migrate to an older version of Firefly, you may do so by changing the "Start.Done" to "Start.[version number]" (E.g "Start.26175"). The Firefly version can be found by Right Clicking on Firefly.Box.dll -> "Details" TAB
-> In some cases you may be instructed by firefly to run a migration on a temporary branch to test a specific fix - in that case, use `Start.branch-[branchName]` for example `start.branch-hotfix`
+> In some cases you may be instructed by Firefly to run a migration on a temporary branch to test a specific fix - in that case, use `Start.branch-[branchName]` for example `start.branch-hotfix`
