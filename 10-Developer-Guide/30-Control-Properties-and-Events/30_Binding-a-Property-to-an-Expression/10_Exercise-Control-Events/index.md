@@ -1,4 +1,4 @@
-﻿# Exercise - Control Properties and code navigation
+﻿# Exercise - Control Events
 
 1. Close all open tabs in visual studio. (right click on one of the tabs and select close all documents). 
 2. Open **ShowProducts** controller.
