@@ -15,7 +15,7 @@
 6. **Build** the **Base Project**.
 7. Open the **ShowProducts**.
 8. Use **Class Outline** and navigate to the **view**.
-9. Right Click the ToolBoox and **Add Tab** name it **My controls**.
+9. Right Click the ToolBox and **Add Tab** name it **My controls**.
 10. Right click anywhere on the **form** (**Do not** Right click a control like the grid on the form) and select **Add Controls To Toolbox**.
 11. Navigate to the **bin folder** of your solution and select the **NorthwindBase.dll**.
 12. In the new windows that open navigate to **Northwind.Shared.Them.Controls** and expend it.
