@@ -1,10 +1,11 @@
 ﻿# Exercise - BindEnables
 
 1.  In  **ShowEmployee**.
-2.  Using the **hand** snippet, add handler for the F5 key that will displays the **ShowEmployeeCars**.
-3.	Save changes to Git.
-4.  Build and test.
-4.  Change the new F5 handler to use **Var**.
-5.  Add BindEnabled limit the handler to be enabled only if Cars Km is more then 1000 KM.  
-6.  Save changes to Git.
-8.  Build and test.
+2.  Add Relations to **EmployeeCars**.
+3.  Using the **hand** snippet, add handler for the F5 key that will displays the **ShowEmployeeCars**.
+4.	Save changes to Git.
+5.  Build and test.
+6.  Change the new F5 handler to use **Var**.
+7.  Add BindEnabled limit the handler to be enabled only if the **EmployeeCars** relation found one car for the current employee (relations[Employee].RowFound).  
+8.  Save changes to Git.
+9.  Build and test.
