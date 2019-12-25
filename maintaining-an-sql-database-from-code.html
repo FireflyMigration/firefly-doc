@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="AutoCreate, Alter table, Iterate entities,iterate all entities">
+
+    <title>Maintaining an SQL database from code</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="maintaining-an-sql-database-from-code">Maintaining an SQL database from code</h1>
+<p>In our code, we have the definitions of the entities we need in our SQL database, why not have the code create these tables for us.</p>
+<p>There are several options to do that.</p>
+<h2 id="autocreate">AutoCreate</h2>
+<p>By setting the <code>AutoCreate</code> property to true, in our entities, in every controller, before we access an this <code>Entity</code>, the code will first check if it exists, and if not it'll create it.</p>
+<p>It'll also create any index that exists in this entity, for which the <code>AutoCreate</code> property of the index is set to true.</p>
+<p>This works exactly as it did in the original application, but it has a performance cost of checking that the table exists, many many times.</p>
+<h2 id="creating-the-table-ourselves">Creating the table ourselves</h2>
+<p>We can easily call the code that creates the table, by using the <code>CreateTable</code> method of the database.</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>Shared.DataSources.Northwind.CreateTable(new Models.Orders()); </code></pre>
+<p>We can also check first if the table exists, and only create it in that case:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>var o = new Models.Orders();
+if (!o.Exists())
+    Shared.DataSources.Northwind.CreateTable(o); </code></pre>
+<h2 id="adding-a-column-to-an-existing-table">Adding a column to an existing table</h2>
+<p>Many times during our development we are adding columns, and we need to apply this change to the sql database we use.
+For that we have the <code>AddColumn</code> method if the <code>EntityScriptGenerator</code> class</p>
+<blockquote>
+<p>if you have an older version of ENV, you can see the changes we've done to add this method at: <a href="https://gist.github.com/noam-honig/a30723a99dda4f20a91527026f3e5f50">Files after change</a> or <a href="https://gist.github.com/noam-honig/a30723a99dda4f20a91527026f3e5f50/revisions">View changes</a>
+We've only made minor changes to <code>GetDefintion.cs</code> and a several more changes to the <code>SqlScriptGenerator.cs</code> file.</p>
+</blockquote>
+<pre data-line="" class="language-csdiff line-numbers"><code>EntityScriptGenerator.AddColumn(new Models.Orders().Freight); </code></pre>
+<h2 id="a-list-of-similar-useful-methods">A list of similar useful methods</h2>
+<ul>
+<li>AddColumn - Executes an Alter Table script</li>
+<li>AddColumnIfNotFound - Executes an Alter Table script only if the column does not exist</li>
+<li>AddIndex - Adds an index to a table</li>
+<li>AddIndexIfNotFound - Adds an index, only if the index does not exist.</li>
+</ul>
+<h2 id="verifyentitystructure">VerifyEntityStructure</h2>
+<p>The <code>VerifyEntityStructure</code> method checks if an Entity exist.</p>
+<ul>
+<li>If it doesn't exist it creates it.</li>
+<li>If the Entity exists, it'll check for each column and index if it exists and if not, it'll add it to.</li>
+</ul>
+<p>This method makes sure that the database structure matches the Entity.</p>
+<p>Here's how to use it:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>EntityScriptGenerator.VerifyEntityStructure(new Models.Orders()); </code></pre>
+<h2 id="iterating-all-the-entities-in-our-applicationentities-class">Iterating all the Entities in our ApplicationEntities class:</h2>
+<pre data-line="" class="language-csdiff line-numbers"><code>foreach (var item in Application.Instance.AllEntities._entities)
+{
+    ENV.Data.Entity e = null;
+    try
+    {
+        e = System.Activator.CreateInstance(item.Value) as ENV.Data.Entity;
+    }
+    catch { }
+    if (e != null &amp;&amp; e.DataProvider is DynamicSQLSupportingDataProvider)
+    {
+        EntityScriptGenerator.VerifyEntityStructure(e);
+    }
+} </code></pre>
+<h2 id="iterating-all-entity-in-all-our-assemblies">Iterating all Entity in all our Assemblies</h2>
+<pre data-line="" class="language-csdiff line-numbers"><code>void DoOnAssembly(System.Reflection.Assembly ass)
+{
+    foreach (var item in ass.GetTypes())
+    {
+                        
+        if (typeof(ENV.Data.Entity).IsAssignableFrom(item))
+        {
+            ENV.Data.Entity e = null;
+            try
+            {
+                e = System.Activator.CreateInstance(item) as ENV.Data.Entity;
+            }
+            catch { }
+            if (e != null &amp;&amp; e.DataProvider is DynamicSQLSupportingDataProvider)
+            {
+                EntityScriptGenerator.VerifyEntityStructure(e);
+            }
+        }
+    }
+    foreach (var reference in ass.GetReferencedAssemblies())
+    {
+        System.Reflection.Assembly a;
+        try
+        {
+            if (reference.Name.StartsWith("ENV") || reference.Name.StartsWith("Firefly.") || reference.Name.StartsWith("System."))
+                continue;
+            a = System.Reflection.Assembly.Load(reference);
+        }
+        catch
+        {
+            continue;
+        }
+        DoOnAssembly(a);
+    }
+}
+DoOnAssembly(System.Reflection.Assembly.GetEntryAssembly()); </code></pre>
+
+
+                <br />
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/Maintaining-an-SQL-database-from-code.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'maintaining-an-sql-database-from-code.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>

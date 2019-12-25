@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="version update,DatabaseUpgradeBase">
+
+    <title>Upgrading an SQL Database from code</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="upgrading-an-sql-database-from-code">Upgrading an SQL Database from code</h1>
+<p>Often, when we deploy a new version to our customers, we need also to update the database with all the changes that we've made to it, either add columns etc...
+Many times we try to do that by running many scripts, and that can get messy as it progresses.</p>
+<p>The <code>DatabaseUpgradeBase</code> class is designed to create and manage a clear database Upgrade path.</p>
+<p>Let's see how it's used.</p>
+<p>First we'll add a new class to our project, and call it <code>DatabaseUpgrade</code></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>using ENV.Utilities;
+using Northwind.Shared;
+
+namespace Northwind
+{
+   class DatabaseUpgrade:DatabaseUpgradeBase
+    {
+        public DatabaseUpgrade():base(DataSources.Northwind)
+        {
+        }
+        protected override void BuildSteps()
+        {
+            
+        }
+    }
+} </code></pre>
+<p>Next we can steps to the Upgrade process, each step will a number and the Business Logic we want it to run.</p>
+<pre data-line="3" class="language-csdiff line-numbers"><code>protected override void BuildSteps()
+{
+    Step(1, () =&gt; DataSources.Northwind.CreateTable(new Models.Products()));    
+} </code></pre>
+<p>For example, this step creates the <code>Products</code> entity in the database.</p>
+<ul>
+<li>Each step requires a unique consecutive number (1,2,3...34,35 etc...)</li>
+<li>We can also add a description for that step as the 3rd parameter.</li>
+</ul>
+<p>We can also run normal logic, not just database logic, for example:</p>
+<pre data-line="4,5,6,7,8,9,10,11,12" class="language-csdiff line-numbers"><code>protected override void BuildSteps()
+{
+    Step(1, () =&gt; DataSources.Northwind.CreateTable(new Models.Products()));
+    Step(2, () =&gt;
+    {
+        var p = new Models.Products();
+        p.Insert(() =&gt;
+        {
+            p.ProductID.Value = 1;
+            p.ProductName.Value = "Default Product";
+        });
+    });
+} </code></pre>
+<p>This step - will insert a new row to the products table.</p>
+<p>Here's another example:</p>
+<pre data-line="13,14,15,16,17,18,19,20" class="language-csdiff line-numbers"><code>protected override void BuildSteps()
+{
+    Step(1, () =&gt; DataSources.Northwind.CreateTable(new Models.Products()));
+    Step(2, () =&gt;
+    {
+        var p = new Models.Products();
+        p.Insert(() =&gt;
+        {
+            p.ProductID.Value = 1;
+            p.ProductName.Value = "Default Product";
+        });
+    });
+    Step(3, () =&gt;
+    {
+        var p = new Models.Products();
+        p.ForEachRow(() =&gt;
+        {
+            p.UnitPrice.Value *= 2;
+        });
+    });
+} </code></pre>
+<p>In step 3 we duplicate all unit prices.</p>
+<p>We recommend that you'll review the <a href="maintaining-an-sql-database-from-code.html">Maintaining an SQL database from code</a> to see ways for automatically generating the sql scripts you need to add tables, columns etc...</p>
+<h2 id="how-do-we-run-it">How do we run it?</h2>
+<pre data-line="" class="language-csdiff line-numbers"><code>new DatabaseUpgrade().Run(); </code></pre>
+<h2 id="how-does-it-work">How does it work?</h2>
+<ul>
+<li>It keeps a table in the database with the last step that was successful</li>
+<li>It compares the database last successful step with the steps in the code, and runs each step that was not yet successful</li>
+<li>If a step fails, it'll throw an exception.</li>
+</ul>
+<blockquote>
+<p>If you are running an older version of ENV and want the code for <code>DatabaseUpgrade.cs</code> you can <a href="https://gist.github.com/noam-honig/ca5f841206c8ce082f1e75871e893c2a">download it here</a></p>
+</blockquote>
+
+
+                <br />
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/Upgrading-an-SQL-Database-from-code.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'upgrading-an-sql-database-from-code.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>
