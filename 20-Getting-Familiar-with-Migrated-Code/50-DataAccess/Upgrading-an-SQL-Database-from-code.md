@@ -26,7 +26,7 @@ namespace Northwind
     }
 }
 ```
-Next we can steps to the Upgrade process, each step will a number and the Business Logic we want it to run.
+Next we can add steps to the Upgrade process, each step will be a number and the Business Logic we want it to run.
 ```csdiff
 protected override void BuildSteps()
 {
