@@ -26,7 +26,7 @@ if (!o.Exists())
 
 ## Adding a column to an existing table
 Many times during our development we are adding columns, and we need to apply this change to the sql database we use.
-For that we have the `AddColumn` method if the `EntityScriptGenerator` class
+For that we have the `AddColumn` method in the `EntityScriptGenerator` class
 > if you have an older version of ENV, you can see the changes we've done to add this method at: [Files after change](https://gist.github.com/noam-honig/a30723a99dda4f20a91527026f3e5f50) or [View changes](https://gist.github.com/noam-honig/a30723a99dda4f20a91527026f3e5f50/revisions)
 > We've only made minor changes to `GetDefintion.cs` and a several more changes to the `SqlScriptGenerator.cs` file.
 
