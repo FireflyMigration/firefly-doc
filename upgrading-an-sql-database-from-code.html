@@ -51,7 +51,7 @@ namespace Northwind
         }
     }
 } </code></pre>
-<p>Next we can steps to the Upgrade process, each step will a number and the Business Logic we want it to run.</p>
+<p>Next we can add steps to the Upgrade process, each step will be a number and the Business Logic we want it to run.</p>
 <pre data-line="3" class="language-csdiff line-numbers"><code>protected override void BuildSteps()
 {
     Step(1, () =&gt; DataSources.Northwind.CreateTable(new Models.Products()));    
