@@ -45,7 +45,7 @@ if (!o.Exists())
     Shared.DataSources.Northwind.CreateTable(o); </code></pre>
 <h2 id="adding-a-column-to-an-existing-table">Adding a column to an existing table</h2>
 <p>Many times during our development we are adding columns, and we need to apply this change to the sql database we use.
-For that we have the <code>AddColumn</code> method if the <code>EntityScriptGenerator</code> class</p>
+For that we have the <code>AddColumn</code> method in the <code>EntityScriptGenerator</code> class</p>
 <blockquote>
 <p>if you have an older version of ENV, you can see the changes we've done to add this method at: <a href="https://gist.github.com/noam-honig/a30723a99dda4f20a91527026f3e5f50">Files after change</a> or <a href="https://gist.github.com/noam-honig/a30723a99dda4f20a91527026f3e5f50/revisions">View changes</a>
 We've only made minor changes to <code>GetDefintion.cs</code> and a several more changes to the <code>SqlScriptGenerator.cs</code> file.</p>
