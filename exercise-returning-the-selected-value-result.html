@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="import users, usr_std, mgusrdmp">
+    <meta name="keywords" content="">
 
-    <title>Import Security file</title>
+    <title>Exercise - Returning The Selected Value result</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,26 +29,37 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="import-security-file">Import Security file</h1>
-<p>In order to import the security file of Magic (usr_std) into the migrated .NET application you first need to export it from uniPaaS/XPA using a utility
-provided by Magic Software called <strong>MgUsrDmp.exe</strong> which is located in the Magic engine folder.<br />
-This utility exports all the users (without passwords) and rights to an XML file.</p>
-<ol>
-<li>Make sure you know the SUPERVISOR password</li>
-<li>If the user file is from v9 or below, you first need to convert it to uniPaaS/XPA using the utility called <strong>userupd.exe</strong> located in the engine folder.</li>
-<li>Once the file is converted, run:
-<blockquote>
-<p>MgUsrDmp.exe /p=supervisorPassword /n=inputFile /o=outputFile</p>
-</blockquote>
-</li>
-</ol>
-<p>In the .NET application open the Users screen (Options-&gt;Users*), click the Import button and select the XML that was created.<br />
-Notice that .NET imports the users and rights into a file called &quot;security&quot; which is located in the bin folder.</p>
-<p><img src="Users.png" alt="Users" /></p>
-<p>For future migrations, upload the .NET security file to the AutomaticMigration folder in the FTP.</p>
-<ul>
-<li>In case you do not see the Users menu please refer to: <a href="http://doc.fireflymigration.com/access-developer-tools-and-users-management-menu.html">http://doc.fireflymigration.com/access-developer-tools-and-users-management-menu.html</a></li>
-</ul>
+                <div class="content"><h1 id="exercise-returning-the-selected-value-result">Exercise - Returning The Selected Value result</h1>
+<p>Your <strong>ShowOrdersWithEmployeeSelection</strong> view class should look like :</p>
+<pre data-line="24,25,26,27" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using Firefly.Box;
+using Firefly.Box.UI.Advanced;
+using ENV;
+using ENV.Data;
+
+namespace Northwind.Exercises.SelectionList.Views
+{
+    partial class ShowOrdersWithEmployeeSelectionView : Shared.Theme.Controls.Form
+    {
+        ShowOrdersWithEmployeeSelection _controller;
+        public ShowOrdersWithEmployeeSelectionView(ShowOrdersWithEmployeeSelection controller)
+        {
+            _controller = controller;
+            InitializeComponent();
+        }
+
+        private void txtCustomerID_Expand()
+        {
+            new SelectCustomers().Run(_controller.Orders.CustomerID);
+        }
+    }
+} </code></pre>
 
 
                 <br />
@@ -56,7 +67,7 @@ Notice that .NET imports the users and rights into a file called &quot;security&
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/20-Alpha-Testing/20-Embedded Support Tools/01-Developer Tools/02-Import-Security-file/01-index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/88-Selection-Lists/70-Using-the-Expand-event-to-call-the-SelectShipper-Controller/10-Exercise-Using-the-Expand-event/01-Exercise-Returning The Selected Value result.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -118,7 +129,7 @@ Notice that .NET imports the users and rights into a file called &quot;security&
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'import-security-file.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'exercise-returning-the-selected-value-result.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

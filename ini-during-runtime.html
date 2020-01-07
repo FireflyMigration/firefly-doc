@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
-    <meta name="keywords" content="import users, usr_std, mgusrdmp">
+    <meta name="keywords" content="magic.ini, ini , configuration file">
 
-    <title>Import Security file</title>
+    <title>INI during runtime</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -29,26 +29,25 @@
                     <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
                     <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
                 </div>
-                <div class="content"><h1 id="import-security-file">Import Security file</h1>
-<p>In order to import the security file of Magic (usr_std) into the migrated .NET application you first need to export it from uniPaaS/XPA using a utility
-provided by Magic Software called <strong>MgUsrDmp.exe</strong> which is located in the Magic engine folder.<br />
-This utility exports all the users (without passwords) and rights to an XML file.</p>
-<ol>
-<li>Make sure you know the SUPERVISOR password</li>
-<li>If the user file is from v9 or below, you first need to convert it to uniPaaS/XPA using the utility called <strong>userupd.exe</strong> located in the engine folder.</li>
-<li>Once the file is converted, run:
-<blockquote>
-<p>MgUsrDmp.exe /p=supervisorPassword /n=inputFile /o=outputFile</p>
-</blockquote>
-</li>
-</ol>
-<p>In the .NET application open the Users screen (Options-&gt;Users*), click the Import button and select the XML that was created.<br />
-Notice that .NET imports the users and rights into a file called &quot;security&quot; which is located in the bin folder.</p>
-<p><img src="Users.png" alt="Users" /></p>
-<p>For future migrations, upload the .NET security file to the AutomaticMigration folder in the FTP.</p>
-<ul>
-<li>In case you do not see the Users menu please refer to: <a href="http://doc.fireflymigration.com/access-developer-tools-and-users-management-menu.html">http://doc.fireflymigration.com/access-developer-tools-and-users-management-menu.html</a></li>
-</ul>
+                <div class="content"><h1 id="ini-during-runtime">INI during runtime</h1>
+<p>Many customers after the migration to .NET want to remove unnecessary entries from the ini file - and we are commonly asked how to do so, so here are our recommendation on the matter.</p>
+<h3 id="test-using-the-same-ini-you-use-today-in-magic">Test using the same ini you use today in magic</h3>
+<p>When you are testing and even deploying to Beta - we recommend that you test using the same ini that you use today in magic - this prevents all sorts of problems and issues.</p>
+<p>Many times we had issues that were very hard to investigate only to find out that the root cause was that the customer used a different ini file between the magic environment and the migrated .NET application.</p>
+<h3 id="move-ini-entries-to-code">Move ini entries to code</h3>
+<p>We recommend that you wait for the ini cleanup, until the point where you start making changes in the .NET code.
+There are many entries in the ini that shouldn't be there - and the fact that they are currently in the ini, and a user can change them can cause serious risk to the application.
+Imagine if one of your customers changes the <code>AllowUpdateInQuery</code> ini entry - it would change the way your application operates and locks rows in ways that are very hard to track.</p>
+<h3 id="finding-out-which-entries-are-in-use">Finding out which entries are in use</h3>
+<p>In the Developer tools\User Settings menu there is a very useful tool that shows all the entries in the ini, including their Section, name, value, translated value and if they've been used by the application so far.</p>
+<p>The used column will display true for entries that were readen by the application so far, and false for any other entry.</p>
+<p><strong>Developer tools\User Settings menu</strong></p>
+<p><img src="2019-01-03_08h19_11.png" alt="2019 01 03 08H19 11" /></p>
+<p><strong>User Settings Screen</strong></p>
+<p><img src="2019-01-03_08h20_13.png" alt="2019 01 03 08H20 13" /></p>
+<h3 id="the-usersettings-class">The UserSettings class</h3>
+<p>The code that is responsible to reading the ini is in a class called <code>UserSettings</code> in the <code>ENV</code> project. In it there is a switch statement that reads reads the ini entries and maps them to properties and behaviours in the code.</p>
+<p><img src="2019-01-03_08h15_55.png" alt="2019 01 03 08H15 55" /></p>
 
 
                 <br />
@@ -56,7 +55,7 @@ Notice that .NET imports the users and rights into a file called &quot;security&
 
                         <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/20-Alpha-Testing/20-Embedded Support Tools/01-Developer Tools/02-Import-Security-file/01-index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/20-Alpha-Testing/20-Embedded Support Tools/05-INI during runtime/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -118,7 +117,7 @@ Notice that .NET imports the users and rights into a file called &quot;security&
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'import-security-file.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'ini-during-runtime.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
