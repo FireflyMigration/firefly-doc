@@ -1,4 +1,4 @@
-﻿Go to the `dataApi` help page and copy the TypeScript interfaces and classes for each api into the `src/app/models.ts` file.
+﻿Go to the `dataApi` help page and copy from the **TypeScript radweb tab** the classes for each api into the `src/app/models.ts` file.
 * Do it for all the apis we need, `orders`, `orderDetails`, `customers`, `shippers` and `products`
 
 ![2017 10 13 08H19 37](../2017-10-13_08h19_37.gif)
