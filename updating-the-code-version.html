@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="version update,build,version,assemblyinfo">
+
+    <title>Version Update</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper">
+
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content" role="navigation" aria-label="footer navigation">
+                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
+                </div>
+                <div class="content"><h1 id="version-update">Version Update</h1>
+<p>This utility updates all your <code>AssemblyInfo.cs</code> files.<br></p>
+<p>You can use it to automatically increment the build number (the third part of the version number)</p>
+<p>Before:</p>
+<pre><code class="language-cs">[assembly: AssemblyVersion(&quot;4.6.0.32096&quot;)]
+[assembly: AssemblyFileVersion(&quot;4.6.0.32096&quot;)]
+</code></pre>
+<p>Command:</p>
+<pre><code>VersionUpdate.exe
+</code></pre>
+<p>After</p>
+<pre><code class="language-cs">[assembly: AssemblyVersion(&quot;4.6.1.32096&quot;)]
+[assembly: AssemblyFileVersion(&quot;4.6.1.32096&quot;)]
+</code></pre>
+<p><strong>note that the third part of the version was changed from 0 to 1</strong></p>
+<h2 id="update-the-full-version-number">Update the full version number</h2>
+<p>Before:</p>
+<pre><code class="language-cs">[assembly: AssemblyVersion(&quot;4.6.0.32096&quot;)]
+[assembly: AssemblyFileVersion(&quot;4.6.0.32096&quot;)]
+</code></pre>
+<p>Command:</p>
+<pre><code>VersionUpdate.exe version=1.2.3.4
+</code></pre>
+<p>After</p>
+<pre><code class="language-cs">[assembly: AssemblyVersion(&quot;1.2.3.4&quot;)]
+[assembly: AssemblyFileVersion(&quot;1.2.3.4&quot;)]
+</code></pre>
+<h2 id="command-line-arguments">Command line arguments</h2>
+<p>You can provide this utility with two command line arguments:</p>
+<ol>
+<li>Path - the path of the folder to search in - by default the current directory is used.</li>
+<li>Version - the version to set in the <code>AssemblyInfo.cs</code> - if no version is specified it'll increment the build number.</li>
+</ol>
+<p>For example:</p>
+<p><code>VersionUpdate.exe path=d:\northwind\dotnet version=4.6.1.32099</code></p>
+<h2 id="what-is-it-good-for">What is it good for?</h2>
+<p>It helps align the source code and the built dlls and exe files.
+When you build your code, this version is embedded to the file, and can be viewed in its <code>properties</code> tab.
+We recommend that before you run <code>buildRelease.bat</code> you'll use this utility to update the version for your source code, and commit to the version control tool.</p>
+<p>Later when you'll want to find the source code for a specific version, you'll be able to trace back from the properties tab of the dll to the actual commit that it was built on.</p>
+<h2 id="section"></h2>
+<p>Download the utility:
+<a href="VersionUpdate.zip">VersionUpdate.zip</a></p>
+
+
+                <br />
+                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
+
+                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/65-Updating-the-code-version/index.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        <img src="assets/img/logo-big.png">
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'updating-the-code-version.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>
