@@ -29,7 +29,9 @@ namespace Northwind.Exercises
         {
             Where.Add(Orders.ShipVia.IsEqualTo(pShipperID));
             Execute();
-            pTotalOrders.Value = _numberOfOrders;
++           if (pTotalOrders != null)
+                pTotalOrders.Value = _numberOfOrders;
++           if (pTotalFreightValue != null)
             pTotalFreightValue.Value = _totalValue;
         }
         protected override void OnLeaveRow()
