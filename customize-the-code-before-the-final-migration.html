@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="customize, custom, code, final, migration, program, name, table, number, prefix">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="customize-the-code-before-the-final-migration">Customize the code before the final migration</h1>
 <p>Just before you are about the perform the final migration of your code and switch to .Net, we can offer you some additional<br />
 options that will allow you to fine-tune your code, adjust it to suit your needs.</p>
@@ -76,10 +85,7 @@ This is how it will look after the change:</p>
 <p>This is just one example. As you can see there are various ways to influence the way the migrated code will look - we encourage you to consider these type of changes. Enjoy :)</p>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/70-Customize-the-code-before-the-final-migration/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
@@ -97,7 +103,7 @@ This is how it will look after the change:</p>
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

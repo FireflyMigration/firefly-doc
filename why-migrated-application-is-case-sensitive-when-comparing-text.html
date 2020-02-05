@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="the-scenario">The Scenario</h1>
 <p>We filter data by text and suddenly no rows are displayed. Surprisingly, when we run the same SQL directly on the database, it returns a lot or rows that match the filter criteria.
 Further more, if we use the correct casing for the filter (i.e London), the application will happily display these rows.
@@ -56,10 +65,7 @@ Before the change, the application is case sensitive so:
 <img src="2017-09-04_17h58_46.png" alt="2017 09 04 17H58 46" /></p>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/70-Why-Migrated-Application-is-Case-Sensitive-when-Comparing-Text/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
@@ -77,7 +83,7 @@ Before the change, the application is case sensitive so:
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

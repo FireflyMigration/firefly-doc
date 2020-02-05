@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="standalone-license">Standalone license</h1>
 <p>Visual Studio is the best IDE for .NET development. Usually, when starting developing in .NET, most developers choose the free <strong>Community</strong> edition. This edition is very much similar to the <strong>Professional</strong> edition and is sufficient for maintaining the migrated application.<br />
 However, the <strong>Community</strong> edition has some limitations in features as well as in its license-terms. It is more suitable for small organization of up to 5 developers. You can read the full license terms here. <a href="https://www.visualstudio.com/license-terms/mlt553321/">https://www.visualstudio.com/license-terms/mlt553321/</a></p>
@@ -42,10 +51,7 @@ The price for this partnership is very cheap for what you get. Currently, it's a
 To become a Microsoft partner go to this page: <a href="https://partner.microsoft.com/en-us/membership/how-it-works">https://partner.microsoft.com/en-us/membership/how-it-works</a></p>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//50-Technologies/20-Visual-Studio/30-Which-Visual-Studio-to-Choose/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
@@ -63,7 +69,7 @@ To become a Microsoft partner go to this page: <a href="https://partner.microsof
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

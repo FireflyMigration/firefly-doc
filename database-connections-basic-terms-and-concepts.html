@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
@@ -19,19 +20,26 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="database-connections-basic-terms-and-concepts">Database Connections basic terms and concepts</h1>
 <p>In this article, and the next one, I am going to take you on a journey from the old and familiar to the new and exciting. By the end of this article, we are going to understand how to setup database connections and use it in our code.</p>
-<h2 id="database-definitions-in-the-ini-as-were-defined-before-the-migration">Database definitions in the ini, as were defined before the migration</h2>
 <p>First, we are going to start with the INI file, specifically in the [MAGIC_DATABASE] section:</p>
 <pre><code>[MAGIC_DATABASES]
 Default Database = 1, , , , , , , , MagicRecordLock, ChangeFileInToolkit, +
@@ -50,29 +58,6 @@ CheckExist, 0, , NoXATrans, NoAS400SrvrSort,
 <p>21 = SQL database (as specified in the DBMS section of the INI)<br />
 Northwind = name of the database<br />
 (local)\SQLExpress = name of the database server and so on.</p>
-<h2 id="new-database-connection">New Database Connection</h2>
-<p>When creating a new database connection, you can still use that ini setting, but I find it combersome.</p>
-<p>Instead you can add a connection from code, here's an example:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>using ENV.Data.DataProvider;
-...
-public class Program
-{
-   public static void Init(string[] args)
-   {
-        ...
-        ConnectionManager.Shared.AddMicrosoftSQLDatabase("Northwind", "northwind", @"(local)\sqlexpress");
-   }
-} </code></pre>
-<p>The <code>AddMicrosoftSqlDatabase</code> adds a database definition to the code and receives the following paramters:</p>
-<ol>
-<li>Northwind - the name of the database that you'll use later in the <code>DataSources</code> class.</li>
-<li>The catalog (database) name on the sql server.</li>
-<li>The name of the server.</li>
-<li>optional user name.</li>
-<li>optional password.</li>
-</ol>
-<p>There is a also a similar method called <code>AddOracleDatabase</code> for oracle, and <code>AddDatabase</code> for all other databases.</p>
-<h1 id="using-these-definitions-in-the-datasources-class">Using these definitions in the DataSources class</h1>
 <p>The next step is to read the INI file – the Firefly platform is using the ENV.DATA.DataProvider.ConnectionManager.cs class to do so.<br />
 The “ConnectionManager” is responsible for opening and closing the connection with the database.</p>
 <p>Now we can use this information in the Models.DataSources.cs file :</p>
@@ -98,10 +83,7 @@ We need to setup the base connection of the entity :</p>
 <p><img src="DynamicSQLSupporingDataProvider_explain_bis.png" alt="" /></p>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/10-Database-Connections-basic-terms-and-concepts/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
@@ -119,7 +101,7 @@ We need to setup the base connection of the entity :</p>
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

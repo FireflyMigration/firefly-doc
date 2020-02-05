@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
@@ -19,21 +20,26 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="place-the-downloaded-files">Place  the Downloaded Files</h1>
-<p>Download the files from: <a href="https://github.com/FireflyMigration/ENV.Web/releases/tag/1.0.0.14">https://github.com/FireflyMigration/ENV.Web/releases/tag/1.0.0.14</a></p>
-<p><strong>make sure to unblock files</strong>
-In the file properties of the <code>ENV.Web.dll</code> and the <code>WebProjects.zip</code> files, check the &quot;Unblock&quot; checkbox if you have it.</p>
-<p><img src="2020-01-26_17h06_17.png" alt="2017 11 03 12H29 47" /></p>
+<p>Download the files from: <a href="https://github.com/FireflyMigration/ENV.Web/releases/tag/v0.0.5-pre-alpha">https://github.com/FireflyMigration/ENV.Web/releases/tag/v0.0.5-pre-alpha</a></p>
 <ol>
 <li>Place the <code>ENV.Web.dll</code> in the <code>lib</code> directory of your <code>Northwind Training</code> folder.</li>
 <li>Open the WebProjects.zip and move the two folders in it to your <code>Northwind Training</code> folder.</li>
@@ -41,10 +47,7 @@ In the file properties of the <code>ENV.Web.dll</code> and the <code>WebProjects
 <p><img src="2017-11-03_12h29_47.gif" alt="2017 11 03 12H29 47" /></p>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/20-ENV Web/10-Web Development Tutorial/02-Setup the Web Demo project code sample/01-Place  the Downloaded Files.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
@@ -62,7 +65,7 @@ In the file properties of the <code>ENV.Web.dll</code> and the <code>WebProjects
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

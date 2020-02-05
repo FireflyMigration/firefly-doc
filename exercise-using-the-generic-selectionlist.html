@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="exercise-using-the-generic-selection-list">Exercise - Using the Generic Selection List</h1>
 <p>In <strong>ShowOrdersWithEmployeeSelectionView</strong>:</p>
 <ol>
@@ -38,14 +47,11 @@
 <li>user ENV.Utilities.SelectionList.Show to show the end user the selection list.</li>
 </ol>
 <ul>
-<li><a href="exercise-using-the-generic-selection-list-results.html">Exercise Using the Generic Selection List results</a></li>
+<li><a href="exercise-using-the-expand-event-results.html">Exercise Using the Expand event results</a></li>
 </ul>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/88-Selection-Lists/95-Using-the-Generic-SelectionList/10-Exercise-Using-the-Generic-SelectionList/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
@@ -63,7 +69,7 @@
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

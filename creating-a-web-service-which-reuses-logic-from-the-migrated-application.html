@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="Web Service, asmx, WCF, xml">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="creating-a-web-service-which-reuses-logic-from-the-migrated-application">Creating a Web Service which reuses Logic from the Migrated Application</h1>
 <p>This video demonstrate how to create a web service, which reused the business logic of the migrated application.<br />
 Notice that in case you don't have a Server project in your migrated solution, you can easily add one following <a href="http://doc.fireflymigration.com/setting-up-an-mvc-project-that-reuses-migrated-code.html">this</a> video.<br />
@@ -42,10 +51,7 @@ Another way to expose migrated functionality to the web is by adding a REST API 
 </ul>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/60-Further-Learning/40-Pocos-Xml-and-WebServices/12-Creating a Web Service which reuses Logic from the Migrated Application.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
@@ -63,7 +69,7 @@ Another way to expose migrated functionality to the web is by adding a REST API 
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="exercise-control-models">Exercise - Control Models</h1>
 <ol>
 <li><p>Using the <strong>Solution Explorer</strong> open the <strong>Base</strong> Project and navigate to <strong>Shared.Theme.Controls</strong> Folder.</p>
@@ -50,7 +59,7 @@
 </li>
 <li><p>Use <strong>Class Outline</strong> and navigate to the <strong>view</strong>.</p>
 </li>
-<li><p>Right Click the ToolBox and <strong>Add Tab</strong> name it <strong>My controls</strong>.</p>
+<li><p>Right Click the ToolBoox and <strong>Add Tab</strong> name it <strong>My controls</strong>.</p>
 </li>
 <li><p>Right click anywhere on the <strong>form</strong> (<strong>Do not</strong> Right click a control like the grid on the form) and select <strong>Add Controls To Toolbox</strong>.</p>
 </li>
@@ -71,10 +80,7 @@
 </ol>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/83-Control-Models/10-Creating-and-Using-a-Control-Model/10-Exercise-Control-Models/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
@@ -92,7 +98,7 @@
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

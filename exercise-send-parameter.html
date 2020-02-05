@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="exercise-send-parameter">Exercise - Send Parameter</h1>
 <ol>
 <li>Add new <strong>UIController</strong> name it <strong>ShowEmployees</strong>.</li>
@@ -48,7 +57,7 @@
 <li>Using the new <strong>button</strong> click event call <strong>ShowEmployeeCars</strong>. (use the run snippet).</li>
 <li>Save changes to Git.</li>
 <li>Build and test.</li>
-<li>In <strong>ShowEmployeeCars</strong> add a <strong>Number</strong> parameter in the Run method, name it <strong>EmployeeID</strong>.</li>
+<li>In <strong>ShowEmployeeCars</strong> add a <strong>Text</strong> parameter in the Run method, name it <strong>EmployeeID</strong>.</li>
 <li>Add a <strong>Where</strong> to show only cars that belong to the selected employee.</li>
 <li>In <strong>ShowEmployees</strong> code behind send the <strong>EmployeeID</strong>.</li>
 <li>Save changes to Git.</li>
@@ -59,10 +68,7 @@
 </ul>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//10-Developer-Guide/45-Parameters/40_Sending-Parameter/10_Exercise-Send-Parameter/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
@@ -80,7 +86,7 @@
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="why we don't use select for update, sp_getapplock, sp_releaseapplock">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="locking-after-btrieve-to-sql-migration">Locking After Btrieve to SQL Migration</h1>
 <p>Btrieve and SQL Server have fundamental differences in the way they manage locks.</p>
 <p>When we migrate an application from btrieve to SQL it is crucial to maintain the exact same locking and transaction behavior that existed in Btrieve - in the migrated SQL application.</p>
@@ -65,12 +74,9 @@ That setting is controlled by the <code>ISAMTransaction</code> setting in the in
 <p>To maintain that behavior in accordance with the <code>sp_getapplock</code> strategy, another call to <code>sp_getapplock</code> will happen before each <code>Update</code> that happens as part of a transaction with a setting to release automatically once the transaction is committed or rolled back.</p>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/40-Data-Migration-from-Btrieve-To-SQL/35-Locking-After-Btrieve-to-SQL-Migration.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/50-Data-Migration-from-Btrieve-To-SQL/35-Locking-After-Btrieve-to-SQL-Migration.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -86,7 +92,7 @@ That setting is controlled by the <code>ISAMTransaction</code> setting in the in
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

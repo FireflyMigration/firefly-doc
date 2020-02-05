@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="automatic-migration-using-ftp">Automatic Migration Using FTP</h1>
 <p>This document explains how to run an automatic migration using Firefly’s FTP server. The migration can be invoke at any time, in order to get an updated error report or a test version. Usually, it is used after uploading a new version of the original applications or when Firefly has enhanced its migration engine. In order to run a migration, please do the following steps:</p>
 <ol>
@@ -42,14 +51,11 @@
 <li>In case you want to migrate to an older version of Firefly, you may do so by changing the &quot;Start.Done&quot; to &quot;Start.[version number]&quot; (E.g &quot;Start.26175&quot;). The Firefly version can be found by Right Clicking on Firefly.Box.dll -&gt; &quot;Details&quot; TAB</li>
 </ol>
 <blockquote>
-<p>In some cases you may be instructed by Firefly to run a migration on a temporary branch to test a specific fix - in that case, use <code>Start.branch-[branchName]</code> for example <code>start.branch-hotfix</code></p>
+<p>In some cases you may be instructed by firefly to run a migration on a temporary branch to test a specific fix - in that case, use <code>Start.branch-[branchName]</code> for example <code>start.branch-hotfix</code></p>
 </blockquote>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/01-Automatic-Migration-Using-FTP.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
@@ -67,7 +73,7 @@
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

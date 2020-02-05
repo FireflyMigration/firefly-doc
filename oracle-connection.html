@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="how-to-set-oracle-connection">How to set Oracle Connection</h1>
 <p>.NET does not require the workstation to have Oracle client installed.
 The connection is done by using Oracle Data Provider for .NET (ODP.NET, Managed Driver). It is an Oracle dll which we provide during the migration (Oracle.ManagedDataAccess.dll)</p>
@@ -62,10 +71,7 @@ NoFileLocks, , , NoCheckExist, 0, %myOraConnection% , NoAS400SrvrSort, </code></
 <a href="http://www.orafaq.com/wiki/Tnsnames.ora">http://www.orafaq.com/wiki/Tnsnames.ora</a></p>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/20-Alpha-Testing/40-Oracle-Connection/Index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
@@ -83,7 +89,7 @@ NoFileLocks, , , NoCheckExist, 0, %myOraConnection% , NoAS400SrvrSort, </code></
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

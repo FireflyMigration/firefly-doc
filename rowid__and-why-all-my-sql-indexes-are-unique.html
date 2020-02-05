@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="rowid_and-why-all-my-sql-indexes-are-unique">rowId__And Why all my SQL Indexes are Unique</h1>
 <p>As part of the automatic migration to SQL we create the tables in SQL.
 If you open the table definition using SQL management tool you may have notice this two items :</p>
@@ -43,9 +52,7 @@ If you open the table definition using SQL management tool you may have notice t
 <ol>
 <li>I have code column that is unique - why not use this column ?</li>
 </ol>
-<p>Several reasons:</p>
-<p>**Sorting of rows **</p>
-<p>When using a UIController, the OrderBy has to be unique - the reason for that is that we need to find the next rows and previous rows - and without a unique index we'll get the same rows again. So - if the index is not unique, the UIController will automatically add the PrimaryKeyColumns of the Entity to the order by. So if'll you'll order by Name, it'll order by Name, rowid__.So - if your database index columns will not match the order by that the UIController is using - there is a less chance that the database will use that index, and more chance that it'll decide to do a full table scan - resulting with poorer performance.</p>
+<p>Two reasons:</p>
 <p><strong>Row was lost</strong></p>
 <p>The short reply will be to prevent the end user for getting the &quot;Row was lost&quot; exception.</p>
 <p>When Btrieve updates a row – it <strong>doesn't</strong> do it based on the code column – it <strong>does it based on Btrieve position</strong>
@@ -76,12 +83,9 @@ we migrate into the rowid__ column that extrapolation of the position value.</li
 </ol>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/40-Data-Migration-from-Btrieve-To-SQL/35-rowId__And-Why-all-my-SQL-Indexes-are-Unique/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//40-Migration-project/50-Data-Migration-from-Btrieve-To-SQL/35-rowId__And-Why-all-my-SQL-Indexes-are-Unique/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -97,7 +101,7 @@ we migrate into the rowid__ column that extrapolation of the position value.</li
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

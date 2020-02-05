@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="monitoring-row-locking-in-sql-server">Monitoring Row Locking in SQL Server</h1>
 <p>Many times we want to add to our application the method the information of who is locking, and what is being locked.</p>
 <p>In this article we'll describe several ways to do that.</p>
@@ -228,36 +237,18 @@ On the <code>ConnectionManager</code> class in ENV, you'll find, search for the 
     }
 } </code></pre>
 <p>In the <code>ApplicationCore</code> class add the following handler</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>var lastKkey = "";
+<pre data-line="" class="language-csdiff line-numbers"><code>var lastScreenName = "";
 var tableExists = false;
 Number currentSsessionId = null;
 Handlers.Add(Command.CreateTimer(5)).Invokes += e =&gt;
 {
 
     var screenName = "Application";
-    ITask controller = null;
-    ITask controllerThatOpenedTheTransaction = null;
-
-    foreach (var c in Context.Current.ActiveTasks)
-    {
-        if (c.View != null &amp;&amp; !c.View.ChildWindow)
-            screenName = c.View.Text;
-        controller = c;
-        if (controllerThatOpenedTheTransaction == null &amp;&amp; c.InTransaction)
-            controllerThatOpenedTheTransaction = c;
-    }
-    var controllerName = "";
-    var transactionControllerName = "";
-    if (controller!=null)
-        //note that you'll need to change the SendInstanceBasedOnTaskAndCallStack method to public :)
-        ControllerBase.SendInstanceBasedOnTaskAndCallStack(controller, c =&gt; controllerName = c.GetType().FullName);
-    if (controllerThatOpenedTheTransaction!=null)
-        ControllerBase.SendInstanceBasedOnTaskAndCallStack(controllerThatOpenedTheTransaction, c =&gt; transactionControllerName = c.GetType().FullName);
-
-    var key = controllerName + screenName + controllerThatOpenedTheTransaction;
-    if (key == lastKkey)
+    if (ENV.UI.Form.ActiveForm != null)
+        screenName = ENV.UI.Form.ActiveForm.Text;
+    if (screenName == lastScreenName)
         return; //we only want to update the session info if it has changed. If the user is on the screen for a while, there is no point in sending an update every 5 seconds.
-    lastKkey = key;
+    lastHash = key.GetHashCode();
     var sInfo = new SqlSessionAdditionalInfo();
     if (!tableExists)
     {
@@ -278,11 +269,10 @@ Handlers.Add(Command.CreateTimer(5)).Invokes += e =&gt;
 
     sInfo.InsertIfNotFound(sInfo.Session.BindEqualTo(currentSsessionId), () =&gt;
     {
-        sInfo.LastUpdate.Value = System.DateTime.Now;
-        sInfo.Screen.Value = screenName;
-        sInfo.Controller.Value = controllerName;
-        sInfo.ControllerThatOpenedTheTransaction.Value = transactionControllerName;
+        sInfo.LastUpdate.Value = System.DateTime.Now; 
+        sInfo.OpenScreenName.Value = screenName;
     });
+
 }; </code></pre>
 <p>You can query this from the database using the following sql:</p>
 <pre><code class="language-sql">select * from SqlSessionAdditionalInfo with(nolock)
@@ -330,10 +320,7 @@ protected override void OnLoad()
 <p><img src="2019-09-26_15h55_51.png" alt="" /></p>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/50-Transactions-and-locking/25-Monitoring Row Locking in SQL Server/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
@@ -351,7 +338,7 @@ protected override void OnLoad()
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

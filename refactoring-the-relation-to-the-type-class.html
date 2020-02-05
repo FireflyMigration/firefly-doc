@@ -3,8 +3,9 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
-    <meta name="keywords" content="GetValue,getv snippet">
+    <meta name="keywords" content="">
 
     <title>Refactoring the Relation to the Type Class</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -19,43 +20,31 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="refactoring-the-relation-to-the-type-class">Refactoring the Relation to the Type Class</h1>
-<p>Using the <code>getv</code> snippet, we can add the <code>GetName</code> method to the <code>CustomerID</code> type and remove all the relations in my code that were used to get the CompanyName</p>
-<pre data-line="7,8,9,10,11,12,13" class="language-csdiff line-numbers"><code>public class CustomerID : TextColumn 
-{
-    public CustomerID() : base("Customer ID", "5")
-    {
-        Expand += () =&gt; new ShowCustomers().Run(this);
-    }
-    Models.Customers _lookupEntity;
-    public Text GetName()
-    {
-        if (_lookupEntity == null)
-            _lookupEntity = new Models.Customers();
-        return _lookupEntity.GetValue(_lookupEntity.CompanyName, _lookupEntity.CustomerID.IsEqualTo(this));
-    }
-} </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/s6OW_dxqt0w?list=PL1DEQjXG2xnLzvOZZ55WcSSLF8EdrBayZ" frameborder="0" allowfullscreen></iframe>
-<p>See Also:
-<a href="types-i-want-more-out-of-it.html">Types, I want more out of it !</a></p>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/25-Refactoring-Migrated-Code/03-Refactoring the Relation to the Type Class.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/40-Refactoring-Migrated-Code/03-Refactoring the Relation to the Type Class.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -71,7 +60,7 @@
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

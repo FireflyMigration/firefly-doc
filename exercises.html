@@ -375,7 +375,7 @@
 <li>In <strong>ShowProducts</strong>, add a new <strong>TotalUnits method</strong> inside the <strong>expressions region</strong>.</li>
 <li>The <strong>TotalUnits</strong> method will :
 <ol>
-<li>Need to be <strong>internal</strong>.</li>
+<li>Need to be <strong>public</strong>.</li>
 <li>Return a <strong>Number</strong> as the return value.</li>
 <li>Calculate the total number of units in <strong>stock</strong> and <strong>on order</strong>.</li>
 </ol>
@@ -425,7 +425,7 @@
 <li><a href="exercise-control-properties-and-code-navigation-results.html">Exercise Control Properties and code navigation results</a></li>
 </ul>
 
-<h1 id="exercise-control-events">Exercise - Control Events</h1>
+<h1 id="exercise-control-properties-and-code-navigation">Exercise - Control Properties and code navigation</h1>
 <ol>
 <li>Close all open tabs in visual studio. (right click on one of the tabs and select close all documents).</li>
 <li>Open <strong>ShowProducts</strong> controller.</li>
@@ -539,9 +539,7 @@
 
 <h1 id="exercise-local-columns">Exercise - Local Columns</h1>
 <ol>
-<li>Create a new UIController name it <strong>ShowOrders</strong>.</li>
-<li>Show Data from Orders Entity.</li>
-<li>Create a local <strong>DateColumn</strong>, name it <strong>EstimatedArrivalDate</strong>. (use the <strong>mem</strong> snippet).</li>
+<li>In <strong>ShowOrders</strong> Create a local <strong>DateColumn</strong>, name it <strong>EstimatedArrivalDate</strong>. (use the <strong>mem</strong> snippet).</li>
 <li>Add it to the grid next to the <strong>OrderDate</strong>.</li>
 <li>Go Back to the <strong>controller</strong> and Override the <strong>OnEnterRow</strong>.</li>
 <li>In the <strong>OnEnterRow</strong> Update the <strong>Value</strong> of <strong>EstimatedArrivalDate</strong> to the <strong>OrderDate</strong> value plus 30 days. (use the OrderDate add days method).</li>
@@ -599,7 +597,7 @@
 <li>Using the new <strong>button</strong> click event call <strong>ShowEmployeeCars</strong>. (use the run snippet).</li>
 <li>Save changes to Git.</li>
 <li>Build and test.</li>
-<li>In <strong>ShowEmployeeCars</strong> add a <strong>Number</strong> parameter in the Run method, name it <strong>EmployeeID</strong>.</li>
+<li>In <strong>ShowEmployeeCars</strong> add a <strong>Text</strong> parameter in the Run method, name it <strong>EmployeeID</strong>.</li>
 <li>Add a <strong>Where</strong> to show only cars that belong to the selected employee.</li>
 <li>In <strong>ShowEmployees</strong> code behind send the <strong>EmployeeID</strong>.</li>
 <li>Save changes to Git.</li>
@@ -820,7 +818,7 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <li>Build and add the two columns to the grid in the form.</li>
 <li>Save changes to Git.</li>
 <li>Build and test.</li>
-<li>Add a new inner class ,use <strong>contrp</strong> snippet, remember to tab after update every item in the snippet.
+<li>Add a new inner class ,use <strong>contr</strong> snippet, remember to tab after update every item in the snippet.
 <ol>
 <li>Name = <strong>GetCarsInfo</strong>.</li>
 <li>Inherit from <strong>BusinessProcessBase</strong>.</li>
@@ -964,12 +962,11 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <h1 id="exercise-bindenables">Exercise - BindEnables</h1>
 <ol>
 <li>In  <strong>ShowEmployee</strong>.</li>
-<li>Add Relations to <strong>EmployeeCars</strong>.</li>
 <li>Using the <strong>hand</strong> snippet, add handler for the F5 key that will displays the <strong>ShowEmployeeCars</strong>.</li>
 <li>Save changes to Git.</li>
 <li>Build and test.</li>
 <li>Change the new F5 handler to use <strong>Var</strong>.</li>
-<li>Add BindEnabled limit the handler to be enabled only if the <strong>EmployeeCars</strong> relation found one car for the current employee (relations[Employee].RowFound).</li>
+<li>Add BindEnabled limit the handler to be enabled only if RegionID is equal to one.</li>
 <li>Save changes to Git.</li>
 <li>Build and test.</li>
 </ol>
@@ -1222,7 +1219,7 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <li>Add two methods:
 <ol>
 <li><strong>GetCurrentDate</strong> return data type <strong>Date</strong>.</li>
-<li><strong>GetCurrentPage</strong> return data type <strong>Number</strong>.</li>
+<li><strong>GetCureentPage</strong> return data type <strong>Number</strong>.</li>
 </ol>
 </li>
 <li>Display the new methods on the report layout.</li>
@@ -1291,7 +1288,7 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 </li>
 <li><p>Use <strong>Class Outline</strong> and navigate to the <strong>view</strong>.</p>
 </li>
-<li><p>Right Click the ToolBox and <strong>Add Tab</strong> name it <strong>My controls</strong>.</p>
+<li><p>Right Click the ToolBoox and <strong>Add Tab</strong> name it <strong>My controls</strong>.</p>
 </li>
 <li><p>Right click anywhere on the <strong>form</strong> (<strong>Do not</strong> Right click a control like the grid on the form) and select <strong>Add Controls To Toolbox</strong>.</p>
 </li>
@@ -1521,7 +1518,7 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <li>In this method call the SelectCustomers controller, remember to send the appropriate parameter</li>
 </ol>
 <ul>
-<li><a href="exercise-returning-the-selected-value-result.html">Exercise Returning The Selected Value result</a></li>
+<li><a href="exercise-using-the-expand-event-results.html">Exercise Using the Expand event results</a></li>
 </ul>
 
 <h1 id="exercise-using-the-generic-selection-list">Exercise - Using the Generic Selection List</h1>
@@ -1533,7 +1530,7 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <li>user ENV.Utilities.SelectionList.Show to show the end user the selection list.</li>
 </ol>
 <ul>
-<li><a href="exercise-using-the-generic-selection-list-results.html">Exercise Using the Generic Selection List results</a></li>
+<li><a href="exercise-using-the-expand-event-results.html">Exercise Using the Expand event results</a></li>
 </ul>
 
 <h1 id="exercise-flowuicontroller">Exercise - FlowUIController</h1>

@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="Any Error, Locked Row, Duplicate Index, Constraint failure, Trigger failure, Record has been updated, Record changed by antoher user, Insert/Update/Delete failure, Unmapped errors, As strategy, Abort Task, Rollback and restart, Auto retry, User retry, Ignore, Task, Subtree, AllErrors, LockedRow, DuplicateIndex, ConstraintFailed, TriggerFailed, RowWasChangedSinceLoaded, UpdatedRowWasChangedSinceLoaded, DataChangedFailed, UnknownErrr, Deadlock, FailedToInitializeEntity, InvalidSQLStatement, NullInOnlyOnePartOfDateTimePair, ReadOnlyEntityUpdate, RowDoesNotExist, TransactionRolledBack, Default, AbortTask, RollbackAndRecover, Retry, Ignore, AbortAllTasks, Rollback, Throw, CurrentTaskOnly, CurrentContext, UnhandledCustomCommandInModule, DatabaseErrorType, DatabaseErrorHandlingStrategy, HandlerScope">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="error-events">Error Events</h1>
 <p>In Magic you have the option to trap database errors by an error event in order to handle the eror in a different way or register the error. In Firefly these are called database error handlers.
 See also: <a href="http://doc.fireflymigration.com/database-error-handling-with-transaction-stack-and-scope.html">http://doc.fireflymigration.com/database-error-handling-with-transaction-stack-and-scope.html</a> for more information on how you can adjust the error handling in Firefly yourself.</p>
@@ -277,10 +286,7 @@ See also: <a href="http://doc.fireflymigration.com/database-error-handling-with-
 <p>Contributor: Harry Kleinsmit.</p>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/09-Handlers/Events/Error-Events.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
@@ -298,7 +304,7 @@ See also: <a href="http://doc.fireflymigration.com/database-error-handling-with-
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

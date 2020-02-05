@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="k-screens-for-developers">4k Screens For Developers</h1>
 <p>Well, you may remember our previous posts about how much we love to use a lot of screens. (like <a href="we-love-screens.html">this one</a> from 2013 and <a href="we-love-screens-2015.html">this one</a> from recently).</p>
 <p>Now we have decided to take it up a notch and go for 4k.</p>
@@ -59,10 +68,7 @@ the more productive they were. Why should we use any less for our computers?</p>
 <p><strong>A note about curved TV</strong> – I chose to go with the Samsung curved tv – as I thought it would make my development experience better. Now that I use it I think it’s not that important and not worth the extra cost. There is also another downside which is – you can’t make a curved TV touch enabled (at least not at a reasonable price at this time) so on my next one I’ll probably skip that feature.</p>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/99-Screens/03-4k-Screens-For-Developers.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
@@ -80,7 +86,7 @@ the more productive they were. Why should we use any less for our computers?</p>
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

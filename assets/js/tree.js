@@ -5,6 +5,19 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
     var root = document.getElementById(id);
     var backBtn = document.querySelectorAll("#" + backButtonId);
     var nextBtn = document.querySelectorAll("#" + nextButtonId);
+    var menuBtn = document.querySelectorAll("#menu");
+
+
+    menuBtn[0].onclick = function () {
+        document.querySelectorAll("#root")[0].classList.toggle('state2');
+    };
+    var link = document.querySelectorAll("#link");
+    if (link && link.length > 0) {
+        let href = link[0].href.substring('https://github.com/FireflyMigration/firefly-doc/blob/master//'.length);
+        href = 'https://github.com/noam-honig/radweb/blob/master/docs-md/' + href;
+        link[0].href = href;
+
+    }
 
     function foreach(array, action) {
         if (array != undefined)

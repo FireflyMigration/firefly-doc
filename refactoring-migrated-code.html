@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="refactoring-migrated-code">Refactoring Migrated Code</h1>
 <p>In this series of videos we are going to review the most basic refactorings that any developer should start doing as soon as you gain some confidence in the code.</p>
 <ul>
@@ -37,25 +46,22 @@
 <li><a href="refactoring-a-color-expression-to-the-entity-class.html">Refactoring a Color Expression to the Entity Class</a></li>
 <li><a href="using-simplify-name-refactoring-to-make-the-code-easier-to-read.html">Using Simplify Name Refactoring to Make the code Easier to Read</a></li>
 <li><a href="using-introduce-local-to-remove-_parent-_parent-_parent.html">Using Introduce Local to Remove _parent _parent _parent</a></li>
-<li><a href="moving-an-inner-controller-class-to-a-separate-file.html">Moving an Inner Controller Class to a Separate File</a></li>
-<li><a href="refactoring-parameters.html">Refactoring Parameters</a></li>
 <li><a href="types-i-want-more-out-of-it.html">Types I want more out of it</a></li>
 <li><a href="entity-onsavingrow.html">Entity OnSavingRow</a></li>
-<li><a href="getting-rid-of-if-statements.html">Getting rid of if statements</a></li>
-<li><a href="calling-a-migrated-inner-class-without-calling-its-parent.html">Calling a migrated inner class without calling its parent</a></li>
+<li><a href="moving-an-inner-controller-class-to-a-separate-file.html">Moving an Inner Controller Class to a Separate File</a></li>
 <li><a href="reusing-an-inner-controller-class-from-another-controller.html">Reusing an Inner Controller Class from another Controller</a></li>
 <li><a href="moving-an-inner-controller-class-to-an-outer-scope.html">Moving an Inner Controller Class to an Outer Scope</a></li>
-<li><a href="inner-select-and-sql-evaluated-columns-in-depth.html">Inner Select and SQL Evaluated Columns in depth</a></li>
+<li><a href="refactoring-parameters.html">Refactoring Parameters</a></li>
+<li><a href="calling-a-migrated-inner-class-without-calling-its-parent.html">Calling a migrated inner class without calling its parent</a></li>
+<li><a href="getting-rid-of-if-statements.html">Getting rid of if statements</a></li>
 <li><a href="moving-validations-to-entities-and-all-controllers.html">Moving validations to Entities and all Controllers</a></li>
+<li><a href="inner-select-and-sql-evaluated-columns-in-depth.html">Inner Select and SQL Evaluated Columns in depth</a></li>
 </ul>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/25-Refactoring-Migrated-Code/01-index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/40-Refactoring-Migrated-Code/01-index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -71,7 +77,7 @@
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

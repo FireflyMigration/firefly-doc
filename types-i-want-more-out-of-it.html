@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="types-i-want-more-out-of-it">Types, I want more out of it !</h1>
 <p>The original usage of types in the migrated application was no more than just having one place in the code, to set up the format and may be a DB name and caption of a column.</p>
 <p>Some of the developers use it to set up an Expand handler for all the columns using this type.</p>
@@ -48,9 +57,7 @@ namespace Northwind.Types
 } </code></pre>
 <p><img src="expand_handler.png" alt="" /></p>
 <p>So the question is how to get more out of it ?</p>
-<h2 id="using-the-type-to-get-the-description">Using the type to get the description</h2>
-<p>Since the type is a class we can add more code to it. The first thing we can do is add a method that will return relevant information like the product name.</p>
-<p>We'll apply the refactoring specified in <a href="refactoring-the-relation-to-the-type-class.html">Refactoring the Relation to the Type Class</a>
+<p>Since the type is a class we can add more code to it. The first thing we can do is add a method that will return relevant information like the product name.<br />
 Using this method here will save the developer the need to use a Relation in the programs.
 So now the code will look like that :</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>using Firefly.Box;
@@ -79,7 +86,6 @@ namespace Northwind.Types
 <img src="Using_type.png" alt="" /><br />
 <img src="column_generator_product_id.png" alt="" /></p>
 <p>As you can see the column wizard recognizes not only the column itself, but also its public methods, such as the GetProductName, and allows you to use it.</p>
-<h2 id="getting-more-than-one-column-with-getvalue">Getting more than one column with GetValue</h2>
 <p>But now what will I do if I need more than just the product name ?<br />
 What if I need two or more columns from the Products model ?<br />
 The first option looks like more of the same, meaning:</p>
@@ -113,7 +119,6 @@ namespace Northwind.Types
         }
     }
 } </code></pre>
-<h2 id="reducing-the-number-of-calls-to-the-database">Reducing the number of calls to the database</h2>
 <p>The problem is that now we will have two queries going to the database:
 <img src="using_profiler.png" alt="" />
 So we need to improve our code,  we need one SQL query that will return more than one column a time. To do so we need some ground work. We need to create a new object that will store all the information we need :</p>
@@ -225,7 +230,6 @@ namespace Northwind.Types
 } </code></pre>
 <p>This time we can see that there is only one database call:
 <img src="using_profiler_1.png" alt="" /></p>
-<h1 id="getvalue-implementation-for-older-versions-of-env">GetValue Implementation for Older Versions of ENV</h1>
 <p>If you have an older version of firefly ENV (Before version 21719), your version does not support the lambda option in GetValue method. To add it to your version add and replace the current GetValue code in your ENV.Data.Entity class with the following code :</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>Dictionary&lt;object, Dictionary&lt;string, object&gt;&gt; _getCache =
             new Dictionary&lt;object, Dictionary&lt;string, object&gt;&gt;();
@@ -305,12 +309,9 @@ namespace Northwind.Types
         } </code></pre>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/25-Refactoring-Migrated-Code/14-Types-I-want-more-out-of-it/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/40-Refactoring-Migrated-Code/10-Types-I-want-more-out-of-it/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -326,7 +327,7 @@ namespace Northwind.Types
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>
