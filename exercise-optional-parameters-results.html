@@ -40,7 +40,7 @@
 
                 <div class="content"><h1 id="exercise-optional-parameters-result">Exercise - Optional parameters result</h1>
 <p>The <strong>CalcOrderTotalForShipper</strong> class should look like :</p>
-<pre data-line="24" class="language-csdiff line-numbers"><code>using System;
+<pre data-line="24,28,30" class="language-csdiff line-numbers"><code>using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
@@ -67,7 +67,9 @@ namespace Northwind.Exercises
         {
             Where.Add(Orders.ShipVia.IsEqualTo(pShipperID));
             Execute();
-            pTotalOrders.Value = _numberOfOrders;
+            if (pTotalOrders != null)
+                pTotalOrders.Value = _numberOfOrders;
+            if (pTotalFreightValue != null)
             pTotalFreightValue.Value = _totalValue;
         }
         protected override void OnLeaveRow()

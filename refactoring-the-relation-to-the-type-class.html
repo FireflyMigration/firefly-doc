@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="GetValue,getv snippet">
 
     <title>Refactoring the Relation to the Type Class</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -39,12 +39,29 @@
             <div class="container">
 
                 <div class="content"><h1 id="refactoring-the-relation-to-the-type-class">Refactoring the Relation to the Type Class</h1>
+<p>Using the <code>getv</code> snippet, we can add the <code>GetName</code> method to the <code>CustomerID</code> type and remove all the relations in my code that were used to get the CompanyName</p>
+<pre data-line="7,8,9,10,11,12,13" class="language-csdiff line-numbers"><code>public class CustomerID : TextColumn 
+{
+    public CustomerID() : base("Customer ID", "5")
+    {
+        Expand += () =&gt; new ShowCustomers().Run(this);
+    }
+    Models.Customers _lookupEntity;
+    public Text GetName()
+    {
+        if (_lookupEntity == null)
+            _lookupEntity = new Models.Customers();
+        return _lookupEntity.GetValue(_lookupEntity.CompanyName, _lookupEntity.CustomerID.IsEqualTo(this));
+    }
+} </code></pre>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/s6OW_dxqt0w?list=PL1DEQjXG2xnLzvOZZ55WcSSLF8EdrBayZ" frameborder="0" allowfullscreen></iframe>
+<p>See Also:
+<a href="types-i-want-more-out-of-it.html">Types, I want more out of it !</a></p>
 
 
 
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/40-Refactoring-Migrated-Code/03-Refactoring the Relation to the Type Class.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/25-Refactoring-Migrated-Code/03-Refactoring the Relation to the Type Class.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>

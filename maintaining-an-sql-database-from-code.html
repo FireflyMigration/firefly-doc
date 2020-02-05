@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="AutoCreate, Alter table, Iterate entities,iterate all entities">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="maintaining-an-sql-database-from-code">Maintaining an SQL database from code</h1>
 <p>In our code, we have the definitions of the entities we need in our SQL database, why not have the code create these tables for us.</p>
 <p>There are several options to do that.</p>
@@ -120,10 +129,7 @@ We've only made minor changes to <code>GetDefintion.cs</code> and a several more
 DoOnAssembly(System.Reflection.Assembly.GetEntryAssembly()); </code></pre>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/Maintaining-an-SQL-database-from-code.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
@@ -141,7 +147,7 @@ DoOnAssembly(System.Reflection.Assembly.GetEntryAssembly()); </code></pre>
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>

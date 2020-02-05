@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="version update,DatabaseUpgradeBase">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="upgrading-an-sql-database-from-code">Upgrading an SQL Database from code</h1>
 <p>Often, when we deploy a new version to our customers, we need also to update the database with all the changes that we've made to it, either add columns etc...
 Many times we try to do that by running many scripts, and that can get messy as it progresses.</p>
@@ -113,10 +122,7 @@ namespace Northwind
 </blockquote>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/Upgrading-an-SQL-Database-from-code.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
@@ -134,7 +140,7 @@ namespace Northwind
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>
