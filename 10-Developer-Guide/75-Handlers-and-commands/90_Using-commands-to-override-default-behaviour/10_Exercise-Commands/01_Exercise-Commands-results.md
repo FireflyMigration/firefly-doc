@@ -44,7 +44,7 @@ namespace Northwind.TestExercies
 
 +           Handlers.Add(Command.UndoChangesInRow, HandlerScope.CurrentTaskOnly).Invokes += e =>
 +           {
-+               e.Handled = Common.ShowYesNoMessageBox("Undo","Are you sure you want to undo current row changes",false);
++               e.Handled = !Common.ShowYesNoMessageBox("Undo","Are you sure you want to undo current row changes",false);
 +           };
         }
  
