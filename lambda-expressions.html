@@ -65,15 +65,14 @@
 
     public DemoLocalColumns()
     {
--       ToDate.BindValue(GetDaysBetween);
+-       ToDate.BindValue(GetEndOfMonthOfFromDate);
         ToDate.BindValue(() =&gt; FromDate.EndOfMonth);
--       DaysBetween.BindValue(GetEndOfMonthOfFromDate);
+-       DaysBetween.BindValue(GetDaysBetween);
         DaysBetween.BindValue(() =&gt; ToDate - FromDate);
     }
--   public Number GetDaysBetween() =&gt; ToDate - FromDate;
-
 -   public Date GetEndOfMonthOfFromDate() =&gt; FromDate.EndOfMonth;
-  ...
+-   public Number GetDaysBetween() =&gt; ToDate - FromDate;
+    ...
 } </code></pre>
 <ul>
 <li>Once you get used to it, it's easier to read and easier to write (a lot less code)</li>
