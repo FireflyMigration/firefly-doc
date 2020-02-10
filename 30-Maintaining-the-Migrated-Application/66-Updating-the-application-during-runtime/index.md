@@ -1,4 +1,4 @@
-﻿keywords:Apprunner
+﻿keywords:Apprunner,update
 
 # Updating the application during runtime
 
@@ -28,6 +28,9 @@ The configuration contains the following arguments:
 - **CommandLineArgs** – Arguments you would like to send to the application (e.g /ini=c:\temp\Myini.ini)
 
 > Note that you can change the name of AppRunner.exe to any name you like, as long as you have a the configuration file with the same name
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ua-xCdzgtys" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
 
