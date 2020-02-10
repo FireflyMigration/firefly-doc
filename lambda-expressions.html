@@ -57,7 +57,7 @@
 <li><p>In our code we have the <code>GetDaysBetween</code> and <code>GetEndOfMonthOfFromDate</code> method that are only used once.</p>
 </li>
 </ul>
-<pre data-line="9,10" class="language-csdiff line-numbers"><code>public class DemoLocalColumns : UIControllerBase
+<pre data-line="10,12" class="language-csdiff line-numbers"><code>public class DemoLocalColumns : UIControllerBase
 {
     public readonly DateColumn FromDate = new DateColumn("From Date");
     public readonly DateColumn ToDate = new DateColumn("To Date");
@@ -65,7 +65,9 @@
 
     public DemoLocalColumns()
     {
+-       ToDate.BindValue(GetDaysBetween);
         ToDate.BindValue(() =&gt; FromDate.EndOfMonth);
+-       DaysBetween.BindValue(GetEndOfMonthOfFromDate);
         DaysBetween.BindValue(() =&gt; ToDate - FromDate);
     }
 -   public Number GetDaysBetween() =&gt; ToDate - FromDate;
