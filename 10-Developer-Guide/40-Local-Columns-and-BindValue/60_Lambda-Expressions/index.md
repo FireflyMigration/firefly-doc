@@ -18,13 +18,14 @@ public class DemoLocalColumns : UIControllerBase
 
     public DemoLocalColumns()
     {
+-       ToDate.BindValue(GetEndOfMonthOfFromDate);
 +       ToDate.BindValue(() => FromDate.EndOfMonth);
+-       DaysBetween.BindValue(GetDaysBetween);
 +       DaysBetween.BindValue(() => ToDate - FromDate);
     }
--   public Number GetDaysBetween() => ToDate - FromDate;
-
 -   public Date GetEndOfMonthOfFromDate() => FromDate.EndOfMonth;
-  ...
+-   public Number GetDaysBetween() => ToDate - FromDate;
+    ...
 }
 ```
 
