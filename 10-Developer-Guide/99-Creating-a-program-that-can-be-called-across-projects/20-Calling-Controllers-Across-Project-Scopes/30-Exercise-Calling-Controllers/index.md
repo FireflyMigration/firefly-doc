@@ -21,7 +21,7 @@
 13. In **ShowRegions**.
 14. Add a button to the screen, set the button text to **Show Region Customers**.
 15. Try to call the **ShowCustomerPerRegion** from the button **click** event.
-16. In **NorthwindBase** project, under **Customers** folder, create a new folder name it **Exercises**.
+16. In **NorthwindInterfaces** project, under **Customers** folder, create a new folder name it **Exercises**.
 17. Add a new interface, name it **IShowCustomerPerRegion**.
 18. Set the new interface to be public.
 19. Add the Run with the same parameter definition as **ShowCustomerPerRegion**.(you will need to add using to Firefly.Box).
