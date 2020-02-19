@@ -23,6 +23,8 @@ namespace Northwind.Exercises
 +           From = Order_Details;
 +           Where.Add(Order_Details.UnitPrice.IsGreaterOrEqualTo(20));
 +           OrderBy.Add(Order_Details.OrderID, SortDirection.Descending);
++           Relations.Add(Products, RelationType.Find,
++               Products.ProductsID.IsEqualTo(Products.ProductsID));
         }
 
         public void Run()
