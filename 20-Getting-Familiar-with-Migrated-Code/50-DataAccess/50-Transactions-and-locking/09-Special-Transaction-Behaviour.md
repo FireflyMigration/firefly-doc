@@ -19,7 +19,7 @@ When a controller starts is about to start a transaction according to the `Trans
 
 Unfortunately this behavior was the default in magic for most applications and as such is the default behaviour for most migrated applications.
 
-Whe we say "an `Entity` that comes from an SQL data source" this actually depends on the [SupportsTransactions](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_DataProvider_IEntityDataProvider_SupportsTransactions.htm) property of the `Entity`'s `DataProvider`
+When we say "an `Entity` that comes from an SQL data source" this actually depends on the [SupportsTransactions](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_DataProvider_IEntityDataProvider_SupportsTransactions.htm) property of the `Entity`'s `DataProvider`
 
 ## ConditionalTransaction = false (ISAMTransaction = Y)
 A transaction will be started according to the `TransactionScope` property.
