@@ -14,6 +14,6 @@
 7.  Build and go to **RunTime**.
 8.  Use the **developer tools** to create the new Entity.
 9.  Use <kbd>F4</kbd> to insert new records: 
-    1. Add 2 **Toyota** for employee 1.
-    1. Add 2 **BMW** for employee number 2.
-    3. add 1 **Lamborghini** for employee number 3.
+    1. Add 2 **Toyotas** for employee 1.
+    1. Add 2 **BMWs** for employee number 2.
+    3. add 1 **Lamborghinis** for employee number 3.
