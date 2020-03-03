@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="keywords" content="">
+
+    <title>Adding a global filter to an Entity</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content"><h1 id="adding-a-global-filter-to-an-entity">Adding a global filter to an Entity</h1>
+<p>Sometimes we would like to restrict the data that a user can see - for example, a specific user should only be able to see customers who are in London.</p>
+<p>The long and scary way to do it is to remember to add that filter in every controller that we have and hope that we haven't missed any controller and that we'll remember this for any new controller.</p>
+<p>Another approach is to add that filter in the code that is used by all controller - so it'll automatically be added to any query that I'll do.</p>
+<p>Here's how to do that:</p>
+<p>First, we'll start by adding an overridable method in Entity in ENV, that will allow us to determine the filter for each entity.</p>
+<h2 id="step-1">Step 1</h2>
+<p>In the Entity class in  <code>Entity.cs</code> in ENV, we'll add the following code:</p>
+<pre data-line="1,2,3,4" class="language-csdiff line-numbers"><code>protected virtual FilterBase GetGlobalFilter()
+{
+    return null;
+} </code></pre>
+<h2 id="step-2">Step 2</h2>
+<p>We'll override that method in the entities to which we would like to add a global filter,
+for example in <code>Customers.cs</code></p>
+<pre data-line="3,16,17,18,19" class="language-csdiff line-numbers"><code>using Firefly.Box;
+using ENV.Data;
+using Firefly.Box.Data.Advanced;
+
+namespace Northwind.Models
+{
+    /// &lt;summary&gt;Customers(E#1)&lt;/summary&gt;
+    public class Customers : Entity 
+    {
+        #region Columns
+        [PrimaryKey]
+        public readonly Types.CustomerID CustomerID = new Types.CustomerID("CustomerID");
+        public readonly TextColumn CompanyName = new TextColumn("CompanyName", "40");
+        public readonly TextColumn ContactName = new TextColumn("ContactName", "30");
+        ...
+        protected override FilterBase GetGlobalFilter()
+        {
+            return City.IsEqualTo("London");
+        }
+        ...
+    }
+} </code></pre>
+<p>and we can do the same for <code>Orders.cs</code></p>
+<pre data-line="16,17,18,19" class="language-csdiff line-numbers"><code>using Firefly.Box;
+using ENV.Data;
+using Firefly.Box.Data.Advanced;
+
+namespace Northwind.Models
+{
+    /// &lt;summary&gt;Orders(E#2)&lt;/summary&gt;
+    public class Orders : Entity 
+    {
+        #region Columns
+        [PrimaryKey]
+        public readonly Types.OrderID OrderID = new Types.OrderID("OrderID") { ReadOnlyForExistingRows = true, NullDisplayText = "" };
+        public readonly Types.CustomerID CustomerID = new Types.CustomerID("CustomerID") { NullDisplayText = "" };
+        public readonly NumberColumn EmployeeID = new NumberColumn("EmployeeID", "N10") { AllowNull = false, NullDisplayText = "", DbType = "INTEGER" };
+    ...
+        protected override FilterBase GetGlobalFilter()
+        {
+            return ShipCity.IsEqualTo("London");
+        }
+    ...
+    }
+} </code></pre>
+<h2 id="step-3">Step 3</h2>
+<p>We'll need to adjust the ENV code to use this filter, and add it everywhere we need it.</p>
+<p>We'll start by adjusting the Entity methods (count, max etc....)</p>
+<p>In <code>Entity.cs</code></p>
+<pre data-line="4,5,6,7,8,9,10,11" class="language-csdiff line-numbers"><code>void OperateOnRows(FilterBase where, Action&lt;IDbCommand&gt; doOnSqlCommand, Action&lt;Row&gt; doOnRowForNonSQL)
+{
+    var ds = DataProvider as DynamicSQLSupportingDataProvider;
+    var additionalWhere = GetGlobalFilter();
+    if (additionalWhere != null)
+    {
+        var fc = new FilterCollection();
+        fc.Add(where);
+        fc.Add(additionalWhere);
+        where = fc;
+    }
+
+    if (ds != null &amp;&amp; !(ds is MockTestingDatabase))
+    { </code></pre>
+<h2 id="step-4">Step 4</h2>
+<p>We'll add code in Entity to add the Global filter to filters that are used in the <code>SqlClient</code></p>
+<p>In  the Entity class in <code>Entity.cs</code> we'll add the following method and class:</p>
+<pre data-line="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26" class="language-csdiff line-numbers"><code>internal IFilter DecorateWhere(IFilter where)
+{
+     var x = this.GetGlobalFilter();
+     if (x == null)
+         return where;
+     return new FilterJoiner(where, FilterBase.GetIFilter(x, false, this));
+
+
+}
+class FilterJoiner : IFilter
+{
+     IFilter[] _filters;
+
+     public FilterJoiner(params IFilter[] filters)
+     {
+         _filters = filters;
+     }
+
+     public void AddTo(IFilterBuilder builder)
+     {
+         foreach (var f in _filters)
+         {
+             f.AddTo(builder);
+         }
+     }
+} </code></pre>
+<p>Essentially the <code>DecoreateWhere</code> method checks if there is any global filter set, and there is one, it returns a new instance of the <code>FilterJoiner</code> class that merges the GlobalFilter with the specific filter.</p>
+<h2 id="step-5">Step 5</h2>
+<p>We'll adjust the code that is used by all controllers to access the data from sql databases, we'll adjust the <code>SqlSelectCommand</code> class in the <code>SqlClient.cs</code> file</p>
+<p>In <code>SqlClient.cs</code> file:</p>
+<pre data-line="10,11,12,13,14,15,16" class="language-csdiff line-numbers"><code>internal class SQLSelectCommand
+{
+    ...
+
+    public SQLSelectCommand(Firefly.Box.Data.Entity entity, SQLDataProviderHelper parent, IEnumerable&lt;ColumnBase&gt; selectedColumns, IFilter where, Sort sort, IEnumerable&lt;IJoin&gt; joins, bool disableCache, string entityName)
+    {
+        _entityName = entityName;
+
+        _entity = entity;
+        {
+            var envEntity = entity as ENV.Data.Entity;
+            if (envEntity != null)
+            {
+                where = envEntity.DecorateWhere(where);
+            }
+        } </code></pre>
+<p>First we're checking if the entity is of type <code>ENV.Data.Entity</code> and if it is we're replacing the where, the where as it was decorated by the Entity.</p>
+<h2 id="step-6">Step 6</h2>
+<p>We also need to adjust the Where of Join statements,</p>
+<pre data-line="4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,31,32,33,34,35,36,37,38,39,40,41,42" class="language-csdiff line-numbers"><code> internal class SQLSelectCommand
+{
+   ...
+    class myJoin : IJoin
+    {
+        public Firefly.Box.Data.Entity Entity { get;  }
+        public IFilter Where { get;  }
+
+        public bool IsOuterJoin { get;  }
+
+        public myJoin(Firefly.Box.Data.Entity entity, IFilter where, bool isOuterJoin)
+        {
+            Entity = entity;
+            Where = where;
+            IsOuterJoin = isOuterJoin;
+        }
+    }
+
+    public SQLSelectCommand(Firefly.Box.Data.Entity entity, SQLDataProviderHelper parent, IEnumerable&lt;ColumnBase&gt; selectedColumns, IFilter where, Sort sort, IEnumerable&lt;IJoin&gt; joins, bool disableCache, string entityName)
+    {
+        _entityName = entityName;
+
+        _entity = entity;
+        {
+            var envEntity = entity as ENV.Data.Entity;
+            if (envEntity != null)
+            {
+                where = envEntity.DecorateWhere(where);
+            }
+        }
+        var tempJoins = new List&lt;IJoin&gt;(joins);
+
+        for (int i = 0; i &lt; tempJoins.Count; i++)
+        {
+            var join = tempJoins[i];
+            var joinEnvEntity = join.Entity as ENV.Data.Entity;
+            if (joinEnvEntity != null) {
+                tempJoins[i] = new myJoin(joinEnvEntity, joinEnvEntity.DecorateWhere(join.Where), join.IsOuterJoin);
+                
+            }
+        }
+        joins = tempJoins;
+
+        _parent = parent;
+        _where = where;
+        _sort = sort; </code></pre>
+<h2 id="step-7">Step 7</h2>
+<p>Lastly we need to handle the <code>CountRows</code> method in the <code>SqlClient</code> that is used for implementing <code>DbRecs</code></p>
+<pre data-line="3,4,5,6,7" class="language-csdiff line-numbers"><code>public long CountRows(Firefly.Box.Data.Entity entity)
+{
+    var envEntity = entity as ENV.Data.Entity;
+    if (envEntity != null)
+    {
+        return envEntity.CountRows(new FilterCollection());
+    }
+
+    using (var c = CreateCommand())
+    {
+        c.CommandText = "Select count(*) " + NewLineInSQL + "From " + _client.GetEntityName(entity);
+        return Number.Cast(c.ExecuteScalar());
+    }
+} </code></pre>
+<p>That's it, you're done and this filter will be automatically applied anywhere you'll use these entities without having to specify it in each and every controller.</p>
+
+
+
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/Adding-a-global-filter-to-an-Entity.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'adding-a-global-filter-to-an-entity.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>
