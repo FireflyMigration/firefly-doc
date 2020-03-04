@@ -232,3 +232,37 @@ public long CountRows(Firefly.Box.Data.Entity entity)
 
 
 That's it, you're done and this filter will be automatically applied anywhere you'll use these entities without having to specify it in each and every controller.
+
+## Entity Hierarchy
+Sometimes we want to restrict the rows in a detail table based on data from the master table, for example, only show rows in OrderDetails where the order is from the city London.
+
+Here's how it's done:
+```csdiff
+using Firefly.Box;
+using ENV.Data;
++using Firefly.Box.Data.Advanced;
+
+namespace Northwind.Models
+{
+    /// <summary>Order_Details(E#3)</summary>
+    public class Order_Details : Entity 
+    {
+        #region Columns
+       ...
++       protected override FilterBase GetGlobalFilter()
++       {
++           var o = new Orders();
++           var fc = new FilterCollection();
++           fc.Add("{0} in (select " + o.OrderID.Name +
++               " from " + o.EntityName + 
++               " where " + o.ShipCity.Name + " = {1} and "
++               + o.OrderID.Name + " = {0})",
++               this.OrderID, "London");
++           return fc;
++       }
+    }
+}
+```
+
+> Note that when we want to specify columns from this Entity, we use the `{0}` syntax, similar to string format. This assures that the actual name of the column that is going to be used when this query is run, will also respect the alias that this entity has in that specific controller.
+> For Orders entity, that did not exist in the original query, we use the `Name` property of the colun
