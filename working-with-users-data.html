@@ -44,9 +44,9 @@ This article explains how to work with the models under ENV.Security namespace.<
 <p>Note: the actual data is stored and encrypted in the security file, which is usually located in the working directory.</p>
 <p>All the logic code of users and roles can be found in the ENV project, under the Security namespace. The main class that is used to manipulate users data is the UserManager.
 Assuming that we want to export all the usernames to a text file, let's add a new method to the UserManager class.</p>
-<pre><code class="language-cs">public static void MyExport()
+<pre data-line="" class="language-csdiff line-numbers"><code>public static void MyExport()
 {
-    using (var sw = new StreamWriter(@&quot;c:\temp\users.txt&quot;))
+    using (var sw = new StreamWriter(@"c:\temp\users.txt"))
     {
         ChangeUserFile(storage =&gt;
         {
@@ -60,8 +60,7 @@ Assuming that we want to export all the usernames to a text file, let's add a ne
             return false;
         });
     }
-}
-</code></pre>
+} </code></pre>
 <p>Notice:</p>
 <ul>
 <li>When creating the instance of the Users entity, we should provide the database.</li>
