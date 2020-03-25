@@ -9,7 +9,7 @@ Note: the actual data is stored and encrypted in the security file, which is usu
 All the logic code of users and roles can be found in the ENV project, under the Security namespace. The main class that is used to manipulate users data is the UserManager.
 Assuming that we want to export all the usernames to a text file, let's add a new method to the UserManager class.
 
-```cs
+```csdiff
 public static void MyExport()
 {
     using (var sw = new StreamWriter(@"c:\temp\users.txt"))
