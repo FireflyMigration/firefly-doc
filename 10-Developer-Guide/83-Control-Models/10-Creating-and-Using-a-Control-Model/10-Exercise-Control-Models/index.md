@@ -21,6 +21,6 @@
 12. In the new windows that open navigate to **Northwind.Shared.Them.Controls** and expend it.
 13. select the  **MandatoryTextBox** and click the **Add to ToolBox** button.
 14. Drag and drop the **MandatoryTextBox** to the screen set the **Data** property to point to the **Products.ProductName**.
-15. Delete the current textBox in the ProductName Column with the new **MandatoryTextBox**.
+15. Replace the current textBox in the ProductName Column with the new **MandatoryTextBox**.
 16. Save changes to Git.
 17. Build and test , try to delete the product name from one of the rows in Runtime, and check that you get the error message.
