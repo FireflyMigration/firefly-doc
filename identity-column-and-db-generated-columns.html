@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="identity column,dbreadonly">
 
-    <title>DataAccess</title>
+    <title>Identity column and db generated columns</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -38,29 +38,32 @@
 
             <div class="container">
 
-                <div class="content"><h1 id="dataaccess">DataAccess</h1>
-<ul>
-<li><a href="database-connections-basic-terms-and-concepts.html">Database Connections basic terms and concepts</a></li>
-<li><a href="making-the-most-out-of-where.html">Making the most out of Where</a></li>
-<li><a href="relations-in-depth.html">Relations in depth</a></li>
-<li><a href="storage-explained.html">Storage Explained</a></li>
-<li><a href="transactions-and-locking.html">Transactions and locking</a></li>
-<li><a href="using-datetime-columns-with-null.html">Using DateTime columns with Null</a></li>
-<li><a href="should-determine-name-according-to-callstack.html">Should determine name according to callstack</a></li>
-<li><a href="populatecolumns.html">PopulateColumns</a></li>
-<li><a href="calling-an-sql-stored-procedure.html">calling an sql stored procedure</a></li>
-<li><a href="calling-an-sql-stored-procedure-with-out-parameters.html">calling an sql stored procedure with out parameters</a></li>
-<li><a href="accessing-the-database-directly.html">Accessing the database directly</a></li>
-<li><a href="columns-add-and-the-columnnotaddedtocolumncollection-exception.html">Columns Add and the ColumnNotAddedToColumnCollection exception</a></li>
-<li><a href="identity-column-and-db-generated-columns.html">Identity column and db generated columns</a></li>
-<li><a href="maintaining-an-sql-database-from-code.html">Maintaining an SQL database from code</a></li>
-<li><a href="upgrading-an-sql-database-from-code.html">Upgrading an SQL Database from code</a></li>
-</ul>
+                <div class="content"><h1 id="identity-column-and-db-generated-columns">Identity column and db generated columns</h1>
+<p>Sometimes we want to have an automatically generate identity column in the database, and use that as the primary key in the application.</p>
+<p>To do that, you'll need to define the <code>PrimaryKey</code> attribute with the <code>identity</code> property set to <code>true</code>.</p>
+<pre data-line="4" class="language-csdiff line-numbers"><code>public class Suppliers : Entity
+{
+    #region Columns
+    [PrimaryKey(Identity = true)]
+    public readonly NumberColumn SupplierID = new NumberColumn("SupplierID", "N10");
+    public readonly TextColumn CompanyName = new TextColumn("CompanyName", "40");
+    #endregion </code></pre>
+<h1 id="other-database-generated-fields-dbreadonly">Other database generated fields - <code>DbReadOnly</code></h1>
+<p>Sometimes we want to have a column value determined by the db and never changed by the application (like row create date or an expression)
+To do that, you can use the <code>DbReadOnly</code> property, that when it's set to true, will only include this column in select statements and not in update or insert statements.</p>
+<p>Here's how to use it:</p>
+<pre data-line="6" class="language-csdiff line-numbers"><code>public readonly TextColumn FirstName = new TextColumn();
+public readonly TextColumn LastName = new TextColumn();
+public readonly TextColumn FullName = new TextColumn() 
+{
+    Name = "FirstName || ' ' || LastName",
+    DbReadOnly = true 
+}; </code></pre>
 
 
 
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/50-DataAccess/Identity-column-and-db-generated-columns.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -122,7 +125,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'dataaccess.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'identity-column-and-db-generated-columns.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
