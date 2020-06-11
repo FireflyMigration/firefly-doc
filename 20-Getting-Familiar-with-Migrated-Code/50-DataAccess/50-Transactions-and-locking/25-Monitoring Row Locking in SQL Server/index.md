@@ -389,5 +389,5 @@ ORDER BY L.request_session_id
  
  The following query will reutrn the locked customer row:
  ```SQL
- select *,%%lockres%% from customers with (nolock) WHERE %%lockres%% like '%46003d087fa5%'
+ select *,%%lockres%% from customers with (nolock) WHERE %%lockres%% = '(46003d087fa5)'
  ```
