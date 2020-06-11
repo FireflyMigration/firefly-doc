@@ -376,7 +376,7 @@ ORDER BY L.request_session_id
 Any table has a &quot;virtual&quot; column that represents that value called <code>%%lockres%%</code> which can be used to find the specific row</p>
 <p>For example - if the <code>LockedObjectName</code> is <code>Customers</code> and the <code>resource_description</code> is &quot;(46003d087fa5)&quot;</p>
 <p>The following query will reutrn the locked customer row:</p>
-<pre><code class="language-SQL">select *,%%lockres%% from customers with (nolock) WHERE %%lockres%% like '%46003d087fa5%'
+<pre><code class="language-SQL">select *,%%lockres%% from customers with (nolock) WHERE %%lockres%% = '(46003d087fa5)'
 </code></pre>
 
 
