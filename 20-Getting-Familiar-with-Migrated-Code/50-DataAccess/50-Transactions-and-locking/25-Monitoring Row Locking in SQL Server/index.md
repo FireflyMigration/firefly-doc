@@ -19,6 +19,7 @@ WHERE  req_spid>=0 AND rsc_objid>0 AND rsc_type=5
 ```
 >See the end of this article for other, (and even more useful) queries that were found after this article was originally written
 Here's a sample result:
+
 ![](2019-09-26_10h38_58.png)
 
 
