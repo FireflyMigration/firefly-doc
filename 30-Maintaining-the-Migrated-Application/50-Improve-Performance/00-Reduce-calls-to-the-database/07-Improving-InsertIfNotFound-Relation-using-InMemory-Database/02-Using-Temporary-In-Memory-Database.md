@@ -1,3 +1,4 @@
+keywords:bulk insert 
 # Improve Performance of InsertIfNotFound using Memory Database and Bulk Copy
 Often we need to insert many rows to the database, while making sure that these rows don't already exist.
 We use the `InsertIfNotFound` relation for that.
