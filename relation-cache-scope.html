@@ -40,6 +40,30 @@
 
                 <div class="content"><h1 id="relation-cache-scope">Relation Cache - Scope</h1>
 <p>In this video we discuss the scope of Cache for a relation and how to extend it</p>
+<pre data-line="5,12,21" class="language-csdiff line-numbers"><code>public class DemoCache : BusinessProcessBase
+{
+  public DemoCache()
+  {
+    Entities.Add(new Models.Shippers());
+  }
+  protected override void OnStart()
+  {
+    for (int i=0; i &lt; 10; i++)
+    {
+-     new Child().Run();
+      Cached&lt;Child&gt;().Run();
+    }
+    Exit();
+  }
+  public class Child : BusinessProcessBase
+  {
+    Models.Shippers Shippers = new Models.Shippers()
+    {
+      Cache = true
+      , KeepCacheAliveAfterExit = true
+    }
+  }
+} </code></pre>
 <hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/OHh_WC-4ijM?list=PL1DEQjXG2xnKt9tRPRR1YtbITJ3idW-vL" frameborder="0" allowfullscreen></iframe>
 
