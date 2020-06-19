@@ -64,6 +64,16 @@
     }
   }
 } </code></pre>
+<p>Steps:</p>
+<ol>
+<li>Replace <code>new</code> with <code>Cached</code> on the call.</li>
+<li>Add <code>KeepCacheAliveAfterExit = true</code> to the Entities you want to cache</li>
+<li>Add the entity that you want to cache - to the parent controller you want to cache it in using <code>Entities.Add</code></li>
+</ol>
+<ul>
+<li>It doesn't have to be the direct parent, it can be 1 ore more levels up in the stack (grand parent etc...)</li>
+<li>If the entity is already in use in the parent (in a <code>From</code> or a <code>Relations.Add</code>) , you don't need to add it again</li>
+</ul>
 <hr />
 <iframe width="560" height="315" src="https://www.youtube.com/embed/OHh_WC-4ijM?list=PL1DEQjXG2xnKt9tRPRR1YtbITJ3idW-vL" frameborder="0" allowfullscreen></iframe>
 
