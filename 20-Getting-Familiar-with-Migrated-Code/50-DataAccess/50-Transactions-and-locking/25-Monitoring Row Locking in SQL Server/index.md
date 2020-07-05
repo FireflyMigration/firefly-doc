@@ -17,12 +17,15 @@ SELECT
 FROM master.dbo.syslockinfo a left outer join sys.dm_exec_sessions b on a.req_spid=b.session_id 
 WHERE  req_spid>=0 AND rsc_objid>0 AND rsc_type=5
 ```
-
+>See the end of this article for other, (and even more useful) queries that were found after this article was originally written
 Here's a sample result:
+
 ![](2019-09-26_10h38_58.png)
+
 
 > For customers that have migrated from btrieve to Sql up to 2018, see the following article for a query that will display locking:
 > http://doc.fireflymigration.com/locking-after-btrieve-to-sql-migration.html
+
 
 Here's an example of a `UIController` that runs this sql:
 ```csdiff
@@ -344,3 +347,47 @@ And it'll look like this:
 ![](2019-09-26_15h55_25.png)
 
 ![](2019-09-26_15h55_51.png)
+
+
+### UPDATE: Another SQL Monitoring Query
+Recently I've ran into another great query to show the lock info, including the last sql for that connection:
+```sql
+
+SELECT  L.request_session_id AS SPID,
+        DB_NAME(L.resource_database_id) AS DatabaseName,
+        O.Name AS LockedObjectName,
+		l.resource_associated_entity_id,
+		l.resource_description,
+        P.object_id AS LockedObjectId,
+        L.resource_type AS LockedResource,
+        L.request_mode AS LockType,
+        ST.text AS SqlStatementText,    
+		ES.login_name 'Locking User Sql Login Name',
+		ES.nt_user_name 'Locking User Windows Login Name',
+		ES.session_id 'Sql Session Id',
+		ES.program_name,
+		ES.host_name 'Locking Computer Name',   
+        TST.is_user_transaction as IsUserTransaction,
+        CN.auth_scheme as AuthenticationMethod
+		
+FROM    sys.dm_tran_locks L
+        JOIN sys.partitions P ON P.hobt_id = L.resource_associated_entity_id
+        left outer JOIN sys.objects O ON O.object_id = P.object_id
+        JOIN sys.dm_exec_sessions ES ON ES.session_id = L.request_session_id
+         JOIN sys.dm_tran_session_transactions TST ON ES.session_id = TST.session_id
+        JOIN sys.dm_tran_active_transactions AT ON TST.transaction_id = AT.transaction_id
+        JOIN sys.dm_exec_connections CN ON CN.session_id = ES.session_id
+        CROSS APPLY sys.dm_exec_sql_text(CN.most_recent_sql_handle) AS ST
+WHERE   resource_database_id = db_id()
+ORDER BY L.request_session_id
+```
+ ### UPDATE 2: Finding the locked row
+ When you run the previous select, the column `resource_description` holds the key to find the actual locked row. 
+ Any table has a "virtual" column that represents that value called `%%lockres%%` which can be used to find the specific row
+ 
+ For example - if the `LockedObjectName` is `Customers` and the `resource_description` is "(46003d087fa5)"
+ 
+ The following query will reutrn the locked customer row:
+ ```SQL
+ select *,%%lockres%% from customers with (nolock) WHERE %%lockres%% = '(46003d087fa5)'
+ ```
