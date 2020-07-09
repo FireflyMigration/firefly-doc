@@ -43,9 +43,11 @@
 <h2 id="symptoms">Symptoms</h2>
 <p>When you run the application from a mapped drive or a network location, the application crashes during execution.
 The error details, which can be found the in Windows Event Viewer are similar to the following:</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>Framework Version: v4.0.30319
-Description: The process was terminated due to an unhandled exception.
-Exception Info: System.Runtime.InteropServices.SEHException </code></pre>
+<pre data-line="" class="language-csdiff line-numbers"><code>Exception Info: System.Runtime.InteropServices.SEHException
+
+or 
+
+System.TypeLoadException - Abstract factory failed to load class 'xxxxxxxx' in assembly 'xxxxxxx' </code></pre>
 <h2 id="the-cause">The Cause</h2>
 <p>This is a known Microsoft issue in Windows Server 2008 and Windows Server 2012, as described in <a href="https://support.microsoft.com/en-gb/help/2536487/applications-crash-or-become-unresponsive-if-another-user-logs-off-a-r">this article</a></p>
 <h2 id="our-solutions">Our Solutions</h2>
