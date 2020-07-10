@@ -1,6 +1,6 @@
 ﻿keywords:Apprunner,update
 
-# Updating the application during runtime
+# Updating the application during runtime (AppRunner)
 
 ### The challange
 
