@@ -26,3 +26,8 @@ In Btrieve '~' is greater than all english characters `'x'<'~' == true` - so you
 In the SQL_Latin1_General_CI_AS the `~` sign is not greater than all english characters `'x' < '~' == false` - so you'll not see any rows.
 
 This is a good example of why by default we use the `Latin1_General_BIN` collation when migrating from Btrieve to SQL
+
+# Risks with Latin1_General_BIN
+Although Latin1_general_BIN provides an exact behavior that is similar to btrieve in many respects, there is one place where it could cause problems and that's file names.
+File names in windows are not case sensitive, so the file `orders.dat` and the file `Orders.dat` are the same file - with Latin_General_BIN in Sql Server, these are two different files, `orders` and `Orders`. This can cause problems when you have multiple classes for the same actual table - or when working with logical names, or EntityName expressions
+
