@@ -24,8 +24,8 @@ The following table shows the .Net equivalents for Magic link types.
 | Query      | Find               |
 | Write      | InsertIfNotFound   |
 | Create     | Insert             |
-| InnerJoin  | InnerJoin          |
-| L.O.Join   | Join               |
+| InnerJoin  | Join               |
+| L.O.Join   | OuterJoin          |
 
 ```
 ```
