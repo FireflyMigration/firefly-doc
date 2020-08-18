@@ -27,7 +27,6 @@ The following table shows the .Net equivalents for Magic link types.
 | InnerJoin  | Join               |
 | L.O.Join   | OuterJoin          |
 
-```
-```
+
 See also:  
 [Relations Enum](http://www.fireflymigration.com/reference/html/T_Firefly_Box_RelationType.htm) 
