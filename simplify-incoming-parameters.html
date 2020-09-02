@@ -52,6 +52,7 @@ Columns.Add(Order_Details.Discount);
 Columns.Add(vOrderTotal);
 -MarkParameterColumns(pi_OrderID);
 #endregion </code></pre>
+<p>If you want to delete all MarkParameterColumns() from your entire project at once you can easily do this by using the 'Use regular expression' at the 'Find and Replace' option in Visual Studio by entering <code>^[ \t]*MarkParameterColumns\(.*</code> at the Find box and leaving the Replace box empty.</p>
 <h2 id="replace-numberparameter-with-number">Replace NumberParameter with Number</h2>
 <p>Since we only use the incoming parameter called <code>ppi_OrderID</code> to filter the orders of this controller, we can replace the <code>NumberParameter</code> with a simple <code>Number</code>, move the <code>Where</code> to the <code>Run</code> method and remove the local column <code>pi_OrderID</code> entirely</p>
 <pre data-line="19,22" class="language-csdiff line-numbers"><code>...
