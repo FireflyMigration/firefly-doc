@@ -1,4 +1,4 @@
-﻿keywords: link,relations,condition
+﻿keywords: link,relations,condition,reversed
 # Relations condition
 
 Name in Migrated Code: **Relations**   
@@ -15,6 +15,7 @@ void InitializeDataView()
             
     Relations.Add(Customers, Customers.CustomerID.IsEqualTo(Orders.CustomerID), Customers.SortByPK_Customers);
 +   Relations[Customers].BindEnabled(() => Orders.CustomerID != "");
++   Relations[Customers].OrderBy.Reversed = true;
 }
 ```
 
