@@ -13,7 +13,7 @@ protected override void OnLeaveRow()
 }
 ```
 
-**Form definition - Layout regoin**
+**Form definition - Layout region**
 ```csdiff
 #region Layouts
      Printing.FormOutputOperationC1 _layout { get { return Cached<Printing.FormOutputOperationC1>(); } }
@@ -49,9 +49,14 @@ protected override void OnLeaveRow()
 }
 ```
 
-
 #### See Also
 [Reports](reports.html)
 
-[Blob operation](Block-If-Else.html)
+## Writing text files in .NET
+This code represents the migrated code, when we write new code in .NET we'll rarely write text file access using the structure that was used in magic - instead we would simply read and write strings.
+
+We recommend that you'll checkout the [Writing and Reading files](writing-and-reading-files.html) section of the documentation for more information.
+
+
+
 
