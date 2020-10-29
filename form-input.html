@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Form Input operation, Import, Delimiter">
 
-    <title>Form</title>
+    <title>Form input</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -38,16 +38,35 @@
 
             <div class="container">
 
-                <div class="content"><h1 id="form">Form</h1>
-<ul>
-<li><a href="form-output.html">Form output</a></li>
-<li><a href="form-input.html">Form input</a></li>
-</ul>
+                <div class="content"><h1 id="form-input">Form input</h1>
+<p><img src="FormInput.png" alt="Form Input" /></p>
+<h3 id="migrated-code-examples">Migrated Code Examples:</h3>
+<p><strong>Simple Form input</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLeaveRow()
+{
+     _layout.Import_TableB.ReadFrom(_ioImport_TableB);
+} </code></pre>
+<p><strong>Using Delimiter = Single</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLeaveRow()
+{
+     _layout.Import_TableB.ReadSeparated(_ioImport_TableB, ';');
+} </code></pre>
+<p><strong>Using Delimiter = Double</strong></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>protected override void OnLeaveRow()
+{
+     _layout.Import_TableB.ReadDoubleSeparated(_ioImport_TableB, '%');
+} </code></pre>
+<blockquote>
+<p>note that in previous versions this method had a spelling mistake and was called: <code>ReadDoubleSeperated</code></p>
+</blockquote>
+<h2 id="now-that-youre-in.net">Now that you're in .NET</h2>
+<p>This code represents the migrated code, when we write new code in .NET we'll rarely write text file access using the structure that was used in magic - instead we would simply read and write strings.</p>
+<p>We recommend that you'll checkout the <a href="writing-and-reading-files.html">Writing and Reading files</a> section of the documentation for more information.</p>
 
 
 
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/Operations/50-Form/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/Operations/50-Form/20-Form-input.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -109,7 +128,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'form.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'form-input.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
