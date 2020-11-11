@@ -43,7 +43,7 @@ namespace Northwind.Orders
             return Order_Details.Discount;
         }
     }
-    public class PrecentDiscountStrategy : DefaultDiscountStrategy
+    public class PercentDiscountStrategy : DefaultDiscountStrategy
     {
         public override Text DiscountColumnFormat()
         {
@@ -73,7 +73,7 @@ We implemented a GetStrategy method:
 +DefaultDiscountStrategy GetDiscountStrategy()
 +{
 +    if (_parent.Orders1.ShipCountry == "France")
-+        return new PrecentDiscountStrategy();
++        return new PercentDiscountStrategy();
 +    else if (_parent.Orders1.ShipCountry == "Germany")
 +        return new NoDiscountStrategy();
 +    return new DefaultDiscountStrategy();
