@@ -20,7 +20,7 @@
 1.  Notice the **Output window**.
 1.  Make a change to one of the rows and go to the next row.
 1.  Notice the **Output window**.
-1.  Exit **ShowOrderDetails**.
+1.  Exit **ShowProducts**.
 1.  Notice the **Output window**.
   
   
