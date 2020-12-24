@@ -1,7 +1,7 @@
 ﻿### SQL Entity
 
 1.	Create a new UIController named “ProductsSQLEntity”
-2.	Add a grid with the following columns from the table, using DynamicSQLEntity:
+2.	Add a grid with the following columns from the SQL table Products, using DynamicSQLEntity:
     a.	ProductID
     b.	ProductName
     c.	UnitPrice
