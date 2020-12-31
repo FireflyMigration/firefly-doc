@@ -33,11 +33,11 @@ If we used the code column as the way to identify a unique row – and that colu
 Imagine the following scenario – we have a row with code "A" and it's position (rowid__)is 751.
 1.	A parent task parks on the row.
 2.	A sub task is called and update the code column from A to B.
-3.	The sub task is done and the parent class now tries to update the row – and row A does not exist – hens – row was lost exception.
+3.	The sub task is done and the parent class now tries to update the row – and row A does not exist – hence – row was lost exception.
 
 **Locking**
 
-locking is done based on the position definition – so if we lock the Key "A" and change the code to "B" the row will not locked.
+Locking is done based on the position definition – so if we lock the Key "A" and change the code to "B" the row will not be locked.
 
 2. Why do I need my non Unique Index to become Unique ?
 

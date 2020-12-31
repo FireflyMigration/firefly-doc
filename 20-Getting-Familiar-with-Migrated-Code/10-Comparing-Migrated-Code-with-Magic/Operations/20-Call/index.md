@@ -8,8 +8,16 @@
 
 ```csdiff
 new CalledProg().Run();
+Create<ICalledProg>().Run();
 new SubTask().Run();
+new SubTask(this).Run();
+Cached<SubTask>().Run();
 ```
+* [Read More about Create](calling-a-program-across-projects.html)
+* [Read more about Cached](introducing-cached.html)
+> We recommend `new` for in project calls, `Create` for cross project calls and `Cached` when using `KeepViewVisibleAfterExit` or when the called controller constructor is expensive (for example, an inner class with complicated report sections.)
+
+
 
 **Call program with Arguments**
 
@@ -37,7 +45,7 @@ new Browse_TableA().Run(view: new Views.CallForm(this));
 **Using Lock**
 ```csdiff
  LockCurrentRow();
- Cached<CalledProg>().Run(TableA.Code);
+ new CalledProg().Run(TableA.Code);
 
 ```
 

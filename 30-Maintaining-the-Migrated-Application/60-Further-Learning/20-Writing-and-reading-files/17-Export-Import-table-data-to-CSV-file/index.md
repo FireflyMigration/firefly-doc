@@ -181,16 +181,18 @@ namespace ENV.IO
                     switch (i)
                     {
 
-                        case ‘,’:
-                            _values.Add(sb.ToString());
-                            sb = new StringBuilder();
-                        break;
-                        case ‘\”‘:
+                       case '\"':
+
                             inQuotes = true;
-                        break;
+                            break;
                         default:
-                          sb.Append((char)i);
-                        break;
+                            if (i==seperator)
+                            {
+                                _values.Add(sb.ToString());
+                                sb = new StringBuilder();
+                            }
+                            sb.Append((char)i);
+                            break;
                     }
             }
             _values.Add(sb.ToString());

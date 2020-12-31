@@ -32,7 +32,7 @@ It is used in the migrated code whenever magic was locking but not always - just
 When the lock starts, all entities for which the `AllowRowLocking` property is set, will be locked.
 ![Allow Row Locking](allow-row-locking.png)
 
-> Note that if the same entity was already defined in a calling controller with `AllowRowLocking = true`, than that same entity in this controller will also be treader as it `AllowRowLocking` is set to true.
+> Note that if the same entity was already defined in a calling controller with `AllowRowLocking = true`, than that same entity in this controller will also be treated as if `AllowRowLocking` is set to true.
 that is controlled by the `ShouldDetermineNameAcordingToCallStack` property of the entity. Set this property to false to disable that behavior.
 
 

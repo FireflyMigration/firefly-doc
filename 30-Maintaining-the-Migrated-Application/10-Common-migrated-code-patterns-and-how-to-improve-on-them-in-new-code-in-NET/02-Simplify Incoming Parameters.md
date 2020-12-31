@@ -19,6 +19,8 @@ Columns.Add(vOrderTotal);
 #endregion
 ```
 
+If you want to delete all MarkParameterColumns() from your entire project at once you can easily do this by using the 'Use regular expression' at the 'Find and Replace' option in Visual Studio by entering ```^[ \t]*MarkParameterColumns\(.*``` at the Find box and leaving the Replace box empty.
+
 ## Replace NumberParameter with Number
 Since we only use the incoming parameter called `ppi_OrderID` to filter the orders of this controller, we can replace the `NumberParameter` with a simple `Number`, move the `Where` to the `Run` method and remove the local column `pi_OrderID` entirely
 
