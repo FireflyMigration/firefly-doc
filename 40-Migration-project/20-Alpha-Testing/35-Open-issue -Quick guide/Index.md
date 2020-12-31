@@ -16,13 +16,14 @@ We do not know or understand the deferent business domains of each appliaction, 
 ```
 1. Menu Program
 2. Menu Orders
-3. Click Ctrl R
-4. type  order 10248
+3. Click Ctrl-R
+4. Type order 10248
 5. Click Enter
 6. You should see the order information of order 10248
 
-Magic result - order total is 554
-.NET result - Order total is 552
+Results:
+Magic - Order total is 554
+.NET - Order total is 552
 ```
 
 #### Example of bad  report
