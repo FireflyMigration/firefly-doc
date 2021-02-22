@@ -7,6 +7,7 @@ For example, suppose we have a list of orders, we may want to sum the freight of
 Notice that the list may be filtered by a calculated value (i.e. estimated shipping date) 
 or by a value from a relation (i.e. shipping company name). 
 We need to take this filter into account when summing the freight.
+
 ![2018 07 10 13H29 47](2018-07-10_13h29_47.png)
 
 ## The ReadAllRows Method
@@ -34,6 +35,7 @@ public class DemoReadAllRows : UIControllerBase
 
 # ReadSelectedRows
 In case we need to sum only the selected rows, we can use the grid method "ReadSelectedRows". For example, the user selects the first 3 rows:
+
 ![2018 07 10 13H31 51](2018-07-10_13h31_51.png)
 
 Here is the code for summing just the selected rows:
