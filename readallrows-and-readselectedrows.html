@@ -44,8 +44,8 @@
 For example, suppose we have a list of orders, we may want to sum the freight of all the orders in the grid.
 Notice that the list may be filtered by a calculated value (i.e. estimated shipping date)
 or by a value from a relation (i.e. shipping company name).
-We need to take this filter into account when summing the freight.
-<img src="2018-07-10_13h29_47.png" alt="2018 07 10 13H29 47" /></p>
+We need to take this filter into account when summing the freight.</p>
+<p><img src="2018-07-10_13h29_47.png" alt="2018 07 10 13H29 47" /></p>
 <h2 id="the-readallrows-method">The ReadAllRows Method</h2>
 <p>In the migrated application, every controller has a method named ReadAllRows, which iterates all the rows that are currently part of the controller's data view.
 This methods accepts an action, in which we can do whatever we want with each row. We can update the rows values, print it or just count it.
@@ -67,8 +67,8 @@ Here is an example for summing the freight:</p>
          MessageBox.Show(sum.ToString());
      } </code></pre>
 <h1 id="readselectedrows">ReadSelectedRows</h1>
-<p>In case we need to sum only the selected rows, we can use the grid method &quot;ReadSelectedRows&quot;. For example, the user selects the first 3 rows:
-<img src="2018-07-10_13h31_51.png" alt="2018 07 10 13H31 51" /></p>
+<p>In case we need to sum only the selected rows, we can use the grid method &quot;ReadSelectedRows&quot;. For example, the user selects the first 3 rows:</p>
+<p><img src="2018-07-10_13h31_51.png" alt="2018 07 10 13H31 51" /></p>
 <p>Here is the code for summing just the selected rows:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>        private void btnSumSelectedFreight_Click(object sender, ButtonClickEventArgs e)
         {
