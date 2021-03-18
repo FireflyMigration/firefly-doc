@@ -124,7 +124,7 @@ WHERE  req_spid>=0 AND rsc_objid>0 AND rsc_type=5";
 ```
 
 
-And add an handler in the  `AppliationCore` class.
+And add an handler in the  `ApplicationCore` class.
 ```csdiff
 Handlers.AddDatabaseErrorHandler(DatabaseErrorType.LockedRow).Invokes += e =>
 {
@@ -208,13 +208,13 @@ And you'll see it in the `program_name` column:
 ![](2019-09-26_10h46_41.png)
 
 ## "How can we know on which screen the user is now?"
-The way to do that is to create a table that will know where the user is, and update it every x Seconds.
+The way to do that is to create a table that will know where the user is, and update it every x seconds.
 
 The following code sample records every 5 seconds the:
 1. Screen - the Form that the user is on
-2. Contorller - the Controller the user was on.
+2. Controller - the Controller the user was on.
 3. ControllerThatOpenedTheTransaction - the controller where the transaction was opened.
-4. LastUpdate - the last time the values has changed (if the user is on the screen for an hour, there is no point in updating the db again and again, youll see it using ths value.)
+4. LastUpdate - the last time the values have changed (if the user is on the screen for an hour, there is no point in updating the db again and again, you'll see it using this value.)
 
 
 Add the following entity to the application.
@@ -387,7 +387,7 @@ ORDER BY L.request_session_id
  
  For example - if the `LockedObjectName` is `Customers` and the `resource_description` is "(46003d087fa5)"
  
- The following query will reutrn the locked customer row:
+ The following query will return the locked customer row:
  ```SQL
  select *,%%lockres%% from customers with (nolock) WHERE %%lockres%% = '(46003d087fa5)'
  ```
