@@ -69,6 +69,7 @@ public static void RegisterRoutes(RouteCollection routes)
 +    preCondition="integratedMode,runtimeVersionv4.0" />
 +   </handlers>
 +   <validation validateIntegratedModeConfiguration="false" />  
++    <modules  runAllManagedModulesForAllRequests="true" />
 + </system.webServer>
   <runtime>
     <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
