@@ -150,6 +150,11 @@ namespace Northwind
                                       KeepIdentity, (System.Data.SqlClient.SqlTransaction)c.Transaction);
                                 bc.BulkCopyTimeout = 0;
                                 bc.DestinationTableName = targetTable.EntityName;
+                                foreach (var item in targetTable.Columns)
+                                {
+                                    if (!item.DbReadOnly)
+                                        bc.ColumnMappings.Add(item.Name, item.Name);
+                                }
                                 bc.WriteToServer(((MemoryDatabase)sourceTable.DataProvider).DataSet.Tables[sourceTable.EntityName]);
                                 return;
                             }
