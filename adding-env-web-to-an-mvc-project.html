@@ -77,7 +77,7 @@
 <ol start="8">
 <li>Edit the 'Web.config' located at the root of your MVC project and added this lines:</li>
 </ol>
-<pre data-line="17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33" class="language-csdiff line-numbers"><code> &lt;?xml version="1.0" encoding="utf-8"?&gt;
+<pre data-line="17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34" class="language-csdiff line-numbers"><code> &lt;?xml version="1.0" encoding="utf-8"?&gt;
  &lt;!--
   For more information on how to configure your ASP.NET application, please visit
   https://go.microsoft.com/fwlink/?LinkId=301880
@@ -109,6 +109,7 @@
      preCondition="integratedMode,runtimeVersionv4.0" /&gt;
     &lt;/handlers&gt;
     &lt;validation validateIntegratedModeConfiguration="false" /&gt;  
+     &lt;modules  runAllManagedModulesForAllRequests="true" /&gt;
   &lt;/system.webServer&gt;
   &lt;runtime&gt;
     &lt;assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1"&gt;
