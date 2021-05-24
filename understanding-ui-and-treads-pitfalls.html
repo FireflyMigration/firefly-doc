@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="RunOnUIThread,RunOnLogicThread,RunInUIThread,RunInLogicThread">
 
-    <title>Introducing ENV.Web</title>
+    <title>Understanding UI and Treads Pitfalls</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -38,41 +38,51 @@
 
             <div class="container">
 
-                <div class="content"><h1 id="introducing-env.web">Introducing ENV.Web</h1>
-<p>ENV.Web is a project we use to demo fast web application development with migrated .NET code reused on the server side.</p>
-<p>Using the code in this project you can create a RESTful API and a responsive modern web user interface for your migrated application.</p>
-<p>The project is hosted on GitHub, at:
-<a href="https://github.com/FireflyMigration/ENV.Web">https://github.com/FireflyMigration/ENV.Web</a></p>
-<h2 id="architecture">Architecture</h2>
-<h3 id="server">Server</h3>
-<p>MVC.NET, REST Api and the migrated code.</p>
-<h3 id="browser">Browser</h3>
+                <div class="content"><h1 id="understanding-ui-and-treads-pitfalls">Understanding UI and Treads Pitfalls</h1>
+<p>When working with multiple threads that present forms, one must be aware of the threads in which one is running, and what exactly they are trying to do.</p>
+<h2 id="background">Background</h2>
+<p>When running an application with one thread, everything is simple, both the logic and the UI run on the same thread and it all works great.</p>
+<p>When you run things in parallel, it gets a bit more complicated than that.</p>
+<p>For each call to &quot;RunAsync&quot; a new thread opens, and runs that code. In that thread you can find the call stack of all running tasks, the thread will use a different connection from the previous thread and will manage all of it's transaction etc.....</p>
+<p>UNfortunately windows have a limitation that all call to code that concerns the UI, must be made in the thread where the form was originally created.</p>
+<p>Let's look at a scenario:</p>
 <ol>
-<li>HTML5</li>
-<li>bootstrap - for the styling</li>
-<li>Angular2 - as the application framework</li>
-<li>Typescript - as the coding language</li>
+<li>we ran the application and have Thread 1 that serves both as UI thread and logic thread.</li>
+<li>On thread one, we open the MDI form and a few other forms.</li>
+<li>We call <code>RunAsync</code> to run a program in a new thread - Thread 2.</li>
+<li>We want that program on Thread 2, to open a form, that will still be in the MDI that was created in Thread 1.</li>
+<li>When we do that in windows forms, we'll get a <code>Cross-thread operation not valid</code> exception.
+Windows expects that when you want to run a command on the UI from Thread 2, you'll take care to switch back to the UI thread and run the command there.</li>
 </ol>
-<h2 id="support">Support</h2>
-<p>You are welcome to raise any issues or questions regarding this project on GitHub. This project is not officially supported by Firefly Migration.</p>
-<h2 id="contributions">Contributions</h2>
-<p>Contributions are welcomed, feel free to fork this repo and suggest pull requests.</p>
-<h2 id="topics">Topics</h2>
-<ul>
-<li><a href="adding-env-web-to-an-mvc-project.html">Adding ENV Web to an MVC project</a></li>
-<li><a href="reusing-migrated-business-logic-as-microservice.html">Reusing Migrated Business Logic As MicroService</a></li>
-<li><a href="web-development-tutorial.html">Web Development Tutorial</a></li>
-<li><a href="additional-server-side-features.html">Additional server side features</a></li>
-<li><a href="introduction-to-angular-and-typescript.html">Introduction to Angular and Typescript</a></li>
-<li><a href="additional-client-side-features.html">Additional client side features</a></li>
-<li><a href="setup-env-web-development-environment.html">Setup ENV Web Development Environment</a></li>
-<li><a href="saving-and-loading-entity-data-using-json.html">Saving and loading Entity Data using JSON</a></li>
-</ul>
+<p>The migrated code takes care of that for you, and makes sure that any UI command will be run on the UI thread - and any logic command will be run on the Logic Thread (Thread 2 in our case)</p>
+<p>Let's consider the following:</p>
+<ol>
+<li>On Thread 2, we have a controller with a button that when it's clicked, we want  it to run a child controller on Thread 2.</li>
+<li>The Original button Click Command, happens in the UI Thread - but the migrated code, makes sure to switch it to execute in the Logic Thread (Thread 2) to get a coherent behavior.</li>
+</ol>
+<h2 id="helper-methods">Helper methods</h2>
+<p>To provide you with the same control we use, there are two important methods that you can use:</p>
+<ol>
+<li><code>Context.Current.InvokeUICommand</code> - To be used while you're in the logic thread, and you want to run something on the UI thread, like setting a control's text etc....</li>
+<li><code>RunInLogicContext</code>, exists in the form be used to make sure that the code that is about to run will be executed in the relevant logic thread.</li>
+</ol>
+<p>When you are using a non migrated control, that fire events, and in these events you want to call code that will run in the logic thread, you must use the <code>RunInLogicContext</code> method for that.
+For example:</p>
+<pre data-line="3,4,6" class="language-csdiff line-numbers"><code>private void button2_Click(object sender, System.EventArgs e)
+{
+    RunInLogicContext(() =&gt;
+    {
+        new SomeProgram().Run();
+    });
+} </code></pre>
+<h2 id="what-will-happen-if-i-dont-do-that">What will happen if I don't do that</h2>
+<p>Well, you might run into trouble :)</p>
+<p>In some cases you would get an exception of type <code>Thread blocked by UI code</code> (in previous version you might get a <code>NotImplementedException</code>)</p>
 
 
 
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/20-ENV Web/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/Multi-Threading-and-Contexts/Understanding UI and Treads Pitfalls.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -134,7 +144,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'env-web.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'understanding-ui-and-treads-pitfalls.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

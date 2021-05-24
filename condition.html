@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
-    <meta name="keywords" content="link,relations,condition">
+    <meta name="keywords" content="link,relations,condition,reversed">
 
     <title>Relations condition</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -44,12 +44,13 @@ Location in Migrated Code: <strong>InitializeDataView</strong></p>
 <p><img src="relationCondition.png" alt="" /></p>
 <hr />
 <h2 id="example">Example:</h2>
-<pre data-line="6" class="language-csdiff line-numbers"><code>void InitializeDataView()
+<pre data-line="6,7" class="language-csdiff line-numbers"><code>void InitializeDataView()
 {
     From = Orders;
             
     Relations.Add(Customers, Customers.CustomerID.IsEqualTo(Orders.CustomerID), Customers.SortByPK_Customers);
     Relations[Customers].BindEnabled(() =&gt; Orders.CustomerID != "");
+    Relations[Customers].OrderBy.Reversed = true;
 } </code></pre>
 <h2 id="see-also">See Also</h2>
 <ul>

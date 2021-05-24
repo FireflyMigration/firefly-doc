@@ -64,10 +64,10 @@ If we used the code column as the way to identify a unique row – and that colu
 <ol>
 <li>A parent task parks on the row.</li>
 <li>A sub task is called and update the code column from A to B.</li>
-<li>The sub task is done and the parent class now tries to update the row – and row A does not exist – hens – row was lost exception.</li>
+<li>The sub task is done and the parent class now tries to update the row – and row A does not exist – hence – row was lost exception.</li>
 </ol>
 <p><strong>Locking</strong></p>
-<p>locking is done based on the position definition – so if we lock the Key &quot;A&quot; and change the code to &quot;B&quot; the row will not locked.</p>
+<p>Locking is done based on the position definition – so if we lock the Key &quot;A&quot; and change the code to &quot;B&quot; the row will not be locked.</p>
 <ol start="2">
 <li>Why do I need my non Unique Index to become Unique ?</li>
 </ol>

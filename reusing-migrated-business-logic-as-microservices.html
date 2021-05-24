@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>Creating Windows Services and using Migrated Code</title>
+    <title>Reusing Migrated Business Logic As MicroServices</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -38,72 +38,15 @@
 
             <div class="container">
 
-                <div class="content"><h1 id="creating-windows-services-and-using-migrated-code">Creating Windows Services and using Migrated Code</h1>
-<p>When you want to create a windows service, you can take the long route as described in the articles below - or take the short route which is:</p>
-<h2 id="creating-a-windows-service-the-short-story">Creating a windows service, the short story</h2>
-<h3 id="step-1-add-a-reference">Step 1 add a reference</h3>
-<p>Add a reference to <code>System.ServiceProcess</code></p>
-<h3 id="step-2-create-the-service-class">Step 2 Create the Service Class</h3>
-<p>Add the <code>MyService</code> class</p>
-<pre data-line="" class="language-csdiff line-numbers"><code>class MyService : System.ServiceProcess.ServiceBase
-    {
-        System.Threading.Thread theThread;
-        protected override void OnStart(string[] args)
-        {
-            theThread =  ENV.Common.RunOnNewThread(() =&gt; {
-                Application.Run();
-            },false);
-        }
-        protected override void OnStop()
-        {
-            // you are welcome to stop the service in a less agressive way then killing the thread :)
-            // just set some static field that is used as the Exit condition of the controller with the loop
-            theThread.Abort();
-        }
-    } </code></pre>
-<h3 id="step-3-run-the-service-when-the-application-starts">Step 3, run the service when the application starts</h3>
-<p>In the <code>Program.cs</code> add the following lines:</p>
-<pre data-line="7,8,9,10,11" class="language-csdiff line-numbers"><code>[System.STAThread]
-        public static void Main(string[] args)
-        {
-            try
-            {
-                Init(args);
-                if (!System.Environment.UserInteractive)
-                {
-                    System.ServiceProcess.ServiceBase.Run(new MyService());
-                    return;
-                }
-                Application.Run();
-                ENV.UserSettings.FinalizeINI();
-            }
-            catch(System.Exception e)
-            {
-                ENV.ErrorLog.WriteToLogFile(e, "TOTAL CRASH");
-                System.Environment.ExitCode = 1;
-                ENV.Common.ShowExceptionDialog(e);
-            }
-        } </code></pre>
-<h3 id="setup-the-service">Setup the Service:</h3>
-<p>simply use the <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/sc-create">sc.exe</a> to register the service.
-Here's an example</p>
-<pre><code class="language-sh">sc.exe create &quot;Northwind Service&quot;  binpath=&quot;c:\Northwind\Northwind.exe&quot;
-</code></pre>
-<p>And you're done.</p>
-<h2 id="creating-windows-service-the-long-way">Creating windows service, the long way</h2>
-<p>Here are a set of videos i've created a few years ago with a more conventional explanation on how to create a windows service.</p>
-<ul>
-<li><a href="creating-and-installing-a-windows-service.html">Creating and installing a windows service</a></li>
-<li><a href="configuring-service-project-to-stop-and-start-the-service.html">Configuring service project to stop and start the service</a></li>
-<li><a href="adding-functionality-to-a-windows-service.html">Adding functionality to a windows service</a></li>
-<li><a href="preparing-a-program-in-the-migrated-code-for-the-service-demo.html">Preparing a program in the migrated code for the service demo</a></li>
-<li><a href="calling-migrated-code-from-a-windows-service.html">Calling migrated code from a windows service</a></li>
-</ul>
+                <div class="content"><h1 id="reusing-migrated-business-logic-as-microservices">Reusing Migrated Business Logic As MicroServices</h1>
+<p>You can easily reuse complex business logic from migrated application as a MicroService that you can later consume from the web or other application.</p>
+<p>In this video, we use the CRS application, and demo how we extract the complex &quot;Pay Run&quot; process to a simple Rest MicroService.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xPH4kj_6cJE" frameborder="0" allowfullscreen></iframe>
 
 
 
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/60-Further-Learning/50-Creating-Windows-Services-and-using-Migrated-Code/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/20-ENV Web/05-Reusing-Migrated-Business-Logic-As-MicroServices.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -165,7 +108,7 @@ Here's an example</p>
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'creating-windows-services-and-using-migrated-code.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'reusing-migrated-business-logic-as-microservices.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

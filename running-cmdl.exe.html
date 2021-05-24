@@ -42,11 +42,15 @@
 <p>In some cases, we want to call a public program inside the application using a command line, For example, Windows Scheduler task which runs a command with parameters</p>
 <p>In order to do so, we need to use the CMDL project ( e.g Northwind.cmdl). Inside the bin folder of the project we will find the executable <strong>Northwind.cmdl.exe</strong> and below is the syntax of how to use it:</p>
 <p>C:&gt;<em>D:\Northwind\Dotnet\Northwind.cmdl\bin\Debug\Northwind.cmdl.exe</em><br />
-/URL=<em>http: //localhost/Northwind.server/services.aspx</em> /<strong>PRGNAME</strong>=AutoBatch</p>
+/URL=<em>http: //localhost/Northwind.server/services.aspx</em> /<strong>PRGNAME</strong>=AutoBatch /<strong>ARGUMENTS</strong>=-N12,-AHello,-LT</p>
+<p>-N- Numeric
+-A - Alpha
+-L - Boolean (Logical)</p>
 <p>Another option to run the command is to first set the parameters in the INI file (located in the same folder of the executable) and just run Northwind.cmdl.exe as follows:</p>
 <p>[MAGIC_ENV]<br />
 URL = <em>http: //Northwind/Northwind.Server/Services.aspx</em><br />
-PRGNAME = AutoBatch</p>
+PRGNAME = AutoBatch<br />
+ARGUMENTS=-N12,-AHello,-LT</p>
 <p>C:&gt;<em>D:\Northwind\Dotnet\Northwind.cmdl\bin\Debug\Northwind.cmdl.exe</em></p>
 <p>Notice that while the process is running, you can check its progress in:<br />
 <em>http: //localhost/Northwind.server/services.aspx</em></p>

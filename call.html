@@ -43,7 +43,17 @@
 <h3 id="migrated-code-examples">Migrated Code Examples:</h3>
 <p><strong>Simple Call program / Subtask</strong></p>
 <pre data-line="" class="language-csdiff line-numbers"><code>new CalledProg().Run();
-new SubTask().Run(); </code></pre>
+Create&lt;ICalledProg&gt;().Run();
+new SubTask().Run();
+new SubTask(this).Run();
+Cached&lt;SubTask&gt;().Run(); </code></pre>
+<ul>
+<li><a href="calling-a-program-across-projects.html">Read More about Create</a></li>
+<li><a href="introducing-cached.html">Read more about Cached</a></li>
+</ul>
+<blockquote>
+<p>We recommend <code>new</code> for in project calls, <code>Create</code> for cross project calls and <code>Cached</code> when using <code>KeepViewVisibleAfterExit</code> or when the called controller constructor is expensive (for example, an inner class with complicated report sections.)</p>
+</blockquote>
 <p><strong>Call program with Arguments</strong></p>
 <pre data-line="" class="language-csdiff line-numbers"><code>new CalledProg().Run("AAA", v_Num1); </code></pre>
 <p><strong>Using Result</strong></p>
@@ -55,7 +65,7 @@ ReturnVal.Format = tempFormat; </code></pre>
 <pre data-line="" class="language-csdiff line-numbers"><code>new Browse_TableA().Run(view: new Views.CallForm(this)); </code></pre>
 <p><strong>Using Lock</strong></p>
 <pre data-line="" class="language-csdiff line-numbers"><code> LockCurrentRow();
- Cached&lt;CalledProg&gt;().Run(TableA.Code); </code></pre>
+ new CalledProg().Run(TableA.Code); </code></pre>
 <p>See also:<br />
 <a href="http://www.fireflymigration.com/reference/html/M_Firefly_Box_UIController_LockCurrentRow.htm">LockCurrentRow Method for UIController</a><br />
 <a href="http://www.fireflymigration.com/reference/html/M_Firefly_Box_BusinessProcess_LockCurrentRow.htm">LockCurrentRow Method for BusinessProcess</a></p>

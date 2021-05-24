@@ -64,7 +64,7 @@ It is used in the migrated code whenever magic was locking but not always - just
 <p>When the lock starts, all entities for which the <code>AllowRowLocking</code> property is set, will be locked.
 <img src="allow-row-locking.png" alt="Allow Row Locking" /></p>
 <blockquote>
-<p>Note that if the same entity was already defined in a calling controller with <code>AllowRowLocking = true</code>, than that same entity in this controller will also be treader as it <code>AllowRowLocking</code> is set to true.
+<p>Note that if the same entity was already defined in a calling controller with <code>AllowRowLocking = true</code>, than that same entity in this controller will also be treated as if <code>AllowRowLocking</code> is set to true.
 that is controlled by the <code>ShouldDetermineNameAcordingToCallStack</code> property of the entity. Set this property to false to disable that behavior.</p>
 </blockquote>
 <h3 id="when-will-the-lock-be-released">When will the lock be released?</h3>
