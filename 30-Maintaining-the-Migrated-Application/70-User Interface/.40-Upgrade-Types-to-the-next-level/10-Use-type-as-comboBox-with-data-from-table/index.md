@@ -199,3 +199,30 @@ But if we change the TextBox to ComboBox you will get ComboBox that allow you to
 
 ![UI Controller with combo box](2019-01-10_17h20_31.png)
 
+
+You can also create a combo box builder class and enjoy it:
+
+```csdiff
+class ComboBuilder
+{
+    string comboValues = "", comboDisplayValues = "";
+    public void PopulateComboBox(ENV.UI.ComboBox c)
+    {
+
+        c.Values = comboValues;
+        c.DisplayValues = comboDisplayValues;
+
+    }
+    public void AddValue(Number key, Text value)
+    {
+        if (comboValues != "")
+        {
+            comboValues += ",";
+            comboDisplayValues += ",";
+        }
+        comboValues += key.ToString().Trim();
+        comboDisplayValues += value.Trim().Replace("-", "\\-");
+    }
+}
+```
+
