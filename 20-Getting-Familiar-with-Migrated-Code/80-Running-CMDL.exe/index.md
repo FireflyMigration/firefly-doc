@@ -25,6 +25,6 @@ You can monitor the request below:
 *http: //localhost/Northwind.server/services.aspx*
 
 In case you want to run this procees using web browser and not CMDL - here is the syntax:  
-*http: //Northwind/Northwind.Server/Services.aspx?PRGNAME=AutoBatch&ARGUMENTS=-N12,-AHello,-LT*
+*http: //Northwind/Northwind.Server/Services.aspx?PRGNAME=AutoBatch&ARGUMENTS=-N12,-AHello,-LT* 
 
  
