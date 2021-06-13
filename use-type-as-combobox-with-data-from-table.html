@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
@@ -19,16 +20,24 @@
 </head>
 
 <body class="markdown-body" role="document">
-    <div class="wrapper">
-
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
         <div class="middle">
 
             <div class="container">
 
-                <div class="content" role="navigation" aria-label="footer navigation">
-                    <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
-                    <a id="nextButton" class="btn btn-neutral float-right" style="visibility:hidden">Next</a>
-                </div>
                 <div class="content"><h1 id="use-type-as-combobox-with-data-from-table">Use type as comboBox with data from table</h1>
 <p>In this article we will improve the ProdID type, to show data from the Products table, when we use it in combo box.</p>
 <p>First we will create a new type &quot;ProductID&quot;:</p>
@@ -195,12 +204,31 @@ namespace Northwind.Types
 <p><img src="2019-01-10_17h17_14.png" alt="UI controller" /></p>
 <p>But if we change the TextBox to ComboBox you will get ComboBox that allow you to select from list of products:</p>
 <p><img src="2019-01-10_17h20_31.png" alt="UI Controller with combo box" /></p>
+<p>You can also create a combo box builder class and enjoy it:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>class ComboBuilder
+{
+    string comboValues = "", comboDisplayValues = "";
+    public void PopulateComboBox(ENV.UI.ComboBox c)
+    {
+
+        c.Values = comboValues;
+        c.DisplayValues = comboDisplayValues;
+
+    }
+    public void AddValue(Number key, Text value)
+    {
+        if (comboValues != "")
+        {
+            comboValues += ",";
+            comboDisplayValues += ",";
+        }
+        comboValues += key.ToString().Trim();
+        comboDisplayValues += value.Trim().Replace("-", "\\-");
+    }
+} </code></pre>
 
 
-                <br />
-                        <a id="previousButton" class="btn btn-neutral float-left" style="visibility:hidden">Previous</a>
 
-                        <a id="nextButton" class="btn btn-neutral" style="visibility:hidden;float:right">Next</a>
                     <hr />Help us improve,
                     <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/70-User Interface/40-Upgrade-Types-to-the-next-level/10-Use-type-as-comboBox-with-data-from-table/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
@@ -218,7 +246,7 @@ namespace Northwind.Types
             <aside class="left-sidebar">
                 <div class="wy-side-nav-search-ff">
                     <a href="" class="test">
-                        <img src="assets/img/logo-big.png">
+                        
                     </a>
                 </div>
                 <div id="menuTree" </div>
