@@ -47,7 +47,7 @@
           		Company_Accounts.AccountId.IsEqualTo(AccountID)), 
             Company_Accounts.SortByCompany_Accounts_By_Master_Acct);
         } </code></pre>
-<p>It becomes a challenge when this is a common relation which you code occasionally especially if the filter contains more conditions.
+<p>It becomes a challenge when this is a common relation which you code occasionally especially if the filter contains more conditions.<br />
 A good practice will be to refactor the code to the Entity (Company_Accounts) so the next time you will need to add a relation, it will much easier.</p>
 <p>We will first refactor the relation locally and then move it to the Entity.</p>
 <p><strong>Refactor the filter to a method</strong></p>
