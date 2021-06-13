@@ -13,7 +13,7 @@ void InitializeDataView()
         }
 ```
 
-It becomes a challenge when this is a common relation which you code occasionally especially if the filter contains more conditions. 
+It becomes a challenge when this is a common relation which you code occasionally especially if the filter contains more conditions.  
 A good practice will be to refactor the code to the Entity (Company_Accounts) so the next time you will need to add a relation, it will much easier.
 
 
