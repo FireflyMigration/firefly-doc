@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="keywords" content="refactor, refactoring,relation,entity">
+
+    <title>Refactoring the Relation to the Entity</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content"><h1 id="refactoring-the-relation-to-the-entity">Refactoring the Relation to the Entity</h1>
+<p>The relation filter (Where clause) has often more than one condition:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>void InitializeDataView()
+        {
+         Relations.Add(Company_Accounts,
+                Company_Accounts.MasterId.IsEqualTo(MasterfileID).And(
+          		Company_Accounts.AccountId.IsEqualTo(AccountID)), 
+            Company_Accounts.SortByCompany_Accounts_By_Master_Acct);
+        } </code></pre>
+<p>It becomes a challenge when this is a common relation which you code occasionally especially if the filter contains more conditions.<br />
+A good practice will be to refactor the code to the Entity (Company_Accounts) so the next time you will need to add a relation, it will much easier.</p>
+<p>We will first refactor the relation locally and then move it to the Entity.</p>
+<p><strong>Refactor the filter to a method</strong></p>
+<pre data-line="3,7,8,9,10,11" class="language-csdiff line-numbers"><code>void InitializeDataView()
+        {
+            Relations.Add(Company_Accounts, GetCompany(),
+                Company_Accounts.SortByCompany_Accounts_By_Master_Acct);
+        }
+
+        private FilterBase GetCompany()
+        {
+          return Company_Accounts.MasterId.IsEqualTo(MasterfileID).And(
+                             Company_Accounts.AccountId.IsEqualTo(AccountID));
+        } </code></pre>
+<p><strong>Refactor the filter parameters</strong></p>
+<pre data-line="9,10,11,12" class="language-csdiff line-numbers"><code>void InitializeDataView()
+        {
+           Relations.Add(Company_Accounts, GetCompany(),
+                Company_Accounts.SortByCompany_Accounts_By_Master_Acct);
+        }
+
+       private FilterBase GetCompany()
+       {
+          Types.MasterfileId MasterfileID1 = MasterfileID;
+          Types.AccountId AccountID1 = AccountID;
+          return Company_Accounts.MasterId.IsEqualTo(MasterfileID1).And(
+                             Company_Accounts.AccountId.IsEqualTo(AccountID1));
+       } </code></pre>
+<p><strong>Set the method parameters</strong></p>
+<pre data-line="3,7" class="language-csdiff line-numbers"><code>void InitializeDataView()
+        {
+           Relations.Add(Company_Accounts, GetCompany(MasterfileID,AccountID),
+                Company_Accounts.SortByCompany_Accounts_By_Master_Acct);
+        }
+
+       private FilterBase GetCompany(Types.MasterfileId MasterfileID1,Types.AccountId AccountID1)
+       {
+         return Company_Accounts.MasterId.IsEqualTo(MasterfileID1).And(
+                            Company_Accounts.AccountId.IsEqualTo(AccountID1));
+       } </code></pre>
+<p><strong>Move the method to the Entity</strong></p>
+<pre data-line="13,14" class="language-csdiff line-numbers"><code>public class Company_Accounts : Entity 
+    {
+        .
+        .
+        .
+        public Company_Accounts() : base("Company_Accounts", "Company_Accounts", Shared.DataSources.SQL)
+        {
+            Cached = false;
+            InitializeIndexes();
+        }
+        public FilterBase GetCompany(Types.MasterfileId i_MasterfileID1, Types.AccountId i_AccountID1)
+        {
+            return this.MasterId.IsEqualTo(i_MasterfileID1).And(
+                                this.AccountId.IsEqualTo(i_AccountID1));
+        }
+        .
+        .
+        .
+        void InitializeIndexes()
+        {
+         .
+         .
+         .
+        }
+    } </code></pre>
+<pre data-line="3" class="language-csdiff line-numbers"><code>void InitializeDataView()
+        {
+           Relations.Add(Company_Accounts, Company_Accounts.GetCompany(MasterfileID,AccountID),
+                Company_Accounts.SortByCompany_Accounts_By_Master_Acct);
+        } </code></pre>
+<ol>
+<li>Change the method from <code>Private</code> to <code>Public</code></li>
+<li>Add <code>using Firefly.Box.Data.Advanced;</code> for the <code>FilterBase</code></li>
+<li>Remove the Entity name from the column or Change it to <code>this</code></li>
+<li>Add Entity name prefix to the <code>GetCompany</code> method</li>
+</ol>
+<p><strong>Refactor Filter to Relation</strong></p>
+<p>You can continue and refactor the filter to a relation and make the code even easy to work with especially when you have many occurrences it the code of the same filter.</p>
+<pre data-line="16,17,18,19" class="language-csdiff line-numbers"><code>public class Company_Accounts : Entity 
+    {
+        .
+        .
+        .
+        public Company_Accounts() : base("Company_Accounts", "Company_Accounts", Shared.DataSources.SQL)
+        {
+            Cached = false;
+            InitializeIndexes();
+        }
+        public FilterBase GetCompany(Types.MasterfileId i_MasterfileID1, Types.AccountId i_AccountID1)
+        {
+           return this.MasterId.IsEqualTo(i_MasterfileID1).And(
+                               this.AccountId.IsEqualTo(i_AccountID1));
+        }
+        public Relation CompanyRelation(Types.MasterfileId i_MasterfileID1, Types.AccountId i_AccountID1)
+        {
+            return new Relation(this, GetCompany(i_MasterfileID1, i_AccountID1), this.SortByComany_Accounts_By_Master_Acct);
+        }
+        void InitializeIndexes()
+        {
+         .
+         .
+         .
+        }
+    } </code></pre>
+<p>I created another method inside the Entity which returns a <code>Relation</code> object  which I will use in my new relation.<br />
+Notice that I also refactored the sorting.</p>
+<pre data-line="3" class="language-csdiff line-numbers"><code>void InitializeDataView()
+        {
+           Relations.Add(Company_Accounts.CompanyRelation(i_MasterfileID, i_AccountID));
+        } </code></pre>
+
+
+
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/25-Refactoring-Migrated-Code/04-Refactoring the Relation to the Entity/index.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'refactoring-the-relation-to-the-entity.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>

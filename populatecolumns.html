@@ -64,6 +64,28 @@ protected override void PopulateColumns()
 <p>This &quot;reflection&quot; operation comes at a small cost. We found that in entities that have many columns this cost is too high (it's milliseconds but still) so we decided that entities that have more than 50 columns, will not use the &quot;reflection&quot; for populating the columns, instead for such entities the migrated code will generate the <code>Columns.Add</code> call instead - we do that call in the override of <code>PopulateColumns</code> where we &quot;override&quot; the default automatic reflection based mechanism with a manual one that is faster to execute.</p>
 <h2 id="what-do-i-need-to-remember-from-this-article">What do I need to remember from this article</h2>
 <p>If you have a Entity that has <code>PopulateColumns</code> and you are adding a column to it - make sure to add the new column to the <code>Columns.Add</code> call.</p>
+<h2 id="primary-key">Primary Key</h2>
+<p>Normally you would use the <code>[PrimaryKey]</code> attribute to mark columns as primary keys. When using <code>PopulateColumns</code> you'll need to call the <code>SetPrimaryKey</code> method in the <code>PopulateColumns</code> method instead.</p>
+<h4 id="normally">Normally</h4>
+<pre data-line="" class="language-csdiff line-numbers"><code>[PrimaryKey]
+public readonly NumberColumn OrderId = new NumberColumn(); </code></pre>
+<h4 id="with-populate-columns">With Populate Columns</h4>
+<pre data-line="4" class="language-csdiff line-numbers"><code>protected override void PopulateColumns()
+{
+    Columns.Add(...
+    SetPrimaryKey(OrderId);
+} </code></pre>
+<h2 id="identity">Identity</h2>
+<p>Normally you would use the <code>[PrimaryKey (identity=true)]</code> attribute to mark columns as primary keys. When using <code>PopulateColumns</code> you'll need to call the <code>IdentityColumn</code> property in the <code>PopulateColumns</code> method instead.</p>
+<h4 id="normally-1">Normally</h4>
+<pre data-line="" class="language-csdiff line-numbers"><code>[PrimaryKey( identity=true )]
+public readonly NumberColumn OrderId = new NumberColumn(); </code></pre>
+<h4 id="with-populate-columns-1">With Populate Columns</h4>
+<pre data-line="4" class="language-csdiff line-numbers"><code>protected override void PopulateColumns()
+{
+    Columns.Add(...
+    IdentityColumn = OrderId;
+} </code></pre>
 
 
 
