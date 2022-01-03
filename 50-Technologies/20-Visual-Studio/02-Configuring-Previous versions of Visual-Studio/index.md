@@ -1,21 +1,28 @@
 keywords:Symbols for the module 'ENV.dll' were not loaded, VisualStudioTemplates, Templates, VSDropAssist, Class Outline, Extensions, Bundle, visual studio configuration,configure visual studio, visual studio 2019
 
-In this document we'll detail how we configure Visual Studio 2022 to make the most out of it while working with large migrated applications.
+In this document we'll detail how we configure Visual Studio 2017 to make the most out of it while working with large migrated applications.
 
-For previous versions of Visual Studio please refer to:  
-[Configuring Previous versions of Visual Studio](http://doc.fireflymigration.com/configuring-previous-versions-of-visual-studio.html)
-
+Although this document was written with Visual Studio 2017 in mind, most of it is also relevant to previous versions of Visual Studio.
 
 ## A - Visual Studio Extensions
-We have created Templates extension for Visual Studio 2022.  
+We have created an Extensions Bundle.  
+If you're using VS2017, you can download it from: [Extensions Bundle](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioExtensionBundle)  
+If you're using VS2019, you can download it from: [Extensions Bundle 2019](https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioExtensionBundle2019)  
 
-Please downdload and install the VSIX file:   
-[Templates extension 2022](https://github.com/FireflyMigration/VisualStudioTemplates2022/releases)
+If you are using Visual studio 2015, [please install the extensions manually](extensions-bundle.html) and proceed to item B in this document.
+
+#### After you install the bundle
+Please run the Visual Studio Tuneup utility at "Tools\Tuneup Visual Studio"
+
+![2018 12 07 13H23 27](2018-12-07_13h23_27.png)
+
+**if you can't find this menu entry, [please install the extensions manually](extensions-bundle.html)**
+
 
 ## B - Other important settings that improve the performance and experience in Visual Studio
 The following settings are in the  "Tools\Options" menu
 
-![2017 03 08 09H59 27](2022-01-03_15h49_50.png)
+![2017 03 08 09H59 27](2017-03-08_09h59_27.png)
 
 
 ### B.1 - "Debugging" Tab
@@ -23,7 +30,7 @@ The following settings are in the  "Tools\Options" menu
 
 ![2017 02 21 07H32 11](2017-02-21_07h32_11.png)
 
-This eliminates the "Symbols for the module 'ENV.dll' were not loaded" message you get every time you run the code
+Eliminates the "Symbols for the module 'ENV.dll' were not loaded" message you get every time you run the code
 
 ![ENV Message](ENV_message.png)
 
@@ -56,7 +63,13 @@ In the "Windows Forms Designer" tab
 
 
 
-### B.4 Check "Collapse #regions when collapsing to definition" (VS2017 only)
+### B.4 Disable Test Flags (VS2017 only)
+1. Go to the "Tests" Tab
+2. Uncheck `Discover tests in real time from source files`
+
+![2018 10 07 12H38 11](2018-10-07_12h38_11.png)
+
+### B.5 Check "Collapse #regions when collapsing to definition" (VS2017 only)
 1. Go to the "Text Editor\C#\Advanced" Tab
 2. Check the "Collapse #regions when collapsing to definition" check box, under "Outlining"  
 
@@ -67,13 +80,13 @@ In the "Windows Forms Designer" tab
 ### C - Disable "Preview Selected Item"
 In the "Solution Explorer" window make sure that the "Preview Selected Item" Icon is not checked (highlighted)  
 
-![2017 03 08 10H47 38](2022-01-03_15h48_31.png)
+![2017 03 08 10H47 38](2017-03-08_10h47_38.png)
 
 ### D - Add the parameter information toolbar item
 1. Open any class 
 2. On the toolbar
-3. Click on the icon highlighted in the image  
-![2017 03 08 10H49 18](2022-01-03_15h51_52.png)
+3. Click on the icon highlighted in the image as 2  
+![2017 03 08 10H49 18](2017-03-08_10h49_18.png)
 
 4. Select "Add or Remove Button"
 5. Select the "Parameter Info" Tool box item.
@@ -84,11 +97,13 @@ This adds the following toolbox item, that will show you the parameter informati
 2. ![2017 03 08 10H51 55](2017-03-08_10h51_55.png)
 
 ### E - Configure the "GoTo" window
-Go To the "Edit\Go To\Go To All..."
-![2017 03 08 10H56 02](2022-01-03_15h46_52.png)
+Go To the "Edit\Go To\Go To All..." menu item  in VS2017
+![2017 03 08 10H56 02](2017-03-08_10h56_02.png)
+
+> in VS2015 the menu is called "Edit\Navigate To..."
 
 1. Click the "Settings" button  
-![2017 03 08 10H57 17](2022-01-03_15h43_55.png)
+![2017 03 08 10H57 17](2017-03-08_10h57_17.png)
 
 2. Uncheck the "Use Preview Tab" CheckBox
 3. Check the "Show details" CheckBox
@@ -97,7 +112,7 @@ Go To the "Edit\Go To\Go To All..."
 1. Open the solution explorer
 2. Press the combo down arrow button to open the search options
 3. Uncheck the two checkboxes  
-![Search Options](2022-01-03_15h56_20.png)  
+![Search Options](searchOptions.png)  
 
 **Improves search performance**
 
