@@ -1,4 +1,4 @@
-keywords:Symbols for the module 'ENV.dll' were not loaded, VisualStudioTemplates, Templates, VSDropAssist, Class Outline, Extensions, Bundle, visual studio configuration,configure visual studio, visual studio 2019
+keywords:Symbols for the module 'ENV.dll' were not loaded, VisualStudioTemplates, Templates, VSDropAssist, Class Outline, Extensions, Bundle, visual studio configuration,configure visual studio, visual studio 2019,visual studio 2022,2022
 
 In this document we'll detail how we configure Visual Studio 2022 to make the most out of it while working with large migrated applications.
 
@@ -104,17 +104,11 @@ Go To the "Edit\Go To\Go To All..."
 ### G - Configure the "Error List..." Window
 1. Go to "View\Error List" menu  
 
-![2017 03 08 10H43 55](2017-03-08_10h43_55.png)
+![2017 03 08 10H43 55](2022-01-03_16h13_48.png)
 
 2. Uncheck the "Warnings" tab by clicking on it (Our preference, not mandatory)
 3. Uncheck the "Messages" tab by clicking on it (Our preference, not mandatory)
 4. Set the combo to "Build Only"  
 
-![2017 03 08 10H45 18](2017-03-08_10h45_18.png)
+![2017 03 08 10H45 18](2022-01-03_16h16_42.png)
 
-
-### H - Recommended extentions
-We would like to recommend the following extensions to you:
-1. [Viasfora, click to download](https://marketplace.visualstudio.com/items?itemName=TomasRestrepo.Viasfora) - see [Our Review](bracket-colors-in-visual-studio-viasfora.html)
-2. [Stack Trace Explorer, click to download](https://marketplace.visualstudio.com/items?itemName=SamirBoulema.StackTraceExplorer) - see [Our Review](stack-trace-explorer.html)
- 
