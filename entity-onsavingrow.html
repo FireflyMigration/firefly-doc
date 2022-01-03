@@ -39,8 +39,7 @@
             <div class="container">
 
                 <div class="content"><h1 id="entity-onsavingrow">Entity OnSavingRow</h1>
-<p>aaa
-In many cases in an application you have business logic that has to do with a specific entity, for example you may have a column in the Entity called <code>LastChangeDate</code> and <code>LastChangeTime</code>.
+<p>In many cases in an application you have business logic that has to do with a specific entity, for example you may have a column in the Entity called <code>LastChangeDate</code> and <code>LastChangeTime</code>.
 To maintain these you have to add code in the <code>OnSavingRow</code> of each controller that &quot;may&quot; update this entity.</p>
 <p>Also - you may have all sorts of validations that should be the same when the user inputs and when there is an automatic import process.</p>
 <p>These are the exact problems that <code>OnSavingRow</code> in the <code>Entity</code> class can solve (since version 30725).
