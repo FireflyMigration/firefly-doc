@@ -7,6 +7,6 @@
 5.  We now going to open the **ShowEmployeeCars** only if the emplotee have a car.
 6.  Add Relations to **EmployeeCars**.
 7.  Change the new F5 handler to use **Var**.
-8.  Add BindEnabled limit the handler to be enabled only if the **EmployeeCars** relation found one car for the current employee (relations[Employee].RowFound).  
+8.  Add BindEnabled limit the handler to be enabled only if the **EmployeeCars** relation found one car for the current employee (relations[ EmployeeCars ]RowFound).  
 9.  Save changes to Git.
 10.  Build and test.
