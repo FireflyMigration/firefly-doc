@@ -41,124 +41,128 @@
                 <div class="content"><h1 id="refactoring-the-relation-to-the-entity">Refactoring the Relation to the Entity</h1>
 <p>The relation filter (Where clause) has often more than one condition:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>void InitializeDataView()
-        {
-         Relations.Add(Company_Accounts,
-                Company_Accounts.MasterId.IsEqualTo(MasterfileID).And(
-          		Company_Accounts.AccountId.IsEqualTo(AccountID)), 
-            Company_Accounts.SortByCompany_Accounts_By_Master_Acct);
-        } </code></pre>
+{
+  Relations.Add(Company_Accounts,
+    Company_Accounts.MasterId.IsEqualTo(MasterfileID).And(
+    Company_Accounts.AccountId.IsEqualTo(AccountID)), 
+    Company_Accounts.SortByCompany_Accounts_By_Master_Acct);
+} </code></pre>
 <p>It becomes a challenge when this is a common relation which you code occasionally especially if the filter contains more conditions.<br />
-A good practice will be to refactor the code to the Entity (Company_Accounts) so the next time you will need to add a relation, it will much easier.</p>
+A good practice will be to refactor the code to the Entity (Company_Accounts) so the next time you will need to add a relation, it will much easier as below:</p>
+<pre data-line="" class="language-csdiff line-numbers"><code>void InitializeDataView()
+{
+  Relations.Add(Company_Accounts.CompanyRelation(i_MasterfileID, i_AccountID));
+} </code></pre>
 <p>We will first refactor the relation locally and then move it to the Entity.</p>
-<p><strong>Refactor the filter to a method</strong></p>
+<p><strong><h2>Refactor the filter to a method</h2></strong></p>
 <pre data-line="3,7,8,9,10,11" class="language-csdiff line-numbers"><code>void InitializeDataView()
-        {
-            Relations.Add(Company_Accounts, GetCompany(),
-                Company_Accounts.SortByCompany_Accounts_By_Master_Acct);
-        }
+{
+  Relations.Add(Company_Accounts, CompanyFilter(),
+   Company_Accounts.SortByCompany_Accounts_By_Master_Acct);
+}
 
-        private FilterBase GetCompany()
-        {
-          return Company_Accounts.MasterId.IsEqualTo(MasterfileID).And(
-                             Company_Accounts.AccountId.IsEqualTo(AccountID));
-        } </code></pre>
+private FilterBase CompanyFilter()
+{
+   return Company_Accounts.MasterId.IsEqualTo(MasterfileID).And(
+    Company_Accounts.AccountId.IsEqualTo(AccountID));
+} </code></pre>
 <p><strong>Refactor the filter parameters</strong></p>
 <pre data-line="9,10,11,12" class="language-csdiff line-numbers"><code>void InitializeDataView()
-        {
-           Relations.Add(Company_Accounts, GetCompany(),
-                Company_Accounts.SortByCompany_Accounts_By_Master_Acct);
-        }
+{
+  Relations.Add(Company_Accounts, CompanyFilter(),
+    Company_Accounts.SortByCompany_Accounts_By_Master_Acct);
+}
 
-       private FilterBase GetCompany()
-       {
-          Types.MasterfileId MasterfileID1 = MasterfileID;
-          Types.AccountId AccountID1 = AccountID;
-          return Company_Accounts.MasterId.IsEqualTo(MasterfileID1).And(
-                             Company_Accounts.AccountId.IsEqualTo(AccountID1));
-       } </code></pre>
+private FilterBase CompanyFilter()
+{
+  Types.MasterfileId MasterfileID1 = MasterfileID;
+  Types.AccountId AccountID1 = AccountID;
+     return Company_Accounts.MasterId.IsEqualTo(MasterfileID1).And(
+                  Company_Accounts.AccountId.IsEqualTo(AccountID1));
+} </code></pre>
 <p><strong>Set the method parameters</strong></p>
 <pre data-line="3,7" class="language-csdiff line-numbers"><code>void InitializeDataView()
-        {
-           Relations.Add(Company_Accounts, GetCompany(MasterfileID,AccountID),
-                Company_Accounts.SortByCompany_Accounts_By_Master_Acct);
-        }
+{
+  Relations.Add(Company_Accounts, CompanyFilter(MasterfileID,AccountID),
+    Company_Accounts.SortByCompany_Accounts_By_Master_Acct);
+}
 
-       private FilterBase GetCompany(Types.MasterfileId MasterfileID1,Types.AccountId AccountID1)
-       {
-         return Company_Accounts.MasterId.IsEqualTo(MasterfileID1).And(
-                            Company_Accounts.AccountId.IsEqualTo(AccountID1));
-       } </code></pre>
+private FilterBase CompanyFilter(Types.MasterfileId MasterfileID1,Types.AccountId AccountID1)
+{
+  return Company_Accounts.MasterId.IsEqualTo(MasterfileID1).And(
+    Company_Accounts.AccountId.IsEqualTo(AccountID1));
+} </code></pre>
 <p><strong>Move the method to the Entity</strong></p>
 <pre data-line="13,14" class="language-csdiff line-numbers"><code>public class Company_Accounts : Entity 
-    {
-        .
-        .
-        .
-        public Company_Accounts() : base("Company_Accounts", "Company_Accounts", Shared.DataSources.SQL)
-        {
-            Cached = false;
-            InitializeIndexes();
-        }
-        public FilterBase GetCompany(Types.MasterfileId i_MasterfileID1, Types.AccountId i_AccountID1)
-        {
-            return this.MasterId.IsEqualTo(i_MasterfileID1).And(
-                                this.AccountId.IsEqualTo(i_AccountID1));
-        }
-        .
-        .
-        .
-        void InitializeIndexes()
-        {
-         .
-         .
-         .
-        }
-    } </code></pre>
+{
+   .
+   .
+   .
+   public Company_Accounts() : base("Company_Accounts", "Company_Accounts", Shared.DataSources.SQL)
+   {
+        Cached = false;
+        InitializeIndexes();
+   }
+   public FilterBase CompanyFilter(Types.MasterfileId i_MasterfileID1, Types.AccountId i_AccountID1)
+   {
+       return this.MasterId.IsEqualTo(i_MasterfileID1).And(
+         this.AccountId.IsEqualTo(i_AccountID1));
+   }
+   .
+   .
+   .
+   void InitializeIndexes()
+   {
+   .
+   .
+   .
+   }
+} </code></pre>
 <pre data-line="3" class="language-csdiff line-numbers"><code>void InitializeDataView()
-        {
-           Relations.Add(Company_Accounts, Company_Accounts.GetCompany(MasterfileID,AccountID),
-                Company_Accounts.SortByCompany_Accounts_By_Master_Acct);
-        } </code></pre>
+{
+  Relations.Add(Company_Accounts, Company_Accounts.CompanyFilter(MasterfileID,AccountID),
+    Company_Accounts.SortByCompany_Accounts_By_Master_Acct);
+} </code></pre>
 <ol>
 <li>Change the method from <code>Private</code> to <code>Public</code></li>
 <li>Add <code>using Firefly.Box.Data.Advanced;</code> for the <code>FilterBase</code></li>
 <li>Remove the Entity name from the column or Change it to <code>this</code></li>
-<li>Add Entity name prefix to the <code>GetCompany</code> method</li>
+<li>Add Entity name prefix to the <code>CompanyFilter</code> method</li>
 </ol>
-<p><strong>Refactor Filter to Relation</strong></p>
+<p><strong><h2>Refactor Filter to Relation</h2></strong></p>
 <p>You can continue and refactor the filter to a relation and make the code even easy to work with especially when you have many occurrences it the code of the same filter.</p>
-<pre data-line="16,17,18,19" class="language-csdiff line-numbers"><code>public class Company_Accounts : Entity 
-    {
-        .
-        .
-        .
-        public Company_Accounts() : base("Company_Accounts", "Company_Accounts", Shared.DataSources.SQL)
-        {
-            Cached = false;
-            InitializeIndexes();
-        }
-        public FilterBase GetCompany(Types.MasterfileId i_MasterfileID1, Types.AccountId i_AccountID1)
-        {
-           return this.MasterId.IsEqualTo(i_MasterfileID1).And(
-                               this.AccountId.IsEqualTo(i_AccountID1));
-        }
-        public Relation CompanyRelation(Types.MasterfileId i_MasterfileID1, Types.AccountId i_AccountID1)
-        {
-            return new Relation(this, GetCompany(i_MasterfileID1, i_AccountID1), this.SortByComany_Accounts_By_Master_Acct);
-        }
-        void InitializeIndexes()
-        {
-         .
-         .
-         .
-        }
-    } </code></pre>
+<pre data-line="17,18,19" class="language-csdiff line-numbers"><code>public class Company_Accounts : Entity 
+{
+   .
+   .
+   .
+   public Company_Accounts() : base("Company_Accounts", "Company_Accounts", Shared.DataSources.SQL)
+   {
+      Cached = false;
+      InitializeIndexes();
+   }
+   public FilterBase CompanyFilter(Types.MasterfileId i_MasterfileID1, Types.AccountId i_AccountID1)
+   {
+      return this.MasterId.IsEqualTo(i_MasterfileID1).And(
+            this.AccountId.IsEqualTo(i_AccountID1));
+   }
+   public Relation CompanyRelation(Types.MasterfileId i_MasterfileID1, Types.AccountId i_AccountID1)
+   {
+       return new Relation(this, CompanyFilter(i_MasterfileID1, i_AccountID1), this.SortByComany_Accounts_By_Master_Acct);
+   }
+   void InitializeIndexes()
+   {
+   .
+   .
+   .
+   }
+} </code></pre>
 <p>I created another method inside the Entity which returns a <code>Relation</code> object  which I will use in my new relation.<br />
 Notice that I also refactored the sorting.</p>
 <pre data-line="3" class="language-csdiff line-numbers"><code>void InitializeDataView()
-        {
-           Relations.Add(Company_Accounts.CompanyRelation(i_MasterfileID, i_AccountID));
-        } </code></pre>
+{
+  Relations.Add(Company_Accounts.CompanyRelation(i_MasterfileID, i_AccountID));
+} </code></pre>
 
 
 
