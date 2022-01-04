@@ -21,7 +21,7 @@ The following settings are in the  "Tools\Options" menu
 ### B.1 - "Debugging" Tab
 #### B.1.1 - Uncheck "Warn if no user code on launch (Managed only)"
 
-![2017 02 21 07H32 11](2017-02-21_07h32_11.png)
+![2017 02 21 07H32 11](2017-02-21_07h32_11_new.png)
 
 This eliminates the "Symbols for the module 'ENV.dll' were not loaded" message you get every time you run the code
 
@@ -29,20 +29,20 @@ This eliminates the "Symbols for the module 'ENV.dll' were not loaded" message y
 
 #### B.1.2 - Uncheck "Enable Edit and Continue"
 
-![2017 02 21 06H55 05](2017-02-21_06h55_05.png)
+![2017 02 21 06H55 05](2017-02-21_06h55_05_new.png)
 
 Allows you to edit your code, while the application is running
 
 #### B.1.3 - Uncheck "Enable Diagnostic Tools while debugging"
 
-![2017 02 21 06H54 22](2017-02-21_06h54_22.png)
+![2017 02 21 06H54 22](2017-02-21_06h54_22_new.png)
 
 **Improves performance** when running in Debug
 
 ### B.2 set "Automatically Populate Toolbox" to False
 In the "Windows Forms Designer" tab
 
-![2017 03 08 10H31 14](2017-03-08_10h31_14.png)
+![2017 03 08 10H31 14](2017-03-08_10h31_14_new.png)
 
 **Improves performance** after each build
 
@@ -50,7 +50,7 @@ In the "Windows Forms Designer" tab
 1. Go to the "IntelliTrace" Tab
 2. Uncheck the "Enable IntelliTrace" checkbox
 
-![2017 03 08 10H33 43](2017-03-08_10h33_43.png)
+![2017 03 08 10H33 43](2017-03-08_10h33_43_new.png)
 
 **Improves performance** when running in Debug
 
@@ -60,7 +60,7 @@ In the "Windows Forms Designer" tab
 1. Go to the "Text Editor\C#\Advanced" Tab
 2. Check the "Collapse #regions when collapsing to definition" check box, under "Outlining"  
 
-![2017 03 12 18H01 23](2017-03-12_18h01_23.png)  
+![2017 03 12 18H01 23](2017-03-12_18h01_23_new.png)  
 
 **Improves performance**
 
@@ -80,8 +80,8 @@ In the "Solution Explorer" window make sure that the "Preview Selected Item" Ico
 
 This adds the following toolbox item, that will show you the parameter information for a method you are parked on
 
-1. ![2017 03 08 10H51 00](2017-03-08_10h51_00.png)
-2. ![2017 03 08 10H51 55](2017-03-08_10h51_55.png)
+1. ![2017 03 08 10H51 00](2017-03-08_10h51_00_new.png)
+2. ![2017 03 08 10H51 55](2017-03-08_10h51_55_new.png)
 
 ### E - Configure the "GoTo" window
 Go To the "Edit\Go To\Go To All..."
