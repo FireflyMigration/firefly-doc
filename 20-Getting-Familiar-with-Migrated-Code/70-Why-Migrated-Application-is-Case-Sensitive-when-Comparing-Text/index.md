@@ -21,7 +21,13 @@ One way we can bypass the application revalidation of the filter is to change th
 
 ![2017 09 04 17H49 03](2017-09-04_17h49_03.png)
 
-## Solution #2 - Globally changeing the applicaiton behavior
+## Solution #2 - Changing behavior for a specific Database field
+Another way to bypass the application revalidation of the filter is to change the property of a database field bij setting the option DbCaseInsensitive to true:
+
+*Set this property at the model:*
+public readonly TextColumn emailaddress = new TextColumn("emailaddress", "80") { AllowNull = false, **DbCaseInsensitive = true** };
+
+## Solution #3 - Globally changeing the applicaiton behavior
 Another way to change this behavior of text compare globally is by calling the ENV.Common.SetAsCaseInsensitive() method in Program.Main()
 
 ![2017 09 04 17H51 07](2017-09-04_17h51_07.png)
