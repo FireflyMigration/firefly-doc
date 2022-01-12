@@ -17,7 +17,7 @@ void InitializeDataView()
 {
    Relations.Add(Customers, RelationType.Find, 
 +             Customers.CustomerID.IsEqualTo(Orders.CustomerID).And
-+              Customers.City.IsequalTo("Madrid");
++              Customers.City.IsEqualTo("Madrid");
 }
 ```
 
