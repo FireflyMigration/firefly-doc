@@ -27,7 +27,7 @@ Another way to bypass the application revalidation of the filter is to change th
 
 *Set this property at the model:*
 ```csdiff
-public readonly TextColumn ShipCity = new TextColumn("ShipCity", "20") { AllowNull = false, **DbCaseInsensitive = true** };
+public readonly TextColumn ShipCity = new TextColumn("ShipCity", "20") { AllowNull = false, DbCaseInsensitive = true };
 ```
 
 ## Solution #3 - Globally changeing the applicaiton behavior
@@ -39,5 +39,5 @@ Notice that this changes the way the application compare texts, for example:
 Before the change, the application is case sensitive so:
 ![2017 09 04 17H59 36](2017-09-04_17h59_36.png)
 
-After the change, the application is case insensitive so:
+After the change, the application is case insensitive so:  
 ![2017 09 04 17H58 46](2017-09-04_17h58_46.png)
