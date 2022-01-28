@@ -59,7 +59,7 @@ Fortunately, it is very easy to change this behavior.</p>
 <p>Another way to bypass the application revalidation of the filter is to change the property of a database field by setting the option DbCaseInsensitive to true:</p>
 <p><em>Set this property at the model:</em></p>
 <pre data-line="" class="language-csdiff line-numbers"><code>public readonly TextColumn ShipCity = new TextColumn("ShipCity", "20") { AllowNull = false, DbCaseInsensitive = true }; </code></pre>
-<h2 id="solution-3-globally-changeing-the-applicaiton-behavior">Solution #3 - Globally changeing the applicaiton behavior</h2>
+<h2 id="solution-3-globally-changeing-the-application-behavior">Solution #3 - Globally changeing the application behavior</h2>
 <p>Another way to change this behavior of text compare globally is by calling the ENV.Common.SetAsCaseInsensitive() method in Program.Main()</p>
 <p><img src="2017-09-04_17h51_07.png" alt="2017 09 04 17H51 07" /></p>
 <p>Notice that this changes the way the application compare texts, for example:

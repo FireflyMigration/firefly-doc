@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>ngFor</title>
+    <title>ViewModels</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -38,32 +38,78 @@
 
             <div class="container">
 
-                <div class="content"><h1 id="ngfor">ngFor</h1>
-<pre data-line="10,12,14" class="language-csdiff line-numbers"><code>@Component({
-    template: `
-    &lt;h1&gt;{{ title }} ({{title.length}})&lt;/h1&gt;
-    &lt;input [(ngModel)]="title"&gt;
-    &lt;h2 *ngIf="title.length&gt;15"&gt; the title is long!!!&lt;/h2&gt;
-    &lt;button (click)="click()"&gt;my button&lt;/button&gt;
-    &lt;br/&gt;
-    &lt;ul&gt;
--   &lt;li&gt;
-    &lt;li *ngFor="let o of orders"&gt;
--       Order: {{orders[0].orderId}}&lt;br/&gt;
-        Order: {{o.orderId}}&lt;br/&gt;
--       Customer: {{orders[0].customerId}}
-        Customer: {{o.customerId}}
-    &lt;/li&gt;
-    &lt;/ul&gt;
-`
-}) </code></pre>
-<p><a href="https://github.com/FireflyMigration/ENV.Web/commit/4fe142d14f454191fe0d7b8744da64a47969740e">Commit info on GitHub</a></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/MhB8J5m2V7k?list=PL1DEQjXG2xnLvNcbYEN0lYoc7KLROIjeK" frameborder="0" allowfullscreen></iframe>
+                <div class="content"><h1 id="viewmodels">ViewModels</h1>
+<p>We want to have more control over the <code>Orders</code> rest API:</p>
+<ol>
+<li>We want to make the Order ID automatically set for new rows.</li>
+<li>We want to validate that the customer id exists.</li>
+<li>We want to validate that the shipper id exists.</li>
+</ol>
+<p>To do that we'll create a View Model and manipulate it.</p>
+<h3 id="adding-a-view-model">Adding a view model</h3>
+<p>We'll add a folder called <code>ViewModels</code> under the <code>WebDemo</code> root folder and in it we'll add a new item using the <code>ViewModel</code> template and call it <code>OrdersViewModel</code></p>
+<p><img src="Solution-explorer-after-adding-view-models.png" alt="Solution Explorer After Adding View Models" /></p>
+<pre data-line="" class="language-csdiff line-numbers"><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using Firefly.Box;
+using ENV;
+using ENV.Web;
+
+namespace WebDemo.ViewModels
+{
+    class OrdersViewModel : ViewModel
+    {
+        public OrdersViewModel()
+        {
+        }
+    }
+} </code></pre>
+<h3 id="register-the-ordersviewmodel-instead-of-the-orders-entity-in-the-controllersdataapicontroller.cs">Register the <code>OrdersViewModel</code> instead of the <code>Orders</code> entity in the <code>Controllers\DataApiController.cs</code></h3>
+<pre data-line="5" class="language-csdiff line-numbers"><code>static DataApiController()
+{
+    _dataApi.Register(typeof(Northwind.Models.Categories),true);
+-   _dataApi.Register(typeof(Northwind.Models.Orders),true);
+    _dataApi.Register(typeof(ViewModels.OrdersViewModel));
+    _dataApi.Register("orderDetails",typeof(Northwind.Models.Order_Details),true);
+    _dataApi.Register(typeof(Northwind.Models.Customers)); </code></pre>
+<h3 id="set-the-orders-as-the-from-of-the-viewmodel">Set the <code>Orders</code> as the <code>From</code> of the <code>ViewModel</code></h3>
+<pre data-line="3,6" class="language-csdiff line-numbers"><code>class OrdersViewModel : ViewModel
+{
+    Northwind.Models.Orders Orders = new Northwind.Models.Orders();
+    public OrdersViewModel()
+    {
+        From = Orders;
+    }
+} </code></pre>
+<h3 id="make-the-viewmodel-updatable">Make the <code>ViewModel</code> updatable</h3>
+<pre data-line="7,8,9" class="language-csdiff line-numbers"><code>class OrdersViewModel : ViewModel
+{
+    Northwind.Models.Orders Orders = new Northwind.Models.Orders();
+    public OrdersViewModel()
+    {
+        From = Orders;
+        AllowUpdate = true;
+        AllowInsert = true;
+        AllowDelete = true;
+    }
+} </code></pre>
+<ul>
+<li><a href="automatically-generating-order-id-on-a-new-row.html">Automatically Generating Order Id on a new row</a></li>
+<li><a href="server-side-validation-made-easy.html">Server side Validation made easy</a></li>
+<li><a href="controlling-which-columns-are-included-in-the-api.html">Controlling which columns are included in the api</a></li>
+<li><a href="server-side-expression.html">Server Side Expression</a></li>
+<li><a href="filtering-data-on-the-server.html">Filtering data on the server</a></li>
+<li><a href="server-side-relation.html">Server side Relation</a></li>
+<li><a href="server-side-validation.html">Server Side Validation</a></li>
+<li><a href="restricting-which-columns-can-be-updated-in-the-web-api.html">Restricting which columns can be updated in the web api</a></li>
+<li><a href="saving-and-loading-entity-data-using-json.html">Saving and loading Entity Data using JSON</a></li>
+</ul>
 
 
 
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/40-Introduction to Angular and Typescript/12-ngFor.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/20-ENV Web/03-Reusing-Data-Structures-using-DataApi/19-ViewModels/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -125,7 +171,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'ngfor.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'viewmodels.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

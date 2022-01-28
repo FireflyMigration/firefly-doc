@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>ngFor</title>
+    <title>Reusing Data Structures using DataApi</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -38,32 +38,47 @@
 
             <div class="container">
 
-                <div class="content"><h1 id="ngfor">ngFor</h1>
-<pre data-line="10,12,14" class="language-csdiff line-numbers"><code>@Component({
-    template: `
-    &lt;h1&gt;{{ title }} ({{title.length}})&lt;/h1&gt;
-    &lt;input [(ngModel)]="title"&gt;
-    &lt;h2 *ngIf="title.length&gt;15"&gt; the title is long!!!&lt;/h2&gt;
-    &lt;button (click)="click()"&gt;my button&lt;/button&gt;
-    &lt;br/&gt;
-    &lt;ul&gt;
--   &lt;li&gt;
-    &lt;li *ngFor="let o of orders"&gt;
--       Order: {{orders[0].orderId}}&lt;br/&gt;
-        Order: {{o.orderId}}&lt;br/&gt;
--       Customer: {{orders[0].customerId}}
-        Customer: {{o.customerId}}
-    &lt;/li&gt;
-    &lt;/ul&gt;
-`
-}) </code></pre>
-<p><a href="https://github.com/FireflyMigration/ENV.Web/commit/4fe142d14f454191fe0d7b8744da64a47969740e">Commit info on GitHub</a></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/MhB8J5m2V7k?list=PL1DEQjXG2xnLvNcbYEN0lYoc7KLROIjeK" frameborder="0" allowfullscreen></iframe>
+                <div class="content"><h1 id="reusing-data-structures-using-dataapi">Reusing Data Structures using DataApi</h1>
+<p>in the 'Controllers\DataApiController.cs', will add an api for <code>Orders</code>, <code>OrderDetails</code>, <code>Customers</code>, <code>Shippers</code> and <code>Products</code>:</p>
+<pre data-line="7,8,9,10,11" class="language-csdiff line-numbers"><code>public class DataApiController : Controller
+{
+    static DataApi _dataApi = new DataApi();
+    static DataApiController()
+    {
+        _dataApi.Register(typeof(Northwind.Models.Categories),true);
+        _dataApi.Register(typeof(Northwind.Models.Orders));
+        _dataApi.Register(typeof(Northwind.Models.Order_Details));
+        _dataApi.Register(typeof(Northwind.Models.Customers));
+        _dataApi.Register(typeof(Northwind.Models.Shippers));
+        _dataApi.Register(typeof(Northwind.Models.Products));
+    }
+    // GET: DataApi
+    public void Index(string name, string id = null)
+    {
+        _dataApi.ProcessRequest(name, id);
+    }
+} </code></pre>
+<h3 id="build-and-go-to-the-browser-under-dataapi-well-see-all-the-added-apis">Build and go to the browser, under <code>dataApi/</code> we'll see all the added apis.</h3>
+<p><img src="../2017-10-13_08h07_25.gif" alt="2017 10 13 08H07 25" /></p>
+<h3 id="lets-rename-the-order_details-api-to-orderdetails">Let's rename the <code>order_details</code> api to <code>orderDetails</code>:</h3>
+<pre data-line="4" class="language-csdiff line-numbers"><code>_dataApi.Register(typeof(Northwind.Models.Categories),true);
+_dataApi.Register(typeof(Northwind.Models.Orders));
+-_dataApi.Register(typeof(Northwind.Models.Order_Details));
+_dataApi.Register("orderDetails",typeof(Northwind.Models.Order_Details));
+_dataApi.Register(typeof(Northwind.Models.Customers));
+_dataApi.Register(typeof(Northwind.Models.Shippers)); </code></pre>
+<p>##Brief review of the Data Api</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lMVPcf-OCj0" frameborder="0" allowfullscreen></iframe>
+<ul>
+<li><a href="making-the-rest-api-updatable.html">Making the rest api updatable</a></li>
+<li><a href="viewmodels.html">ViewModels</a></li>
+<li><a href="advanced-cases.html">Advanced Cases</a></li>
+</ul>
 
 
 
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/40-Introduction to Angular and Typescript/12-ngFor.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/20-ENV Web/03-Reusing-Data-Structures-using-DataApi/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -125,7 +140,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'ngfor.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'reusing-data-structures-using-dataapi.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

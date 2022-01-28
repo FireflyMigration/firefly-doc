@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="">
 
-    <title>ngFor</title>
+    <title>Reusing BusinessProcesses as RestAPI</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -38,32 +38,51 @@
 
             <div class="container">
 
-                <div class="content"><h1 id="ngfor">ngFor</h1>
-<pre data-line="10,12,14" class="language-csdiff line-numbers"><code>@Component({
-    template: `
-    &lt;h1&gt;{{ title }} ({{title.length}})&lt;/h1&gt;
-    &lt;input [(ngModel)]="title"&gt;
-    &lt;h2 *ngIf="title.length&gt;15"&gt; the title is long!!!&lt;/h2&gt;
-    &lt;button (click)="click()"&gt;my button&lt;/button&gt;
-    &lt;br/&gt;
-    &lt;ul&gt;
--   &lt;li&gt;
-    &lt;li *ngFor="let o of orders"&gt;
--       Order: {{orders[0].orderId}}&lt;br/&gt;
-        Order: {{o.orderId}}&lt;br/&gt;
--       Customer: {{orders[0].customerId}}
-        Customer: {{o.customerId}}
-    &lt;/li&gt;
-    &lt;/ul&gt;
-`
-}) </code></pre>
-<p><a href="https://github.com/FireflyMigration/ENV.Web/commit/4fe142d14f454191fe0d7b8744da64a47969740e">Commit info on GitHub</a></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/MhB8J5m2V7k?list=PL1DEQjXG2xnLvNcbYEN0lYoc7KLROIjeK" frameborder="0" allowfullscreen></iframe>
+                <div class="content"><h1 id="reusing-businessprocesses-as-restapi">Reusing BusinessProcesses as RestAPI</h1>
+<p>Any business process can be reused on the web, by creating a rest api end point that calls it, and calling it.</p>
+<p>In this article, we'll reuse a migrated report and call it from the web to return a pdf document</p>
+<p>We want to reuse the migrated report called PrintOrder from the Northwind.Order project.</p>
+<ul>
+<li>First we'll add a reference to the <code>Northwind.Order.dll</code> that is in the <code>bin</code> directory</li>
+<li>We'll add a call to it in the <code>Controllers\HomeController.cs</code></li>
+</ul>
+<pre data-line="6,7,8,9,10" class="language-csdiff line-numbers"><code>public ActionResult Index()
+{
+    return View();
+}
+
+[ENV.Web.PrintToPDF]
+public void Print(int id)
+{
+     new Northwind.Orders.Print_Order().Run(id);
+}
+
+public ActionResult About()
+{
+    ViewBag.Message = "Your application description page.";
+
+    return View();
+} </code></pre>
+<ul>
+<li>We've added the <code>Print</code> method, that receives an <code>id</code> and in that method we called the migrated <code>Print_Order</code> code, and sent it the <code>id</code></li>
+<li>We've used the <code>[ENV.Web.PrintToPDF]</code> attribute, which will hijack any printing that happens within the <code>Print</code> method, and create a pdf file and return it to the browser when we're done.</li>
+</ul>
+<h3 id="the-structure-of-the-url">The structure of the url</h3>
+<p>The url structure that will be used here is as follow: <code>{controller}/{method}/{id}?param1={param1}&amp;param2={param2}</code>
+In our case that will be <code>Home/Print/10249</code>, where Home is the controller, Print is the method and id is 10249.
+If the method would have received more parameters, it would use their name and values after the <code>?</code> sign in the url.</p>
+<p>We can use this method to expose any business process as an easy api that can be used from the browser</p>
+<p>Here's the result:</p>
+<p><img src="2017-10-16_06h33_25.gif" alt="2017 10 16 06H33 25" /></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/KMiPQ4zSBdM" frameborder="0" allowfullscreen></iframe>
+<h2 id="a-more-complex-use-case">A more complex use case:</h2>
+<p>In this video, we use the CRS application, and demo how we extract the complex &quot;Pay Run&quot; process to a simple Rest MicroService.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xPH4kj_6cJE" frameborder="0" allowfullscreen></iframe>
 
 
 
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/40-Introduction to Angular and Typescript/12-ngFor.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/95-Web-Development/20-ENV Web/02-Reusing-BusinessProcesses-as-RestAPI.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -125,7 +144,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'ngfor.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'reusing-businessprocesses-as-restapi.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
