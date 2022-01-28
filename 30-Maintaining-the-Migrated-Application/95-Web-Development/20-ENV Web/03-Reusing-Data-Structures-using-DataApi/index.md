@@ -1,5 +1,4 @@
-﻿# Creating the Server Api's
-
+﻿
 in the 'Controllers\DataApiController.cs', will add an api for `Orders`, `OrderDetails`, `Customers`, `Shippers` and `Products`:
 ```csdiff
 public class DataApiController : Controller

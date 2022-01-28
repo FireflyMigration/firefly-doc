@@ -4,8 +4,8 @@ ENV.Web is a project we use to demo fast web application development with migrat
 
 Using the code in this project you can create a RESTful API and a responsive modern web user interface for your migrated application.
 
-The project is hosted on GitHub, at:
-https://github.com/FireflyMigration/ENV.Web
+The project and a working demo based on Northwind is hosted on GitHub, at:
+https://github.com/FireflyMigration/ENV.Web.demo
 
 ## Architecture
 ### Server 
@@ -14,7 +14,7 @@ MVC.NET, REST Api and the migrated code.
 ### Browser
 1. HTML5
 2. bootstrap - for the styling
-3. Angular2 - as the application framework
+3. Angular - as the application framework
 4. Typescript - as the coding language
 
 

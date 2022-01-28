@@ -1,4 +1,8 @@
-﻿We want to reuse the migrated report called PrintOrder from the Northwind.Order project.
+﻿Any business process can be reused on the web, by creating a rest api end point that calls it, and calling it.
+
+In this article, we'll reuse a migrated report and call it from the web to return a pdf document
+
+We want to reuse the migrated report called PrintOrder from the Northwind.Order project.
 * First we'll add a reference to the `Northwind.Order.dll` that is in the `bin` directory
 * We'll add a call to it in the `Controllers\HomeController.cs`
 
@@ -36,3 +40,8 @@ Here's the result:
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/KMiPQ4zSBdM" frameborder="0" allowfullscreen></iframe>
+
+## A more complex use case:
+In this video, we use the CRS application, and demo how we extract the complex "Pay Run" process to a simple Rest MicroService.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xPH4kj_6cJE" frameborder="0" allowfullscreen></iframe>

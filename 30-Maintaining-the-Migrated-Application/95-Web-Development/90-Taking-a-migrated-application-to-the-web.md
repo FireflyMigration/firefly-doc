@@ -44,7 +44,7 @@ Comprised of your migrated developers whom we trained in C#. They can and should
 The developer's extensive application-specific knowledge and business know-how will be put to best use as they create REST API's that will expose the application data and logic to the front end.
 
 ### Client Side team (AKA Front End)
-This team will write the Angular, Typescript, HTML and CSS code that will consume the server side REST API and provide a rich beautiful user experience.
+This team will write the Angular/React/Vue/Blazor, Typescript, HTML and CSS code that will consume the server side REST API and provide a rich beautiful user experience.
 These technologies are widely used, and developers who are fluent in them are easy to come by. These developers do not need in-depth application knowledge, as they'll rely on the knowledge of the Server Side team that will expose the API's for them.
 
 
@@ -57,6 +57,6 @@ We believe that using the same technology (and code) for both web and mobile red
 
 This web applications do not require any installation and can be deployed to customers using a simple link.
 
-If at a later time you wish to deploy the application as an app in the store and want it to run natively, you can always use PhoneGap to run that application natively.
+If at a later time you wish to deploy the application as an app in the store and want it to run natively, you can always use PhoneGap or other similar technologies such as NativeScripts, ReactNative etc... to run that application natively.
 
 If you still choose to use native technologies, we recommend that you'll look into Xamarin - which allows you to create mobile native apps using .NET while sharing the maximum amount of code between the different platforms. 
