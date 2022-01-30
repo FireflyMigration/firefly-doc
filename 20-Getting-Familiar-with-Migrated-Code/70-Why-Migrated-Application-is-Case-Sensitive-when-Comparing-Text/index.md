@@ -30,7 +30,7 @@ Another way to bypass the application revalidation of the filter is to change th
 public readonly TextColumn ShipCity = new TextColumn("ShipCity", "20") { AllowNull = false, DbCaseInsensitive = true };
 ```
 
-## Solution #3 - Globally changeing the applicaiton behavior
+## Solution #3 - Globally changeing the application behavior
 Another way to change this behavior of text compare globally is by calling the ENV.Common.SetAsCaseInsensitive() method in Program.Main()
 
 ![2017 09 04 17H51 07](2017-09-04_17h51_07.png)
