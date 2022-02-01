@@ -5,7 +5,7 @@
 
 To do that we'll create a View Model and manipulate it.
 ### Adding a view model
-We'll add a folder called `ViewModels` under the `WebDemo` root folder and in it we'll add a new item using the `ViewModel` template and call it `OrdersViewModel`
+We'll add a folder called `ViewModels` under the `MVC` root folder and in it we'll add a new item using the `ViewModel` template and call it `OrdersViewModel`
 
 ![Solution Explorer After Adding View Models](Solution-explorer-after-adding-view-models.png)
 ```csdiff
@@ -16,7 +16,7 @@ using Firefly.Box;
 using ENV;
 using ENV.Web;
 
-namespace WebDemo.ViewModels
+namespace MVC.ViewModels
 {
     class OrdersViewModel : ViewModel
     {
