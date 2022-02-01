@@ -7,7 +7,7 @@ To do that we'll create a View Model and manipulate it.
 ### Adding a view model
 We'll add a folder called `ViewModels` under the `MVC` root folder and in it we'll add a new item using the `ViewModel` template and call it `OrdersViewModel`
 
-![Solution Explorer After Adding View Models](Solution-explorer-after-adding-view-models.png)
+![Solution Explorer After Adding View Models](MVC.png)
 ```csdiff
 using System;
 using System.Collections.Generic;
