@@ -37,4 +37,4 @@ MapColumn(Orders.OrderID,
 
 [Commit info on GitHub](https://github.com/FireflyMigration/ENV.Web/commit/44c486c841c2c22335f1d62798e28de574b4a77a)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XOxVW3ZzQh8?list=PL1DEQjXG2xnJOSQf2421r1S040NkvCApp" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XOxVW3ZzQh8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

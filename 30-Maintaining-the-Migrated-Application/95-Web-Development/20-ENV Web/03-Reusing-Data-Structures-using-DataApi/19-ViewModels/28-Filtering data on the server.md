@@ -21,4 +21,4 @@
 
 [Commit info on GitHub](https://github.com/FireflyMigration/ENV.Web/commit/925b75842f60bdfcf7ab80efa8a9851f7dc508ac)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5bhjKww1dcM?list=PL1DEQjXG2xnJOSQf2421r1S040NkvCApp" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5bhjKww1dcM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

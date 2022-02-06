@@ -46,4 +46,4 @@ protected override void OnSavingRow()
 [Commit info on GitHub](https://github.com/FireflyMigration/ENV.Web/commit/6bc10abf9604dbdca7f88e424a55a13a33af8de2)
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qCyGlMEyNLU?list=PL1DEQjXG2xnJOSQf2421r1S040NkvCApp" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qCyGlMEyNLU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

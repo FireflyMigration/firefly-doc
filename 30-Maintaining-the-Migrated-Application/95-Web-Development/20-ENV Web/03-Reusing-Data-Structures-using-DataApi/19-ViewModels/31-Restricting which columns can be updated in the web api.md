@@ -36,4 +36,4 @@ class OrdersViewModel : ViewModelHelper
 
 [Commit info on GitHub](https://github.com/FireflyMigration/ENV.Web/commit/83fc07472848a1c1e12459aa46f080681cd8a50a)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/SXI2EbCbN-Y?list=PL1DEQjXG2xnJOSQf2421r1S040NkvCApp" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SXI2EbCbN-Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
