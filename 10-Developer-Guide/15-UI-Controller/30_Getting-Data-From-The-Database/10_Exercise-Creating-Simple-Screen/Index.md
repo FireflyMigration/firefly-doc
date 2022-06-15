@@ -25,7 +25,7 @@
 10. Define the **Products** table at the beginning of the controller class.(drag and drop it, holding the **Shift** key just before the drop).
 11.  In the **constructor** use the **From** to set the **Products** to be the class main table.
 12.  Build the **Northwind** Project. (in the **Build** pulldown menu, select **Build Northwind**).
-13.  Using the **Class Outline** Open the Form Designer:  
+13.  Go to the OnLoad method find the call to the view use the F12 key to navigate to the Form Designer:  
     1.  Setup the Toolbox if you did not do that early, by right clicking on the form, select "Setup Toolbox".  
     1.  Add a grid with the following columns:  
         1.  ProductID
