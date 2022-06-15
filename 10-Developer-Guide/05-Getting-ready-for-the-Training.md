@@ -12,7 +12,7 @@ We recommend this course for any developer without prior .NET C# knowledge - so 
 ## Trainee Machine Requirements
 Each trainee in the training will need the following hardware and software requirements on their machine
 1. A headset with a Microphone and a web cam - to comunicate with the traier.
-2. Visual Studio 2017/2019. We recommend the Pro version, but you can also start with the Community version which can be downloaded from [Microsoft's Visual Studio Download](https://visualstudio.microsoft.com/downloads/)
+2. Visual Studio 2019/2022. We recommend the Pro version, but you can also start with the Community version which can be downloaded from [Microsoft's Visual Studio Download](https://visualstudio.microsoft.com/downloads/)
 3. Once you install visual studio, follow the configuration steps outlined in the [Configuring Visual Studio](configuring-visual-studio.html) article.
 4. **Your application code** - Every trainee should have a fully working version of your application in magic and in .NET.
    1. Make sure that the trainees have access to a database and can run the application both in magic and in .NET
