@@ -1,3 +1,4 @@
+keywords:ContainsData
 # Class columns in column wizard
 
 If you want to use data fields or properties of a simple class in the column wizard, add the [ContainsData] attribute to the class.
