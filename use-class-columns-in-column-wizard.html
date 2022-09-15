@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
-    <meta name="keywords" content="">
+    <meta name="keywords" content="ContainsData">
 
-    <title>Forms</title>
+    <title>Class columns in column wizard</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -38,21 +38,29 @@
 
             <div class="container">
 
-                <div class="content"><h1 id="forms">Forms</h1>
-<p>The following articles explain the different form types in the migrated code:<br />
-<img src="2018-02-08_15h15_24.jpg" alt="2018 02 08 15H15 24" /></p>
-<blockquote>
-<p>In online tasks most of the properties can be edited using the designer, so they were not referred to in the articles.</p>
-</blockquote>
-<ul>
-<li><a href="online-tasks.html">Online Tasks</a></li>
-<li><a href="batch-tasks.html">Batch Tasks</a></li>
-</ul>
+                <div class="content"><h1 id="class-columns-in-column-wizard">Class columns in column wizard</h1>
+<p>If you want to use data fields or properties of a simple class in the column wizard, add the [ContainsData] attribute to the class.</p>
+<p>For example:</p>
+<pre data-line="1" class="language-csdiff line-numbers"><code>    [Firefly.Box.UI.Advanced.ContainsData]
+    public class MyClass
+    {
+        readonly TextColumn First = new TextColumn("First");
+        readonly TextColumn Last = new TextColumn("Last");
+        public MyClass() { }
+        public void GetResultValues()
+        {
+            // Very difficult calculations
+            ....
+            First.Value = "First result";
+            Last.Value = "Last resutl";
+        }
+    } </code></pre>
+<p>The addition of the line [Firefly.Box.UI.Advanced.ContainsData] makes the fields First and Last available in the column wizard of programs were MyClass is instantiated.</p>
 
 
 
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//20-Getting-Familiar-with-Migrated-Code/10-Comparing-Migrated-Code-with-Magic/02-Forms/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//30-Maintaining-the-Migrated-Application/70-User Interface/22-Use-Class-Columns-in-Column-Wizard.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -114,7 +122,7 @@
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'forms.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'use-class-columns-in-column-wizard.html', 'previousButton', 'nextButton');
         </script>
 </body>
 
