@@ -1,5 +1,5 @@
 ﻿keywords:Create<>
-When large application are migrated, they are usually splitted into multiple siebling projects.
+When large application are migrated, they are usually splitted into multiple sibling projects.
 
 So far, when we have called a controller, it was eight in our project, or in a project we referenced, and we've done that using the `new` syntax.
 ```csdiff
