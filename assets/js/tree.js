@@ -264,6 +264,9 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
 
             searchDiv.appendChild(searchInput);
             root.appendChild(searchDiv);
+            data.nodes.push({
+                "name":"Reference","keywords":"reference","url":"reference/index.html"
+            })
             buildNodes(data.nodes, root);
             var notFoundLink = document.createElement("a");
             {
@@ -307,7 +310,7 @@ function buildTree(id, currentPageUrl, backButtonId, nextButtonId) {
                         searchBtn.title = "Search the API Documentation using Google Search";
                         
                         searchBtn.target='_blank';
-                        searchReference.href = 'http://www.google.com/search?q=site:www.fireflymigration.com/reference ' + encodeURI(searchInput.value);
+                        searchReference.href = 'http://www.google.com/search?q=site:doc.fireflymigration.com/reference ' + encodeURI(searchInput.value);
                         searchReference.target = '_blank';
                     }
                 }
