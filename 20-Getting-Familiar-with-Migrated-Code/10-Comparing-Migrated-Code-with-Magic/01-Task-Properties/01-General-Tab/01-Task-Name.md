@@ -20,7 +20,7 @@ The task name is migrated to a Class Name. In the migrated code, the original na
 ---
 ### See Also
 
-* [UIController Title ](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_Title.htm)
-* [Business Process Title](http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_Title.htm)
+* [UIController Title ](/reference/html/P_Firefly_Box_UIController_Title.htm)
+* [Business Process Title](/reference/html/P_Firefly_Box_BusinessProcess_Title.htm)
 
 --- 

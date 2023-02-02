@@ -24,4 +24,4 @@ For a FlowUIController the default is true.
 
 
 ## See Also
-* [UIController.SwitchToInsertWhenNoRows](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_SwitchToInsertWhenNoRows.htm) 
+* [UIController.SwitchToInsertWhenNoRows](/reference/html/P_Firefly_Box_UIController_SwitchToInsertWhenNoRows.htm) 

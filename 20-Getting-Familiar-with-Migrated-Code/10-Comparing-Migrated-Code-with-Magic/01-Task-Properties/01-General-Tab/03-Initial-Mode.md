@@ -43,8 +43,8 @@ protected override OnLoad()
 ---
 **See Also:**
 
-- [UIController Activity Property](http://fireflymigration.com/reference/html/P_Firefly_Box_UIController_Activity.htm)
-- [BusinessProcess Activity Property](http://fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_Activity.htm)
-- [Activities Enum](http://fireflymigration.com/reference/html/T_Firefly_Box_Activities.htm)
+- [UIController Activity Property](/referencehtml/P_Firefly_Box_UIController_Activity.htm)
+- [BusinessProcess Activity Property](/referencehtml/P_Firefly_Box_BusinessProcess_Activity.htm)
+- [Activities Enum](/referencehtml/T_Firefly_Box_Activities.htm)
 
 ---

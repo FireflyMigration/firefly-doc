@@ -30,7 +30,7 @@ internal readonly Models.Customers Customers = new Models.Customers { AllowRowLo
 
 ---
 **See Also:**
-* [UIController From](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_From.htm)
-* [BusinessProcess From](http://fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_From.htm)
+* [UIController From](/reference/html/P_Firefly_Box_UIController_From.htm)
+* [BusinessProcess From](/referencehtml/P_Firefly_Box_BusinessProcess_From.htm)
 
 ---

@@ -19,6 +19,6 @@ The values could be true or false (default).
 
 ---
 **See also:** 
-* [AllowSelect](http://fireflymigration.com/reference/html/P_Firefly_Box_UIController_AllowSelect.htm)
+* [AllowSelect](/referencehtml/P_Firefly_Box_UIController_AllowSelect.htm)
 
 ---

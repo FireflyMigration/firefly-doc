@@ -45,7 +45,7 @@ The parameter is received via the *Run* method where a variable with the same ty
 
 ---
 **See Also:**
-* [ColumnBase Class](http://www.fireflymigration.com/reference/html/T_Firefly_Box_Data_Advanced_ColumnBase.htm)
+* [ColumnBase Class](/reference/html/T_Firefly_Box_Data_Advanced_ColumnBase.htm)
 * [Local Columns and BindValue](http://doc.fireflymigration.com/local-columns-and-bindvalue.html)
 * [Parameters](http://doc.fireflymigration.com/parameters.html)
 

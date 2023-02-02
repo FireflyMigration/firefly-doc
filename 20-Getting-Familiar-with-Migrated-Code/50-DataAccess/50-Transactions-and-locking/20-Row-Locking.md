@@ -2,7 +2,7 @@ keywords:lockcurrentrow ,rowlocking, lockingstrategies, lockingstrategy, onUserE
 
 Every Controller has a property called `RowLocking` which controls when locking shall be applied for this controller.
 
-The different locking strategies are detailed in the documentation of [LockingStragey](http://www.fireflymigration.com/reference/html/T_Firefly_Box_LockingStrategy.htm).
+The different locking strategies are detailed in the documentation of [LockingStragey](/reference/html/T_Firefly_Box_LockingStrategy.htm).
 To see the comparison of the different strategies to magic see [Locking Strategy in magic](locking-strategy.html)
 
 

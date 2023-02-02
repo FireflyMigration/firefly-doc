@@ -33,7 +33,7 @@ True or false. The default is **True** which is Allow Delete = Yes in Magic
 
 ---
 **See Also**  
-[AllowDelete ](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_AllowDelete.htm)  
-[BindAllowDelete ](http://www.fireflymigration.com/reference/html/M_Firefly_Box_UIController_BindAllowDelete.htm)
+[AllowDelete ](/reference/html/P_Firefly_Box_UIController_AllowDelete.htm)  
+[BindAllowDelete ](/reference/html/M_Firefly_Box_UIController_BindAllowDelete.htm)
 
 ---   

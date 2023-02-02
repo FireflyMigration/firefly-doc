@@ -48,7 +48,7 @@ return o.CountRows(o.CustomerID.IsIn("TOMSP", "HANAR", "RICSU"));
 To better understand all the different aspects of the “Where” I recommend that you have a look at the following topics in our documentation:
 
 ---
-* Where – [P_Firefly_Box_BusinessProcess_Where.htm](http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_Where.htm)  
-* ICustomFilterMember Interface – [T_Firefly_Box_Data_Advanced_ICustomFilterMember.htm](http://www.fireflymigration.com/reference/html/T_Firefly_Box_Data_Advanced_ICustomFilterMember.htm)  
+* Where – [P_Firefly_Box_BusinessProcess_Where.htm](/reference/html/P_Firefly_Box_BusinessProcess_Where.htm)  
+* ICustomFilterMember Interface – [T_Firefly_Box_Data_Advanced_ICustomFilterMember.htm](/reference/html/T_Firefly_Box_Data_Advanced_ICustomFilterMember.htm)  
 ---
 Also have a look at the “UserDbMethods”  class in “ENV”

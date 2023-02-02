@@ -17,4 +17,4 @@ internal readonly Models.Customers Customers = new Models.Customers
 True or false. The default is **false** 
 
 ## See Also :
-* [Cached Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_Entity_Cached.htm)
+* [Cached Property](/reference/html/P_Firefly_Box_Data_Entity_Cached.htm)

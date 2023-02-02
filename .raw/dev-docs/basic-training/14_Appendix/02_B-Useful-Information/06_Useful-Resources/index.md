@@ -1,6 +1,6 @@
 ﻿### Useful Resources:
 1.	Online Documentation 
-[http://fireflymigration.com/reference/](http://fireflymigration.com/reference/)
+[/reference](/reference)
 2.	Our Blog
 [http://dev.fireflymigration.com/](http://dev.fireflymigration.com/)
 3.	Articles on our website

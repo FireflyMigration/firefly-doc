@@ -31,4 +31,4 @@ Notes:
 
 
 For more information about the different relation types see:
-[RelationTypes](http://www.fireflymigration.com/reference/html/T_Firefly_Box_RelationType.htm)
+[RelationTypes](/reference/html/T_Firefly_Box_RelationType.htm)

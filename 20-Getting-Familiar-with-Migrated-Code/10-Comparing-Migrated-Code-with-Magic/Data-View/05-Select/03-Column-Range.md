@@ -28,4 +28,4 @@ Where.Add(Products.ProductID.IsGreaterOrEqualTo(pi_ProdID));
 
 **See Also:**
 * [Range-Locate](http://doc.fireflymigration.com/range-locate.html)
-* [FilterCollection Class](http://www.fireflymigration.com/reference/html/T_Firefly_Box_Data_Advanced_FilterCollection.htm)
+* [FilterCollection Class](/reference/html/T_Firefly_Box_Data_Advanced_FilterCollection.htm)

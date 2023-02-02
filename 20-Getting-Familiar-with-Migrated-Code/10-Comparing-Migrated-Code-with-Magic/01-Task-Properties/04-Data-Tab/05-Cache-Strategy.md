@@ -25,7 +25,7 @@ The default is Cached Strategy= **As Main Source** in Magic
 The cache strategy that will be used for any specific table is determined by the property defined with the entity definition in the Class.  
 
 ## See Also
-* [Entity.Cached](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_Entity_Cached.htm)
+* [Entity.Cached](/reference/html/P_Firefly_Box_Data_Entity_Cached.htm)
 
 
 

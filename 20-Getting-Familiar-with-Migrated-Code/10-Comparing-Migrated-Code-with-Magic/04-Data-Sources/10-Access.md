@@ -35,8 +35,8 @@ readonly Models.Customers Customers = new Models.Customers
 
 
 ## See Also :
-* [ReadOnly Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_Entity_ReadOnly.htm) 
-* [AllowRowLocking Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_Entity_AllowRowLocking.htm) 
+* [ReadOnly Property](/reference/html/P_Firefly_Box_Data_Entity_ReadOnly.htm) 
+* [AllowRowLocking Property](/reference/html/P_Firefly_Box_Data_Entity_AllowRowLocking.htm) 
 
 
 

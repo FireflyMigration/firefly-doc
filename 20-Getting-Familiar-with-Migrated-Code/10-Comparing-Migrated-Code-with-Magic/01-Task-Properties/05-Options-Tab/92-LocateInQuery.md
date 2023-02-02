@@ -34,7 +34,7 @@ True or false. The default is **True** which is Allow Locate in query = Yes in M
 
 ---
 **See Also**  
-[AllowIncrementalSearch ](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_AllowIncrementalSearch.htm)  
-[BindAllowIncrementalSearch ](http://www.fireflymigration.com/reference/html/M_Firefly_Box_UIController_BindAllowIncrementalSearch.htm)
+[AllowIncrementalSearch ](/reference/html/P_Firefly_Box_UIController_AllowIncrementalSearch.htm)  
+[BindAllowIncrementalSearch ](/reference/html/M_Firefly_Box_UIController_BindAllowIncrementalSearch.htm)
 
 ---     
