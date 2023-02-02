@@ -70,7 +70,7 @@
 <p><img src="noname.jpg" alt="" /></p>
 <p>Note that there are 15 lines on the grid displaying the first 15 lines from the Products Entity and a corresponding Category Name from the Category Relation. It is precisely this Category Relation that we will be looking at in this article in depth. As we progress, we will examine the SQL code for the Category Relation on each of these lines and understand the differences according to the Relation used and depending on whether Cache is enabled or not.</p>
 <h2 id="viewing-the-sql">Viewing the SQL</h2>
-<p>As a rule, a Relation is used to fetch related data from the database (or from Cache), for each row displayed in the grid. This rule applies whenever we enter a row, or whenever the values that define the Relation are changed (recompute). Now let's look into what goes on behind the scenes in the database, when we open this screen. The SQL code appears in the Output window. (For more details on the settings required to see SQL in the Output window, see: <a href="View-SQL-Output.html">View SQL Output</a> ).</p>
+<p>As a rule, a Relation is used to fetch related data from the database (or from Cache), for each row displayed in the grid. This rule applies whenever we enter a row, or whenever the values that define the Relation are changed (recompute). Now let's look into what goes on behind the scenes in the database, when we open this screen. The SQL code appears in the Output window. (For more details on the settings required to see SQL in the Output window, see: <a href="view-sql-output.html">View SQL Output</a> ).</p>
 <p>Let's examine the SQL code in the Output screen. Here is the generated SQL code, as shown in the Output window, for all 15 lines displayed on the grid:</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>ExecuteNonQuery - sp_cursorprepexec
  
@@ -146,7 +146,7 @@ WHERE CategoryID = 0
 ExecuteReader Duration: 0 </code></pre>
 <p>Note: It is possible to see the above information within the context of a logfile, by defining the following in the ini file:</p>
 <p>dblogfile = c:\temp\db.log</p>
-<p>For further information regarding using logfiles, see : <a href="using_log_files.html">Using Log Files</a></p>
+<p>For further information regarding using logfiles, see : <a href="using-log-files.html">Using Log Files</a></p>
 <hr />
 <h2 id="analyzing-the-sql">Analyzing the SQL</h2>
 <p>Let's review each and every part of the above statements.</p>
