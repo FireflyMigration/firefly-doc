@@ -1,209 +1,68 @@
-﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8" /><META NAME="save" CONTENT="history" /><title>SavingRow Event</title><link rel="stylesheet" type="text/css" href="../styles/presentation.css" /><link rel="stylesheet" type="text/css" href="ms-help://Hx/HxRuntime/HxLink.css" /><script type="text/javascript" src="../scripts/EventUtilities.js"> </script><script type="text/javascript" src="../scripts/SplitScreen.js"> </script><script type="text/javascript" src="../scripts/Dropdown.js"> </script><script type="text/javascript" src="../scripts/script_manifold.js"> </script><script type="text/javascript" src="../scripts/script_feedBack.js"> </script><script type="text/javascript" src="../scripts/CheckboxMenu.js"> </script><script type="text/javascript" src="../scripts/CommonUtilities.js"> </script><meta name="container" content="Firefly.Box" /><meta name="file" content="E_Firefly_Box_UIController_SavingRow" /><meta name="guid" content="E_Firefly_Box_UIController_SavingRow" /><xml><MSHelp:Attr Name="AssetID" Value="E:Firefly.Box.UIController.SavingRow" /><MSHelp:TOCTitle Title="SavingRow Event" /><MSHelp:RLTitle Title="UIController.SavingRow Event (Firefly.Box)" /><MSHelp:Keyword Index="A" Term="E:Firefly.Box.UIController.SavingRow" /><MSHelp:Keyword Index="A" Term="frlrfFireflyBoxUIControllerClassSavingRowTopic" /><MSHelp:Keyword Index="K" Term="SavingRow event" /><MSHelp:Keyword Index="K" Term="UIController.SavingRow event" /><MSHelp:Keyword Index="F" Term="SavingRow" /><MSHelp:Keyword Index="F" Term="UIController.SavingRow" /><MSHelp:Keyword Index="F" Term="Firefly.Box.UIController.SavingRow" /><MSHelp:Attr Name="APIType" Value="Managed" /><MSHelp:Attr Name="APILocation" Value="Firefly.Box.dll" /><MSHelp:Attr Name="APIName" Value="Firefly.Box.UIController.SavingRow" /><MSHelp:Attr Name="APIName" Value="Firefly.Box.UIController.add_SavingRow" /><MSHelp:Attr Name="APIName" Value="Firefly.Box.UIController.remove_SavingRow" /><MSHelp:Attr Name="DevLang" Value="CSharp" /><MSHelp:Attr Name="DevLang" Value="VB" /><MSHelp:Attr Name="DevLang" Value="C++" /><MSHelp:Attr Name="Locale" Value="en-us" /><MSHelp:Attr Name="TopicType" Value="kbSyntax" /><MSHelp:Attr Name="TopicType" Value="apiref" /><MSHelp:Attr Name="Abstract" Value="Occurs whenever the user leaves a row, and that row is about to be saved to the Database." /><MSHelp:Attr Name="AssemblyVersion" Value="3.4.23.6473" /></xml><link type="text/css" rel="stylesheet" href="../styles/highlight.css" /><script type="text/javascript" src="../scripts/highlight.js"></script></head><body><input type="hidden" id="userDataCache" class="userDataStyle" /><input type="hidden" id="hiddenScrollOffset" /><img id="collapseImage" style="display:none; height:0; width:0;" src="../icons/collapse_all.gif" title="Collapse image" /><img id="expandImage" style="display:none; height:0; width:0;" src="../icons/expand_all.gif" title="Expand Image" /><img id="collapseAllImage" style="display:none; height:0; width:0;" src="../icons/collapse_all.gif" /><img id="expandAllImage" style="display:none; height:0; width:0;" src="../icons/expand_all.gif" /><img id="dropDownImage" style="display:none; height:0; width:0;" src="../icons/dropdown.gif" /><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../icons/dropdownHover.gif" /><img id="copyImage" style="display:none; height:0; width:0;" src="../icons/copycode.gif" title="Copy image" /><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../icons/copycodeHighlight.gif" title="CopyHover image" /><div id="header"><table id="topTable" cellspacing="0" cellpadding="0"><tr><td><span onclick="ExpandCollapseAll(toggleAllImage)" style="cursor:default;" onkeypress="ExpandCollapseAll_CheckKey(toggleAllImage, event)" tabindex="0"><img ID="toggleAllImage" class="toggleAll" src="../icons/collapse_all.gif" /> <label id="collapseAllLabel" for="toggleAllImage" style="display: none;">Collapse All</label><label id="expandAllLabel" for="toggleAllImage" style="display: none;">Expand All</label> </span><span>    </span><span id="devlangsDropdown" class="filter" tabindex="0"><img id="devlangsDropdownImage" src="../icons/dropdown.gif" /> <label id="devlangsMenuAllLabel" for="devlangsDropdownImage" style="display: none;"><nobr>Code: All </nobr></label><label id="devlangsMenuMultipleLabel" for="devlangsDropdownImage" style="display: none;"><nobr>Code: Multiple </nobr></label><label id="devlangsMenuCSharpLabel" for="devlangsDropdownImage" style="display: none;"><nobr>Code: C# </nobr></label><label id="devlangsMenuVisualBasicLabel" for="devlangsDropdownImage" style="display: none;"><nobr>Code: Visual Basic </nobr></label><label id="devlangsMenuManagedCPlusPlusLabel" for="devlangsDropdownImage" style="display: none;"><nobr>Code: Visual C++ </nobr></label></span></td></tr></table><div id="devlangsMenu"><input id="CSharpCheckbox" type="checkbox" data="CSharp,cs,'persist'" value="on" onClick="SetLanguage(this)" /><label class="checkboxLabel" for="CSharpCheckbox">C#</label><br /><input id="VisualBasicCheckbox" type="checkbox" data="VisualBasic,vb,'persist'" value="on" onClick="SetLanguage(this)" /><label class="checkboxLabel" for="VisualBasicCheckbox">Visual Basic</label><br /><input id="ManagedCPlusPlusCheckbox" type="checkbox" data="ManagedCPlusPlus,cpp,'persist'" value="on" onClick="SetLanguage(this)" /><label class="checkboxLabel" for="ManagedCPlusPlusCheckbox">Visual C++</label><br /></div><table id="bottomTable" cellpadding="0" cellspacing="0"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText">Firefly Box</span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">UIController<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span></span>SavingRow Event</span></td></tr><tr id="headerTableRow3"><td align="left"><a href="T_Firefly_Box_UIController.htm">UIController Class</a>  <a href="#exampleToggle" onclick="OpenSection(exampleToggle)">Example</a>  <a href="#seeAlsoToggle" onclick="OpenSection(seeAlsoToggle)">See Also</a>  
-  <span id="headfeedbackarea" class="feedbackhead">
-      <a href="javascript:SubmitFeedback('info@fireflybox.com','Firefly Box','','','','%0\dYour%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report,%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed,%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.%0\A%0\d','Customer%20Feedback');">
-        
-        Send Feedback
-      </a>
-	</span>
-</td></tr></table><table id="gradientTable"><tr><td class="nsrBottom" background="../icons/gradient.gif" /></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()" /><span style="color: DarkGray"> <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[This is preliminary documentation and is subject to change.]</p></span><div class="summary">
+﻿<!DOCTYPE html ><html lang="en-US"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="shortcut icon" href="../icons/favicon.ico" /><link rel="stylesheet" href="../css/bulma.css" /><link rel="stylesheet" href="../css/font-awesome.min.css" /><link rel="stylesheet" href="../css/presentationStyle.css" /><link rel="stylesheet" href="../css/vs.min.css" /><script src="../scripts/jquery-3.5.1.min.js"></script><script src="../scripts/clipboard.min.js"></script><script src="../scripts/highlight.min.js"></script><script src="../scripts/presentationStyle.js"></script><title>UIController.SavingRow Event</title><meta name="Title" content="SavingRow" /><meta name="Help.Id" content="E:Firefly.Box.UIController.SavingRow" /><meta name="Help.ContentType" content="Reference" /><meta name="container" content="Firefly.Box" /><meta name="guid" content="E_Firefly_Box_UIController_SavingRow" /><meta name="Description" content="Occurs whenever the user leaves a row, and that row is about to be saved to the Database." /><meta name="tocFile" content="../toc/IDD0LB0A.xml" /></head><body><div class="fixedLayout"><div id="Header" class="fixedHeader"><div class="pageHeader level mb-0 py-2 px-4"><div id="TitleContainer" class="level-left"><div id="DocumentationTitle" class="level-item">Firefly Migration Reference</div></div><div id="LangFilterSearchContainer" class="level-right"><div class="level-item"><div class="dropdown is-hoverable"><div class="dropdown-trigger"><button class="button" aria-haspopup="true" aria-controls="dropdown-menu"><span id="CurrentLanguage"></span><span class="icon is-small"><i class="fa fa-angle-down" aria-hidden="true"></i></span></button></div><div class="dropdown-menu" role="menu"><div id="LanguageSelections" class="dropdown-content"><a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a><a class="dropdown-item languageFilterItem" data-languageId="vb">VB</a><a class="dropdown-item languageFilterItem" data-languageId="fs">F#</a></div></div></div></div><div class="level-item"><form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;"><div class="field"><div class="control has-icons-left"><input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" /><span class="icon is-small is-left"><i class="fa fa-search"></i></span><button id="SearchButton" type="submit" class="is-hidden"></button></div></div></form></div></div></div></div><div class="fixedContent"><nav class="breadcrumb my-1 px-2 border-bottom" role="navigation"><ul id="TopicBreadcrumbs" /></nav><div class="columns pl-5 pr-5 fixedContent"><div id="ShowHideTOCColumn" class="column is-hidden-tablet"><a id="ShowHideTOC">Show/Hide TOC</a></div><div id="TOCColumn" class="column is-hidden-mobile"><nav class="toc"><ul id="TableOfContents" class="toc-menu" /></nav></div><div id="TopicContent" class="column content is-7"><h1>UIController<span id="LSTCB764A7_0" data-languageSpecificText="cpp=::|nu=."></span>Saving<wbr />Row Event</h1><div class="summary">
             Occurs whenever the user leaves a row, and that row is about to be saved to the Database.
-            </div><p />
-    <b>Namespace:</b> 
-   <a href="N_Firefly_Box.htm">Firefly.Box</a><br />
-    <b>Assembly:</b>
-   <span sdata="assembly">Firefly.Box</span> (in Firefly.Box.dll) Version: 3.4.23.6473 (3.4.23.6473)<h1 class="heading"><span onclick="ExpandCollapse(syntaxToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(syntaxToggle, event)" tabindex="0"><img id="syntaxToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Syntax</span></h1><div id="syntaxSection" class="section" name="collapseableSection" style=""><div id="syntaxCodeBlocks" class="code"><span codeLanguage="CSharp"><table><tr><th>C#</th></tr><tr><td><pre xml:space="preserve"><span class="keyword">public</span> event <a href="T_Firefly_Box_Advanced_CancelEventHandler.htm">CancelEventHandler</a> <span class="identifier">SavingRow</span></pre></td></tr></table></span><span codeLanguage="VisualBasicDeclaration"><table><tr><th>Visual Basic (Declaration)</th></tr><tr><td><pre xml:space="preserve"><span class="keyword">Public</span> Event <span class="identifier">SavingRow</span> <span class="keyword">As</span> <a href="T_Firefly_Box_Advanced_CancelEventHandler.htm">CancelEventHandler</a></pre></td></tr></table></span><span codeLanguage="ManagedCPlusPlus"><table><tr><th>Visual C++</th></tr><tr><td><pre xml:space="preserve"><span class="keyword">public</span>:
- <span class="keyword">event</span> <a href="T_Firefly_Box_Advanced_CancelEventHandler.htm">CancelEventHandler</a>^ <span class="identifier">SavingRow</span> {
-	<span class="keyword">void</span> <span class="keyword">add</span> (<a href="T_Firefly_Box_Advanced_CancelEventHandler.htm">CancelEventHandler</a>^ <span class="parameter">value</span>);
-	<span class="keyword">void</span> <span class="keyword">remove</span> (<a href="T_Firefly_Box_Advanced_CancelEventHandler.htm">CancelEventHandler</a>^ <span class="parameter">value</span>);
-}</pre></td></tr></table></span></div></div><h1 class="heading"><span onclick="ExpandCollapse(remarksToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(remarksToggle, event)" tabindex="0"><img id="remarksToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Remarks</span></h1><div id="remarksSection" class="section" name="collapseableSection" style="">
-        <h3>The SavingRow Process</h3>When the user leaves a row, and that row needs to be saved the <a href="T_Firefly_Box_UIController.htm">UIController</a> will perform the following steps:
-            <a href="E_Firefly_Box_UI_Advanced_InputControlBase_InputValidation.htm">InputValidation</a> for all the controls on the form according to the tab order, starting from the currently focused control. The row is saved to the database.Notice that The <a href="E_Firefly_Box_UIController_LeaveRow.htm">LeaveRow</a> event is being raised as well, just before the <span class="selflink">SavingRow</span> event occures.<br />
+            </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Definition</h2><div id="IDBSection"><strong>Namespace:</strong> <a href="N_Firefly_Box.htm">Firefly.Box</a><br /><strong>Assembly:</strong> Firefly.Box (in Firefly.Box.dll) Version: debug-master-v:33791<div class="codeSnippet" data-codeSnippetLanguage="cs"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs"><span class="keyword">public</span> event <span class="identifier">SavingRowEventHandler</span> <span class="identifier">SavingRow</span></code></pre></div></div><div class="codeSnippet is-hidden" data-codeSnippetLanguage="vb"><div class="codeHeader"><span class="codeHeaderTitle">VB</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-vb"><span class="keyword">Public</span> Event <span class="identifier">SavingRow</span> <span class="keyword">As</span> <span class="identifier">SavingRowEventHandler</span></code></pre></div></div><div class="codeSnippet is-hidden" data-codeSnippetLanguage="fs"><div class="codeHeader"><span class="codeHeaderTitle">F#</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-fs"><span class="keyword">member</span> <span class="identifier">SavingRow</span> : <span class="identifier">IEvent</span>&lt;<span class="identifier">SavingRowEventHandler</span>,
+    <span class="identifier">EventArgs</span>&gt;</code></pre></div></div><h4>Value</h4><a href="T_Firefly_Box_Advanced_SavingRowEventHandler.htm">SavingRowEventHandler</a></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Remarks</h2><div id="IDBCSection"><h3 class="quickLinkHeader">The SavingRow Process</h3>When the user leaves a row, and that row needs to be saved the <a href="T_Firefly_Box_UIController.htm">UIController</a> will perform the following steps:
+            <ul><li><a href="E_Firefly_Box_UI_Advanced_InputControlBase_InputValidation.htm">InputValidation</a> for all the controls on the form according to the tab order, starting from the currently focused control. </li><li>The row is saved to the database.</li><li>Notice that The <a href="E_Firefly_Box_UIController_LeaveRow.htm">LeaveRow</a> event is being raised as well, just before the <span class="selflink">SavingRow</span> event occures.</li></ul><br />
             The  will happen, when the user leaves a row, in one of the following scenarios:
             <ul><li>The <a href="P_Firefly_Box_UIController_RowChanged.htm">RowChanged</a> property is true. For more information on the causes, see <a href="P_Firefly_Box_UIController_RowChanged.htm">RowChanged</a> property</li><li>The <a href="P_Firefly_Box_UIController_ForceSaveRow.htm">ForceSaveRow</a> property is set to true.</li><li>The <a href="F_Firefly_Box_Command_Select.htm">Select</a><a href="T_Firefly_Box_Command.htm">Command</a> was raised and the <a href="P_Firefly_Box_UIController_AllowSelect.htm">AllowSelect</a> property is set to true</li><li>The row was deleted using one of the following methods:
-            <ul><li>The <a href="F_Firefly_Box_Command_DeleteRow.htm">DeleteRow</a><a href="T_Firefly_Box_Command.htm">Command</a> was raised.</li><li>An expression provided to the <a href="M_Firefly_Box_UIController_DeleteRowAfterLeavingItIf.htm">DeleteRowAfterLeavingItIf(Func<span class="languageSpecificText"><span class="cs">&lt;</span><span class="vb">(Of </span><span class="cpp">&lt;</span><span class="nu">(</span></span>Boolean<span class="languageSpecificText"><span class="cs">&gt;</span><span class="vb">)</span><span class="cpp">&gt;</span><span class="nu">)</span></span>)</a> evaluates to true</li></ul>
+            <ul><li>The <a href="F_Firefly_Box_Command_DeleteRow.htm">DeleteRow</a><a href="T_Firefly_Box_Command.htm">Command</a> was raised.</li><li>An expression provided to the <a href="M_Firefly_Box_UIController_DeleteRowAfterLeavingItIf.htm">DeleteRowAfterLeavingItIf(Func<span id="LSTCB764A7_1" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>Boolean<span id="LSTCB764A7_2" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a> evaluates to true</li></ul>
             Notice that in this scenario, if the row was changed, the  will happen twice, once for the row change, and once for the deletion of the row.
             </li></ul>
             If none of these scenarios occurred the changes to the row <b>will not be saved to the database</b>. 
             Also if the row is a new row, and none of the mentioned scenarios occurred, the row <b>will not be inserted to the database</b>.
-            </div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style="">UIController event flow<br />This example is based on test data. The code for the entities included in this test data can be found in the documentation of <a href="T_Firefly_Box_Data_Entity.htm">Entity</a><br />This example uses automatic tools to generate parts of the user interface. Those tools can be found in the example of the documentation of <a href="T_Firefly_Box_UI_Form.htm">Form</a><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>C#</div><div class="code"><pre><span class="highlight-keyword">using</span> Firefly.Box;
-<span class="highlight-keyword">using</span> System.Windows.Forms;
+            </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Example</h2><div id="IDCCSection">UIController event flow<br />This example is based on test data. The code for the entities included in this test data can be found in the documentation of <a href="T_Firefly_Box_Data_Entity.htm">Entity</a><br />This example uses automatic tools to generate parts of the user interface. Those tools can be found in the example of the documentation of <a href="T_Firefly_Box_UI_Form.htm">Form</a><div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">using Firefly.Box;
+using System.Windows.Forms;
 
-<span class="highlight-keyword">namespace</span> TestFirefly.Box.Documentation
+namespace TestFirefly.Box.Documentation
 {
-    <span class="highlight-keyword">public</span> <span class="highlight-keyword">class</span> UIControllerEventFlow
+    public class UIControllerEventFlow
     {
-        <span class="highlight-keyword">public</span> <span class="highlight-keyword">void</span> NormalEventFlow()
+        public void NormalEventFlow()
         {
-            var jobs = <span class="highlight-keyword">new</span> Pubs.Jobs();
+            var jobs = new Pubs.Jobs();
             jobs.InitializeWithTestData();
 
-            var uic = <span class="highlight-keyword">new</span> UIController
+            var uic = new UIController
             {
                 From = jobs,
-                View = UITools.GenerateFormWithGridFor(<span class="highlight-literal">"UIController events"</span>,
-                                                       <span class="highlight-literal">"notice that the SavingRow MessageBox only happens for rows that were changed"</span> +
-                                                       <span class="highlight-literal">"\nAlso pay attention to the fact that the \"After The Run\" message "</span> +
-                                                       <span class="highlight-literal">"will come only after the task ends"</span>,
+                View = UITools.GenerateFormWithGridFor("UIController events",
+                                                       "notice that the SavingRow MessageBox only happens for rows that were changed" +
+                                                       "\nAlso pay attention to the fact that the \"After The Run\" message " +
+                                                       "will come only after the task ends",
                                                        jobs.Id,
                                                        jobs.Description)
             };
-            uic.Load += () =&gt; MessageBox.Show(<span class="highlight-literal">"Load"</span>);
-            uic.Start += () =&gt; MessageBox.Show(<span class="highlight-literal">"Start"</span>);
-            uic.EnterRow += () =&gt; MessageBox.Show(<span class="highlight-literal">"EnterRow"</span>);
-            uic.LeaveRow += () =&gt; MessageBox.Show(<span class="highlight-literal">"LeaveRow"</span>);
-            uic.SavingRow += (b) =&gt; MessageBox.Show(<span class="highlight-literal">"SavingRow"</span>);
+            uic.Load += () =&gt; MessageBox.Show("Load");
+            uic.Start += () =&gt; MessageBox.Show("Start");
+            uic.EnterRow += () =&gt; MessageBox.Show("EnterRow");
+            uic.LeaveRow += () =&gt; MessageBox.Show("LeaveRow");
+            uic.SavingRow += (b) =&gt; MessageBox.Show("SavingRow");
 
-            uic.End += () =&gt; MessageBox.Show(<span class="highlight-literal">"End"</span>);
+            uic.End += () =&gt; MessageBox.Show("End");
 
-            MessageBox.Show(<span class="highlight-literal">"Before The Run"</span>);
+            MessageBox.Show("Before The Run");
             uic.Run();
-            MessageBox.Show(<span class="highlight-literal">"After The Run"</span>);
+            MessageBox.Show("After The Run");
         }
     }
-}</pre></div></span></div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style="">leave row<br />This example is based on test data. The code for the entities included in this test data can be found in the documentation of <a href="T_Firefly_Box_Data_Entity.htm">Entity</a><br />This example uses automatic tools to generate parts of the user interface. Those tools can be found in the example of the documentation of <a href="T_Firefly_Box_UI_Form.htm">Form</a><span id="cbc_2" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>C#</div><div class="code"><pre><span class="highlight-keyword">using</span> System.Windows.Forms;
-<span class="highlight-keyword">using</span> Firefly.Box;
-
-<span class="highlight-keyword">namespace</span> TestFirefly.Box.Documentation
-{
-    <span class="highlight-keyword">public</span> <span class="highlight-keyword">class</span> DemoLeaveRow
-    {
-        <span class="highlight-keyword">public</span> <span class="highlight-keyword">void</span> Run()
-        {
-            var jobs = <span class="highlight-keyword">new</span> Pubs.Jobs();
-            jobs.InitializeWithTestData();
-
-            var uic = <span class="highlight-keyword">new</span> UIController
-                          {
-                              From = jobs,
-                              View = UITools.GenerateFormWithGridFor(<span class="highlight-literal">"SavingRow Demo"</span>,
-                                                                     <span class="highlight-literal">"Notice that the SavingRow event only happens for rows\n"</span> +
-                                                                     <span class="highlight-literal">"That were, or if the ForceSaveRow checkbox is set."</span>,
-                                                       jobs.Id,
-                                                       jobs.Description)
-                          };
-
-            var forceLeaveRowCheckBox = <span class="highlight-keyword">new</span> CheckBox
-                                            {
-                                                Text = <span class="highlight-literal">"Force Leave Row"</span>,
-                                                Width = <span class="highlight-number">120</span>,
-                                                Checked = uic.ForceSaveRow
-                                            };
-            forceLeaveRowCheckBox.CheckedChanged += (a, b) =&gt; uic.ForceSaveRow = forceLeaveRowCheckBox.Checked;
-
-            UITools.AddControlsToForm(uic.View, forceLeaveRowCheckBox);
-
-            uic.SavingRow += ( b) =&gt; MessageBox.Show(<span class="highlight-literal">"Leave Row Happened"</span>);
-
-            uic.Run();
-        }
-    }
-}</pre></div></span></div><h1 class="heading"><span onclick="ExpandCollapse(exampleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(exampleToggle, event)" tabindex="0"><img id="exampleToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />Examples</span></h1><div id="exampleSection" class="section" name="collapseableSection" style=""> and <br />This example is based on test data. The code for the entities included in this test data can be found in the documentation of <a href="T_Firefly_Box_Data_Entity.htm">Entity</a><br />This example uses automatic tools to generate parts of the user interface. Those tools can be found in the example of the documentation of <a href="T_Firefly_Box_UI_Form.htm">Form</a><span id="cbc_3" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>C#</div><div class="code"><pre><span class="highlight-keyword">using</span> ENV;
-<span class="highlight-keyword">using</span> Firefly.Box;
-<span class="highlight-keyword">using</span> Firefly.Box.UI;
-
-<span class="highlight-keyword">namespace</span> TestFirefly.Box.Documentation
-{
-    <span class="highlight-keyword">class</span> RowChangedDemo
-    {
-        <span class="highlight-keyword">public</span> <span class="highlight-keyword">void</span> Run()
-        {
-            var jobs = <span class="highlight-keyword">new</span> Pubs.Jobs();
-            jobs.InitializeWithTestData();
-
-            var uic = <span class="highlight-keyword">new</span> UIController()
-            {
-                From = jobs,
-                View = UITools.GenerateFormWithGridFor(
-                <span class="highlight-literal">"RowChanged and SavingRow Demo"</span>,
-                <span class="highlight-literal">"This example demonstrates the deferent scenarios regarding the RowChanged property.\n"</span> +
-                <span class="highlight-literal">"\nA. Initial State:\n"</span> +
-                <span class="highlight-literal">"        Click the \"Check If Row Was Changed\" button and you'll see that the row was NOT changed.\n"</span> +
-                <span class="highlight-literal">"\nB. User Changed a Value:\n"</span> +
-                <span class="highlight-literal">"   1. Change the job's description.\n"</span> +
-                <span class="highlight-literal">"   2. Click the \"Check If Row Was Changed\" button and you'll see that the row was changed.\n"</span> +
-                <span class="highlight-literal">"   3. Click the \"Undo Changes In Row\" and you'll see that the change was reverted.\n"</span> +
-                <span class="highlight-literal">"   4. Click the \"Check If Row Was Changed\" button and you'll see that the row was NOT changed.\n"</span> +
-                <span class="highlight-literal">"\nC. Value Changes Done In Code:\n"</span> +
-                <span class="highlight-literal">"   1. Click the \"Add 1 to Min Level\" you'll see that the value of Min Level was changed.\n"</span> +
-                <span class="highlight-literal">"   2. Click the \"Check If Row Was Changed\" button and you'll see that the row was changed.\n"</span> +
-                <span class="highlight-literal">"   3. Click the \"Undo Changes In Row\" and you'll see that the change was reverted.\n"</span> +
-                <span class="highlight-literal">"   4. Click the \"Check If Row Was Changed\" button and you'll see that the row was NOT changed.\n"</span> +
-                <span class="highlight-literal">"\nD. Changes to a column set to \"OnChangeMarkRowAsChanged = false\".\n"</span>+
-                <span class="highlight-literal">"        A change to a value of such a column, doesn't set the RowChanged property.\n"</span> +
-                <span class="highlight-literal">"   1. Change the job's Max Level Value.\n"</span> +
-                <span class="highlight-literal">"   2. Click the \"Check If Row Was Changed\" button and you'll see that the row was NOT changed.\n"</span> +
-                <span class="highlight-literal">"   3. Leave the row and reenter it, you'll see that the value of max level, returned to it's original one.\n"</span> +
-                <span class="highlight-literal">"      Because the RowChanged property was not set, the SavingRow event didn't happen, and the\n"</span> +
-                <span class="highlight-literal">"      changes were not saved to the database.\n"</span> +
-                <span class="highlight-literal">"   4. Click the \"Add 1 to Max Level\" you'll see that the value of Max Level was changed.\n"</span> +
-                <span class="highlight-literal">"   5. Click the \"Check If Row Was Changed\" button and you'll see that the row was NOT changed.\n"</span> +
-                <span class="highlight-literal">"\nE. Setting a value using the \"SetValueWithoutMarkingRowAsChanged\" method:\n"</span> +
-                <span class="highlight-literal">"   1. Click the \"Add 1 to Min Level Without Marking Row As Changed\".\n"</span> +
-                <span class="highlight-literal">"   2. Click the \"Check If Row Was Changed\" button and you'll see that the row was NOT changed.\n\n"</span>+
-                <span class="highlight-literal">"Thank you for your patience. "</span>,
-                                         jobs.Id,
-                                         jobs.Description,
-                                         jobs.MinLevel,
-                                         jobs.MaxLevel)
-            };
-
-            jobs.MaxLevel.OnChangeMarkRowAsChanged = <span class="highlight-keyword">false</span>;
-
-
-            var btnSetMinLevel = <span class="highlight-keyword">new</span> Button
-            {
-                Text = <span class="highlight-literal">"Add 1 to Min Level"</span>,
-                Width = <span class="highlight-number">150</span>
-            };
-            btnSetMinLevel.Click += (a, b) =&gt; jobs.MinLevel.Value++;
-
-            var btnSetMinLevelWithoutMarkingRowAsChanged = <span class="highlight-keyword">new</span> Button
-            {
-                Text =
-                    <span class="highlight-literal">"Add 1 to Min Level Without Marking Row As Changed"</span>,
-                Width = <span class="highlight-number">305</span>
-            };
-        <span class="highlight-comment">//    btnSetMinLevelWithoutMarkingRowAsChanged.Click +=</span>
-        <span class="highlight-comment">//        (a, b) =&gt; jobs.MinLevel.SetValueWithoutMarkingRowAsChanged(jobs.MinLevel + 1);</span>
-
-            var btnSetMaxLevel = <span class="highlight-keyword">new</span> Button
-            {
-                Text = <span class="highlight-literal">"Add 1 To Max Level"</span>,
-                Width = <span class="highlight-number">150</span>
-            };
-            btnSetMaxLevel.Click += (a, b) =&gt; jobs.MaxLevel.Value++;
-
-            var btnCheckRowChanged = <span class="highlight-keyword">new</span> Button
-            {
-                Text = <span class="highlight-literal">"Check If Row Was Changed"</span>,
-                Width = <span class="highlight-number">150</span>
-            };
-            btnCheckRowChanged.Click += (a, b) =&gt;
-                                        System.Windows.Forms.MessageBox.Show(<span class="highlight-literal">"Row was "</span> +
-                                                                             (uic.RowChanged ? <span class="highlight-literal">"Changed"</span> : <span class="highlight-literal">"NOT Changed"</span>));
-
-            var btnUndoChangesInRow = <span class="highlight-keyword">new</span> Button
-            {
-                Text = <span class="highlight-literal">"Undo Changes In Row"</span>,
-                Width = <span class="highlight-number">150</span>
-            };
-            btnUndoChangesInRow.Click += (a, b) =&gt; uic.Raise(Command.UndoChangesInRow);
-
-            uic.SavingRow += ( b) =&gt; System.Windows.Forms.MessageBox.Show(<span class="highlight-literal">"Changes are being saved to the database"</span>);
-
-            UITools.AddControlsToForm(uic.View, btnCheckRowChanged, btnUndoChangesInRow);
-            UITools.AddControlsToForm(uic.View, btnSetMinLevel, btnSetMaxLevel);
-            UITools.AddControlsToForm(uic.View, btnSetMinLevelWithoutMarkingRowAsChanged);
-
-            uic.Run();
-        }
-    }
-}</pre></div></span></div><h1 class="heading"><span onclick="ExpandCollapse(seeAlsoToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(seeAlsoToggle, event)" tabindex="0"><img id="seeAlsoToggle" class="toggle" name="toggleSwitch" src="../icons/collapse_all.gif" />See Also</span></h1><div id="seeAlsoSection" class="section" name="collapseableSection" style=""><div class="seeAlsoStyle"><a href="T_Firefly_Box_UIController.htm">UIController Class</a></div><div class="seeAlsoStyle"><a href="N_Firefly_Box.htm">Firefly.Box Namespace</a></div><div class="seeAlsoStyle"><a href="P_Firefly_Box_UIController_RowChanged.htm">UIController<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span></span>RowChanged</a></div><div class="seeAlsoStyle"><a href="P_Firefly_Box_UIController_ForceSaveRow.htm">UIController<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span></span>ForceSaveRow</a></div><div class="seeAlsoStyle"><span class="nolink">DeleteRowAfterLeavingIt</span></div><div class="seeAlsoStyle"><a href="P_Firefly_Box_UIController_AllowSelect.htm">UIController<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span></span>AllowSelect</a></div></div></div><div id="footer"><div class="footerLine"><img width="100%" height="3px" src="../icons/footer.gif" title="Footer image" /></div><A NAME="feedback"></A><span id="fb" class="feedbackcss"> </span>
-<p />Send comments on this topic to
-        <a id="HT_MailLink" href="mailto:info%40fireflybox.com?Subject=Firefly Box">info@fireflybox.com</a>
+}</code></pre></div></div></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>See Also</h2><div id="seeAlsoSection"><h4>Reference</h4><div><a href="T_Firefly_Box_UIController.htm">UIController Class</a></div><div><a href="N_Firefly_Box.htm">Firefly.Box Namespace</a></div><div><a href="P_Firefly_Box_UIController_RowChanged.htm">RowChanged</a></div><div><a href="P_Firefly_Box_UIController_ForceSaveRow.htm">ForceSaveRow</a></div><div><span class="noLink">DeleteRowAfterLeavingIt</span></div><div><a href="P_Firefly_Box_UIController_AllowSelect.htm">AllowSelect</a></div></div></div><div id="InThisArticleColumn" class="column is-hidden-mobile"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul id="InThisArticleMenu" class="menu-list"><li><a class="quickLink">Definition</a></li><li><a class="quickLink">Remarks</a></li><li><a class="quickLink">The SavingRow Process</a></li><li><a class="quickLink">Example</a></li><li><a class="quickLink">See Also</a></li></ul></nav></div></div></div><footer id="PageFooter" class="footer border-top py-3 fixedFooter"><div class="columns"><div class="column"><p><a href="www.fireflymigration.com" target="_blank" rel="noopener noreferrer">Copyright Firefly ltd</a></p><div class="feedbackLink">Send comments on this topic to
+        <a id="HT_MailLink" href="mailto:info%40fireflymigration.com?Subject=Firefly%20Migration%20Reference">Send comments on this topic to</a></div>
         <script type="text/javascript">
         var HT_mailLink = document.getElementById("HT_MailLink");
-        var HT_mailLinkText = HT_mailLink.innerHTML;
-        HT_mailLink.href += ": " + document.title;
-        HT_mailLink.innerHTML = HT_mailLinkText;
-        </script> <p />Copyright Firefly 2010</div></div></body></html>
+        HT_mailLink.href += ": " + document.title + "\u0026body=" + encodeURIComponent("Your feedback is used to improve the documentation and the product. Your e-mail address will not be used for any other purpose and is disposed of after the issue you report is resolved. While working to resolve the issue that you report, you may be contacted via e-mail to get further details or clarification on the feedback you sent. After the issue you report has been addressed, you may receive an e-mail to let you know that your feedback has been addressed.");
+        </script> 
+				</div><div class="column"> 
+				</div></div></footer></div><script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+hljs.highlightAll();
+});</script></body></html>

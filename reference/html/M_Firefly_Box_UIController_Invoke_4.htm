@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html ><html lang="en-US"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="shortcut icon" href="../icons/favicon.ico" /><link rel="stylesheet" href="../css/bulma.css" /><link rel="stylesheet" href="../css/font-awesome.min.css" /><link rel="stylesheet" href="../css/presentationStyle.css" /><link rel="stylesheet" href="../css/vs.min.css" /><script src="../scripts/jquery-3.5.1.min.js"></script><script src="../scripts/clipboard.min.js"></script><script src="../scripts/highlight.min.js"></script><script src="../scripts/presentationStyle.js"></script><title>UIController.Invoke(Keys, Object[]) Method</title><meta name="Title" content="Invoke(Keys, Object[])" /><meta name="Help.Id" content="M:Firefly.Box.UIController.Invoke(System.Windows.Forms.Keys,System.Object[])" /><meta name="Help.ContentType" content="Reference" /><meta name="container" content="Firefly.Box" /><meta name="guid" content="M_Firefly_Box_UIController_Invoke_4" /><meta name="Description" content="Invokes a that will be handled by an ." /><meta name="tocFile" content="../toc/IDQC0LB0A.xml" /></head><body><div class="fixedLayout"><div id="Header" class="fixedHeader"><div class="pageHeader level mb-0 py-2 px-4"><div id="TitleContainer" class="level-left"><div id="DocumentationTitle" class="level-item">Firefly Migration Reference</div></div><div id="LangFilterSearchContainer" class="level-right"><div class="level-item"><div class="dropdown is-hoverable"><div class="dropdown-trigger"><button class="button" aria-haspopup="true" aria-controls="dropdown-menu"><span id="CurrentLanguage"></span><span class="icon is-small"><i class="fa fa-angle-down" aria-hidden="true"></i></span></button></div><div class="dropdown-menu" role="menu"><div id="LanguageSelections" class="dropdown-content"><a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a><a class="dropdown-item languageFilterItem" data-languageId="vb">VB</a><a class="dropdown-item languageFilterItem" data-languageId="fs">F#</a></div></div></div></div><div class="level-item"><form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;"><div class="field"><div class="control has-icons-left"><input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" /><span class="icon is-small is-left"><i class="fa fa-search"></i></span><button id="SearchButton" type="submit" class="is-hidden"></button></div></div></form></div></div></div></div><div class="fixedContent"><nav class="breadcrumb my-1 px-2 border-bottom" role="navigation"><ul id="TopicBreadcrumbs" /></nav><div class="columns pl-5 pr-5 fixedContent"><div id="ShowHideTOCColumn" class="column is-hidden-tablet"><a id="ShowHideTOC">Show/Hide TOC</a></div><div id="TOCColumn" class="column is-hidden-mobile"><nav class="toc"><ul id="TableOfContents" class="toc-menu" /></nav></div><div id="TopicContent" class="column content is-7"><h1>UIController<span id="LSTDF918B9_0" data-languageSpecificText="cpp=::|nu=."></span>Invoke(Keys, <span id="LSTDF918B9_1" data-languageSpecificText="cpp=array&lt;"></span>Object<span id="LSTDF918B9_2" data-languageSpecificText="cpp=&gt;|vb=()|nu=[]"></span>) Method</h1><div class="summary">Invokes a <span class="parameter">keyCombination</span> that will be handled by an <a href="T_Firefly_Box_Handler.htm">Handler</a>.</div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Definition</h2><div id="IDBSection"><strong>Namespace:</strong> <a href="N_Firefly_Box.htm">Firefly.Box</a><br /><strong>Assembly:</strong> Firefly.Box (in Firefly.Box.dll) Version: debug-master-v:33791<div class="codeSnippet" data-codeSnippetLanguage="cs"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs"><span class="keyword">public</span> <span class="keyword">void</span> <span class="identifier">Invoke</span>(
+	<span class="identifier">Keys</span> <span class="parameter">keyCombination</span>,
+	<span class="keyword">params</span> <span class="identifier">Object</span>[] <span class="parameter">untypedArgs</span>
+)</code></pre></div></div><div class="codeSnippet is-hidden" data-codeSnippetLanguage="vb"><div class="codeHeader"><span class="codeHeaderTitle">VB</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-vb"><span class="keyword">Public</span> <span class="keyword">Sub</span> <span class="identifier">Invoke</span> ( 
+	<span class="parameter">keyCombination</span> <span class="keyword">As</span> <span class="identifier">Keys</span>,
+	<span class="keyword">ParamArray</span> <span class="parameter">untypedArgs</span> <span class="keyword">As</span> <span class="identifier">Object</span>()
+)</code></pre></div></div><div class="codeSnippet is-hidden" data-codeSnippetLanguage="fs"><div class="codeHeader"><span class="codeHeaderTitle">F#</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-fs"><span class="keyword">member</span> <span class="identifier">Invoke</span> : 
+        <span class="parameter">keyCombination</span> : <span class="identifier">Keys</span> * 
+        <span class="parameter">untypedArgs</span> : <span class="identifier">Object</span>[] <span class="keyword">-&gt;</span> <span class="keyword">unit</span> </code></pre></div></div><h4>Parameters</h4><dl><dt class="has-text-weight-normal"><span class="parameter">keyCombination</span>  <a href="https://learn.microsoft.com/dotnet/api/system.windows.forms.keys" target="_blank" rel="noopener noreferrer">Keys</a></dt><dd>The <a href="https://learn.microsoft.com/dotnet/api/system.windows.forms.keys" target="_blank" rel="noopener noreferrer">Keys</a> to be invoked</dd><dt class="has-text-weight-normal"><span class="parameter">untypedArgs</span>  <span id="LSTDF918B9_3" data-languageSpecificText="cpp=array&lt;"></span><a href="https://learn.microsoft.com/dotnet/api/system.object" target="_blank" rel="noopener noreferrer">Object</a><span id="LSTDF918B9_4" data-languageSpecificText="cpp=&gt;|vb=()|nu=[]"></span></dt><dd>Arguments to be sent to the <a href="T_Firefly_Box_Handler.htm">Handler</a> that will handle the invoked <span class="parameter">keyCombination</span></dd></dl></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Remarks</h2><div id="IDBCSection">When the <a href="T_Firefly_Box_Handler.htm">Handler</a> method is called, the framework will iterate the <a href="P_Firefly_Box_UIController_Handlers.htm">Handlers</a> property collection until it will find an <a href="T_Firefly_Box_Handler.htm">Handler</a> that matches the <span class="parameter">keyCombination</span>.<br />If no matching <a href="T_Firefly_Box_Handler.htm">Handler</a> was found, or if the <a href="P_Firefly_Box_Advanced_HandlerInvokeEventArgs_Handled.htm">Handled</a> property was set to true, the framework will iterate the calling task's <a href="P_Firefly_Box_UIController_Handlers.htm">Handlers</a> property collection and so on.<br />The deference between Raise and Invoke, is that Raise will queue the <span class="parameter">keyCombination</span>, and process it the next time the framework is idle, while Invoke will process it immediately<br />
+ When invoking a {0} (for example {1}) or a Key Combination, only the relevant Handlers will execute, but the command it self will not. In order to run the command itself use .</div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Example</h2><div id="IDCCSection">Raising and handling of events in a UI<br />This example is based on test data. The code for the entities included in this test data can be found in the documentation of <a href="T_Firefly_Box_Data_Entity.htm">Entity</a><br />This example uses automatic tools to generate parts of the user interface. Those tools can be found in the example of the documentation of <a href="T_Firefly_Box_UI_Form.htm">Form</a><div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">using System.Drawing;
+using System.Windows.Forms;
+using Firefly.Box;
+
+namespace TestFirefly.Box.Documentation
+{
+    public class DemoRaiseDelete
+    {
+        public void RaiseDelete()
+        {
+            var jobs = new Pubs.Jobs();
+            jobs.InitializeWithTestData();
+
+            var uic = new UIController
+            {
+                From = jobs,
+                View = UITools.GenerateFormWithGridFor("Display Jobs",
+                                                       "Click the Delete button to delete the current row",
+                                                       jobs.Id,
+                                                       jobs.Description,
+                                                       jobs.MinLevel,
+                                                       jobs.MaxLevel)
+            };
+
+            var deleteButton = new Button
+            {
+                Text = "Delete",
+            };
+            UITools.AddControlsToForm(uic.View, deleteButton);
+
+            //raise the delete command by the button
+            deleteButton.Click += (a, b) =&gt; uic.Raise(Command.DeleteRow);
+            uic.Run();
+        }
+        public void HandlingDelete()
+        {
+            var jobs = new Pubs.Jobs();
+            jobs.InitializeWithTestData();
+
+            var uic = new UIController
+            {
+                From = jobs,
+                View = UITools.GenerateFormWithGridFor("Display Jobs",
+                                                       "Click the delete button, and see how the custom handler for the delete command"+
+                                                       " takes affect",
+                                                       jobs.Id,
+                                                       jobs.Description,
+                                                       jobs.MinLevel,
+                                                       jobs.MaxLevel)
+            };
+
+            var deleteButton = new Button
+            {
+                Text = "Delete",
+            };
+            UITools.AddControlsToForm(uic.View, deleteButton);
+
+            //raise the delete command by the button
+            deleteButton.Click += (a, b) =&gt; uic.Raise(Command.DeleteRow);
+
+            uic.Handlers.Add(Command.DeleteRow).Invokes += e =&gt;
+            {
+                if (MessageBox.Show(
+                        "Are you sure you want to delete this row",
+                        "Confirm Delete",
+                        MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    e.Handled = false;
+            };
+            uic.Run();
+        }
+    }
+}</code></pre></div></div></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>See Also</h2><div id="seeAlsoSection"><h4>Reference</h4><div><a href="T_Firefly_Box_UIController.htm">UIController Class</a></div><div><a href="Overload_Firefly_Box_UIController_Invoke.htm">Invoke Overload</a></div><div><a href="N_Firefly_Box.htm">Firefly.Box Namespace</a></div></div></div><div id="InThisArticleColumn" class="column is-hidden-mobile"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul id="InThisArticleMenu" class="menu-list"><li><a class="quickLink">Definition</a></li><li><a class="quickLink">Remarks</a></li><li><a class="quickLink">Example</a></li><li><a class="quickLink">See Also</a></li></ul></nav></div></div></div><footer id="PageFooter" class="footer border-top py-3 fixedFooter"><div class="columns"><div class="column"><p><a href="www.fireflymigration.com" target="_blank" rel="noopener noreferrer">Copyright Firefly ltd</a></p><div class="feedbackLink">Send comments on this topic to
+        <a id="HT_MailLink" href="mailto:info%40fireflymigration.com?Subject=Firefly%20Migration%20Reference">Send comments on this topic to</a></div>
+        <script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        HT_mailLink.href += ": " + document.title + "\u0026body=" + encodeURIComponent("Your feedback is used to improve the documentation and the product. Your e-mail address will not be used for any other purpose and is disposed of after the issue you report is resolved. While working to resolve the issue that you report, you may be contacted via e-mail to get further details or clarification on the feedback you sent. After the issue you report has been addressed, you may receive an e-mail to let you know that your feedback has been addressed.");
+        </script> 
+				</div><div class="column"> 
+				</div></div></footer></div><script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+hljs.highlightAll();
+});</script></body></html>
