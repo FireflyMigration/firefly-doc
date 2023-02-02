@@ -170,7 +170,7 @@ _ioPrint_Customers = new ENV.Printing.PrinterWriter()
 };
 ```
 ##### See Also :
-* [Landscape Property](/referencehtml/P_Firefly_Box_Printing_PrinterWriter_Landscape.htm)  
+* [Landscape Property](/reference/html/P_Firefly_Box_Printing_PrinterWriter_Landscape.htm)  
 
 
 #### Print Preview

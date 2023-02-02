@@ -97,7 +97,7 @@ To add a link use the below syntax
 
 | Code                                                    | Result                                           |
 | ------------------------------------------------------- | ------------------------------------------------ |
-| ``` [Firefly migration](www.Fireflymigration.com) ```   | [Firefly migration](www.Fireflymigration.com)    |
+| ``` [Firefly migration](https://www.Fireflymigration.com) ```   | [Firefly migration](https://www.Fireflymigration.com)    |
  
  
 ### Tables

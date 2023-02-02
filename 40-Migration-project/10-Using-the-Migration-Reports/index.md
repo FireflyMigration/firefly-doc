@@ -11,7 +11,7 @@ The error report is an XML file which can be displayed in Excel. It includes the
 
 It is recommended to start with removing the unused programs, before dealing with any of the errors. As most of the errors are concentrated in unused programs, this will significantly reduce the number of errors.
 
-The code cleaning work is iterative, as each cycle of removing code might reveal new unused code. In order to produce a new error report after each cycle, you should upload an updated version of your magic code to our automatic migration server and execute a migration process. See [Automatic Migration using FTP](Automatic-Migration-Using-FTP.html) for more details.
+The code cleaning work is iterative, as each cycle of removing code might reveal new unused code. In order to produce a new error report after each cycle, you should upload an updated version of your magic code to our automatic migration server and execute a migration process. See [Automatic Migration using FTP](automatic-migration-using-ftp.html) for more details.
 
 Notice that most of the cleaning work is optional and you can decide if and when you would like to do it, until you commit the final migration. That said, a few of the errors might prevent the .NET code compilation and need to be fixed sooner rather than later. We will inform you of such errors if exists in your code.
 

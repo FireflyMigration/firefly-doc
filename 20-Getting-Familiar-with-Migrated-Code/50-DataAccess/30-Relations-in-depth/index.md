@@ -37,7 +37,7 @@ Note that there are 15 lines on the grid displaying the first 15 lines from the 
 
 ## Viewing the SQL
 
-As a rule, a Relation is used to fetch related data from the database (or from Cache), for each row displayed in the grid. This rule applies whenever we enter a row, or whenever the values that define the Relation are changed (recompute). Now let's look into what goes on behind the scenes in the database, when we open this screen. The SQL code appears in the Output window. (For more details on the settings required to see SQL in the Output window, see: [View SQL Output](View-SQL-Output.html) ).
+As a rule, a Relation is used to fetch related data from the database (or from Cache), for each row displayed in the grid. This rule applies whenever we enter a row, or whenever the values that define the Relation are changed (recompute). Now let's look into what goes on behind the scenes in the database, when we open this screen. The SQL code appears in the Output window. (For more details on the settings required to see SQL in the Output window, see: [View SQL Output](view-sql-output.html) ).
 
 Let's examine the SQL code in the Output screen. Here is the generated SQL code, as shown in the Output window, for all 15 lines displayed on the grid:
 ```csdiff
@@ -119,7 +119,7 @@ Note: It is possible to see the above information within the context of a logfil
 
 dblogfile = c:\temp\db.log
 
-For further information regarding using logfiles, see : [Using Log Files](using_log_files.html)
+For further information regarding using logfiles, see : [Using Log Files](using-log-files.html)
 
 ---
 

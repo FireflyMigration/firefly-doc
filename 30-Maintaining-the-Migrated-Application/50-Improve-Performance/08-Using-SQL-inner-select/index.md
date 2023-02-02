@@ -7,7 +7,7 @@ The most effective tool is "Inner Selects".
 
 In this two videos we'll use the `InnerSelectHelper` class to reduce 1660 SQL queries to 1, and improve performance by 75%.
 
-To Learn more about the inner workings of using Inner Selects in the code see [Inner Select and SQL Evaluated Columns in depth](Inner-Select-and-SQL-Evaluated-Columns-in-depth.html)
+To Learn more about the inner workings of using Inner Selects in the code see [Inner Select and SQL Evaluated Columns in depth](inner-select-and-sql-evaluated-columns-in-depth.html)
 
 ### Using the InnerSelectHelper
 * Define the InnerSelectHelper class in the code
