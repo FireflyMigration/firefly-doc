@@ -36,3 +36,5 @@ Columns.Add(V_HasOrderDetails);
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/KidtQuLn-jc?list=PL1DEQjXG2xnLKpfmZgMwU1b3fUFxCOiQG" frameborder="0" allowfullscreen></iframe>
+
+Another way to do this, without hard coded SQL statements, would be to use the InnerSelectHelper. See [Using SQL inner select](using-sql-inner-select.html)
