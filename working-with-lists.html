@@ -41,6 +41,34 @@
                 <div class="content"><h1 id="working-with-lists">working with lists</h1>
 <p>In this video we'll use a .NET List and eventually use it as the &quot;From&quot; of a business Process</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ztHuX9ncvTY?list=PL1DEQjXG2xnKI3TL-SZvhZ1M3I2Q" frameborder="0" allowfullscreen></iframe>
+<pre data-line="" class="language-csdiff line-numbers"><code>public class DemoWorkWithListBP : BusinessProcessBase
+{
+    public readonly Models.Products Products = new Models.Products();
+
+    public DemoWorkWithListBP()
+    {
+        Relations.Add(Products, Products.ProductID.IsEqualTo(() =&gt; enumerator.Current.ProductID));
+    }
+    protected override void OnLeaveRow()
+    {
+        MessageBox.Show(
+$@"Id: {enumerator.Current.ProductID}
+Name: {Products.ProductName}
+Current Quantity: {Products.UnitsInStock}
+New Quantity: {enumerator.Current.UnitsInStockCount}");
+
+        if (!enumerator.MoveNext())
+            Exit();
+    }
+    List&lt;StockInfo&gt;.Enumerator enumerator;
+    public void Run()
+    {
+        enumerator = StockInfo.CreateTestData().GetEnumerator();
+        if (!enumerator.MoveNext()) return;
+
+        Execute();
+    }
+} </code></pre>
 
 
 
