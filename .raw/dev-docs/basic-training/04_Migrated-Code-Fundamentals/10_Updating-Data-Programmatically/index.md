@@ -16,6 +16,6 @@ private void button1_Click(object sender, ButtonClickEventArgs e)
 7.	Add a menu entry in the **Application.MDI** to browse the new created program.
 8.	Build and Run
 9.	Notice that the calculation occurs only when the button is clicked.
-![Calculate button](Calculate_button.png)
+![Calculate button](calculate_button.png)
 10.	Review the UIController slides in the Power Point presentation. (#7 - #21)
 11.	Exercise: Updating Data Programmatically
