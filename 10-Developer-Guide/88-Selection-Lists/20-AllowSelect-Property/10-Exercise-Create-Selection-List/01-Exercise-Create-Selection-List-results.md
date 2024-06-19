@@ -35,7 +35,7 @@ namespace Northwind.Exercises.SelectionList
 }
 ```
 
-After item **17** Your **SelectCustomers** class should look like :
+After item **17** Your **SelectEmployees** class should look like :
 
 ```csdiff
 using System;
@@ -49,14 +49,14 @@ using System.Diagnostics;
 
 namespace Northwind.Exercises.SelectionList
 {
-    public class SelectCustomers : UIControllerBase
+    public class SelectEmployees : UIControllerBase
     {
 
-        public readonly Models.Customers Customers = new Models.Customers();
+        public readonly Models.Employees Employees = new Models.Employees();
 
-        public SelectCustomers()
+        public SelectEmployees()
         {
-            From = Customers;
+            From = Employees;
         }
 
         public void Run()
@@ -71,11 +71,11 @@ namespace Northwind.Exercises.SelectionList
             AllowInsert = false;
             AllowUpdate = false;
             AllowSelect = true;
-            View = () => new Views.SelectCustomersView(this);
+            View = () => new Views.SelectEmployeesView(this);
         }
         protected override void OnSavingRow()
         {
-            Debug.WriteLine("Selecting Customer ID" + Customers.CustomerID);
+            Debug.WriteLine("Selecting Employee ID" + Employees.EmployeeID);
         }
     }
 }
@@ -86,6 +86,6 @@ The **ShowOrdersWithEmployeeSelection** runtime should look like :
 
 ![ShowOrdersWithEmployeeSelection](2019-01-10_10h36_08.png)  
 
-The **SelectCustomers** runtime should look like : 
+The **SelectEmployees** runtime should look like : 
 
 ![SelectCustomers](2019-01-10_10h40_42.png)
