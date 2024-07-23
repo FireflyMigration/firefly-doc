@@ -35,7 +35,7 @@ public class Customers : Entity
 +   }
 ```
 
-## Automatically adding Columns to all Controller
+## Automatically adding Columns to all Controllers
 If you want to make sure that specific columns in an entity will always be added to all Controllers that use this Entity, override the `GetMandatoryColumns` method
 
 ```csdiff
