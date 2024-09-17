@@ -40,32 +40,32 @@
 
                 <div class="content"><h1 id="row-locking">Row Locking</h1>
 <p>Every Controller has a property called <code>RowLocking</code> which controls when locking shall be applied for this controller.</p>
-<p>The different locking strategies are detailed in the documentation of <a href="/reference/html/T_Firefly_Box_LockingStrategy.htm">LockingStragey</a>.
+<p>The different locking strategies are detailed in the documentation of <a href="/reference/html/T_Firefly_Box_LockingStrategy.htm">LockingStrategy</a>.
 To see the comparison of the different strategies to magic see <a href="locking-strategy.html">Locking Strategy in magic</a></p>
-<h3 id="when-will-the-locking-start">When Will the locking start?</h3>
+<h3 id="when-will-the-locking-start">When will the locking start?</h3>
 <p>The start of the locking is controlled by the <code>RowLocking</code> property - and is based on the strategy.</p>
 <ul>
 <li>None - the lock will never start</li>
-<li>OnRowLoading - the lock wills start once the row is loaded - just before the <code>EnterRow</code> event.</li>
+<li>OnRowLoading - the lock will start once the row is loaded - just before the <code>EnterRow</code> event.</li>
 <li>OnRowSaving - the lock with start before the row is saved to the database - after the <code>SavingRow</code> event.</li>
 <li>OnUserEdit - the lock will start when the user edits a value on the screen</li>
 </ul>
 <h4 id="lockcurrentrow-method">LockCurrentRow method</h4>
 <p>When using the <code>OnUserEdit</code> LockingStrategy - the lock can be started by calling the <code>LockCurrentRow()</code> method.
 In the migrated code, you'll see a call to the <code>LockCurrentRow()</code> method whenever magic would have started a lock.</p>
-<p>When the <code>LockCurrentRow()</code> method is called for the first time since entering the row, it'll lock the row. Any subsequent calls to the <code>LockCurrentRow()</code> method will be ignored - since the row is already locked.</p>
-<p>You may see many calls in the migrated code to <code>LockCurrentRow()</code>  in controllers that were migrated and were using the <code>OnModify</code> magic locking strategy, that is because magic was starting locks on updates and call programs based on in many different (And sometimes mysterious) scenarios.
+<p>When the <code>LockCurrentRow()</code> method is called for the first time since entering the row, it will lock the row. Any subsequent calls to the <code>LockCurrentRow()</code> method will be ignored - since the row is already locked.</p>
+<p>You may see many calls in the migrated code to <code>LockCurrentRow()</code> in controllers that were migrated and were using the <code>OnModify</code> Magic locking strategy, that is because Magic was starting locks on updates and call programs based on many different (and sometimes mysterious) scenarios.
 We made sure the make the call to <code>LockCurrentRow</code> apparent and to highlight this behavior.</p>
-<p>If you see many subsequent calls to <code>LockCurrentRow()</code>, don't worry about it - as only the first one locks.</p>
+<p>If you see many subsequent calls to <code>LockCurrentRow()</code>, don't worry about it as only the first one locks.</p>
 <h4 id="lockcurrentrowifitwaschanged-method">LockCurrentRowIfItWasChanged method</h4>
 <p>It's a variation of the <code>LockCurrentRow</code> method that will only lock if the row was already changed, based on the <code>RowChanged</code> property.
-It is used in the migrated code whenever magic was locking but not always - just when the row was changed.</p>
+It is used in the migrated code whenever Magic was locking but not always - just when the row was changed.</p>
 <h3 id="which-entities-will-be-locked">Which entities will be locked?</h3>
 <p>When the lock starts, all entities for which the <code>AllowRowLocking</code> property is set, will be locked.
 <img src="allow-row-locking.png" alt="Allow Row Locking" /></p>
 <blockquote>
 <p>Note that if the same entity was already defined in a calling controller with <code>AllowRowLocking = true</code>, than that same entity in this controller will also be treated as if <code>AllowRowLocking</code> is set to true.
-that is controlled by the <code>ShouldDetermineNameAcordingToCallStack</code> property of the entity. Set this property to false to disable that behavior.</p>
+that is controlled by the <code>ShouldDetermineNameAccordingToCallStack</code> property of the entity. Set this property to false to disable that behavior.</p>
 </blockquote>
 <h3 id="when-will-the-lock-be-released">When will the lock be released?</h3>
 <p>Any row that was updated will remain locked until the end of the transaction.</p>

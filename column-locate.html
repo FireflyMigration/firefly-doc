@@ -51,6 +51,7 @@ pi_ProdID - Parameter</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>StartOnRowWhere.Add(Products.ProductID.IsLessOrEqualTo(pi_ProdID)); </code></pre>
 <p>Locate From only</p>
 <pre data-line="" class="language-csdiff line-numbers"><code>StartOnRowWhere.Add(Products.ProductID.IsGreaterOrEqualTo(pi_ProdID)); </code></pre>
+<p>The row not found message can be suppressed by setting the DisableStartOnRowNotFoundError to false in the OnLoad method of the UIController.</p>
 <p><strong>See Also:</strong></p>
 <ul>
 <li><a href="http://doc.fireflymigration.com/range-locate.html">Range-Locate</a></li>
