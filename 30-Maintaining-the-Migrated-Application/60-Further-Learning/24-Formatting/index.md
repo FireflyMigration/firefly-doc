@@ -63,7 +63,8 @@ The result will be:
 | **Z**         | **Z** – Zero. In case there is no value in the field, it will be displayed with the character following **Z**.(Ex – if the field mask is **5Z#** and the field is empty, the field will display **#####**)  |
 | **L**         | **L** - Lef. The number will be displayed from left to right (Default is right to left) (**5L**)                                                                                                            |
 | **A**         | **A** – Auto. Once the user fills all the possible digits of the numeric field, the cursor moves automatically to the next field. (Ex – A5 mask moves to the next field after typing 5 digits)           |
-| **~**         | **~** (tilde sign) – Trim Result (was added in December 2018                                                                                                                                            |
+| **~**         | **~** (tilde sign) – Trim Result (was added in December 2018)                                                                                                                                            |
+| **C**         | **C** – The number will be displayed with thousand comma delimiter. (Ex - 12,000.00 would be "5.2C")                                                                                                     |
 
 **Text types**
 
