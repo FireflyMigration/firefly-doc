@@ -6,7 +6,7 @@ Retrieving parent and child rows efficiently is a common requirement in database
 
 Consider the following code snippet:
 
-```csharp
+```csdiff
 class WriteOrders : BusinessProcessBase
 {
     public readonly Models.Orders Orders = new Models.Orders();
@@ -71,7 +71,7 @@ To optimize performance, we can use the **Inner Select Helper**, which allows fe
 
 ### Optimized Code with Inner Select Helper
 
-```csharp
+```csdiff
 class WriteOrders : BusinessProcessBase
 {
     public readonly Models.Orders Orders = new Models.Orders();
