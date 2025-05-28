@@ -1491,11 +1491,11 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 </ul>
 
 <h1 id="exercise-returning-the-selected-value">Exercise - Returning The Selected Value</h1>
-<p>In <strong>SelectCustomers</strong>:</p>
+<p>In <strong>SelectEmployees</strong>:</p>
 <ol>
-<li>Check the data type of Customers.CustomerId (use &quot;Go To Definition&quot;)</li>
-<li>Set a local column <strong>_CustomerID</strong> make sure that it is not <strong>readonly</strong>.</li>
-<li>In the <strong>Run</strong> method receive a parameter with the relevant column type, name it <strong>customerID</strong>.</li>
+<li>Check the data type of Employee.EmployeeId (use &quot;Go To Definition&quot;)</li>
+<li>Set a local column <strong>_EmployeeId</strong> make sure that it is not <strong>readonly</strong>.</li>
+<li>In the <strong>Run</strong> method receive a parameter with the relevant column type, name it <strong>employeeId</strong>.</li>
 <li>In the <strong>Run</strong> method set _customerId to reference to customerID.</li>
 <li>At the <strong>OnSavingRow</strong> update the _customerId.Value to the Customers.CustomerId (selected value).</li>
 <li>Save changes to Git.</li>
@@ -1506,9 +1506,9 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 </ul>
 
 <h1 id="exercise-determine-the-parked-row">Exercise - Determine the Parked Row</h1>
-<p>In <strong>SelectCustomers</strong>:</p>
+<p>In <strong>SelectEmployee</strong>:</p>
 <ol>
-<li>In the <strong>Run</strong> method use StartOnRowWhere statement to locate the row where Customers.CustomerId equal to _customerID.</li>
+<li>In the <strong>Run</strong> method use StartOnRowWhere statement to locate the row where Employee.EmployeeId equal to _employeeID.</li>
 <li>Save changes to Git.</li>
 <li>Build and test using the <strong>Developer Tools</strong>.</li>
 </ol>
@@ -1519,7 +1519,7 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <h1 id="exercise-using-the-expand-event">Exercise - Using the Expand event</h1>
 <p>In <strong>ShowOrdersWithEmployeeSelection</strong>:</p>
 <ol>
-<li>Park on the TextBox = <strong>txtCustomerID</strong> in the CustomeID column and press F4 to display its properties</li>
+<li>Park on the TextBox = <strong>txtEmployeeID</strong> in the CustomeID column and press F4 to display its properties</li>
 <li>Go to the Events tab of the properties and look for the Expand event. Double click it will create a method in the code begind the view.</li>
 <li>In this method call the SelectCustomers controller, remember to send the appropriate parameter</li>
 </ol>
