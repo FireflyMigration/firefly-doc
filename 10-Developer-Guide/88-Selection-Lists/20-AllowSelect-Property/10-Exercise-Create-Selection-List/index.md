@@ -14,7 +14,7 @@
 11. In the Onload method set the following settings
 	1. Activity to Browse.
 	2. Allow Delete,Insert and update to false.
-	3. Allow Select to ture.
+	3. Allow Select to true.
 
 11. Build and go to the form designer.
 12. Add a **Grid control** to the form.
