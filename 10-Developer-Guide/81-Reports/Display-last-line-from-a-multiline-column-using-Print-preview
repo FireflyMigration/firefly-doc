@@ -1,0 +1,16 @@
+﻿Keywords:print, preview, last line, multiline
+
+# Display last line from a multiline column using Print preview
+
+---
+
+When using print preview the last line of a multiline column is not displayed.
+
+By default, preview images for zoom filters in the 70%-130% range are created differently (using raster graphics instead of vector graphics) as some fonts don't scale well in that range. 
+The other side of that is that there may be some clipped text with other fonts.
+
+It's very simple to disable this mechanism by adding this code line to your Program.cs file:
+
+```csdiff
+ENV.Printing.PrinterWriter.PrintPreviewMaxRasterZoomFactor = 0;
+```
