@@ -194,14 +194,14 @@
 <h1 id="introduction-to-ui-controller-summary-exercise">Introduction to UI Controller - Summary Exercise</h1>
 <ol>
 <li>Under the <strong>Exercise folder</strong> add a new UIController named it <strong>ShowOrderDetails</strong>.</li>
-<li>Define the <strong>Order_Details</strong> table at the beginning of the controller class.(drag and drop it, holding the <strong>Shift</strong> key just before the drop).</li>
+<li>Define the <strong>Order_Details</strong> table at the beginning of the controller class.(use the snippit <strong>mem</strong> and then hit the tab key twice ).</li>
 <li>In the <strong>constructor</strong> use the <strong>From</strong> to set the <strong>Order_Details</strong> to be the class main table.</li>
-<li><strong>Build</strong> and open the form designer (Using the <strong>Class outline</strong> window).</li>
+<li><strong>Build</strong> and open the form designer (F12 or go to Definition from the Onload View and then right-click and select View Designer).</li>
 <li>Add a <strong>grid</strong> with all the columns from the <strong>OrderDetails</strong> table.</li>
 <li>Add a new menu entry calling <strong>ShowOrderDetails</strong>.</li>
 <li>Save changes to Git.</li>
 <li><strong>Build and test</strong>.</li>
-<li>Going back the <strong>ShowOrderDetails</strong> controller:</li>
+<li>Going back to the <strong>ShowOrderDetails</strong> controller:</li>
 <li>Filter the data to display only the rows where the <strong>UnitPrice</strong> is <strong>greater or equal</strong> to 20.</li>
 <li>Save changes to Git.</li>
 <li><strong>Build and test</strong>.</li>
@@ -209,7 +209,7 @@
 <li>Save changes to Git.</li>
 <li><strong>Build and test</strong>.</li>
 <li>Add a relation to the <strong>Products</strong> table.</li>
-<li><strong>Build</strong> and open the form designer (Using the <strong>Class outline</strong> window).</li>
+<li><strong>Build</strong> and open the form designer.</li>
 <li>Add the <strong>ProductName</strong> next to the <strong>ProductID</strong> on the same column.</li>
 <li>Save changes to Git.</li>
 <li><strong>Build and test</strong>.</li>
@@ -669,15 +669,15 @@
 <ol>
 <li>In <strong>CalcOrderTotalForShipper</strong> add two variables type <strong>Number</strong>:
 <ol>
-<li>_numberOfOrders.</li>
-<li>_totalValue.</li>
+<li>numberOfOrders.</li>
+<li>totalValue.</li>
 </ol>
 </li>
 <li>Remember to set them to zero.</li>
 <li>In the <strong>OnLeaveRow</strong>, update :
 <ol>
-<li>_numberOfOrders to increase by 1 for every row.</li>
-<li>_totalValue to accumulate the value of <strong>Freight</strong> column from the <strong>Orders</strong> table.</li>
+<li>numberOfOrders to increase by 1 for every row.</li>
+<li>totalValue to accumulate the value of <strong>Freight</strong> column from the <strong>Orders</strong> table.</li>
 </ol>
 </li>
 <li>add one more Debug line to reflect the two new variables to the Output.</li>
@@ -1456,15 +1456,15 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <li>Orders.OrderDate.</li>
 </ol>
 </li>
-<li><p>Add new UIController to the <strong>SelectionList</strong> folder, name the new UIController <strong>SelectCustomers</strong>.</p>
+<li><p>Add new UIController to the <strong>SelectionList</strong> folder, name the new UIController <strong>SelectEmployees</strong>.</p>
 </li>
-<li><p>Set the <strong>Customers</strong> table as the main table</p>
+<li><p>Set the <strong>Employee</strong> table as the main table</p>
 </li>
 <li><p>In the Onload method set the following settings</p>
 <ol>
 <li>Activity to Browse.</li>
 <li>Allow Delete,Insert and update to false.</li>
-<li>Allow Select to ture.</li>
+<li>Allow Select to true.</li>
 </ol>
 </li>
 <li><p>Build and go to the form designer.</p>
@@ -1473,9 +1473,11 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 </li>
 <li><p>Add the following columns to the <strong>Grid</strong></p>
 </li>
-<li><p>Customer.CustomerID.</p>
+<li><p>Employees.EmployeeID.</p>
 </li>
-<li><p>Customer.CompanyName.</p>
+<li><p>Employees.FirstName.</p>
+</li>
+<li><p>Employees.LastName.</p>
 </li>
 <li><p>Set a Debug Write line in the On Saving row and make sure that you get the message in the output window when selecting an item</p>
 </li>
@@ -1489,13 +1491,13 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 </ul>
 
 <h1 id="exercise-returning-the-selected-value">Exercise - Returning The Selected Value</h1>
-<p>In <strong>SelectCustomers</strong>:</p>
+<p>In <strong>SelectEmployees</strong>:</p>
 <ol>
-<li>Check the data type of Customers.CustomerId (use &quot;Go To Definition&quot;)</li>
-<li>Set a local column <strong>_CustomerID</strong> make sure that it is not <strong>readonly</strong>.</li>
-<li>In the <strong>Run</strong> method receive a parameter with the relevant column type, name it <strong>customerID</strong>.</li>
-<li>In the <strong>Run</strong> method set _customerId to reference to customerID.</li>
-<li>At the <strong>OnSavingRow</strong> update the _customerId.Value to the Customers.CustomerId (selected value).</li>
+<li>Check the data type of Employee.EmployeeId (use &quot;Go To Definition&quot;)</li>
+<li>Set a local column <strong>_EmployeeId</strong> make sure that it is not <strong>readonly</strong>.</li>
+<li>In the <strong>Run</strong> method receive a parameter with the relevant column type, name it <strong>employeeId</strong>.</li>
+<li>In the <strong>Run</strong> method set _employeeId to reference to employeeId.</li>
+<li>At the <strong>OnSavingRow</strong> update the _employeeId.Value to the Employees.employeeId (selected value).</li>
 <li>Save changes to Git.</li>
 <li>Build and test using the <strong>Developer Tools</strong>.</li>
 </ol>
@@ -1504,9 +1506,9 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 </ul>
 
 <h1 id="exercise-determine-the-parked-row">Exercise - Determine the Parked Row</h1>
-<p>In <strong>SelectCustomers</strong>:</p>
+<p>In <strong>SelectEmployee</strong>:</p>
 <ol>
-<li>In the <strong>Run</strong> method use StartOnRowWhere statement to locate the row where Customers.CustomerId equal to _customerID.</li>
+<li>In the <strong>Run</strong> method use StartOnRowWhere statement to locate the row where Employee.EmployeeId equal to _employeeID.</li>
 <li>Save changes to Git.</li>
 <li>Build and test using the <strong>Developer Tools</strong>.</li>
 </ol>
@@ -1517,7 +1519,7 @@ This should be done before the call to <strong>CalcTotalOrdersPerCustomer</stron
 <h1 id="exercise-using-the-expand-event">Exercise - Using the Expand event</h1>
 <p>In <strong>ShowOrdersWithEmployeeSelection</strong>:</p>
 <ol>
-<li>Park on the TextBox = <strong>txtCustomerID</strong> in the CustomeID column and press F4 to display its properties</li>
+<li>Park on the TextBox = <strong>txtEmployeeID</strong> in the CustomeID column and press F4 to display its properties</li>
 <li>Go to the Events tab of the properties and look for the Expand event. Double click it will create a method in the code begind the view.</li>
 <li>In this method call the SelectCustomers controller, remember to send the appropriate parameter</li>
 </ol>

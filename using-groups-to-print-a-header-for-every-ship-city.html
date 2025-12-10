@@ -49,12 +49,12 @@
 </ol>
 <h4 id="in-the-report-controller">In the report controller</h4>
 <ol>
-<li>In the contructor add the required OrderBy</li>
+<li>In the constructor add the required OrderBy</li>
 <li>Add a group usign the <em>gro</em> snippet</li>
 <li>Specify the column that, upon changing, will display the new section</li>
 <li>Specify which section to write whenever a new ShipCity is reached</li>
 </ol>
-<pre data-line="" class="language-csdiff line-numbers"><code>OrderBy.Add(Orders.SortByCustomerID;
+<pre data-line="" class="language-csdiff line-numbers"><code>OrderBy.Add(Orders.SortByCustomerID);
 
 Groups[Orders.ShipCity].Enter += () =&gt; 
 {

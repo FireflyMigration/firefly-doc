@@ -98,7 +98,7 @@
       &lt;remove name="ExtensionlessUrlHandler-Integrated-4.0" /&gt;
       &lt;remove name="OPTIONSVerbHandler" /&gt;
       &lt;remove name="TRACEVerbHandler" /&gt;
-      &lt;add name="ExtensionlessUrlHandler-Integrated-4.0" path="*." verb="*" type="System.Web.Handlers.TransferRequestHandler" +preCondition="integratedMode,runtimeVersionv4.0" /&gt;
+      &lt;add name="ExtensionlessUrlHandler-Integrated-4.0" path="*." verb="*" type="System.Web.Handlers.TransferRequestHandler" preCondition="integratedMode,runtimeVersionv4.0" /&gt;
       &lt;add name="Browser Link for HTML" path="*.html" verb="*"
          type="System.Web.StaticFileHandler, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
          resourceType="File" preCondition="integratedMode" /&gt;
@@ -138,17 +138,9 @@
     &lt;/compilers&gt;
   &lt;/system.codedom&gt;
  &lt;/configuration&gt; </code></pre>
-<p>That's it, you are configured to use ENV.Web.
-Review the following articles on how to use it:</p>
-<ol>
-<li><a href="creating-the-server-api.html">creating the server api</a></li>
-<li><a href="making-the-rest-api-updatable.html">making the rest api updatable</a></li>
-<li><a href="create-view-model.html">create view model</a></li>
-<li><a href="automatically-generating-order-id-on-a-new-row.html">automatically generating order id on a new row.html</a></li>
-<li><a href="server-side-validation-made-easy.html">server side validation made easy</a></li>
-<li><a href="additional-server-side-features.html">additional server side features</a></li>
-<li><a href="exposing-a-migrated-report-to-the-web.html">exposing a migrated report to the web</a></li>
-</ol>
+<p>That's it, you are configured to use ENV.Web.</p>
+<p>The project and a working demo based on Northwind is hosted on GitHub, at:
+<a href="https://github.com/FireflyMigration/ENV.Web.demo">https://github.com/FireflyMigration/ENV.Web.demo</a></p>
 
 
 
