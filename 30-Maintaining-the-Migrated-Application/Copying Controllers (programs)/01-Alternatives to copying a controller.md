@@ -35,7 +35,7 @@ When the tools make it easier to copy code than to reuse it, the former becomes 
 
 # How Can We Do Better in .NET?
 We have a set of videos that explain how to reuse a controller or a view in the migrated application, which you can find [here](http://doc.fireflymigration.com/creating-reusable-views-and-controllers.html).  
-It also helps that coping a program in .NET is not so easy as it was in Magic. However, if you are still not convinced and have a good reason to duplicate a program, we have a few videos that explains how, which you can find [here](http://doc.fireflymigration.com/duplicating-controllers.html).
+It also helps that coping a program in .NET is not so easy as it was in Magic. However, if you are still not convinced and have a good reason to duplicate a program, we have a few videos that explains how, which you can find [here](copying-controllers-(programs).html).
 
 
 # When is it OK to Copy?

@@ -34,7 +34,7 @@ True or false. The default is **True** which is Allow Update = Yes in Magic
 
 ---
 **See Also**  
-[AllowUpdate ](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_AllowUpdate.htm)  
-[BindAllowUpdate ](http://www.fireflymigration.com/reference/html/M_Firefly_Box_UIController_BindAllowUpdate.htm)
+[AllowUpdate ](/reference/html/P_Firefly_Box_UIController_AllowUpdate.htm)  
+[BindAllowUpdate ](/reference/html/M_Firefly_Box_UIController_BindAllowUpdate.htm)
 
 ---        

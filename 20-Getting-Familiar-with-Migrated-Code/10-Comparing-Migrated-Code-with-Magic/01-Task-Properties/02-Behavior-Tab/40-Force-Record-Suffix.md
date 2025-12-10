@@ -28,5 +28,5 @@ protected override void OnLoad()
 True or false. The default is **false** which is Force record suffix = No in Magic
 
 ## See Also
-[UIController ForceSaveRow](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_ForceSaveRow.htm)
+[UIController ForceSaveRow](/reference/html/P_Firefly_Box_UIController_ForceSaveRow.htm)
 

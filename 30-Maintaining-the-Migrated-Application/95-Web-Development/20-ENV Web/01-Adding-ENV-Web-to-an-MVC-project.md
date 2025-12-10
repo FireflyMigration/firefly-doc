@@ -58,7 +58,7 @@ public static void RegisterRoutes(RouteCollection routes)
 +     <remove name="ExtensionlessUrlHandler-Integrated-4.0" />
 +     <remove name="OPTIONSVerbHandler" />
 +     <remove name="TRACEVerbHandler" />
-+     <add name="ExtensionlessUrlHandler-Integrated-4.0" path="*." verb="*" type="System.Web.Handlers.TransferRequestHandler" +preCondition="integratedMode,runtimeVersionv4.0" />
++     <add name="ExtensionlessUrlHandler-Integrated-4.0" path="*." verb="*" type="System.Web.Handlers.TransferRequestHandler" preCondition="integratedMode,runtimeVersionv4.0" />
 +     <add name="Browser Link for HTML" path="*.html" verb="*"
 +        type="System.Web.StaticFileHandler, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
 +        resourceType="File" preCondition="integratedMode" />
@@ -100,11 +100,7 @@ public static void RegisterRoutes(RouteCollection routes)
  </configuration>
 ```
 That's it, you are configured to use ENV.Web.
-Review the following articles on how to use it:
-1. [creating the server api](creating-the-server-api.html)
-2. [making the rest api updatable](making-the-rest-api-updatable.html)
-3. [create view model](create-view-model.html)
-4. [automatically generating order id on a new row.html](automatically-generating-order-id-on-a-new-row.html)
-5. [server side validation made easy](server-side-validation-made-easy.html)
-6. [additional server side features](additional-server-side-features.html)
-7. [exposing a migrated report to the web](exposing-a-migrated-report-to-the-web.html)
+
+
+The project and a working demo based on Northwind is hosted on GitHub, at:
+https://github.com/FireflyMigration/ENV.Web.demo

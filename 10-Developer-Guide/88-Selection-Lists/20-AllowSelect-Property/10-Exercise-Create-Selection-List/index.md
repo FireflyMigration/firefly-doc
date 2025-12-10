@@ -9,18 +9,19 @@
    1. Orders.OrderID.  
    2. Orders.CustomerID.
    3. Orders.OrderDate.
-9. Add new UIController to the **SelectionList** folder, name the new UIController **SelectCustomers**. 
-10. Set the **Customers** table as the main table
+9. Add new UIController to the **SelectionList** folder, name the new UIController **SelectEmployees**. 
+10. Set the **Employee** table as the main table
 11. In the Onload method set the following settings
 	1. Activity to Browse.
 	2. Allow Delete,Insert and update to false.
-	3. Allow Select to ture.
+	3. Allow Select to true.
 
 11. Build and go to the form designer.
 12. Add a **Grid control** to the form.
 13. Add the following columns to the **Grid**
-   1. Customer.CustomerID.  
-   2. Customer.CompanyName.
+   1. Employees.EmployeeID.  
+   2. Employees.FirstName.
+   3. Employees.LastName.
 14. Set a Debug Write line in the On Saving row and make sure that you get the message in the output window when selecting an item
 16. Save changes to Git.
 17. Build and test.

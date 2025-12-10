@@ -10,4 +10,4 @@ This is useful when you try to find a Column in an entity, and you only want to 
 Now you can search using <kbd>ctrl</kbd> + <kbd>,</kbd> and search within a specific file, or for a specific type.
 
 ### Improved debugger
-After setting a brekpoint you now can hover to a line and use RuntoClick. Now you don't have to set many breakpoints anymore.
+After setting a breakpoint you now can hover to a line and use RuntoClick. Now you don't have to set many breakpoints anymore.

@@ -21,7 +21,7 @@ void InitializeDataView()
 
 ## See Also
 
-* [Relation Enable](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Relation_Enabled.htm)
+* [Relation Enable](/reference/html/P_Firefly_Box_Relation_Enabled.htm)
 
 
 

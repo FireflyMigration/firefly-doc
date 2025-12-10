@@ -47,9 +47,9 @@ The `RowLocking` property will be written whenever a locking is used - even if i
 It does that to explicitly indicate that there is locking.  
 
 ## See Also: 
-* [UIController LockingStrategy Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_RowLocking.htm) 
-* [BusinessProcess LockingStrategy Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_RowLocking.htm)
-* [LockingStrategy Enum](http://www.fireflymigration.com/reference/html/T_Firefly_Box_LockingStrategy.htm)
+* [UIController LockingStrategy Property](/reference/html/P_Firefly_Box_UIController_RowLocking.htm) 
+* [BusinessProcess LockingStrategy Property](/reference/html/P_Firefly_Box_BusinessProcess_RowLocking.htm)
+* [LockingStrategy Enum](/reference/html/T_Firefly_Box_LockingStrategy.htm)
 
 
 For a deeper explanation of locking please refer to [the row locking article](row-locking.html)

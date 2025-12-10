@@ -35,6 +35,6 @@ The `TransactionScope` property will be written whenever a transaction was set -
 It does that to explicitly indicate that there is a transaction.
 
 ## See Also: 
-* [UIController TransactionScope](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_TransactionScope.htm) 
-* [BusinessProcess TransactionScope ](http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_TransactionScope.htm) 
-* [TransactionScope Enum](http://fireflymigration.com/reference/html/T_Firefly_Box_TransactionScopes.htm) 
+* [UIController TransactionScope](/reference/html/P_Firefly_Box_UIController_TransactionScope.htm) 
+* [BusinessProcess TransactionScope ](/reference/html/P_Firefly_Box_BusinessProcess_TransactionScope.htm) 
+* [TransactionScope Enum](/referencehtml/T_Firefly_Box_TransactionScopes.htm) 

@@ -33,7 +33,7 @@ True or false. The default is **True** which is Allow Create = Yes in Magic
 
 ---
 **See Also**  
-[AllowInsert ](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_AllowInsert.htm)  
-[BindAllowInsert ](http://www.fireflymigration.com/reference/html/M_Firefly_Box_UIController_BindAllowInsert.htm)
+[AllowInsert ](/reference/html/P_Firefly_Box_UIController_AllowInsert.htm)  
+[BindAllowInsert ](/reference/html/M_Firefly_Box_UIController_BindAllowInsert.htm)
 
 ---   

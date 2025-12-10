@@ -27,4 +27,4 @@ protected override void OnLoad()
 True or false. The default is **false** which is Cycle on record = Yes in Magic
 
 ## See Also
-[UIController GoToNextRowAfterLastControl](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_GoToToNextRowAfterLastControl.htm)
+[UIController GoToNextRowAfterLastControl](/reference/html/P_Firefly_Box_UIController_GoToToNextRowAfterLastControl.htm)

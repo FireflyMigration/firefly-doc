@@ -18,7 +18,7 @@ void InitializeDataView()
 
 
 ## See Also
-* [UIController OrderBy Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_OrderBy.htm)  
+* [UIController OrderBy Property](/reference/html/P_Firefly_Box_UIController_OrderBy.htm)  
 * [UIController Sorting Data](http://doc.fireflymigration.com/sorting-data.html)
 
 

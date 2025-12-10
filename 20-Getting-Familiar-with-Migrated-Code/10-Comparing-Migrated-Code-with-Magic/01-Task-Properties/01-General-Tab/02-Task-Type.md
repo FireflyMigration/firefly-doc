@@ -42,8 +42,8 @@ which inherits from the corresponding class type.
 
 ---
 **See Also:**
-- [UIController Class](http://fireflymigration.com/reference/html/T_Firefly_Box_UIController.htm)
-- [BusinessProcess Class](http://fireflymigration.com/reference/html/T_Firefly_Box_BusinessProcess.htm)
-- [UIController Class Members](http://www.fireflymigration.com/reference/html/AllMembers_T_Firefly_Box_UIController.htm)
-- [Business Process Class Members](http://www.fireflymigration.com/reference/html/AllMembers_T_Firefly_Box_BusinessProcess.htm)
+- [UIController Class](/referencehtml/T_Firefly_Box_UIController.htm)
+- [BusinessProcess Class](/referencehtml/T_Firefly_Box_BusinessProcess.htm)
+- [UIController Class Members](/reference/html/AllMembers_T_Firefly_Box_UIController.htm)
+- [Business Process Class Members](/reference/html/AllMembers_T_Firefly_Box_BusinessProcess.htm)
 ---

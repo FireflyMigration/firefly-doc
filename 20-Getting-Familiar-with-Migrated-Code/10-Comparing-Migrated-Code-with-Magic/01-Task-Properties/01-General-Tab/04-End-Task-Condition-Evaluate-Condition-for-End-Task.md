@@ -60,8 +60,8 @@ protected override void OnLoad()
 ---
 **See Also:**
 
-- [UIController Exit Method + examples](http://www.fireflymigration.com/reference/html/M_Firefly_Box_UIController_Exit.htm)
-- [BusinessProcess Exit Method + examples](http://fireflymigration.com/reference/html/M_Firefly_Box_BusinessProcess_Exit.htm)
-- [Exit Method Overloads](http://www.fireflymigration.com/reference/html/Overload_Firefly_Box_BusinessProcess_Exit.htm)
+- [UIController Exit Method + examples](/reference/html/M_Firefly_Box_UIController_Exit.htm)
+- [BusinessProcess Exit Method + examples](/referencehtml/M_Firefly_Box_BusinessProcess_Exit.htm)
+- [Exit Method Overloads](/reference/html/Overload_Firefly_Box_BusinessProcess_Exit.htm)
 
 ---

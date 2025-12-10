@@ -19,5 +19,5 @@ Columns.Add(v_Total);
 
 
 For the Select operation, See Also:  
-[UIController Columns Add Method and examples](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_Columns.htm)  
-[Business Process Columns Add Method and examples](http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_Columns.htm)
+[UIController Columns Add Method and examples](/reference/html/P_Firefly_Box_UIController_Columns.htm)  
+[Business Process Columns Add Method and examples](/reference/html/P_Firefly_Box_BusinessProcess_Columns.htm)

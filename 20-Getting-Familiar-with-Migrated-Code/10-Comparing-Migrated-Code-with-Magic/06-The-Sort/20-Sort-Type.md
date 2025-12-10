@@ -21,6 +21,6 @@ void InitializeDataView()
 True or false. The default is **false** when Sort type is According To Index
 
 ## See Also
-* [UIController OrderBy Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_OrderBy.htm)  
+* [UIController OrderBy Property](/reference/html/P_Firefly_Box_UIController_OrderBy.htm)  
 
 

@@ -51,7 +51,7 @@ new Browse_TableA().Run(view: new Views.CallForm(this));
 
 
 See also:  
-[LockCurrentRow Method for UIController](http://www.fireflymigration.com/reference/html/M_Firefly_Box_UIController_LockCurrentRow.htm)  
-[LockCurrentRow Method for BusinessProcess](http://www.fireflymigration.com/reference/html/M_Firefly_Box_BusinessProcess_LockCurrentRow.htm)  
+[LockCurrentRow Method for UIController](/reference/html/M_Firefly_Box_UIController_LockCurrentRow.htm)  
+[LockCurrentRow Method for BusinessProcess](/reference/html/M_Firefly_Box_BusinessProcess_LockCurrentRow.htm)  
 
 

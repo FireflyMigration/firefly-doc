@@ -25,7 +25,9 @@ Locate From only
 StartOnRowWhere.Add(Products.ProductID.IsGreaterOrEqualTo(pi_ProdID));
 ````
 
+The row not found message can be suppressed by setting the DisableStartOnRowNotFoundError to true in the OnLoad method of the UIController.
+
 **See Also:**
 * [Range-Locate](http://doc.fireflymigration.com/range-locate.html)
-* [FilterCollection Class](http://doc.fireflymigration.com/reference/html/T_Firefly_Box_Data_Advanced_FilterCollection.htm)
+* [FilterCollection Class](/reference/html/T_Firefly_Box_Data_Advanced_FilterCollection.htm)
 

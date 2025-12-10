@@ -9,7 +9,8 @@ Location in Migrated Code: **BusinessProcess class**
 ```csdiff
 internal class PrintCustomers : BusinessProcessBase 
 {
-+   TextIO.PrintCustomersC1 _layout { get { return Cached<TextIO.PrintCustomersC1>(); } }}
++   TextIO.PrintCustomersC1 _layout { get { return Cached<TextIO.PrintCustomersC1>(); } }
+}
 ```
 
 ![2018 01 02 15H15 34](2018-01-02_15h15_34.jpg)

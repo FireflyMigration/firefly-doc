@@ -21,4 +21,4 @@ True or False (or expression). The default is false which is Preload view = **No
 
 
 ## See Also
-* [UIController.PreloadData](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_PreloadData.htm) 
+* [UIController.PreloadData](/reference/html/P_Firefly_Box_UIController_PreloadData.htm) 

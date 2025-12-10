@@ -1,6 +1,6 @@
 ﻿keywords:direct sql, stored procedure, idbcommand, idbconnection, executeReader
 
-Most of the dataacess is done using Entities. If you want to do direct sql's you can use the Dynamic SQL entity see:[How to use DynamicSQLEntity](http://localhost:8083/dynamic-sql-entity.html).
+Most of the dataacess is done using Entities. If you want to do direct sql's you can use the Dynamic SQL entity see:[How to use DynamicSQLEntity](/dynamic-sql-entity.html).
 
 If you want to do special things, or go to the low level database api you can use `System.Data.IDBCommand`
 

@@ -27,5 +27,5 @@ protected override void OnLoad()
 True or false. The default is **false** which is Force record delete = No in Magic
 
 ## See Also
-[UIController DeleteRowAfterLeavingItIf](http://www.fireflymigration.com/reference/html/M_Firefly_Box_UIController_DeleteRowAfterLeavingItIf.htm)
+[UIController DeleteRowAfterLeavingItIf](/reference/html/M_Firefly_Box_UIController_DeleteRowAfterLeavingItIf.htm)
 

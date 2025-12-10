@@ -13,6 +13,6 @@ void InitializeDataViewAndUserFlow()
 ```
 ---
 **See Also:**
-* [UIController OrderBy](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_OrderBy.htm)  
-* [BusinessProcess OrderBy](http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_OrderBy.htm)  
+* [UIController OrderBy](/reference/html/P_Firefly_Box_UIController_OrderBy.htm)  
+* [BusinessProcess OrderBy](/reference/html/P_Firefly_Box_BusinessProcess_OrderBy.htm)  
 ----

@@ -12,14 +12,14 @@
 3. Set it with an appropriate font 
 
 #### In the report controller
-1. In the contructor add the required OrderBy
+1. In the constructor add the required OrderBy
 2. Add a group usign the *gro* snippet
 3. Specify the column that, upon changing, will display the new section
 4. Specify which section to write whenever a new ShipCity is reached
 
 
 ```csdiff
-OrderBy.Add(Orders.SortByCustomerID;
+OrderBy.Add(Orders.SortByCustomerID);
 
 Groups[Orders.ShipCity].Enter += () => 
 {

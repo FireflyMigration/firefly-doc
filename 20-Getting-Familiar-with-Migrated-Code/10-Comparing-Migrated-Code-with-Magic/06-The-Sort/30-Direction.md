@@ -20,4 +20,4 @@ void InitializeDataView()
 SortDirection.Ascending or SortDirection.Descending . The default is SortDirection.Ascending
 
 ## See Also
-* [SortDirection Enumeration](http://www.fireflymigration.com/reference/html/T_Firefly_Box_SortDirection.htm)  
+* [SortDirection Enumeration](/reference/html/T_Firefly_Box_SortDirection.htm)  

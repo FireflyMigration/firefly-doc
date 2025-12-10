@@ -22,5 +22,5 @@ OnDatabaseErrorRetry = false;
 The default is false which is Error behavior strategy = **Abort** in Magic
 
 ## See Also:
-* [UIController OnDatabaseError Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_OnDatabaseErrorRetry.htm) 
-* [BusinessProcess OnDatabaseError Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_BusinessProcess_OnDatabaseErrorRetry.htm) 
+* [UIController OnDatabaseError Property](/reference/html/P_Firefly_Box_UIController_OnDatabaseErrorRetry.htm) 
+* [BusinessProcess OnDatabaseError Property](/reference/html/P_Firefly_Box_BusinessProcess_OnDatabaseErrorRetry.htm) 

@@ -16,7 +16,7 @@ _ioPrint_Customers = new ENV.Printing.PrinterWriter()
 };
 ```
 ##### See Also :
-* [Name property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_Name.htm) 
+* [Name property](/reference/html/P_Firefly_Box_Printing_PrinterWriter_Name.htm) 
 
 #### Printer
 
@@ -28,7 +28,7 @@ _ioPrint_Customers = new ENV.Printing.PrinterWriter()
 };
 ```
 ##### See Also :
-* [PrinterName Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_PrinterName.htm) 
+* [PrinterName Property](/reference/html/P_Firefly_Box_Printing_PrinterWriter_PrinterName.htm) 
 
 #### Exp/Var
 
@@ -40,7 +40,7 @@ _ioPrint_Customers = new ENV.Printing.PrinterWriter()
 ```
 
 ##### See Also :
-* [FileName Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_FileName.htm) 
+* [FileName Property](/reference/html/P_Firefly_Box_Printing_PrinterWriter_FileName.htm) 
 
 ### Properties
 
@@ -60,7 +60,7 @@ _ioPrint_Customers = new ENV.Printing.PrinterWriter()
 ```
 
 ##### See Also :
-* [PrintDialog Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_PrintDialog.htm) 
+* [PrintDialog Property](/reference/html/P_Firefly_Box_Printing_PrinterWriter_PrintDialog.htm) 
 
 
 #### Paper Size
@@ -79,7 +79,7 @@ _ioPrint_Customers = new ENV.Printing.PrinterWriter()
 };
 ```
 ##### See Also :
-* [PaperKind Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_PaperKind.htm)  
+* [PaperKind Property](/reference/html/P_Firefly_Box_Printing_PrinterWriter_PaperKind.htm)  
 * [PaperKind Enum](http://msdn.microsoft.com/en-us/library/d06f4sht)  
 
 #### Page Header Form
@@ -99,8 +99,8 @@ _ioPrint_Customers = new ENV.Printing.PrinterWriter()
 ```
 
 ##### See Also :
-* [PageHeader Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_PageHeader.htm)  
-* [ReportLayout Class](http://www.fireflymigration.com/reference/html/T_Firefly_Box_Printing_ReportLayout.htm)
+* [PageHeader Property](/reference/html/P_Firefly_Box_Printing_PrinterWriter_PageHeader.htm)  
+* [ReportLayout Class](/reference/html/T_Firefly_Box_Printing_ReportLayout.htm)
 
 
 #### Page Footer Form
@@ -120,8 +120,8 @@ _ioPrint_Customers = new ENV.Printing.PrinterWriter()
 ```
 
 ##### See Also :
-* [PageFooter Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_PageFooter.htm)  
-* [ReportLayout Class](http://www.fireflymigration.com/reference/html/T_Firefly_Box_Printing_ReportLayout.htm)
+* [PageFooter Property](/reference/html/P_Firefly_Box_Printing_PrinterWriter_PageFooter.htm)  
+* [ReportLayout Class](/reference/html/T_Firefly_Box_Printing_ReportLayout.htm)
 
 
 #### Copies and Copies Expression
@@ -153,7 +153,7 @@ _ioPrint_Customers = new ENV.Printing.PrinterWriter()
 };
 ```
 ##### See Also :
-* [Copies Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_Copies.htm)  
+* [Copies Property](/reference/html/P_Firefly_Box_Printing_PrinterWriter_Copies.htm)  
 
 #### Orientation
 
@@ -170,7 +170,7 @@ _ioPrint_Customers = new ENV.Printing.PrinterWriter()
 };
 ```
 ##### See Also :
-* [Landscape Property](http://fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_Landscape.htm)  
+* [Landscape Property](/reference/html/P_Firefly_Box_Printing_PrinterWriter_Landscape.htm)  
 
 
 #### Print Preview
@@ -189,5 +189,5 @@ _ioPrint_Customers = new ENV.Printing.PrinterWriter()
 ```
 
 ##### See Also :
-* [PrintPreview Property](http://www.fireflymigration.com/reference/html/P_Firefly_Box_Printing_PrinterWriter_PrintPreview.htm)  
+* [PrintPreview Property](/reference/html/P_Firefly_Box_Printing_PrinterWriter_PrintPreview.htm)  
 

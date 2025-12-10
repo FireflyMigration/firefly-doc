@@ -29,5 +29,5 @@ protected override void OnLoad()
 True or false. The default is **false** which is Refresh task window = No in Magic
 
 ## See Also
-[UIController ReloadDataAfterSavingRow](http://www.fireflymigration.com/reference/html/P_Firefly_Box_UIController_ReloadDataAfterSavingRow.htm)
+[UIController ReloadDataAfterSavingRow](/reference/html/P_Firefly_Box_UIController_ReloadDataAfterSavingRow.htm)
 
