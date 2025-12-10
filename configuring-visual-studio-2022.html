@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
-    <meta name="keywords" content="Symbols for the module 'ENV.dll' were not loaded, VisualStudioTemplates, Templates, VSDropAssist, Class Outline, Extensions, Bundle, visual studio configuration,configure visual studio, visual studio 2019">
+    <meta name="keywords" content="Symbols for the module 'ENV.dll' were not loaded, VisualStudioTemplates, Templates, VSDropAssist, Class Outline, Extensions, Bundle, visual studio configuration,configure visual studio, visual studio 2019,visual studio 2022,2022">
 
-    <title>Configuring Previous versions of Visual Studio</title>
+    <title>Configuring Visual Studio 2022</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/toc.css" />
     <link rel="stylesheet" href="assets/css/highlight.css" />
@@ -38,67 +38,57 @@
 
             <div class="container">
 
-                <div class="content"><h1 id="configuring-previous-versions-of-visual-studio">Configuring Previous versions of Visual Studio</h1>
-<p>In this document we'll detail how we configure Visual Studio 2017 to make the most out of it while working with large migrated applications.</p>
-<p>Although this document was written with Visual Studio 2017 in mind, most of it is also relevant to previous versions of Visual Studio.</p>
+                <div class="content"><h1 id="configuring-visual-studio-2022">Configuring Visual Studio 2022</h1>
+<p>In this document we'll detail how we configure Visual Studio 2022 to make the most out of it while working with large migrated applications.</p>
+<p>For previous versions of Visual Studio please refer to:<br />
+<a href="http://doc.fireflymigration.com/configuring-previous-versions-of-visual-studio.html">Configuring Previous versions of Visual Studio</a></p>
 <h2 id="a-visual-studio-extensions">A - Visual Studio Extensions</h2>
-<p>We have created an Extensions Bundle.<br />
-If you're using VS2017, you can download it from: <a href="https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioExtensionBundle">Extensions Bundle</a><br />
-If you're using VS2019, you can download it from: <a href="https://marketplace.visualstudio.com/items?itemName=Firefly-Migration.VisualStudioExtensionBundle2019">Extensions Bundle 2019</a></p>
-<p>If you are using Visual studio 2015, <a href="extensions-bundle.html">please install the extensions manually</a> and proceed to item B in this document.</p>
-<h4 id="after-you-install-the-bundle">After you install the bundle</h4>
-<p>Please run the Visual Studio Tuneup utility at &quot;Tools\Tuneup Visual Studio&quot;</p>
-<p><img src="2018-12-07_13h23_27.png" alt="2018 12 07 13H23 27" /></p>
-<p><strong>if you can't find this menu entry, <a href="extensions-bundle.html">please install the extensions manually</a></strong></p>
+<p>We have created Templates extension for Visual Studio 2022.</p>
+<p>Please downdload and install the VSIX file:<br />
+<a href="https://github.com/FireflyMigration/VisualStudioTemplates2022/releases">Templates extension 2022</a></p>
 <h2 id="b-other-important-settings-that-improve-the-performance-and-experience-in-visual-studio">B - Other important settings that improve the performance and experience in Visual Studio</h2>
 <p>The following settings are in the  &quot;Tools\Options&quot; menu</p>
-<p><img src="2017-03-08_09h59_27.png" alt="2017 03 08 09H59 27" /></p>
+<p><img src="2022-01-03_15h49_50.png" alt="2017 03 08 09H59 27" /></p>
 <h3 id="b.1-debugging-tab">B.1 - &quot;Debugging&quot; Tab</h3>
 <h4 id="b.1.1-uncheck-warn-if-no-user-code-on-launch-managed-only">B.1.1 - Uncheck &quot;Warn if no user code on launch (Managed only)&quot;</h4>
-<p><img src="2017-02-21_07h32_11.png" alt="2017 02 21 07H32 11" /></p>
-<p>Eliminates the &quot;Symbols for the module 'ENV.dll' were not loaded&quot; message you get every time you run the code</p>
+<p><img src="2017-02-21_07h32_11_new.png" alt="2017 02 21 07H32 11" /></p>
+<p>This eliminates the &quot;Symbols for the module 'ENV.dll' were not loaded&quot; message you get every time you run the code</p>
 <p><img src="ENV_message.png" alt="ENV Message" /></p>
 <h4 id="b.1.2-uncheck-enable-edit-and-continue">B.1.2 - Uncheck &quot;Enable Edit and Continue&quot;</h4>
-<p><img src="2017-02-21_06h55_05.png" alt="2017 02 21 06H55 05" /></p>
+<p><img src="2017-02-21_06h55_05_new.png" alt="2017 02 21 06H55 05" /></p>
 <p>Allows you to edit your code, while the application is running</p>
 <h4 id="b.1.3-uncheck-enable-diagnostic-tools-while-debugging">B.1.3 - Uncheck &quot;Enable Diagnostic Tools while debugging&quot;</h4>
-<p><img src="2017-02-21_06h54_22.png" alt="2017 02 21 06H54 22" /></p>
+<p><img src="2017-02-21_06h54_22_new.png" alt="2017 02 21 06H54 22" /></p>
 <p><strong>Improves performance</strong> when running in Debug</p>
 <h3 id="b.2-set-automatically-populate-toolbox-to-false">B.2 set &quot;Automatically Populate Toolbox&quot; to False</h3>
 <p>In the &quot;Windows Forms Designer&quot; tab</p>
-<p><img src="2017-03-08_10h31_14.png" alt="2017 03 08 10H31 14" /></p>
+<p><img src="2017-03-08_10h31_14_new.png" alt="2017 03 08 10H31 14" /></p>
 <p><strong>Improves performance</strong> after each build</p>
 <h3 id="b.3-disable-intellitrace-enterprise-edition-only">B.3 Disable IntelliTrace (Enterprise edition only)</h3>
 <ol>
 <li>Go to the &quot;IntelliTrace&quot; Tab</li>
 <li>Uncheck the &quot;Enable IntelliTrace&quot; checkbox</li>
 </ol>
-<p><img src="2017-03-08_10h33_43.png" alt="2017 03 08 10H33 43" /></p>
+<p><img src="2017-03-08_10h33_43_new.png" alt="2017 03 08 10H33 43" /></p>
 <p><strong>Improves performance</strong> when running in Debug</p>
-<h3 id="b.4-disable-test-flags-vs2017-only">B.4 Disable Test Flags (VS2017 only)</h3>
-<ol>
-<li>Go to the &quot;Tests&quot; Tab</li>
-<li>Uncheck <code>Discover tests in real time from source files</code></li>
-</ol>
-<p><img src="2018-10-07_12h38_11.png" alt="2018 10 07 12H38 11" /></p>
-<h3 id="b.5-check-collapse-regions-when-collapsing-to-definition-vs2017-only">B.5 Check &quot;Collapse #regions when collapsing to definition&quot; (VS2017 only)</h3>
+<h3 id="b.4-check-collapse-regions-when-collapsing-to-definition-vs2017-only">B.4 Check &quot;Collapse #regions when collapsing to definition&quot; (VS2017 only)</h3>
 <ol>
 <li>Go to the &quot;Text Editor\C#\Advanced&quot; Tab</li>
 <li>Check the &quot;Collapse #regions when collapsing to definition&quot; check box, under &quot;Outlining&quot;</li>
 </ol>
-<p><img src="2017-03-12_18h01_23.png" alt="2017 03 12 18H01 23" /></p>
+<p><img src="2017-03-12_18h01_23_new.png" alt="2017 03 12 18H01 23" /></p>
 <p><strong>Improves performance</strong></p>
 <h3 id="c-disable-preview-selected-item">C - Disable &quot;Preview Selected Item&quot;</h3>
 <p>In the &quot;Solution Explorer&quot; window make sure that the &quot;Preview Selected Item&quot; Icon is not checked (highlighted)</p>
-<p><img src="2017-03-08_10h47_38.png" alt="2017 03 08 10H47 38" /></p>
+<p><img src="2022-01-03_15h48_31.png" alt="2017 03 08 10H47 38" /></p>
 <h3 id="d-add-the-parameter-information-toolbar-item">D - Add the parameter information toolbar item</h3>
 <ol>
 <li><p>Open any class</p>
 </li>
 <li><p>On the toolbar</p>
 </li>
-<li><p>Click on the icon highlighted in the image as 2<br />
-<img src="2017-03-08_10h49_18.png" alt="2017 03 08 10H49 18" /></p>
+<li><p>Click on the icon highlighted in the image<br />
+<img src="2022-01-03_15h51_52.png" alt="2017 03 08 10H49 18" /></p>
 </li>
 <li><p>Select &quot;Add or Remove Button&quot;</p>
 </li>
@@ -107,18 +97,15 @@ If you're using VS2019, you can download it from: <a href="https://marketplace.v
 </ol>
 <p>This adds the following toolbox item, that will show you the parameter information for a method you are parked on</p>
 <ol>
-<li><img src="2017-03-08_10h51_00.png" alt="2017 03 08 10H51 00" /></li>
-<li><img src="2017-03-08_10h51_55.png" alt="2017 03 08 10H51 55" /></li>
+<li><img src="2017-03-08_10h51_00_new.png" alt="2017 03 08 10H51 00" /></li>
+<li><img src="2017-03-08_10h51_55_new.png" alt="2017 03 08 10H51 55" /></li>
 </ol>
 <h3 id="e-configure-the-goto-window">E - Configure the &quot;GoTo&quot; window</h3>
-<p>Go To the &quot;Edit\Go To\Go To All...&quot; menu item  in VS2017
-<img src="2017-03-08_10h56_02.png" alt="2017 03 08 10H56 02" /></p>
-<blockquote>
-<p>in VS2015 the menu is called &quot;Edit\Navigate To...&quot;</p>
-</blockquote>
+<p>Go To the &quot;Edit\Go To\Go To All...&quot;
+<img src="2022-01-03_15h46_52.png" alt="2017 03 08 10H56 02" /></p>
 <ol>
 <li><p>Click the &quot;Settings&quot; button<br />
-<img src="2017-03-08_10h57_17.png" alt="2017 03 08 10H57 17" /></p>
+<img src="2022-01-03_15h43_55.png" alt="2017 03 08 10H57 17" /></p>
 </li>
 <li><p>Uncheck the &quot;Use Preview Tab&quot; CheckBox</p>
 </li>
@@ -130,35 +117,25 @@ If you're using VS2019, you can download it from: <a href="https://marketplace.v
 <li>Open the solution explorer</li>
 <li>Press the combo down arrow button to open the search options</li>
 <li>Uncheck the two checkboxes<br />
-<img src="searchOptions.png" alt="Search Options" /></li>
+<img src="2022-01-03_15h56_20.png" alt="Search Options" /></li>
 </ol>
 <p><strong>Improves search performance</strong></p>
 <h3 id="g-configure-the-error-list.window">G - Configure the &quot;Error List...&quot; Window</h3>
 <ol>
 <li>Go to &quot;View\Error List&quot; menu</li>
 </ol>
-<p><img src="2017-03-08_10h43_55.png" alt="2017 03 08 10H43 55" /></p>
+<p><img src="2022-01-03_16h13_48.png" alt="2017 03 08 10H43 55" /></p>
 <ol start="2">
 <li>Uncheck the &quot;Warnings&quot; tab by clicking on it (Our preference, not mandatory)</li>
 <li>Uncheck the &quot;Messages&quot; tab by clicking on it (Our preference, not mandatory)</li>
 <li>Set the combo to &quot;Build Only&quot;</li>
 </ol>
-<p><img src="2017-03-08_10h45_18.png" alt="2017 03 08 10H45 18" /></p>
-<h3 id="h-recommended-extentions">H - Recommended extentions</h3>
-<p>We would like to recommend the following extensions to you:</p>
-<ol>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=TomasRestrepo.Viasfora">Viasfora, click to download</a> - see <a href="bracket-colors-in-visual-studio-viasfora.html">Our Review</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=SamirBoulema.StackTraceExplorer">Stack Trace Explorer, click to download</a> - see <a href="stack-trace-explorer.html">Our Review</a></li>
-</ol>
-<ul>
-<li><a href="extensions-bundle.html">Extensions Bundle</a></li>
-<li><a href="manually-install-templates-and-snippets.html">Manually Install Templates and Snippets</a></li>
-</ul>
+<p><img src="2022-01-03_16h16_42.png" alt="2017 03 08 10H45 18" /></p>
 
 
 
                     <hr />Help us improve,
-                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//50-Technologies/20-Visual-Studio/03-Configuring-Previous versions of Visual-Studio/index.md" target="_blank">Edit this page on GitHub</a>
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//50-Technologies/20-Visual-Studio/02-Configuring-Visual-Studio 2022/index.md" target="_blank">Edit this page on GitHub</a>
                     <br /> or email us at
                     <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
                 </div>
@@ -220,7 +197,7 @@ If you're using VS2019, you can download it from: <a href="https://marketplace.v
         </script>
         <script src="assets/js/tree.js"></script>
         <script language="javascript">
-            buildTree('menuTree', 'configuring-previous-versions-of-visual-studio.html', 'previousButton', 'nextButton');
+            buildTree('menuTree', 'configuring-visual-studio-2022.html', 'previousButton', 'nextButton');
         </script>
 </body>
 

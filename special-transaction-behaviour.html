@@ -49,7 +49,7 @@
 <h2 id="conditionaltransaction-true-isamtransaction-n">ConditionalTransaction = true (ISAMTransaction = N)</h2>
 <p>When a controller starts is about to start a transaction according to the <code>TransactionScope</code> setting - it'll first check the call stack for an <code>Entity</code> that comes from an SQL data source. Only if it finds an <code>Entity</code> that comes from an SQL data source - it'll open a transaction, otherwise it'll ignore the <code>TransactionScope</code> property - for example if the <code>Entity</code> is from an XML or Memory or Btrieve source.</p>
 <p>Unfortunately this behavior was the default in magic for most applications and as such is the default behaviour for most migrated applications.</p>
-<p>When we say &quot;an <code>Entity</code> that comes from an SQL data source&quot; this actually depends on the <a href="/reference/html/P_Firefly_Box_Data_DataProvider_IEntityDataProvider_SupportsTransactions.htm">SupportsTransactions</a> property of the <code>Entity</code>'s <code>DataProvider</code></p>
+<p>When we say &quot;an <code>Entity</code> that comes from an SQL data source&quot; this actually depends on the <a href="http://www.fireflymigration.com/reference/html/P_Firefly_Box_Data_DataProvider_IEntityDataProvider_SupportsTransactions.htm">SupportsTransactions</a> property of the <code>Entity</code>'s <code>DataProvider</code></p>
 <h2 id="conditionaltransaction-false-isamtransaction-y">ConditionalTransaction = false (ISAMTransaction = Y)</h2>
 <p>A transaction will be started according to the <code>TransactionScope</code> property.</p>
 

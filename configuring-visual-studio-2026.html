@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="keywords" content="Symbols for the module 'ENV.dll' were not loaded, VisualStudioTemplates, Templates, VSDropAssist, Class Outline, Extensions, Bundle, visual studio configuration,configure visual studio,visual studio 2026,2026,config">
+
+    <title>Configuring Visual Studio 2026</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/toc.css" />
+    <link rel="stylesheet" href="assets/css/highlight.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+    <link rel="stylesheet" href="assets/css/prism-csdiff.css" />
+
+
+    <link rel="stylesheet" href="assets/css/theme_firefly.css" />
+    <link rel="stylesheet" href="assets/css/mermaid.css" />
+</head>
+
+<body class="markdown-body" role="document">
+    <div class="wrapper" id="root">
+        <div class="backdrop"></div>
+        <div class="top-bar" role="navigation" aria-label="footer navigation">
+            <div style="display:flex;">
+                <div>
+                    <a id="menu" class="btn btn-neutral">&#9776; </a>
+                </div>
+                <img src="assets/img/logo-big.png">
+            </div>
+            <div>
+                <a id="previousButton" class="btn btn-neutral" style="visibility:hidden">Previous</a>
+                <a id="nextButton" class="btn btn-neutral" style="visibility:hidden">Next</a>
+            </div>
+        </div>
+        <div class="middle">
+
+            <div class="container">
+
+                <div class="content"><h1 id="configuring-visual-studio-2026">Configuring Visual Studio 2026</h1>
+<p>In this document we detail how we configure Visual Studio 2026 to make the most out of it while working with large migrated applications.</p>
+<p>For previous versions of Visual Studio please refer to our existing guides:<br />
+<a href="http://doc.fireflymigration.com/configuring-visual-studio-2022.html">Configuring Visual Studio 2022</a><br />
+<a href="http://doc.fireflymigration.com/configuring-previous-versions-of-visual-studio.html">Configuring Previous versions of Visual Studio</a></p>
+<h2 id="a-visual-studio-extensions">A - Visual Studio Extensions</h2>
+<p>We provide a Templates extension built for Visual Studio 2022 that is also compatible with Visual Studio 2026, as VS 2026 supports most VS 2022 extensions without changes.</p>
+<p>Please downdload and install the VSIX file:<br />
+<a href="https://github.com/FireflyMigration/VisualStudioTemplates2022/releases">Templates extension 2026</a></p>
+<h2 id="b-performance-oriented-settings-in-tools-options">B - Performance-oriented settings in Tools → Options</h2>
+<p>All the following settings are under <em>Tools &gt; Options</em> in Visual Studio 2026</p>
+<p><img src="B_Options.png" alt="B_Options" /></p>
+<h3 id="b.1-debugging-tab">B.1 - &quot;Debugging&quot; Tab</h3>
+<p>Go to <em>Tools &gt; Options &gt; Debugging &gt; General</em></p>
+<h4 id="b.1.1-uncheck-warn-if-no-user-code-on-start-debugging-managed-only">B.1.1 - Uncheck &quot;Warn if no user code on start debugging (Managed only)&quot;</h4>
+<p><img src="warn.png" alt="" /></p>
+<p>This eliminates the &quot;Symbols for the module 'ENV.dll' were not loaded&quot; message you get every time you run the code</p>
+<p><img src="ENV_message.png" alt="ENV Message" /></p>
+<h4 id="b.1.2-configure-edit-and-continue-via-hot-reload">B.1.2 - Configure Edit and Continue via Hot Reload</h4>
+<p>Go to <em>Tools &gt; Options &gt; Debugging &gt; General &gt; .NET / C++ Hot Reload</em><br />
+In Visual Studio 2026, Edit and Continue is controlled through the <strong>.NET / C++ Hot Reload</strong> section instead of a separate &quot;Enable Edit and Continue&quot; checkbox.<br />
+For improved stability, it’s recommended to leave this option unchecked.</p>
+<p><img src="hot.png" alt="" /></p>
+<h4 id="b.1.3-uncheck-enable-diagnostic-tools-while-debugging">B.1.3 - Uncheck &quot;Enable Diagnostic Tools while debugging&quot;</h4>
+<p>Go to <em>Tools &gt; Options &gt; Debugging &gt; General</em><br />
+This reduces overhead from live performance and memory collection and usually <strong>improves debug‑time performance</strong></p>
+<p><img src="diagnostic.png" alt="" /></p>
+<h3 id="b.2-set-automatically-populate-toolbox-to-false">B.2 - set &quot;Automatically Populate Toolbox&quot; to False</h3>
+<p>Go to <em>Tools &gt; Options &gt; Windows Forms Designer.</em><br />
+Set Automatically Populate Toolbox to False, which avoids toolbox rescans after each build and speeds up work with large WinForms projects.</p>
+<p><img src="populate.png" alt="" /></p>
+<h3 id="b.3-disable-intellitrace-enterprise-edition-only">B.3 - Disable IntelliTrace (Enterprise edition only)</h3>
+<p>Go to <em>Tools &gt; Options &gt; IntelliTrace​</em><br />
+Uncheck the &quot;Enable IntelliTrace&quot; checkbox<br />
+Disabling IntelliTrace reduces debugger overhead and <strong>Improves performance</strong> when running in Debug</p>
+<h3 id="b.4-editor-outlining-preferences">B.4 - Editor outlining preferences</h3>
+<p>Go to <em>Tools &gt; Options &gt; Languages &gt; C# &gt; Advanced &gt; Advanced (link)​</em><br />
+Check the &quot;Collapse #regions when collapsing to definition&quot; check box, under &quot;Outlining&quot;</p>
+<p><img src="2017-03-12_18h01_23_new.png" alt="2017 03 12 18H01 23" /></p>
+<h3 id="c-disable-preview-selected-item">C - Disable &quot;Preview Selected Item&quot;</h3>
+<p>In the Solution Explorer window, make sure the Preview Selected Items icon (the small file icon with a magnifying glass) is not highlighted.​<br />
+Disabling this prevents Visual Studio from constantly opening preview tabs as you move through the tree, which is helpful in large solutions.</p>
+<p><img src="preview.png" alt="" /></p>
+<h3 id="d-add-the-parameter-information-toolbar-item">D - Add the parameter information toolbar item</h3>
+<ol>
+<li>Open any .cs file so the code editor toolbar is visible</li>
+<li>Click on the 3 dots icon ... at the end of the toolbar to open the &quot;Customize&quot; dialog</li>
+<li>&quot;Add or Remove Buttons&quot; → enable &quot;Parameter Info&quot;.</li>
+</ol>
+<p><img src="param.png" alt="" /></p>
+<p>This shows method parameter info for the symbol under the caret:</p>
+<p><img src="2017-03-08_10h51_55_new.png" alt="2017 03 08 10H51 55" /></p>
+<h3 id="e-configure-the-error-list.window">E - Configure the &quot;Error List...&quot; Window</h3>
+<ol>
+<li>Go to &quot;View\Error List&quot; menu</li>
+</ol>
+<p><img src="error.png" alt="" /></p>
+<ol start="2">
+<li>Uncheck the &quot;Warnings&quot; tab by clicking on it (Our preference, not mandatory)</li>
+<li>Uncheck the &quot;Messages&quot; tab by clicking on it (Our preference, not mandatory)</li>
+<li>Set the combo to &quot;Build Only&quot;</li>
+</ol>
+<p><img src="errorOutput.png" alt="2017 03 08 10H45 18" /></p>
+
+
+
+                    <hr />Help us improve,
+                    <a href="https://github.com/FireflyMigration/firefly-doc/blob/master//50-Technologies/20-Visual-Studio/01-Configuring-Visual-Studio 2026/index.md" target="_blank">Edit this page on GitHub</a>
+                    <br /> or email us at
+                    <a href="mailto:info@fireflymigration.com?Subject=Firefly%20Documentation%20Website" target="_top">info@fireflymigration.com</a>
+                </div>
+
+                <!-- .content -->
+
+
+
+
+            </div>
+            <!-- .container-->
+
+            <aside class="left-sidebar">
+                <div class="wy-side-nav-search-ff">
+                    <a href="" class="test">
+                        
+                    </a>
+                </div>
+                <div id="menuTree" </div>
+            </aside>
+            <!-- .left-sidebar -->
+
+            <aside class="right-sidebar"></aside>
+            <!-- .right-sidebar -->
+
+            </div>
+            <!-- .middle-->
+
+
+
+        </div>
+
+
+        <script src="assets/js/mermaid.js"></script>
+        <script src="assets/js/prism-start.js"></script>
+        <script src="assets/js/prism-clike.js"></script>
+        <script src="assets/js/prism-markup.js"></script>
+        <script src="assets/js/prism-css.js"></script>
+        <script src="assets/js/prism-javascript.js"></script>
+
+        <script src="assets/js/prism-diff.js"></script>
+        <script src="assets/js/prism-csdiff.js"></script>
+        <script src="assets/js/prism-function.js"></script>
+
+        <script src="assets/js/jquery-3.1.1.js"></script>
+
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-4806432-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script src="assets/js/tree.js"></script>
+        <script language="javascript">
+            buildTree('menuTree', 'configuring-visual-studio-2026.html', 'previousButton', 'nextButton');
+        </script>
+</body>
+
+</html>

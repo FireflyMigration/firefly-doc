@@ -67,7 +67,7 @@ The <code>OnSavingRow</code> in the <code>Entity</code> class is called immediat
         LastChangeDate.Value = Date.Now;
         LastChangeTime.Value = Time.Now;
     } </code></pre>
-<h2 id="automatically-adding-columns-to-all-controllers">Automatically adding Columns to all Controllers</h2>
+<h2 id="automatically-adding-columns-to-all-controller">Automatically adding Columns to all Controller</h2>
 <p>If you want to make sure that specific columns in an entity will always be added to all Controllers that use this Entity, override the <code>GetMandatoryColumns</code> method</p>
 <pre data-line="22,23,24,25" class="language-csdiff line-numbers"><code>public class Customers : Entity 
 {
