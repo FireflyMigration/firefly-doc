@@ -75,7 +75,7 @@ Disabling this prevents Visual Studio from constantly opening preview tabs as yo
 ### D - Add the parameter information toolbar item
 1. Open any .cs file so the code editor toolbar is visible 
 2. Click on the 3 dots icon ... at the end of the toolbar to open the "Customize" dialog
-3. "Add or Remove Buttons" → enable "Parameter Info". f
+3. "Add or Remove Buttons" → enable "Parameter Info".
 
 ![](param.png)
 
